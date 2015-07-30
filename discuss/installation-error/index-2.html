@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/installation-error?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:37:21 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Installation Error | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1964" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/mlwoodward/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="mlwoodward&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/mlwoodward/index.html" class="username" title="View user profile.">mlwoodward</a></div><div class='date'>6:03am Nov 2, 2012</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Installation Error</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_62 first"><a href="../../category/keywords/aegir/index.html" rel="tag" title="">Aegir</a></li>
+<li class="taxonomy_term_50 last"><a href="../../category/keywords/install/index.html" rel="tag" title="">Install</a></li>
+</ul></div><p>I just installed Aegir Barracuda on AWS ec2.  When I go to the correct domain that was setup for Aegir I get an under construction page.</p>
+
+<p><a href="http://aegir.tinkrwith.us/" title="http://aegir.tinkrwith.us/">http://aegir.tinkrwith.us/</a>
+<a href="http://server.tinkrwith.us/" title="http://server.tinkrwith.us/">http://server.tinkrwith.us/</a></p>
+
+<p>Below is are the records at installation...  I also checked the install log due to the message that there was an error.  Any thoughts would be greatly appreciated.</p>
+
+<p>Thanks,</p>
+
+<p>Mike</p>
+
+
+
+<p>Last login: Fri Nov  2 04:37:18 2012 from 71.193.46.203
+server:~# ls
+BARRACUDA.sh.txt
+server:~# bash BARRACUDA.sh.txt</p>
+
+<p>Barracuda [Fri Nov  2 05:11:19 UTC 2012] ==&gt; BOA Skynet welcomes you aboard!</p>
+
+<p>Barracuda [Fri Nov  2 05:11:23 UTC 2012] ==&gt; INFO: FORCED INIT
+Barracuda [Fri Nov  2 05:11:23 UTC 2012] ==&gt; INFO: Reading your /root/.barracuda.cnf config file
+Barracuda [Fri Nov  2 05:11:24 UTC 2012] ==&gt; NOTE! Please review all config options displayed below
+Barracuda [Fri Nov  2 05:11:24 UTC 2012] ==&gt; NOTE! It will <em>override</em> all settings in the Barracuda script</p>
+
+<h2>#</h2>
+
+<h3>Configuration created on 121031-0638</h3>
+
+<h3>with Barracuda version BOA-2.0.3</h3>
+
+<h2>#</h2>
+
+<h3>NOTE: the group of settings displayed bellow will <em>not</em> be overriden</h3>
+
+<h3>on upgrade by the Barracuda script nor by this configuration file.</h3>
+
+<h3>They can be defined only on initial Barracuda install.</h3>
+
+<h2>#</h2>
+
+<p>_HTTP_WILDCARD=YES
+_MY_OWNIP="54.245.92.255"
+_MY_HOSTN="server.tinkrwith.us"
+_MY_FRONT="aegir.tinkrwith.us"
+_THIS_DB_HOST=localhost
+_SMTP_RELAY_TEST=YES
+_SMTP_RELAY_HOST=""
+_LOCAL_NETWORK_IP=""
+_LOCAL_NETWORK_HN=""</p>
+
+<h2>#</h2>
+
+<h3>NOTE: the group of settings displayed bellow</h3>
+
+<h3>will <em>override</em> all listed settings in the Barracuda script,</h3>
+
+<h3>both on initial install and upgrade.</h3>
+
+<h2>#</h2>
+
+<p>_MY_EMAIL="hosting@woodwarddesigngroup.com"
+_XTRAS_LIST="PDS CSF CHV FTP"
+_AUTOPILOT=NO
+_DEBUG_MODE=NO
+_DB_SERVER=MariaDB
+_SSH_PORT=22
+_LOCAL_DEBIAN_MIRROR="ftp.debian.org"
+_LOCAL_UBUNTU_MIRROR="archive.ubuntu.com"
+_FORCE_GIT_MIRROR=""
+_DNS_SETUP_TEST=YES
+_NGINX_EXTRA_CONF=""
+_NGINX_WORKERS=AUTO
+_PHP_FPM_WORKERS=AUTO
+_BUILD_FROM_SRC=NO
+_PHP_MODERN_ONLY=YES
+_PHP_FPM_VERSION=5.3
+_PHP_CLI_VERSION=5.3
+_LOAD_LIMIT_ONE=1444
+_LOAD_LIMIT_TWO=888
+_CUSTOM_CONFIG_CSF=NO
+_CUSTOM_CONFIG_SQL=NO
+_CUSTOM_CONFIG_REDIS=NO
+_CUSTOM_CONFIG_PHP_5_2=NO
+_CUSTOM_CONFIG_PHP_5_3=NO
+_SPEED_VALID_MAX=3600
+_NGINX_DOS_LIMIT=300
+_SYSTEM_UPGRADE_ONLY=NO
+_USE_MEMCACHED=YES</p>
+
+<h2>#</h2>
+
+<h3>Configuration created on 121031-0638</h3>
+
+<h3>with Barracuda version BOA-2.0.3</h3>
+
+<h2>#</h2>
+
+<p>Do you want to proceed with the install? [Y/n] Y
+Barracuda [Fri Nov  2 05:11:29 UTC 2012] ==&gt; INFO: We need to install wget, axel, aptitude, netcat &amp; git first, please wait...
+Barracuda [Fri Nov  2 05:11:36 UTC 2012] ==&gt; INFO: Testing GitHub, Drupal and Gitorious servers availability, please wait...
+Barracuda [Fri Nov  2 05:11:38 UTC 2012] ==&gt; INFO: GitHub mirror repository will be used for this install
+Barracuda [Fri Nov  2 05:11:38 UTC 2012] ==&gt; INFO: Downloading little helpers, please wait...
+Barracuda [Fri Nov  2 05:11:41 UTC 2012] ==&gt; INFO: Checking BARRACUDA version...
+Barracuda [Fri Nov  2 05:11:41 UTC 2012] ==&gt; INFO: Version test result: OK
+Barracuda [Fri Nov  2 05:11:41 UTC 2012] ==&gt; INFO: Installing lsb-release and dnsutils now, please wait...
+Barracuda [Fri Nov  2 05:11:45 UTC 2012] ==&gt; INFO: Checking your Debian or Ubuntu version...</p>
+
+<p>Barracuda [Fri Nov  2 05:11:47 UTC 2012] ==&gt; Aegir with Nginx on Debian/squeeze - Skynet Agent v.BOA-2.0.3</p>
+
+<p>Barracuda [Fri Nov  2 05:11:50 UTC 2012] ==&gt; DNS test OK - your FQDN hostname is server.tinkrwith.us and it matches your IP 54.245.92.255
+Barracuda [Fri Nov  2 05:11:50 UTC 2012] ==&gt; Please double check whether this is a valid result of my test</p>
+
+<p>Barracuda [Fri Nov  2 05:11:52 UTC 2012] ==&gt; INSTALL START -&gt; checkpoint:</p>
+
+<ul>
+<li>Your e-mail address appears to be <a href="mailto:hosting@woodwarddesigngroup.com">hosting@woodwarddesigngroup.com</a> - is that correct?</li>
+<li>Your IP address appears to be 54.245.92.255 - are you sure it's a valid IP?</li>
+<li>Your hostname appears to be server.tinkrwith.us - are you sure it's a valid FQDN hostname?</li>
+</ul>
+
+<p>Do you want to proceed with the install? [Y/n] Y
+Barracuda [Fri Nov  2 05:14:45 UTC 2012] ==&gt; INFO: Cleaning up temp files in /var/opt/
+Barracuda [Fri Nov  2 05:14:47 UTC 2012] ==&gt; INFO: Updating apt sources
+Barracuda [Fri Nov  2 05:14:49 UTC 2012] ==&gt; INFO: We will use Debian mirror ftp.debian.org
+Barracuda [Fri Nov  2 05:14:54 UTC 2012] ==&gt; INFO: Running aptitude update, please wait...
+Barracuda [Fri Nov  2 05:15:11 UTC 2012] ==&gt; INFO: Installing required libraries and tools
+Barracuda [Fri Nov  2 05:15:11 UTC 2012] ==&gt; NOTE! This step may take a few minutes, please wait...
+Barracuda [Fri Nov  2 05:15:20 UTC 2012] ==&gt; INFO: Installing libevent, please wait...
+Barracuda [Fri Nov  2 05:19:42 UTC 2012] ==&gt; INFO: Testing Nginx version...
+Barracuda [Fri Nov  2 05:19:45 UTC 2012] ==&gt; INFO: Installed Nginx version nginx/1.3.0, no upgrade required
+Barracuda [Fri Nov  2 05:19:47 UTC 2012] ==&gt; INFO: Installing Nginx, please wait...
+Barracuda [Fri Nov  2 05:21:41 UTC 2012] ==&gt; INFO: Installing MariaDB, please wait...
+Barracuda [Fri Nov  2 05:22:57 UTC 2012] ==&gt; INFO: Running aptitude full-upgrade again, please wait...
+Barracuda [Fri Nov  2 05:23:46 UTC 2012] ==&gt; INFO: Testing Nginx version...
+Barracuda [Fri Nov  2 05:23:48 UTC 2012] ==&gt; INFO: Installed Nginx version nginx/1.3.0, no upgrade required
+Barracuda [Fri Nov  2 05:23:50 UTC 2012] ==&gt; INFO: Installing Nginx, please wait...
+Barracuda [Fri Nov  2 05:26:08 UTC 2012] ==&gt; INFO: Installing /usr/bin/wkhtmltopdf x86_64 version, please wait...
+Barracuda [Fri Nov  2 05:29:01 UTC 2012] ==&gt; INFO: Checking SMTP connections, please wait...
+Barracuda [Fri Nov  2 05:29:04 UTC 2012] ==&gt; INFO: Installing VnStat monitor, please wait...
+Barracuda [Fri Nov  2 05:29:15 UTC 2012] ==&gt; INFO: Installing a few more tools, please wait...
+Barracuda [Fri Nov  2 05:29:17 UTC 2012] ==&gt; INFO: Installing Memcached server, please wait...
+Barracuda [Fri Nov  2 05:30:16 UTC 2012] ==&gt; INFO: Installed PHP version 5.3.18-1~dotdeb.0, no upgrade required
+Barracuda [Fri Nov  2 05:30:16 UTC 2012] ==&gt; INFO: Installing IonCube x86_64 version for PHP-FPM, please wait...
+Barracuda [Fri Nov  2 05:31:32 UTC 2012] ==&gt; INFO: Installing libmemcached for PHP-FPM, please wait...
+Barracuda [Fri Nov  2 05:42:34 UTC 2012] ==&gt; INFO: Installing PHP-FPM 5.3.13, please wait...
+Barracuda [Fri Nov  2 05:42:37 UTC 2012] ==&gt; INFO: Installing MailParse for PHP-FPM 5.3.13, please wait...
+Barracuda [Fri Nov  2 05:42:53 UTC 2012] ==&gt; INFO: Installing PhpRedis for PHP-FPM 5.3.13, please wait...
+Barracuda [Fri Nov  2 05:44:10 UTC 2012] ==&gt; INFO: Installing UploadProgress for PHP-FPM 5.3.13, please wait...
+Barracuda [Fri Nov  2 05:44:27 UTC 2012] ==&gt; INFO: Installing bzr, please wait...
+Barracuda [Fri Nov  2 05:48:25 UTC 2012] ==&gt; INFO: Installing lshell, please wait...
+Barracuda [Fri Nov  2 05:48:30 UTC 2012] ==&gt; INFO: Installing latest Pure-FTPd server, please wait...
+Barracuda [Fri Nov  2 05:51:42 UTC 2012] ==&gt; INFO: Installing Redis update for Debian/squeeze, please wait...
+Barracuda [Fri Nov  2 05:52:09 UTC 2012] ==&gt; INFO: Updating init scripts
+Barracuda [Fri Nov  2 05:52:18 UTC 2012] ==&gt; INFO: Restarting MariaDB
+Barracuda [Fri Nov  2 05:52:47 UTC 2012] ==&gt; INFO: Starting Redis, PHP-FPM and Nginx
+Barracuda [Fri Nov  2 05:52:58 UTC 2012] ==&gt; INFO: Generating random password for MariaDB
+Barracuda [Fri Nov  2 05:53:01 UTC 2012] ==&gt; INFO: OS and services installation completed
+Barracuda [Fri Nov  2 05:53:03 UTC 2012] ==&gt; INFO: Installing Aegir Master Instance, please wait...
+Barracuda [Fri Nov  2 05:53:54 UTC 2012] ==&gt; INFO: Running hosting-dispatch (1/3), please wait...
+Barracuda [Fri Nov  2 05:54:00 UTC 2012] ==&gt; INFO: Running hosting-dispatch (2/3), please wait...
+Barracuda [Fri Nov  2 05:54:06 UTC 2012] ==&gt; INFO: Running hosting-dispatch (3/3), please wait...
+cat: /var/aegir/.drush/hostmaster.alias.drushrc.php: No such file or directory
+Barracuda [Fri Nov  2 05:54:09 UTC 2012] ==&gt; INFO: Aegir Master Instance installation completed
+Barracuda [Fri Nov  2 05:54:12 UTC 2012] ==&gt; INFO: Installing default SSL Wildcard Nginx Proxy, please wait...
+Barracuda [Fri Nov  2 05:54:16 UTC 2012] ==&gt; INFO: MariaDB final setup
+Barracuda [Fri Nov  2 05:54:20 UTC 2012] ==&gt; INFO: MariaDB setup completed
+Barracuda [Fri Nov  2 05:54:20 UTC 2012] ==&gt; INFO: You can now log in as root by typing only 'mysql' on the command line
+Barracuda [Fri Nov  2 05:54:23 UTC 2012] ==&gt; INFO: New entry added to /var/log/barracuda_log.txt
+Barracuda [Fri Nov  2 05:54:26 UTC 2012] ==&gt; ALRT: Something went wrong
+Barracuda [Fri Nov  2 05:54:26 UTC 2012] ==&gt; ALRT: Please check the install log for details:
+Barracuda [Fri Nov  2 05:54:26 UTC 2012] ==&gt; ALRT: /var/aegir/install.log</p>
+
+<p>Barracuda [Fri Nov  2 05:54:26 UTC 2012] ==&gt; Now waiting 2 minutes before restarting Nginx...</p>
+
+<p>Barracuda [Fri Nov  2 05:56:28 UTC 2012] ==&gt; CARD: Now charging your credit card for this automated install service...
+Barracuda [Fri Nov  2 05:56:34 UTC 2012] ==&gt; JOKE: Just kidding! Enjoy your Aegir Hosting System :)</p>
+
+<p>Barracuda [Fri Nov  2 05:56:38 UTC 2012] ==&gt; Final post-install cleaning, please wait a moment...
+Barracuda [Fri Nov  2 05:56:43 UTC 2012] ==&gt; BYE!</p>
+
+<p>server:/# tail /var/aegir/install.log
+ Aegir DB password: 
+ Drush make version: 6.x-2.3
+ Aegir version: BOA-2.0.3
+ Aegir platform path: /var/aegir/hostmaster-BOA-2.0.3
+ Aegir makefile: /var/aegir/.drush/provision/aegir.make
+ Admin email: <a href="mailto:hosting@woodwarddesigngroup.com">hosting@woodwarddesigngroup.com</a></p>
+
+<p>Do you really want to proceed with the install (y/n): y
+SQLSTATE[28000] [1045] Access denied for user 'aegir_root'@'localhost' (using password: YES)                                                  [error]
+Unable to connect to database server.                                                                                                         [error]
+server:/# tail var/aegir/install.log
+ Aegir DB password: 
+ Drush make version: 6.x-2.3
+ Aegir version: BOA-2.0.3
+ Aegir platform path: /var/aegir/hostmaster-BOA-2.0.3
+ Aegir makefile: /var/aegir/.drush/provision/aegir.make
+ Admin email: <a href="mailto:hosting@woodwarddesigngroup.com">hosting@woodwarddesigngroup.com</a></p>
+
+<p>Do you really want to proceed with the install (y/n): y
+SQLSTATE[28000] [1045] Access denied for user 'aegir_root'@'localhost' (using password: YES)                                                  [error]
+Unable to connect to database server.                                                                                                         [error]</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-372.html?destination=node%2F1964%23comment-form">Login</a> or <a href="../../user/register/index-372.html?destination=node%2F1964%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/installation-error?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:37:21 GMT -->
+</html>

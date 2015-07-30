@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/content/scrums/weekly-scrum-irc-log-2012-03-12?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:36:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../weekly-scrum-irc-log-2012-03-05/index.html" />
+<link rel="up" href="../../../scrums/index.html" />
+<link rel="next" href="../weekly-scrum-irc-log-2012-03-19/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2012-03-12 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1182" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2012-03-12</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first last"><a href="../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+</ul></div><div id='diff-inline-1182'><p><div class="codeblock"><code>[07:01:35]&nbsp;&nbsp;&nbsp; &lt;darthsteven&gt; scrum time!<br />[07:03:44]&nbsp; &lt;ergonlogic&gt;&nbsp; hi<br />[07:04:30]&nbsp;&nbsp; &lt;darthsteven&gt; hello!<br />[07:04:30]&nbsp;&nbsp; &lt;hefring&gt; salut<br />[07:04:37]&nbsp;&nbsp;&nbsp; &lt;omega8cc&gt;&nbsp;&nbsp;&nbsp; hi<br />[07:04:37]&nbsp;&nbsp; &lt;hefring&gt; hello<br />[07:04:56]&nbsp;&nbsp;&nbsp; &lt;omega8cc&gt;&nbsp;&nbsp;&nbsp; hefring: botsnack<br />[07:04:56]&nbsp;&nbsp;&nbsp; &lt;hefring&gt; thanks omega8cc :)<br />[07:05:39]&nbsp;&nbsp; * scientist_ has joined #aegir<br />[07:05:50]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; I believe anarcat is on vacation, and has found his way out to the woods<br />[07:05:55] &lt;darthsteven&gt; mig5: scrum?<br />[07:06:02] &lt;ergonlogic&gt;&nbsp; so he won&#039;t likely be joining us<br />[07:06:20]&nbsp;&nbsp;&nbsp; &lt;darthsteven&gt; I shall kick things off by saying well done to Anarcat for getting the 1.7 release done<br />[07:06:31]&nbsp; &lt;darthsteven&gt; and well done to omega8cc for getting tons of stuff into that release<br />[07:06:42]&nbsp;&nbsp;&nbsp; &lt;darthsteven&gt; that&#039;s it from me<br />[07:06:52]&nbsp;&nbsp; &lt;omega8cc&gt;&nbsp;&nbsp;&nbsp; :)<br />[07:07:11]&nbsp;&nbsp; &lt;omega8cc&gt;&nbsp;&nbsp;&nbsp; My work on porting Hostmaster BOA UI improvements to 6.x-2.x is still in progress, so I&#039;m submitting some minor Nginx patches in the meantime. Not much to report this week.<br />[07:08:21]&nbsp;&nbsp;&nbsp; &lt;omega8cc&gt;&nbsp;&nbsp;&nbsp; However, I&#039;m really tired with this bug: http://drupal.org/node/1004526<br />[07:08:22] &lt;hefring&gt; <a href="http://drupal.org/node/1004526" title="http://drupal.org/node/1004526">http://drupal.org/node/1004526</a> =&gt; Automatic aliases are not persisted across rename and clone =&gt; Hostmaster (Aegir), Code, major, needs work, 25 comments, 3 IRC mentions<br />[07:08:33]&nbsp; &lt;darthsteven&gt; ah yes, that one<br />[07:08:34] &lt;omega8cc&gt;&nbsp;&nbsp;&nbsp; it causes tons of support requests<br />[07:08:44]&nbsp;&nbsp; &lt;omega8cc&gt;&nbsp;&nbsp;&nbsp; so I plan to attack it<br />[07:09:20]&nbsp;&nbsp; &lt;darthsteven&gt; ok cool<br />[07:09:36]&nbsp; &lt;omega8cc&gt;&nbsp;&nbsp;&nbsp; it is a major Aegir WTF/fail for most of our users<br />[07:11:49]&nbsp;&nbsp; * SqyD has joined #aegir<br />[07:12:25] * penyaskito has joined #aegir<br />[07:12:45]&nbsp;&nbsp; &lt;darthsteven&gt; indeed<br />[07:12:49]&nbsp;&nbsp; &lt;darthsteven&gt; anything else?<br />[07:12:58]&nbsp;&nbsp; &lt;omega8cc&gt;&nbsp;&nbsp;&nbsp; that is it from me<br />[07:13:09]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; For my part I submitted some issues and patches to port Hostmaster to the Profiler library, making sub-profiles possible, and fairly easy. This also required a ptch to Provision to support alternative profile names.<br />[07:14:00]&nbsp; &lt;ergonlogic&gt;&nbsp; I also depends on splitting Eldir and Hosting back out of Hostmaster for the 6.x-2.x branch, and I submitted an issue on that as well<br />[07:14:23]&nbsp;&nbsp;&nbsp; &lt;darthsteven&gt; yeah, I&#039;m not 100% sure where I feel about a split tbh<br />[07:14:34]&nbsp; &lt;ergonlogic&gt;&nbsp; ok<br />[07:15:03]&nbsp;&nbsp; &lt;darthsteven&gt; it&#039;s a good idea for us, but not sure if it will confuse people, and lead to lots of where should I post this issue type questions?<br />[07:15:15] &lt;darthsteven&gt; but I can see the benefits too<br />[07:15:21]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; well, we already get lots of that<br />[07:15:57]&nbsp;&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; I&#039;m pretty sure it will confise some people<br />[07:16:08] &lt;ergonlogic&gt;&nbsp; but the other projects already exist<br />[07:16:56] &lt;darthsteven&gt; yup<br />[07:17:04]&nbsp; &lt;darthsteven&gt; anyway…anyone got anything else to add?<br />[07:17:18]&nbsp; &lt;ergonlogic&gt;&nbsp; Beyond making hosting and eldir reusable, I think it could also make engagement in the project easier<br />[07:17:18]&nbsp;&nbsp;&nbsp; * Artusamak_afk is now known as Artusamak<br />[07:18:55]&nbsp;&nbsp;&nbsp; &lt;darthsteven&gt; possibly<br />[07:18:57] &lt;ergonlogic&gt;&nbsp; anyway, I&#039;s also been making lots of headway with Aegir-up, which now supports full development builds of Aegir, including custom (i.e. sandbox) provision repos and alternative branches<br />[07:19:05]&nbsp;&nbsp; &lt;darthsteven&gt; awesome<br />[07:19:19]&nbsp; &lt;darthsteven&gt; got a link for that work?<br />[07:19:23]&nbsp;&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; along with custom aegir.make makefiles<br />[07:20:07]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; a bit short on docs, but http://community.openatria.com/team/node/552<br />[07:20:29]&nbsp;&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; Aegir-up itself is at http://drupal.org/project/aegir-up<br />[07:20:50] &lt;ergonlogic&gt;&nbsp; that&#039;s about it from me<br />[07:21:13] &lt;apassi&gt;&nbsp; I have a aegir installed on two server, now when i create server content type from other to other, then aegir ui does not work anymore on other server, why?<br />[07:21:43] &lt;darthsteven&gt; thanks ergonlogic<br />[07:21:52]&nbsp;&nbsp;&nbsp; &lt;darthsteven&gt; i think we&#039;ll call that a scrum then<br />[07:22:02]&nbsp;&nbsp;&nbsp; &lt;darthsteven&gt; anyone care to do the logs?<br />[07:22:06]&nbsp; &lt;ergonlogic&gt;&nbsp; I can<br />[07:22:20]&nbsp;&nbsp;&nbsp; &lt;darthsteven&gt; ergonlogic: thanks<br />[07:22:34]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; darthsteven: can we discuss splitting hosting/eldir?<br />[07:22:47] &lt;darthsteven&gt; ergonlogic: sure, can you give me ten mins?<br />[07:22:47]&nbsp; &lt;ergonlogic&gt;&nbsp; darthsteven: I&#039;d like to make sure I understand your reservations<br />[07:22:52]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; sure<br />[07:23:10] &lt;ergonlogic&gt;&nbsp; hefring: logs<br />[07:23:21]&nbsp;&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; gah, what is that command again?<br />[07:23:27] &lt;ergonlogic&gt;&nbsp; hefring: timestamp<br />[07:23:31]&nbsp;&nbsp; &lt;darthsteven&gt; hefring: log pointer?<br />[07:23:31]&nbsp;&nbsp;&nbsp; &lt;hefring&gt; http://hefring.mig5.net/bot/log/aegir/2012-03-12#T182454<br />[07:23:42] &lt;ergonlogic&gt;&nbsp; right... thanks</code></div></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../user/login/index-132.html?destination=node%2F1182%23comment-form">Login</a> or <a href="../../../user/register/index-132.html?destination=node%2F1182%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/content/scrums/weekly-scrum-irc-log-2012-03-12?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:36:35 GMT -->
+</html>

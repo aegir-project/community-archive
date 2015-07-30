@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/582/revisions/1960/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:56:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../intro/index.html" />
+<link rel="up" href="../../../../../intro/index.html" />
+<link rel="next" href="../../../../34/index.html" />
+<link rel="prev" href="../../../../../intro/index.html" />
+<link rel="up" href="../../../../../intro/index.html" />
+<link rel="next" href="../../../../34/index.html" />
+<link rel="prev" href="../../../../../intro/index.html" />
+<link rel="up" href="../../../../../intro/index.html" />
+<link rel="next" href="../../../../34/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Operating system support from Mon, 06/20/2011 - 20:24 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-582" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../handbook/operating-system-support/index.html">Operating system support</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-582'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a> on 06/20/2011 - 20:24</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Aegir is primarily developed on Debian GNU/Linux, but it supports a whole slew of other platforms, Debian packages have been available for that platform for a while and the <a href="../../../../../installing/debian/index.html">install instructions</a> have been originally written primarily for Debian.</p>
+
+<p>This page documents Aegir support for various operating system, including specifics on how it is best recommended to install Aegir on those platforms, quirks and problems, packaging issues and coordination.</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Debian_support"><span class="toc-number">1. </span>Debian support</a>
+<ol>
+	<li class="toc-level-2"><a href="#Fully_supported"><span class="toc-number">1.1. </span>Fully supported</a></li>
+	<li class="toc-level-2"><a href="#Packaging_complete"><span class="toc-number">1.2. </span>Packaging complete</a><span class='diff-deleted'></span></li><span class='diff-deleted'>
+	</span><li class="toc-level-2"><span class='diff-deleted'></span><a href="#Developping_on_Debian"><span class='diff-deleted'></span><span class="toc-number"><span class='diff-deleted'>1.3.</span><span class='diff-deleted'> </span><span class='diff-deleted'></span></span><span class='diff-deleted'>Developping</span><span class='diff-deleted'> </span><span class='diff-deleted'>on</span><span class='diff-deleted'> </span><span class='diff-deleted'>Debian</span></a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Ubuntu_support"><span class="toc-number">2. </span>Ubuntu support</a>
+<ol>
+	<li class="toc-level-2"><a href="#Well_supported"><span class="toc-number">2.1. </span>Well supported</a></li>
+	<li class="toc-level-2"><a href="#Packaging_almost_complete"><span class="toc-number">2.2. </span>Packaging almost complete</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Mac_OS_X"><span class="toc-number">3. </span>Mac OS X</a>
+<ol>
+	<li class="toc-level-2"><a href="#Partially_supported"><span class="toc-number">3.1. </span>Partially supported</a></li>
+	<li class="toc-level-2"><a href="#No_packaging"><span class="toc-number">3.2. </span>No packaging</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#CentOS_and_Redhat-descendants"><span class="toc-number">4. </span>CentOS and Redhat-descendants</a>
+<ol>
+	<li class="toc-level-2"><a href="#Well_supported-1"><span class="toc-number">4.1. </span>Well supported</a></li>
+	<li class="toc-level-2"><a href="#No_packaging-2"><span class="toc-number">4.2. </span>No packaging</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Solaris"><span class="toc-number">5. </span>Solaris</a>
+<ol>
+	<li class="toc-level-2"><a href="#Supported"><span class="toc-number">5.1. </span>Supported</a></li>
+	<li class="toc-level-2"><a href="#No_packaging-3"><span class="toc-number">5.2. </span>No packaging</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Gentoo"><span class="toc-number">6. </span>Gentoo</a>
+<ol>
+	<li class="toc-level-2"><a href="#Supported-4"><span class="toc-number">6.1. </span>Supported</a></li>
+	<li class="toc-level-2"><a href="#No_packaging-5"><span class="toc-number">6.2. </span>No packaging</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#FreeBSD"><span class="toc-number">7. </span>FreeBSD</a>
+<ol>
+	<li class="toc-level-2"><a href="#Supported-6"><span class="toc-number">7.1. </span>Supported</a></li>
+	<li class="toc-level-2"><a href="#No_packaging-7"><span class="toc-number">7.2. </span>No packaging</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Other_platforms"><span class="toc-number">8. </span>Other platforms</a></li>
+</ol>
+</div>
+</div>
+
+<h1 id="Debian_support">1. Debian support</h1>
+
+<ul>
+<li><a href="../../../../../installing/debian/index.html">Install using Debian packages</a></li>
+<li><a href="../../../../../upgrading/debian/index.html">Upgrade using Debian packages</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Fully_supported">1.1. Fully supported</h2>
+
+<p>Aegir is <strong>fully supported</strong> in Debian, with multiple reports of successful installations, both <a href="../../../../../installing/manual/index.html">manual</a> and <a href="../../../../../installing/debian/index.html">automatic</a> installs and upgrades.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Packaging_complete">1.2. Packaging complete</h2>
+
+<p>Debian packaging is currently done in Koumbit's private repositories, as documented in the <a href="../../../../../installing/debian/index.html">install instructions</a>.</p>
+
+<p>Drush is also fully supported in Debian, with regularly Debian packages in unstable, Wheezy, and Squeeze-backports.</p>
+
+<p>Drush make doesn't yet have a Debian package.</p>
+
+<p>To <a href="../../../../543/index.html">building Debian packages</a>, follow <a href="../../../../543/index.html">those instructions</a>.</p><span class='diff-deleted'>
+
+</span><div class="toc-back-to-top"><span class='diff-deleted'></span><a href="#toc"><span class='diff-deleted'>Back</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>top</span></a><span class='diff-deleted'></span></div><span class='diff-deleted'></span><h2 id="Developping_on_Debian"><span class='diff-deleted'>1.3.</span><span class='diff-deleted'> </span><span class='diff-deleted'>Developping</span><span class='diff-deleted'> </span><span class='diff-deleted'>on</span><span class='diff-deleted'> </span><span class='diff-deleted'>Debian</span></h2><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>To</span><span class='diff-deleted'> </span><span class='diff-deleted'>develop</span><span class='diff-deleted'> </span><span class='diff-deleted'>third</span><span class='diff-deleted'> </span><span class='diff-deleted'>party</span><span class='diff-deleted'> </span><span class='diff-deleted'>extensions</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>Aegir</span><span class='diff-deleted'> </span><span class='diff-deleted'>on</span><span class='diff-deleted'> </span><span class='diff-deleted'>Debian,</span><span class='diff-deleted'> </span><span class='diff-deleted'>it</span><span class='diff-deleted'> </span><span class='diff-deleted'>is</span><span class='diff-deleted'> </span><span class='diff-deleted'>recommended</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>install</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>Debian</span><span class='diff-deleted'> </span><span class='diff-deleted'>packages.</span><span class='diff-deleted'> </span><span class='diff-deleted'>If</span><span class='diff-deleted'> </span><span class='diff-deleted'>you</span><span class='diff-deleted'> </span><span class='diff-deleted'>are</span><span class='diff-deleted'> </span><span class='diff-deleted'>workin</span><span class='diff-deleted'> </span><span class='diff-deleted'>on</span><span class='diff-deleted'> </span><span class='diff-deleted'>Aegir</span><span class='diff-deleted'> </span><span class='diff-deleted'>core,</span><span class='diff-deleted'> </span><span class='diff-deleted'>this</span><span class='diff-deleted'> </span><span class='diff-deleted'>could</span><span class='diff-deleted'> </span><span class='diff-deleted'>be</span><span class='diff-deleted'> </span><span class='diff-deleted'>a</span><span class='diff-deleted'> </span><span class='diff-deleted'>bit</span><span class='diff-deleted'> </span><span class='diff-deleted'>trickier</span><span class='diff-deleted'> </span><span class='diff-deleted'>since</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>files</span><span class='diff-deleted'> </span><span class='diff-deleted'>are</span><span class='diff-deleted'> </span><span class='diff-deleted'>not</span><span class='diff-deleted'> </span><span class='diff-deleted'>where</span><span class='diff-deleted'> </span><span class='diff-deleted'>you</span><span class='diff-deleted'> </span><span class='diff-deleted'>expect</span><span class='diff-deleted'> </span><span class='diff-deleted'>them</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>be</span><span class='diff-deleted'> </span><span class='diff-deleted'>and</span><span class='diff-deleted'> </span><span class='diff-deleted'>are</span><span class='diff-deleted'> </span><span class='diff-deleted'>not</span><span class='diff-deleted'> </span><span class='diff-deleted'>deployed</span><span class='diff-deleted'> </span><span class='diff-deleted'>as</span><span class='diff-deleted'> </span><span class='diff-deleted'>git</span><span class='diff-deleted'> </span><span class='diff-deleted'>repositories</span><span class='diff-deleted'> </span><span class='diff-deleted'>however.</span></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>You</span><span class='diff-deleted'> </span><span class='diff-deleted'>can,</span><span class='diff-deleted'> </span><span class='diff-deleted'>however,</span><span class='diff-deleted'> </span><span class='diff-deleted'>copy</span><span class='diff-deleted'> </span><span class='diff-deleted'>in</span><span class='diff-deleted'> </span><span class='diff-deleted'>place</span><span class='diff-deleted'> </span><span class='diff-deleted'>a</span><span class='diff-deleted'> </span><span class='diff-deleted'>.git</span><span class='diff-deleted'> </span><span class='diff-deleted'>directory</span><span class='diff-deleted'> </span><span class='diff-deleted'>using</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>following:</span></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'></span><div class="codeblock"><span class='diff-deleted'></span><code><span class='diff-deleted'>git</span><span class='diff-deleted'> </span><span class='diff-deleted'>clone</span><span class='diff-deleted'> </span><span class='diff-deleted'>--branch=6.x-1.0-rc7</span><span class='diff-deleted'> </span><span class='diff-deleted'></span><a href="http://git.drupal.org/project/provision<br /><span class='diff-deleted'>cp"</span><span class='diff-deleted'> </span><span class='diff-deleted'>title="http://git.drupal.org/project/provision</span><br /><span class='diff-deleted'>cp">http://git.drupal.org/project/provision</span><br /><span class='diff-deleted'>cp</span></a><span class='diff-deleted'></span><span class='diff-deleted'> </span><span class='diff-deleted'>-Rp</span><span class='diff-deleted'> </span><span class='diff-deleted'>provision/.git</span><span class='diff-deleted'> </span><span class='diff-deleted'>/usr/share/drush/commands/provision/.git</span><br /><span class='diff-deleted'>cd</span><span class='diff-deleted'> </span><span class='diff-deleted'>/usr/share/drush/commands/provision</span><br /><span class='diff-deleted'>git</span><span class='diff-deleted'> </span><span class='diff-deleted'>stash</span></code><span class='diff-deleted'></span></div><span class='diff-deleted'></span></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>This</span><span class='diff-deleted'> </span><span class='diff-deleted'>will</span><span class='diff-deleted'> </span><span class='diff-deleted'>bring</span><span class='diff-deleted'> </span><span class='diff-deleted'>back</span><span class='diff-deleted'> </span><span class='diff-deleted'>a</span><span class='diff-deleted'> </span><span class='diff-deleted'>bunch</span><span class='diff-deleted'> </span><span class='diff-deleted'>of</span><span class='diff-deleted'> </span><span class='diff-deleted'>files</span><span class='diff-deleted'> </span><span class='diff-deleted'>that</span><span class='diff-deleted'> </span><span class='diff-deleted'>are</span><span class='diff-deleted'> </span><span class='diff-deleted'>removed</span><span class='diff-deleted'> </span><span class='diff-deleted'>from</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>Debian</span><span class='diff-deleted'> </span><span class='diff-deleted'>package,</span><span class='diff-deleted'> </span><span class='diff-deleted'>so</span><span class='diff-deleted'> </span><span class='diff-deleted'>it</span><span class='diff-deleted'> </span><span class='diff-deleted'>will</span><span class='diff-deleted'> </span><span class='diff-deleted'>yield</span><span class='diff-deleted'> </span><span class='diff-deleted'>warnings</span><span class='diff-deleted'> </span><span class='diff-deleted'>on</span><span class='diff-deleted'> </span><span class='diff-deleted'>uninstall</span><span class='diff-deleted'> </span><span class='diff-deleted'>of</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>Debian</span><span class='diff-deleted'> </span><span class='diff-deleted'>package</span><span class='diff-deleted'> </span><span class='diff-deleted'>but</span><span class='diff-deleted'> </span><span class='diff-deleted'>it</span><span class='diff-deleted'> </span><span class='diff-deleted'>should</span><span class='diff-deleted'> </span><span class='diff-deleted'>otherwise</span><span class='diff-deleted'> </span><span class='diff-deleted'>work.</span></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>You</span><span class='diff-deleted'> </span><span class='diff-deleted'>can</span><span class='diff-deleted'> </span><span class='diff-deleted'>do</span><span class='diff-deleted'> </span><span class='diff-deleted'>something</span><span class='diff-deleted'> </span><span class='diff-deleted'>similar</span><span class='diff-deleted'> </span><span class='diff-deleted'>with</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>frontend.</span></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Ubuntu_support">2. Ubuntu support</h1>
+
+<ul>
+<li><a href="../../../../../installing/debian/index.html">Install using Debian packages</a></li>
+<li><a href="../../../../../upgrading/debian/index.html">Upgrade using Debian packages</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Well_supported">2.1. Well supported</h2>
+
+<p>Because none of the core developpers actually run Ubuntu daily, it is less well supported. But because Ubuntu is actually based on Debian, lots of people are happily running Aegir on Ubuntu without problems.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Packaging_almost_complete">2.2. Packaging almost complete</h2>
+
+<dl>
+<dt>Through the Debian packages, packaging is almost complete. The key piece missing is Drush in Ubuntu Maverick and previous versions. See <a href="https://bugs.launchpad.net/ubuntu/+source/drush/+bug/755169">this bug report</a> for more information.</dt>
+<dd>
+<p>(Ubuntu <a href="https://bugs.launchpad.net/ubuntu/+source/drush/+bug/755172">synced</a> Drush 4.4 in Natty Narwhal 11.04, which should be released <a href="https://wiki.ubuntu.com/NattyReleaseSchedule">by the end of april</a>, but we're still looking for a Ubuntu <a href="https://wiki.ubuntu.com/MOTU">MOTU</a> to handle the backporting on the Ubuntu side of things.)</p>
+</dd>
+</dl>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Mac_OS_X">3. Mac OS X</h1>
+
+<ul>
+<li><a href="../../../../417/index.html">Install using the special instructions for OSX</a> and <a href="../../../../../installing/manual/index.html">the manual install process</a></li>
+<li><a href="../../../../../upgrading/script/index.html">Upgrade using the automated script</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Partially_supported">3.1. Partially supported</h2>
+
+<p>OS X can be difficult for web developers, because it doesn't ship with a good Apache/PHP/MySQL stack and the UNIX internals are a bit awkward. Still, Aegir was originally developed on OS X, so it's perfectly possible to use Aegir on OS X.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="No_packaging">3.2. No packaging</h2>
+
+<p>There are currently no packages for OS X and none planned. Special instructions are provided for installing on OS X but once it's installed, the usage should be similar to other platforms, including for upgrades.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="CentOS_and_Redhat-descendants">4. CentOS and Redhat-descendants</h1>
+
+<ul>
+<li><a href="../../../../../installing/manual/index.html">Install using the manual install process</a></li>
+<li><a href="../../../../../upgrading/script/index.html">Upgrade using the automated script</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Well_supported-1">4.1. Well supported</h2>
+
+<p>A few people are running Aegir on RedHat and related operating systems, mostly CentOS. There are a few tricks documented in the manual install process but it's still fairly straightward to install.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="No_packaging-2">4.2. No packaging</h2>
+
+<p>Unfortunately, no package is available for this platform, we are looking for volunteers to write a spec file to create RPMs.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Solaris">5. Solaris</h1>
+
+<ul>
+<li><a href="../../../../../installing/manual/index.html">Install using the manual install process</a></li>
+<li><a href="../../../../../upgrading/manual/index.html">Upgrade using the manual upgrade process</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Supported">5.1. Supported</h2>
+
+<p>There are at least two Solaris installs out there, and significant work was done to make sure that Aegir was UNIX-agnostic enough to respect Solaris' idiosyncracies. The manual install instructions include some of those exceptions clearly documented and outline. Because the upgrade can be iffy, it is recommended to upgrade using the full manual install process.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="No_packaging-3">5.2. No packaging</h2>
+
+<p>No packages are provided on this platform.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Gentoo">6. Gentoo</h1>
+
+<ul>
+<li><a href="../../../../../installing/manual/index.html">Install using the manual install process</a></li>
+<li><a href="../../../../../upgrading/manual/index.html">Upgrade using the manual upgrade process</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Supported-4">6.1. Supported</h2>
+
+<p>We believe that Aegir works on Gentoo right now, according to <a href="../../../../../discuss/10rc7-install-gentoo-segfaults/index.html#comment-738">this post</a>. Follow the manual install instructions.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="No_packaging-5">6.2. No packaging</h2>
+
+<p>No packages are provided on this platform.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="FreeBSD">7. FreeBSD</h1>
+
+<ul>
+<li><a href="../../../../../installing/manual/index.html">Install using the manual install process</a> and cherry-pick some commands from <a href="https://drupal.org/files/issues/HINTS_FreeBSD_0.txt">this HINTS file</a> for prerequisites</li>
+<li><a href="../../../../../upgrading/manual/index.html">Upgrade using the manual upgrade process</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Supported-6">7.1. Supported</h2>
+
+<p>We had one report of Aegir being installable on FreeBSD. The pre-requesites have not yet been merged into the main <a href="../../../../../install/manual/index.html">install instructions</a> (see <a href="https://drupal.org/node/659024">#659024</a> for followup on that), so you'll need a bit of guesswork.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="No_packaging-7">7.2. No packaging</h2>
+
+<p>No packages are provided on this platform, but it should be fairly simple to make a port inspired by the Debian packaging, considering how it currently works.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Other_platforms">8. Other platforms</h1>
+
+<p>Other platforms are probably supported but those have not been explicitly and clearly documented so they are not yet included here. Feel free to edit this page to add a section for those users!</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-26.html?destination=node%2F582%23comment-form">Login</a> or <a href="../../../../../user/register/index-26.html?destination=node%2F582%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-26.html?destination=node%2F582%23comment-form">Login</a> or <a href="../../../../../user/register/index-26.html?destination=node%2F582%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/582/revisions/1960/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:56:57 GMT -->
+</html>

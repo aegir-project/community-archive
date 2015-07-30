@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/scrums/weekly-scrum-irc-log-2011-09-27?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:36:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../weekly-scrum-irc-log-2011-09-20/index.html" />
+<link rel="up" href="../../content/scrums/archive-2011/index.html" />
+<link rel="next" href="../weekly-scrum-irc-log-2011-10-18/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2011-09-27 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-895" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2011-09-27</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-895'><pre>
+[10:02am] darthsteven: mig5, ergonlogic, grugnog, mvc, omega8cc, sfyn: scrum time!
+[10:02am] omega8cc: hello!
+[10:02am] darthsteven: Welcome to our weekly Aegir Scrum
+[10:02am] darthsteven: Who would like to go first?
+[10:03am] merro left the chat room.
+[10:04am] darthsteven: omega8cc: would you like to start us off?
+[10:04am] beautifulmind joined the chat room.
+[10:05am] omega8cc: darthsteven: all my nginx related new stuff is a bit delayed as it needs more testing
+[10:05am] omega8cc: so I didn't submit any patches yet, but I hope to be able to do it this week
+[10:06am] omega8cc: also new boa release has been delayed for this reason
+[10:06am] darthsteven: okay
+[10:06am] darthsteven: well, looking forward to reviewing those bits
+[10:06am] merro joined the chat room.
+[10:07am] darthsteven: anyone else?
+[10:08am] darthsteven: I'll go next then
+[10:08am] darthsteven: I factored out the Jenkins tests to a drush command in provision
+[10:09am] darthsteven: so we can run them locally without python or Jenkins
+[10:09am] darthsteven: which is nice
+[10:09am] omega8cc: wow
+[10:09am] darthsteven: We can also have different tests for the different branches now too
+[10:10am] darthsteven: the tests are pretty basic, as we'll be using the Drush testing framework in a bit, when Drush 5 is out, but for now they're pretty basic
+[10:10am] darthsteven: also
+[10:10am] dfrt:  /t
+[10:10am] darthsteven: I made the Jekins scripts use configuration from Jenkins, rather than new code in the repo
+[10:11am] darthsteven: so we can do releases much more easily
+[10:11am] darthsteven: speaking of which
+[10:11am] darthsteven: We release 1.4 
+[10:11am] darthsteven: *released
+[10:11am] darthsteven: Fixing a security issue
+[10:11am] darthsteven: Also
+[10:11am] darthsteven: I created the 6.x-2.x branch, which was where the 7.x-2.x branch was
+[10:11am] darthsteven: because...
+[10:12am] darthsteven: 7.x-2.x now contains Drupal 7 code!
+[10:12am] darthsteven: hurrah!
+[10:12am] darthsteven: Porting is underway
+[10:12am] omega8cc:
+[10:12am] darthsteven: I was going to let everyone know via the community site, but couldn't because that had issues with the OA upgrade that was forced upon it
+[10:12am] darthsteven: I will do that today though
+[10:14am] omega8cc: darthsteven: so, is our gSoC student work/idea already cancelled, I suppose? as you are doing it currently
+[10:14am] darthsteven: omega8cc: As far as I can tell, nothing really came of that
+[10:14am] omega8cc: yeah 
+[10:15am] darthsteven: we can always get him porting one of the modules if that's not the case
+[10:15am] darthsteven: gSoC is over afaik anyway
+[10:15am] darthsteven: Anyone else want to say anything?
+[10:15am] omega8cc: so we may want to update our room header
+[10:20am] szczym left the chat room. (Read error: Operation timed out)
+[10:22am] omega8cc: darthsteven: Thanks for leading the work and our scrum! I can submit the log to c.a.o if you wish
+[10:22am] darthsteven: end of scrum!
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-119.html?destination=node%2F895%23comment-form">Login</a> or <a href="../../user/register/index-119.html?destination=node%2F895%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/scrums/weekly-scrum-irc-log-2011-09-27?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:36:12 GMT -->
+</html>

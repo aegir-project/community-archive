@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/388/revisions/848/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:05:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/web-clusters/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../427/index.html" />
+<link rel="prev" href="../../../../../content/web-clusters/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../427/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Setting Up Varnish &amp; Memcache with Aegir from Fri, 02/25/2011 - 17:37 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-388" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Setting Up Varnish &amp; Memcache with Aegir</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_3 first last"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+</ul></div><div id='diff-inline-388'><p>I had the hardest time finding resources &amp; documentation on how to get this configured properly so I am adding this to the documentation for those of you who may need it.</p>
+
+<p>A couple of notes:
+I am using Ubuntu 10.04 LTS.
+I set my apache to port 8082 because there was a conflict on port 8080 on my system.
+You should make a copy of each file before editing it.
+Memcache settings are drupal 7.</p>
+
+<h2>Varnish</h2>
+
+<p>Setting up varnish isn't too hard but it could end up being kind of tedious if you configure something incorrectly &amp; you have alot of sites.</p>
+
+<p>First you install it
+<code>sudo apt-get install varnish</code></p>
+
+<p>Then you have to go to configure it. I use vim.
+<code>sudo vim /etc/varnish/default.vcl</code></p>
+
+<p>These are my settings.
+<div class="codeblock"><code>backend default {<br />&nbsp;&nbsp;&nbsp; .host = &quot;127.0.0.1&quot;;<br />&nbsp;&nbsp;&nbsp; .port = &quot;8082&quot;;<br />&nbsp;&nbsp;&nbsp; .connect_timeout = 600s;<br />&nbsp;&nbsp;&nbsp; .first_byte_timeout = 600s;<br />&nbsp;&nbsp;&nbsp; .between_bytes_timeout = 600s;<br />}<br />sub vcl_recv {<br />&nbsp; // Remove has_js and Google Analytics <strong>* cookies.<br />&nbsp; set req.http.Cookie = regsuball(req.http.Cookie, &quot;(^|;\s*)(</strong>[a-z]+|has_js)=[^;]*&quot;, &quot;&quot;);<br />&nbsp; // Remove a &quot;;&quot; prefix, if present.<br />&nbsp; set req.http.Cookie = regsub(req.http.Cookie, &quot;^;\s*&quot;, &quot;&quot;);<br />&nbsp; // Remove empty cookies.<br />&nbsp; if (req.http.Cookie ~ &quot;^\s*$&quot;) {<br />&nbsp;&nbsp;&nbsp; unset req.http.Cookie;<br />&nbsp; }<br /> <br /><br />// Skip the Varnish cache for install, update, and cron<br />&nbsp; if (req.url ~ &quot;install&#46;php|update&#46;php|cron&#46;php&quot;) {<br />&nbsp;&nbsp;&nbsp; return (pass);<br />&nbsp; }<br /> <br /><br />// Cache all requests by default, overriding the<br />&nbsp; // standard Varnish behavior.<br />&nbsp; // if (req.request == &quot;GET&quot; || req.request == &quot;HEAD&quot;) {<br />&nbsp; //&nbsp;&nbsp; return (lookup);<br />&nbsp; // }<br />}<br />sub vcl_hash {<br />&nbsp; if (req.http.Cookie) {<br />&nbsp;&nbsp;&nbsp; set req.hash += req.http.Cookie;<br />&nbsp; }<br />}</code></div></p>
+
+<p>Now you have to edit /etc/default/varnish
+<code>sudo vim /etc/default/varnish</code></p>
+
+<p>Here are my settings
+<div class="codeblock"><code># Should we start varnishd at boot?&nbsp; Set to &quot;yes&quot; to enable.<br />START=yes<br /># Maximum number of open files (for ulimit -n)<br />NFILES=$(ulimit -n)<br />#Malloc size depend on your memory server<br />DAEMON_OPTS=&quot;-a :80 \<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -T localhost:6082 \<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -f /etc/varnish/default.vcl \<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -S /etc/varnish/secret \<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -s malloc,512M \<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -u www-data \<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -g www-data&quot;</code></div></p>
+
+<p>Now we have to configure apache's listening ports</p>
+
+<p><code>sudo vim /etc/apache2/ports.conf</code></p>
+
+<p>change 
+<div class="codeblock"><code>NameVirtualHost *:80<br />Listen 80</code></div>
+So that it looks like this
+<div class="codeblock"><code>NameVirtualHost *:8082<br />Listen 8082</code></div></p>
+
+<p>Start varnish
+<code>services varnish start</code></p>
+
+<p>Now login to aegir
+Edit your server &amp; change the port from 80 to 8082</p>
+
+<p>Aegir will re-verify the server, as well as all platforms &amp; sites on the server.</p>
+
+<p>If that doesnt work, you need to go to 
+/var/aegir/config/server_master/apache/vhost.d 
+and edit all of your virtual hosts so that the port shows 8082 instead of 80
+then do the same thing with
+/var/aegir/config/server_master/apache.conf
+Reverify your server.</p>
+
+<h2>Memcache</h2>
+
+<p>There is hardly any current documentation for setting up memcache on D7, especially not for aegir.</p>
+
+<p>FIrst you install memcache &amp; its dependencies
+Download &amp; install memcache module into the platform of the site/sites in which you will be using memcache</p>
+
+<p>Then you have to edit 
+/etc/default/memcached
+<code>sudo vim ./etc/init.d/memcached</code></p>
+
+<p>Here are my settings
+<div class="codeblock"><code>#! /bin/sh<br />#<br /><br />PORT=11211<br />USER=nobody<br />MAXCONN=1024<br />OPTIONS=&quot;&quot;<br />DAEMON=/usr/bin/memcached<br /><br />RETVAL=0<br />prog=&quot;memcached&quot;<br /><br />start_instance() {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo -n $&quot;Starting $prog ($1): &quot;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start-stop-daemon --start --quiet --pidfile /var/run/memcached/memcached.$1.pid --exec $DAEMON -- -d -p $PORT -u $USER&nbsp; -m $2 -c $MAXCONN -P /var/run/memcached/memcached.$1.pid $OPTIONS<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RETVAL=$?<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ $RETVAL -eq 0 ] &amp;&amp; touch /var/lock/memcached.$1<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PORT=<code>expr $PORT + 1</code><br />}<br /><br />stop_instance() {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo -n $&quot;Stopping $prog ($1): &quot;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start-stop-daemon --stop --quiet --oknodo --pidfile /var/run/memcached/memcached.$1.pid --exec $DAEMON <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RETVAL=$?<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if [ $RETVAL -eq 0 ] ; then<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rm -f /var/lock/memcached.$1<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rm -f /var/run/memcached/memcached.$1.pid<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fi<br />}<br />start () {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # insure that /var/run/memcached has proper permissions<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mkdir -p /var/run/memcached<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if [ &quot;<code>stat -c %U /var/run/memcached</code>&quot; != &quot;$USER&quot; ]; then<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; chown $USER /var/run/memcached<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fi<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start_instance default 64;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start_instance block 16;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start_instance content 128;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start_instance filter 128;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start_instance form 32;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start_instance menu 16;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start_instance page 8;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start_instance update 8;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start_instance views 8;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start_instance path 8;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start_instance field 8;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start_instance rules 8;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start_instance token 8;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start_instance image 8;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start_instance apachesolr 16;<br />}<br />stop () {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop_instance default;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop_instance block;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop_instance content;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop_instance filter;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop_instance form;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop_instance menu;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop_instance page;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop_instance update;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop_instance views;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop_instance path;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop_instance field;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop_instance rules;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop_instance token;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop_instance image;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop_instance apachesolr;<br />}<br /><br />restart () {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start<br />}<br /><br /># See how we were called.<br />case &quot;$1&quot; in<br />&nbsp; start)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;;<br />&nbsp; stop)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;;<br />&nbsp; status)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; status memcached<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;;<br />&nbsp; restart|reload|force-reload)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; restart<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;;<br />&nbsp; *)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo $&quot;Usage: $0 {start|stop|status|restart|reload|force-reload}&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit 1<br />esac<br /><br />exit $?</code></div></p>
+
+<p>Start memcache
+<code>sudo services memcached start</code>
+If you see errors u may have an issue where a one line got split into two lines.
+Check and make sure that none of your lines got broken off.</p>
+
+<p>Place this code in your local.settings.php file inside your site folder
+<div class="codeblock"><code>// the path to the core cache file<br />&nbsp; include_once(&#039;./includes/cache.inc&#039;);<br />&nbsp; // the path to the memcache cache file<br />&nbsp; include_once(&#039;./sites/all/modules/memcache/memcache.inc&#039;);<br />&nbsp; // make MemCacheDrupal the default cache class<br />&nbsp; $conf[&#039;cache_default_class&#039;] = &#039;MemCacheDrupal&#039;;<br />&nbsp; <br />&nbsp; # Key Prefix: edit this for multisite use.<br />&nbsp; $conf[&#039;memcache_key_prefix&#039;] = &quot;$_SERVER[db_user]&quot;;<br />&nbsp; <br />&nbsp; $conf[&#039;memcache_servers&#039;] = array(<br />&nbsp; &#039;127.0.0.1:11211&#039; =&gt; &#039;default&#039;,<br />&nbsp; &#039;127.0.0.1:11212&#039; =&gt; &#039;menu&#039;,<br />&nbsp; &#039;127.0.0.1:11213&#039; =&gt; &#039;filter&#039;,<br />&nbsp; &#039;127.0.0.1:11214&#039; =&gt; &#039;form&#039;,<br />&nbsp; &#039;127.0.0.1:11215&#039; =&gt; &#039;block&#039;,<br />&nbsp; &#039;127.0.0.1:11216&#039; =&gt; &#039;update&#039;,<br />&nbsp; &#039;127.0.0.1:11217&#039; =&gt; &#039;views&#039;,<br />&nbsp; &#039;127.0.0.1:11218&#039; =&gt; &#039;content&#039;,<br />&nbsp; &#039;127.0.0.1:11219&#039; =&gt; &#039;apachesolr&#039;,<br />&nbsp; &#039;127.0.0.1:11220&#039; =&gt; &#039;path&#039;,<br />&nbsp; &#039;127.0.0.1:11221&#039; =&gt; &#039;field&#039;,<br />&nbsp; &#039;127.0.0.1:11222&#039; =&gt; &#039;rules&#039;,<br />&nbsp; &#039;127.0.0.1:11223&#039; =&gt; &#039;token&#039;,<br />&nbsp; &#039;127.0.0.1:11224&#039; =&gt; &#039;image&#039;,&nbsp;&nbsp;&nbsp; <br />);<br />$conf[&#039;memcache_bins&#039;] = array(<br />&nbsp; &#039;cache&#039; =&gt; &#039;default&#039;,<br />&nbsp; &#039;cache_menu&#039;&nbsp;&nbsp; =&gt; &#039;menu&#039;,<br />&nbsp; &#039;cache_filter&#039; =&gt; &#039;filter&#039;,<br />&nbsp; &#039;cache_form&#039;&nbsp;&nbsp; =&gt; &#039;form&#039;,<br />&nbsp; &#039;cache_block&#039;&nbsp; =&gt; &#039;block&#039;,<br />&nbsp; &#039;cache_update&#039; =&gt; &#039;update&#039;,<br />&nbsp; &#039;cache_views&#039;&nbsp; =&gt; &#039;views&#039;,<br />&nbsp; &#039;cache_views_data&#039;&nbsp; =&gt; &#039;views&#039;,<br />&nbsp; &#039;cache_content&#039;&nbsp; =&gt; &#039;content&#039;,<br />&nbsp; &#039;cache_apachesolr&#039;&nbsp; =&gt; &#039;apachesolr&#039;,<br />&nbsp; &#039;cache_path&#039;&nbsp; =&gt; &#039;path&#039;,<br />&nbsp; &#039;cache_field&#039;&nbsp; =&gt; &#039;field&#039;,<br />&nbsp; &#039;cache_rules&#039;&nbsp; =&gt; &#039;rules&#039;,<br />&nbsp; &#039;cache_token&#039;&nbsp; =&gt; &#039;token&#039;,<br />&nbsp; &#039;cache_image&#039;&nbsp; =&gt; &#039;image&#039;,<br />);</code></div></p>
+
+<p>And that should be basically it.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-309.html?destination=node%2F388%23comment-form">Login</a> or <a href="../../../../../user/register/index-309.html?destination=node%2F388%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-2311"></a>
+
+
+<div  id="comment-2311" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/hydrajus/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="hydrajus&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/hydrajus/index.html" class="username" title="View user profile.">hydrajus</a></div><div class='date'>10:43am Jun 16, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-2311">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>For Varnish versions &gt; 3.0 :</p>
+
+<p><code>set req.hash += req.http.Cookie;</code></p>
+
+<p>should be:</p>
+
+<p><code>hash_data(req.http.Cookie);</code></p>
+
+<p>Source: <a href="https://www.varnish-cache.org/docs/3.0/installation/upgrade.html" title="https://www.varnish-cache.org/docs/3.0/installation/upgrade.html">https://www.varnish-cache.org/docs/3.0/installation/upgrade.html</a></p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-309.html?destination=node%2F388%23comment-form">Login</a> or <a href="../../../../../user/register/index-309.html?destination=node%2F388%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/388/revisions/848/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:05:37 GMT -->
+</html>

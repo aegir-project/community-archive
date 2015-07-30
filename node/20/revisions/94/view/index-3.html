@@ -1,0 +1,437 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/20/revisions/94/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:02:04 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/best-recipes-disaster-and-how-avoid-them/index.html" />
+<link rel="up" href="../../../../../using/index.html" />
+<link rel="next" href="../../../../44/index.html" />
+<link rel="prev" href="../../../../../content/best-recipes-disaster-and-how-avoid-them/index.html" />
+<link rel="up" href="../../../../../using/index.html" />
+<link rel="next" href="../../../../44/index.html" />
+<link rel="prev" href="../../../../../content/best-recipes-disaster-and-how-avoid-them/index.html" />
+<link rel="up" href="../../../../../using/index.html" />
+<link rel="next" href="../../../../44/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="prev" href="../../../index.html" />
+<link rel="up" href="../../../index.html" />
+<link rel="next" href="../../../../27/index.html" />
+<link rel="prev" href="../../../../44/index.html" />
+<link rel="up" href="../../../index.html" />
+<link rel="next" href="../../../../256/index.html" />
+<link rel="prev" href="../../../../27/index.html" />
+<link rel="up" href="../../../index.html" />
+<link rel="next" href="../../../../28/index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Setting up a Platform from Thu, 10/28/2010 - 12:23 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-20" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Setting up a Platform</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-20'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 10/28/2010 - 12:23</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><h2>What is a platform anyway?</h2>
+
+<p>Platforms are a type of node in Aegir and often the source of confusion for new users. This is because the term or concept isn't really used explicitly outside of Aegir - Aegir is a system that suddenly makes Platforms 'make sense' to have.</p>
+
+<p>The simplest definition of a Platform is a copy of Drupal core. That's really it. When you download a copy of Drupal from drupal.org, the result is what Aegir thinks of as a 'Platform'. No sites exist on it yet.</p>
+
+<p>Before you can create a site using Aegir, you must first define the Platform. This tells Aegir where to store the site directory, settings.php etc on the system.</p>
+
+<p>In short: first you create a Platform, and a site 'lives' on that platform, in exactly this fashion:</p>
+
+<ul>
+<li>drupal-6.19 (Platform)
+
+<ul>
+<li>/sites/yoursite.com/settings.php (site)</li>
+</ul></li>
+</ul>
+
+<p>This abstraction is somewhat unique to Aegir in that it opens up a world of new opportunities for you. By managing Platforms or copies of Drupal core, and understanding what sites are on what copy of core, Aegir is capable of moving sites between platforms (which is effectively upgrading a site) - read more about this in <a href="../../../../23/index.html">Migrating/upgrading and renaming sites</a>.</p>
+
+<h2>What else could be considered a platform?</h2>
+
+<p>Anything that is more or less a copy of Drupal core is something Aegir considers a 'platform'. This thus includes any Drupal distribution, such as <a href="http://openatrium.com/">OpenAtrium</a>, <a href="http://pressflow.org/">Pressflow</a>, <a href="http://acquia.com/products-services/acquia-drupal">Acquia Drupal</a>, <a href="http://openpublishapp.com/">OpenPublish</a>, <a href="http://managingnews.com/">ManagingNews</a>, and so on.</p>
+
+<p>The key difference between such distributions and a standard 'vanilla' copy of Drupal core is that these distributions tend to have
+  * a custom install profile in the /profiles/ directory
+  * a set of contrib or custom developed modules, libraries or themes shipped with the core or profile</p>
+
+<p>If you build a copy of Drupal core and place your custom install profile in /profiles, this could be considered a Platform.</p>
+
+<p>If you place your custom install profile in an existing Platform and re-Verify the Platform, that profile will now be recognised as an option when creating a site on that Platform.</p>
+
+<p>Various 'versions' of Drupal, such as Drupal 5.x, Drupal 6.x or Drupal 7.x, are all considered separate Platforms in Aegir.</p>
+
+<p>Drupal 4.x is not supported in Aegir.</p>
+
+<p>Is this paradigm clear? 'Sites' are managed inside 'Platforms'. 'Platforms' are managed inside 'Servers'. 'Servers' are managed by Aegir. In this sense, Aegir manages all the rest too.</p>
+
+<h2><span class='diff-changed'>Getting</span> a Platform<span class='diff-added'> onto your server</span></h2>
+
+<p>A number of techniques exist to put a platform on a server.</p>
+
+<p><strong>Drush</strong></p>
+
+<p>For a standard Drupal platform, the easiest is to simply use drush:</p>
+
+<p><div class="codeblock"><code>php /var/aegir/drush/drush.php dl drupal-6.19</code></div></p>
+
+<p><strong>Wget</strong></p>
+
+<p>You can simply use the 'wget' command, for example:</p>
+
+<p><div class="codeblock"><code>wget <a href="http://launchpad.net/prosepoint/trunk/0.23/+download/prosepoint-0.23.tar.gz<br />tar" title="http://launchpad.net/prosepoint/trunk/0.23/+download/prosepoint-0.23.tar.gz<br />tar">http://launchpad.net/prosepoint/trunk/0.23/+download/prosepoint-0.23.tar...</a> -zxvf prosepoint-0.23.tar.gz</code></div></p>
+
+<p><strong>Version control</strong></p>
+
+<p>You could use CVS, eg:</p>
+
+<p><div class="codeblock"><code>export CVSROOT=:pserver:anonymous:anonymous@cvs.drupal.org:/cvs/drupal <br />cvs login <br />cvs co -d aegir/drupal-6.15 -r DRUPAL-6-19 drupal </code></div></p>
+
+<p><strong>Manually</strong></p>
+
+<p>You could download it on your PC and scp or FTP the files up onto your server.</p>
+
+<p><strong>Drush Make</strong></p>
+
+<p><a href="http://drupal.org/project/drush_make">Drush Make</a> comes installed on your Aegir system by default. You can use Drush Make to 'build' a platform, which does the job of fetching core and any other contributed or custom packages that you specify in a makefile.</p>
+
+<p>You can even specify the URL or path to a makefile in the form you are given when adding a Platform node in the Aegir frontend, and Aegir will execute the Drush Make command in the backend and build it for you!</p>
+
+<p>Explaining how to use Drush Make is outside the scope of this document. Consult the <a href="http://drupalcode.org/viewvc/drupal/contributions/modules/drush_make/README.txt?view=co&amp;pathrev=DRUPAL-6--2">README.txt</a> of Drush Make to learn the makefile syntax, or use a ready-made makefile available from the web. Some distributions such as OpenAtrium <a href="https://community.openatrium.com/documentation-en/node/1420">provide an example makefile</a> for you to build the distribution with.</p>
+
+<h2>Do I have to have multiple platforms on my Aegir?</h2>
+
+<p>No, you can simply have one platform or copy of Drupal core and provision all your sites to sit on the one platform. However, eventually you will want to upgrade your sites to a new copy of Drupal core, and rather than replace your core files in-place, it's recommended to build a new Platform with the newer copy of core, and use the <a href="../../../../23/index.html">Migrate task to move your sites (upgrade) onto the new code.</a></p><span class='diff-added'>
+
+</span><h2><span class='diff-added'>Adding the Platform node</span></h2><span class='diff-added'>
+
+</span><p><span class='diff-added'>Now that you've got your Platform on your server, or you know where and how you're going to do it (say, with Drush Make), it's time to tell Aegir about your new Platform.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>To do so, add a new node of type 'Platform' in your Aegir frontend. Typically this is most easily done by visiting Create Content &gt; Platform in the Admin Menu.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>The Platform node form has several fields required for giving Aegir information about your platform. These are:</span></p><span class='diff-added'>
+
+</span><ul><span class='diff-added'>
+</span><li><span class='diff-added'>Name (a descriptive name for your platform. You very likely want this to be something like "Drupal 6.19".)</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Publish Path (the path on the filesystem where the platform is, or will be when Drush Make builds it. This must be the absolute path, for instance '/var/aegir/drupal-6.19')</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Makefile (the path on the filesystem to a makefile that will be used to create the platform.)</span></li><span class='diff-added'>
+</span></ul><span class='diff-added'>
+
+</span><p><span class='diff-added'>Once you have completed entering this information, you can click the Save button. A 'Verify' task will be spawned and added to the Task queue (visible in the right sidebar). The backend will then parse this new platform and build up a registry of information about it, such as what version of Drupal it is, as well as what versions of install profiles, modules and themes are present on that platform.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Certain system configurations, such as Apache configurations similar to the .htaccess file that comes with Drupal, will be written to the filesystem, permissions checked and adjusted where necessary, and services restarted.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Now that you have a platform or codebase that Aegir is aware of, you can now proceed to install or import sites onto that platform!</span></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-304.html?destination=node%2F20%23comment-form">Login</a> or <a href="../../../../../user/register/index-304.html?destination=node%2F20%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+
+<div  id="node-44" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../44/index.html">Verifying servers, platforms and sites</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_3 first"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><p>One of the common tasks available to all three of the major entities in Aegir (Servers, Platforms and Sites) is the Verify task.</p>
+
+<p>You can think of the Verify task as a sort of routine 'sanity check' of that specific entity, with a sort of checklist of expected behaviour with which it runs through to confirm that the entity is operating as normal.</p>
+
+<p>The Verify task also can be used to regularly 'sync' your platform or site with the Aegir package registry, to keep it up to date on whether any modules have changed (been removed or enabled/disabled). This will aid running Migration and Clone tasks, since Aegir needs to have a precise knowledge of what modules, themes or profiles are on the system before it can accurately judge whether an upgrade is possible.</p>
+
+<p>It is recommended to run the Verify task on your entities routinely to keep them in sync with the Aegir database, and to run a Verify of your site, current platform and target platform prior to attempting a Migration or Clone task.</p>
+
+<h2>What happens in a Verify task?</h2>
+
+<ol>
+<li><p>Servers</p>
+
+<ul>
+<li>When you add a new server node in the Aegir frontend, a Verify task is spawned for the first time.</li>
+<li>the configuration directories are created if they don't exist and set to the correct permissions, or set to the correct permissions if they already existed but were incorrectly set</li>
+<li>if the server is the master server, some additional configuration and backup directories are created</li>
+<li>generates or updates a Drush alias file for the server.</li>
+<li>some configuration directories are synced from the master server to remote servers</li>
+<li>Checks that new databases and database users can be created</li>
+<li>Checks that the HTTP web server can be restarted</li>
+</ul></li>
+<li><p>Platforms</p>
+
+<ul>
+<li>When you add a new platform node in the Aegir frontend, a Verify task is spawned for the first time. </li>
+<li>If the platform directory didn't exist on the file system and a Drush makefile was provided, Drush Make will be called to build the platform in that location</li>
+<li>If the platform directory didn't exist and no Drush makefile was provided, the task will fail with the error 'Does not contain a valid Drupal installation'.</li>
+<li>Checks that the permissions are correct, at least of the 'sites' folder of the platform directory (so we can create new sites here)</li>
+<li>Searches for existing sites on the platform that are not yet in the system. These sites will be 'imported' into Aegir.</li>
+<li>Scans the platform and builds or updates the package registry in the Aegir database. </li>
+<li>Generates or updates a Drush alias for the platform, and a drushrc.php file in the platform's directory root.</li>
+<li>Reads in the platform's .htaccess file into a platform-wide web server vhost configuration file.</li>
+<li>Restart the web server</li>
+</ul></li>
+<li><p>Sites</p>
+
+<ul>
+<li>When you add a new site in the Aegir system, an Install task is spawned, This is contrasted with the above entities which spawn only Verify tasks initially.</li>
+<li>Scans the site and builds or updates the package registry in the Aegir database.</li>
+<li>Creates important directories in the site folder, such as 'files'. Sets or corrects the appropriate permissions </li>
+<li>Manages/updates any site aliases (symlinks, redirects etc)</li>
+<li>Re-generates the settings.php </li>
+<li>Re-generates the site's web server vhost configuration file</li>
+<li>Re-generates the site's drushrc.php and a Drush alias</li>
+<li>Clears caches.</li>
+</ul></li>
+</ol>
+
+<p>You can run or re-run the Verify task at any time on a server, platform or site, and it is encouraged to do so.</p>
+
+<p>Certain tasks, such as 'deploy' when a site is being imported, automatically imply a verify of the site.</p>
+
+<p>Each Verify task, like all tasks generated by Aegir, emit a 'task log' available for review after the task has completed (or failed).</p>
+
+<p>If a Verify task fails, and the task log does not provide enough information to help you resolve the problem, trying running drush @example.org provision-verify --debug from the command line to find out what caused the problem. Remember to replace 'example.org' with the URL of the site you are trying to verify.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-41.html?destination=node%2F44%23comment-form">Login</a> or <a href="../../../../../user/register/index-41.html?destination=node%2F44%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-41.html?destination=node%2F44%23comment-form">Login</a> or <a href="../../../../../user/register/index-41.html?destination=node%2F44%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-27" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../27/index.html">Locking and Deleting platforms</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><p>Platforms, like sites, have tasks that can be performed against them, however these tasks are smaller in number and generally more simple.</p>
+
+<p>Some tasks that are available to platforms out of the box are Lock/Unlock and Delete.</p>
+
+<h2>Lock</h2>
+
+<p>The lock task is simply a conceptual protection placed over a platform so that new sites can't be installed on that platform.</p>
+
+<p>It doesn't actually modify anything on the filesystem or on the platform itself, but merely changes the status of the platform in the Aegir database. Once a platform is considered 'locked', it no longer appears in the New Site form when adding a new site.</p>
+
+<p>You might choose to Lock a platform if there is something wrong with that platform and you want to prevent new sites from being added to it by one of your clients or users, or you want to 'hide' the platform for some other reason (perhaps awaiting a release date before allowing new sites).</p>
+
+<h2>Unlock</h2>
+
+<p>To unlock a platform that has been locked, simply click the Unlock button and the status of the platform will be switched back to an Enabled state.</p>
+
+<h2>Delete</h2>
+
+<p>The Delete task is similar to that of sites. The delete button allows you to completely remove a platform from your filesystem irreversibly.</p>
+
+<p>This can be handy if you engage in a build management methodology that involves making regular new platforms to upgrade your site to. It is easy to amass large numbers of platforms on the filesystem, so the Delete task was born to deal with that problem.</p>
+
+<p>A platform can only be deleted if there are no sites currently provisioned on it. The task will fail before deleting anything if it detects that there are sites in the 'sites' directory of that platform.</p>
+
+<p>You must migrate these sites off to a valid new platform before you can delete such a platform.</p>
+
+<p>Unlike site deletions, there is no backup made of a platform (because it's not bootstrappable by Drush), so be careful with this task: there is no going back!</p>
+
+<p>It is recommended to make regular filesystem backups outside of Aegir altogether, and to use the Lock task to temporarily 'disable' a platform from use if you are unsure whether you want to delete it, but don't want it shown on the Aegir frontend.</p>
+
+<h2>Manually deleting a platform</h2>
+
+<p>Similarily to <a href="../../../../26/index.html">deleting sites</a>, sometimes something goes wrong during a Delete task and the platform doesn't get completely removed. Often this is caused by permissions problems on the platform (i.e something owned by a different user that the aegir user can't remove).</p>
+
+<p>The Delete task sometimes cannot be re-run in this situation. In which case,:</p>
+
+<ul>
+<li>Manually remove the platform files on the server if they exist (i.e /var/aegir/drupal-6.19)</li>
+<li>Remove the Drush alias for this platform if it is still present (in /var/aegir/.drush/)</li>
+<li>Remove the platform configuration file from /var/aegir/config/server_master/apache/platform.d (and the same for the other server_ directory if the platform was hosted on a remote webserver)</li>
+<li>Go to e.g. /node/123456/delete in your browser on the Aegir frontend and delete the node. This will remove the platform node and all associated task nodes from the system, as well as remove the entry from the hosting_platform and hosting_context table in the database.</li>
+</ul>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-390.html?destination=node%2F27%23comment-form">Login</a> or <a href="../../../../../user/register/index-390.html?destination=node%2F27%23comment-form">register</a> to post comments</span></li>
+<li class="talk_comments last"><a href="../../../../27/talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-256" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../256/index.html">Using drush_make to optimize workflow</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <h2>Introduction</h2>
+
+<p>Once you understand <a href="../../../../217/index.html">why Aegir is a great tool</a> for developing and managing Drupal web sites you inevitably start looking for ways to optimize workflow.  mig5's article on <a href="http://mig5.net/content/drupal-deployments-workflows-version-control-drushmake-and-aegir">Drupal deployments and workflows</a> provides great insight on managing platforms, profiles and sites using Aegir, version control and the <a href="http://drupal.org/project/drush_make">drush_make</a> project.</p>
+
+<h2>The challenge of managing platforms and profiles</h2>
+
+<p>Whether you are using Drupal to develop bespoke web sites or vertical web applications with hundreds of instances (sites), it is not uncommon to be managing a mix of platforms and profiles.  These comprise <a href="http://drupal.org/download">community-contributed projects</a> that, in many cases, are frequently updated.  To protect the integrity of their platforms developers like to explicitly control which version of which project they use and when.  It can be time consuming to keep everything up to date.  Many contributed projects are available in versions compatible with multiple Drupal versions so this mix of platforms and profiles can be complex.</p>
+
+<h2>Using drush_make to manage common and disparate code bases</h2>
+
+<p>One of the really powerful features of drush_make is that it can operate <em>recursively</em>.  You invoke the <code>drush make</code> command on a local make file but if drush_make fetches a profile or project that includes another make file then this is parsed and additional packages are fetched.</p>
+
+<p>A typical way that developers leverage this feature is when they want to have some projects available to the entire platform and some that are specific to one or more custom profiles that are part of the platform.  They achieve this by including a different make file with each profile repository.</p>
+
+<p>Using make files with profiles works well when you want to manage distinct code bases that are specific to a site running under that profile. Only sites using profile 'foo' can see modules, themes or libraries located in subdirectories of the foo profile's directory.  However, using the <code>includes</code> option you can also reference a make file directly using a local path or a URL. The advantage of this is that you can maintain a make file that references the projects you use on every profile on every platform (e.g. views, cck, path etc.).</p>
+
+<p>This is illustrated schematically below:</p>
+
+<p><img src="../../../../../files/drush-make-architecture-2011-01-14_0/index.png" /></p>
+
+<h2>Example make files</h2>
+
+<p>Here are some example make files that illustrate the concepts described above:</p>
+
+<h3>&lt;namespace&gt;_&lt;platform<sub>1</sub>&gt;.make</h3>
+
+<div class="code-block">
+<div class="codeblock"><code>core = 6.x<br />api = 2<br /><br />; drupal core<br />projects[drupal][version] = 6.20<br /><br />; platform projects<br />projects[webform][vesion] = 3.2<br />projects[workflow][version] = 1.4<br />projects[job_scheduler][version] = 1.0-beta3<br />projects[feeds][version] = 1.0-beta10<br /><br />; platform theme<br />projects[acme_theme][type] = &quot;theme&quot;<br />projects[acme_theme][download][type] = &quot;git&quot;<br />projects[acme_theme][download][url] = &quot;git@git.example.com:drupal/themes/acme_theme.git&quot;<br />projects[acme_theme][download][branch] = &quot;master&quot;<br /><br />; profile 1<br />projects[acme_profile1][type] = &quot;profile&quot;<br />projects[acme_profile1][download][type] = &quot;git&quot;<br />projects[acme_profile1][download][url] = &quot;git@git.example.com:drupal/profiles/acme_profile1.git&quot;<br />projects[acme_profile1][download][branch] = &quot;master&quot;<br /><br />; profile 2<br />projects[acme_profile2][type] = &quot;profile&quot;<br />projects[acme_profile2][download][type] = &quot;git&quot;<br />projects[acme_profile2][download][url] = &quot;git@git.example.com:drupal/profiles/acme_profile2.git&quot;<br />projects[acme_profile2][download][branch] = &quot;master&quot;<br /><br />; base make file<br />includes[acme_base] = &quot;http://example.com/acme_base.make&quot;<br /><br />; patches<br />projects[superfish][patch][] = &quot;http://example.com/superfish-add-acme-style.patch&quot;</code></div>
+</div>
+
+<h3>&lt;namespace&gt;_&lt;profile<sub>1</sub>&gt;.make </h3>
+
+<div class="code-block">
+<div class="codeblock"><code>core = 6.x<br />api = 2<br /><br />; ecommerce<br />projects[ubercart][version] = 2.4</code></div>
+</div>
+
+<h3>&lt;namespace&gt;_&lt;profile<sub>2</sub>&gt;.make </h3>
+
+<div class="code-block">
+<div class="codeblock"><code>core = 6.x<br />api = 2<br /><br />projects[openlayers][version] = 2.x-dev<br />projects[ldap_integration][version] = 1.0-beta2</code></div>
+</div>
+
+<h3>&lt;namespace&gt;_base.make </h3>
+
+<div class="code-block">
+<div class="codeblock"><code>core = 6.x<br />api = 2<br /><br />; utilities<br />projects[ctools][version] = 1.8<br />projects[jquery_ui][version] = 1.4<br />projects[jquery_update][version] = 2.x-dev<br />projects[modalframe][version] = 1.7<br />projects[advanced_help][version] = 1.2<br />projects[transliteration][version] = 3.0<br />projects[token][version] = 1.15<br /><br />; content management<br />projects[imageapi][version] = 1.9<br />projects[imagecache][version] = 2.x-dev<br />projects[cck][version] = 2.9<br />projects[filefield][version] = 3.9<br />projects[imagefield][version] = 3.9<br />projects[diff][version] = 2.1<br />projects[date][version] = 2.7<br />projects[calendar][version] = 2.4<br />projects[views][version] = 3.x-dev<br />projects[views_slideshow][version] = 2.3<br />projects[content_profile][version] = 1.0<br />projects[og][version] = 2.1<br />projects[node_clone][version] = 1.2<br />projects[node_export][version] = 2.21<br />projects[node_import][version] = 1.x-dev<br />projects[nodequeue][version] = 2.9<br />projects[noderelationships][version] = 1.6<br />projects[reverse_node_reference][version] = 1.0<br />projects[nodereference_views][version] = 1.3<br />projects[page_title][version] = 2.3<br />projects[pathauto][version] = 1.5<br />projects[realname][version] = 1.3<br /><br />; ui<br />projects[wysiwyg][version] = 2.2<br />projects[imce][version] = 2.1<br />projects[imce_wysiwyg][version] = 1.1<br /><br />; site administration<br />projects[admin_menu][version] = 1.6<br />projects[devel][version] = 1.x-dev<br />projects[devel_themer][version] = 1.x-dev<br />projects[globalredirect][version] = 1.x-dev<br />projects[google_analytics][version] = 2.3<br />projects[xmlsitemap][version] = 2.0-beta1<br /><br />; site building<br />projects[rules][version] = 1.4<br />projects[features][version] = 1.0<br />projects[context][version] = 3.0<br />projects[strongarm][version] = 2.0<br />projects[purl][version] = 1.0-beta13<br />projects[spaces][version] = 3.0<br /><br />; site theming<br />projects[skinr][version] = 1.6<br />projects[superfish][version] = 1.6<br />projects[adaptivetheme][version] = 3.0-rc2<br /><br />; libraries<br /><br />; CKEditor<br />libraries[ckeditor][download][type] = &quot;get&quot;<br />libraries[ckeditor][download][url] = &quot;http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.4/ckeditor_3.4.tar.gz&quot;<br />libraries[ckeditor][directory_name] = &quot;ckeditor&quot;<br />libraries[ckeditor][destination] = &quot;libraries&quot;<br /><br />; jquery ui library<br />libraries[jquery_ui][download][type] = &quot;get&quot;<br />libraries[jquery_ui][destination] = &quot;modules/jquery_ui&quot;<br />libraries[jquery_ui][download][url] = &quot;http://jquery-ui.googlecode.com/files/jquery-ui-1.7.3.zip&quot;<br />libraries[jquery_ui][directory_name] = &quot;jquery.ui&quot;</code></div>
+</div><div class="itu-attachments"><table class="itu-attachment-list withoutstats sticky-enabled" id="attachments">
+ <thead><tr><th class="preview">Preview</th><th class="file">Attachment</th><th class="size">Size</th> </tr></thead>
+<tbody>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../../../../sites/community.aegirproject.org/files/drush-make-architecture-2011-01-14_0/index.png" title="drush-make-architecture-2011-01-14.png"><img src="../../../../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/drush-make-architecture-2011-01-14_0/index.png" alt="drush-make-architecture-2011-01-14.png" title="drush-make-architecture-2011-01-14.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../../../../sites/community.aegirproject.org/files/drush-make-architecture-2011-01-14_0/index.png">drush-make-architecture-2011-01-14.png</a></td><td class="size">20.11 KB</td> </tr>
+</tbody>
+</table>
+</div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-42.html?destination=node%2F256%23comment-form">Login</a> or <a href="../../../../../user/register/index-42.html?destination=node%2F256%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-42.html?destination=node%2F256%23comment-form">Login</a> or <a href="../../../../../user/register/index-42.html?destination=node%2F256%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+<div id="comments">
+  <a id="comment-1935"></a>
+
+
+<div  id="comment-1935" class="comment comment-published clear-block decay-10 decay-10">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/matslats/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="matslats&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/matslats/index.html" class="username" title="View user profile.">matslats</a></div><div class='date'>5:20pm May 15, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1935">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>I don't understand how, using drush under aegir, I can download a profile from drupal.org, or what the makefile looks like to do that.
+When I direct Aegir to a profile makefile to make a new drupal, and in profiles/cforge it puts a whole new drupal with the cforge profile in profiles/cforge/profiles/cforge
+When I try to download my cforge profile as if it were a module I get 
+<div class="codeblock"><code>$ drush @test.communityforge.net dl cforge<br />&gt;Source directory /tmp/drush_tmp_1368637808/cforge is not readable or does not exist.&nbsp; [error]<br />&gt;Project cforge (7.x-1.0-rc4) could not be downloaded to /var/aegir/platforms/test/sites/all/modules/cforge.</code></div>
+so I'm left assembling a platform by hand
+Any clues?</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-304.html?destination=node%2F20%23comment-form">Login</a> or <a href="../../../../../user/register/index-304.html?destination=node%2F20%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-1937"></a>
+
+
+<div  id="comment-1937" class="comment comment-published clear-block decay-4 decay-4">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../user/54/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-54/index.png" alt="ergonlogic&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a></div><div class='date'>3:08am May 16, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1937">#2</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <blockquote>
+  <p>is there an online repository of platforms?</p>
+</blockquote>
+
+<p>Koumbit's <a href="http://drupal.org/project/kplatforms">kplatforms</a> is a repository of makefiles that we use to maintain our production platforms. It's neither 'official', nor an exhaustive list of distributions. But it can serve as an reference for how one can build fairly re-usable makefiles.</p>
+
+<p>@matslats I think the problem you're having is due to your inclusion of a Drupal core project in cforge.make. An install profile's makefile should generally only include its dependencies (modules, themes &amp; libraries), so that it can in turn be recursively built when the profile is added to a "stub" makefile.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-304.html?destination=node%2F20%23comment-form">Login</a> or <a href="../../../../../user/register/index-304.html?destination=node%2F20%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-1938"></a>
+
+
+<div  id="comment-1938" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/matslats/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="matslats&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/matslats/index.html" class="username" title="View user profile.">matslats</a></div><div class='date'>9:56am May 16, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1938">#3</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Thanks I think I haven't grasped the concept of a stub makefile yet. I'll experiment some more.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-304.html?destination=node%2F20%23comment-form">Login</a> or <a href="../../../../../user/register/index-304.html?destination=node%2F20%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/20/revisions/94/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:02:04 GMT -->
+</html>

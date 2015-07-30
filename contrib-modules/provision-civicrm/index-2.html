@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/contrib-modules/provision-civicrm?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:31:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../node/516/index.html" />
+<link rel="up" href="../index.html" />
+<link rel="next" href="../../content/content/administrator/post-install-configuration/create-sudo-user-server-administration/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Provision CiviCRM | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-888" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Provision CiviCRM</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-888'><p><a href="https://drupal.org/project/provision_civicrm">provision_civicrm</a> helps to manage the installation and upgrades of CiviCRM in Drupal sites managed with Aegir.</p>
+
+<p>CiviCRM is not a typical Drupal module. It is a third-party system that integrates with Drupal, WordPress and Joomla for its front-end and permission system. CiviCRM has its own installer, upgrade system and cron. The "provision_civicrm" module helps to manage any CiviCRM+Drupal site as any other Drupal site managed in Aegir.</p>
+
+<h3>Requirements</h3>
+
+<ul>
+<li>Aegir 2.x or 3.x</li>
+<li><a href="https://drupal.org/project/hosting_civicrm">hosting_civicrm</a> must be installed in the hostmaster front-end (~/hostmaster-x-y/sites/example.org/modules).</li>
+</ul>
+
+<h3>Installation</h3>
+
+<p>Download the provision_civicrm module as the "aegir" user:</p>
+
+<pre><code>drush dl provision_civicrm-6.x-2.x
+</code></pre>
+
+<p>This should install the module in ~/.drush/provision_civicrm.</p>
+
+<p>NB: provision_civicrm 6.x-2.x is a Drush module, and works with both Aegir 2 and Aegir 3. However, for Aegir 3, you must use the 7.x-3.x branch of the hosting_civicrm module.</p>
+
+<h3>Creating a CiviCRM platform</h3>
+
+<p>provision_civicrm assumes that if you have a CiviCRM installation in your sites/all/modules/civicrm, then this is a CiviCRM platform and CiviCRM should be installed automatically.</p>
+
+<p>(A cleaner way, in theory, would be to have an install profile and let the user configure it through the front-end, patches welcome! -- however, you do not want any site to simply enable CiviCRM from the Drupal admin/build/modules, so having dedicated platforms for CiviCRM makes sense in any case.)</p>
+
+<p>A sample drush makefile is provided with provision_civicrm.</p>
+
+<p>Assuming you are running as the user 'aegir', whose $HOME is /var/aegir/, save this in a file such as ~/makefiles/drupal-6.22-civicrm-3.3.4.make</p>
+
+<p>Then create the new platform:</p>
+
+<pre><code>mkdir ~/platforms/drupal-6.22-civicrm-3.3.4
+cd ~/platforms/drupal-6.22-civicrm-3.3.4
+drush make ~/makefiles/drupal-6.22-civicrm-3.3.4.make
+</code></pre>
+
+<p>You can now add your platform in the Aegir front-end and then create new sites.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../node/888/talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/contrib-modules/provision-civicrm?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:31:33 GMT -->
+</html>

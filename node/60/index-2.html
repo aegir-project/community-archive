@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/60?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:24:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../22/index.html" />
+<link rel="up" href="../43/index.html" />
+<link rel="next" href="../42/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Site Aliases | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-60" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Site Aliases</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_3 first"><a href="../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-60'><h3>Introduction</h3>
+
+<p>Site aliases are helpful if you move content to a new domain, change domain names or simply want to make sure that <a href="http://example.com/" title="http://example.com">http://example.com</a> and <a href="http://www.example.com/" title="http://www.example.com">http://www.example.com</a> take users to the same place.  You can implement site aliases with or without <em>redirection</em>.  The differences between these two methods and how Aegir handles them is described below.</p>
+
+<h3>Enable Alias Support in Aegir</h3>
+
+<ol>
+<li><p>You have to enable alias support in Aegir as it is off by default.  Assuming the URL of your Aegir front end is aegir.example.com, browse to aegir.example.com/admin/hosting/features 
+<img src="http://groups.drupal.org/files/features-page.png" alt="how to get to the Aegir features page" /></p></li>
+<li><p>Check the Site aliasing box
+<img src="http://groups.drupal.org/files/site-aliasing-feature.png" alt="how to enable site aliasing on Aegir" /></p></li>
+<li><p>Click Save configuration</p></li>
+</ol>
+
+<h3>Global Settings for Aliasing</h3>
+
+<p>After you have enabled the site aliasing feature in Aegir you can navigate to aegir.example.com/admin/hosting/aliases (see the menu item that is added under Hosting in the admin menu bar).  Here you can set default site alias settings for all of your Aegir-hosted sites.</p>
+
+<p><img src="http://groups.drupal.org/files/global-aliasing-settings.png" alt="global site aliasing settings" /></p>
+
+<h3>Site-Specific Settings for Aliasing</h3>
+
+<p>You can override the global settings for aliasing by configuring site-specific alias settings either when you create the site or later by editing the site settings.</p>
+
+<p><img src="http://groups.drupal.org/files/site-specific-aliasing-settings.png" alt="site-specific aliasing settings" /></p>
+
+<h3>Redirection Option</h3>
+
+<p>For users, one of the main differences that occurs when redirection is turned on is that the URL that they enter in the browser address bar changes.  This reflects what the server is doing, which is in effect to redirect the request to the same site under the main URL, as opposed to serving the same site from under an alias.</p>
+
+<h4>User navigates to my-old-domain.com with redirection off</h4>
+
+<p><img src="http://groups.drupal.org/files/aliasing-without-redirection.png" alt="aliasing without redirection" /></p>
+
+<h4>User navigates to my-old-domain.com with redirection on</h4>
+
+<p><img src="http://groups.drupal.org/files/aliasing-with-redirection.png" alt="aliasing with redirection" /></p>
+
+<h3>Aegir alias management under the hood</h3>
+
+<p>Aegir primarily manages aliases in the virtual hosts file for each site (e.g. /var/aegir/config/server_master/apache/vhost.d/www.example.com)</p>
+
+<p>When Aliases are in use, the virtual hosts file will have a ServerAlias directive for each site alias:</p>
+
+<p><div class="codeblock"><code>ServerAlias example.com<br />ServerAlias www.my-old-domain.com</code></div></p>
+
+<p>In addition to the above directives, when redirection is off, Aegir creates a symlink in the platform/sites/ folder for each alias that points to the folder associated with the primary domain</p>
+
+<p><div class="codeblock"><code>lrwxrwxrwx 1 aegir aegir&nbsp;&nbsp; 15 Oct 31 23:25 example.com -&gt; <a href="http://www.example.com<br />drwxr-xr-x" title="www.example.com<br />drwxr-xr-x">www.example.com<br />drwxr-xr-x</a> 7 aegir aegir 4096 Oct 31 23:02 <a href="http://www.example.com<br />lrwxrwxrwx" title="www.example.com<br />lrwxrwxrwx">www.example.com<br />lrwxrwxrwx</a> 1 aegir aegir&nbsp;&nbsp; 15 Oct 31 23:25 <a href="http://www.my-old-domain.com/" title="www.my-old-domain.com">www.my-old-domain.com</a> -&gt; www.example.com</code></div></p>
+
+<p>When redirection <strong>is</strong> enabled, Rewrite directives are added to the virtualhost to send http requests to the primary domain that the aliases are associated with:</p>
+
+<p><div class="codeblock"><code>ServerAlias example.com<br />ServerAlias <a href="http://www.my-old-domain.com<br />RewriteEngine" title="www.my-old-domain.com<br />RewriteEngine">www.my-old-domain.com<br />RewriteEngine</a> on<br />RewriteCond %{HTTP_HOST} !^www.example.com$ [NC]<br />RewriteRule ^/<em>(.</em>)$ http://www.example.com/$1 [L,R=301]</code></div></p>
+
+<p>The symlinks are not required in this case.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/60?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:24:07 GMT -->
+</html>

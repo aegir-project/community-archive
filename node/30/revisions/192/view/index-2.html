@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/30/revisions/192/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:05:02 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../426/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../396/index.html" />
+<link rel="prev" href="../../../../426/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../396/index.html" />
+<link rel="prev" href="../../../../426/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../396/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Remote servers (multiserver) from Fri, 11/05/2010 - 03:23 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-30" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Remote servers (multiserver)</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-30'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 11/05/2010 - 03:23</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p><span class='diff-added'>Aegir supports multiple 'server' entities. These servers have 'services' such as 'Web' or 'DB', and 'service types' which are implementations of that service, such as 'HTTP' or 'MySQL'.</span></p><span class='diff-added'>
+
+</span><h1>Remote<span class='diff-added'> web</span> servers</h1><span class='diff-added'>
+
+</span><h2><span class='diff-added'>System dependencies</span></h2><span class='diff-added'>
+
+</span><p><span class='diff-added'>On the remote server, install these packages</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'>&nbsp; apt-get install rsync apache2 php5 php5-cli php5-mysql</span></code><span class='diff-added'></span></div><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><h2><span class='diff-added'>Aegir user</span></h2><span class='diff-added'>
+
+</span><p><span class='diff-added'>Any number of remote web servers may be configured. The remote server needs an aegir user created on the system.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'> adduser --system --group --home /var/aegir aegir</span><br /><span class='diff-added'> adduser aegir www-data&nbsp;&nbsp;&nbsp; #make aegir a user of group www-data</span></code><span class='diff-added'></span></div><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><h2><span class='diff-added'>Web server configuration</span></h2><span class='diff-added'>
+
+</span><p><span class='diff-added'>You'll also need to prepare the web server in the same way you did for the master Aegir server during installation:</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'> a2enmod rewrite</span><br /><span class='diff-added'> ln -s /var/aegir/config/apache.conf /etc/apache2/conf.d/aegir.conf</span></code><span class='diff-added'></span></div><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Don't restart Apache even when it prompts you. This will be done by the Verify task you'll spawn for the server from the Aegir frontend later.</span></p><span class='diff-added'>
+
+</span><h2><span class='diff-added'>Sudoers</span></h2><span class='diff-added'>
+
+</span><p><span class='diff-added'>Add the aegir user to sudoers so it can restart Apache.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'>&nbsp; aegir ALL=NOPASSWD: /usr/sbin/apache2ctl</span></code><span class='diff-added'></span></div><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><h2><span class='diff-added'>SSH keys</span></h2><span class='diff-added'>
+
+</span><p><span class='diff-added'>SSH public/private keys should be set up so the main Aegir server's aegir user can access remote web aegir users with no passwords required.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Example: on main Aegir server:</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'>ssh keygen -t rsa</span><br /><span class='diff-added'>(follow prompts)</span></code><span class='diff-added'></span></div><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Put the public key's contents into </span><code><span class='diff-added'>/var/aegir/.ssh/authorized_keys</span></code><span class='diff-added'> on the remote web server.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>There are many, many tutorials online for setting up ssh keys, and various mistakes can be made by inexperienced users such as permissions etc. Aegir isn't a 'Linux beginner's practice tool', so setting these up is really out of the scope of this document and users are encouraged to research this on their own.</span></p><span class='diff-added'>
+
+</span><h2><span class='diff-added'>Login shell</span></h2><span class='diff-added'>
+
+</span><p><span class='diff-added'>The remote aegir user will also need a login shell, which can be modified using the </span><code><span class='diff-added'>chsh</span></code><span class='diff-added'> command.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'>&nbsp; chsh -s /bin/sh aegir</span></code><span class='diff-added'></span></div><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><h2><span class='diff-added'>Verify the server</span></h2><span class='diff-added'>
+
+</span><p><span class='diff-added'>Now you can add a new server node in Aegir, set the hostname and/or IP and set the service type to be 'Apache' (or Apache_SSL if this site is to handle SSL sites)</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>A verify task will be spawned and added to the Task queue ready for dispatching. During a server verification task, various configurations will be set on the Aegir master server and also synced to the remote web server, restarting Apache.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Now when you add a new Platform node in Aegir, you have the option of setting which web server to host it on. If not using a makefile and downloading a platform manually, you must still do this on the main Aegir server. The contents will then be synced across to the web server.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>You don't choose a web server when installing a new site. Because a site depends on a platform, its web server is implied by which platform has been </span><span class='diff-changed'>chosen.</span></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-396.html?destination=node%2F30%23comment-form">Login</a> or <a href="../../../../../user/register/index-396.html?destination=node%2F30%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/30/revisions/192/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:05:02 GMT -->
+</html>

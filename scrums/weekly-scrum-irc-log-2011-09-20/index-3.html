@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/scrums/weekly-scrum-irc-log-2011-09-20?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:36:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../weekly-scrum-irc-log-2011-09-13/index.html" />
+<link rel="up" href="../../content/scrums/archive-2011/index.html" />
+<link rel="next" href="../weekly-scrum-irc-log-2011-09-27/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2011-09-20 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-891" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2011-09-20</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-891'><pre>
+
+20:01 &lt;@darthsteven&gt; scrum in 1 minute!
+20:02 &lt;@darthsteven&gt; mig5, mvc, omega8cc, sfyn, skwashd; scrum in 1 min
+20:03 &lt;@darthsteven&gt; scrum time!
+20:03 &lt;+omega8cc&gt; hello!
+20:03 &lt;@darthsteven&gt; scrum?
+20:03 &lt; hefring&gt; scrum is Every Tuesday at 10h00 UTC: 03h00 San Francisco, USA (PST), 06h00 Montreal, Canada (EDT), 11h00 London, UK (CET), 20h00 Melbourne, Australia 
+                 (EST)
+20:03 &lt;@darthsteven&gt; indeed it is hefring
+20:03 &lt;@darthsteven&gt; botsnack
+20:03 &lt; hefring&gt; skynet thanks YOU!
+20:03 &lt;@darthsteven&gt; who wants to go first?
+20:04 &lt;@mig5&gt; just made it..
+20:04 &lt;@darthsteven&gt; mig5: Hello!
+20:04 &lt;@mig5&gt; you go firsst, you have been on fire in the queue!
+20:05 &lt;@darthsteven&gt; I fixed some issues that were in the queue, and worked on the site form a little
+20:05 &lt;@darthsteven&gt; Hopefully we can now handle database passwords that include special characters
+20:05 &lt;@darthsteven&gt; though we may be chasing that one around a few more dark corners yet
+20:06 &lt;@darthsteven&gt; I'd like some feedback about the site form changes (which are in a dev branch)
+20:06 &lt;@darthsteven&gt; the issue is...
+20:06 &lt;@darthsteven&gt; <a href="http://drupal.org/node/1282280" title="http://drupal.org/node/1282280">http://drupal.org/node/1282280</a>
+20:06 &lt; hefring&gt; <a href="http://drupal.org/node/1282280" title="http://drupal.org/node/1282280">http://drupal.org/node/1282280</a> =&gt; Clean up the hosting form javascript =&gt; Hostmaster (Aegir), Code, normal, needs review, 2 comments, 1 IRC mention
+20:06 &lt;@darthsteven&gt; I would really appreciate some reviews of that
+20:07 &lt;@mig5&gt; i never understood any of that as i don't grok javascript - i'm glad you're tackling it
+20:07 &lt;@darthsteven&gt; It's basically just adding an AJAX spinner, so you know that something is happening...
+20:07 &lt;@mig5&gt; so i'm not sure how helpful i can be there but hopefully others..
+20:07 &lt;@mig5&gt; ah right
+20:07 &lt;@darthsteven&gt; even just a test and 'I like the look of that' or 'Can we do this' would be helpful
+20:08 &lt;@darthsteven&gt; Also
+20:08 &lt;@darthsteven&gt; I installed Drupal 8 using Aegir last night, and it worked!
+20:08 &lt;@darthsteven&gt; which isn't a major surprise, but it is fun
+20:08 &lt;@darthsteven&gt; that's it from me
+20:08 &lt;@darthsteven&gt; who wants to go next?
+20:09 &lt;@mig5&gt; nothing from me, i see you want to add some drupal8 tests into jenkins, i can do that
+20:09 &lt;@mig5&gt; still way too busy right now to look at moving tests into provision
+20:09 &lt;@mig5&gt; hopefully more time early october when i go full-time consultant
+20:10 &lt;@darthsteven&gt; mig5: do you have time for a quick chat after the scrum about Aegir stuff?
+20:10 &lt;@mig5&gt; should do, it's either you or dinner, whatever happens first
+20:10 &lt;@mig5&gt; :)
+20:11 &lt;@darthsteven&gt; mig5: been thinking about the tests stuff, have some ideas and thoughts about it...
+20:11 &lt;@darthsteven&gt; mig5: anything else to add?
+20:11 &lt;@mig5&gt; nope, other than to say thanks to you specifically for working the issue queue like a nutter this week
+20:11 &lt;@darthsteven&gt; mig5: thanks for coming to the scrum even if you don't have much to report!
+20:11 &lt;@mig5&gt; keep it up but don't burn out :)
+20:11 &lt;@darthsteven&gt; mig5: these are my normal levels of involvement in projects... :)
+20:12 &lt;@darthsteven&gt; anyone else have anything for the scrum?
+20:12 &lt;+omega8cc&gt; I don't have anything new related to the Aegir core this week to report, however I worked on some BOA new features and there is a chance I will submit some new patches for Nginx config (and finally) the menu/UI.
+20:12 &lt;+omega8cc&gt; darthsteven: and also thanks for your work in the queue!
+20:12 &lt;@darthsteven&gt; omega8cc: awesome!
+20:13 &lt;@mig5&gt; omega8cc: i expect to hear you move into Linode Tokyo soon ;)
+20:13 &lt;@darthsteven&gt; omega8cc: I think we should make tiding up the UI a priority for 2.x
+20:13 &lt;@mig5&gt; sorry offtopic
+20:13 &lt;@mig5&gt; apparently there was a drupal montreal on
+20:13 &lt;@darthsteven&gt; anyone else?
+20:13 &lt;@mig5&gt; i read some french tweets about it
+20:13 &lt;@mig5&gt; something about an 'albert method', a guy from koumbit did a talk
+20:14 &lt;@mig5&gt; i am keen to find out more, there are slides somewhere, search on twitter under #aegir
+20:14 &lt;@mig5&gt; i think it's deployment-related, i'll see if i can find out more and get some english-language focus on it as it looked interesting
+20:15 &lt;@darthsteven&gt; cool
+20:15 &lt;+omega8cc&gt; <a href="http://t.co/gv7OisUe" title="http://t.co/gv7OisUe">http://t.co/gv7OisUe</a>
+20:15 &lt;+omega8cc&gt; or http://twitter.com/#!/omega8cc/status/114783126844223488
+20:16 &lt;@mig5&gt; oh nice already in english
+20:16 &lt;+omega8cc&gt; yep
+20:16 &lt;@mig5&gt; again, soon, i will have a new screencast up
+20:16 &lt;@mig5&gt; about my 'zero touch' deployment for aegir
+20:16 &lt;@mig5&gt; using jenkins
+20:16 &lt;@mig5&gt; that 'reacts' to git push in de/v/stage/live environments
+20:16 &lt;@darthsteven&gt; mig5: cool, have you seen that someone is doing screencasts of Aegir stuff?
+20:16 &lt;@mig5&gt; that will come 'soon' ;)
+20:16 &lt;@darthsteven&gt; mig5: that would be awesome
+20:16 &lt;@mig5&gt; darthsteven: yes i did, i watched one
+20:17 &lt;+omega8cc&gt; mig5: cool! finally! :)
+20:17 &lt;@darthsteven&gt; mig5: I've not watched them...so I've no idea if they're any good
+20:17 &lt;@darthsteven&gt; To finish the scrum, I'd like to say...
+20:18 &lt;@darthsteven&gt; that we seem to have had a bump in contributors, which is really cool!
+20:18 &lt;@mig5&gt; yes! rock on, patchers!
+20:18 &lt;@darthsteven&gt; There are also a few people who've started using Aegir, and are now blogging about the project
+20:18 &lt;@mig5&gt; thanks GuyPaddock and halcyonCorsair
+20:18 &lt;@darthsteven&gt; The 'Wedful' thing springs to mind
+20:19 &lt;@mig5&gt; yes and hadsie, i think that was the first commercial 'payment' aegir system that implemented our api
+20:19 &lt;+omega8cc&gt; right
+20:19 &lt;@darthsteven&gt; So, with a bit of effort we make Aegir 2.x happen fast, and be super awesome in every way!
+20:19 &lt;@darthsteven&gt; anyway
+20:19 &lt;@darthsteven&gt; that's it for this scrum!
+20:19 &lt;@mig5&gt; the pantheon project is getting a lot of publicity right now, i am keen to see people publish 'how to make your own pantheon' with aegir :)
+20:19 &lt;@mig5&gt; just to balance things out :)
+20:19 &lt;@mig5&gt; thanks scrummers
+20:19 &lt;@darthsteven&gt; Thanks for attending
+20:19 &lt;+omega8cc&gt; thanks
+20:19 &lt;@darthsteven&gt; who wants to do the log thing?
+20:20 &lt;@mig5&gt; i can
+20:20 &lt;@darthsteven&gt; thanks!
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-118.html?destination=node%2F891%23comment-form">Login</a> or <a href="../../user/register/index-118.html?destination=node%2F891%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/scrums/weekly-scrum-irc-log-2011-09-20?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:36:11 GMT -->
+</html>

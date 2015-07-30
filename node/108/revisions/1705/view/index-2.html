@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/108/revisions/1705/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:20:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../75/index.html" />
+<link rel="up" href="../../../../../contrib/index.html" />
+<link rel="next" href="../../../../../creating-product-features-using-uchosting-1x/index.html" />
+<link rel="prev" href="../../../../75/index.html" />
+<link rel="up" href="../../../../../contrib/index.html" />
+<link rel="next" href="../../../../../creating-product-features-using-uchosting-1x/index.html" />
+<link rel="prev" href="../../../../75/index.html" />
+<link rel="up" href="../../../../../contrib/index.html" />
+<link rel="next" href="../../../../../creating-product-features-using-uchosting-1x/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of E-Commerce Integration (Roadmap) from Mon, 04/18/2011 - 13:59 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-108" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">E-Commerce Integration (Roadmap)</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-108'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 04/18/2011 - 13:59</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Related links:</p>
+
+<ul>
+<li>For installation and configuration instructions, see the <a href="../../../../516/index.html">Administrator Manual</a>.</li>
+<li>There was some valuable discussion on <a href="http://groups.drupal.org/node/94959">use cases</a> on groups.drupal.org.</li>
+</ul>
+
+<p><strong><em>Don't put feature requests in here. Submit them to the <a href="http://drupal.org/project/issues/uc_hosting">uc_hosting</a> or <a href="http://drupal.org/project/issues/hostmaster">hostmaster</a> issue queues instead.</em></strong></p>
+
+<h1>Drupal 6 / uc_hosting 1.0</h1>
+
+<p><strong>Aiming for compatibility with:</strong></p>
+
+<ul>
+<li>Hostmaster 1.0</li>
+<li>Ubercart 2.4</li>
+</ul>
+
+<p><strong>Structure:</strong></p>
+
+<ul>
+<li><strong>uc_hosting</strong>: This implements shared functions and classes, including the function to create a client based on an ubercart order and product.</li>
+<li><strong>uc_hosting_products</strong>: This is where we put the ubercart function calls, attribute generation, etc... This module is intended to be used alone for the "my ubercart is on my aegir site" scenario, but implements hooks to allow uc_hosting_storefront to change the way it processes orders. It includes some sample products to help people get started.</li>
+<li><strong>uc_hosting_wizard</strong>: A 4 step ajax form that walks the customer through submitting info for their first site, and choosing what options they want for their site, as well as payment. This form allows people to link to whatever step they want, letting it be used as part of a broader sales strategy.</li>
+</ul>
+
+<h2>Goals</h2>
+
+<h3>Single site products</h3>
+
+<p>In.</p>
+
+<h3>Multi site packages</h3>
+
+<p>In.</p>
+
+<h3>Recurring payments</h3>
+
+<p>We need to test the module using uc_recurring.</p>
+
+<h2>Nice-to-haves</h2>
+
+<p>Given where we are at now, this stuff will most likely not make it in until an eventual 1.1 release. The exception being Hadsie's work on "try before you buy".</p>
+
+<h3>Purchasing wizard</h3>
+
+<p>Stills needs to be developed. The create my site now option is a start and is already in.</p>
+
+<h3>Make it unnecessary to log single-site purchasers into the aegir site</h3>
+
+<p>Needs some testing but should be doable. Maybe just needs a little documentation.</p>
+
+<h3>Deferred payments</h3>
+
+<p>Hadsie's work is right on for this, and is now in master.</p>
+
+<h1>Drupal 7 / uc_hosting 2.0</h1>
+
+<p>We are still unsure about whether to support commerce, ubercart, or both with this module. We will most likely wait until development on the D7 port of aegir starts before beginning this work so we will see then what the landscape looks like.</p>
+
+<p><strong>Aiming for compatibility with:</strong></p>
+
+<ul>
+<li>Hostmaster 2.x</li>
+<li>Ubercart 3.x, or Commerce 1.x (maybe both?)</li>
+</ul>
+
+<h2>Goals</h2>
+
+<h3>Remote storefronts</h3>
+
+<p>Hopefully, this will be supported by plans for new xmlrpc methods in the hostmaster signup module.</p>
+
+<h2>Nice-to-haves</h2>
+
+<h3>Desjardins recurring payments</h3>
+
+<p>This is a seperate module being developed by Koumbit.</p>
+
+<h3>Importable demo products</h3>
+
+<p>This would be really great.</p>
+
+<h3>Simple procedure to deny user 1 to certain clients</h3>
+
+<p>Hadsie's work on this is interesting and it would be useful to enable as an option on a uc_hosting install.</p>
+
+<h1>Wishlist:</h1>
+
+<ul>
+<li>A decent ubercart import function (see <a href="http://www.sthlmconnection.se/tips-and-tweaks/exportable-configuration-ctools-revisited">this</a> and <a href="http://stellapower.net/content/using-chaos-tools-module-create-exportables">this</a>... <a href="http://drupal.org/node/349408">this</a> and maybe <a href="http://drupal.org/node/590956">this</a>)</li>
+</ul>
+
+<h1>Unanswered Questions</h1>
+
+<ol>
+<li>Will the Drupal 7 version use Ubercart or Commerce? Both? Neither?</li>
+<li>How and when will people be billed? And what degree of control will uc_hosting offer over that?</li>
+<li>Aegir has clients &amp; UC has clients. How are they related/distinct? How do we keep this clear to users/admins?</li>
+</ol></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-423.html?destination=node%2F108%23comment-form">Login</a> or <a href="../../../../../user/register/index-423.html?destination=node%2F108%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/108/revisions/1705/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:20:58 GMT -->
+</html>

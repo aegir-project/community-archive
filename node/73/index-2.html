@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/73?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:30:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../39/index.html" />
+<link rel="up" href="../39/index.html" />
+<link rel="next" href="../72/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Injecting into server-wide vhosts | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-73" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Injecting into server-wide vhosts</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-73'><p>Changing <em>maximum filesize upload</em> is common when setting up sites in Drupal. As described in <a href="../990/index.html">Overriding site-specific PHP values</a> you can change this value for each site created with Ægir by adding a .drush.inc file in /var/aegir/.drush directory. But wouldn´t it be nice to be able to do it side-wide?</p>
+
+<p>Here below is the same code from ergonlogic demonstrating how to create a <em>domainname</em>.drush.inc file using the domain name as a condition before the code injection.</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />&nbsp; </span><span style="color: #007700">function </span><span style="color: #0000BB">ergonlogiccom_provision_apache_vhost_config</span><span style="color: #007700">(</span><span style="color: #0000BB">$uri</span><span style="color: #007700">, </span><span style="color: #0000BB">$data</span><span style="color: #007700">) {<br />&nbsp;&nbsp;&nbsp; if (</span><span style="color: #0000BB">$uri </span><span style="color: #007700">== </span><span style="color: #DD0000">"ergonlogic.com"</span><span style="color: #007700">) {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #0000BB">drush_log</span><span style="color: #007700">(</span><span style="color: #DD0000">"Overriding PHP file size values. See .drush/ergonlogiccom.drush.inc"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return array(</span><span style="color: #DD0000">"php_value upload_max_filesize 100M"</span><span style="color: #007700">, </span><span style="color: #DD0000">"php_value post_max_size 200M"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp; }<br />&nbsp; }<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p>
+
+<p>Apparently you can do this side-wide by omitting the IF statement and create a file with a .drush.inc extension.</p>
+
+<p>For instance, you could create a file called <em>global_settings.drush.inc</em> and put in the following code:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />&nbsp; </span><span style="color: #007700">function </span><span style="color: #0000BB">globalsettings_provision_apache_vhost_config</span><span style="color: #007700">(</span><span style="color: #0000BB">$uri</span><span style="color: #007700">, </span><span style="color: #0000BB">$data</span><span style="color: #007700">) {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #0000BB">drush_log</span><span style="color: #007700">(</span><span style="color: #DD0000">"Overriding PHP file size values. See .drush/global_settings.drush.inc"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return array(</span><span style="color: #DD0000">"php_value upload_max_filesize 100M"</span><span style="color: #007700">, </span><span style="color: #DD0000">"php_value post_max_size 200M"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp; <br />&nbsp; }<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+<em>* the closing ?&gt; syntax should not be used</em></p>
+
+<p>Make sure you <strong>Verify</strong> your site after you create the file. Then scroll through the log and find the message you added in the code:</p>
+
+<blockquote>Overriding PHP file size values. See .drush/global_settings.drush.inc</blockquote></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-60.html?destination=node%2F73%23comment-form">Login</a> or <a href="../../user/register/index-60.html?destination=node%2F73%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/73?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:30:30 GMT -->
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/2850/revisions/5379/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:13:50 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../2/index-2.html" />
+<link rel="up" href="../../../../../content/release-notes/older-2x-releases/index.html" />
+<link rel="next" href="../../../../../2/index-4.html" />
+<link rel="prev" href="../../../../../2/index-2.html" />
+<link rel="up" href="../../../../../content/release-notes/older-2x-releases/index.html" />
+<link rel="next" href="../../../../../2/index-4.html" />
+<link rel="prev" href="../../../../../2/index-2.html" />
+<link rel="up" href="../../../../../content/release-notes/older-2x-releases/index.html" />
+<link rel="next" href="../../../../../2/index-4.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of 2.0.0 release notes DRAFT from Tue, 01/07/2014 - 19:56 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2850" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../2/index-3.html">2.0.0 release notes DRAFT</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_4 first"><a href="../../../../../taxonomy/term/4/index.html" rel="tag" title="This level is for users who have access to only their sites and not able to manage all Aegir features, accounts or the server/system.">Client</a></li>
+<li class="taxonomy_term_27"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_3"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-2850'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 01/07/2014 - 19:56</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>The Aegir team is very pleased to announce the official release of Aegir <span class='diff-changed'>2.0.0.</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>This release deprecates the 1.x branch, marking the 1.11 release as the last</span> one <span class='diff-changed'>of the 1.x branch. This also marks the "alpha" status of</span> the <span class='diff-changed'>3.x development branch and the adoption of semantic versionning for</span> release <span class='diff-changed'>numbering.</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>With 2.0, we have improved multi-server support, fixed</span> a <span class='diff-changed'>lot of issues with SSL and Nginx, Drush 5 support.</span></p>
+
+<p><span class='diff-changed'>We</span> have a very dynamic community of contrib developers, and <span class='diff-changed'>various</span> projects built atop Aegir. So if you were waiting for Aegir 2 to be stable, easy to install, production-ready, now is the time. The 2.x branch will be well supported as a lot of shops are running it in production already.<span class='diff-deleted'> </span><span class='diff-deleted'>What</span><span class='diff-deleted'> </span><span class='diff-deleted'>are</span><span class='diff-deleted'> </span><span class='diff-deleted'>you</span><span class='diff-deleted'> </span><span class='diff-deleted'>waiting</span><span class='diff-deleted'> </span><span class='diff-deleted'>for?!</span></p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Major_changes_in_this_release"><span class="toc-number">1. </span>Major changes in this release</a></li>
+	<li class="toc-level-1"><a href="#x_branch_maintenance_policy"><span class="toc-number">2. </span>2.x branch maintenance policy</a></li>
+	<li class="toc-level-1"><a href="#Installing_and_upgrading"><span class="toc-number">3. </span>Installing and upgrading</a></li>
+	<li class="toc-level-1"><a href="#Need_help"><span class="toc-number">4. </span>Need help?</a></li>
+	<li class="toc-level-1"><a href="#API_changes"><span class="toc-number">5. </span>API changes</a></li>
+	<li class="toc-level-1"><a href="#Documentation_updates"><span class="toc-number">6. </span>Documentation updates</a></li>
+	<li class="toc-level-1"><a href="#New_features"><span class="toc-number">7. </span>New features</a></li>
+	<li class="toc-level-1"><a href="#Bugfixes"><span class="toc-number">8. </span>Bugfixes</a></li>
+	<li class="toc-level-1"><a href="#Known_issues"><span class="toc-number">9. </span>Known issues</a></li>
+	<li class="toc-level-1"><a href="#The_future"><span class="toc-number">10. </span>The future</a></li>
+</ol>
+</div>
+</div>
+
+<h2 id="Major_changes_in_this_release">1. Major changes in this release</h2>
+
+<p>Since our last stable release (<a href="http://groups.drupal.org/aegir/0.3">1.0</a>) in April 2011, we've done an incredible amount of work. The code size nearly doubled as did the development team and user base, although we still don't clearly know how many installs there are out there.</p>
+
+<p>We can already say that we've been pretty successful at fulfilling our <a href="#">release goals for 2.0</a> and the <a href="../../../../../roadmap/2/index.html">2.0 roadmap</a>. Even though we're <a href="https://drupal.org/project/issues/search?text=&amp;projects=&amp;assigned=&amp;submitted=&amp;participant=&amp;issue_tags_op=or&amp;issue_tags=aegir-1.0">missing bits and pieces</a>, especially in X, and Y support is not as robust as we'd like it to be, there's still space for improvements and bugfixes in the 2.x branch, and we'll also start on the <a href="../../../../../roadmap/3/index.html">3.0 roadmap</a> once this release is out the door.</p>
+
+<ul>
+<li>X
+
+<ul>
+<li>X.a</li>
+<li>X.b</li>
+<li>X.c</li>
+</ul></li>
+<li>Y
+
+<ul>
+<li>Y.a</li>
+<li>Y.b</li>
+<li>Y.c</li>
+</ul></li>
+<li>Z</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="x_branch_maintenance_policy">2. 2.x branch maintenance policy</h2>
+
+<p>With the 2.0 release, the Aegir project is adopting the growing standard of <a href="http://semver.org/">Semantic Versionning</a>, which can be summarized as follows:</p>
+
+<blockquote>
+  <p>Given a version number MAJOR.MINOR.PATCH, increment the:</p>
+  
+  <p>MAJOR version when you make incompatible API changes,
+  MINOR version when you add functionality in a backwards-compatible manner, and
+  PATCH version when you make backwards-compatible bug fixes.</p>
+</blockquote>
+
+<p>In other words, this is the 2.0.0 release! The next release of the 2.x branch will likely be 2.0.1, unless we ship some major functionality, in which case it will be 2.1.0. In any case, no API change will be done in a 2.x.y release. All core development will now happen on the 3.x branch, which shifts the focus of development to the port of the frontend to Drupal 7 (almost complete).</p>
+
+<p>Note that the 2.x API has already been frozen for some time, since the first release candidate, to be more precise. Major changes to 2.x will not be committed unless they are first tested in 3.x and merged back.<span class='diff-added'> We consider it unlikely that major changes will be shipped in the 2.x branch and as soon as the 3.x branch is declared stable, all Aegir operators will be strongly encouraged to upgrade.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>The 1.x branch is now deprecated and the 1.11 release will likely be the last release of that venerable branch, unless we need another release to fix the upgrade path to the 2.x branch, but we consider this unlikely. Security fixes or critical issues will </span><em><span class='diff-added'>not</span></em><span class='diff-added'> be backported to the 1.x branch.</span></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Installing_and_upgrading">3. Installing and upgrading</h2>
+
+<p>The canonical source of installation documentation is on the community site at:</p>
+
+<pre><code>http://community.aegirproject.org/installing
+</code></pre>
+
+<p>In a similar fashion, the upgrade documentation is:</p>
+
+<pre><code>http://community.aegirproject.org/upgrading
+</code></pre>
+
+<p>Within those sections you'll find step-by-step instructions for performing both <a href="../../../../../upgrading/manual/index.html">manual</a> and <a href="../../../../../upgrading/script/index.html">automatic</a> upgrade processes.</p>
+
+<p>It is still imperative that you read the the <a href="../../../../../upgrading/path/index.html">upgrade path and version-specific information</a> and follow all version-specific upgrade instructions before trying to run the upgrade script or manual upgrade.</p>
+
+<p>For users coming from the 2.0 betas or recent rc releases, there are unlikely to be any version-specific manual steps required to upgrade, but you should make a habit of reading them anyway just to make sure. No-one likes a nasty surprise!</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Need_help">4. Need help?</h2>
+
+<p>If you struggle to install or upgrade your Aegir system, you have a number of options available to you for getting help.</p>
+
+<p>Consult this page for more information: <a href="../../../../../help/index.html" title="http://community.aegirproject.org/help">http://community.aegirproject.org/help</a></p>
+
+<p>Thanks to our awesome <a href="../../../../../index.html">community</a> for their help, support and encouragement as always! Enjoy the new release :)</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="API_changes">5. API changes</h2>
+
+<p>see upgrading/path, copy more important stuff here.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Documentation_updates">6. Documentation updates</h2>
+
+<p>Our documentation initiative to <a href="http://drupal.org/node/1111254">better document the Hostmaster API</a> has progressed nicely. In addition, we'll be launching an updated version of our <a href="http://api.aegirproject.org/">API site</a> (along the lines of api.drupal.org) shortly, to ease exploring the code-base of the Aegir Project. Much work remains, so you can track progress or help out <a href="http://drupal.org/node/1111254#comment-4287518">here</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="New_features">7. New features</h2>
+
+<p>Since this is like a release candidate, we tried to limit the changes to this release to avoid breaking too many things, so not many new features. Of course, since 1.0, there are tons (see above) but this is only since rc5.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Bugfixes">8. Bugfixes</h2>
+
+<p>We did fix a lot of things however, with the upgrade path and the remaining critical issues.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Known_issues">9. Known issues</h2>
+
+<p>Being really open about our project, we have never hidden the fact that some things, sometimes, do not work in Aegir. Our <a href="http://drupal.org/project/issues?text=&amp;projects=provision%2C%20hosting%2C%20hostslave%2C%20eldir%2C%20Hostmaster%20%28Aegir%29&amp;status=Open&amp;priorities=All&amp;categories=All">issue trackers</a> are public, and we've made it a point of honor not only to document clearly what is wrong in our releases as soon as we find out about it, but also to reroll new releases when we fix it.</p>
+
+<p>That being said, 2.0 still has a number of issues and design flaws. This is the list of <a href="https://drupal.org/project/issues?text=&amp;projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir)&amp;status=Open&amp;priorities=4&amp;categories=All">all issues marked "major" in the queue right now</a>. Most issues are now likely to be fixed in the 3.x development branch, and unlikely to be backported unless considered critical (leading to data loss or security issue).</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="The_future">10. The future</h2>
+
+<p>While we're very proud of what we've accomplished in Aegir 2.0, we've also been working in parallel to port Aegir to Drupal 7. Aegir 3.0 will begin as a fairly straight-forward port. As such, we'll be releasing our first (pre-)alpha of Aegir 3 shortly. We would like to have a stable Aegir 3.0 release before the release of Drupal 8, to allow for users to transition as Drupal 6 enters its end-of-life phase.</p>
+
+<p>In the 3.x cycle, we'd like to move to <a href="http://semver.org/">Semantic Versioning</a>. This should allow us to add functionality in point releases, so long as they're API compatible. This should allow for more frequent additions of functionality, without having to wait for a full new version release.</p>
+
+<p>Another reason for this change of approach is that we've been discussing a full re-write of Aegir for some time, and would like to do so with Aegir 4. The changes are likely to be fairly drastic, and so we want to be able to keep moving Aegir 3 forward in the mean time. By moving to Drupal 7, we expect to have bought ourselves 2+ years of breathing room within which to accomplish this re-architecture.</p>
+
+<p>When the Aegir project started (back in 2008), the free software options for systems management software were very limited. As a result, we wrote our own code to do things like deploying code, writing configuration files, starting and stopping services, and so forth. Now, as 2014 begins, there are a wealth of tools that perform subsets these functions, each with their own communities supporting them. We are exploring how we might be able to leverage these tools, rather than maintaining our own partial implementations, that will never likely be as robust as these more specialized projects.</p>
+
+<p>We feel that the time is opportune since Drupal 8 will require significant re-writing of the front-end components. In addition, re-writing the backend so completely will allow us to seriously consider moving to a programming language other than PHP; one that would be better suited to the project's long-term goals, such as Python or Ruby.</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-158.html?destination=node%2F2850%23comment-form">Login</a> or <a href="../../../../../user/register/index-158.html?destination=node%2F2850%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-158.html?destination=node%2F2850%23comment-form">Login</a> or <a href="../../../../../user/register/index-158.html?destination=node%2F2850%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/2850/revisions/5379/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:13:50 GMT -->
+</html>

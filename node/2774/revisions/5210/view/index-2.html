@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/2774/revisions/5210/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 20:58:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Aegir fails to import existing full platform from Thu, 08/22/2013 - 19:26 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2774" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/fuzzy76/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-1572/index.jpg" alt="fuzzy76&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/fuzzy76/index.html" class="username" title="View user profile.">fuzzy76</a></div><div class='date'>7:26pm Aug 22, 2013</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="../../../../../discuss/aegir-fails-import-existing-full-platform/index.html">Aegir fails to import existing full platform</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_351 first"><a href="../../../../../category/keywords/database/index.html" rel="tag" title="">database</a></li>
+<li class="taxonomy_term_127"><a href="../../../../../category/keywords/import/index.html" rel="tag" title="">import</a></li>
+<li class="taxonomy_term_496 last"><a href="../../../../../category/keywords/provisioning/index.html" rel="tag" title="">provisioning</a></li>
+</ul></div><p>I have a multisite install with 2 sites I need to import into Aegir.</p>
+
+<p>My Aegir server is Debian Squeeze with Aegir 1.10+246.efcd0a3, drush 4.5, PHP 5.3.3-7+squeeze16 and MariaDB installed via apt-get and backports. It could be that I originally installed the previous Aegir version (1.09 or something?), kicked it's tires a bit (and went on vacation) and upgraded Aegir using apt-get dist-upgrade before trying this import - I'm not 100% sure. Hostmaster has hosting-queue-runner installed. The hostnames for the sites still resolve to the old server (except when I try to reach the new sites from my local machine - /etc/hosts override).</p>
+
+<p>I've been basically following the tutorial at <a href="../../../../../content/importing-complete-drupal-platform/index.html" title="http://community.aegirproject.org/content/importing-complete-drupal-platform">http://community.aegirproject.org/content/importing-complete-drupal-plat...</a> thus:</p>
+
+<ol>
+<li>Extracting the files to /var/aegir/platforms/oldserver</li>
+<li>chown -R aegir:aegir /var/aegir/platforms/oldserver</li>
+<li>Create databases and database users with slightly different passwords than the old sites (they had some troublesome special characters in them).</li>
+<li>Import old database backups</li>
+<li>One of the sites had a 'dr_' prefix, which is removed after restore.</li>
+<li>A D6 default.settings.php for each site is filled with the new connect url like 'mysqli://dbuser:dbpassword@localhost/dbname' and copied into the respective sites folder, replacing their old settings.php (they had a lot of customizations I thought could interfere).</li>
+<li>I add the platform in the Aegir frontend, not selecting any client (our setup won't use clients anyway).</li>
+<li>Tasks import platform, verify platform, import site1 and import site2 all fires in order and comes off as successful.</li>
+<li>The sites doesn't work (offline). If I try to verify the sites, it fails. The reason is that the database credentials are nowhere to be found, so drush can't even bootstrap. drushrc's, vhost definitions, everything.</li>
+</ol>
+
+<p>I really want to fix my approach since I have more sites to import later, so manually adding the db credentials isn't very appealing. :( Item 1 through 6 is automated. I can post the script if needed.</p>
+
+<p>Attached are the logs from adding the platform, and importing one of the sites. I notice that the import actually manages to bootstrap the site. But later in the import it complains about missing db_type etc. :-/</p>
+
+<p>If there are any hoops I can jump through to get you more info, please let me know.</p><div class="itu-attachments"><table class="itu-attachment-list withoutstats sticky-enabled" id="attachments">
+ <thead><tr><th class="preview">Preview</th><th class="file">Attachment</th><th class="size">Size</th> </tr></thead>
+<tbody>
+ <tr class="odd"><td class="mime mime-txt"></td><td class="file"><a href="../../../../../sites/community.aegirproject.org/files/aegir_verify_platform/index.txt">aegir_verify_platform.txt</a></td><td class="size">3.65 KB</td> </tr>
+ <tr class="even"><td class="mime mime-txt"></td><td class="file"><a href="../../../../../sites/community.aegirproject.org/files/aegir_import_site1/index.txt">aegir_import_site1.txt</a></td><td class="size">8.35 KB</td> </tr>
+</tbody>
+</table>
+</div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-441.html?destination=node%2F2774%23comment-form">Login</a> or <a href="../../../../../user/register/index-441.html?destination=node%2F2774%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/2774/revisions/5210/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 20:58:40 GMT -->
+</html>

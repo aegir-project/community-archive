@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/937/revisions/3221/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:16:19 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../1/index-6.html" />
+<link rel="up" href="../../../../../content/release-notes/older-1x-releases/index.html" />
+<link rel="next" href="../../../../../1/index-8.html" />
+<link rel="prev" href="../../../../../1/index-6.html" />
+<link rel="up" href="../../../../../content/release-notes/older-1x-releases/index.html" />
+<link rel="next" href="../../../../../1/index-8.html" />
+<link rel="prev" href="../../../../../1/index-6.html" />
+<link rel="up" href="../../../../../content/release-notes/older-1x-releases/index.html" />
+<link rel="next" href="../../../../../1/index-8.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of 1.5 release notes from Wed, 04/18/2012 - 09:50 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-937" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../1/index-7.html">1.5 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_11 first last"><a href="../../../../../taxonomy/term/11/index.html" rel="tag" title="">release-notes</a></li>
+</ul></div><div id='diff-inline-937'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/steven-jones/index.html" class="username" title="View user profile.">Steven Jones</a> on 04/18/2012 - 09:50</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>The Aegir team is happy to release the sixth stable release in the 1.x branch.</p>
+
+<p>This release fixes not being able to install Drupal 7.8 sites on PHP 5.2, an issue causing automatic installations to fail and other minor fixes.</p>
+
+<p>We recommend you upgrade your Aegir system.</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Another_special_note_for_users_of_the_Debian_packages"><span class="toc-number">1. </span>Another special note for users of the Debian packages</a></li>
+	<li class="toc-level-1"><a href="#Installing_and_upgrading"><span class="toc-number">2. </span>Installing and upgrading</a></li>
+	<li class="toc-level-1"><a href="#Need_help"><span class="toc-number">3. </span>Need help?</a></li>
+	<li class="toc-level-1"><a href="#Bugfixes"><span class="toc-number">4. </span>Bugfixes</a></li>
+	<li class="toc-level-1"><a href="#Known_issues"><span class="toc-number">5. </span>Known issues</a></li>
+</ol>
+</div>
+</div>
+
+<h2 id="Another_special_note_for_users_of_the_Debian_packages">1. Another special note for users of the Debian packages</h2>
+
+<p>We've moved the location of the Aegir packages, so you must update your apt configuration. Further details can be found the in original announcement of this change: <a href="../../../../../discuss/debian-archive-migrated-debianaegirprojectorg/index.html">Debian archive migrated to debian.aegirproject.org</a>.</p>
+
+<p>The Debian packages also install Drush Make using a package rather than a manual download. If upgrading, you may be prompted to remove your current installation of Drush Make to continue.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Installing_and_upgrading">2. Installing and upgrading</h2>
+
+<p>The canonical source of installation documentation is on the community site at:</p>
+
+<pre><code>http://community.aegirproject.org/installing
+</code></pre>
+
+<p>In a similar fashion, the upgrade documentation is:</p>
+
+<pre><code>http://community.aegirproject.org/upgrading
+</code></pre>
+
+<p>Within those sections you'll find step-by-step instructions for performing both <a href="../../../../../upgrading/manual/index.html">manual</a> and <a href="../../../../../upgrading/script/index.html">automatic</a> upgrade processes.</p>
+
+<p>It is still imperative that you read the the <a href="../../../../../upgrading/path/index.html">upgrade path and version-specific information</a> and follow all version-specific upgrade instructions before trying to run the upgrade script or manual upgrade. This especially applies to users upgrading from releases prior to 0.4-alpha8, including 0.3.</p>
+
+<p>For users coming from the 0.4 betas or recent rc releases, there are unlikely to be any version-specific manual steps required to upgrade, but you should make a habit of reading them anyway just to make sure. No-one likes a nasty surprise!</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Need_help">3. Need help?</h2>
+
+<p>If you struggle to install or upgrade your Aegir system, you have a number of options available to you for getting help.</p>
+
+<p>Consult this page for more information: <a href="../../../../../help/index.html" title="http://community.aegirproject.org/help">http://community.aegirproject.org/help</a></p>
+
+<p>Thanks to our awesome <a href="../../../../../index.html">community</a> for their help, support and encouragement as always! Enjoy the new release :)</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Bugfixes">4. Bugfixes</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/1324502">#1324502: by Steven Jones: Fixed Drush help broken.</a></li>
+<li><a href="http://drupal.org/node/1282280">#1282280: by Steven Jones: Clean up the hosting form javascript.</a></li>
+<li><a href="http://drupal.org/node/1301440">#1301440: update admin_menu to 1.8</a></li>
+<li><a href="http://drupal.org/node/1282172">#1282172: by GuyPaddock: Fixed hosting_task_handler_filter_hosting_task_type.</a></li>
+<li><a href="http://drupal.org/node/1273554">#1273554: Fixes Clean-up for multiple warnings.</a></li>
+<li><a href="http://drupal.org/node/1273468">#1273468: Fixes Typo in variable name inside hosting_package_sync() function of hosting_package.module</a></li>
+<li><a href="http://drupal.org/node/1213442">#1213442: Fixes Clients are not imported from the backend correctly.</a></li>
+<li><a href="http://drupal.org/node/1238560">#1238560: Fixes Updating client throws a warning about quotas.</a></li>
+<li><a href="http://drupal.org/node/1283926">#1283926: by bgm: Fixed Small improvement on the trigger/views filtering in the database dump.</a></li>
+<li><a href="http://drupal.org/node/1278720">#1278720: by halcyonCorsair: Fixed missing base_url() in install_send_welcome_mail() for drupal 7.</a></li>
+<li><a href="http://drupal.org/node/1111572">#1111572: by helmo, Steven Jones: Fixed Undefined index: profiles deploy.provision.inc:84.</a></li>
+<li><a href="http://drupal.org/node/1150274">#1150274: by Steven Jones: Fixed Undefined index: user db.drush.inc:288.</a></li>
+<li><a href="http://drupal.org/node/1263544">#1263544: by GuyPaddock, Steven Jones: Fixed 'Can only throw objects in provision.config.inc, line 75'.</a></li>
+<li><a href="http://drupal.org/node/1261006">#1261006: - Follow up: Tidy docs and add missing parent method.</a></li>
+<li><a href="http://drupal.org/node/1266484">#1266484: - Cannot verify Drupal 7.8 with PHP 5.2</a></li>
+<li><a href="http://drupal.org/node/983056">#983056: by Steven Jones: Fixed installer does not properly escape the mysql root password.</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Known_issues">5. Known issues</h2>
+
+<ul>
+<li><a href="https://drupal.org/node/1328316">#1328316: failed Debian upgrades may trash the Aegir apache config</a> - fixed in the 1.5-2 Debian package</li>
+<li><a href="https://drupal.org/node/1330018">#1330018: Can't compare platforms ("table doesn't exist" and other warnings)</a></li>
+</ul>
+
+<p>See also <a href="../../../../../1/index-12.html#Known_issues">the 1.0 release notes</a> for known issues in the 1.x series.</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-416.html?destination=node%2F937%23comment-form">Login</a> or <a href="../../../../../user/register/index-416.html?destination=node%2F937%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/937/revisions/3221/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:16:19 GMT -->
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/article-archive/test-your-drupal-distro-building-continuous-integration-server-aegir-jenkins?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:48:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../content/presentation/article-archive/how-install-aegir-and-use-it-deploy-drupal-sites-debian-vps/index.html" />
+<link rel="up" href="../../presentation/article-archive/index.html" />
+<link rel="next" href="../upgrading-aegir-itself-latest-version-drupal/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Test your Drupal distro: Building a continuous integration server with Aegir &amp; Jenkins | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-731" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Test your Drupal distro: Building a continuous integration server with Aegir &amp; Jenkins</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-731'><p>This article first appeared on mig5's blog on 9th June, 2011.</p>
+<p><img src="../../files/jenkins-headshot/index.png" style="float: right; padding:4px" />A while ago I wrote that I had <a href="../../content/discovering-jenkins-and-increasing-productivity/index.html">started to use Jenkins</a> for various purposes such as server backups, providing better notification in event of failure, yadda yadda.</p>
+<p>Over at the <a href="http://aegirproject.org/">Aegir project</a> I implemented Jenkins to give us a continuous integration platform that kicks into gear either on demand or whenever one of us pushes a commit to the Drupal git repos. It does the following:</p>
+<ul>
+<li>Provisions a new virtual server (at Rackspace Cloud) via the Libcloud API</li>
+<li>Installs Aegir on the server</li>
+<li>Builds a Drupal 6, Drupal 7 and OpenAtrium platform via Drush Make</li>
+<li>Installs a site on each respective platform</li>
+</ul>
+<p>A number of other build jobs exist, such as testing upgrades of earlier Aegir releases to latest versions, but I won't go into that here.</p>
+<p>What several people have asked me to elaborate on, is that the combination of Jenkins, Cloud-based virtualisation and Aegir can make a very useful testing tool if you're building some sort of Drupal solution like a distribution or some sort of turnkey Drupal appliance where you want to repeatedly test the installation process (especially with a custom install profile, for example). This article will describe how we built such a thing.</p>
+<h2>Disclaimers before we start</h2>
+<p>1. I'll assume you have a server set up with Jenkins installed already, as that's out of the scope of this article.</p>
+<p>2. The code I'm giving you uses Libcloud API, but it is very much designed for the Rackspace Cloud driver implementation. I know for a fact, through building other tools, that other provider drivers such as Linode have differing requirements (Linode, for example, requires you to also specify a datacentre to build in). Please don't contact me complaining that it didn't work with Provider X, because I'm just showing you how we use it with Rackspace. Since there's a good chance you're smarter than me, you're welcome to take the code and abstract it properly :)</p>
+<p>3. The code is far from perfect because I'm rather crap at such things. The error handling is extremely crude.</p>
+<p>4. I am not going to explain every line of code in this article: this is targeted towards clever people who will read the code and understand what to tweak, what assumptions to add or remove to make it build their own project. Again, this is just what (currently) works for us.</p>
+<p>5. I am assuming the Jenkins server is running on Debian Squeeze, where things like fabric and python-setuptools can simply be apt-get installed with no fuss.</p>
+<h2>Step 1) Install libcloud tools</h2>
+<p>Libcloud will provide the API necessary for provisioning a brand new virtual server at a provider such as Rackspace Cloud.</p>
+<p>Run these commands as root / with sudo on your Jenkins server.</p>
+<div class="codeblock"><code>git clone git://github.com/apache/libcloud.git</code></div>
+<p>You'll need python-setuptools on a Debian/Ubuntu system:</p>
+<div class="codeblock"><code>apt-get install python-setuptools</code></div>
+<p>Install libcloud likeso:</p>
+<div class="codeblock"><code>cd libcloud<br />python setup.py install</code></div>
+<h2>Step 2) Install fabric</h2>
+<p>Fabric, a python library for communicating with servers over SSH, will run necessary commands to the new VPS to install Aegir and the rest, via SSH.</p>
+<p>Run this command as root / with sudo on your Jenkins server.</p>
+<div class="codeblock"><code>apt-get install fabric</code></div>
+<h2>Step 3) Upload scripts to the Jenkins server and edit</h2>
+<p>Two files provide the magic that does the whole job of building a new VPS and installing Aegir and the rest. You want these two files on the Jenkins server for the Jenkins user to use.</p>
+<p>The .ini file is for you to edit and enter your API keys, server specs and relevant details such as your email address, trusted IP for firewall whitelisting on the new VPS, and URL to fetch your makefiles from to build your project.</p>
+<p>The other file with the .py extension is the actual python code that Jenkins will execute to build the whole thing.</p>
+<p>You can clone my repo containing the two files from github:</p>
+<div class="codeblock"><code>git clone git://github.com/mig5/aegir_ci.git</code></div>
+<p>The code assumes this directory containing those files are in the home directory of the Jenkins user, e.g /var/lib/jenkins/aegir_ci</p>
+<p>It's at this point that you want to edit the aegir_6.x-1.1_install.py file and define what to build. In my example that I'm giving you, I'm fetching three Drush make stub or 'build' files from my github repo, named drupal6, drupal7 and openatrium .build respectively. </p>
+<p>The code that does this is the function <code>fab_install_platform()</code>.</p>
+<p>Thus, this code is very much specific to building your project from a makefile, the fact that the makefile is fetchable over HTTP (per the ini config file, it fetches from my github repo) and also makes some assumptions on what install profile to use when installing the site. </p>
+<p>The code that installs the site is the function <code>fab_install_site()</code>, and takes two arguments: the platform per the above (e.g drupal6, drupal7 or openatrium), and the install profile name (default, standard or openatrium in this example). So this is where you want to change the install profile name and only install whatever platforms you want, based on the name of your makefile.</p>
+<h2>Step 4) Add a new Jenkins job</h2>
+<p>Add a New Job of type 'free-style software project'.</p>
+<p>In the combobox 'Add Build step', choose 'Execute shell'.</p>
+<div align="center"><img src="../../files/build_step/index.png" /></div>
+<p>In the text field that appears, enter this line:</p>
+<div class="codeblock"><code>python /var/lib/jenkins/aegir_ci/aegir_6.x-1.1_install.py</code></div>
+<p>Choose any other settings you'd like in the job, such as notifications if a build fails, whether you want to automate this build on a scheduled basis (like a cron), and so on.</p>
+<h2>Step 5) Execute a Build</h2>
+<p>After you've saved the job, simply click 'Build Now' in the left sidebar and watch the Console Output to see the new server get provisioned, your Aegir installed and your distro or custom Drupal app built and a test site install processed.</p>
+<div align="center"><a href="../../files/console_output/index.jpg" rel="lightbox"><img src="../../files/thumb_console_output/index.jpg" /></a></div>
+<h2>Blowing it all away</h2>
+<p>My example code has a snippet at the bottom that completely destroys the VPS at the end. This is because our Aegir project builds on a scheduled basis, and that includes times where I'm asleep: I don't want these cruft VPS lingering around costing me money. </p>
+<p>You may wish to prevent the auto-destruction so that you can login and take a look around, especially where there are issues. To do so, just comment out <code>conn.destroy_node(node)</code> at the bottom of the script. </p>
+<p>To login to Aegir, either find the one-time login URL in the Console Output of the job itself, or check your e-mail, where you should have received the link in the welcome message.</p>
+<div class="itu-attachments"><table class="itu-attachment-list withoutstats sticky-enabled" id="attachments">
+ <thead><tr><th class="preview">Preview</th><th class="file">Attachment</th><th class="size">Size</th> </tr></thead>
+<tbody>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/build_step/index.png" title="build_step.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/build_step/index.png" alt="build_step.png" title="build_step.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/build_step/index.png">build_step.png</a></td><td class="size">9.8 KB</td> </tr>
+ <tr class="even"><td class="mime mime-jpg"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/console_output/index.jpg" title="console_output.jpg"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/console_output/index.jpg" alt="console_output.jpg" title="console_output.jpg" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/console_output/index.jpg">console_output.jpg</a></td><td class="size">98.78 KB</td> </tr>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/jenkins-headshot/index.png" title="jenkins-headshot.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/jenkins-headshot/index.png" alt="jenkins-headshot.png" title="jenkins-headshot.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/jenkins-headshot/index.png">jenkins-headshot.png</a></td><td class="size">9.2 KB</td> </tr>
+ <tr class="even"><td class="mime mime-jpg"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/thumb_console_output/index.jpg" title="thumb_console_output.jpg"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/thumb_console_output/index.jpg" alt="thumb_console_output.jpg" title="thumb_console_output.jpg" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/thumb_console_output/index.jpg">thumb_console_output.jpg</a></td><td class="size">131.97 KB</td> </tr>
+</tbody>
+</table>
+</div></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-250.html?destination=node%2F731%23comment-form">Login</a> or <a href="../../user/register/index-250.html?destination=node%2F731%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/article-archive/test-your-drupal-distro-building-continuous-integration-server-aegir-jenkins?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:48:01 GMT -->
+</html>

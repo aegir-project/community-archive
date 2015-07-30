@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/2850/revisions/5380/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:13:50 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../2/index-2.html" />
+<link rel="up" href="../../../../../content/release-notes/older-2x-releases/index.html" />
+<link rel="next" href="../../../../../2/index-4.html" />
+<link rel="prev" href="../../../../../2/index-2.html" />
+<link rel="up" href="../../../../../content/release-notes/older-2x-releases/index.html" />
+<link rel="next" href="../../../../../2/index-4.html" />
+<link rel="prev" href="../../../../../2/index-2.html" />
+<link rel="up" href="../../../../../content/release-notes/older-2x-releases/index.html" />
+<link rel="next" href="../../../../../2/index-4.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of 2.0.0 release notes DRAFT from Tue, 01/07/2014 - 20:03 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2850" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../2/index-3.html">2.0.0 release notes DRAFT</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_4 first"><a href="../../../../../taxonomy/term/4/index.html" rel="tag" title="This level is for users who have access to only their sites and not able to manage all Aegir features, accounts or the server/system.">Client</a></li>
+<li class="taxonomy_term_27"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_3"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-2850'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 01/07/2014 - 20:03</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>The Aegir team is very pleased to announce the official release of Aegir 2.0.0.</p>
+
+<p>This release deprecates the 1.x branch, marking the 1.11 release as the last one of the 1.x branch. This also marks the "alpha" status of the 3.x development branch and the adoption of semantic versionning for release numbering.</p>
+
+<p>With 2.0, we have improved multi-server support, fixed a lot of issues with SSL and Nginx, Drush 5 support.</p>
+
+<p>We have a very dynamic community of contrib developers, and various projects built atop Aegir. So if you were waiting for Aegir 2 to be stable, easy to install, production-ready, now is the time. The 2.x branch will be well supported as a lot of shops are running it in production already.</p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Note that those release notes collates a lot of the changes already mentionned in previous release notes for alpha/beta/rc releases.</span></p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Major_changes_in_this_release"><span class="toc-number">1. </span>Major changes in this release</a></li>
+	<li class="toc-level-1"><a href="#x_branch_maintenance_policy"><span class="toc-number">2. </span>2.x branch maintenance policy</a></li>
+	<li class="toc-level-1"><a href="#Installing_and_upgrading"><span class="toc-number">3. </span>Installing and upgrading</a></li>
+	<li class="toc-level-1"><a href="#Need_help"><span class="toc-number">4. </span>Need help?</a></li>
+	<li class="toc-level-1"><a href="#API_changes"><span class="toc-number">5. </span>API changes</a></li>
+	<li class="toc-level-1"><a href="#Documentation_updates"><span class="toc-number">6. </span>Documentation updates</a></li>
+	<li class="toc-level-1"><a href="#New_features"><span class="toc-number">7. </span>New features</a></li>
+	<li class="toc-level-1"><a href="#Bugfixes"><span class="toc-number">8. </span>Bugfixes</a></li>
+	<li class="toc-level-1"><a href="#Known_issues"><span class="toc-number">9. </span>Known issues</a></li>
+	<li class="toc-level-1"><a href="#The_future"><span class="toc-number">10. </span>The future</a></li>
+</ol>
+</div>
+</div>
+
+<h2 id="Major_changes_in_this_release">1. Major changes in this release</h2>
+
+<p>Since <span class='diff-changed'>th 1.0</span> stable release (<a href="../../../../../1/index-12.html">1.0</a>) in April 2011, we've done an incredible amount of work. The code size nearly doubled as did the development team and user <span class='diff-changed'>base.</span></p>
+
+<p>We can already say that we've been pretty successful at fulfilling our <a href="#">release goals for 2.0</a> and the <a href="../../../../../roadmap/2/index.html">2.0 roadmap</a>. Even though we're <a href="https://drupal.org/project/issues/search?text=&amp;projects=&amp;assigned=&amp;submitted=&amp;participant=&amp;issue_tags_op=or&amp;issue_tags=aegir-1.0">missing bits and pieces</a>, especially in X, and Y support is not as robust as we'd like it to be, there's still space for improvements and bugfixes in the 2.x branch, and we'll also start on the <a href="../../../../../roadmap/3/index.html">3.0 roadmap</a> once this release is out the door.</p>
+
+<ul>
+<li><span class='diff-changed'>SSL improvements:
+
+</span><ul>
+<li><span class='diff-changed'></span><a href="https://drupal.org/node/1126640"><span class='diff-changed'>IP allocation was moved to the backend to the frontend</span></a><span class='diff-changed'></span></li>
+<li><span class='diff-changed'>SSL certificate generation now has saner defaults (e.g. 2048bits)</span></li>
+<li><span class='diff-changed'>better error handling</span></li>
+</ul></li>
+<li><span class='diff-changed'></span><p><span class='diff-changed'>Drush 5 support</span></p><span class='diff-changed'>
+
+</span><ul>
+<li><span class='diff-changed'>includes better support for archive-dump command</span></li>
+<li><span class='diff-changed'>means we also drop the dependency on drush make 2.3, now included in Drush 5</span></li>
+<li><span class='diff-changed'>support for Drush 4 has been dropped, the minimum version is now 5.5</span></li>
+</ul></li>
+<li><span class='diff-changed'></span><p><span class='diff-changed'>Debian package improvements and changes</span></p><span class='diff-changed'>
+
+</span><ul><span class='diff-changed'>
+</span><li><span class='diff-changed'>Nginx support in the Debian package</span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'>now a "native" debian package</span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'>package name changed: it is now </span><code><span class='diff-changed'>aegir2</span></code><span class='diff-changed'>, </span><code><span class='diff-changed'>aegir-provision2</span></code><span class='diff-changed'>, etc, to avoid overwriting the previous package - note that aegir 1 and 2 can </span><em><span class='diff-changed'>not</span></em><span class='diff-changed'> be installed in parallel</span></li><span class='diff-changed'>
+</span></ul><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'>Nginx improvements:
+
+</span><ul><span class='diff-changed'>
+</span><li><span class='diff-changed'>fixed support for nginx 1.3 and newer</span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'>better defaults for caching</span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'>SSL and Nginx are now officially supported (not marked as "experimental")</span></li><span class='diff-changed'>
+</span></ul><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'>New modules:
+
+</span><ul><span class='diff-changed'>
+</span><li><span class='diff-changed'>the </span><code><span class='diff-changed'>hosting-queue-runner</span></code><span class='diff-changed'> module is now </span><a href="https://drupal.org/node/1189556"><span class='diff-changed'>merged into core</span></a><span class='diff-changed'> as </span><code><span class='diff-changed'>hosting-queued</span></code><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'>"pack" module, designed as a lightweight replacement to the "cluster" module, now available as an experimental extension</span></li><span class='diff-changed'>
+</span></ul><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'>Hosting-queued improvements
+
+</span><ul><span class='diff-changed'>
+</span><li><span class='diff-changed'>run with a lower priority ("</span><em><span class='diff-changed'>niced</span></em><span class='diff-changed'>")</span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'>improved portability and reliability of startup script</span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'>enabled by default in the Debian package</span></li><span class='diff-changed'>
+</span></ul><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'>Code refactoring and improvements:
+
+</span><ul><span class='diff-changed'>
+</span><li><span class='diff-changed'>now using the Symphony autoloading code</span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'>fix coding style in a lot of source files</span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'>improved builtin test suite</span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'>eldir is </span><a href="https://drupal.org/node/1468874"><span class='diff-changed'>split in its own module again</span></a><span class='diff-changed'>, allowing for porting it more easily to Drupal 7</span></li><span class='diff-changed'>
+</span></ul><span class='diff-changed'></span></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="x_branch_maintenance_policy">2. 2.x branch maintenance policy</h2>
+
+<p>With the 2.0 release, the Aegir project is adopting the growing standard of <a href="http://semver.org/">Semantic Versionning</a>, which can be summarized as follows:</p>
+
+<blockquote>
+  <p>Given a version number MAJOR.MINOR.PATCH, increment the:</p>
+  
+  <p>MAJOR version when you make incompatible API changes,
+  MINOR version when you add functionality in a backwards-compatible manner, and
+  PATCH version when you make backwards-compatible bug fixes.</p>
+</blockquote>
+
+<p>In other words, this is the 2.0.0 release! The next release of the 2.x branch will likely be 2.0.1, unless we ship some major functionality, in which case it will be 2.1.0. In any case, no API change will be done in a 2.x.y release. All core development will now happen on the 3.x branch, which shifts the focus of development to the port of the frontend to Drupal 7 (almost complete).</p>
+
+<p>Note that the 2.x API has already been frozen for some time, since the first release candidate, to be more precise. Major changes to 2.x will not be committed unless they are first tested in 3.x and merged back. We consider it unlikely that major changes will be shipped in the 2.x branch and as soon as the 3.x branch is declared stable, all Aegir operators will be strongly encouraged to upgrade.</p>
+
+<p>The 1.x branch is now deprecated and the 1.11 release will likely be the last release of that venerable branch, unless we need another release to fix the upgrade path to the 2.x branch, but we consider this unlikely. Security fixes or critical issues will <em>not</em> be backported to the 1.x branch.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Installing_and_upgrading">3. Installing and upgrading</h2>
+
+<p>The canonical source of installation documentation is on the community site at:</p>
+
+<pre><code>http://community.aegirproject.org/installing
+</code></pre>
+
+<p>In a similar fashion, the upgrade documentation is:</p>
+
+<pre><code>http://community.aegirproject.org/upgrading
+</code></pre>
+
+<p>Within those sections you'll find step-by-step instructions for performing both <a href="../../../../../upgrading/manual/index.html">manual</a> and <a href="../../../../../upgrading/script/index.html">automatic</a> upgrade processes.</p>
+
+<p>It is still imperative that you read the the <a href="../../../../../upgrading/path/index.html">upgrade path and version-specific information</a> and follow all version-specific upgrade instructions before trying to run the upgrade script or manual upgrade.</p>
+
+<p>For users coming from the 2.0 betas or recent rc releases, there are unlikely to be any version-specific manual steps required to upgrade, but you should make a habit of reading them anyway just to make sure. No-one likes a nasty surprise!</p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Note that you should upgrade to the latest 1.x release (currently: </span><a href="../../../../../1/index-3.html"><span class='diff-added'>1.9</span></a><span class='diff-added'>) before attempting the upgrade to 2.x. This is especially important if you are running a pre-1.0 release (poor you!).</span></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Need_help">4. Need help?</h2>
+
+<p>If you struggle to install or upgrade your Aegir system, you have a number of options available to you for getting help.</p>
+
+<p>Consult this page for more information: <a href="../../../../../help/index.html" title="http://community.aegirproject.org/help">http://community.aegirproject.org/help</a></p>
+
+<p>Thanks to our awesome <a href="../../../../../index.html">community</a> for their help, support and encouragement as always! Enjoy the new release :)</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="API_changes">5. API changes</h2>
+
+<p><span class='diff-changed'>Those changes are, as usual,</span> more <span class='diff-changed'>explicitly documented in the </span><a href="../../../../../upgrading/path/index.html"><span class='diff-changed'>upgrade path</span></a><span class='diff-changed'> documentation.</span></p><span class='diff-added'>
+
+</span><ul><span class='diff-added'>
+</span><li><span class='diff-added'>hosting-task now needs a </span><code><span class='diff-added'>--force</span></code><span class='diff-added'> argument to run a non-queued task</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>functions that were deprecated in 1.x are now removed</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>the </span><code><span class='diff-added'>email</span></code><span class='diff-added'> and </span><code><span class='diff-added'>client_email</span></code><span class='diff-added'> database fields are now removed from client and site node types</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>numerous changes to the IP allocation and SSL management code</span></li><span class='diff-added'>
+</span></ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Documentation_updates">6. Documentation updates</h2>
+
+<p>Our documentation initiative to <a href="http://drupal.org/node/1111254">better document the Hostmaster API</a> has progressed nicely. In addition, we'll be launching an updated version of our <a href="http://api.aegirproject.org/">API site</a> (along the lines of api.drupal.org) shortly, to ease exploring the code-base of the Aegir Project. Much work remains, so you can track progress or help out <a href="http://drupal.org/node/1111254#comment-4287518">here</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="New_features">7. New features</h2>
+
+<p><span class='diff-changed'>In addition to the "major changes" mentioned above, the following should also be noted.</span></p><span class='diff-changed'>
+
+</span><ul><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1830994"><span class='diff-changed'>#1830994: Login directly via 'login' link</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1853588"><span class='diff-changed'>#1853588: Sort Install profiles on Site add form</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/709862"><span class='diff-changed'>#709862: Allow drush modules</span> to <span class='diff-changed'>add to apache vhost config template</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1861896"><span class='diff-changed'>#1861896: Make $type argument of function hosting_available_tasks() optional.</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1843198"><span class='diff-changed'>#1843198: Add Content top and bottom</span> to <span class='diff-changed'>Eldir.</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1826074"><span class='diff-changed'>#1826074: Add tests</span> to <span class='diff-changed'>ensure site directories are migrated</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1464220"><span class='diff-changed'>#1464220: Support alternative 'Hostmaster' profiles</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/610040"><span class='diff-changed'>#610040: Add X links on listing pages</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/710834"><span class='diff-changed'>#710834: notify clients on site migrations</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1260066"><span class='diff-changed'>#1260066: Allow use of the working copy option when creating a platform</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1047992"><span class='diff-changed'>#1047992: exportable backups</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1189556"><span class='diff-changed'>#1189556: Pull the queue runner into Aegir 2</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1408410"><span class='diff-changed'>#1408410: Add microcaching to Nginx config by default</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1138104"><span class='diff-changed'>#1138104: Tiny module to automatically fill in platform publish path based on title</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span></ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Bugfixes">8. Bugfixes</h2>
+
+<ul><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1735174"><span class='diff-changed'>#1735174: server verification fails after configuration on pack slave servers</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="https://drupal.org/node/1798252"><span class='diff-changed'>#1798252: reload hosting-queued on upgrade</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1898260"><span class='diff-changed'>#1898260: platform form should allow editiong if platform is not verified</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1435098"><span class='diff-changed'>#1435098: Client name validate sometimes gives erroneous results</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1591720"><span class='diff-changed'>#1591720: Illegal choice when selecting sites to verify</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1587232"><span class='diff-changed'>#1587232: All radios labels in forms use incorrect vertical-align property value (middle)</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1218130"><span class='diff-changed'>#1218130: checking "Hide platforms with non-default profiles" breaks D7's minimal and standard profiles</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1227954"><span class='diff-changed'>#1227954: hosting_quota lacks</span> a <span class='diff-changed'>feature.module_name.inc</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/528064"><span class='diff-changed'>#528064: h2 bigger than h1 in content</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/460974"><span class='diff-changed'>#460974: improve queue admin form</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1855486"><span class='diff-changed'>#1855486: Patch to Remove some Notices</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1881868"><span class='diff-changed'>#1881868: SA-CONTRIB-2012-080 hasn't been applied to 6.x-2.x</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1873384"><span class='diff-changed'>#1873384: 'Silence warning' commit broke 6.x-2.x</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1843078"><span class='diff-changed'>#1843078: aegir 2.x debian packages fail to install</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1829430"><span class='diff-changed'>#1829430: drush hosting-tasks broken</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1146014"><span class='diff-changed'>#1146014: A user can see sites that don't have a client associated.</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1256508"><span class='diff-changed'>#1256508: path aliases for deleted sites are not deleted</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1249892"><span class='diff-changed'>#1249892: Checkboxes on provision page not aligned</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/941870"><span class='diff-changed'>#941870: failure to copy SSL certificates should abort tasks</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1334950"><span class='diff-changed'>#1334950: permissions on /var/aegir/config/server_NAME/SERVICE prevents access</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1471928"><span class='diff-changed'>#1471928: provision-save: Unknown options: --context_type, --platform, --server, --db_server, --profile, --client_name, --aliases</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1751006"><span class='diff-changed'>#1751006: Make is called incorrectly</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1750974"><span class='diff-changed'>#1750974: Unable to pass working-copy or backend-only to hostmaster install</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1204990"><span class='diff-changed'>#1204990: Drop old database when re-deploying a site.</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1734500"><span class='diff-changed'>#1734500: Can't run tests with Drush 4.6</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1433406"><span class='diff-changed'>#1433406: Make hosting (specifically hosting-dispatch) work with Drush 5</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1690472"><span class='diff-changed'>#1690472: Declaration</span> of <span class='diff-changed'>Provision_Service_null::__call() should be compatible</span> with <span class='diff-changed'>that of Provision_Service::__call() null.php:27</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1266484"><span class='diff-changed'>#1266484: Cannot verify Drupal 7.8 with PHP 5.2</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1612044"><span class='diff-changed'>#1612044:</span> upgrade <span class='diff-changed'>from 1.7 to 2.x fails because of drush 5 command file cache</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1358768"><span class='diff-changed'>#1358768: 6.x-2.x generates multiple Undefined property errors on hostmaster install</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span></ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Known_issues">9. Known issues</h2>
+
+<p>Being really open about our project, we have never hidden the fact that some things, sometimes, do not work in Aegir. Our <a href="http://drupal.org/project/issues?text=&amp;projects=provision%2C%20hosting%2C%20hostslave%2C%20eldir%2C%20Hostmaster%20%28Aegir%29&amp;status=Open&amp;priorities=All&amp;categories=All">issue trackers</a> are public, and we've made it a point of honor not only to document clearly what is wrong in our releases as soon as we find out about it, but also to reroll new releases when we fix it.</p>
+
+<p>That being said, 2.0 still has a number of issues and design flaws. This is the list of <a href="https://drupal.org/project/issues?text=&amp;projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir)&amp;status=Open&amp;priorities=4&amp;categories=All">all issues marked "major" in the queue right now</a>. Most issues are now likely to be fixed in the 3.x development branch, and unlikely to be backported unless considered critical (leading to data loss or security issue).</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="The_future">10. The future</h2>
+
+<p>While we're very proud of what we've accomplished in Aegir 2.0, we've also been working in parallel to port Aegir to Drupal 7. Aegir 3.0 will begin as a fairly straight-forward port. As such, we'll be releasing our first (pre-)alpha of Aegir 3 shortly. We would like to have a stable Aegir 3.0 release before the release of Drupal 8, to allow for users to transition as Drupal 6 enters its end-of-life phase.</p>
+
+<p>In the 3.x cycle, we'd like to move to <a href="http://semver.org/">Semantic Versioning</a>. This should allow us to add functionality in point releases, so long as they're API compatible. This should allow for more frequent additions of functionality, without having to wait for a full new version release.</p>
+
+<p>Another reason for this change of approach is that we've been discussing a full re-write of Aegir for some time, and would like to do so with Aegir 4. The changes are likely to be fairly drastic, and so we want to be able to keep moving Aegir 3 forward in the mean time. By moving to Drupal 7, we expect to have bought ourselves 2+ years of breathing room within which to accomplish this re-architecture.</p>
+
+<p>When the Aegir project started (back in 2008), the free software options for systems management software were very limited. As a result, we wrote our own code to do things like deploying code, writing configuration files, starting and stopping services, and so forth. Now, as 2014 begins, there are a wealth of tools that perform subsets these functions, each with their own communities supporting them. We are exploring how we might be able to leverage these tools, rather than maintaining our own partial implementations, that will never likely be as robust as these more specialized projects.</p>
+
+<p>We feel that the time is opportune since Drupal 8 will require significant re-writing of the front-end components. In addition, re-writing the backend so completely will allow us to seriously consider moving to a programming language other than PHP; one that would be better suited to the project's long-term goals, such as Python or Ruby.</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-158.html?destination=node%2F2850%23comment-form">Login</a> or <a href="../../../../../user/register/index-158.html?destination=node%2F2850%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-158.html?destination=node%2F2850%23comment-form">Login</a> or <a href="../../../../../user/register/index-158.html?destination=node%2F2850%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/2850/revisions/5380/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:13:50 GMT -->
+</html>

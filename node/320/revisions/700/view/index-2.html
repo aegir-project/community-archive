@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/320/revisions/700/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:20:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../319/index.html" />
+<link rel="up" href="../../../../318/index.html" />
+<link rel="next" href="../../../../322/index.html" />
+<link rel="prev" href="../../../../319/index.html" />
+<link rel="up" href="../../../../318/index.html" />
+<link rel="next" href="../../../../322/index.html" />
+<link rel="prev" href="../../../../319/index.html" />
+<link rel="up" href="../../../../318/index.html" />
+<link rel="next" href="../../../../322/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Implementation from Mon, 02/07/2011 - 21:07 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-320" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Implementation</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-320'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/steven-jones/index.html" class="username" title="View user profile.">Steven Jones</a> on 02/07/2011 - 21:07</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p><span class='diff-added'>Contexts are always named to start with a '@' symbol, except for in the filename of the file in which they are stored.</span></p><span class='diff-added'>
+
+</span><p>Contexts in Aegir are stored as a simple array of data in a file within the backend of Aegir. However this array of data is accessed and modified with a set of objects and accessors. Here is an example of what a context file looks like:</p>
+
+<p><span class='diff-changed'>&lt;?php
+</span><div class="codeblock"><code><span class='diff-changed'>$aliases[&#039;hostmaster&#039;] = array (</span><br /><span class='diff-changed'>&nbsp; &#039;context_type&#039; =&gt; &#039;site&#039;,</span><br /><span class='diff-changed'>&nbsp; &#039;platform&#039; =&gt; &#039;@platform_hostmaster&#039;,</span><br /><span class='diff-changed'>&nbsp; &#039;server&#039; =&gt; &#039;@server_master&#039;,</span><br /><span class='diff-changed'>&nbsp; &#039;db_server&#039; =&gt; &#039;@server_localhost&#039;,</span><br /><span class='diff-changed'>&nbsp; &#039;uri&#039; =&gt; &#039;aegir.example.com&#039;,</span><br /><span class='diff-changed'>&nbsp; &#039;root&#039; =&gt; &#039;/var/aegir/hostmaster-0.4-beta2&#039;,</span><br /><span class='diff-changed'>&nbsp; &#039;site_path&#039; =&gt; &#039;/var/aegir/hostmaster-0.4-beta2/sites/aegir.example.com&#039;,</span><br /><span class='diff-changed'>&nbsp; &#039;site_enabled&#039; =&gt; true,</span><br /><span class='diff-changed'>&nbsp; &#039;language&#039; =&gt; &#039;en&#039;,</span><br /><span class='diff-changed'>&nbsp; &#039;client_email&#039; =&gt; &#039;aegir@example.com&#039;,</span><br /><span class='diff-changed'>&nbsp; &#039;aliases&#039; =&gt;</span><br /><span class='diff-changed'>&nbsp; array (</span><br /><span class='diff-changed'>&nbsp; ),</span><br /><span class='diff-changed'>&nbsp; &#039;redirection&#039; =&gt; false,</span><br /><span class='diff-changed'>&nbsp; &#039;profile&#039; =&gt; &#039;hostmaster&#039;,</span><br /><span class='diff-changed'>);</span></code></div></p>
+
+<p><span class='diff-changed'>These files are stored in the </span><code><span class='diff-changed'>/var/aegir/.drush</span></code><span class='diff-changed'> directory on the master Aegir server.</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>In the above example we can see</span> the <span class='diff-changed'>properties</span> of the <span class='diff-changed'>context, like the 'uri' of the site, and the 'profile'</span> that <span class='diff-changed'>the site is running.</span></p>
+
+<p>There are also a number of <span class='diff-changed'>more</span> interesting properties in the example, note the <span class='diff-changed'>'db_server'</span> property, which has a value that is another context. We shall see later that these properties are special, and allow developers to easily access functions of the <span class='diff-changed'>'db_server'</span> without needing to care which <span class='diff-changed'>db</span> server they are talking to.</p>
+
+<p>Contexts are used within drush commands as objects, which subclass <span class='diff-changed'></span><code><span class='diff-changed'>provision_context</span></code><span class='diff-changed'>.</span> This allows much more flexibility and cleverness, though can make them very confusing to use sometimes! As a developer you will only need to worry about the context objects, as Aegir handles storing them in the files for you. But it is important to note that each context must be representable in a flat text file (or be prepared to do some serious <span class='diff-changed'>leg-work) by that I mean you probably don't want to be storing massive amounts of relational data in them, use a database for that!</span></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-201.html?destination=node%2F320%23comment-form">Login</a> or <a href="../../../../../user/register/index-201.html?destination=node%2F320%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-201.html?destination=node%2F320%23comment-form">Login</a> or <a href="../../../../../user/register/index-201.html?destination=node%2F320%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/320/revisions/700/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:20:03 GMT -->
+</html>

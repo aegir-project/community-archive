@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/9/revisions/1026/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:39:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../administrator/index.html" />
+<link rel="up" href="../../../../../administrator/index.html" />
+<link rel="next" href="../../../../../content/installing/system-requirements/index.html" />
+<link rel="prev" href="../../../../../administrator/index.html" />
+<link rel="up" href="../../../../../administrator/index.html" />
+<link rel="next" href="../../../../../content/installing/system-requirements/index.html" />
+<link rel="prev" href="../../../../../administrator/index.html" />
+<link rel="up" href="../../../../../administrator/index.html" />
+<link rel="next" href="../../../../../content/installing/system-requirements/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Installing Aegir from Wed, 03/09/2011 - 17:49 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-9" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../installing/index.html">Installing Aegir</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-9'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 03/09/2011 - 17:49</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p><span class='diff-deleted'>Because</span><span class='diff-deleted'> </span>Aegir<span class='diff-deleted'> </span><span class='diff-deleted'>is</span><span class='diff-deleted'> </span><span class='diff-deleted'>a</span><span class='diff-deleted'> </span><span class='diff-deleted'>powerful</span><span class='diff-deleted'> </span><span class='diff-deleted'>system</span><span class='diff-deleted'> </span><span class='diff-deleted'>that</span> requires some low-level<span class='diff-deleted'> </span><span class='diff-deleted'>management</span><span class='diff-deleted'> </span><span class='diff-deleted'>or</span> configuration <span class='diff-changed'>to</span> your <span class='diff-changed'>server in order to automate some configurations. For example, when a new site is installed, the web server will be automatically configured and restarted.</span></p>
+
+<p>For the same reason, Aegir <span class='diff-changed'>cannot be installed</span> on a shared hosting <span class='diff-changed'>environment, since Aegir may not have sufficient system permissions.</span> Consult the <a href="../../../../17/index.html">System requirements</a> to ensure you meet the necessary <span class='diff-changed'>requirements.</span></p>
+
+<p>A good way to install a specific Aegir release is to follow the release notes for that release. The <a href="../../../../../index.html">front page of this site</a> always contains a link to the latest release notes. Alternatively, you can find the release notes announced on our <a href="http://lists.aegirproject.org/pipermail/aegir-announce/">mailing-list</a>.</p>
+
+<p>The install process can be done in one of two ways:</p><span class='diff-changed'>
+
+</span><ul><span class='diff-changed'></span><li>The <span class='diff-changed'>[automatic</span> install <span class='diff-changed'>process](/node/399) (*)</span> is designed for people not too familiar with the commandline or system administration.</li><span class='diff-changed'>
+</span><li><span class='diff-changed'>The [manual install section](/node/389) contains detailed instructions on how to install Aegir manually on Debian-based systems, but also specific commands for other systems. It is aimed at system administrators and porters that want to control every step of the install process.</span></li><span class='diff-changed'>
+</span></ul>
+
+<p><em>Note that the automated install process is not yet fully complete and you still need to do some shell commands before completing the install. We eventually want to have packages for common platforms (.deb for Debian) to automate that process, or scripts that run as root for uncommon platforms for which packaging is impossible or too complicated (e.g. OSX).</em></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>The</span><span class='diff-deleted'> </span><span class='diff-deleted'></span><a href="../../../../389/index.html"><span class='diff-deleted'>manual</span><span class='diff-deleted'> </span><span class='diff-deleted'>install</span><span class='diff-deleted'> </span><span class='diff-deleted'>section</span></a><span class='diff-deleted'></span><span class='diff-deleted'> </span><span class='diff-deleted'>contains</span><span class='diff-deleted'> </span><span class='diff-deleted'>detailed</span><span class='diff-deleted'> </span><span class='diff-deleted'>instructions</span><span class='diff-deleted'> </span><span class='diff-deleted'>on</span><span class='diff-deleted'> </span><span class='diff-deleted'>how</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>install</span><span class='diff-deleted'> </span><span class='diff-deleted'>Aegir</span><span class='diff-deleted'> </span><span class='diff-deleted'>manually</span><span class='diff-deleted'> </span><span class='diff-deleted'>on</span><span class='diff-deleted'> </span><span class='diff-deleted'>Debian-based</span><span class='diff-deleted'> </span><span class='diff-deleted'>systems,</span><span class='diff-deleted'> </span><span class='diff-deleted'>but</span><span class='diff-deleted'> </span><span class='diff-deleted'>also</span><span class='diff-deleted'> </span><span class='diff-deleted'>specific</span><span class='diff-deleted'> </span><span class='diff-deleted'>commands</span><span class='diff-deleted'> </span><span class='diff-deleted'>for</span><span class='diff-deleted'> </span><span class='diff-deleted'>other</span><span class='diff-deleted'> </span><span class='diff-deleted'>systems.</span><span class='diff-deleted'> </span><span class='diff-deleted'>It</span><span class='diff-deleted'> </span><span class='diff-deleted'>is</span><span class='diff-deleted'> </span><span class='diff-deleted'>aimed</span><span class='diff-deleted'> </span><span class='diff-deleted'>at</span><span class='diff-deleted'> </span><span class='diff-deleted'>system</span><span class='diff-deleted'> </span><span class='diff-deleted'>administrators</span><span class='diff-deleted'> </span><span class='diff-deleted'>and</span><span class='diff-deleted'> </span><span class='diff-deleted'>porters</span><span class='diff-deleted'> </span><span class='diff-deleted'>that</span><span class='diff-deleted'> </span><span class='diff-deleted'>want</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>control</span><span class='diff-deleted'> </span><span class='diff-deleted'>every</span><span class='diff-deleted'> </span><span class='diff-deleted'>step</span><span class='diff-deleted'> </span><span class='diff-deleted'>of</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>install</span><span class='diff-deleted'> </span><span class='diff-deleted'>process.</span></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-9.html?destination=node%2F9%23comment-form">Login</a> or <a href="../../../../../user/register/index-9.html?destination=node%2F9%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-9.html?destination=node%2F9%23comment-form">Login</a> or <a href="../../../../../user/register/index-9.html?destination=node%2F9%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/9/revisions/1026/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:39:40 GMT -->
+</html>

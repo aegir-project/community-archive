@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/427/revisions/1774/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:05:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../388/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../341/index.html" />
+<link rel="prev" href="../../../../388/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../341/index.html" />
+<link rel="prev" href="../../../../388/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../341/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Working as aegir user from Wed, 05/04/2011 - 14:32 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-427" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Working as aegir user</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-427'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/458/index.html" class="username" title="View user profile.">guaka</a> on 05/04/2011 - 14:32</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>It can be convenient to do stuff as the aegir user.
+The default shell of the aegir user is /bin/false, so you have to make sure to use something more usable:</p>
+
+<pre>
+sudo su aegir -s /bin/bash
+</pre>
+
+<p>GNU Screen is a super useful window manager for the console.  When launching screen you will usually get errors like</p>
+
+<pre>
+Cannot open your terminal '/dev/pts/6' - please check.
+</pre>
+
+<p>You can get around this by running</p>
+
+<pre>
+script /dev/null
+</pre>
+
+<p>All in all this works nicely:</p>
+
+<pre>sudo su aegir -s /bin/bash -c "script -q /dev/null"</pre>
+
+<p>It can be convenient to put it in a little script as <code>/usr/local/bin/suaegir</code><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>If you wish to allow other users on your system to run commands as the aegir user using sudo, without allowing them to use sudo generally, you can add the following two lines to your /etc/sudoers file using visudo:</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'>User_Alias&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AEGIRUSERS = comma, seperated, list, of, users</span><br /><span class='diff-added'>AEGIRUSERS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ALL = (aegir) NOPASSWD: ALL</span></code><span class='diff-added'></span></div></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-402.html?destination=node%2F427%23comment-form">Login</a> or <a href="../../../../../user/register/index-402.html?destination=node%2F427%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/427/revisions/1774/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:05:40 GMT -->
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/2.0-rc5?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:39:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="up" href="../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="index-7.html" />
+<link rel="canonical" href="index-6.html" />
+<link rel="shortcut icon" href="../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>2.0-rc5 release notes | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2830" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index-6.html">2.0-rc5 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-2830'><p>The Aegir team is is pleased to announce the fifth release candidate for the upcoming Aegir 2.0 release!</p>
+
+<p>This release ships a <em>ton</em> of bugfixes we have found in RC4. We also finalised subdirectory support which, while it still has <a href="#">some issues</a>, is now actually working correctly, even on multiple servers. The IP allocation code for SSL on multiple servers was also fixed, making this probably the most solid multi-server Aegir release ever. We also did some API cleanups that seemed necessary before the final 2.0 release.</p>
+
+<p>Finally, we should also mentionned that the install process was significantly sped up thanks to the use of Drupal.org distributions to ship a single tarball for the hostmaster platform instead of using a makefile to build it from its parts all the times. During out tests, the platform <code>make</code> step went from 60 seconds to 1.5 seconds, an amazing improvement!</p>
+
+<h1>Installing and upgrading</h1>
+
+<p>The canonical source of installation documentation is on the community site at:</p>
+
+<pre><code>http://community.aegirproject.org/installing
+</code></pre>
+
+<p>In a similar fashion, the upgrade documentation is:</p>
+
+<pre><code>http://community.aegirproject.org/upgrading
+</code></pre>
+
+<p>Within those sections you'll find step-by-step instructions for performing both <a href="../upgrading/manual/index.html">manual</a> and <a href="../upgrading/script/index.html">automatic</a> upgrade processes, with <code>2.x</code>-specific instructions outlined in <strong>bold</strong>.</p>
+
+<p>It is still imperative that you read the the <a href="../upgrading/path/index.html">upgrade path and version-specific information</a> and follow all version-specific upgrade instructions before trying to run the upgrade script or manual upgrade. You should be able to upgrade to 2.x releases from any release in the 1.x series, but it's better to upgrade to the latest 1.x release first.</p>
+
+<h1>Known issues</h1>
+
+<p>Those are the critical bugs that were found in this release that you may encounter and should watch out for.</p>
+
+<ul>
+<li>There was a problem in the Debian package, the original uploads were missing some critical files (subdir support and some makefiles). This was fixed in an intermediate package named <code>2.0~rc5.1</code>.</li>
+<li>If <code>/var/aegir</code> is a symlink, it will be destroyed, see <a href="https://drupal.org/node/2118857">issue #2118857</a> for a workaround.</li>
+<li><code>hosting-queued</code> doesn't get properly re-enabled on upgrades, see <a href="https://drupal.org/node/2114675">#2114675</a> for a workaround.</li>
+<li>Some upgrades fail with mysterious redirection failures, see <a href="https://drupal.org/node/2118061">#2118061</a> for details.</li>
+<li>Some upgrades may loop over one of the update_N() functions, see <a href="https://drupal.org/node/2118917">#2118917</a> for details and workaround.</li>
+<li>Upgrading through Debian packages removes the <code>aegir.conf</code> Apache configuration file, dropping all sites, during the upgrade, see <a href="https://drupal.org/node/2121263">#2121263</a>.</li>
+<li>Ubuntu sausy has some changes in apache config wich breaks Aegir <a href="https://drupal.org/node/2155705">#2155705</a></li>
+</ul>
+
+<h1>Detailed list of changes</h1>
+
+<h2>API CHANGES</h2>
+
+<ul>
+<li>remove version pinning in hostmaster, our release process now again needs to modify only one makefile (<a href="https://drupal.org/node/2002114">#2002114</a>)</li>
+<li><a href="http://drupal.org/node/1986928">#1986928: Provide 2.x upgrade guidance for services</a></li>
+<li><a href="http://drupal.org/node/2099889">#2099889: More hosting_features checks in _drush_load hooks?</a></li>
+<li><a href="http://drupal.org/node/1882708">#1882708: Unused 'release_id' field in 'hosting_platform'</a></li>
+<li><a href="http://drupal.org/node/2012508">#2012508: hosting_context_name returns '@' if node not found</a></li>
+<li><a href="http://drupal.org/node/1283738">#1283738: Add new hook provision_drupal_create_directories in _provision_drupal_create_directories</a></li>
+<li>the package name changed (for example) from aegir-hostmaster2 to aegir2-hostmaster, compatibility shims are available for people having installed aegir2 before, but they will be dropped in 2.0, so make sure you upgrade to this release before upgrading to aegir 2.0</li>
+</ul>
+
+<h2>NEW FEATURES</h2>
+
+<ul>
+<li>aegir install time reduced by about 60 seconds (on a cable uplink) by using Drupal.org distributions (<a href="https://drupal.org/node/2002114">#2002114</a>)</li>
+<li><a href="http://drupal.org/node/2001964">#2001964: Upgrade Views Bulk Operations 6.x-1.16</a></li>
+<li><a href="http://drupal.org/node/2099057">#2099057: Allow _provision_drupal_create_directories to skip chmod</a></li>
+<li><a href="http://drupal.org/node/2100251">#2100251: Implement post-enable hook for 'hosting_*' modules</a></li>
+<li><a href="http://drupal.org/node/2020075">#2020075: Refactor subdirs to use proper Config class(es)</a></li>
+<li><a href="http://drupal.org/node/2020079">#2020079: Multi-server subdirectory support</a></li>
+<li><a href="http://drupal.org/node/2096629">#2096629: hook_provision_drupal_create_directories_alter by ref</a></li>
+<li><a href="http://drupal.org/node/2086009">#2086009: Logo Cannot be changed / disabled</a></li>
+<li><a href="http://drupal.org/node/2069387">#2069387: Support nonstandard ports on hostmaster-install command</a></li>
+<li><a href="http://drupal.org/node/2074681">#2074681: Ports are hardcoded in hostmaster.profile</a></li>
+<li><a href="http://drupal.org/node/2103173">#2103173: Provide an example of saving data to a site context</a></li>
+</ul>
+
+<h2>BUG FIXES</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/2110057">#2110057: Key used for signing debian package has expired</a></li>
+<li><a href="http://drupal.org/node/1635628">#1635628: do not talk about a makefile if installing over an existing platform</a></li>
+<li><a href="http://drupal.org/node/2103173">#2103173: Provide an example of saving data to a site context</a></li>
+<li><a href="http://drupal.org/node/2109637">#2109637: upgrade.sh script fails to checkout 6.x-2.x</a></li>
+<li><a href="http://drupal.org/node/2085077">#2085077: Invalid argument supplied for foreach() hosting.ip.inc:39</a></li>
+<li><a href="http://drupal.org/node/2102341">#2102341: Differentiate between a feature being disabled vs absent</a></li>
+<li><a href="http://drupal.org/node/2029799">#2029799: Error deleting a platform: Call to a member function succeed() on a non-object</a></li>
+<li><a href="http://drupal.org/node/1971348">#1971348: Site aliases get chopped if longer than 50 characters</a></li>
+<li><a href="http://drupal.org/node/2071317">#2071317: Incorrect SSL IP is deployed to servers in a web pack</a></li>
+<li><a href="http://drupal.org/node/2098289">#2098289: Backup task does not detect failed database dump</a></li>
+<li><a href="http://drupal.org/node/2098389">#2098389: subdirs kicks in even when subdirs module is disabled.</a></li>
+<li><a href="http://drupal.org/node/1189576">#1189576: can't disable the DNS service from the frontend</a></li>
+<li><a href="http://drupal.org/node/1931000">#1931000: Missing drush backend output in frontend log</a></li>
+<li><a href="http://drupal.org/node/2077793">#2077793: Queue daemon collecting quotes</a></li>
+<li><a href="http://drupal.org/node/2097689">#2097689: clean_urls don't work well with subdirectory</a></li>
+<li><a href="http://drupal.org/node/2097363">#2097363: Add site spins forever</a></li>
+<li><a href="http://drupal.org/node/1387578">#1387578: hosting_queues_cron_cmd makes unwarranted assumptions about bash availablility</a></li>
+<li><a href="http://drupal.org/node/2084963">#2084963: SSL vhost does not respect Alias redirects</a></li>
+<li><a href="http://drupal.org/node/2061509">#2061509: List of platforms is no longer updated to match install profile clicked at node/add/site</a></li>
+<li><a href="http://drupal.org/node/2046783">#2046783: Task dialogs won't open after clearing the cache</a></li>
+</ul></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-25.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-26.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../user/login/index-161.html?destination=node%2F2830%23comment-form">Login</a> or <a href="../user/register/index-161.html?destination=node%2F2830%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/2.0-rc5?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:39:11 GMT -->
+</html>

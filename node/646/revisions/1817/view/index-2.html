@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/646/revisions/1817/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../462/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="prev" href="../../../../462/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Ubuntu 10.04 Specific : Downgrade to php 5.2 before install from Mon, 05/16/2011 - 06:02 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-646" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../installing/ubuntu-1004-specific-how-downgrade-php-52-install/index.html">Ubuntu 10.04 Specific : Downgrade to php 5.2 before install</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-646'><p>What is explained here is specific to Ubuntu 10.04, it hasn't been tested on further versions and you should anyway use Ubuntu 10.04 (LTS) on production servers.</p>
+
+<p>Follow this procedure :
+<code>sudo apt-get install python-software-properties</code>
+<code>add-apt-repository ppa:txwikinger/php5.2</code>
+Create the file /etc/apt/preferences.d/php and input the following code in it :</p>
+
+<p><div class="codeblock"><code>Package: libapache2-mod-php5<br />Pin: version 5.2.10<em><br />Pin-Priority: 991<br /><br />Package: libapache2-mod-php5filter<br />Pin: version 5.2.10</em><br />Pin-Priority: 991<br /><br />Package: php-pear<br />Pin: version 5.2.10<em><br />Pin-Priority: 991<br /><br />Package: php5<br />Pin: version 5.2.10</em><br />Pin-Priority: 991<br /><br />Package: php5-cgi<br />Pin: version 5.2.10<em><br />Pin-Priority: 991<br /><br />Package: php5-cli<br />Pin: version 5.2.10</em><br />Pin-Priority: 991<br /><br />Package: php5-common<br />Pin: version 5.2.10<em><br />Pin-Priority: 991<br /><br />Package: php5-curl<br />Pin: version 5.2.10</em><br />Pin-Priority: 991<br /><br />Package: php5-dbg<br />Pin: version 5.2.10<em><br />Pin-Priority: 991<br /><br />Package: php5-dev<br />Pin: version 5.2.10</em><br />Pin-Priority: 991<br /><br />Package: php5-gd<br />Pin: version 5.2.10<em><br />Pin-Priority: 991<br /><br />Package: php5-gmp<br />Pin: version 5.2.10</em><br />Pin-Priority: 991<br /><br />Package: php5-ldap<br />Pin: version 5.2.10<em><br />Pin-Priority: 991<br /><br />Package: php5-mhash<br />Pin: version 5.2.10</em><br />Pin-Priority: 991<br /><br />Package: php5-mysql<br />Pin: version 5.2.10<em><br />Pin-Priority: 991<br /><br />Package: php5-odbc<br />Pin: version 5.2.10</em><br />Pin-Priority: 991<br /><br />Package: php5-pgsql<br />Pin: version 5.2.10<em><br />Pin-Priority: 991<br /><br />Package: php5-pspell<br />Pin: version 5.2.10</em><br />Pin-Priority: 991<br /><br />Package: php5-recode<br />Pin: version 5.2.10<em><br />Pin-Priority: 991<br /><br />Package: php5-snmp<br />Pin: version 5.2.10</em><br />Pin-Priority: 991<br /><br />Package: php5-sqlite<br />Pin: version 5.2.10<em><br />Pin-Priority: 991<br /><br />Package: php5-sybase<br />Pin: version 5.2.10</em><br />Pin-Priority: 991<br /><br />Package: php5-tidy<br />Pin: version 5.2.10<em><br />Pin-Priority: 991<br /><br />Package: php5-xmlrpc<br />Pin: version 5.2.10</em><br />Pin-Priority: 991<br /><br />Package: php5-xsl<br />Pin: version 5.2.10<em><br />Pin-Priority: 991<br /><br />Package: php5-mcrypt<br />Pin: version 5.2.6</em><br />Pin-Priority: 991<br /><br />Package: php5-imap<br />Pin: version 5.2.6*<br />Pin-Priority: 991</code></div></p>
+
+<p>Then proceed Aegir install as explained at <a href="../../../../../installing/debian/index.html" title="http://community.aegirproject.org/installing/debian">http://community.aegirproject.org/installing/debian</a></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-394.html?destination=node%2F646%23comment-form">Login</a> or <a href="../../../../../user/register/index-394.html?destination=node%2F646%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/646/revisions/1817/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:55 GMT -->
+</html>

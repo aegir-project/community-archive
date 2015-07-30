@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/using-git-manage-aegir-and-custom-module?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 19:59:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Using Git to Manage Aegir and Custom Module  | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1068" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/km/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="km&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/km/index.html" class="username" title="View user profile.">km</a></div><div class='date'>7:26pm Feb 13, 2012</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Using Git to Manage Aegir and Custom Module </a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_83 first"><a href="../../category/keywords/custom-modules/index.html" rel="tag" title="">custom modules</a></li>
+<li class="taxonomy_term_82"><a href="../../category/keywords/git/index.html" rel="tag" title="">git</a></li>
+<li class="taxonomy_term_84 last"><a href="../../category/keywords/scm/index.html" rel="tag" title="">scm</a></li>
+</ul></div><p>We have written a custom Aegir module and are interested in maintaining it in Git.</p>
+
+<p>I am trying to figure out the best way to do this:</p>
+
+<p>[1] Should we have only the module's code in git and pull from that every time after we update Aegir?</p>
+
+<p>Pros: Maintain one component, and rely on the Aegir site for Aegir updates
+Cons: Updating Aegir might (will?) wipe out custom module</p>
+
+<p>... or ...</p>
+
+<p>[2] Should we put the contents of the hostmaster-6.x-1.x directory (with the module) into the repo along with the module's code?</p>
+
+<p>Pros: All of Aegir is in one place as a package 
+Cons: We have to update the repo with Aegir every time there is an update
+Cons(?): We have three instances of Aegir (Dev, Test, Live) with three different sites</p>
+
+<p>Dev: /var/aegir/hostmaster-6.x-1.6/sites/dev_host
+Test: /var/aegir/hostmaster-6.x-1.6/sites/test_host 
+Live: /var/aegir/hostmaster-6.x-1.6/sites/live_host</p>
+
+<p>which we will have to exclude in the git repo ... ?</p>
+
+<p>Any ideas on how to best approach this?</p>
+
+<p>Many thanks!</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-466.html?destination=node%2F1068%23comment-form">Login</a> or <a href="../../user/register/index-466.html?destination=node%2F1068%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/using-git-manage-aegir-and-custom-module?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 19:59:03 GMT -->
+</html>

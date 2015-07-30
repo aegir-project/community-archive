@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/cloning-works-migrate-doesnt?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 19:07:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Cloning works, but migrate doesn&#039;t | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1306" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/siliconmeadow/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-98/index.jpg" alt="siliconmeadow&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/siliconmeadow/index.html" class="username" title="View user profile.">siliconmeadow</a></div><div class='date'>7:42pm Apr 14, 2012</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Cloning works, but migrate doesn&#039;t</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_103 first"><a href="../../category/keywords/cck/index.html" rel="tag" title="">cck</a></li>
+<li class="taxonomy_term_71"><a href="../../category/keywords/clone/index.html" rel="tag" title="">clone</a></li>
+<li class="taxonomy_term_104"><a href="../../category/keywords/d6/index.html" rel="tag" title="">d6</a></li>
+<li class="taxonomy_term_13 last"><a href="../../taxonomy/term/13/index.html" rel="tag" title="">migrate</a></li>
+</ul></div><p>My main site has 60k nodes, loads of contrib and custom modules, and four features. When I try to migrate it to a new platform, it has loads of errors with content types saying:</p>
+
+<p><div class="codeblock"><code>WD php: Table &#039;qubedevaroqcom_0.node_field_instance&#039; doesn&#039;t exist query:<br />SELECT * FROM node_field_instance nfi<br />LEFT JOIN node_field nf ON nf.field_name = nfi.field_name<br />WHERE nf.active = 1 AND nfi.widget_active = 1<br />in /var/aegir/platforms/20120411_qube_a/sites/all/modules/contrib/cck/content.install on line 187.</code></div>
+Eventually, there are three task lines</p>
+
+<ol><li>Finished performing updates</li>
+<li>Command dispatch complete</li>
+<li>Peak memory usage was 50.25 MB</li></ol>
+
+<p>Followed by the trusty <code>Drush was not able to start (bootstrap) the Drupal database and could not bootstrap drupal after updatedb</code>.</p>
+
+<p>This error message has a long history, some of which is here: <a href="https://drupal.org/node/486590" title="https://drupal.org/node/486590">https://drupal.org/node/486590</a></p>
+
+<p>If I clone the site, however, it works fine.</p>
+
+<p>The platform upgrade has all the same modules (and versions of them). The the only difference in platforms is that the old one is running Drupal 6.20 and the new platform is running 6.25.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-438.html?destination=node%2F1306%23comment-form">Login</a> or <a href="../../user/register/index-438.html?destination=node%2F1306%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/cloning-works-migrate-doesnt?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 19:07:28 GMT -->
+</html>

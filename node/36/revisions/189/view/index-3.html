@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/36/revisions/189/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:19:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../developing/architecture/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../../architecture/aegir-architecture/index.html" />
+<link rel="prev" href="../../../../../developing/architecture/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../../architecture/aegir-architecture/index.html" />
+<link rel="prev" href="../../../../../developing/architecture/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../../architecture/aegir-architecture/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Aegir design and terminology from Wed, 11/03/2010 - 23:27 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-36" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Aegir design and terminology</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-36'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 11/03/2010 - 23:27</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><span class='diff-added'></span><p><span class='diff-added'>@TODO - this document is out of date and needs updating.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>This page documents all the different terms used when referring to components of the Hostmaster system, and how the different entities relate to each other.</span></p><span class='diff-added'>
+
+</span><h4><span class='diff-added'>Front End</span></h4><span class='diff-added'>
+
+</span><p><span class='diff-added'>The user interface used to administrate your sites. The front end is provided by the Hostmaster install profile, and the Hosting contributed module. It defines a complete Drupal based data model for managing the various aspects of your installation.</span></p><span class='diff-added'>
+
+</span><h4><span class='diff-added'>Entities</span></h4><span class='diff-added'>
+
+</span><p><span class='diff-added'>These entities are used primarily in the front end to manage the configuration and data. Upon calling the back end, the system breaks
+down the properties of these entities to be passed as options for the command line, so the back end only has a flat data structure to
+work with. During this process, all relationships are automatically retrieved, making it a one step process for the developer.</span></p><span class='diff-added'>
+
+</span><dl><span class='diff-added'>
+</span><dt><span class='diff-added'></span><a name='glossary-client'><span class='diff-added'></span></a><span class='diff-added'>Client</span></dt><span class='diff-added'></span><dd><span class='diff-added'></span><strong><span class='diff-added'>The person or group that runs the site.</span></strong><span class='diff-added'> 
+                This information is usually required for billing and access purposes, to assure
+                that only certain people are able to view the information for sites they run. 
+                If you do not intend on having more than one client access the system, 
+                you will not need to create any additional clients for your purposes.</span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'></span><a name='glossary-site'><span class='diff-added'></span></a><span class='diff-added'>Site</span></dt><span class='diff-added'></span><dd><span class='diff-added'></span><strong><span class='diff-added'>An instance of a hosted site.</span></strong><span class='diff-added'>
+                It contains information relating to the site, most notably the domain name, database server 
+                and platform it is being published on. A site may also have several aliases for additional
+                domains the site needs to be accessible on.</span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'></span><a name='glossary-task'><span class='diff-added'></span></a><span class='diff-added'>Task</span></dt><span class='diff-added'></span><dd><span class='diff-added'></span><strong><span class='diff-added'>The mechanism whereby Hostmaster keeps track of all changes that occur to the system.</span></strong><span class='diff-added'>
+                Each task acts as a command for the back end, and contains a full log of all changes that have occurred.
+                If a task should fail, the administrator will be notified with an explanation of exactly what went wrong,
+                and how to fix it.</span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'></span><a name='glossary-platform'><span class='diff-added'></span></a><span class='diff-added'>Platform</span></dt><span class='diff-added'></span><dd><span class='diff-added'></span><strong><span class='diff-added'>The file system location on a specific web server on which to publish sites.</span></strong><span class='diff-added'>
+                Multiple platforms can co-exist on the same web server, and need to do so for
+                upgrades to be managed, as this is accomplished by moving the site to a platform
+                hosting an updated release.
+                Platforms are most commonly built for specific releases of Drupal.</span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'></span><a name='glossary-server'><span class='diff-added'></span></a><span class='diff-added'>Server</span></dt><span class='diff-added'></span><dd><span class='diff-added'></span><strong><span class='diff-added'>The server that provides various services.</span></strong><span class='diff-added'>
+
+</span><dt><span class='diff-added'></span><a name='glossary-service'><span class='diff-added'></span></a><span class='diff-added'>Service</span></dt><span class='diff-added'></span><dd><span class='diff-added'></span><strong><span class='diff-added'>The service that runs on the server.</span></strong><span class='diff-added'> This might be HTTP or a Database server.
+                Each web server hosts one or more platforms, which act as publishing points for the hosted sites.
+                If you are not intending to use Hostmaster in a distributed fashion, you will not need to create
+                additional web servers for your purposes.
+
+                Most web servers and database servers are on the same machine, but for performance reasons 
+                external database servers might be required. It is not uncommon for one database server
+                to be shared amongst all site instances.
+                If you are not intending to use an external database server, or multiple database servers, you
+                will not need to create any additional database servers for your purposes.</span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'></span><a name='glossary-service_type'><span class='diff-added'></span></a><span class='diff-added'>Service type</span></dt><span class='diff-added'></span><dd><span class='diff-added'></span><strong><span class='diff-added'>The type of service that runs on the server.</span></strong><span class='diff-added'> In the example of 'HTTP' as a service, a service *type* is Apache or Nginx, for example. MySQL is a *type* of service 'Database'.</span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'></span><a name='glossary-package'><span class='diff-added'></span></a><span class='diff-added'>Package</span></dt><span class='diff-added'></span><dd><span class='diff-added'></span><strong><span class='diff-added'>An installable component for a site.</span></strong><span class='diff-added'>
+  Hostmaster keeps tracks of all the modules, themes and install profiles installed across your entire network.
+  These packages most commonly link to their project on drupal.org, but might not in the case of custom modules.
+  Users are not able to create nodes of this type, as they are generated automatically during verify and sync tasks.
+</span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'></span><a name='glossary-package_release'><span class='diff-added'></span></a><span class='diff-added'>Package Release</span></dt><span class='diff-added'></span><dd><span class='diff-added'></span><strong><span class='diff-added'>The release of a specific package.</span></strong><span class='diff-added'>
+  Each package on your network has at least one installed release, and each platform (including Drupal itself) may
+  have several releases installed across your network.
+</span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'></span><a name='glossary-db_server'><span class='diff-added'></span></a><span class='diff-added'>Package Instance</span></dt><span class='diff-added'></span><dd><span class='diff-added'></span><strong><span class='diff-added'>Where a package release has been installed.</span></strong><span class='diff-added'>
+  A package release may be installed in multiple places on a platform, and sites may have access to multiple versions of packages.
+  This entity also tracks which modules are enabled, and what version of the schema (if any) they have installed.
+</span></dd><span class='diff-added'>
+
+</span></dd><span class='diff-added'></span></dl><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><span class='diff-added'><img src="http://groups.drupal.org/files/HostmasterERD3.png" /></span><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><h4><span class='diff-added'>Task types</span></h4><span class='diff-added'>
+
+</span><p><span class='diff-added'>These are "hosting commands" that the server can accomplish. These are mapped to back end commands by the task queue processor.</span></p><span class='diff-added'>
+
+</span><dl><span class='diff-added'>
+
+</span><dt><span class='diff-added'>Verify platform</span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>Verify that a platform is correctly installed. Automatically created when new platforms are added, to ensure that they are capable of having new sites installed on them. Operates on: </span><strong><span class='diff-added'>platforms</span></strong><span class='diff-added'></span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'>Import sites</span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>Import existing sites onto a platform.  Operates on: </span><strong><span class='diff-added'>platforms</span></strong><span class='diff-added'></span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'>Install site</span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>Install a new site. This is automatically generated when a site node is created.  Operates on: </span><strong><span class='diff-added'>sites</span></strong><span class='diff-added'></span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'>Sync site</span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>Synchronize changes to the site record with the back end. Automatically generated on editing of the site node.  Operates on: </span><strong><span class='diff-added'>sites</span></strong><span class='diff-added'></span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'>Backup site</span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>Generate a backup of an existing site. This backup contains everything needed to run the site.  Operates on: </span><strong><span class='diff-added'>sites</span></strong><span class='diff-added'></span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'>Restore backup</span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>Restore a site to a previous backed up version. Operates on: </span><strong><span class='diff-added'>sites</span></strong><span class='diff-added'></span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'>Disable site</span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>Disable a running site. This is commonly used in the case of non-payment from clients. Operates on: </span><strong><span class='diff-added'>sites</span></strong><span class='diff-added'></span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'>Enable site</span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>Enable a disabled site. The opposite of Disable. Operates on: </span><strong><span class='diff-added'>sites</span></strong><span class='diff-added'></span></dd><span class='diff-added'>
+
+</span></dl><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><strong><span class='diff-added'>This is an incomplete list, and will be updated as more tasks are added</span></strong><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><h4><span class='diff-added'>Queues</span></h4><span class='diff-added'>
+
+</span><p><span class='diff-added'>The front end uses and maintains several queues, which are then processed through the </span><code><span class='diff-added'>drush.php hosting dispatch</span></code><span class='diff-added'> command.
+More queues can be added by optional contributed modules, and are often used to provide regularly scheduled back end commands, 
+such as backing up sites.</span></p><span class='diff-added'>
+
+</span><dl><span class='diff-added'>
+</span><dt><span class='diff-added'>Task Queue</span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>The primary and most important queue. Whenever a change is made to the data set, the front end creates a "Task" node. These task relate to such things as installing new sites, regenerating the configuration files of sites, verifying that a platform has been correctly configured and importing existing sites on a newly added platform.</span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'>Cron Queue</span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>This queue is used to manage the regular execution of the cron process required by most sites. It is configurable with a frequency you want all the sites to be cronned within. This is commonly 1 hour, but might be higher or lower. Higher frequency will cause higher system load. This command will iterate through all enabled sites, and batch the cron calls, based on how many sites are available, and how frequently it is running.</span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'>Backup Queue</span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>This queue operates in the same way as the cron queue, in that it iterates through all installed sites, based on a configurable frequency. This executes the same functionality as requesting a site backup through the user interface. You are able to revert back 
+to a previous backup of your sites.</span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'>Statistics Queue</span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>This queue operates on the same mechanism as the cron queue, and alows you to retrieve statistics of your installed sites. This will retrieve such metrics as number of registered and active users, and number of posts / comments, which will then be viewable on the front end.</span></dd><span class='diff-added'>
+</span></dl><span class='diff-added'>
+
+</span><h4><span class='diff-added'>Back End</span></h4><span class='diff-added'>
+
+</span><p><span class='diff-added'>The back end is a command line interface provided by the Provisioning Framework, of all the tasks it is capable of performing.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>It is designed to operate separately from the front end, so that you can have multiple back ends on one or more servers.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>The back end handles the server level configuration of the system, such as creating new databases and virtual host records and
+restarting the apache process for new installations to take effect.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>When the queues are processed by the front end, these are turned into calls to the back end, for whichever server they happen
+to be on. The back end communicates to the front end through a very simple mechanism, whereby it returns a serialized string containing state information and log messages / error return codes.</span></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-421.html?destination=node%2F36%23comment-form">Login</a> or <a href="../../../../../user/register/index-421.html?destination=node%2F36%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/36/revisions/189/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:19:42 GMT -->
+</html>

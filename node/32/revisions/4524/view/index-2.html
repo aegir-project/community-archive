@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/32/revisions/4524/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:43:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../546/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../debian/index.html" />
+<link rel="prev" href="../../../../546/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../debian/index.html" />
+<link rel="prev" href="../../../../546/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../debian/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Release process from Fri, 02/08/2013 - 20:22 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-32" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/release-process/index.html">Release process</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first last"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+</ul></div><div id='diff-inline-32'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 02/08/2013 - 20:22</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>This page aims to document our release process. It documents the release cycle, but also the steps required to make a release.</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#The_release_cycle"><span class="toc-number">1. </span>The release cycle</a></li>
+	<li class="toc-level-1"><a href="#Steps_for_a_release"><span class="toc-number">2. </span>Steps for a release</a>
+<ol>
+	<li class="toc-level-2"><a href="#Make_sure_Jenkins_is_all_green"><span class="toc-number">2.1. </span>Make sure Jenkins is all green</a></li>
+	<li class="toc-level-2"><a href="#Generating_the_release_notes"><span class="toc-number">2.2. </span>Generating the release notes</a></li>
+	<li class="toc-level-2"><a href="#Running_the_release.sh_script"><span class="toc-number">2.3. </span>Running the release.sh script</a>
+<ol>
+	<li class="toc-level-3"><a href="#Optional:_new_Eldir_release"><span class="toc-number">2.3.1. </span>Optional: new Eldir release</a></li>
+</ol>
+</li>
+	<li class="toc-level-2"><a href="#Test_the_manual_install_in_Jenkins"><span class="toc-number">2.4. </span>Test the manual install in Jenkins</a></li>
+	<li class="toc-level-2"><a href="#Build_the_Debian_packages"><span class="toc-number">2.5. </span>Build the Debian packages</a></li>
+	<li class="toc-level-2"><a href="#Test_the_upgrade_in_Jenkins"><span class="toc-number">2.6. </span>Test the upgrade in Jenkins</a></li>
+	<li class="toc-level-2"><a href="#Creating_release_nodes_on_Drupal.org"><span class="toc-number">2.7. </span>Creating release nodes on Drupal.org</a></li>
+	<li class="toc-level-2"><a href="#Build_the_release_in_Jenkins_again"><span class="toc-number">2.8. </span>Build the release in Jenkins again</a></li>
+	<li class="toc-level-2"><a href="#Publish_the_Debian_packages"><span class="toc-number">2.9. </span>Publish the Debian packages</a></li>
+	<li class="toc-level-2"><a href="#Publish_the_release_notes_widely"><span class="toc-number">2.10. </span>Publish the release notes widely</a></li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+
+<h1 id="The_release_cycle">1. The release cycle</h1>
+
+<p>In general, each major Aegir release comprises a simultaneous release of all the modules that are part of the project. We generally go through several testing releases (alphas, betas &amp; RCs) before doing the first stable release on a branch.</p>
+
+<ul>
+<li>First an <strong>alpha</strong> is released to test new functionalities and to accomplish the goals decided in the <a href="../../../../35/index.html">Project Roadmap</a> for that major version. Example: <code>0.4-alpha1</code>, <a href="../../../../../0/index-4.html"><code>0.4-alpha15</code></a></li>
+<li>When we have covered most of the functionalities outlined in the <a href="../../../../../roadmap/index.html">roadmap</a>, we push out <strong>beta releases</strong> until no more critical issues show up. This is generally considered a <em>soft feature freeze</em>. Example: <a href="../../../../../0/index-3.html"><code>0.4-beta1</code></a></li>
+<li>Then we go into <em>full feature freeze</em> and release a <strong>first release candidate</strong> (RC). Then a stable release branch is created, and the development branch is kept opened for development for the next stable release. This is generally considered a <em>soft API freeze</em>. Release candidates are made as long as critical bugs are found. Example: <a href="../../../../../0/index.html"><code>0.4-rc1</code></a>, <a href="../../../../360/index.html">freeze announcement</a></li>
+<li>Once the development branch has no known critical bugs, the <strong>stable release</strong> is announced. From there on only critical fixes (security, critical performance and critical bugfixes) are committed to the stable branch, and stable releases are published (without alpha/beta/RC) directly on the stable branch. The stable branch is in <strong>full API freeze</strong>. New features are generally committed to the development branch.</li>
+</ul>
+
+<p>See also <a href="../../../../../content/branch-and-tagging-conventions/index.html">the tag and branch naming convention</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Steps_for_a_release">2. Steps for a release</h1>
+
+<p>For the specifics of release naming conventions and the cycle, see <a href="../../../../187/index.html">the branch naming convention</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Make_sure_Jenkins_is_all_green">2.1. Make sure Jenkins is all green</h2>
+
+<p>Look into <a href="http://ci.aegirproject.org/">Jenkins</a> to see if all tasks have been performed without errors since the last commit. If there is an error, fix it before the release.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Generating_the_release_notes">2.2. Generating the release notes</h2>
+
+<p>We build complete release notes for every release. Those are made up of a summary of the release, an outline of key changes, of known issues, install and upgrade instructions and a full list of bugfixes and new features.</p>
+
+<p>We have a handy bookmarklet that takes the list of issues and build a release-notes-ready list:</p>
+
+<p><div class="codeblock"><code>javascript:(function(){x%20=%20open().document;$(&quot;.views-field-title a&quot;).each(%20function()%20{%20x.write(&#039;* [&#039; + $(this).attr(&#039;href&#039;).replace(/\/node\//, &#039;#&#039;) + &#039;: &#039; + $(this).text()+&#039;](http://drupal.org&#039;+$(this).attr(&#039;href&#039;)+ &#039;)&lt;br%20/&gt;&#039;)%20})})()</code></div></p>
+
+<p>The developers then proceed to format/edit the list of fixes as well as list other significant information/changes for this release. These notes end up becoming the Release Notes for the release, which are also entered in the <code>debian/changelog</code> file by the script below.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Running_the_release.sh_script">2.3. Running the release.sh script</h2>
+
+<p>Each time we make a new release, we run a script called <code>release.sh</code> in provision.</p>
+
+<p>This script should only be used by the core dev team when doing an official release. If you are not one of those people, you probably shouldn't be running this.</p>
+
+<p>This script does all the 'hard' work in that it doesn't forget all the very many places to edit version numbers etc of relevant documentation and other scripts. This includes install.sh.txt and upgrade.sh.txt.</p>
+
+<p>Paraphrasing from the script itself:</p>
+
+<p><div class="codeblock"><code>The following operations will be done:<br /> 0. prompt you for a debian/changelog entry<br /> 1. change the makefile to download tarball<br /> 2. change the upgrade.sh.txt version<br /> 3. display the resulting diff<br /> 4. commit those changes to git<br /> 5. lay down the tag<br /> 6. revert the commit<br /> 7. (optionally) push those changes<br /><br />The operation can be aborted before step 7. Don&#039;t forget that as<br />long as changes are not pushed upstream, this can all be reverted (see<br />git-reset(1) and git-revert(1) ).</code></div></p>
+
+<p>So in short, this sums up as:</p>
+
+<p><div class="codeblock"><code>cd provision<br />sh release.sh 1.7<br />cd ../hostmaster<br />git tag 6.x-1.7<br />git push origin 6.x-1.7</code></div></p>
+
+<p>Notice how we just provide the Aegir release number (<code>1.7</code>), not the Drupal branch (<code>6.x</code>), which is hardcoded in the script to remove potential confusion.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Optional:_new_Eldir_release">2.3.1. Optional: new Eldir release</h3>
+
+<p>If we do a major release (say a point zero release), we may want to make a new release of the theme (<a href="https://drupal.org/project/eldir">Eldir</a>). This can also be performed if there enough new changes on the theme to warrant a new release on its own.</p>
+
+<p>To do a new release of Eldir:</p>
+
+<ol>
+<li>tag and push the tag</li>
+<li>update the version to fetch in hostmaster.make</li>
+<li><a href="https://drupal.org/node/add/project_release/452774">create a release node</a> for Eldir</li>
+</ol>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Test_the_manual_install_in_Jenkins">2.4. Test the manual install in Jenkins</h2>
+
+<p>Before making a full release, test the release in Jenkins. To do so, start a build of the  launch the <a href="http://ci.aegirproject.org/job/S_aegir_6.x-1.x_install/">S_aegir_6.x-1.x_install job</a> with the following parameters:</p>
+
+<ul>
+<li>the right release as the <code>AEGIR_VERSION</code> parameter</li>
+<li>the <code>DRUSH_VERSION</code> to match what is required for this release.</li><span class='diff-deleted'>
+</span><li><span class='diff-deleted'>'git'</span><span class='diff-deleted'> </span><span class='diff-deleted'>as</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'></span><code><span class='diff-deleted'>AEGIR_FETCH_MODE</span></code><span class='diff-deleted'></span></li>
+</ul>
+
+<p>If the build fails, delete the remote tags (using <code>git push origin :6.x-1.7</code>, for example), fix the bugs and start again.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Build_the_Debian_packages">2.5. Build the Debian packages</h2>
+
+<p>Build the package and upload to <a href="http://debian.aegirproject.org/" title="http://debian.aegirproject.org/">http://debian.aegirproject.org/</a>. Jenkins can build a Debian package for you with <a href="http://ci.aegirproject.org/job/S_aegir-debian-official/">the S_aegir-debian-official job</a>.</p>
+
+<p>If you need to move the tags again, you will need to clear the testing archive using the <a href="http://ci.aegirproject.org/job/R clear repo/">R clear repo job</a>, with the testing argument.</p>
+
+<p>You can also build the package yourself as explained in those <a href="../../../../543/index.html">detailed instructions</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Test_the_upgrade_in_Jenkins">2.6. Test the upgrade in Jenkins</h2>
+
+<p>Once both of those taska have executed successfully, you can test the upgrade of the Debian packages by running the following Jenkins job:</p>
+
+<p><a href="http://ci.aegirproject.org/view/Upgrades/job/U aegir 6.x-1.x deb upgrade/" title="http://ci.aegirproject.org/view/Upgrades/job/U%20aegir%206.x-1.x%20deb%20upgrade/">http://ci.aegirproject.org/view/Upgrades/job/U%20aegir%206.x-1.x%20deb%2...</a></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Creating_release_nodes_on_Drupal.org">2.7. Creating release nodes on Drupal.org</h2>
+
+<p>Once the tags are pushed and release notes published, we create a release node with an excerpt of (and a link to) the release notes so that tarballs are created and issue queue versions updated.</p>
+
+<p>This needs to be done in the <a href="http://drupal.org/project/hostmaster">hostmaster</a> and <a href="http://drupal.org/project/provision">provision</a> projects on Drupal.org.</p>
+
+<p>Note: this could be <a href="http://drupal.org/node/1050618">automated</a> with the right stuff on Drupal.org.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Build_the_release_in_Jenkins_again">2.8. Build the release in Jenkins again</h2>
+
+<p>At this point, it's possible that the tarballs on Drupal.org were not created properly. We want to test the real procedure, so run a your build again, but choose 'package' as the <code>AEGIR_FETCH_MODE</code>. <a href="http://ci.aegirproject.org/job/S_aegir_6.x-1.x_install/">S_aegir_6.x-1.x_install job</a></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Publish_the_Debian_packages">2.9. Publish the Debian packages</h2>
+
+<p>Finally, when the Debian packages are tested you will need to pull them into the stable release channel:</p>
+
+<p><a href="http://ci.aegirproject.org/view/Release scripts/job/R repo pull/" title="http://ci.aegirproject.org/view/Release%20scripts/job/R%20repo%20pull/">http://ci.aegirproject.org/view/Release%20scripts/job/R%20repo%20pull/</a></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Publish_the_release_notes_widely">2.10. Publish the release notes widely</h2>
+
+<p>Once all this is done and the tarballs are generated, the release notes are published in:</p>
+
+<ul>
+<li>The <a href="../../../../66/index.html">handbook</a> (this is where the release notes live!)</li>
+<li>A link to the release notes on the <a href="../../../../../index.html">frontpage block</a></li>
+<li>An <a href="../../../../add/event/index.html">event in the calendar</a></li>
+<li>A <a href="../../../../add/discussion/index.html">discussion post</a> (don't forget to make it 'sticky' &amp; remove stickiness from the previous announcement)</li>
+<li>Update the version in the <a href="../../../../../upgrading/script/index.html">script upgrade page</a></li>
+<li>The topic of the IRC channel</li>
+<li>The aegir-announce mailing list</li>
+<li>Twitter as @aegirproject</li>
+</ul>
+
+<p>Optionally, blog posts on <a href="http://koumbit.org/">koumbit.org</a>, <a href="http://mig5.net/">mig5.net</a>, and elsewhere may go into further detail about significant changes, screencasts etc.</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-18.html?destination=node%2F32%23comment-form">Login</a> or <a href="../../../../../user/register/index-18.html?destination=node%2F32%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-18.html?destination=node%2F32%23comment-form">Login</a> or <a href="../../../../../user/register/index-18.html?destination=node%2F32%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/32/revisions/4524/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:43:43 GMT -->
+</html>

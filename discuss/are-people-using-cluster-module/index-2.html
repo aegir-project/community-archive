@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/are-people-using-cluster-module?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 16:58:18 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Are people using the cluster module? | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1034" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/anarcat/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-78/index.jpg" alt="anarcat&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a></div><div class='date'>12:54am Feb 3, 2012</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Are people using the cluster module?</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_76 first last"><a href="../../category/keywords/cluster/index.html" rel="tag" title="">cluster</a></li>
+</ul></div><p>I am in the process of writing a "lightweight" cluster module that would not require syncing files around: it would assume that your favorite sysadmin (probably you) has setup some file-sharing mechanism (NFS or else) that allows Aegir to just assume slaves have /var/aegir on hand.</p>
+
+<p>I am hesitant in extending the existing cluster module, because I need to break backwards compatibility, mostly on small things like variable names and I do not want to bother with the upgrade path.</p>
+
+<p>Right now I have named the new module 'pack' (as in "pack of wolves"), and the idea is that people would be able to migrate over the new module by changing their content types in the database and changing their aliases by hand. But if really nobody is using the current cluster code, I would just go ahead and replace it completely and don't bother with the "pack" name...</p>
+
+<p>So far, I have branched off our quiet 2.x to create the <code>dev-webpack</code> branches on both our main projects. Code is still totally untested. Comments and feedback welcome.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-323.html?destination=node%2F1034%23comment-form">Login</a> or <a href="../../user/register/index-323.html?destination=node%2F1034%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-2093"></a>
+
+
+<div  id="comment-2093" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/km/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="km&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/km/index.html" class="username" title="View user profile.">km</a></div><div class='date'>10:37pm Dec 6, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2093" class="active">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>A little to the party, but we're using the the cluster module extensively. Separation of names and functionality if still possible would benefit us when upgrading to the latest version of Aegir.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-323.html?destination=node%2F1034%23comment-form">Login</a> or <a href="../../user/register/index-323.html?destination=node%2F1034%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/are-people-using-cluster-module?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 16:58:18 GMT -->
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/2879/revisions/5545/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:13:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/release-notes/older-2x-releases/index.html" />
+<link rel="up" href="../../../../../content/release-notes/older-2x-releases/index.html" />
+<link rel="next" href="../../../../../2/index-3.html" />
+<link rel="prev" href="../../../../../content/release-notes/older-2x-releases/index.html" />
+<link rel="up" href="../../../../../content/release-notes/older-2x-releases/index.html" />
+<link rel="next" href="../../../../../2/index-3.html" />
+<link rel="prev" href="../../../../../content/release-notes/older-2x-releases/index.html" />
+<link rel="up" href="../../../../../content/release-notes/older-2x-releases/index.html" />
+<link rel="next" href="../../../../../2/index-3.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of [DRAFT] 2.1 release notes from Wed, 04/23/2014 - 18:49 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2879" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../2/index-2.html">[DRAFT] 2.1 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_4 first"><a href="../../../../../taxonomy/term/4/index.html" rel="tag" title="This level is for users who have access to only their sites and not able to manage all Aegir features, accounts or the server/system.">Client</a></li>
+<li class="taxonomy_term_27"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_3"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-2879'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 04/23/2014 - 18:49</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>The Aegir team is proud to announce the second release in the stable 2.x release branch! This release ships with... Everyone is encouraged to upgrade.</p>
+
+<p>But first, here's a word from Antoine Beaupré:</p>
+
+<blockquote>
+  <p>This latest release of the Aegir project will be the last one for me as a release manager, as I will be stepping down from the leadership position I have filled in the 7 years of involvement in this amazing project. I will continue to contribute to the project, to a lesser extent. I will remain available, through <a href="http://koumbit.org/">Koumbit</a>, to provide high-level consulting work for Aegir. We can also now welcome <a href="http://praxis.coop/">Praxis Labs Coop</a> as a new consulting partner of the Aegir project. Praxis will help to finance ongoing Aegir development by subsidizing part of my salary, in a similar fashion to how Omega8.cc had in the past.</p>
+  
+  <p>Working with the Aegir project was a huge challenge, both from a technical perspective, but also from a human standpoint, as it is a large and complex project that may seem daunting for new users. But with regular releases and continuous support in the issue queue, I think we have been able to foster a great community of contributors that goes beyond what a single person can do, as Adrian proved when he left the project with the <a href="../../../../../1/index-12.html">1.0 release</a> in 2011. Christopher (ergonlogic) and other contributors have shown they are in a good position to take over that leadership role, and will do so from now on.</p>
+  
+  <p>Now it is my turn to move on, and I am quite proud of what I leave behind. This project allowed me to travel around the world, meet incredible people and learn a lot about hosting and provisioning. It is however time for me to move on. I have been involved with the Drupal community for over 13 years, and things, to put it lightly, have changed. PHP is attempting to become a real programming language, something that I didn't believe could or should happen, and I wish to move on to other paradigms. Python and Haskell are waiting for me around this turn in the road, and even Perl and shell scripting look awesome in comparison to those <a href="http://me.veekun.com/blog/2012/04/09/php-a-fractal-of-bad-design/">dreaded PHP years</a>. Besides, since Aegir started, lots of configuration management systems have popped up that we can leverage to host way more than PHP and Drupal: Docker, Chef, Puppet hold lots of promise for those of us who dare to get out of the NIH syndrome. Hopefully, that energy will be reusable in the Aegir project as we head towards Aegir 4!</p>
+</blockquote>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Installing_and_upgrading"><span class="toc-number">1. </span>Installing and upgrading</a></li>
+	<li class="toc-level-1"><a href="#Need_help"><span class="toc-number">2. </span>Need help?</a></li>
+	<li class="toc-level-1"><a href="#Known_issues"><span class="toc-number">3. </span>Known issues</a></li>
+	<li class="toc-level-1"><a href="#Features"><span class="toc-number">4. </span>Features</a></li>
+	<li class="toc-level-1"><a href="#Bug_fixes"><span class="toc-number">5.<span class='diff-deleted'> </span><span class='diff-deleted'></span></span><span class='diff-deleted'>Security</span><span class='diff-deleted'> </span><span class='diff-deleted'>fixes</span></a><span class='diff-deleted'></span></li><span class='diff-deleted'>
+	</span><li class="toc-level-1"><span class='diff-deleted'></span><a href="#Bug_fixes"><span class='diff-deleted'></span><span class="toc-number"><span class='diff-deleted'>6.</span> </span>Bug fixes</a></li>
+</ol>
+</div>
+</div>
+
+<h2 id="Installing_and_upgrading">1. Installing and upgrading</h2>
+
+<p>The canonical source of installation documentation is on the community site at:</p>
+
+<pre><code>http://community.aegirproject.org/installing
+</code></pre>
+
+<p>In a similar fashion, the upgrade documentation is at:</p>
+
+<pre><code>http://community.aegirproject.org/upgrading
+</code></pre>
+
+<p>Within those sections, you'll find step-by-step instructions for performing both <a href="../../../../../upgrading/manual/index.html">manual</a> and <a href="../../../../../upgrading/script/index.html">automatic</a> upgrade processes.</p>
+
+<p>It is still imperative that you read the the <a href="../../../../../upgrading/path/index.html">upgrade path and version-specific information</a> and follow all version-specific upgrade instructions before trying to run the upgrade script or manual upgrade. This especially applies to users upgrading from releases prior to 0.4-alpha8, including 0.3.</p>
+
+<p>For users coming from the 0.4 betas or rc releases, there are unlikely to be any version-specific manual steps required to upgrade, but you should make a habit of reading them anyway just to make sure. Noone likes a nasty surprise!</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Need_help">2. Need help?</h2>
+
+<p>If you struggle to install or upgrade your Aegir system, you have a number of options available to you for getting help.</p>
+
+<p>Consult this page for more information: <a href="../../../../../help/index.html" title="http://community.aegirproject.org/help">http://community.aegirproject.org/help</a></p>
+
+<p>Thanks to our awesome <a href="../../../../../index.html">community</a> for their help, support and encouragement as always! Enjoy the new release :)</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Known_issues">3. Known issues</h2>
+
+<p>to do</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Features">4. Features</h2>
+
+<ul><span class='diff-changed'>
+</span><li><span class='diff-changed'>Apache 2.4 is now supported in the 1.x branch, see </span><a href="https://drupal.org/node/2153929"><span class='diff-changed'>#2153929</span></a></div><span class='diff-deleted'></span><h2 id="Security_fixes"><span class='diff-deleted'>5.</span><span class='diff-deleted'> </span><span class='diff-changed'>and </span><a href="https://drupal.org/node/2155445"><span class='diff-changed'>#2155445</span></a><span class='diff-changed'></span></li>
+<li><span class='diff-changed'>updated core to Drupal 6.31</span></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Bug_fixes"><span class='diff-changed'>5.</span> Bug fixes</h2>
+
+<ul>
+<li><span class='diff-changed'></span><a href="https://drupal.org/node/2157785"><span class='diff-changed'>#2157785</span></a><span class='diff-changed'> by helmo: Deploy_7 code lacks functionality from D6 code</span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="https://drupal.org/node/2169025"><span class='diff-changed'>#2169025</span></a><span class='diff-changed'> by gboudrias: Fix non-gzipped backups can't be restored</span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'></span><a href="https://drupal.org/node/2213387"><span class='diff-changed'>#2213387</span></a><span class='diff-changed'> by Chris Moates: Fix alias handling when using subdirs support</span></li>
+</ul><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-157.html?destination=node%2F2879%23comment-form">Login</a> or <a href="../../../../../user/register/index-157.html?destination=node%2F2879%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-157.html?destination=node%2F2879%23comment-form">Login</a> or <a href="../../../../../user/register/index-157.html?destination=node%2F2879%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/2879/revisions/5545/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:13:24 GMT -->
+</html>

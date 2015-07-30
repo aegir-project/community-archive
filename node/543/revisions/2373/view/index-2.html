@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/543/revisions/2373/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:09:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/release-process/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../roadmap/1/index.html" />
+<link rel="prev" href="../../../../../content/release-process/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../roadmap/1/index.html" />
+<link rel="prev" href="../../../../../content/release-process/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../roadmap/1/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Building and working with the debian packages from Thu, 09/29/2011 - 19:38 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-543" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../debian/index.html">Building and working with the debian packages</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first last"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+</ul></div><div id='diff-inline-543'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a> on 09/29/2011 - 19:38</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Debian is one of the main supported operating systems in Aegir. For other systems, see <a href="../../../../../handbook/operating-system-support/index.html">Operating System Support</a>. See also the following instructions:</p>
+
+<ul>
+<li><a href="../../../../../installing/debian/index.html">Install using Debian packages</a></li>
+<li><a href="../../../../../upgrading/debian/index.html">Upgrade using Debian packages</a></li>
+</ul>
+
+<p>The following is aimed at developers wishing to maintain their own Debian packages or work within the packaging framework.</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Building_a_package_for_a_new_release"><span class="toc-number">1. </span>Building a package for a new release</a></li>
+	<li class="toc-level-1"><a href="#Building_a_branch_package"><span class="toc-number">2. </span>Building a branch package</a></li>
+	<li class="toc-level-1"><a href="#Installing_packages_manually"><span class="toc-number">3. </span>Installing packages manually</a></li>
+	<li class="toc-level-1"><a href="#Developing_on_Debian"><span class="toc-number">4. </span>Developing on Debian</a></li>
+	<li class="toc-level-1"><a href="#Package_versioning"><span class="toc-number">5. </span>Package versioning</a></li>
+</ol>
+</div>
+</div>
+
+<h2 id="Building_a_package_for_a_new_release">1. Building a package for a new release</h2>
+
+<p>Assuming we have just released 1.0-rc4, those instructions will merge that code into the <code>upstream</code> branch (which is used to create the Debian diff) and then merged again in the <code>debian</code> branch (where the Debian code lives). We then use <code>git-buildpackage</code> to build the package and tag it, then push those changes back in the repository.</p>
+
+<p><div class="codeblock"><code>git fetch<br />git checkout upstream<br />git rebase origin/upstream<br />git merge 6.x-1.0-rc4<br />git checkout debian<br />git rebase origin/debian<br />git merge upstream<br />dch -v 1.0~rc4-1 new upstream release<br />git-buildpackage --git-tag -kanarcat@koumbit.org<br />dput builder ../build-area/aegir-provision_1.0~rc4-1_i386.changes<br />git push<br />git push --tags</code></div></p>
+
+<p><em>Note</em>: notice how the version number is slightly different in Debian - we use the "magic" ~ separator to indicate that <code>1.0~rc4</code> is actually lower than <code>1.0</code>...</p><span class='diff-added'>
+
+</span><p><span class='diff-added'>The packages are uploaded to the "testing" repository. The idea is that this final package is tested and when confirmed as ready, it is migrated to the stable repository, using the command:</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'>sudo -i -u reprepro reprepro pull stable</span></code><span class='diff-added'></span></div><span class='diff-added'></span></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Building_a_branch_package">2. Building a branch package</h2>
+
+<p>Sometimes you want to have a test package for a given branch without going through a full release. Here how it's done.</p>
+
+<p><div class="codeblock"><code>git checkout upstream<br />git merge 6.x-1.x<br />git checkout debian<br />git merge upstream<br />git describe<br />dch -v 1.0~rc3+28-1<br />git-buildpackage --git-tag -kanarcat@koumbit.org</code></div></p>
+
+<p>This is also available in the Debian package as:</p>
+
+<p><div class="codeblock"><code>./debian/rules jenkins-build-auto</code></div></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Installing_packages_manually">3. Installing packages manually</h2>
+
+<p><div class="codeblock"><code>dpkg -i aegir-provision_1.0~rc3+g6632e6e-1_all.deb</code></div></p>
+
+<p>We also make sure our custom makefile fetches the right one from provision:</p>
+
+<p><div class="codeblock"><code>-includes[aegir] = &quot;http://drupalcode.org/project/provision.git/blob_plain/6.x-1.0-rc3:/aegir.make&quot;<br />+includes[aegir] = &quot;http://drupalcode.org/project/provision.git/blob_plain/6.x-1.x:/aegir.make&quot;</code></div></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Developing_on_Debian">4. Developing on Debian</h2>
+
+<p>To develop third party extensions to Aegir on Debian, it is recommended to install the Debian packages. If you are working on Aegir core, this could be a bit trickier since the files are not where you expect them to be and are not deployed as git repositories however.</p>
+
+<p>You can, however, copy in place a .git directory using the following:</p>
+
+<p><div class="codeblock"><code>git clone --branch=6.x-1.0-rc7 <a href="http://git.drupal.org/project/provision<br />cp" title="http://git.drupal.org/project/provision<br />cp">http://git.drupal.org/project/provision<br />cp</a> -Rp provision/.git /usr/share/drush/commands/provision/.git<br />cd /usr/share/drush/commands/provision<br />git stash</code></div></p>
+
+<p>This will bring back a bunch of files that are removed from the Debian package, so it will yield warnings on uninstall of the Debian package but it should otherwise work.</p>
+
+<p>You can do something similar with the frontend.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Package_versioning">5. Package versioning</h2>
+
+<p>The stable repository should contain the latest release. The testing repository will also contain the latest release (unless we're in the process of building a release) but could have fixes to the Debian package that are being tested. The unstable repository is automatically built from the stable branch and may be broken.</p>
+
+<p>To see what changes are done to the Debian package, see the <a href="http://drupalcode.org/project/provision.git/blob/refs/heads/debian:/debian/changelog">debian/changelog</a> which is maintained on the <a href="http://drupalcode.org/project/provision.git/shortlog/refs/heads/debian">debian branch</a>. To see which version of the package is currently available in the repository, you will unfortunately need to parse the Packages file for <a href="http://debian.koumbit.net/debian/dists/unstable/main/binary-amd64/Packages">unstable</a>, <a href="http://debian.koumbit.net/debian/dists/testing/main/binary-amd64/Packages">testing</a> or <a href="http://debian.koumbit.net/debian/dists/stable/main/binary-amd64/Packages">stable</a>.</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-81.html?destination=node%2F543%23comment-form">Login</a> or <a href="../../../../../user/register/index-81.html?destination=node%2F543%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-81.html?destination=node%2F543%23comment-form">Login</a> or <a href="../../../../../user/register/index-81.html?destination=node%2F543%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/543/revisions/2373/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:09:08 GMT -->
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/2x-redesign-notes?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:09:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>2.x redesign notes | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1561" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/anarcat/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-78/index.jpg" alt="anarcat&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a></div><div class='date'>4:06pm Jun 6, 2012</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">2.x redesign notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Multiserver_redesign"><span class="toc-number">1. </span>Multiserver redesign</a>
+<ol>
+	<li class="toc-level-2"><a href="#Task_queue"><span class="toc-number">1.1. </span>Task queue</a></li>
+	<li class="toc-level-2"><a href="#The_dispatcher"><span class="toc-number">1.2. </span>The dispatcher</a></li>
+	<li class="toc-level-2"><a href="#Multiple_queue_support"><span class="toc-number">1.3. </span>Multiple queue support</a></li>
+	<li class="toc-level-2"><a href="#Aliases_location"><span class="toc-number">1.4. </span>Aliases location</a></li>
+	<li class="toc-level-2"><a href="#The_cron_queue"><span class="toc-number">1.5. </span>The cron queue</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#The_provision_context_engine"><span class="toc-number">2. </span>The provision context engine</a>
+<ol>
+	<li class="toc-level-2"><a href="#The_limitations_of_d_thee"><span class="toc-number">2.1. </span>The limitations of d() (thee?)</a></li>
+	<li class="toc-level-2"><a href="#The_future_of_d"><span class="toc-number">2.2. </span>The future of d()</a></li>
+	<li class="toc-level-2"><a href="#The_future_of_config_file_generation"><span class="toc-number">2.3. </span>The future of config file generation</a></li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+
+<p><em>Note</em>: this document is also available in the provision source as <code>HACKING_2x.mdwn</code>.</p>
+
+<h1 id="Multiserver_redesign">1. Multiserver redesign</h1>
+
+<p>One of the things I have been thinking of doing for a while was to
+move the dispatcher to the backend and move more logic to remote
+servers. This section details my findings related to that work</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Task_queue">1.1. Task queue</h2>
+
+<p>This queue is tightly bound with the frontend. There's a complete
+'task' module, complete with a database schema, in the hosting
+package. It would be difficult if not illogical to move all that stuff
+to the provision module.</p>
+
+<p>This, in turn, makes it difficult to implement the task queue on the
+remote servers directly.</p>
+
+<p>An alternative would be to keep the task module in the frontend but
+create a skeleton implementation in the backend that would do the task
+unserialization necessary to produce the drush task.</p>
+
+<p>In other words, we would need to split the task module in two: one
+part which would write tasks to the MySQL database (by default, other
+backends could be implemented!) and another end (on the provision
+side), which would read tasks from the database.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="The_dispatcher">1.2. The dispatcher</h2>
+
+<p>The dispatcher, however, is less bound with the frontend. It uses the
+Drupal variable storage for locking itself, but that is probably not a
+blocker for moving the code to the backend.</p>
+
+<p>In fact, we could consider simply dropping all this code in favor of
+the more stable, complete and logical hosting_queued.</p>
+
+<p>Settings for the queues that are used by the dispatcher could still be
+managed by the frontend, provided we clearly specify which settings
+are applied of course. Again, those settings are specific to our MySQL
+"ghetto queue" implementation and could be extended to support other
+queuing systems.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Multiple_queue_support">1.3. Multiple queue support</h2>
+
+<p>Moving the dispatcher code to the backend would have the advantage of
+allowing that logic to be moved out of the main site, and allow to
+have multiple queues, for example one per server.</p>
+
+<p>For this, we would need to have a server column to separate the queues
+directly in the SQL tables. This, in turn, would duplicate the server
+information, which is already in the hosting_site/platform/server
+tables. In other words, maybe this information should be fetched
+through a JOIN instead.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Aliases_location">1.4. Aliases location</h2>
+
+<p>Regardless, that information is also duplicated in the drush aliases,
+which would need to be synced to remote servers anyways. One of the
+reason for the hub/spoke model is that it makes it much easier to find
+where a site is - you just look in the alias and there you are, you
+log into that server and you do your things.</p>
+
+<p>Having a queue per server would probably mean completely removing
+certain aliases, specifically the server aliases, which could mean
+problem for slave servers in the 'pack' cluster module.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="The_cron_queue">1.5. The cron queue</h2>
+
+<p>The cron queue is an odd anomaly in all this. It is the only known
+implementation of the "batch" queue (although there is talk of
+implementing a civicrm cron queue). It also happens to oddly duplicate
+and overlap the functionality of the builtin cron daemon, which it
+depends on.</p>
+
+<p>My thought is currently to <em>not</em> duplicate the functionality of cron
+(which we depend on <em>anyways</em> - we do not want to reimplement this in
+hosting_queued I believe) and instead start looking at writing cron
+jobs individually to the crontab. This could be done in the verify
+task of sites.</p>
+
+<p>Unfortunately, the crontab command doesn't feature a locking
+mechanism, which means we will have to implement our own to avoid
+overwriting changes if we ever allow some tasks to be ran in parallel.</p>
+
+<p>Nevertheless, this seems like a much simpler implementation that would
+also allow per-task cron periods.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="The_provision_context_engine">2. The provision context engine</h1>
+
+<p><strong>Otherwise known as "d(), the aliases, the contexts and the nature of
+the universe".</strong></p>
+
+<p>Anyone who has gotten into Aegir sufficiently deep will have
+encountered the Provision_Context class and the d() function. Some
+blogs were written about it to explain a little what it does, but it
+was mostly limited to how to use it, not really how to extend it.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="The_limitations_of_d_thee">2.1. The limitations of d() (thee?)</h2>
+
+<p>There are significant limitations to this framework. First off, it is
+<em>confusing</em>: no programmer I have known to get into the project have
+fully gotten their head wrapped around the idea of the provision
+contexts.</p>
+
+<p>Second, it <em>overlaps</em> with a lot of existing functionality in Drush,
+in name or in essence. The provision contexts extend the Drush aliases
+to provide automatic saving of the aliases, but also generation of
+configuration files based on templates. That is interesting in itself,
+but has never been integrated upstream and no one, as far as I know,
+ever dared to start doing this. Besides, all the work for this is done
+by provision-save command, which is mostly a stub that serialises
+drush options into an alias.</p>
+
+<p>It also overlaps, in name, with the Drush contexts, which are
+themselves confusing, as there are two things called drush
+contexts. The first one is <code>drush_get_context()</code> which is really a way
+to store static data in Drush, and should be renamed
+<code>drush_get_static()</code>. The second one <em>uses</em> the static storage to
+provide a hierarchical storage mechanism for drush options, which
+include the site/platform/etc drushrc files, the drush aliases, and so
+on.</p>
+
+<p>Third, it <em>duplicates information</em> between the context storage
+(ie. the alias), the frontend (MySQL) database <em>and</em> the generated
+config files. The latter could arguably be excused, since the
+alternative would be write write a parser for all config files we
+generate, which can be a pain in the butt. However, the duplication
+between the frontend database and the drush aliases is a real
+problem.</p>
+
+<p>The original idea behind the aliases was to be a step towards
+storing data "in the cloud", or more precisely, in a key-value storage
+system like Redis. The fact that the implementation is incomplete is
+due to the departure of our founder, and we need to take care of this
+problem for things to make sense again.</p>
+
+<p>Fourth, it <em>conflicts</em> with Drush's alias semantics. By using FQDNs as
+the alias name, we are looking for trouble. Drush aliases can be
+multiple per site, so you can have site @example with an alias
+@example.prod and @example.dev, ie. the separator for those multiple
+aliases is the dot, just like domain names.</p>
+
+<p>Aegir currently only defines one alias per site, but this could get
+really confusing, at the very least, for users coming from a Drush
+universe with a heavy use of shell aliases. Worst case, it will create
+situations where the wrong site is being used for tasks.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="The_future_of_d">2.2. The future of d()</h2>
+
+<p>(Okay I'll stop with the puns.)</p>
+
+<p>It is clear that we need to reshuffle this code. My first reflex is to
+simply scrap this and start from scratch. This could be coherent with
+the earlier thoughts on removing some aliases (the @server aliases,
+more specifically) and the reworking of the queuing system, which is
+what this all depends on in the end.</p>
+
+<p>If we can access the data stored in the MySQL database directly, we
+may not need aliases at all, or more precisely, drush aliases could be
+generated on the fly based on MySQL credentials given to the Aegir
+user (or other users!) that would give the user access to the frontend
+data.</p>
+
+<p>No need to provision-save anymore - the aliases would be loaded from
+the DB on the fly. This may also allows us to get rid of the
+"arguments" column in the hosting task table (for certain tasks like
+install at the very least), something that shouldn't be neglected.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="The_future_of_config_file_generation">2.3. The future of config file generation</h2>
+
+<p>This is the one sticky bit that is not covered and requires the
+Provision_Context class to remain. The class allows developers to
+specify configuration file templates to generate based on the context
+variables, which is very useful.</p>
+
+<p>This is something that we may want to integrate into Drush, but not in
+its current state. It would probably need to be wrapper around Drush's
+concept of aliases more tightly and more simply. This may yet mean
+just extending the current alias code with a class, as we do now,
+unfortunately (as we are building a OO framework on top of a non-OO
+tangle).</p>
+
+<p>I am still unclear as to what the next step is for the backend, but
+hopefully this will yield to some discussions and new ideas.</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-411.html?destination=node%2F1561%23comment-form">Login</a> or <a href="../../user/register/index-411.html?destination=node%2F1561%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/2x-redesign-notes?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:09:29 GMT -->
+</html>

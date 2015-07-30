@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/589/revisions/1651/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:21:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/content/developing/integrating-aegir/integrating-aegir-pureftp/index.html" />
+<link rel="up" href="../../../../../developing/index.html" />
+<link rel="next" href="../../../../../content/developing/despamming-guide/index.html" />
+<link rel="prev" href="../../../../../content/content/developing/integrating-aegir/integrating-aegir-pureftp/index.html" />
+<link rel="up" href="../../../../../developing/index.html" />
+<link rel="next" href="../../../../../content/developing/despamming-guide/index.html" />
+<link rel="prev" href="../../../../../content/content/developing/integrating-aegir/integrating-aegir-pureftp/index.html" />
+<link rel="up" href="../../../../../developing/index.html" />
+<link rel="next" href="../../../../../content/developing/despamming-guide/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Continuous Integration from Fri, 04/15/2011 - 15:44 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-589" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../developing/continuous-integration/index.html">Continuous Integration</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_25 first"><a href="../../../../../category/keywords/continuous-integration/index.html" rel="tag" title="">continuous integration</a></li>
+<li class="taxonomy_term_24"><a href="../../../../../category/keywords/developer/index.html" rel="tag" title="">developer</a></li>
+<li class="taxonomy_term_2"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+<li class="taxonomy_term_26 last"><a href="../../../../../category/keywords/testing/index.html" rel="tag" title="">testing</a></li>
+</ul></div><div id='diff-inline-589'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 04/15/2011 - 15:44</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p><strong>Testing server URL:</strong> <a href="http://jenkins.greenbeedigital.com.au:8080/" title="http://jenkins.greenbeedigital.com.au:8080">http://jenkins.greenbeedigital.com.au:8080</a></p>
+
+<p>Recently, Mig5 put together a testing server based on <a href="http://jenkins-ci.org/">Jenkins</a> (ref.: <a href="http://greenbeedigital.com.au/content/discovering-jenkins-and-increasing-productivity" title="http://greenbeedigital.com.au/content/discovering-jenkins-and-increasing-productivity">http://greenbeedigital.com.au/content/discovering-jenkins-and-increasing...</a>).</p>
+
+<p>So what? In doing so, he's produced a tool that will allow us to spin up a temporary virtual server, drag in our codebase from Drush Make, and do a test install of a site on it. This should become a routine start-to-finish test of our applications, features, modules, etc. All at the click of a button (or less, by scheduling it!)</p>
+
+<p>Currently, we have a build project that:</p>
+
+<ul>
+<li>Provisions a new VPS at Rackspace Cloud</li>
+<li>Installs Aegir</li>
+<li>Builds a Drupal 6, Drupal 7 and OpenAtrium platform using Drush Make</li>
+<li>Installs a site (with respective install profiles) on all three platforms</li>
+</ul>
+
+<p>If anything fails here, an alert will come through to #aegir on Freenode. This will help us to test the Aegir install (especially to ensure our compatibility with Drush and Drush Make releases), and to identify any regressions in our own project.</p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Every 15 minutes, Jenkins will check if there's a new commit to hostmaster and provision, and if there is, fire up a new install and test a few things to find regressions. We can also use Jenkins to test the upgrade path.</span></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-425.html?destination=node%2F589%23comment-form">Login</a> or <a href="../../../../../user/register/index-425.html?destination=node%2F589%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/589/revisions/1651/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:21:22 GMT -->
+</html>

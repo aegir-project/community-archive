@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/1297/revisions/3184/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:12:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/scrums/weekly-scrum-irc-log-2012-04-09/index.html" />
+<link rel="up" href="../../../../../scrums/index.html" />
+<link rel="next" href="../../../../../content/scrums/weekly-scrum-irc-log-2012-04-16/index.html" />
+<link rel="prev" href="../../../../../content/scrums/weekly-scrum-irc-log-2012-04-09/index.html" />
+<link rel="up" href="../../../../../scrums/index.html" />
+<link rel="next" href="../../../../../content/scrums/weekly-scrum-irc-log-2012-04-16/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Weekly Scrum IRC Log: 2012-04-12 from Fri, 04/13/2012 - 19:03 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1297" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/scrums/weekly-scrum-irc-log-2012-04-12/index.html">Weekly Scrum IRC Log: 2012-04-12</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-1297'><p><code>
+[21:01:31]    alright! i actually made it, almost on time, to the second scrum of the week
+[21:01:39]    i missed the first few weeks, and i'm meant to be the one hosting it. epic
+[21:01:50]    darthsteven: anarcat: ergonlogic: if you're around
+[21:02:04]     mig5: hello!
+[21:02:37]    i updated the python-cloudfiles installation on the jenkins server, and raised a sleep timeout limit that was causing all our jenkins builds to fail, as rackspace takes ages to build from our images these days sadly
+[21:02:55]     cool
+[21:03:07]     not cool about rackspace though
+[21:03:11]    i then suckered myself into working more on what was meant to be a trivial patch, and now has left me bewildered and confused <a href="http://drupal.org/node/1503824" title="http://drupal.org/node/1503824">http://drupal.org/node/1503824</a>
+[21:03:12]     <a href="http://drupal.org/node/1503824" title="http://drupal.org/node/1503824">http://drupal.org/node/1503824</a> =&gt; hosting_site_count() ignores disabled sites =&gt; Hostmaster (Aegir), Code, normal, needs work, 5 comments, 1 IRC mention
+[21:03:16]    like the last 20 or so patches over the last 2 years
+[21:03:24]    that's about it from me!
+[21:03:46]  * rv0 has quit (Read error: Connection reset by peer)
+[21:03:54]    some of our builds in jenkins are still broken, this seems to be related to installing deb files via dpkg, which i haven't figured out yet
+[21:04:26]    weird requirements like nfs-common, and the drush-make deb, etc.. and my attempt to fix it saw that restarting portmap or something failed. haven't had time to look at.
+[21:06:05]     sorry if I've added to your confusion in that issue
+[21:06:25]    nah it's not you. any developer would be fine with it
+[21:06:43]    iam just not made of the same stuff and never have been. i should find something i'm good at and stick with it :)
+[21:06:54]    don't have a coder brain
+[21:07:50]     okay, well the efforts are appreciated
+[21:07:54]     shall I go next?
+[21:08:06]    please!
+[21:08:17]     well, I've looked at a couple of issues in the queue
+[21:08:52]     notably: 1185690
+[21:09:10]     which is running through jenkins now
+[21:09:13]     a minor fix
+[21:09:34]     We'll release 1.8 next week
+[21:09:38]     I think
+[21:09:42]     that's it from me
+[21:09:59]    nice, thanks
+[21:11:07]    real shame that we lost data from the community site
+[21:11:14]    niccolo wrote something interesting in response to <a href="../../../../../discuss/wheres-aegir-drupalcon-denver/index.html" title="http://community.aegirproject.org/discuss/wheres-aegir-drupalcon-denver">http://community.aegirproject.org/discuss/wheres-aegir-drupalcon-denver</a>
+[21:11:36]    about how it feels like the project is sort of losing its spark, so to speak, in the wake of other beasts like pantheon
+[21:11:45]    i've been wondering about that and how we can get that spark back
+[21:12:02]     indeed
+[21:12:13]    it's probably in the eye of the beholder, of course.. some might feel it's very new and exciting and others less so
+[21:12:33]    but i don't think we ever fully recovered from the developmentseed departure
+[21:12:40]     yup
+[21:13:41]    I haven't got much to suggest, given I myself struggle with immense motivation issues. ho, hum
+[21:13:55]     I'm now working at least a day week, at work, on Aegir
+[21:14:00]    that's unreal :)
+[21:14:26]    i wanted to ask how you currently do your deployments etc
+[21:14:31]     so hoping to get some of the longer standing bugs sorted out
+[21:15:19]     and some of the more complicated bugs that would take a few hours to set up multiple servers etc.
+<code></code></code></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-136.html?destination=node%2F1297%23comment-form">Login</a> or <a href="../../../../../user/register/index-136.html?destination=node%2F1297%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-136.html?destination=node%2F1297%23comment-form">Login</a> or <a href="../../../../../user/register/index-136.html?destination=node%2F1297%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/1297/revisions/3184/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:12:23 GMT -->
+</html>

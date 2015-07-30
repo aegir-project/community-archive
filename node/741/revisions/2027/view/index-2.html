@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/741/revisions/2027/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:11:18 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../scrums/weekly-scrum-irc-log-2011-06-28/index.html" />
+<link rel="up" href="../../../../../content/scrums/archive-2011/index.html" />
+<link rel="next" href="../../../../../scrums/weekly-scrum-irc-log-2011-07-12/index.html" />
+<link rel="prev" href="../../../../../scrums/weekly-scrum-irc-log-2011-06-28/index.html" />
+<link rel="up" href="../../../../../content/scrums/archive-2011/index.html" />
+<link rel="next" href="../../../../../scrums/weekly-scrum-irc-log-2011-07-12/index.html" />
+<link rel="prev" href="../../../../../scrums/weekly-scrum-irc-log-2011-06-28/index.html" />
+<link rel="up" href="../../../../../content/scrums/archive-2011/index.html" />
+<link rel="next" href="../../../../../scrums/weekly-scrum-irc-log-2011-07-12/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Weekly Scrum IRC Log: 2011-07-05 from Tue, 07/05/2011 - 12:12 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-741" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../scrums/weekly-scrum-irc-log-2011-07-05/index.html">Weekly Scrum IRC Log: 2011-07-05</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-741'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 07/05/2011 - 12:12</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><span class='diff-added'></span><pre><span class='diff-added'>
+[22:01:04]    scrum time
+[22:01:12]    hello!
+[22:01:12]    anarcat sends his apologies for this week
+[22:01:25]    but I hear he had a good time at the drush sprint and got some good work done, so hopefully we'll hear more about that soon
+[22:02:03]    me, i once again didn't do anything.. oh, I did add to the jenkins deb install of aegir to uninstall and purge the packages before destroying
+[22:02:13]    which is a final good test of those packages
+[22:02:18]      omega8cc: i'm trying a barracuda/octopus upgrade before i try again
+[22:02:40]    i think we are well overdue for a 1.2 release, I am conscious there are a lot of patches from omega8cc for review (I think?) so we should get those in
+[22:02:53]      omega8cc: but i was having trouble replicating the site installation commands, i think there might have been some arguments i was missing?
+[22:02:55]    halcyonCorsair: please wait 15 minutes, we have scrum time
+[22:02:56]    that's it from me, over to darthsteven and omega8cc
+[22:03:27]     sure
+[22:03:52]  * Harley has joined #aegir
+[22:03:56]     I got the Jenkins deb install of aegir working
+[22:04:07]    epic
+[22:04:13]     and worked on getting notification integration with Aegir
+[22:04:26]     </span><a href="http://drupal.org/project/hosting_notifications" title="http://drupal.org/project/hosting_notifications"><span class='diff-added'>http://drupal.org/project/hosting_notifications</span></a><span class='diff-added'>
+[22:04:42]    oh nice. i saw somewhere a sandbox link but it had disappeared
+[22:04:47]     So I now get push notifications on my iPhone when Aegir tasks fail
+[22:04:51]     which is nice
+[22:04:58]     write-up coming soon
+[22:05:02]    nice. Notifo?
+[22:05:11]     that's it from me
+[22:05:25]     (using prowl, but whatever messaging module supports is possible)
+[22:05:36]    gotcha
+[22:06:23]    omega8cc, anything to add? other than 'commit my patches you bastards' :)
+[22:06:42]    ok, so I want to attack that weird critical today: </span><a href="http://drupal.org/node/1196034" title="http://drupal.org/node/1196034"><span class='diff-added'>http://drupal.org/node/1196034</span></a><span class='diff-added'> and it lock all our upgrades schedule currently, and then will submit next round of improvements to the Nginx config plus - yay! Aegir UI patches!
+[22:06:42]     </span><a href="http://drupal.org/node/1196034" title="http://drupal.org/node/1196034"><span class='diff-added'>http://drupal.org/node/1196034</span></a><span class='diff-added'> =&gt; Paths to images are broken in D7 after site clone/rename =&gt; Provision, Code, critical, needs work, 3 comments, 3 IRC mentions
+[22:07:52]    cool!
+[22:07:55]    and that is it from me, but the UI changes are long overdue and I want to share them finally
+[22:09:09]    omega8cc: i wonder if that patch of yours needs to be applied to the deploy_7.inc file?
+[22:09:13]    as opposed to deploy.inc
+[22:09:18]    but i've forgotten how it all works
+[22:09:54]    don't think it would change that result anyway
+[22:09:57]    mig5: that is exactly what I think, it misses d7 specific stuff there completely
+[22:10:04]    strange
+[22:10:08]    yeah
+[22:10:15]    anyway - anyone else got something to add to the scrum? ergonlogic?
+[22:10:25]      not directly on aegir but I posted two patches to drush_make that are useful for aegir. one that adds ability to set options in the makefile - </span><a href="http://drupal.org/node/1206340" title="http://drupal.org/node/1206340"><span class='diff-added'>http://drupal.org/node/1206340</span></a><span class='diff-added'> the other updated a patch that allows setting working-copy per project - </span><a href="http://drupal.org/node/958844" title="http://drupal.org/node/958844"><span class='diff-added'>http://drupal.org/node/958844</span></a><span class='diff-added'>
+[22:10:25]     </span><a href="http://drupal.org/node/1206340" title="http://drupal.org/node/1206340"><span class='diff-added'>http://drupal.org/node/1206340</span></a><span class='diff-added'> =&gt; introduce an options array in the root level of the makefile =&gt; Drush Make, Code, normal, needs review, 0 comments, 1 IRC mention
+[22:10:26]     </span><a href="http://drupal.org/node/958844" title="http://drupal.org/node/958844"><span class='diff-added'>http://drupal.org/node/958844</span></a><span class='diff-added'> =&gt; PATCH: Allow [working-copy] in makefile as well as on commandline =&gt; Drush Make, Code, normal, needs review, 18 comments, 1 IRC mention
+[22:10:42]    nice, I saw the working-copy patch update
+[22:11:08]    also see Owen's Drush sprint overview here for those interested: </span><a href="http://civicactions.com/blog/2011/jun/30/drush_code_sprint_report" title="http://civicactions.com/blog/2011/jun/30/drush_code_sprint_report"><span class='diff-added'>http://civicactions.com/blog/2011/jun/30/drush_code_sprint_report</span></a><span class='diff-added'>
+[22:11:29]  * CraHan is now known as CraHan_out
+[22:11:52]    ok, scrum done I think, and i'll do the log
+[22:11:56]    thanks all
+[22:12:04]    thanks!
+</span></pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-112.html?destination=node%2F741%23comment-form">Login</a> or <a href="../../../../../user/register/index-112.html?destination=node%2F741%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-112.html?destination=node%2F741%23comment-form">Login</a> or <a href="../../../../../user/register/index-112.html?destination=node%2F741%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/741/revisions/2027/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:11:18 GMT -->
+</html>

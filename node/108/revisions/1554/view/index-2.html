@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/108/revisions/1554/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:21:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../75/index.html" />
+<link rel="up" href="../../../../../contrib/index.html" />
+<link rel="next" href="../../../../../creating-product-features-using-uchosting-1x/index.html" />
+<link rel="prev" href="../../../../75/index.html" />
+<link rel="up" href="../../../../../contrib/index.html" />
+<link rel="next" href="../../../../../creating-product-features-using-uchosting-1x/index.html" />
+<link rel="prev" href="../../../../75/index.html" />
+<link rel="up" href="../../../../../contrib/index.html" />
+<link rel="next" href="../../../../../creating-product-features-using-uchosting-1x/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Contrib - Ubercart integration for Aegir from Sat, 04/09/2011 - 14:49 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-108" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Contrib - Ubercart integration for Aegir</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-108'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 04/09/2011 - 14:49</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p><span class='diff-deleted'>(By</span><span class='diff-deleted'> </span><span class='diff-deleted'>sfyn</span><span class='diff-deleted'> </span><span class='diff-deleted'>originally</span><span class='diff-deleted'> </span><span class='diff-deleted'>posted</span><span class='diff-deleted'> </span><span class='diff-deleted'>on</span><span class='diff-deleted'> </span><span class='diff-deleted'>GDO)</span></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'></span><a href="http://groups.drupal.org/node/94959"><span class='diff-deleted'>We</span><span class='diff-deleted'> </span><span class='diff-deleted'>want</span><span class='diff-deleted'> </span><span class='diff-deleted'>your</span><span class='diff-deleted'> </span><span class='diff-deleted'>use</span><span class='diff-deleted'> </span><span class='diff-deleted'>cases!</span></a><span class='diff-deleted'></span></p><span class='diff-deleted'>
+
+</span><h2>Current Head Deployment</h2>
+
+<h3>Single-Site</h3>
+
+<ol>
+<li><p>Download <a href="http://drupal.org/project/uc_hosting">uc_hosting</a>.
+a. enable Aegir Ubercart Integration and Aegir Ubercart Products</p></li>
+<li><p>Create a single-site product site. (Create content -&gt; product)</p>
+
+<ul>
+<li>Title it keeping in mind that you will be using this in product kits later on</li>
+<li>Enter an SKU</li>
+<li>Uncheck "Make product and its derivatives shippable"</li>
+<li>Click on "save and continue"</li>
+<li>Click on the tab "Features"</li>
+<li>Choose "Create a site and adjust quotas accordingly", click Add</li>
+<li>Confirm and you're good to go</li>
+</ul></li>
+<li><p>At this point you have enabled site creation on purchase on any open (non access-controlled) platforms in the Aegir instance.</p></li>
+<li><p>Optionally, you can also create a product that enables access to a platform (for instance, the platform on which you are deploying OpenAtrium). Do this by creating another, seperate product with the feature "Access to Platform". You will be prompted by the ubercart features dialogue to select a platform.</p></li>
+</ol>
+
+<h3>Using Product Kits</h3>
+
+<p>You can use the Ubercart concept of product kits (<a href="http://www.ubercart.org/docs/user/10965/product_kits">documentation "in progress"</a>) to create, for instance, a premium site product on a special platform (this is still in dev), or a multi-site account. If you are using the multi-site account approach, be careful to properly set the quantity of your site products, as this value will be used to determine the new client site quota.</p>
+
+<h2>Alpha 1 Quick Start</h2>
+
+<ol>
+<li><p>Download and install <a href="http://drupal.org/project/uc_hosting">uc_hosting</a>.</p></li>
+<li><p>Via the store administration -&gt; hosting interface (admin/store/hosting):
+a. enable all quota attributes
+b. generate a demo product class</p></li>
+<li><p>Create a product in that class (create content)</p></li>
+<li><p>Enable the hosting integration feature for that product, in admin/store/hosting</p></li>
+</ol>
+
+<h2>Specs:</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/630336">Original discussion in the hosting module issue queue</a></li>
+<li><a href="../../../../109/index.html">Design Document</a></li>
+<li>Notes for specific implementations on the <a href="http://github.com/sfyn/uc_hosting/wiki/_pages">Github wiki</a></li>
+</ul></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-423.html?destination=node%2F108%23comment-form">Login</a> or <a href="../../../../../user/register/index-423.html?destination=node%2F108%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/108/revisions/1554/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:21:01 GMT -->
+</html>

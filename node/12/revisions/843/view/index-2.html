@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/12/revisions/843/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:08:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../upgrading/path/index.html" />
+<link rel="up" href="../../../../../administrator/index.html" />
+<link rel="next" href="../../../../../content/administrator/extracting-drupal-site-aegir/index.html" />
+<link rel="prev" href="../../../../../upgrading/path/index.html" />
+<link rel="up" href="../../../../../administrator/index.html" />
+<link rel="next" href="../../../../../content/administrator/extracting-drupal-site-aegir/index.html" />
+<link rel="prev" href="../../../../../upgrading/path/index.html" />
+<link rel="up" href="../../../../../administrator/index.html" />
+<link rel="next" href="../../../../../content/administrator/extracting-drupal-site-aegir/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Uninstalling Aegir from Thu, 02/24/2011 - 19:24 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-12" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../uninstalling/index.html">Uninstalling Aegir</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-12'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 02/24/2011 - 19:24</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>There is no formal method for uninstalling Aegir, but there is also no real mystery either since the system tries to keep itself together in one location, typically /var/aegir.</p>
+
+<p>Below are the steps to completely remove all traces of Aegir from your server.<span class='diff-added'> We also include to leave Aegir intact, but destroy its data, attempting to reset to a almost post-install setup.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Ideally, you would delete all sites and all platforms from the system first. That would take care of deleting all databases and users. But this can take some time and is annoying, so we provide instructions on how to destroy everything.</span></p><span class='diff-added'>
+
+</span><h1><span class='diff-added'>WARNING</span></h1>
+
+<p>Obviously if you have any sites and platforms currently managed by Aegir, you would want to move them out of the /var/aegir area before you delete it! Ensure you have set up your sites and platforms elsewhere, with Apache vhost files etc in their typical locations, or at least out of harm's way before attempting this.</p>
+
+<p><strong>WARNING: Performing these steps will remove Aegir from your server and may result in loss of data. Use with caution.</strong></p>
+
+<p><span class='diff-changed'>Run these commands as a privileged user (such as root). We assume your Aegir installation resides in /var/aegir.</span></p><span class='diff-changed'>
+
+</span><h1><span class='diff-changed'>Backup</span></h1><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>You probably want to backup everything before trashing it.</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>Backup all you need to keep from the /var/aegir/ directory.</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>Backup your database server, we'll be also destroying that.</span></p><span class='diff-added'>
+
+</span><h1><span class='diff-added'>Destroying the data</span></h1>
+
+<p><span class='diff-changed'>Aegir manages three types of data:</span></p><span class='diff-changed'>
+
+</span><ul><span class='diff-changed'>
+</span><li><span class='diff-changed'>configuration files - yes, we consider those as data</span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'>site and platform files</span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'>site databases</span></li><span class='diff-changed'>
+</span></ul>
+
+<h2><span class='diff-changed'>Trashing configuration files</span></h2>
+
+<p><span class='diff-changed'>This step is optional if you are going to remove everything anyways.</span></p><span class='diff-deleted'>
+
+</span><h2><span class='diff-deleted'>Remove</span><span class='diff-deleted'> </span><span class='diff-deleted'>/var/aegir</span></h2>
+
+<p><span class='diff-added'></span><div class="codeblock"><code>rm <span class='diff-changed'>/var/aegir/.drush/</span><em><span class='diff-changed'>alias.drushrc.php</span><br /><span class='diff-changed'>rm -r /var/aegir/config/</span></em><span class='diff-changed'></span></code><span class='diff-added'></span></div></p>
+
+<h2><span class='diff-changed'>Trashing site and platform files</span></h2>
+
+<p><span class='diff-changed'>At this point, you could still probably recover by verifying</span> the <span class='diff-changed'>platforms, which would recreate config files. At this point we start really destroying data.</span></p>
+
+<p><span class='diff-added'></span><div class="codeblock"><code><span class='diff-changed'>rm -r /var/aegir/platforms/</span><em><br /><span class='diff-changed'>rm -r /var/aegir/hostmaster-</span></em><span class='diff-changed'></span></code><span class='diff-changed'></span></div><span class='diff-changed'></span></p>
+
+<h2>Drop the <span class='diff-changed'>databases</span> and db <span class='diff-changed'>users</span></h2>
+
+<p>There are no generic instructions for this, since every system differs. Essentially you can perform this within a MySQL shell</p>
+
+<p><code>mysql -u root -p</code></p>
+
+<p>Use the <code>DROP DATABASE $databasename;</code> syntax to drop databases.</p>
+
+<p>To see a list of GRANTs that Aegir has made for your database users, you can use a command like the following</p>
+
+<p><div class="codeblock"><code>USE mysql;<br />SELECT User,Host FROM user WHERE Host=&#039;localhost&#039; AND User &lt;&gt; &#039;root&#039; AND User &lt;&gt; &#039;debian-sys-maint&#039;;<br />SELECT Host,Db,User FROM db WHERE User &lt;&gt; &#039;&#039;;</code></div></p>
+
+<p>You can use the <code>DROP USER $user</code> syntax to delete these users and their privileges, depending on your version of MySQL.</p>
+
+<p>In Debian, <span class='diff-changed'>the following</span> will remove all non-system users (which may include non-aegir users!!!).</p>
+
+<p>WARNING: DO NOT RUN THIS BEFORE CHECKING WHAT WILL BE DELETE BY RUNNING THE SELECT ABOVE!!</p>
+
+<p><div class="codeblock"><code>DELETE FROM db WHERE User &lt;&gt; &#039;&#039;;<br />DELETE FROM user WHERE Host=&#039;localhost&#039; AND User &lt;&gt; &#039;root&#039; AND User &lt;&gt; &#039;debian-sys-maint&#039;;<br /><span class='diff-added'>FLUSH PRIVILEGES;</span></code></div></p>
+
+<p>Consult the <a href="http://dev.mysql.com/doc/refman/5.1/en/grant.html">GRANT</a> and <a href="http://dev.mysql.com/doc/refman/5.1/en/drop-user.html">DROP</a> documentation from MySQL for more information.</p><span class='diff-added'>
+
+</span><h1><span class='diff-added'>Removing everything</span></h1><span class='diff-added'>
+
+</span><p><span class='diff-added'>At this point, we have removed all data that Aegir manages and we would be ready to reinstall the frontend. If we want to remove all traces, however, there's more work to do.</span></p><span class='diff-added'>
+
+</span><h2><span class='diff-added'>Remove /var/aegir</span></h2><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><code><span class='diff-added'>rm -rf /var/aegir</span></code><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><h2><span class='diff-added'>Remove the aegir user's crontab</span></h2><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><code><span class='diff-added'>crontab -r -u aegir</span></code><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><h2><span class='diff-added'>Delete the aegir user</span></h2><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><code><span class='diff-added'>userdel aegir</span></code><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>This will also remove the user from the www-data group.</span></p><span class='diff-added'>
+
+</span><h2><span class='diff-added'>Remove the user from sudoers</span></h2><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><code><span class='diff-added'>visudo</span></code><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Remove the line that looks something like</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><code><span class='diff-added'>aegir ALL=NOPASSWD: /usr/sbin/apache2ctl</span></code><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Save and exit the file.</span></p>
+
+<h2>Delete the symlink/include from Apache</h2>
+
+<p>Depending on your installation and OS this may vary.</p>
+
+<p>Generally:</p>
+
+<p><code>cd /etc/apache2/conf.d</code></p>
+
+<p><code>rm aegir.conf</code></p>
+
+<p>If your Include statements were contained in a global system httpd.conf file or similar, you will need to remove these lines manually.</p>
+
+<p>Restart Apache when you have completed this.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-74.html?destination=node%2F12%23comment-form">Login</a> or <a href="../../../../../user/register/index-74.html?destination=node%2F12%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-74.html?destination=node%2F12%23comment-form">Login</a> or <a href="../../../../../user/register/index-74.html?destination=node%2F12%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/12/revisions/843/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:08:29 GMT -->
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/2730/revisions/5120/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:14:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../2/index-9.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-11.html" />
+<link rel="prev" href="../../../../../2/index-9.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-11.html" />
+<link rel="prev" href="../../../../../2/index-9.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-11.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of DRAFT: 2.0-rc1 release notes from Fri, 07/19/2013 - 20:13 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2730" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../2/index-10.html">DRAFT: 2.0-rc1 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_4 first"><a href="../../../../../taxonomy/term/4/index.html" rel="tag" title="This level is for users who have access to only their sites and not able to manage all Aegir features, accounts or the server/system.">Client</a></li>
+<li class="taxonomy_term_27"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_3"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-2730'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 07/19/2013 - 20:13</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>The Aegir team is pleased to announce the first release candidate for the upcoming Aegir 2.0 release.</p>
+
+<p>This release mainly targets a few critical bugs that were found in the second beta, mostly related to ongoing Views, Drush integration and access control. We also introduce a number of new features and finally drop support for provisionning Drupal 5 sites completely (for real this time!).</p>
+
+<p>While we are in feature freeze, we have continued to add some UI improvements, since they don't affect the API. We've added some long-standing UI enhancements, and fixed a number of bugs in the views integration and other usability problems, as well as overhauling our access control.</p>
+
+<p>Our only remaining critical bugs are basically waiting on a new release of Drush, upgrade testing on Nginx and some contrib upgrade guidance documentation. If no other critical bugs are discovered during the time it takes us to fix these, we should move on to a full release of Aegir 2.0!</p>
+
+<h1>Known issues</h1>
+
+<p>Our release process is still done by hand instead of automated because we can't use our aegir distribution as core (<a href="https://drupal.org/node/1991764">issue #1991764</a>).</p>
+
+<p><a href="https://drupal.org/node/1931000">Issue #1931000: Missing drush backend output in frontend log</a> has been fixed, but may require a <a href="https://drupal.org/node/2025527#comment-7566747">patch to Drush</a> for the use of hosting-queued.</p>
+
+<p>Subdirectory support is still very preliminary and needs those issues to be fixed before completion, see <a href="https://drupal.org/node/2046167">#2046167</a> for details.</p>
+
+<h1><span class='diff-changed'>Detailed list of changes</span></h1>
+
+<h2>Provision</h2>
+
+<p>Changes since 6.x-2.0-beta2:</p>
+
+<ul>
+  <li><a href="https://drupal.org/node/1647830">#1647830</a> by sambonner: Fix Incorrect ownership of directories under sites/example.com/private/files/.</li>
+  <li><a href="https://drupal.org/node/2038279">#2038279</a> by ergonlogic, Jon Pugh: Validate email during site install.</li>
+  <li>Add missing unicode include for UID1 name validation.</li>
+  <li><a href="https://drupal.org/node/1201174">#1201174</a>: Make UID1 username configurable.</li>
+  <li><a href="https://drupal.org/node/905326">#905326</a> by ergonlogic, crea: Improve file path changes.</li>
+  <li><a href="https://drupal.org/node/2038891">#2038891</a>: Add 'client_email' option to 'provision-install-backend'.</li>
+  <li><a href="https://drupal.org/node/1830220">#1830220</a>: Drop support for Drupal 5.</li>
+  <li>debian: properly detect webserver, again (<a href="https://drupal.org/node/2040285">#2040285</a>)</li>
+  <li><a href="https://drupal.org/node/2037045">#2037045</a> by helmo, ergonlogic: Change some log statuses to better match Drush's log styling.</li>
+  <li><a href="https://drupal.org/node/2036793">#2036793</a> Ignore hidden modules and profiles.</li>
+  <li><a href="http://drupal.org/node/2036283">#2036283</a> Flag site-specific modules and themes rather than ignore them.</li>
+  <li><a href="http://drupal.org/node/2044251">#2044251</a> drush command '@none provision-save' could not be found</li>
+</ul>
+
+<h2>Hosting</h2>
+
+<p>Changes since 6.x-2.0-beta2:</p>
+
+<ul>
+  <li><a href="http://drupal.org/node/2035873">#2035873</a>: Show package 'popularity' on platform package view</li>
+  <li><a href="https://drupal.org/node/2025355">#2025355</a>: view platform' permission broken</li>
+  <li><a href="https://drupal.org/node/2045907">#2045907</a>: Remove extra tabs from deleted platforms.</li>
+  <li>Fix php 5.4 issue</li>
+  <li><a href="http://drupal.org/node/2031747">#2031747</a>: Fix Views block placement and visibility.</li>
+  <li>Fix update hook name.</li>
+  <li><a href="https://drupal.org/node/2031491">#2031491</a>: Fix roles.</li>
+  <li><a href="https://drupal.org/node/2031491">#2031491</a>: Rename SSL permission to be more descritive.</li>
+  <li><a href="https://drupal.org/node/1034520">#1034520</a>: Cleanup package instances when deleting sites and platforms.</li>
+  <li><a href="https://drupal.org/node/1345118">#1345118</a>: Make platform access control an autocomplete form.</li>
+  <li><a href="https://drupal.org/node/1263264">#1263264</a> by ergonlogic, recidive, anarcat: Specify a type when getting a package, to avoid collisions.</li>
+  <li><a href="https://drupal.org/node/1861898">#1861898</a> by ergonlogic, Jon Pugh: Don't hardcode the types of entities to which we can attach tasks.</li>
+  <li>Add missing translation.</li>
+  <li><a href="https://drupal.org/node/2038891">#2038891</a>: Switch from '--invoke' to '--strict=0' for backend calls.</li>
+  <li>Display all validation errors when adding a client, and limit to 20 suggestions.</li>
+  <li>Flag rollbacks as warnings in our task logs.</li>
+  <li><a href="https://drupal.org/node/2037965">#2037965</a>: Clean up hosting-pause.</li>
+  <li><a href="https://drupal.org/node/1975086">#1975086</a> by helmo | anarcat: Fixed updating a task when there is none.</li>
+  <li><a href="https://drupal.org/node/1238618">#1238618</a>: Fix client form validation.</li>
+  <li><a href="https://drupal.org/node/2037045">#2037045</a> by helmo, ergonlogic: Match Drush's log styling.</li>
+  <li><a href="https://drupal.org/node/2035873">#2035873</a>: Show count of sites using packages.</li>
+  <li>Save the platform field when creating a package instance record.</li>
+  <li>Pass the entity type when we're sync'ing package instances.</li>
+  <li>#: Make Aegir aware of site-specific packages.</li>
+  <li><a href="https://drupal.org/node/2025787">#2025787</a> by omega8cc, ergonlogic, anarcat: Open site goto link in a new window/tab.</li>
+  <li>Handle package page views separately for sites and platforms.</li>
+  <li>Update default hosting_site views to use new access plugin for blocks, and add a couple more displays for non admin listings.</li>
+  <li>Add Views access plugin for hosting_site and hosting_package.</li>
+  <li>Only register shutdown function to update task status in the context of a front-end task.</li>
+  <li><a href="https://drupal.org/node/1975086">#1975086</a>: Add 'update status' button to tasks.</li>
+  <li><a href="https://drupal.org/node/1975086">#1975086</a>: Move log parsing and status updates to seperate functions and call them from a shutdown function.</li>
+  <li><a href="https://drupal.org/node/2031765">#2031765</a>: Clean up VBO operations with Action Permissions.</li>
+  <li>Move to individual operation callbacks for VBO tasks.</li>
+  <li>Add more granular permissions to site views.</li>
+  <li>Don't display package block on profiles.</li>
+  <li><a href="https://drupal.org/node/2026417">#2026417</a>: Disambiguate site operations.</li>
+  <li><a href="https://drupal.org/node/2005310">#2005310</a>: Add VBO operations to platforms view.</li>
+  <li><a href="https://drupal.org/node/2022849">#2022849</a>: Record disable and delete backups in the database.</li>
+  <li><a href="https://drupal.org/node/2022813">#2022813</a> by Deciphered: Expose backups to Views.</li>
+  <li><a href="https://drupal.org/node/2006074">#2006074</a> by Deciphered: Enable backups via VBO.</li>
+  <li>Add views handler to filter packages by status.</li>
+  <li><a href="https://drupal.org/node/1515416">#1515416</a> by ergonlogic, helmo, Deciphered: Replace listing of sites and platforms using a package with a view.</li>
+  <li>Update empty text in site views.</li>
+  <li><a href="https://drupal.org/node/2031491">#2031491</a>: Review and update permissions for all roles.</li>
+  <li>Allow clients with access to platforms to view them.</li>
+  <li>Clean up hosting_node_grants().</li>
+  <li>Add 'administer' permissions for platforms and servers, and allow platforms to be viewed.</li>
+  <li>Override hook_access functions for node_grants when hosting_client is enabled.</li>
+  <li>Register node type in hosting_task's Hosting feature.</li>
+  <li>Only show link to add clients on site form to those with proper permissions.</li>
+  <li><a href="https://drupal.org/node/2027269">#2027269</a>: Update a task's status after all Drush operations are complete.</li>
+</ul>
+
+<h2>Eldir</h2>
+
+<p>Changes since 6.x-2.0-beta1:</p>
+
+<ul>
+  <li>Clean up Views exposed forms.</li>
+</ul>
+
+<h2>Hostmaster</h2>
+
+<p>Changes since 6.x-2.0-beta2:</p>
+
+<ul>
+  <li>Fix Views block placement and visibility.</li>
+  <li><a href="https://drupal.org/node/2031491">#2031491</a>: Fix roles.</li>
+  <li><a href="https://drupal.org/node/2031491">#2031491</a>: Rename SSL permission to be more descriptive.</li>
+  <li><a href="https://drupal.org/node/1975086">#1975086</a>: Add 'update status' button to tasks.</li>
+  <li><a href="https://drupal.org/node/2031765">#2031765</a>: Clean up VBO operations with Action Permissions.</li>
+  <li>Don't display package block on profiles.</li>
+  <li><a href="https://drupal.org/node/1515416">#1515416</a> by ergonlogic, helmo, Deciphered: Replace listing of sites and platforms using a package with a view.</li>
+  <li>Update 'aegir platform manager' role.</li>
+  <li>Only display client sites block on the 'view' tab.</li>
+</ul></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-165.html?destination=node%2F2730%23comment-form">Login</a> or <a href="../../../../../user/register/index-165.html?destination=node%2F2730%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-165.html?destination=node%2F2730%23comment-form">Login</a> or <a href="../../../../../user/register/index-165.html?destination=node%2F2730%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/2730/revisions/5120/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:14:31 GMT -->
+</html>

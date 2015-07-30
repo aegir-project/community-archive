@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/2422/revisions/4655/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 20:59:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Can&#039;t install Aegir  from Mon, 03/11/2013 - 09:36 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2422" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/driesverlinden/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="driesverlinden&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/driesverlinden/index.html" class="username" title="View user profile.">driesverlinden</a></div><div class='date'>9:36am Mar 11, 2013</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="../../../../../discuss/cant-install-aegir/index.html">Can&#039;t install Aegir </a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_62 first"><a href="../../../../../category/keywords/aegir/index.html" rel="tag" title="">Aegir</a></li>
+<li class="taxonomy_term_331"><a href="../../../../../category/keywords/hostmaster/index.html" rel="tag" title="">hostmaster</a></li>
+<li class="taxonomy_term_345 last"><a href="../../../../../category/keywords/installation/index.html" rel="tag" title="">installation</a></li>
+</ul></div><p>Dear</p>
+
+<p>I am new to aegir and have some problems installing it. 
+I use MySQL 5, Apache 2, Drush 4.6 and Provision 6.x-1.9.</p>
+
+<p>When I install (with debug-mode on) I get this message:
+<div class="codeblock"><code>Granting privileges to ubuntuaegir@localhost on ubuntuaegir&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [notice]<br />Created ubuntuaegir database&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [success]</code></div></p>
+
+<p>But when I look in mysql there isn't a database called ubuntuaegir. Just the standard databases.
+<div class="codeblock"><code>mysql&gt; show databases;<br />+--------------------+<br />| Database&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br />+--------------------+<br />| information_schema |<br />| mysql&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br />| performance_schema |<br />+--------------------+<br />3 rows in set (0.05 sec)</code></div></p>
+
+<p>This is the first error:
+<div class="codeblock"><code>Changed permissions of&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [message]<br />/var/aegir/hostmaster-6.x-1.9/sites/ubuntu-aegir/drushrc.php to 440<br />Initialized Drupal site ubuntu-aegir at sites/ubuntu-aegir&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [notice]<br />The external command could not be executed due to an application&nbsp;&nbsp;&nbsp;&nbsp; [error]<br />error.</code></div></p>
+
+<p>I also says:
+<div class="codeblock"><code>Trying to get property of non-object module.inc:316&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [notice]<br />Table &amp;#039;ubuntuaegir.menu_custom&amp;#039; doesn&amp;#039;t exist&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />query: SELECT * FROM menu_custom database.mysqli.inc:134<br />Installed Menu module.&nbsp; </code></div></p>
+
+<p>Following errors:
+<div class="codeblock"><code>Drush command terminated abnormally due to an unrecoverable error.&nbsp;&nbsp; [error]<br />Error: Call to undefined function install_include() in<br />/var/aegir/hostmaster-6.x-1.9/profiles/hostmaster/hostmaster.profile,<br />line 33<br />Output from failed command :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]<br /> <br />Fatal error: Call to undefined function install_include() in<br />/var/aegir/hostmaster-6.x-1.9/profiles/hostmaster/hostmaster.profile<br />on line 33<br /><br />Undefined index: login_link install.provision.inc:60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [notice]<br />Array to string conversion core.drush.inc:350&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [notice]<br />Drush was not able to start (bootstrap) the Drupal database.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]<br />Hint: This error often occurs when Drush is trying to bootstrap a<br />site that has not been installed or does not have a configured<br />database.<br /><br />Drush was attempting to connect to : <br />&nbsp; Drupal version&nbsp;&nbsp;&nbsp; : 6.28<br />&nbsp; Site URI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ubuntu-aegir<br />&nbsp; Default theme&nbsp;&nbsp;&nbsp;&nbsp; : garland<br />&nbsp; Administration theme: garland<br />&nbsp; PHP configuration : /etc/php5/cli/php.ini<br />&nbsp; Drush version&nbsp;&nbsp;&nbsp;&nbsp; : 4.6<br />&nbsp; Drush configuration:<br />/var/aegir/hostmaster-6.x-1.9/sites/ubuntu-aegir/drushrc.php<br />/var/aegir/hostmaster-6.x-1.9/drushrc.php<br />&nbsp; Drush alias files : /var/aegir/.drush/hostmaster.alias.drushrc.php<br />/var/aegir/.drush/server_master.alias.drushrc.php<br />/var/aegir/.drush/platform_hostmaster.alias.drushrc.php<br />/var/aegir/.drush/server_localhost.alias.drushrc.php<br />&nbsp; Drupal root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : /var/aegir/hostmaster-6.x-1.9<br />&nbsp; Site path&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : sites/ubuntu-aegir<br />&nbsp; Modules path&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : sites/ubuntu-aegir/modules<br />&nbsp; Themes path&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : sites/ubuntu-aegir/themes<br />&nbsp; %paths&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Array</code></div>
+<div class="codeblock"><code>Initialized Drupal 6.28 root directory at&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [notice]<br />/var/aegir/hostmaster-6.x-1.9<br />Could not find a Drupal settings.php file at&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]<br />./sites/community.aegirproject.org/settings.php.<br />Created directory /var/aegir/hostmaster-6.x-1.9/sites/ubuntu-aegir.&nbsp;&nbsp;&nbsp; [message]</code></div>
+<div class="codeblock"><code>Drush was not able to start (bootstrap) the Drupal database.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]<br />Hint: This error often occurs when Drush is trying to bootstrap a<br />site that has not been installed or does not have a configured<br />database.<br /><br />Drush was attempting to connect to : <br />&nbsp; Drupal version&nbsp;&nbsp;&nbsp; : 6.28<br />&nbsp; Default theme&nbsp;&nbsp;&nbsp;&nbsp; : garland<br />&nbsp; Administration theme: garland<br />&nbsp; PHP configuration : /etc/php5/cli/php.ini<br />&nbsp; Drush version&nbsp;&nbsp;&nbsp;&nbsp; : 4.6<br />&nbsp; Drush configuration: /var/aegir/hostmaster-6.x-1.9/drushrc.php<br />&nbsp; Drush alias files : /var/aegir/.drush/hostmaster.alias.drushrc.php<br />/var/aegir/.drush/server_master.alias.drushrc.php<br />/var/aegir/.drush/platform_hostmaster.alias.drushrc.php<br />/var/aegir/.drush/server_localhost.alias.drushrc.php<br />&nbsp; Drupal root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : /var/aegir/hostmaster-6.x-1.9<br />&nbsp; %paths&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Array<br /><br />You can select another site with a working database setup by<br />specifying the URI to use with the --uri parameter on the command<br />line or $options[&#039;uri&#039;] in your drushrc.php file.<br /><br />Command dispatch complete&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [notice]<br />Command dispatch complete&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [notice]</code></div></p>
+
+<p>The installation is done by the aegir user.
+Anyone an idea?
+Thanks!</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-444.html?destination=node%2F2422%23comment-form">Login</a> or <a href="../../../../../user/register/index-444.html?destination=node%2F2422%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-1880"></a>
+
+
+<div  id="comment-1880" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/doka/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="doka&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/doka/index.html" class="username" title="View user profile.">doka</a></div><div class='date'>7:34am Mar 22, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../../../discuss/cant-install-aegir/index.html#comment-1880">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>If you are on Ubuntu, then check this conversation:
+<a href="../../../../../discuss/anyone-using-aegir-ubuntu-1204-appears-be-bug-when-installing/index.html" title="http://community.aegirproject.org/discuss/anyone-using-aegir-ubuntu-1204-appears-be-bug-when-installing">http://community.aegirproject.org/discuss/anyone-using-aegir-ubuntu-1204...</a></p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-444.html?destination=node%2F2422%23comment-form">Login</a> or <a href="../../../../../user/register/index-444.html?destination=node%2F2422%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/2422/revisions/4655/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 20:59:00 GMT -->
+</html>

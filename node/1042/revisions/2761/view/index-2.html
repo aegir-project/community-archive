@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/1042/revisions/2761/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:11:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/scrums/weekly-scrum-irc-log-2012-01-09/index.html" />
+<link rel="up" href="../../../../../scrums/index.html" />
+<link rel="next" href="../../../../../content/scrums/weekly-scrum-irc-log-2012-02-13/index.html" />
+<link rel="prev" href="../../../../../content/scrums/weekly-scrum-irc-log-2012-01-09/index.html" />
+<link rel="up" href="../../../../../scrums/index.html" />
+<link rel="next" href="../../../../../content/scrums/weekly-scrum-irc-log-2012-02-13/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Weekly Scrum IRC Log: 2012-02-06 from Mon, 02/06/2012 - 20:28 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1042" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/scrums/weekly-scrum-irc-log-2012-02-06/index.html">Weekly Scrum IRC Log: 2012-02-06</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-1042'><pre>
+14:59 darthsteve@&gt; scrum in a couple of mins
+15:02 darthsteve@&gt; mig5, anarcat, EclipseGc, ergonlogic, hadsie, mvc, omega8cc, sfyn, skwashd: scrum!
+15:04    anarcat@&gt; yay!
+15:04    anarcat@&gt; i'm here for once
+15:04 ergonlogic+&gt; hi there
+15:04    anarcat@&gt; hey ergonlogic
+15:04   omega8cc+&gt; hi
+15:04     hadsie+&gt; hey
+15:04    hefring &gt; eh oh
+15:05    anarcat@&gt; alright, should i start? i have lots to say :)
+15:05    anarcat@&gt; so i'll just go ahead
+15:05 ergonlogic+&gt; sure
+15:05    anarcat@&gt; alright
+15:05    anarcat@&gt; i wrote this crazy web_pack module last week
+15:05    anarcat@&gt; in basically 3 hours, i fixed most of the issues i was having with our multi-server support, or at least the "cluster" use case
+15:06    anarcat@&gt; i have posted this article requesting comments for total replacement of the current cluster module with the new implementation:
+15:06    anarcat@&gt; <a href="../../../../../discuss/are-people-using-cluster-module/index.html#comment-1286" title="http://community.aegirproject.org/discuss/are-people-using-cluster-module#comment-1286">http://community.aegirproject.org/discuss/are-people-using-cluster-modul...</a>
+15:06    anarcat@&gt; s/#comment.*//
+15:06    anarcat@&gt; anyways
+15:06 darthsteve@&gt; cool
+15:06    anarcat@&gt; the idea is to stop syncing the damn platforms and sites all over the place all the time
+15:06    anarcat@&gt; we only sync the ~aegir/config directory and reload apache
+15:06 darthsteve@&gt; replace replace replace
+15:07    anarcat@&gt; we assume /var/aegir/platforms is NFS-mounted
+15:07    anarcat@&gt; which brings me to: i think we should install the hostmaster platform in /var/aegir/platforms
+15:07    anarcat@&gt; it's inconsistent to have it where it is, and i don't see what purpose it serves
+15:07    anarcat@&gt; + it makes sharing "all the platforms" harder
+15:07    anarcat@&gt; food for thought
+15:07    anarcat@&gt; i have also worked on the provisionacl module
+15:07    anarcat@&gt; to make the sites directory accessible to the client group
+15:08    anarcat@&gt; but there are a few snafus in there that need working out
+15:08    anarcat@&gt; basically: <a href="http://drupal.org/node/1428526" title="http://drupal.org/node/1428526">http://drupal.org/node/1428526</a>
+15:08    hefring &gt; <a href="http://drupal.org/node/1428526" title="http://drupal.org/node/1428526">http://drupal.org/node/1428526</a> =&gt; Files created by www-data user =&gt; Provision ACL support, Code, normal, active, 0 comments, 1 IRC mention
+15:08    anarcat@&gt; and <a href="http://drupal.org/node/1416056" title="http://drupal.org/node/1416056">http://drupal.org/node/1416056</a>
+15:08    hefring &gt; <a href="http://drupal.org/node/1416056" title="http://drupal.org/node/1416056">http://drupal.org/node/1416056</a> =&gt; give access to entire site directory (was: add support for .git) =&gt; Provision ACL support, Code, normal, active, 8 comments, 1 IRC mention
+15:08    anarcat@&gt; otherwise i am trying to think more about how to optimise the migrate task so that it doesn't tar and untar all those damn files all the time
+15:09    anarcat@&gt; so far i came up with the idea that files/ should be a symlink to a version-controlled storage
+15:09    anarcat@&gt; and that therefore shouldn't eb backed up
+15:09    anarcat@&gt; so backups would now mean "backup the database", not "backup the filesystem"
+15:09    anarcat@&gt; that would be a plugin, i guess
+15:09    anarcat@&gt; i had a bit more time to work on aegir these days, which feels good
+15:10     hadsie+&gt; that would be awesome :)
+15:10 darthsteve@&gt; hmm…interesting
+15:10    anarcat@&gt; especially since it's client work paying for that
+15:10    anarcat@&gt; looking for more of those opportunities here
+15:10    anarcat@&gt; oh and i had issues... with 2.x
+15:10    anarcat@&gt; i wrote the pack module for 2.x, but since we don't deploy 2.x anywhere, i had to backport it to 1.x, which means now i have 4 branches (2 per module, 2 per version) for this simple module
+15:11    anarcat@&gt; kind of stupid
+15:11 darthsteve@&gt; ouch
+15:11    anarcat@&gt; i also wonder if that module could just be contrib, i didn't bother
+15:11    anarcat@&gt; i think that's it for me
+15:11 darthsteve@&gt; well looks like you got up to lots of stuff
+15:11 darthsteve@&gt; thanks!
+15:11    anarcat@&gt; :)
+15:11 darthsteve@&gt; anyone else want to go next?
+15:12 ergonlogic+&gt; you?
+15:12 ergonlogic+&gt; ok, me then
+15:13 darthsteve@&gt; ergonlogic: you go
+15:13 ergonlogic+&gt; I've been mostly working on Open Atrium features these past couple weeks
+15:13 ergonlogic+&gt; and not enough on Aegir
+15:13 darthsteve@&gt; tut tut
+15:13 ergonlogic+&gt; but that should change soon, as I gear up to launch openatria.com
+15:13 darthsteve@&gt; oh cool
+15:13 ergonlogic+&gt; I'll basically be solidifying the contrib modules I've written
+15:14 ergonlogic+&gt; but that ususally involves some patches to aegir too
+15:14 ergonlogic+&gt; I also nee to update aegir-up, as an update to vagrant has now broken it
+15:14 ergonlogic+&gt; and I realized that at least 2 people other than myself were using it
+15:14 ergonlogic+&gt; so that'll be a priority this week
+15:15 ergonlogic+&gt; and I'll be reworking our puppet modules
+15:15 ergonlogic+&gt; mostly to parameterize the classes
+15:15 darthsteve@&gt; awesome
+15:15 (*)  anarcat notes that vagrant has now hit debian unstable, which means he may start using it... some day :P
+15:15 darthsteve@&gt; need to talk to you about those puppet modules...
+15:15 ergonlogic+&gt; so we can point to other db servers, etc.
+15:15    anarcat@&gt; darthsteven: can do
+15:15 ergonlogic+&gt; darthsteven: whenever you'd like
+15:16    anarcat@&gt; snap :)
+15:16 ergonlogic+&gt; anyway, that's my plan for the coming weeks
+15:16 darthsteve@&gt; cool, thanks also
+15:16    anarcat@&gt; alright, we're splurging out of our timebox here
+15:16    anarcat@&gt; anyone else?
+15:16 ergonlogic+&gt; oh, and I'd like to get back to screencasting, but that'll probably have to wait
+15:16 darthsteve@&gt; me!
+15:16    anarcat@&gt; go go ! :)
+15:16 darthsteve@&gt; I've been working on something called 'Pergola'
+15:16 darthsteve@&gt; which is an open source version of the Pantheon server setup scripts
+15:17 darthsteve@&gt; using puppet
+15:17 darthsteve@&gt; so not much Aegir time
+15:17    anarcat@&gt; whoa
+15:17 darthsteve@&gt; but, been trying to get back into Aegir stuff
+15:17    anarcat@&gt; "A pergola, arbor or arbour is a garden feature forming a shaded walkway, passageway or sitting area of vertical posts or pillars that usually support cross-beams and a sturdy open lattice, often upon which 
+                   woody vines are trained. As a type of gazebo, it may also be an extension of a building, or serve as protection for an open terrace or a link between pavilions."
+15:17    anarcat@&gt; - wikipedia
+15:17 darthsteve@&gt; and think about the D7 port and 6.x-2.x etc.
+15:17    anarcat@&gt; pergola isn't aegir driven?
+15:18 darthsteve@&gt; also, I did a migration the other day that failed in a really horrible way
+15:18 darthsteve@&gt; which was interesting
+15:18    anarcat@&gt; indeed
+15:18    anarcat@&gt; horrible as in killing kittens?
+15:18 darthsteve@&gt; Will talk about Pergola after the scrum, mentioned it, because that's where I've been spending my time :)
+15:18    anarcat@&gt; ok
+15:18 darthsteve@&gt; horrible as in the apache config got rolled back, but the site's files did not
+15:19    anarcat@&gt; we should talk about [67].x-2.x after too
+15:19    anarcat@&gt; ouch
+15:19 darthsteve@&gt; I had a look at Pantheon and dev cloud for inspiration for getting Aegir easier to use
+15:19 darthsteve@&gt; seeing how/if they handle 'platforms' and 'sites'
+15:19    anarcat@&gt; yeah, they really have their shit together
+15:20 darthsteve@&gt; but that's it from me
+15:20 darthsteve@&gt; anyone else?
+15:20    anarcat@&gt; hadsie ? omega8cc ?
+15:20    anarcat@&gt; don't be shy, we'd love to hear you talk about your aegir work! :)
+15:20   omega8cc+&gt; I have a ton of patches collected for nginx config, ready to submit, but who will have a time to review them? mig5 maybe? :)
+15:20   omega8cc+&gt; Anyway, it is a first step to fully (finally) sync my already fork with upstream before I will be able to seriously get the .deb thing done for nginx folks right, which is the next step to get done.
+15:21    anarcat@&gt; if they're marked as needs review, i may just do that, because i'm considering a 1.7 release with the pack module :)
+15:21    anarcat@&gt; nice, we should talk
+15:21   omega8cc+&gt; ok,  expect a flood there :)
+15:21   omega8cc+&gt; And that is it from me, I guess.
+15:21    anarcat@&gt; alright
+15:21    anarcat@&gt; so unless hadsie or anyone else has something to add, i guess we can close this scrum
+15:21    anarcat@&gt; and thank you everyone for attending!
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-127.html?destination=node%2F1042%23comment-form">Login</a> or <a href="../../../../../user/register/index-127.html?destination=node%2F1042%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-127.html?destination=node%2F1042%23comment-form">Login</a> or <a href="../../../../../user/register/index-127.html?destination=node%2F1042%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/1042/revisions/2761/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:11:59 GMT -->
+</html>

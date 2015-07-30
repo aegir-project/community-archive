@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/20/revisions/87/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:02:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/best-recipes-disaster-and-how-avoid-them/index.html" />
+<link rel="up" href="../../../../../using/index.html" />
+<link rel="next" href="../../../../44/index.html" />
+<link rel="prev" href="../../../../../content/best-recipes-disaster-and-how-avoid-them/index.html" />
+<link rel="up" href="../../../../../using/index.html" />
+<link rel="next" href="../../../../44/index.html" />
+<link rel="prev" href="../../../../../content/best-recipes-disaster-and-how-avoid-them/index.html" />
+<link rel="up" href="../../../../../using/index.html" />
+<link rel="next" href="../../../../44/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Setting up a Platform from Thu, 10/28/2010 - 01:02 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-20" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Setting up a Platform</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-20'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 10/28/2010 - 01:02</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><h2><span class='diff-added'>What is a platform anyway?</span></h2><span class='diff-added'>
+
+</span><p><span class='diff-changed'>Platforms are a type of node in Aegir and often the source of confusion for new users. This is because the term or concept isn't really used explicitly outside of Aegir - Aegir is a system that suddenly makes Platforms 'make sense' to have.</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>The simplest definition of a Platform is a copy of Drupal core. That's really it. When you download a copy of Drupal from drupal.org, the result is what Aegir thinks of as a 'Platform'. No sites exist on it yet.</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>Before you can create a site using Aegir, you must first define the Platform. This tells Aegir where to store the site directory, settings.php etc on the system.</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>In short: first you create a Platform, and a site 'lives' on that platform, in exactly this fashion:</span></p><span class='diff-changed'>
+
+</span><ul><span class='diff-changed'>
+</span><li><span class='diff-changed'>drupal-6.19 (Platform)
+
+</span><ul><span class='diff-changed'>
+</span><li><span class='diff-changed'>/sites/yoursite.com/settings.php (site)</span></li><span class='diff-changed'>
+</span></ul><span class='diff-changed'></span></li><span class='diff-changed'>
+</span></ul><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>This abstraction is somewhat unique to Aegir in that it opens</span> up a <span class='diff-changed'>world of new opportunities for you. By managing Platforms or copies of Drupal core, and understanding what sites are on what copy of core, Aegir is capable of moving sites between platforms (which is effectively upgrading a site) - read more about this in </span><a href="../../../../23/index.html"><span class='diff-changed'>Migrating/upgrading and renaming sites</span></a><span class='diff-changed'>.</span></p><span class='diff-changed'>
+
+</span><h2><span class='diff-changed'>What else could be considered a platform?</span></h2><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>Anything that is more or less a copy of Drupal core is something Aegir considers a 'platform'. This thus includes any Drupal distribution, such as </span><a href="http://openatrium.com/"><span class='diff-changed'>OpenAtrium</span></a><span class='diff-changed'>, </span><a href="http://pressflow.org/"><span class='diff-changed'>Pressflow</span></a><span class='diff-changed'>, </span><a href="http://acquia.com/products-services/acquia-drupal"><span class='diff-changed'>Acquia Drupal</span></a><span class='diff-changed'>, </span><a href="http://openpublishapp.com/"><span class='diff-changed'>OpenPublish</span></a><span class='diff-changed'>, </span><a href="http://managingnews.com/"><span class='diff-changed'>ManagingNews</span></a><span class='diff-changed'>, and so on.</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>The key difference between such distributions and a standard 'vanilla' copy of Drupal core is that these distributions tend to have
+  * a custom install profile in the /profiles/ directory
+  * a set of contrib or custom developed modules, libraries or themes shipped with the core or profile</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>If you build a copy of Drupal core and place your custom install profile in /profiles, this could be considered a Platform.</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>If you place your custom install profile in an existing Platform and re-Verify the Platform, that profile will now be recognised as an option when creating a site on that Platform.</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>Various 'versions' of Drupal, such as Drupal 5.x, Drupal 6.x or Drupal 7.x, are all considered separate Platforms in Aegir.</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>Drupal 4.x is not supported in Aegir.</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>Is this paradigm clear? 'Sites' are managed inside 'Platforms'. 'Platforms' are managed inside 'Servers'. 'Servers' are managed by Aegir. In this sense, Aegir manages all the rest too.</span></p><span class='diff-changed'>
+
+</span><h2><span class='diff-changed'>Adding a Platform</span></h2><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>A number of techniques exist to put a platform on a server.</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'></span><strong><span class='diff-changed'>Drush</span></strong><span class='diff-changed'></span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>For a standard Drupal platform, the easiest is to simply use drush:</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'></span><div class="codeblock"><span class='diff-changed'></span><code><span class='diff-changed'>php /var/aegir/drush/drush.php dl drupal-6.19</span></code><span class='diff-changed'></span></div><span class='diff-changed'></span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'></span><strong><span class='diff-changed'>Wget</span></strong><span class='diff-changed'></span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>You can simply use the 'wget' command, for example:</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'></span><div class="codeblock"><span class='diff-changed'></span><code><span class='diff-changed'>wget </span><a href="http://launchpad.net/prosepoint/trunk/0.23/+download/prosepoint-0.23.tar.gz<br /><span class='diff-changed'>tar" title="http://launchpad.net/prosepoint/trunk/0.23/+download/prosepoint-0.23.tar.gz</span><br /><span class='diff-changed'>tar">http://launchpad.net/prosepoint/trunk/0.23/+download/prosepoint-0.23.tar...</span></a><span class='diff-changed'> -zxvf prosepoint-0.23.tar.gz</span></code><span class='diff-changed'></span></div><span class='diff-changed'></span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'></span><strong><span class='diff-changed'>Version control</span></strong><span class='diff-changed'></span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>You could use CVS, eg:</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'></span><div class="codeblock"><span class='diff-changed'></span><code><span class='diff-changed'>export CVSROOT=:pserver:anonymous:anonymous@cvs.drupal.org:/cvs/drupal </span><br /><span class='diff-changed'>cvs login </span><br /><span class='diff-changed'>cvs co -d aegir/drupal-6.15 -r DRUPAL-6-19 drupal </span></code><span class='diff-changed'></span></div><span class='diff-changed'></span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'></span><strong><span class='diff-changed'>Manually</span></strong><span class='diff-changed'></span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>You could download it on your PC and scp or FTP the files up onto your server.</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'></span><strong><span class='diff-changed'>Drush Make</span></strong><span class='diff-changed'></span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'></span><a href="http://drupal.org/project/drush_make"><span class='diff-changed'>Drush Make</span></a><span class='diff-changed'> comes installed on your Aegir system by default. You can use Drush Make to 'build' a platform, which does the job of fetching core and any other contributed or custom packages that you specify in a makefile.</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>You can even specify the URL or path to a makefile in the form you are given when adding a Platform node in the Aegir frontend, and Aegir will execute the Drush Make command in the backend and build it for you!</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>Explaining how to use Drush Make is outside the scope of this document. Consult the </span><a href="http://drupalcode.org/viewvc/drupal/contributions/modules/drush_make/README.txt?view=co&amp;pathrev=DRUPAL-6--2"><span class='diff-changed'>README.txt</span></a><span class='diff-changed'> of Drush Make to learn the makefile syntax, or use a ready-made makefile available from the web. Some distributions such as OpenAtrium </span><a href="https://community.openatrium.com/documentation-en/node/1420"><span class='diff-changed'>provide an example makefile</span></a><span class='diff-changed'> for you to build the distribution with.</span></p><span class='diff-changed'>
+
+</span><h2><span class='diff-changed'>Do I have to have multiple platforms on my Aegir?</span></h2><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>No, you can simply have one platform or copy of Drupal core and provision all your sites to sit on the one platform. However, eventually you will want to upgrade your sites to a new copy of Drupal core, and rather than replace your core files in-place, it's recommended to build a new Platform with the newer copy of core, and use the </span><a href="../../../../23/index.html"><span class='diff-changed'>Migrate task to move your sites (upgrade) onto the new code.</span></a><span class='diff-changed'></span></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-304.html?destination=node%2F20%23comment-form">Login</a> or <a href="../../../../../user/register/index-304.html?destination=node%2F20%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-1935"></a>
+
+
+<div  id="comment-1935" class="comment comment-published clear-block decay-10 decay-10">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/matslats/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="matslats&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/matslats/index.html" class="username" title="View user profile.">matslats</a></div><div class='date'>5:20pm May 15, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1935">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>I don't understand how, using drush under aegir, I can download a profile from drupal.org, or what the makefile looks like to do that.
+When I direct Aegir to a profile makefile to make a new drupal, and in profiles/cforge it puts a whole new drupal with the cforge profile in profiles/cforge/profiles/cforge
+When I try to download my cforge profile as if it were a module I get 
+<div class="codeblock"><code>$ drush @test.communityforge.net dl cforge<br />&gt;Source directory /tmp/drush_tmp_1368637808/cforge is not readable or does not exist.&nbsp; [error]<br />&gt;Project cforge (7.x-1.0-rc4) could not be downloaded to /var/aegir/platforms/test/sites/all/modules/cforge.</code></div>
+so I'm left assembling a platform by hand
+Any clues?</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-304.html?destination=node%2F20%23comment-form">Login</a> or <a href="../../../../../user/register/index-304.html?destination=node%2F20%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-1937"></a>
+
+
+<div  id="comment-1937" class="comment comment-published clear-block decay-4 decay-4">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../user/54/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-54/index.png" alt="ergonlogic&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a></div><div class='date'>3:08am May 16, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1937">#2</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <blockquote>
+  <p>is there an online repository of platforms?</p>
+</blockquote>
+
+<p>Koumbit's <a href="http://drupal.org/project/kplatforms">kplatforms</a> is a repository of makefiles that we use to maintain our production platforms. It's neither 'official', nor an exhaustive list of distributions. But it can serve as an reference for how one can build fairly re-usable makefiles.</p>
+
+<p>@matslats I think the problem you're having is due to your inclusion of a Drupal core project in cforge.make. An install profile's makefile should generally only include its dependencies (modules, themes &amp; libraries), so that it can in turn be recursively built when the profile is added to a "stub" makefile.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-304.html?destination=node%2F20%23comment-form">Login</a> or <a href="../../../../../user/register/index-304.html?destination=node%2F20%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-1938"></a>
+
+
+<div  id="comment-1938" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/matslats/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="matslats&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/matslats/index.html" class="username" title="View user profile.">matslats</a></div><div class='date'>9:56am May 16, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1938">#3</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Thanks I think I haven't grasped the concept of a stub makefile yet. I'll experiment some more.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-304.html?destination=node%2F20%23comment-form">Login</a> or <a href="../../../../../user/register/index-304.html?destination=node%2F20%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/20/revisions/87/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:02:05 GMT -->
+</html>

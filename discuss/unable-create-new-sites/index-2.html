@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/unable-create-new-sites?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 20:58:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Unable to create new sites  | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2419" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/ontoligent/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-886/index.png" alt="ontoligent&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/ontoligent/index.html" class="username" title="View user profile.">ontoligent</a></div><div class='date'>6:34pm Mar 4, 2013</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Unable to create new sites </a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_387 first last"><a href="../../category/keywords/install-site/index.html" rel="tag" title="">install site</a></li>
+</ul></div><p>I have an Aegir site on a server that manages three other servers -- development, staging, and production. I have been using this arrangement to create sites for about a year. Today, however, I cannot create any sites. Each time, the process fails with an error like this:</p>
+
+<pre>Dummy connection failed to fail: ssh: connect to host mysubdomain.mydomain.edu port 22: Connection timed out</pre>
+
+<p>I've attached a screenshot of the audit trail below.</p>
+
+<p>Now, this happens when I try to create a site on any of the three servers that Aegir manages. I have had the "failed to fail" error before, but in this case there are no users without passwords to cause the problem. It's also weird that the SSH times out. In any case, I have discovered that the process completes the following actions:</p>
+
+<ul>
+<li>Create .drush entry</li>
+<li>Create entries in the target server's mysql db and user tables</li>
+</ul>
+
+<p>But it does not complete these actions:</p>
+
+<ul>
+<li>Create site on either Aegir or target server platform (except, oddly, the first time I tried it)</li>
+<li>Create MySQL database on target server</li>
+<li>Create vhost entry on either Aegir or target server</li>
+</ul>
+
+<p>A final piece of information is that the <code>Host</code> field in the <code>user</code> table for these sites is '%' -- which I don't think it's supposed to happen.</p>
+
+<p>Thanks for any insight into this problem. It's freaking me out.</p>
+
+<p>Here is the Report from the Aegir site:</p>
+
+<pre>
+Drupal  6.22
+Access to update.php    Protected
+Configuration file  Protected
+Cron maintenance tasks  Last run 21 min 7 sec ago
+You can run cron manually.
+Database updates    Up to date
+File system Writable (public download method)
+GD library  bundled (2.0.34 compatible)
+MySQL database  5.1.60
+PHP 5.3.8
+PHP memory limit    512M
+PHP register globals    Disabled
+Unicode library PHP Mbstring Extension
+Update notifications    Not enabled
+Update notifications are not enabled. It is highly recommended that you enable the update status module from the module administration page in order to stay up-to-date on new releases. For more information please read the Update status handbook page.
+Web server  Apache/2.2.17 (Fedora)
+jQuery UI   1.6
+</pre><div class="itu-attachments"><table class="itu-attachment-list withoutstats sticky-enabled" id="attachments">
+ <thead><tr><th class="preview">Preview</th><th class="file">Attachment</th><th class="size">Size</th> </tr></thead>
+<tbody>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/screen_shot_2013-03-04_at_12.56.22_pm/index.png" title="screen_shot_2013-03-04_at_12.56.22_pm.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/screen_shot_2013-03-04_at_12.56.22_pm/index.png" alt="screen_shot_2013-03-04_at_12.56.22_pm.png" title="screen_shot_2013-03-04_at_12.56.22_pm.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/screen_shot_2013-03-04_at_12.56.22_pm/index.png">screen_shot_2013-03-04_at_12.56.22_pm.png</a></td><td class="size">80.09 KB</td> </tr>
+</tbody>
+</table>
+</div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-1865"></a>
+
+
+<div  id="comment-1865" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/ontoligent/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-886/index.png" alt="ontoligent&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/ontoligent/index.html" class="username" title="View user profile.">ontoligent</a></div><div class='date'>11:13pm Mar 4, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-1865" class="active">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Figured out what was going on -- for reason, root had not accepted the host keys from the target server; re-running the Aegir task after accepting them from the command line make it work. Not sur how the keys were forgotten in the first place, though.</p>    </div>
+  
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/unable-create-new-sites?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 20:58:22 GMT -->
+</html>

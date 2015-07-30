@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/187/revisions/901/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:19:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../186/index.html" />
+<link rel="up" href="../../../../31/index.html" />
+<link rel="next" href="../../../../385/index.html" />
+<link rel="prev" href="../../../../186/index.html" />
+<link rel="up" href="../../../../31/index.html" />
+<link rel="next" href="../../../../385/index.html" />
+<link rel="prev" href="../../../../186/index.html" />
+<link rel="up" href="../../../../31/index.html" />
+<link rel="next" href="../../../../385/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Advanced git workflow: branches and releases from Sun, 02/27/2011 - 14:53 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-187" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/branch-and-tagging-conventions/index.html">Advanced git workflow: branches and releases</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-187'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a> on 02/27/2011 - 14:53</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Aegir development makes a heavy use of git branches to keep the main branch stable. We use feature branches to do most development work and have release branches to keep stable releases maintained while development happen on the main (and dev) branches.</p>
+
+<h1>Branch naming conventions</h1>
+
+<p><span class='diff-changed'></span><strong><span class='diff-changed'>Warning</span></strong><span class='diff-changed'>: this documentation was written before the </span><a href="../../../../385/index.html"><span class='diff-changed'>great git.drupal.org migration</span></a><span class='diff-changed'>. Since we are back on Drupal.org, we may be forced to change some of those, as the standard to create release nodes now includes the supported core version (so </span><code><span class='diff-changed'>6.x-1.x</span></code><span class='diff-changed'>), which is a problem for our </span><code><span class='diff-changed'>provision</span></code><span class='diff-changed'> module which supports any Drupal core version...  See </span><a href="http://drupal.org/node/322626#comment-4116688"><span class='diff-changed'>this issue on drupal.org</span></a><span class='diff-changed'> for followup.</span></p><span class='diff-changed'>
+
+</span><h2><span class='diff-changed'>Main development branch</span></h2><span class='diff-changed'>
+
+</span><p><code>master</code> is<span class='diff-deleted'> </span><span class='diff-deleted'>always</span> the main development branch. Think of it as CVS <code>HEAD</code>.<span class='diff-added'> Most commits should go through that branch before hitting a stable development branch.</span> When you commit there, you make everyone suffer, so unless you are confident your change needs to be in the mainline, you are likely to want to use feature branches (below).</p><span class='diff-changed'>
+
+</span><h2><span class='diff-changed'>Stable release branches</span></h2><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>Stable releases are performed from stable release branches, which are named</span> <code><span class='diff-changed'>provision-1.x</span></code> <span class='diff-changed'>or</span> <code><span class='diff-changed'>hostmaster-1.x</span></code>. Commits to those branches should<span class='diff-deleted'> </span><span class='diff-deleted'>be</span> first <span class='diff-changed'>be done</span> on the master branch (if possible)<span class='diff-added'> for testing</span> and <span class='diff-changed'>them merged (</span><code><span class='diff-changed'>git cherry-pick</span></code><span class='diff-changed'>) into the stable branch.</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>Those branches are created from the </span><code><span class='diff-changed'>master</span></code><span class='diff-changed'> branch after</span> a <span class='diff-changed'>thorough alpha/beta/rc release cycle (see </span><a href="../../../../32/index.html"><span class='diff-changed'>release process</span></a><span class='diff-changed'> for more information). Once the branch</span> is <span class='diff-changed'>declared </span><span class='diff-added'>stable, new releases are quickly done as "hotfixes", without intervening alpha/beta/rc releases. So for example, </span><code><span class='diff-added'>provision-1.0</span></code><span class='diff-added'> will come after </span><code><span class='diff-added'>provision-1.0-alpha1</span></code><span class='diff-added'>, </span><code><span class='diff-added'>provision-1.0-beta1</span></code><span class='diff-added'>, </span><code><span class='diff-added'>provision-1.0-rc1</span></code> <em><span class='diff-added'>at least</span></em><span class='diff-added'>, and then be followed directly by </span><code><span class='diff-added'>provision-1.1</span></code><span class='diff-added'>.</span></p><span class='diff-added'>
+
+</span><p>Releases <span class='diff-changed'>on</span> the same<span class='diff-added'> stable</span> branch are API-compatible <span class='diff-changed'>with </span><span class='diff-added'>each other (so </span><code>1.1</code><span class='diff-added'></span> is <span class='diff-changed'>compatible</span> with <span class='diff-changed'></span><code><span class='diff-changed'>1.0</span></code><span class='diff-changed'>). The upgrade path is supported between major stable releases (so you can upgrade from</span> <code><span class='diff-changed'>1.0</span></code><span class='diff-changed'> to </span><code><span class='diff-changed'>1.1</span></code><span class='diff-changed'> or </span><code><span class='diff-changed'>2.0</span></code><span class='diff-changed'>).</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'></span><strong>Special case</strong>: during the 0.x <span class='diff-changed'>release</span> cycle, <span class='diff-changed'>releases were not API-compatible with each other,</span> ie. 0.4 was <em>not</em> compatible with <span class='diff-changed'>0.3, and you could barely upgrade from 0.3 to 0.4.</span> However, this may change after the 0.4 <span class='diff-changed'>release, and we'll consider the 0.x API stable as we focus on the 1.0 release, and further releases will be hotfixes on top of 0.4 (so 0.5 will immediately follow 0.4).</span></p><span class='diff-changed'>
+
+</span><h2><span class='diff-changed'>Feature branches</span></h2><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>More complex development goes into </span>development or "feature"<span class='diff-added'> branches, to avoid making </span><code><span class='diff-added'>master</span></code><span class='diff-added'> too unstable. Feature</span> branches must be prefixed with "dev-" and use the issue number (if available or relevant) and a short name. So for example, there could be work on a <code>dev-12345-mybug</code> branch or <code>dev-dns</code> branch for a larger feature (DNS, in that case) which doesn't fit in a single issue.</p>
+
+<p>Development branches should be based of a known stable baseline as much as possible. For example, you can branch off the last alpha release if you want to be certain you have a sane environment (see <a href="http://developers.slashdot.org/story/10/11/30/1649231/Linus-On-Branching-Practices">this article</a> for a thorough discussion on this practice). Since the master branch is usually fairly stable, you can usually keep that as a baseline, but keep in mind it will make merging with other dev branches more difficult as you will start from different baselines and therefore merge unrelated commits.</p>
+
+<h1>Tag naming convention</h1>
+
+<p>Every release is tagged with a <span class='diff-added'></span><code>aegir-x.y</code><span class='diff-added'></span> tag (e.g. <span class='diff-changed'></span><code><span class='diff-changed'>provision-0.4</span></code><span class='diff-changed'>, </span><code><span class='diff-changed'>hostmaster-0.4-alpha15</span></code><span class='diff-changed'></span> or <span class='diff-changed'></span><code><span class='diff-changed'>provision-1.0</span></code><span class='diff-changed'>). Those</span> tags are <span class='diff-changed'>usually laid on</span> the <span class='diff-changed'>stable branches, except for alpha/beta/rc releases which are laid</span> on<span class='diff-deleted'> </span><span class='diff-deleted'>how</span><span class='diff-deleted'> </span><span class='diff-deleted'>this</span><span class='diff-deleted'> </span><span class='diff-deleted'>works.)</span><span class='diff-deleted'> </span><span class='diff-deleted'>So</span><span class='diff-deleted'> </span><span class='diff-deleted'>if</span><span class='diff-deleted'> </span><span class='diff-deleted'>a</span><span class='diff-deleted'> </span><span class='diff-deleted'>tag</span><span class='diff-deleted'> </span><span class='diff-deleted'>named</span><span class='diff-deleted'> </span><span class='diff-deleted'></span><code><span class='diff-deleted'>provision-0.4.0</span></code><span class='diff-deleted'></span><span class='diff-deleted'> </span><span class='diff-deleted'>is</span><span class='diff-deleted'> </span><span class='diff-deleted'>pushed,</span> the <code><span class='diff-changed'>master</span></code> <span class='diff-changed'>branch.</span></p>
+
+<h1>CVS and<span class='diff-added'> git</span> history</h1>
+
+<p><span class='diff-changed'>The CVS tags and</span> branches <span class='diff-changed'>are still accessible in git and will be kept there for posterity. They respect the traditional Drupal.org naming convention.</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>They have also been converted to the new git.drupal.org conventions during the </span><a href="../../../../385/index.html"><span class='diff-changed'>great git.drupal.org migration</span></a><span class='diff-changed'>.</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>Since that migration (february 2011), history has been rewritten to clean up</span> the <span class='diff-changed'>authors in the history.</span></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-195.html?destination=node%2F187%23comment-form">Login</a> or <a href="../../../../../user/register/index-195.html?destination=node%2F187%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-195.html?destination=node%2F187%23comment-form">Login</a> or <a href="../../../../../user/register/index-195.html?destination=node%2F187%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/187/revisions/901/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:19:11 GMT -->
+</html>

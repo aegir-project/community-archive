@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/manual-aegir-cluster-poor-mans-pack?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:56:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Manual Aegir cluster - poor man&#039;s pack | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-12908" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/batfastad/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="batfastad&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/batfastad/index.html" class="username" title="View user profile.">batfastad</a></div><div class='date'>10:07am Jan 30, 2015</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Manual Aegir cluster - poor man&#039;s pack</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>Hi everyone</p>
+
+<p>Been experimenting with the pack module and it works really well. The only problem is that to get sites to use the "pack" server, they have to be migrated to a platform on the "pack" server. Migrating a couple of hundred sites to add/remove a node to/from a cluster is a bit clunky.</p>
+
+<p>Because of this, I'd like to try and manage the cluster manually so we can add/remove new members to the cluster quickly. So Aegir isn't even aware of the other web servers, they're just added to our load balancers when needed.</p>
+
+<p>In a non-Aegir environment this wouldn't be a problem...
+- DocumentRoots mounted over NFS
+- When changes are made to the vhosts we just rsync the vhost configurations to cluster members and trigger a graceful restart
+In non-Aegir environments I handle all of this through Puppet, including the addition/removal of nodes in the cluster.</p>
+
+<p>There are two blockers with Aegir that prevent us from doing this manually:</p>
+
+<p>1) Is there a hook in Aegir that lets us trigger a shell script on the master when a verify/migrate/clone etc task is completed?
+This would handle the config rsync and Apache graceful.</p>
+
+<p>2) The MySQL user accounts created by Aegir are bound to the IP address of the web server.
+Is it possible to set this to '%' instead, so that the site-specific username/password can be used from any host?</p>
+
+<p>Cheers, B</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-8.html?destination=node%2F12908%23comment-form">Login</a> or <a href="../../user/register/index-8.html?destination=node%2F12908%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/manual-aegir-cluster-poor-mans-pack?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:56:48 GMT -->
+</html>

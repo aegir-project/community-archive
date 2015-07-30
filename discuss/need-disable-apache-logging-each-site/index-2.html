@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/need-disable-apache-logging-each-site?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 19:08:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Need to disable Apache logging for each site | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2748" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/netpez/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="netpez&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/netpez/index.html" class="username" title="View user profile.">netpez</a></div><div class='date'>4:59pm Aug 7, 2013</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Need to disable Apache logging for each site</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_62 first"><a href="../../category/keywords/aegir/index.html" rel="tag" title="">Aegir</a></li>
+<li class="taxonomy_term_474"><a href="../../category/keywords/custom/index.html" rel="tag" title="">Custom</a></li>
+<li class="taxonomy_term_470"><a href="../../category/keywords/drupal/index.html" rel="tag" title="">Drupal</a></li>
+<li class="taxonomy_term_473 last"><a href="../../category/keywords/logging/index.html" rel="tag" title="">Logging</a></li>
+</ul></div><p>Hi all,</p>
+
+<p>We are experiencing some odd issues with a large number of empty files being generated in the /tmp directory (with names like: fileWtZ9bP). We are trying to narrow down the cause of this, and our systems folks would like us to disable the apache access &amp; error logs so we can reduce the number of open files to trace.</p>
+
+<p>Does anyone know of a way that I can disable the apache level logging. I know that each site had a custom apache config located in: 
+   /config/server_/apache/vhost.d</p>
+
+<p>Where there are configs for site by site loggings such as:
+   CustomLog /var/log/httpd/precollege_access.log combined
+   ErrorLog /var/log/httpd/precollege_error.log</p>
+
+<p>But if I were to alter those, they could simply be overwritten by any future site/platform verify.</p>
+
+<p>Anyone have any idea how to disable a large number (if not all) of site's logging (access/error) capability?</p>
+
+<p>Thanks
+Chris</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-447.html?destination=node%2F2748%23comment-form">Login</a> or <a href="../../user/register/index-447.html?destination=node%2F2748%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/need-disable-apache-logging-each-site?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 19:08:09 GMT -->
+</html>

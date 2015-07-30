@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/77?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:23:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../architecture/aegir-architecture/index.html" />
+<link rel="up" href="../../developing/architecture/index.html" />
+<link rel="next" href="../41/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Aegir file system structure | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-77" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Aegir file system structure</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-77'><p>This page documents the typical file system structure on an Aegir installation. It is intended to complement a related wiki page on <a href="../76/index.html">Aegir Architecture</a>. The following paths are based on an Aegir 0.4-x installation and assume that all directories are within the /var/aegir folder.</p>
+
+<h3>Scripts and Configuration Files</h3>
+
+<table>
+<tr><th>Path</th><th>Notes</th></tr>
+<tr><td>/backups</td><td>site-specific tar balls containing a database dump and folders under path/to/platform/sites/example.com</td></tr>
+<tr><td>/config</td><td></td></tr>
+<tr><td>/config/server_master</td><td></td></tr>
+<tr><td>/config/server_master/apache</td><td></td></tr>
+<tr><td>/config/server_master/apache/conf.d</td><td>non-aegir or non-drupal virtual hosts files</td></tr>
+<tr><td>/config/server_master/apache/platform.d</td><td>contains .htaccess information for each aegir platform</td></tr>
+<tr><td>/config/server_master/apache/vhost.d</td><td>apache virtual host files for aegir platforms</td></tr>
+<tr><td>/config/server_master/apache/vhost.d/aegir.example.com</td><td>virtual host file for aegir web site - specifies path to platform directory and site database settings (so that database credentials are not exposed directly in site settings.php file) </td></tr>
+<tr><td>/config/server_master/apache/vhost.d/site-1.com</td><td>virtual host file for deployed web site</td></tr>
+<tr><td>/config/server_master/apache/vhost.d/site-2.com</td><td></td></tr>
+<tr><td>/config/server_master/apache/vhost.d/site-3.com</td><td></td></tr>
+<tr><td>/<a href="http://drupal.org/project/drush" title="link to drush project on drupal.org">drush</a></td><td>drush folder</td></tr>
+<tr><td>/drush/drush.php </td><td>drush script</td></tr>
+<tr><td>/.drush</td><td>drush extensions and server, platform and site aliases</td></tr>
+<tr><td>/.drush/<a href="http://drupal.org/project/drush_make" title="link to drush_make project on drupal.org">drush_make</a></td><td>drush_make project folder - used for building web sites from .make files</td></tr>
+<tr><td>/.drush/<a href="http://drupal.org/project/provision" title="link to provision project on drupal.org">provision<a /></a></a></td><td>provision folder</td></tr>
+<tr><td>/.drush/server_master.alias.drushrc.php</td><td>settings for the master server where the main aegir database, hosting platform and aegir site reside</td></tr>
+<tr><td>/.drush/platform_hostmaster.alias.drushrc.php</td><td>settings for the hostmaster platform on which the aegir site is based</td></tr>
+<tr><td>/.drush/hostmaster.alias.drushrc.php</td><td>settings for the aegir site</td></tr>
+<tr><td>/.drush/platform_platform1.alias.drushrc.php</td><td>settings for platform1 on which site-1.com is based</td></tr>
+<tr><td>/.drush/site-1.com.alias.drushrc.php</td><td>settings for site-1.com</td></tr>
+</table>
+
+<table>
+<h3>Hostmaster Platform and Aegir (front-end) Site</h3>
+<tr><th>Path</th><th>Notes</th></tr>
+<tr><td>/hostmaster-0.x</td><td>hostmaster platform</td></tr>
+<tr><td>/hostmaster-0.x/profiles</td><td></td></tr>
+<tr><td>/hostmaster-0.x/profiles/default</td><td></td></tr>
+<tr><td>/hostmaster-0.x/profiles/<a href="http://drupal.org/project/hostmaster" title="link to hostmaster distribution on drupal.org">hostmaster</a></td><td>hostmaster profile</td></tr>
+<tr><td>/hostmaster-0.x/profiles/hostmaster/modules</td><td></td></tr>
+<tr><td>/hostmaster-0.x/profiles/hostmaster/modules/admin_menu</td><td></td></tr>
+<tr><td>/hostmaster-0.x/profiles/hostmaster/modules/<a href="http://drupal.org/project/hosting" title="link to hostmaster project on drupal.org">hosting</a></td><td>hosting module</td></tr>
+<tr><td>/hostmaster-0.x/profiles/hostmaster/modules/install_profile_api</td><td>install_profile_api – facilitates provisioning of sites based on a non-default profile</td></tr>
+<tr><td>/hostmaster-0.x/profiles/hostmaster/modules/jquery_ui</td><td></td></tr>
+<tr><td>/hostmaster-0.x/profiles/hostmaster/modules/modalframe</td><td></td></tr>
+<tr><td>/hostmaster-0.x/profiles/hostmaster/themes</td><td></td></tr>
+<tr><td>/hostmaster-0.x/profiles/hostmaster/themes/<a href="http://drupal.org/project/hostmaster" title="link to eldir theme on drupal.org">eldir</a></td><td>eldir theme – provides Aegir front end look and feel</td></tr>
+<tr><td>/hostmaster-0.x/profiles/hostmaster/hostmaster.profile</td><td>profile file – used in site provisioning to configure a drupal database</td></tr>
+<tr><td>/hostmaster-0.x/profiles/hostmaster/hostmaster.make</td><td>make file – used to include modules, themes, libraries etc. from various sources</td></tr>
+<tr><td>/hostmaster-0.x/modules</td><td></td></tr>
+<tr><td>/hostmaster-0.x/themes</td><td></td></tr>
+<tr><td>/hostmaster-0.x/sites</td><td></td></tr>
+<tr><td>/hostmaster-0.x/sites/aegir.example.com</td><td>aegir web site folders</td></tr>
+</table>
+
+<h3>Deployed Platforms</h3>
+
+<p>Note: the directory /platforms is optional but can be useful to separate deployed platforms from directories for scripts, config files and hostmaster platform.</p>
+
+<table>
+<tr><th>Path</th><th>Notes</th></tr>
+<tr><td>/platforms</td><td></td></tr>
+<tr><td>/platforms/platform-1</td><td></td></tr>
+<tr><td>/platforms/platform-1/profiles</td><td></td></tr>
+<tr><td>/platforms/platform-1/profiles/default</td><td></td></tr>
+<tr><td>/platforms/platform-1/profiles/custom-profile</td><td></td></tr>
+<tr><td>/platforms/platform-1/profiles/custom-profile/modules</td><td></td></tr>
+<tr><td>/platforms/platform-1/profiles/custom-profile/themes</td><td></td></tr>
+<tr><td>/platforms/platform-1/profiles/custom-profile/custom.profile</td><td>profile file – used in site provisioning to configure a drupal database</td></tr>
+<tr><td>/platforms/platform-1/profiles/custom-profile/custom.make</td><td>make file – used to include modules, themes, libraries etc. from various sources</td></tr>
+<tr><td>/platforms/platform-1/modules</td><td></td></tr>
+<tr><td>/platforms/platform-1/themes</td><td></td></tr>
+<tr><td>/platforms/platform-1/sites</td><td></td></tr>
+<tr><td>/platforms/platform-1/sites/site-1.com</td><td></td></tr>
+<tr><td>/platforms/platform-1/sites/site-1.com/modules</td><td></td></tr>
+<tr><td>/platforms/platform-1/sites/site-1.com/themes</td><td></td></tr>
+<tr><td>/platforms/platform-1/sites/site-1.com/files</td><td></td></tr>
+<tr><td>/platforms/platform-1/sites/site-1.com/settings.php</td><td>site-specific drupal configuration file</td></tr>
+<tr><td>/platforms/platform-1/sites/site-1.com/drushrc.php </td><td>site-specific aegir-specific configuration file</td></tr>
+<tr><td>/platforms/platform-1/sites/site-2.com</td><td></td></tr>
+<tr><td>/platforms/platform-1/sites/site-3.com</td><td></td></tr>
+<tr><td>/platforms/platform-1/sites/site-n.com</td><td></td></tr>
+<tr><td>/platforms/platform-2</td><td></td></tr>
+<tr><td>/platforms/platform-3</td><td></td></tr>
+<tr><td>/platforms/platform-n</td><td></td></tr>
+</table>
+
+<p><br /></p>
+
+<h3>Platform permissions</h3>
+
+<table>
+<tr>
+<th>Path</th>
+<th>Directory<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></th>
+<th>File<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></th>
+<th>Notes</th>
+</tr>
+
+<tr>
+<td><code>./*</code></td>
+<td>
+<code>aegir:aegir</code><br />
+<code>drwxr-xr-x</code></td>
+<td>
+<code>aegir:aegir</code><br />
+<code>-rw-r--r--</code>
+</td>
+<td>The webserver has no business writing or moving files in the Drupal codebase.</td>
+</tr>
+
+<tr>
+<td colspan="4"><em>Inside ./sites/example.com:</em></td>
+</tr>
+
+<tr>
+<td><code>drushrc.php</code></td>
+<td></td>
+<td>
+<code>aegir:aegir</code><br />
+<code>-r--------</code>
+</td>
+<td>Web server shouldn't be able to read drushrc.php, it's not a component of the Drupal site.</td>
+</tr>
+
+<tr>
+<td><code>settings.php</code></td>
+<td></td>
+<td>
+<code>aegir:www-data</code><br />
+<code>-r--r-----</code>
+</td>
+<td>Web server can read this file, but otherwise tight control over this file which can contain sensitive information.</td>
+</tr>
+
+<tr>
+<td>
+<code>libraries</code><br />
+<code>modules</code>
+<code>themes</code>
+</td>
+<td>
+<code>aegir:aegir</code><br />
+<code>drwxrwsr-x</code>
+</td>
+<td>
+<code>aegir:aegir</code><br />
+<code>-rw-r--r--</code>
+</td>
+<td>
+Because of the sticky bit (s) on the parent directory, each child directory will inherit attributes of the parent. The attribute that is consistently inherited is the group. This means that a developer in the "aegir" group can add files which will retain the "aegir" group ownership of the parent directory.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>files</code><br />
+<code>private</code>
+</td>
+<td>
+<code>aegir:www-data</code><br />
+<code>drwxrws---</code>
+</td>
+<td></td>
+<td>Aegir sets these directories with a sticky bit (s) so that under certain conditions new folders and files will inherit parent permissions. There are only a few cases where this happens though.</td>
+</tr>
+
+<tr>
+<td>
+<code>files/*</code><br />
+<code>private/*</code>
+</td>
+<td>
+<code>www-data:www-data</code><br />
+<code>drwxr-sr-x</code>
+</td>
+<td>
+<code>www-data:www-data</code><br />
+<code>-rw-r--r--</code>
+</td>
+<td>
+The permissions shown here are how files and directories created by www-data will look. When verifying a platform, Aegir won't "correct" these files and directories to match the parents.
+
+If you have trouble with permissions/ownership on these directories, you can safely run the following commands (in this case on the files directory):
+<div class="codeblock"><code># chown -R aegir:www-data /path/to/site/files/*<br /># chmod -R 775 /path/to/site/files/*</code></div>
+</td>
+</tr>
+
+</table></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/77?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:23:48 GMT -->
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/355?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 16:56:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>How this site crashed when it was last verified - lessons learned from migrating a &quot;standard site&quot; | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-355" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/anarcat/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-78/index.jpg" alt="anarcat&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a></div><div class='date'>7:44pm Feb 17, 2011</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">How this site crashed when it was last verified - lessons learned from migrating a &quot;standard site&quot;</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>We just had a pretty nasty outage on this site, about an hour ago (thanks to smthomas on IRC for the heads up!). All modules were disabled and the frontpage was unthemed and saying only "Page not found".</p>
+
+<p>Ouch.</p>
+
+<p>While distributions can make hosting and porting sites between providers a breeze (I didn't have to guess what Drupal modules I needed to install to import the site), it can have some tricky implications most people are not used to when doing certain operations. I have taken some time to explain here how I fixed this and how to avoid the problem in the future so that others can profit from that nasty experience...</p>
+
+<p>After freaking out (<a href="http://koumbit.org/">Koumbit</a> is the one taking care of hosting this site, so those things often fall on me), I started looking at the problem, and found out that all modules, or more precisely, all OpenAtrium-related modules were disabled. After a "what the heck" headbang, I realized I had the exact same issue back when we deployed the site during the original migration. Back then, the problem was that I didn't pass the <code>--profile=openatrium</code> option to <code>provision-deploy</code> when installing the new site. That, in turn, made the update script disable all OpenAtrium modules, because the Drupal bootstrap can't find them, because they are in the <code>profiles/openatrium/modules/</code>...</p>
+
+<p>(Now you're supposed to have that "aaaaaaah... i seeeeee!!" moment.)</p>
+
+<p>I fixed <a href="https://wiki.koumbit.net/FoireAuxQuestions/MigrerMonSiteDansAegir">our procedure</a> (in french, a bit chaotic) by adding the <code>--profile</code> option to the <code>provision-deploy</code> call, which fixed it during that original deployment. But then, the site got imported, and it picked up the profile not from the <code>settings.php</code> (which was correctly configured by <code>provision-deploy</code>) but from the <strong>alias</strong>, which was created earlier with <code>provision-save</code>, and which then defaulted to the <code>default</code> install profile. On import, the site node was created to the frontend with the default profile.</p>
+
+<p>So when the site was verified after a migrate, the profile was reset back to <code>default</code> again and all modules were disabled when the cache was cleared.</p>
+
+<p>The proper way of doing that deployment was to set the profile right in the alias (through <code>provision-save</code>) in the first place - that way all would have been right.</p>
+
+<p>If you ever end up in a similar situation, you have a few options:</p>
+
+<ol>
+<li>restore from a backup - not possible, we had live data in there and changes since the last backup</li>
+<li>enable all missing modules manuall - yuck: how do I know? i can look at "Disabled" (as opposed to "Not installed") modules in <code>drush pm-list</code>, but that's not really reliable</li>
+<li>partially restore from backup - what I ended up doing</li>
+</ol>
+
+<p>I took the original backup that was used to deploy the site in the first place and extracted the <code>database.sql</code>:</p>
+
+<p><code>tar zxf backup.tgz ./database.sql</code></p>
+
+<p>Then I edited the file (in vi!!) to remove everything but the system table instructions (including the <code>DROP TABLE <code>system</code></code>). And I loaded the dump in the site:</p>
+
+<p><code>drush @community.aegirproject.org sqlc &lt; database.sql</code></p>
+
+<p>That way, the system table, and only the system table, was restored from backups and all modules were back in their original enabled/disable state. A little cache clear (<code>drush @community.aegirproject.org cc all</code>) and the site was fully functional again.</p>
+
+<p>Bottomline: be careful with distributions when you move them around. Setting the profile in <code>settings.php</code> and in <code>provision-save</code> is essential for the site to work.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-318.html?destination=node%2F355%23comment-form">Login</a> or <a href="../../user/register/index-318.html?destination=node%2F355%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/355?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 16:56:06 GMT -->
+</html>

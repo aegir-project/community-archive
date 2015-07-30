@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/244/revisions/570/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:24:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../79/index.html" />
+<link rel="up" href="../../../../518/index.html" />
+<link rel="next" href="../../../../416/index.html" />
+<link rel="prev" href="../../../../79/index.html" />
+<link rel="up" href="../../../../518/index.html" />
+<link rel="next" href="../../../../416/index.html" />
+<link rel="prev" href="../../../../79/index.html" />
+<link rel="up" href="../../../../518/index.html" />
+<link rel="next" href="../../../../416/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Aegir Virtual Applicance from Fri, 01/07/2011 - 13:02 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-244" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Aegir Virtual Applicance</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-244'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/288/index.html" class="username" title="View user profile.">chalet16</a> on 01/07/2011 - 13:02</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>A Google Code-In student has create a virtual appliance in VirtualBox which make users able to use Aegir without using Linux or conflict with current server setting.</p>
+
+<p>You can download it at
+<a href="http://tucc.triamudom.ac.th/aegir.7z" title="http://tucc.triamudom.ac.th/aegir.7z">http://tucc.triamudom.ac.th/aegir.7z</a></p>
+
+<pre>
+AEGIR VIRTUAL APPLIANCE
+----------------------------------------------------
+
+Prerequisite:
+- VirtualBox
+- DNS Server which you can modfiy records (optional)
+ 
+How to install:
+1. Virtual Machine
+1.1. Extract Aegir.7z file.
+1.2. Open VirtualBox goto File -&gt; Import Applicance
+1.3. Select .odf file which you have extract in first step.
+1.4. Choose CPU and RAM size which are suitable for your system.
+1.5. Click Finish and agree to license agreement
+1.6. Start Virtual Machine, click on network adapter icon on the bottom of window,
+ and config bridge adapter to bridge with network you wish to use with.
+1.8. Login to Virtual Machine with username "ageiradmin" and password "aegir" 
+and type "sudo ifconfig" to show your current ip address.
+
+2. DNS config
+2.1 If you can config your DNS Server, point "ageir" to virtual machine ip address.
+2.2 Else you have to add line below in /etc/hosts (Linux) or %SystemRoot%\system32\drivers\etc\hosts (Windows)
+
+ VIRTUALMACHINEIP aegir
+
+3. Guest system config
+3.1 You can login to Aegir web interface by <a href="http://aegir/" title="http://aegir/">http://aegir/</a> 
+3.2 You can login to shell using VirtualBox VM window or ssh to server ip address.
+
+Default Configuration(PLEASE CHANGE FOR PRODUCTION USAGE)
+Linux admin account:
+Username: aegiradmin
+Password: aegir
+*root user is disable for security.
+
+Aegir management account:
+User: admin
+Password: aegir
+
+Aegir Document:
+You could learn more about how to use Aegir at
+Offical Document: <a href="../../../../../notebook/index.html" title="http://community.aegirproject.org/notebook">http://community.aegirproject.org/notebook</a>
+Community Site: <a href="../../../../../index.html" title="http://community.aegirproject.org/">http://community.aegirproject.org/</a>
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-428.html?destination=node%2F244%23comment-form">Login</a> or <a href="../../../../../user/register/index-428.html?destination=node%2F244%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/244/revisions/570/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:24:08 GMT -->
+</html>

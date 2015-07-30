@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/content/contrib/class-auto-loading?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:46:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../creating-product-features-using-uchosting-1x/index.html" />
+<link rel="up" href="../../../contrib/index.html" />
+<link rel="next" href="../../../contrib/customizing-platform-templates/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Class auto-loading | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2825" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Class auto-loading</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first last"><a href="../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+</ul></div><div id='diff-inline-2825'><p>Provision has been refactored in 6.x-2.x to use class auto-loading. This simplifies use of classes, as it obviates the need to explicitly include the files in which the class and it's parent classes are defined. In addition, it standardizes the placement of class definitions within a hierarchical file-system structure and will make name-spacing simpler if/when we begin to adopt Symfony components.</p>
+
+<p>While not strictly required in contributed modules, it is highly encouraged. If you maintain a contributed Provision extension, some re-factoring will be required to support class auto-loading.</p>
+
+<p>First off, you'll need to add a registration function that will enable Provision to autoload your extensions classes. Here's an example from provision_civicrm:</p>
+
+<p><div class="codeblock"><code>/**<br /> * Register our directory as a place to find Provision classes.<br /> *<br /> * This allows Provision to autoload our classes, so that we don&#039;t need to<br /> * specifically include the files before we use the class.<br /> */<br />function civicrm_provision_register_autoload() {<br />&nbsp; static $loaded = FALSE;<br />&nbsp; if (!$loaded) {<br />&nbsp;&nbsp;&nbsp; $loaded = TRUE;<br />&nbsp;&nbsp;&nbsp; $list = drush_commandfile_list();<br />&nbsp;&nbsp;&nbsp; $provision_dir = dirname($list[&#039;provision&#039;]);<br />&nbsp;&nbsp;&nbsp; include_once($provision_dir . &#039;/provision.inc&#039;);<br />&nbsp;&nbsp;&nbsp; include_once($provision_dir . &#039;/provision.service.inc&#039;);<br />&nbsp;&nbsp;&nbsp; provision_autoload_register_prefix(&#039;Provision_&#039;, dirname(__FILE__));<br />&nbsp; }<br />}</code></div></p>
+
+<p>Next, your extension will need to call your new function in a hook_drush_init(), so that it is run as early as possible during a Drush bootstrap.</p>
+
+<p><div class="codeblock"><code>/**<br /> * Implements hook_drush_init().<br /> */<br />function provision_civicrm_drush_init() {<br />&nbsp; // Register our service classes for autoloading.<br />&nbsp; civicrm_provision_register_autoload();<br />&nbsp; ...</code></div></p>
+
+<p>Finally, you can move your class definitions into the proper file-system structure. In provision_civicrm, we defined a new (stub) service to allow saving data from the front-end into a site context (entity/alias). So, we created a file at Provision/Service/civicrm.php that included the class definition:</p>
+
+<p><div class="codeblock"><code>/<strong><br /> * The civicrm service base class.<br /> */<br />class Provision_Service_civicrm extends Provision_Service {<br />&nbsp; public $service = &#039;civicrm&#039;;<br /><br />&nbsp; /</strong><br />&nbsp;&nbsp; * Add the civicrm_version property to the site context.<br />&nbsp;&nbsp; */<br />&nbsp; static function subscribe_site($context) {<br />&nbsp;&nbsp;&nbsp; $context-&gt;setProperty(&#039;civicrm_version&#039;);<br />&nbsp; }<br />}</code></div></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../user/login/index-211.html?destination=node%2F2825%23comment-form">Login</a> or <a href="../../../user/register/index-211.html?destination=node%2F2825%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/content/contrib/class-auto-loading?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:46:26 GMT -->
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/debian-archive-migrated-debianaegirprojectorg?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:10:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Debian archive migrated to debian.aegirproject.org | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-917" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/anarcat/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-78/index.jpg" alt="anarcat&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a></div><div class='date'>8:57pm Oct 12, 2011</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Debian archive migrated to debian.aegirproject.org</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>In order to reduce the bus factor of the project and allow all Aegir committers to manage the Debian archive, the packages have been moved to a new archive hosted alongside the Jenkins server.</p>
+
+<p>The 1.4 packages will remain on Koumbit's archive for posterity, but they are already available on the new server. The jenkins builds are also uploaded on the new server, and next releases will not be published on Koumbit's server, at which point the packages will be removed from Koumbit's server (see <a href="https://drupal.org/node/1307842">this ticket</a> for followup).</p>
+
+<p>You will need to make changes to your configuration to follow the upgrade. The new URL is:</p>
+
+<p><div class="codeblock"><code>deb <a href="http://debian.aegirproject.org/" title="http://debian.aegirproject.org/">http://debian.aegirproject.org/</a> squeeze main<br />deb-src <a href="http://debian.aegirproject.org/" title="http://debian.aegirproject.org/">http://debian.aegirproject.org/</a> squeeze main</code></div></p>
+
+<p>The PGP key changed to, so you need to reimport that too:</p>
+
+<p><div class="codeblock"><code>wget <a href="http://debian.aegirproject.org/key.asc<br />apt-key" title="http://debian.aegirproject.org/key.asc<br />apt-key">http://debian.aegirproject.org/key.asc<br />apt-key</a> add key.asc<br />apt-get update</code></div></p>
+
+<p>You can also remove Koumbit's key if you do not plan to use it again:</p>
+
+<p><div class="codeblock"><code>apt-key del B7C0A70A</code></div></p>
+
+<p>... but that step is optional.</p>
+
+<p>If you need to automate this process, you can use the following script:</p>
+
+<p><div class="codeblock"><code>sed -i &quot;s#debian.koumbit.net/debian#debian.aegirproject.org#&quot; /etc/apt/sources.list</code></div></p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-336.html?destination=node%2F917%23comment-form">Login</a> or <a href="../../user/register/index-336.html?destination=node%2F917%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/debian-archive-migrated-debianaegirprojectorg?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:10:48 GMT -->
+</html>

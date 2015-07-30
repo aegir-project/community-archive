@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/523/revisions/3778/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:09:20 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../roadmap/1/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../roadmap/2.0/d7-port-dns-editor-plan-google-summer-code-2011/index.html" />
+<link rel="prev" href="../../../../../roadmap/1/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../roadmap/2.0/d7-port-dns-editor-plan-google-summer-code-2011/index.html" />
+<link rel="prev" href="../../../../../roadmap/1/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../roadmap/2.0/d7-port-dns-editor-plan-google-summer-code-2011/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="prev" href="../../../../../roadmap/2/index.html" />
+<link rel="up" href="../../../../../roadmap/2/index.html" />
+<link rel="next" href="../../../../../scrums/index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of 2.0 roadmap from Fri, 08/24/2012 - 11:41 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-523" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../roadmap/2/index.html">2.0 roadmap</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-523'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a> on 08/24/2012 - 11:41</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Following the <a href="../../../../488/index.html">Drupalcon Chicago 2011 BOFs discussion</a>, the community came up with a series of ideas and wishlist items for the upcoming 2.0 release. This roadmap may be updated or trimmed down as development goes ahead.</p>
+
+<p>We do not commit to doing <em>all</em> of this for 2.0, this is mostly a wishlist of what people expressed were priorities for them during the brainstorm. If people want things to move forward, they will need to submit patches or create feature branches, basically lead development on the feature you want. This page can be used to coordinate overall leadership of those issues, while pointing to the Drupal.org issue queues for the specifics.</p>
+
+<p>This roadmap supersedes the previous <a href="../../../../../roadmap/1/index.html">1.0 roadmap</a>.</p>
+
+<p><em>Update</em>: this roadmap is very ambitious, and should be considered more as a "wishlist". What we agreed on during <a href="../../../../../content/weekly-scrum-irc-log-2012-02-06/index.html">the february 6th 2012 scrum</a> was that we would focus on those items, in order of higher to lower priority:</p>
+
+<ol>
+<li>Autoloaded classes (means we drop support for PHP 5.2 and below)</li>
+<li>Drush 5 support</li><span class='diff-deleted'>
+</span><li><span class='diff-deleted'>Drupal</span><span class='diff-deleted'> </span><span class='diff-deleted'>7</span><span class='diff-deleted'> </span><span class='diff-deleted'>port</span><span class='diff-deleted'> </span><span class='diff-deleted'>of</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>frontend</span></li>
+</ol>
+
+<p>Once all those are done, 2.x should go in beta and once there are no criticals, it gets release, even if we don't have all the other features listed below.</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Drush_collaboration"><span class="toc-number">1.<span class='diff-deleted'> </span><span class='diff-deleted'></span></span><span class='diff-deleted'>Port</span><span class='diff-deleted'> </span><span class='diff-deleted'>frontend</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>Drupal</span><span class='diff-deleted'> </span><span class='diff-deleted'>7</span></a><span class='diff-deleted'></span></li><span class='diff-deleted'>
+	</span><li class="toc-level-1"><span class='diff-deleted'></span><a href="#Drush_collaboration"><span class='diff-deleted'></span><span class="toc-number"><span class='diff-deleted'>2.</span> </span>Drush collaboration</a>
+<ol>
+	<li class="toc-level-2"><a href="#Sending_more_code_upstream"><span class="toc-number"><span class='diff-changed'>1.1.</span> </span>Sending more code upstream</a></li>
+	<li class="toc-level-2"><a href="#Removing_common_code"><span class="toc-number"><span class='diff-changed'>1.2.</span> </span>Removing common code</a></li>
+	<li class="toc-level-2"><a href="#Standard_archive_support"><span class="toc-number"><span class='diff-changed'>1.3.</span> </span>Standard archive support</a></li>
+	<li class="toc-level-2"><a href="#Unit_testing"><span class="toc-number"><span class='diff-changed'>1.4.</span> </span>Unit testing</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Multi-server_improvements"><span class="toc-number"><span class='diff-changed'>2.</span> </span>Multi-server improvements</a>
+<ol>
+	<li class="toc-level-2"><a href="#From_a_hub-spoke_to_a_mesh_model"><span class="toc-number"><span class='diff-changed'>2.1.</span> </span>From a hub-spoke to a mesh model</a></li>
+	<li class="toc-level-2"><a href="#Improve_cluster_support_done_and_backported_to_1.7"><span class="toc-number"><span class='diff-changed'>2.2.</span> </span>Improve cluster support (done &amp; backported to 1.7)</a></li>
+	<li class="toc-level-2"><a href="#Optimizing_clones_and_migrates"><span class="toc-number"><span class='diff-changed'>2.3.</span> </span>Optimizing clones and migrates</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Modularization_of_more_systems"><span class="toc-number"><span class='diff-changed'>3.</span> </span>Modularization of more systems</a>
+<ol>
+	<li class="toc-level-2"><a href="#Modular_backup_system"><span class="toc-number"><span class='diff-changed'>3.1.</span> </span>Modular backup system</a></li>
+	<li class="toc-level-2"><a href="#Modular_platform_support"><span class="toc-number"><span class='diff-changed'>3.2.</span> </span>Modular platform support</a></li>
+	<li class="toc-level-2"><a href="#Modular_queuing_system"><span class="toc-number"><span class='diff-changed'>3.3.</span> </span>Modular queuing system</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Other_features"><span class="toc-number"><span class='diff-changed'>4.</span> </span>Other features</a>
+<ol>
+	<li class="toc-level-2"><a href="#Automatic_upgrades"><span class="toc-number"><span class='diff-changed'>4.1.</span> </span>Automatic upgrades</a></li>
+	<li class="toc-level-2"><a href="#PostgreSQL_backend_support"><span class="toc-number"><span class='diff-changed'>4.2.</span> </span>PostgreSQL backend support</a></li>
+	<li class="toc-level-2"><a href="#Statistics_improvements"><span class="toc-number"><span class='diff-changed'>4.3.</span> </span>Statistics improvements</a></li>
+	<li class="toc-level-2"><a href="#Full_DNS_support"><span class="toc-number"><span class='diff-changed'>4.4.</span> </span>Full DNS support</a></li>
+	<li class="toc-level-2"><a href="#Improved_intersite_security"><span class="toc-number"><span class='diff-changed'>4.5.</span> </span>Improved intersite security</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Contrib_modules"><span class="toc-number"><span class='diff-changed'>5.</span> </span>Contrib modules</a>
+<ol>
+	<li class="toc-level-2"><a href="#Other_modules_roadmaps"><span class="toc-number"><span class='diff-changed'>5.1.</span> </span>Other modules roadmaps</a></li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+
+<h1 id="Drush_collaboration">1.<span class='diff-deleted'> </span><span class='diff-deleted'>Port</span><span class='diff-deleted'> </span><span class='diff-deleted'>frontend</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>Drupal</span><span class='diff-deleted'> </span><span class='diff-deleted'>7</span></h1><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>We</span><span class='diff-deleted'> </span><span class='diff-deleted'>were</span><span class='diff-deleted'> </span><span class='diff-deleted'>originally</span><span class='diff-deleted'> </span><span class='diff-deleted'>planning</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>release</span><span class='diff-deleted'> </span><span class='diff-deleted'>1.0</span><span class='diff-deleted'> </span><span class='diff-deleted'>with</span><span class='diff-deleted'> </span><span class='diff-deleted'>Drupal</span><span class='diff-deleted'> </span><span class='diff-deleted'>7</span><span class='diff-deleted'> </span><span class='diff-deleted'>support</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>make</span><span class='diff-deleted'> </span><span class='diff-deleted'>sure</span><span class='diff-deleted'> </span><span class='diff-deleted'>it</span><span class='diff-deleted'> </span><span class='diff-deleted'>was</span><span class='diff-deleted'> </span><span class='diff-deleted'>a</span><span class='diff-deleted'> </span><span class='diff-deleted'>"long</span><span class='diff-deleted'> </span><span class='diff-deleted'>term</span><span class='diff-deleted'> </span><span class='diff-deleted'>support"</span><span class='diff-deleted'> </span><span class='diff-deleted'>release,</span><span class='diff-deleted'> </span><span class='diff-deleted'>but</span><span class='diff-deleted'> </span><span class='diff-deleted'>this</span><span class='diff-deleted'> </span><span class='diff-deleted'>has</span><span class='diff-deleted'> </span><span class='diff-deleted'>changed</span><span class='diff-deleted'> </span><span class='diff-deleted'>-</span><span class='diff-deleted'> </span><span class='diff-deleted'>we</span><span class='diff-deleted'> </span><span class='diff-deleted'>hope</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>keep</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>release</span><span class='diff-deleted'> </span><span class='diff-deleted'>cycle</span><span class='diff-deleted'> </span><span class='diff-deleted'>short</span><span class='diff-deleted'> </span><span class='diff-deleted'>and</span><span class='diff-deleted'> </span><span class='diff-deleted'>therefore</span><span class='diff-deleted'> </span><span class='diff-deleted'>Drupal</span><span class='diff-deleted'> </span><span class='diff-deleted'>7</span><span class='diff-deleted'> </span><span class='diff-deleted'>was</span><span class='diff-deleted'> </span><span class='diff-deleted'>pushed</span><span class='diff-deleted'> </span><span class='diff-deleted'>back</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>2.0.</span><span class='diff-deleted'> </span><span class='diff-deleted'>But</span><span class='diff-deleted'> </span><span class='diff-deleted'>it</span><span class='diff-deleted'> </span><span class='diff-deleted'>is</span><span class='diff-deleted'> </span><span class='diff-deleted'>still</span><span class='diff-deleted'> </span><span class='diff-deleted'>a</span><span class='diff-deleted'> </span><span class='diff-deleted'>target</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>make</span><span class='diff-deleted'> </span><span class='diff-deleted'>sure</span><span class='diff-deleted'> </span><span class='diff-deleted'>we</span><span class='diff-deleted'> </span><span class='diff-deleted'>a</span><span class='diff-deleted'> </span><span class='diff-deleted'>reliable</span><span class='diff-deleted'> </span><span class='diff-deleted'>release</span><span class='diff-deleted'> </span><span class='diff-deleted'>that</span><span class='diff-deleted'> </span><span class='diff-deleted'>will</span><span class='diff-deleted'> </span><span class='diff-deleted'>be</span><span class='diff-deleted'> </span><span class='diff-deleted'>supported</span><span class='diff-deleted'> </span><span class='diff-deleted'>for</span><span class='diff-deleted'> </span><span class='diff-deleted'>a</span><span class='diff-deleted'> </span><span class='diff-deleted'>long</span><span class='diff-deleted'> </span><span class='diff-deleted'>time.</span></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>Drupal</span><span class='diff-deleted'> </span><span class='diff-deleted'>7</span><span class='diff-deleted'> </span><span class='diff-deleted'>also</span><span class='diff-deleted'> </span><span class='diff-deleted'>introduces</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>concept</span><span class='diff-deleted'> </span><span class='diff-deleted'>of</span><span class='diff-deleted'> </span><span class='diff-deleted'>entities</span><span class='diff-deleted'> </span><span class='diff-deleted'>which</span><span class='diff-deleted'> </span><span class='diff-deleted'>could</span><span class='diff-deleted'> </span><span class='diff-deleted'>be</span><span class='diff-deleted'> </span><span class='diff-deleted'>very</span><span class='diff-deleted'> </span><span class='diff-deleted'>useful</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>lighten</span><span class='diff-deleted'> </span><span class='diff-deleted'>our</span><span class='diff-deleted'> </span><span class='diff-deleted'>many</span><span class='diff-deleted'> </span><span class='diff-deleted'>content</span><span class='diff-deleted'> </span><span class='diff-deleted'>types</span><span class='diff-deleted'> </span><span class='diff-deleted'>in</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>frontend.</span><span class='diff-deleted'> </span><span class='diff-deleted'>It</span><span class='diff-deleted'> </span><span class='diff-deleted'>could</span><span class='diff-deleted'> </span><span class='diff-deleted'>also</span><span class='diff-deleted'> </span><span class='diff-deleted'>be</span><span class='diff-deleted'> </span><span class='diff-deleted'>useful</span><span class='diff-deleted'> </span><span class='diff-deleted'>for</span><span class='diff-deleted'> </span><span class='diff-deleted'>DNS</span><span class='diff-deleted'> </span><span class='diff-deleted'>support</span><span class='diff-deleted'> </span><span class='diff-deleted'>as</span><span class='diff-deleted'> </span><span class='diff-deleted'>zonefiles</span><span class='diff-deleted'> </span><span class='diff-deleted'>could</span><span class='diff-deleted'> </span><span class='diff-deleted'>be</span><span class='diff-deleted'> </span><span class='diff-deleted'>modeled</span><span class='diff-deleted'> </span><span class='diff-deleted'>directly</span><span class='diff-deleted'> </span><span class='diff-deleted'>as</span><span class='diff-deleted'> </span><span class='diff-deleted'>entities.</span></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>This</span><span class='diff-deleted'> </span><span class='diff-deleted'>concerns</span><span class='diff-deleted'> </span><span class='diff-deleted'>of</span><span class='diff-deleted'> </span><span class='diff-deleted'>course</span><span class='diff-deleted'> </span><span class='diff-deleted'>only</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>port</span><span class='diff-deleted'> </span><span class='diff-deleted'>of</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>frontend</span><span class='diff-deleted'> </span><span class='diff-deleted'>(hostmaster.profile,</span><span class='diff-deleted'> </span><span class='diff-deleted'>eldir.theme</span><span class='diff-deleted'> </span><span class='diff-deleted'>and</span><span class='diff-deleted'> </span><span class='diff-deleted'>hosting.module),</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>backend</span><span class='diff-deleted'> </span><span class='diff-deleted'>already</span><span class='diff-deleted'> </span><span class='diff-deleted'>supports</span><span class='diff-deleted'> </span><span class='diff-deleted'>d7</span><span class='diff-deleted'> </span><span class='diff-deleted'>installs</span><span class='diff-deleted'> </span><span class='diff-deleted'>and</span><span class='diff-deleted'> </span><span class='diff-deleted'>upgrades.</span><span class='diff-deleted'> </span><span class='diff-deleted'>The</span><span class='diff-deleted'> </span><span class='diff-deleted'>issue</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>followup</span><span class='diff-deleted'> </span><span class='diff-deleted'>is</span><span class='diff-deleted'> </span><span class='diff-deleted'></span><a href="https://drupal.org/node/1261030"><span class='diff-deleted'>#1261030</span></a><span class='diff-deleted'>.</span></p><span class='diff-deleted'>
+
+</span><div class="toc-back-to-top"><span class='diff-deleted'></span><a href="#toc"><span class='diff-deleted'>Back</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>top</span></a><span class='diff-deleted'></span></div><span class='diff-deleted'></span><h1 id="Drush_collaboration"><span class='diff-deleted'>2.</span> Drush collaboration</h1>
+
+<p>We want to collaborate more with the good people in the <a href="http://drush.ws/">Drush project</a>. We had good conversations at Drupalcon and hope to keep on having more about how to do staging, sharing code, working with contexts and aliases and so on.</p>
+
+<p>This collaboration should permeate the whole 2.0 release cycle, as a lot of goals here overlap work already happening in the Drush project. We have a long tradition of leading development of new features in Drush, by first implementing them in Provision, and we should continue that trend, with a focus on merging those changes back up into Drush, and eventually removing them from Provision in 2.0.</p>
+
+<p><a href="http://koumbit.org/">Koumbit</a> plans to keep on taking care of the Drush Debian packages and coordinate with the Drush team as much as possible.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Sending_more_code_upstream"><span class='diff-changed'>1.1.</span> Sending more code upstream</h2>
+
+<p>Our "contexts" code could be refactored and sent upstream. provision-save would be a likely first target, along with the persistent "contexts" classes. Note that we have hit a <a href="https://drupal.org/node/955018">significant wall in the current API</a> because it is hard to interoperate with existing server and site contexts from the outside of the class, so that's something that should be cleared up before going ahead with those merges.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Removing_common_code"><span class='diff-changed'>1.2.</span> Removing common code</h2>
+
+<p>At the very least, we should start removing common code between site-install and provision-install. The new drush archive command should also replace our builtin provision-backup, and provision-save may be refactored around drush_save_config() too (see <a href="https://drupal.org/node/736686">issue #736686 for this</a>).</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Standard_archive_support"><span class='diff-changed'>1.3.</span> Standard archive support</h2>
+
+<p>... which brings us to the <a href="http://groups.drupal.org/node/106754">standard archive format</a>. Drush and Aegir developers have collaborated to create a common format to export and import Drupal sites. A single archive could bundle one or many sites, including site-wide code, so this is a significant difference (and improvement) over the current de-facto Aegir standard.</p>
+
+<p>We want to support that new format. Full multi-site archives should be imported as platforms, while Aegir could keep on exporting single-site archives for standard platforms, like OpenAtrium or other distributions.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Unit_testing"><span class='diff-changed'>1.4.</span> Unit testing</h2>
+
+<p>Drush has started to implement unit testing with PHPUnit in Drush 5 (see <a href="http://drupalcode.org/project/drush.git/tree/HEAD:/tests">the tests directory</a> for samples), and we should jump in that party, extending those classes and unit-testing the hell out of Aegir itself. That will make merging features into Drush easier and make sure we have no regressions while doing so.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Multi-server_improvements"><span class='diff-changed'>2.</span> Multi-server improvements</h1>
+
+<p>While Aegir 1.0 has multi-server support, it is far from ideal or complete, and we wish to harden that design in 2.0.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="From_a_hub-spoke_to_a_mesh_model"><span class='diff-changed'>2.1.</span> From a hub-spoke to a mesh model</h2>
+
+<p>The current model where there is one main server (the "hub") where all platforms and sites are created and then synced to remote servers (the "spokes") seems to be showing scalability issues and concerns about where the authoritative data should be.</p>
+
+<p>For example, it's currently not recommended to allow developpers to access sites on remote servers, as the authoritative data resides on the hostmaster site. Another issue is that aliases are maintained only on the master server, and therefore are not accessible on remote servers. Finally, the fact that drush and provision are not installed on remote servers make some operations unnecessarily slow as we need to make the operation locally and then sync the result.</p>
+
+<p>The alternative has yet to be discussed. We especially want to chime in with the Drush community here to see how the best practices should be. The conversation has started, and with the migration of Drupal.org to git, a lot of possibilities just opened up, with a lot of people being all of a sudden more familiar with this excellent too.</p>
+
+<p>In general, it should be possible to expect remote servers to have drush and provision installed and be relatively independent from the "master" server. A design like this could eventually mean that Aegir could manage other Aegir sites and upgrade them. It is the "mesh" design, of which the "hub and spoke" model is only a subset.</p>
+
+<p>This follows the practice of "tools not policy" we are heading towards: we leave the mesh vs hub/spoke decision to the site administrators and provide the tools to support both approaches the best we can.</p>
+
+<p><a href="http://koumbit.org/">Koumbit</a> plans to spearhead this effort this summer.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Improve_cluster_support_done_and_backported_to_1.7"><span class='diff-changed'>2.2.</span> Improve cluster support (done &amp; backported to 1.7)</h2>
+
+<p>The current multi-server model doesn't support clusters and shared filesystems very well. Aegir 2.0 should allow scaling your web hosts horizontally by spreading a single site amongst multiple servers. While 1.0 can setup sites on remote servers, it follows more the concept of "sharding", spreading different sites amongst different servers than load balancing all sites amongst all servers.</p>
+
+<p>This involves supporting load balancers (e.g. IPVs, Pound, Varnish), maybe through the existing "cluster" service, but also shared filesystems (e.g. NFS, OCFS, GFS, GlusterFS), maybe through a new "fileserver" service.</p>
+
+<p><a href="http://koumbit.org/">Koumbit</a> plans to spearhead this effort this summer.</p>
+
+<p><strong>Update</strong>: this has been implemented with the "web_pack" module, which will be released with 1.7, deprecating the cluster module. 2.x will remove support for the current "cluster" module. See also the <a href="../../../../../content/web-clusters/index.html">updated documentation</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Optimizing_clones_and_migrates"><span class='diff-changed'>2.3.</span> Optimizing clones and migrates</h2>
+
+<p>We quickly mentionned git support above, but this could lead to significant improvements, for example by using <code>git clone --shared</code> instead of the traditional "backup and deploy" approach to clone/migrate sites.</p>
+
+<p>There is certainly the possibility of rewriting clone to optimize away "backup and deploy" and merge them in a single operation that could use copy on write mechanisms like hardlinks (<code>cp -al</code>), git tricks (<code>git clone --shared</code>) or filesystem snapshots (e.g. <a href="https://btrfs.wiki.kernel.org/index.php/FAQ#What_is_a_snapshot.3F">BTRFS snapshot directory/file support</a>).</p>
+
+<p>Once deploy is optimized, we could consider hooking it the Drupal 7 or third party unit tests to rollback on such failures.</p>
+
+<p>Those optimizations would need to integrate with and support the multi-server model elegantly too, especially the hypothetical fileserver service.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Modularization_of_more_systems"><span class='diff-changed'>3.</span> Modularization of more systems</h1>
+
+<p>Aegir 1.0 is already pretty modular: "services" are an abstract concept that can be implemented and inherited. For example, the "HTTP service" has four implementations: Apache, Apache-SSL, Nginx and Nginx-SSL. The database and DNS layers are also abstracted that way.</p>
+
+<p>But more can be done here.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Modular_backup_system"><span class='diff-changed'>3.1.</span> Modular backup system</h2>
+
+<p>Right now backups can be pretty heavy and use the venerable (<a href="http://www.freebsd.org/cgi/man.cgi?query=tar&amp;sektion=1#HISTORY">1979!</a>) tar backup format and utilities, which made Aegir portable to almost any UNIX operating system. It's a good start, but it's highly inefficient. As mentionned above for the clone and migrate optimization, we could also use modern filesystem features like snapshots or use git support. Another suggestion was to use <a href="http://aws.amazon.com/s3">S3</a> or similar services for offsite backups.</p>
+
+<p>The basic idea here is that backups should be extendable - if you want to backup in your shoebox, Aegir should allow you to write a plugin for it. There was some initial work done by computerminds <a href="https://github.com/computerminds/aegir_backup_storage">on github</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Modular_platform_support"><span class='diff-changed'>3.2.</span> Modular platform support</h2>
+
+<p>This is also known as the <a href="https://drupal.org/node/1044678">alien platform support</a>, that is - being able to install other "things" than Drupal in the backend, for example (oh the heresy!) <a href="https://drupal.org/node/1044692">Wordpress</a>. This involves ripping apart the "platform" code in the frontend and the backend to make it more CMS-agnostic, so that Drupal is just <em>one</em> of the implementations.</p>
+
+<p>This would make sense of course if at least another implementation would be supported. This could also involve merging the site and platform creation forms for those platforms that do not support multi-site like Drupal does (so that creating a site effectively create a platform).</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Modular_queuing_system"><span class='diff-changed'>3.3.</span> Modular queuing system</h2>
+
+<p>The current queuing system is what we informally call the "ghetto queue". It's a cron job that pulls tasks from a MySQL database. While this scales well for a few sites, on busy servers it's a total nightmare, especially for mass migrations. Tasks stack up and concurrency is not managed at all. This needs to be completely redone.</p>
+
+<p>A possibility is to use Drupal 7's abstracted <a href="http://api.drupal.org/api/drupal/modules--system--system.queue.inc/group/queue/7">queue API</a> and let administrators implement their own queuing system according to their local APIs.</p>
+
+<p>The new queuing system could be a key part in how the multi-server "mesh" model would be implemented. It could also be how non-Drush backends could be handled by Aegir - in that scenario, Aegir would become an interface for a <a href="../../../../284/index.html">standard queuing system</a>, yet to be determined, although a lot of ideas are flying around: Jenkins/Hudson, AMPQ, Drush itself, etc. See <a href="../../../../284/index.html">this evaluation</a> for that decision.</p>
+
+<p><a href="http://koumbit.org/">Koumbit</a> plans to spearhead this effort this summer.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Other_features"><span class='diff-changed'>4.</span> Other features</h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Automatic_upgrades"><span class='diff-changed'>4.1.</span> Automatic upgrades</h2>
+
+<p>There were a few discussions around managing platforms automatically. The <a href="http://lists.aegirproject.org/pipermail/aegir/2011-January/000026.html">implementation of hosting-import</a> is one of the building blocks of this, but there remains some fine-tuning for this to work out of the box, especially for new users, some of which have <a href="https://drupal.org/node/1111148">requested that we can build makefiles straight from the frontend</a>, a bit like how it's done on <a href="http://drushmake.me/">drushmake.me</a>. One could also use feature servers feeds to update their platforms. Again, we should leave the policy to the user or at least make this pluggable.</p>
+
+<p>This mostly consists of automating the creation of new platforms, the upgrade of sites between platforms and garbage collection of old platforms.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="PostgreSQL_backend_support"><span class='diff-changed'>4.2.</span> PostgreSQL backend support</h2>
+
+<p>The backend database layer (the "db class") now supports only MySQL, that is, while the Aegir frontend could technically run in PostgreSQL (although that is <a href="https://drupal.org/node/548882">still unsure</a>), the backend can't create sites in a PostgreSQL database.</p>
+
+<p>Most of the work here will be around supporting user credentials handling, creation and destruction, which are fairly different between postgres and MySQL. The issue for this is <a href="https://drupal.org/node/585796">#585796</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Statistics_improvements"><span class='diff-changed'>4.3.</span> Statistics improvements</h2>
+
+<p>Work has already started at <a href="http://koumbit.org/">Koumbit</a> to implement a "statistics" queue that would mostly pull Apache logfiles and parse it for size (and CPU timing) information. This is to implement bandwidth and CPU quotas, but could be extended in a more generic "statistics" queue that would collect all sorts of information:</p>
+
+<ul>
+<li>if your Drupals need to be upgraded or are secure (the basic "status report")</li>
+<li>how many modules/themes/profiles/libraries are installed (populating the frontend data)</li>
+<li>how many users/nodes/fields instances do you have?</li>
+</ul>
+
+<p>All this could be collected in a nice dashboard that would outline client, site or platform-specific information.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Full_DNS_support"><span class='diff-changed'>4.4.</span> Full DNS support</h2>
+
+<p>The DNS support in the backend is already pretty mature, but it's not really intuitive how it works and how to integrate it into existing infrastructures. <a href="https://drupal.org/node/922280">Issue #922280</a> details all the next steps required here, but we can already say we hope to have a <a href="https://drupal.org/node/922250">zonefile editor</a> in the frontend, probably based on D7 entities, <a href="https://drupal.org/node/922252">reasonable access control for zones</a>, <a href="https://drupal.org/node/922274">registrar support</a> and <a href="https://drupal.org/node/922264">"host my mail on gmail button" type of wizards</a>.</p>
+
+<p>This could potentially be <a href="http://groups.drupal.org/node/138209">picked up by a GSoC student</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Improved_intersite_security"><span class='diff-changed'>4.5.</span> Improved intersite security</h2>
+
+<p>We are already going through some hoops to make sure the database credentials are not accessible from one site to the other. The credentials are stored in the Apache environment and cleared out as soon as they are used, which makes finding them in settings.php impossible. <a href="http://koumbit.org/">Koumbit</a> has also worked on a <a href="http://drupal.org/project/provisionacl">Provision ACL</a> module that implements POSIX ACLs on files which allow more granular access controls on files.</p>
+
+<p>But there are <a href="https://drupal.org/node/762138">other security issues remaining</a> that we should be looking into, especially the way Drush and Drupal are bootstrapped during tasks, which is currently insecure.</p>
+
+<p><a href="http://koumbit.org/">Koumbit</a> plans to spearhead this effort this summer.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Contrib_modules"><span class='diff-changed'>5.</span> Contrib modules</h1>
+
+<p>Other contrib modules may have different roadmaps, but they must respect the release naming conventions. Contrib modules should aim for a 1.y release now, that will be compatible with the 1.x series. 2.x modules should be ported to Drupal 7 and follow the API (in development) of the 2.x series. Modules do not have to follow the minor version numbers of Aegir. For example, Provision ACL 1.1 is compatible with any release of the 1.x core series.</p>
+
+<p>We are also considering making point releases of the backend and the frontend independent, so that Provision 1.1 and Hostmaster 1.2 could be release independently.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Other_modules_roadmaps"><span class='diff-changed'>5.1.</span> Other modules roadmaps</h2>
+
+<p>This is a short index of other modules roadmaps to 2.0:</p>
+
+<ul>
+<li><a href="../../../../109/index.html">Ubercart integration (uc_hosting 2.0)</a></li>
+</ul><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-410.html?destination=node%2F523%23comment-form">Login</a> or <a href="../../../../../user/register/index-410.html?destination=node%2F523%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+
+<div  id="node-616" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../roadmap/2.0/d7-port-dns-editor-plan-google-summer-code-2011/index.html">D7 port &amp; DNS editor plan (google summer of code 2011)</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p><em>Plan for porting Aegir to D7 and creating a DNS editor. A project for Google Summer of Code 2011.</em></p>
+
+<p><strong>Please offer advice on how to improve the plan I've outlined below.</strong></p>
+
+<p><strong>Relevant links:</strong>
+<a href="http://drupal.org/sandbox/seth.vincent/1140244">Hostmaster sandbox for GSOC2011</a></p>
+
+<p><strong>Before May 24:</strong></p>
+
+<ul>
+<li>Review Git docs and other resources to learn more about using Git.</li>
+<li>Review issues/patches relevant to D7 port and DNS editor. </li>
+<li>Review api.aegirproject.org and community.aegirproject.org/developing.</li>
+<li>Discuss planned work with aegir maintainers.</li>
+<li>Refine plan below based on what I've learned from the handbook, api, and aegir maintainers.</li>
+</ul>
+
+<p><strong>Week one:</strong> Work on porting Aegir theme Eldir to Drupal 7. Finalize plans for porting the Aegir modules and install profile.</p>
+
+<p><strong>Week two:</strong> Finish porting Eldir to Drupal 7. Port the Aegir Hosting module to Drupal 7.</p>
+
+<p><strong>Weeks three through six:</strong> Port the Task, Client, DB Server, Package, Platform, Site, and Web Server modules to Drupal 7. Test ported modules.</p>
+
+<p><strong>Weeks six through nine:</strong> Port modules Alias, Clone, Cron, Migrate, Quota, Signup, Task, and Web Cluster to Drupal 7. Test ported modules.</p>
+
+<p><strong>Weeks ten and eleven:</strong> Work on the DNS zonefile editor.</p>
+
+<p><strong>Weeks twelve and thirteen:</strong> Continue testing ported projects and the DNS zonefile editor. Update documentation to reflect changes in the upgrade to Drupal 7.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-412.html?destination=node%2F616%23comment-form">Login</a> or <a href="../../../../../user/register/index-412.html?destination=node%2F616%23comment-form">register</a> to post comments</span></li>
+<li class="talk_comments last"><a href="../../../../616/talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/523/revisions/3778/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:09:20 GMT -->
+</html>

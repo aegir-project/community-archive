@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/588/revisions/1640/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:17:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../1/index-11.html" />
+<link rel="up" href="../../../../../content/release-notes/older-1x-releases/index.html" />
+<link rel="next" href="../../../../../10-release-candidate/index.html" />
+<link rel="prev" href="../../../../../1/index-11.html" />
+<link rel="up" href="../../../../../content/release-notes/older-1x-releases/index.html" />
+<link rel="next" href="../../../../../10-release-candidate/index.html" />
+<link rel="prev" href="../../../../../1/index-11.html" />
+<link rel="up" href="../../../../../content/release-notes/older-1x-releases/index.html" />
+<link rel="next" href="../../../../../10-release-candidate/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of 1.0 release notes (preliminary) from Fri, 04/15/2011 - 15:02 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-588" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../1/index-12.html">1.0 release notes (preliminary)</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_4 first"><a href="../../../../../taxonomy/term/4/index.html" rel="tag" title="This level is for users who have access to only their sites and not able to manage all Aegir features, accounts or the server/system.">Client</a></li>
+<li class="taxonomy_term_3"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-588'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a> on 04/15/2011 - 15:02</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>The Aegir team is very pleased to announce the first official stable release of Aegir - 1.0. While it's been a mostly "open secret" that most of our releases are production ready, this one has been tested through no less than 15 alpha releases, 2 beta releases and 7 release candidates, for a grand total 24 test releases before we deliver this stable version.</p>
+
+<p>Speaking of open secrets, here's a word from our founder, <a href="https://drupal.org/node/956624">Adrian Russouw</a>:</p>
+
+<blockquote>
+  <p>The 1.0 release marks the end of my association with the Aegir project, as I am officially stepping down as project leader, handing the reigns to Antoine, Miguel and the rest of the team.</p>
+  
+  <p>It's been public knowledge that I have not been involved with the project in the recent months as I have been in the past, owed primarily to my commitments elsewhere.</p>
+  
+  <p>I'm incredibly happy and proud of the progress made, even in my absence, and I see my stepping down as the completion of one of the goals I have had for this project from the outset.</p>
+  
+  <p>The Aegir project was built, from the ground up, to be able to function and grow even after I have moved on to new challenges, and the amazing team of maintainers we have attracted ensures its survival.</p>
+  
+  <p>I want to thank everybody for their support, and I wish nothing but the best for the project and it's future victories!</p>
+</blockquote>
+
+<p>Thank you, Adrian, for this great project you have given to the Drupal community, it means a lot to us!</p>
+
+<p>Now onto the release. This actual release isn't much different from the previous release candidates - you can see the list of changes from the previous <a href="../../../../../1/index-13.html">RC7 release</a> at the end of those notes. However, since this is our first major release in a long time, we figured it would be important to outline how things have changed since the old days of 0.3. For those of you who weren't there, back then installing Aegir was <em>hard</em>. There was no "clone", no SSL, no multiserver. You had to migrate sites one at a time and you had to create platforms yourself (no drush make!). We were still using CVS.</p>
+
+<p>With 1.0, we have multiserver support, Debian packages, DNS, we're using git, drush make and we have a very dynamic community of users and shops using the project. We have <a href="../../../../../roadmap/2/index.html">ambitious goals for 2.0</a> and we're eager (pun intended) to start moving again! So if you were waiting for Aegir to be <strong>stable</strong>, <strong>easy to install</strong>, <strong>production-ready</strong>, now is the time. The 1.x branch will be well supported as a lot of shops are running it in production already. What are <em>you</em> waiting for?!</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Major_changes_in_this_release"><span class="toc-number">1. </span>Major changes in this release</a></li>
+	<li class="toc-level-1"><a href="#API_changes"><span class="toc-number">2. </span>API changes</a></li>
+	<li class="toc-level-1"><a href="#Installing_and_upgrading"><span class="toc-number">3. </span>Installing and upgrading</a></li>
+	<li class="toc-level-1"><a href="#Need_help"><span class="toc-number">4. </span>Need help?</a></li>
+	<li class="toc-level-1"><a href="#New_features"><span class="toc-number">5. </span>New features</a></li>
+	<li class="toc-level-1"><a href="#Bugfixes"><span class="toc-number">6. </span>Bugfixes</a></li>
+	<li class="toc-level-1"><a href="#Known_issues"><span class="toc-number">7. </span>Known issues</a></li>
+</ol>
+</div>
+</div>
+
+<h2 id="Major_changes_in_this_release">1. Major changes in this release</h2>
+
+<p>Since our last stable release (<a href="http://groups.drupal.org/aegir/0.3">0.3</a>) in august 2009, we've done an incredible amount of work. The code size nearly doubled as the development team and user base, although we don't clearly know yet how many installs there are out there.</p>
+
+<p>We can already say that we've been pretty successful at fulfilling our <a href="http://groups.drupal.org/node/25841">release goals for 0.4</a> and the <a href="../../../../../roadmap/1/index.html">1.0 roadmap</a>. Even though we're <span class='diff-deleted'></span><a href="https://drupal.org/project/issues/search?text=&amp;projects=&amp;assigned=&amp;submitted=&amp;participant=&amp;issue_tags_op=or&amp;issue_tags=aegir-1.0">missing bits and pieces</a><span class='diff-deleted'></span><span class='diff-deleted'> </span><span class='diff-deleted'>,</span><span class='diff-deleted'> </span><span class='diff-deleted'>especially</span> in <span class='diff-changed'>DNS</span> and multi-server support is not as robust as we'd like it to be, there's still space for improvements and bugfixes in the 1.x branch, and we'll also start on the <a href="../../../../../roadmap/2/index.html">2.0 roadmap</a> once this release is out the door.</p>
+
+<ul>
+<li>Multi-server support
+
+<ul>
+<li>External and multiple DB support</li>
+<li>External and multiple webserver support</li>
+<li>Webserver cluster support</li>
+<li>Server and services abstractions</li>
+</ul></li>
+<li>DNS
+
+<ul>
+<li>Master zones created on the fly with sites</li>
+<li>Manual modification <span class='diff-changed'>allowed</span> through the provision-zone command</li>
+<li>Slave servers</li>
+<li>Support for Bind and dnsmasq</li>
+</ul></li>
+<li>SSL support
+
+<ul>
+<li>multi-domain/wildcard support</li>
+<li>use of HTTPS can be enabled or required</li>
+</ul></li>
+<li>Migration improvements
+
+<ul>
+<li>Batch migrations</li>
+<li>Site migration fixes your body and teaser for sites/community.aegirproject.org/ changes</li>
+<li>No <span class='diff-changed'>more</span> rebuilding the whole node_access table</li>
+<li>Cloning</li>
+<li>Site rename support</li>
+<li><span class='diff-changed'>Inter-profile</span> migration</li>
+<li>Ignoring site-specific modules so that <span class='diff-changed'>mass-migrations</span> are easier</li>
+</ul></li>
+<li>Improved task management
+
+<ul>
+<li><span class='diff-changed'>Limit how many</span> tasks<span class='diff-added'> run</span> at a time</li>
+<li><span class='diff-changed'>task</span> revisions and timing</li>
+<li>canceling tasks</li>
+<li>possibility of queuing tasks from the backend</li>
+</ul></li>
+<li>Improved platform management
+
+<ul>
+<li>Automated platform creation through Drush <span class='diff-changed'>makefile</span> or even a URL</li>
+<li>access control and locking</li>
+<li>deletion</li>
+<li>platforms are stored in ~/platforms</li>
+</ul></li>
+<li>Site management improvements
+
+<ul>
+<li>Named backups</li>
+<li>Password resets</li>
+<li><span class='diff-changed'>Inter-site</span> security (storing passwords outside of settings.php AKA cloaking)</li>
+<li>stopped hardcoding page cache</li>
+<li>bulk operations</li>
+<li>Views support</li>
+<li>local.settings.php overrides</li>
+<li>backup file size</li>
+<li>.htaccess customization</li>
+<li>Clean database names and users (instead of site_X)</li>
+</ul></li>
+<li>Other improvements
+
+<ul>
+<li>Domain <span class='diff-changed'>alias</span> and <span class='diff-changed'>redirection</span> support</li>
+<li>Drush "aliases" (@site.example.com) are generated automatically</li>
+<li>Nginx support</li>
+<li>Cron through wget support</li>
+<li>User interface improvements</li>
+<li>Drupal 7 support</li>
+<li><a href="../../../../521/index.html">Client node type simplification</a></li>
+<li><a href="http://drupal.org/node/1115960">~/clients directory</a></li>
+<li><a href="http://drupal.org/node/1027358">aegir_api variable in settings.php</a></li>
+<li>Quota API</li>
+</ul></li>
+<li>Install and upgrade process improvements
+
+<ul>
+<li>Aegir can upgrade and install itself, no need to go through the frontend wizards in install.php or upgrade.php</li>
+<li>Remote DB server support for installs and upgrades</li>
+<li><a href="../../../../../installing/debian/index.html">Debian packages</a> - <code>apt-get install aegir</code></li>
+<li>The Aegir install went from being a known nightmare to a total breeze, with 46 seconds to 5 minutes install times with the debian packages and 15 minutes installs on <a href="../../../../../installing/manual/index.html">manual installs</a> (for unsupported platforms)</li>
+</ul></li>
+<li>Support for <a href="../../../../582/index.html">7 operating systems</a> and counting, we added:
+
+<ul>
+<li>Solaris support</li>
+<li>CentOS support</li>
+<li>Ubuntu support</li>
+<li>Gentoo support</li>
+<li>FreeBSD support</li>
+<li>... and that's just the confirmed installation reports, if it's UNIX, it<span class='diff-deleted'> </span><span class='diff-deleted'>probably</span> can<span class='diff-added'> probably</span> run Aegir!</li>
+</ul></li>
+<li>Project management
+
+<ul>
+<li>Migrated to our own git repositories</li>
+<li>... then <a href="../../../../385/index.html">migrated back to Drupal.org</a> when they switched to git</li>
+<li>We<span class='diff-deleted'> </span><span class='diff-deleted'>have</span> now<span class='diff-added'> have</span> our own <a href="../../../../../index.html">OpenAtrium site (this site!)</a> for the community to participate in</li>
+<li>A <a href="../../../../../notebook/index.html">handbook</a> has been created and expanded to provide solid, collaborative documentation for the project, that anybody can contribute to (it's a wiki!)</li>
+<li>We now have clear <a href="../../../../../maintainers/index.html">maintainers</a> for different sections of the code, with 4 maintainers and counting</li>
+</ul></li>
+<li><a href="../../../../../examples/index.html">An explosion of third party modules</a>
+
+<ul>
+<li><a href="http://drupal.org/project/uc_hosting">Ubercart support</a></li>
+<li><a href="http://drupal.org/project/provisionacl">ACL support</a></li>
+<li><a href="http://drupal.org/project/provision_boost">Boost support</a></li>
+<li><a href="http://drupal.org/project/provision_civicrm">CiviCRM support</a></li>
+<li><a href="https://drupal.org/project/hosting_backup_gc">Backups garbage collection</a></li>
+<li><a href="http://www.computerminds.co.uk/articles/aegir-tasks-daemon">Task daemon</a></li>
+<li>Your module here!</li>
+</ul></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="API_changes">2. API changes</h2>
+
+<p>The API changes since 0.3 are too numerous to list here. However, we are now committed to maintain the whole 1.x series with a stable API. There will be no change in the existing API, although we may add in some stuff if it is really necessary.</p>
+
+<p>All future API changes between 1.x and 2.x will be clearly defined so that third party module can be supported.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Installing_and_upgrading">3. Installing and upgrading</h2>
+
+<p>The canonical source of installation documentation is on the community site at:</p>
+
+<pre><code>http://community.aegirproject.org/installing
+</code></pre>
+
+<p>In a similar fashion, the upgrade documentation is:</p>
+
+<pre><code>http://community.aegirproject.org/upgrading
+</code></pre>
+
+<p>Within those sections you'll find step-by-step instructions for performing both <a href="../../../../../upgrading/manual/index.html">manual</a> and <a href="../../../../../upgrading/script/index.html">automatic</a> upgrade processes.</p>
+
+<p>It is still imperative that you read the the <a href="../../../../../upgrading/path/index.html">upgrade path and version-specific information</a> and follow all version-specific upgrade instructions before trying to run the upgrade script or manual upgrade. This especially applies to users upgrading from <span class='diff-changed'>releases prior to</span> 0.4-alpha8, including 0.3.</p>
+
+<p>For users coming from the 0.4 betas or recent rc releases, there are unlikely to be any version-specific manual steps required to upgrade, but you should make a habit of reading them anyway just to make sure. No-one likes a nasty surprise!</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Need_help">4. Need help?</h2>
+
+<p>If you struggle to install or upgrade your Aegir system, you have a number of options available to you for getting help.</p>
+
+<p>Consult this page for more information: <a href="../../../../../help/index.html" title="http://community.aegirproject.org/help">http://community.aegirproject.org/help</a></p>
+
+<p>Thanks to our awesome community for their help, support and encouragement as always! Enjoy the new release :)</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="New_features">5. New features</h2><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>Since</span><span class='diff-deleted'> </span><span class='diff-deleted'>this</span><span class='diff-deleted'> </span><span class='diff-deleted'>is</span><span class='diff-deleted'> </span><span class='diff-deleted'>like</span><span class='diff-deleted'> </span><span class='diff-deleted'>a</span><span class='diff-deleted'> </span><span class='diff-deleted'>release</span><span class='diff-deleted'> </span><span class='diff-deleted'>candidate,</span><span class='diff-deleted'> </span><span class='diff-deleted'>we</span><span class='diff-deleted'> </span><span class='diff-deleted'>tried</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>limit</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>changes</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>this</span><span class='diff-deleted'> </span><span class='diff-deleted'>release</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>avoid</span><span class='diff-deleted'> </span><span class='diff-deleted'>breaking</span><span class='diff-deleted'> </span><span class='diff-deleted'>too</span><span class='diff-deleted'> </span><span class='diff-deleted'>many</span><span class='diff-deleted'> </span><span class='diff-deleted'>things,</span><span class='diff-deleted'> </span><span class='diff-deleted'>so</span><span class='diff-deleted'> </span><span class='diff-deleted'>not</span><span class='diff-deleted'> </span><span class='diff-deleted'>many</span><span class='diff-deleted'> </span><span class='diff-deleted'>new</span><span class='diff-deleted'> </span><span class='diff-deleted'>features.</span><span class='diff-deleted'> </span><span class='diff-deleted'>Of</span><span class='diff-deleted'> </span><span class='diff-deleted'>course,</span><span class='diff-deleted'> </span><span class='diff-deleted'>since</span><span class='diff-deleted'> </span><span class='diff-deleted'>0.3,</span><span class='diff-deleted'> </span><span class='diff-deleted'>there</span><span class='diff-deleted'> </span><span class='diff-deleted'>are</span><span class='diff-deleted'> </span><span class='diff-deleted'>tons</span><span class='diff-deleted'> </span><span class='diff-deleted'>(see</span><span class='diff-deleted'> </span><span class='diff-deleted'>above)</span><span class='diff-deleted'> </span><span class='diff-deleted'>but</span><span class='diff-deleted'> </span><span class='diff-deleted'>this</span><span class='diff-deleted'> </span><span class='diff-deleted'>is</span><span class='diff-deleted'> </span><span class='diff-deleted'>only</span><span class='diff-deleted'> </span><span class='diff-deleted'>since</span><span class='diff-deleted'> </span><span class='diff-deleted'>rc7.</span></p>
+
+<ul>
+<li><a href="http://drupal.org/node/1124114">#1124114: allow manual changes to the client's internal name</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Bugfixes">6. Bugfixes</h2><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>We</span><span class='diff-deleted'> </span><span class='diff-deleted'>did</span><span class='diff-deleted'> </span><span class='diff-deleted'>fix</span><span class='diff-deleted'> </span><span class='diff-deleted'>a</span><span class='diff-deleted'> </span><span class='diff-deleted'>lot</span><span class='diff-deleted'> </span><span class='diff-deleted'>of</span><span class='diff-deleted'> </span><span class='diff-deleted'>things</span><span class='diff-deleted'> </span><span class='diff-deleted'>however,</span><span class='diff-deleted'> </span><span class='diff-deleted'>with</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>upgrade</span><span class='diff-deleted'> </span><span class='diff-deleted'>path</span><span class='diff-deleted'> </span><span class='diff-deleted'>and</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>remaining</span><span class='diff-deleted'> </span><span class='diff-deleted'>critical</span><span class='diff-deleted'> </span><span class='diff-deleted'>issues.</span></p>
+
+<ul>
+<li><a href="http://drupal.org/node/1016890">#1016890: Create Server as cluster is broken after save</a></li>
+<li><a href="http://drupal.org/node/1093436">#1093436: hostmaster-6.x-1.0-rc2 won't install - suspected it's due to 5.1.51-MariaDB-mariadb87-log</a></li>
+<li><a href="http://drupal.org/node/1080130">#1080130: Batch migrate is broken on Ubuntu 10.04 LTS with PHP 5.3 - expected to be a reference, value given</a></li>
+<li><a href="http://drupal.org/node/993944">#993944: ssl rollback failure</a></li>
+<li><a href="http://drupal.org/node/1121406">#1121406: RC6 upgrad.sh fatal issue</a></li>
+<li><a href="http://drupal.org/node/1027358">#1027358: Set a variable in settings.php so that modules can check whether the site is in Aegir</a></li>
+<li><a href="http://drupal.org/node/1123224">#1123224: api.aegirproject.org not updating</a></li>
+<li><a href="http://drupal.org/node/1122942">#1122942: aegir.make is broken in 1.0-rc6</a></li>
+<li><a href="http://drupal.org/node/1123276">#1123276: Debian pkg: /var/aegir/config is not owned by aegir</a></li>
+<li><a href="http://drupal.org/node/1115768">#1115768: Aegir need help with vbox DNS settings</a></li>
+<li><a href="http://drupal.org/node/1123176">#1123176: Usage of <code>tempfile</code> in upgrade.sh.txt breaks CentOS compatibility</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Known_issues">7. Known issues</h2>
+
+<p>Being really <span class='diff-changed'>open</span> about our project, we have never hidden the fact that some things, <span class='diff-changed'>sometimes,</span> do not work in Aegir. Our <span class='diff-added'></span><a href="http://drupal.org/project/issues?text=&amp;projects=provision%2C%20hosting%2C%20hostslave%2C%20eldir%2C%20Hostmaster%20%28Aegir%29&amp;status=Open&amp;priorities=All&amp;categories=All">issue trackers</a><span class='diff-added'></span> are public, and we've made it a point of honor<span class='diff-deleted'> </span><span class='diff-deleted'>to</span> not only<span class='diff-added'> to</span> document clearly what is wrong in our releases <span class='diff-changed'>as soon as</span> we find out about it, but also to reroll new releases when we fix it.</p>
+
+<p>That being said, 1.0 suffers from a number of significant issues and design flaws. This is the list of <a href="https://drupal.org/project/issues?text=&amp;projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir)&amp;status=Open&amp;priorities=4&amp;categories=All">all issues marked "major" in the queue right now</a>. Some of those issues can be fixed within the <span class='diff-changed'>1.x branch,</span> some can only be fixed by <span class='diff-changed'>refactoring, and</span> so they will be fixed in 2.x.</p>
+
+<ul>
+<li><a href="http://drupal.org/node/922252">#922252: DNS has no access control - anybody can create any zone</a> (2.x)</li>
+<li><a href="http://drupal.org/node/762138">#762138: Design security issue with developer access to sites' modules and themes</a> (2.x, maybe merged in 1.x if no API change)</li>
+<li><a href="http://drupal.org/node/1081536">#1081536: Platform verify doesn't rollback apache config file</a> (2.x)</li>
+<li><a href="http://drupal.org/node/1004526">#1004526: Aliases are not persisted across rename and clone</a> (2.x, maye be merged)</li>
+<li><a href="http://drupal.org/node/1126638">#1126638: two sites can take the same server IP for SSL</a> (2.x)</li>
+<li><a href="http://drupal.org/node/1111254">#1111254: The Aegir API is not fully documented</a> (1.x)</li>
+<li><a href="http://drupal.org/node/1081528">#1081528: moving sites/all modules breaks migration</a></li>
+<li><a href="http://drupal.org/node/955854">#955854: site can be very slow with huge number of platforms and packages</a> (2.x, may be merged, see also <a href="http://drupal.org/node/1067688">#1067688: bulk operation forms are too slow with thousands of packages</a>))</li>
+<li><a href="http://drupal.org/node/1001620">#1001620: verifying an existing platform (and site) doesn't always work the first time</a> (1.x, hard to reproduce)</li>
+<li><a href="http://drupal.org/node/908314">#908314: Deleted sites cause node alias to 404 on refresh</a> (1.x)</li>
+<li><a href="http://drupal.org/node/922258">#922258: update DNS records on inter-server migration</a> (2.x, may be merged)</li>
+<li><a href="http://drupal.org/node/894046">#894046: language dialog should be a drop-down, not radios</a> (2.x?)</li>
+<li><a href="http://drupal.org/node/941870">#941870: failure to copy SSL certificates should abort tasks</a> (1.x)</li>
+<li><a href="http://drupal.org/node/922266">#922266: rollback support in DNS</a> (1.x)</li>
+</ul><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-179.html?destination=node%2F588%23comment-form">Login</a> or <a href="../../../../../user/register/index-179.html?destination=node%2F588%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-179.html?destination=node%2F588%23comment-form">Login</a> or <a href="../../../../../user/register/index-179.html?destination=node%2F588%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/588/revisions/1640/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:17:15 GMT -->
+</html>

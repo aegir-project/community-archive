@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/24?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:25:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../content/renaming-aegir-hostmaster-site-itself/index.html" />
+<link rel="up" href="../43/index.html" />
+<link rel="next" href="../25/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Cloning sites | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-24" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Cloning sites</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_3 first"><a href="../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-24'><p>Aegir provides an easy method of making entire copies of a site. This includes the actual site files, modules and so on, as well as a copy of the actual database.</p>
+
+<p>This feature is called 'Clone' in Aegir, because it is a method of duplicating a site with a new URL or 'site name'.</p>
+
+<p>The feature is very closely linked to the <a href="../23/index.html">Migrate</a> feature because it is almost the same, except that rather than move the site, it leaves the existing site in place and just copies it to a new name.</p>
+
+<p>For this reason, enabling the Clone feature also enables the Migrate feature.</p>
+
+<h2>Enabling Clone</h2>
+
+<p>The Clone feature is disabled by default on a fresh Aegir installation. To enable it, visit <code>/admin/hosting/features</code> in your Aegir frontend, check the 'Clone' box and submit the form.</p>
+
+<p>Now when you visit a site node in your frontend, you'll see there's a 'Clone' button in your list of available tasks for the site.</p>
+
+<div align="center"><img src="../../sites/community.aegirproject.org/files/clone/index.png" /></div>
+
+<h2>Cloning a site</h2>
+
+<p>To clone a site, simply click the Clone button. A modalframe dialog will appear with a form. If you are familiar with the Migrate feature, you'll likely notice the similarities between the two forms.</p>
+
+<p>The clone form has these options:</p>
+
+<ul>
+<li><strong>Domain name</strong> - this is the URL for the new site, which must be unique.</li>
+<li><strong>Platform</strong> - this is the target platform to clone the site to. It may be the current platform or a different platform that meets the requirements for hosting this site (has all the correct or newer versions of relevant modules)</li>
+<li><strong>Database server</strong> - this option is only available if you have a remote database server configured, otherwise it is implied.</li>
+<li><strong>Site aliases</strong> - If you have the <a href="../60/index.html">Site Aliases</a> feature enabled, you are also able to set new Site Aliases for this clone at this point. If the original site also had aliases, you will have to change or remove the aliases that load in this form before you can submit it.</li>
+</ul>
+
+<div align="center"><img src="../../sites/community.aegirproject.org/files/clone_form/index.png" /></div>
+
+<p>As with the Migrate form, you can view the package comparison table between the current platform of the original site and that of a target platform, by clicking the 'Compare platforms' link. You can only clone a site to another platform if it meets the requirements for successfully hosting that site. In other words, the target platform has to contain the same or newer versions of modules. If the packages are missing on the target platform, those missing modules may be disabled.</p>
+
+<p>Once you have made your selection and submitted the form, a 'Clone' task is spawned and added to the Task queue ready for dispatching.</p>
+
+<h2>What Clone does</h2>
+
+<p>The Clone task makes the following actions in the system:</p>
+
+<ul>
+<li>Makes a backup of the original site. This tarball will be used to 'deploy' a copy of the site</li>
+<li>Generates a new Drush alias for the new site</li>
+<li>Deploys the backup tarball to the new location as a new site</li>
+<li>The new site is imported and verified into the Aegir system, and relevant configurations are saved (HTTP vhost file, etc)</li>
+</ul>
+
+<div align="center"><img src="../../sites/community.aegirproject.org/files/clone_import/index.png" /></div>
+
+<h2>When might I want to use Clone?</h2>
+
+<p>Clone can be a very useful tool in a variety of situations. Commonly, people use Clone for:</p>
+
+<ul>
+<li>Testing what a 'Migrate' might do to a site, without migrating it. In other words, Clone can be used as a simulation tool to anticipate results of upgrading a site to a new release or build safely.</li>
+<li>If you have a 'template' site, often with a custom install profile, and anticipate having to generate multiple sites that are very similar, you can use Clone to rapidly do this.</li>
+<li>Cloning a live site to a 'development' version of a site, especially to a development platform residing on a remote 'development' web server, can be a useful and fast method of working on a site by ensuring the dev environment has the latest database and files from production.</li>
+</ul>
+
+<h2>Is there any relationship between the original and cloned site?</h2>
+
+<p>Currently there is no real relationship between the original site and any of its clones.</p>
+
+<p>In future, Aegir development is likely to develop natural relationships between these sites, which will allow for 'rules' to be established, for example</p>
+
+<ul>
+<li>being able to regularly 're-clone' a site 'over the top' of previously-made clone, or</li>
+<li>automatically schedule clones after the original site has been migrated (upgraded) to keep a clone 'up to date' with the original.</li>
+</ul>
+
+<p>Other uses may develop in time.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/24?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:25:42 GMT -->
+</html>

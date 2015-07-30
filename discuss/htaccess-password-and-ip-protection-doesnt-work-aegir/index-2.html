@@ -1,0 +1,365 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/htaccess-password-and-ip-protection-doesnt-work-aegir?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 16:18:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>.htaccess password and IP protection doesn&#039;t work with Aegir | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2995" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/milovan/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="milovan&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/milovan/index.html" class="username" title="View user profile.">milovan</a></div><div class='date'>7:02pm Aug 15, 2014</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">.htaccess password and IP protection doesn&#039;t work with Aegir</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_543 first last"><a href="../../category/keywords/apache-htaccess-htpasswd-ip-and-password-protect/index.html" rel="tag" title="">apache htaccess htpasswd ip and password protect</a></li>
+</ul></div><p>Hi,
+the idea is to protect access to website with password if visitor is not coming from local IP (192.168.1.xxx).
+So I tried on Quickstart (doesn't have Aegir, Drush only) to set following in .htaccess:
+  <div class="codeblock"><code>AuthName &quot;Username and password required&quot;<br />&nbsp; AuthUserFile /home/quickstart/websites/mytestsite/.htpasswd<br />&nbsp; AuthType Basic<br />&nbsp; Require valid-user<br />&nbsp; Order Deny,Allow<br />&nbsp; Deny from all<br />&nbsp; Allow from 192.168.1.<br />&nbsp; Satisfy Any</code></div>
+And this works.
+Now I tried to add this in .htaccess in platform root on server where Aegir is installed but it didn't work. By "didn't work" I mean that no matter if I am external or local visitor, I get password popup.</p>
+
+<p>I also tried to create file "protect_platforms" in post.d in server_master/apache folder with:
+<div class="codeblock"><code>&lt;Directory /home/testserver/websites/mytestsite&gt;<br />&nbsp; AuthName &quot;Username and password required&quot;<br />&nbsp; AuthUserFile /home/testserver/websites/mytestsite/.htpasswd<br />&nbsp; AuthType Basic<br />&nbsp; Require valid-user<br />&nbsp; Order Deny,Allow<br />&nbsp; Deny from all<br />&nbsp; Allow from 192.168.1.<br />&nbsp; Satisfy Any<br />&lt;/Directory&gt;</code></div>
+But that also didn't work. Am I missing some Aegir feature that overrides my settings? Where to look, what to try? I am out of ideas and any help is welcome.
+Apache version is 2.2.16-6+squeeze11, Debian 6 (later will try on Debian 7), Aegir is 1.11 (later will try on Aegir 2.1).</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-293.html?destination=node%2F2995%23comment-form">Login</a> or <a href="../../user/register/index-293.html?destination=node%2F2995%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-2319"></a>
+
+
+<div  id="comment-2319" class="comment comment-published clear-block decay-10 decay-10">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../user/54/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-54/index.png" alt="ergonlogic&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a></div><div class='date'>7:51pm Aug 15, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2319" class="active">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>See <a href="../../node/72/index.html" title="http://community.aegirproject.org/node/72">http://community.aegirproject.org/node/72</a> for how .htaccess files are handled in Aegir.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-293.html?destination=node%2F2995%23comment-form">Login</a> or <a href="../../user/register/index-293.html?destination=node%2F2995%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2321"></a>
+
+
+<div  id="comment-2321" class="comment comment-published clear-block decay-9 decay-9">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/milovan/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="milovan&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/milovan/index.html" class="username" title="View user profile.">milovan</a></div><div class='date'>10:13am Aug 21, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2321" class="active">#2</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Hi egronlogic, thanks a lot for a link. But unfortunately it didn't help.</p>
+
+<p>Here is what I was doing:<br />
+- in platform I created .htpasswd file and in .htaccess I added on top of file what I wrote in previuos post.<br />
+- I went through platform's conf file visually to see what is currently there<br />
+- I ran Verify platform<br />
+- I even restarted LAMP (MySQL, Apache, Tomcat...)<br />
+- I checked visually again conf file in platform.d and it wasn't changed nor new entry was added there or copied from platform's .htaccess<br />
+- I went to website to try and see if in local it will allow me access without password, but it did ask me for password. Note that exactly the same .htaccess was tested in non Aegir machine and worked perfectly.<br /></p>
+
+<p>Am I missing some step? Maybe some permission? .htaccess has chown aegir:www-data as well as .htpasswd and chmod 644. Aegir is 1.11, I can even try on 2.1 instance if needed.<br />
+Thanks in advance!</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-293.html?destination=node%2F2995%23comment-form">Login</a> or <a href="../../user/register/index-293.html?destination=node%2F2995%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2322"></a>
+
+
+<div  id="comment-2322" class="comment comment-published clear-block decay-9 decay-9">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/helmo/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="helmo&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/helmo/index.html" class="username" title="View user profile.">helmo</a></div><div class='date'>12:20pm Aug 21, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2322" class="active">#3</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>You could have a look at the HTTP Basic Authentication (hosting_http_basic_auth) module bundled with <a href="https://www.drupal.org/project/hosting_tasks_extra" title="https://www.drupal.org/project/hosting_tasks_extra">https://www.drupal.org/project/hosting_tasks_extra</a>.</p>
+
+<p>That's for Aegir 2.x, but the 1.x predecessor is on <a href="https://github.com/computerminds/aegir_http_basic" title="https://github.com/computerminds/aegir_http_basic">https://github.com/computerminds/aegir_http_basic</a></p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-293.html?destination=node%2F2995%23comment-form">Login</a> or <a href="../../user/register/index-293.html?destination=node%2F2995%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2323"></a>
+
+
+<div  id="comment-2323" class="comment comment-published clear-block decay-9 decay-9">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/milovan/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="milovan&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/milovan/index.html" class="username" title="View user profile.">milovan</a></div><div class='date'>1:35pm Aug 21, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2323" class="active">#4</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Thanks, found that module in contributed modules page but it claims that it sets password protection per site. 
+If I set in platform's htaccess file that means two things:<br />
+1) all sites on platform are automatically protected<br />
+2) means that platform .htacces actually works under Aegir (which I yet to confirm it; .htaccess is also used for some cache optimizations, header tuning etc)</p>
+
+<p>Once again thanks, I will give a try that module none the less. :-)</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-293.html?destination=node%2F2995%23comment-form">Login</a> or <a href="../../user/register/index-293.html?destination=node%2F2995%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2327"></a>
+
+
+<div  id="comment-2327" class="comment comment-published clear-block decay-9 decay-9">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/milovan/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="milovan&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/milovan/index.html" class="username" title="View user profile.">milovan</a></div><div class='date'>6:51pm Aug 29, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2327" class="active">#5</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Okay I tried module hosting_tasks_extra on some Virtual box in local.
+Basically, module consists of<br />
+- backend: <a href="https://www.drupal.org/project/provision_tasks_extra" title="https://www.drupal.org/project/provision_tasks_extra">https://www.drupal.org/project/provision_tasks_extra</a><br />
+- frontend: <a href="https://www.drupal.org/project/hosting_tasks_extra" title="https://www.drupal.org/project/hosting_tasks_extra">https://www.drupal.org/project/hosting_tasks_extra</a></p>
+
+<p>I edited one site and added username, password and custom message. It verified website.
+Then I went to that site in browser and no user/pass was asked.
+Not sure if this module is supposed to work only on external IPs and ignoring local addresses (just like I d want) or just doesn't work.</p>
+
+<p>So I am still stuck with this issue. To refresh again what's this all about:
+I would like to add .htaccess in platform so that it allows access WITHOUT asking for user/pass those who are accessing from LOCAL but would like to ask for user/pass those who are accessing from OUTSIDE, external IP.
+The problem I have is that based on ergonlogic's documentation link, I don't see that Aegir copied anything into vhost file from htaccess nor htaccess entry works as expected.
+I enabled watchdog and confirmed that my IP address when logging in or out of Aegir is 192.168.1.xxx.</p>
+
+<p>Anyone have any other idea? I would like to protect development servers (where Aegir manages platforms) from external access. Tested htaccess on non Aegir instance is posted in first post and confirmed it works.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-293.html?destination=node%2F2995%23comment-form">Login</a> or <a href="../../user/register/index-293.html?destination=node%2F2995%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2328"></a>
+
+
+<div  id="comment-2328" class="comment comment-published clear-block decay-9 decay-9">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/helmo/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="helmo&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/helmo/index.html" class="username" title="View user profile.">helmo</a></div><div class='date'>2:16pm Sep 2, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2328" class="active">#6</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>The log of a verify task for that site should show something like "Passwords path /var/aegir/config/server_master/apache/passwords.d exists.". Then you at least know the provision code is active.</p>
+
+<p>Otherwise you could try to flush the drush cache (drush cache-clear drush)</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-293.html?destination=node%2F2995%23comment-form">Login</a> or <a href="../../user/register/index-293.html?destination=node%2F2995%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2329"></a>
+
+
+<div  id="comment-2329" class="comment comment-published clear-block decay-9 decay-9">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/milovan/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="milovan&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/milovan/index.html" class="username" title="View user profile.">milovan</a></div><div class='date'>10:52am Sep 5, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2329" class="active">#7</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Thanks, it seems it is not set up correctly since in verification popup it doesn't mention any password path or anyhting similar. I also tried flushing cache and reverifying site but no luck. Probably backend of that module has a problem (I do remember it was trying to install itself in a loop when was installing via Drush).
+If there any instructions related to this module, link would be helpful, otherwise I d need to play with it a bit.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-293.html?destination=node%2F2995%23comment-form">Login</a> or <a href="../../user/register/index-293.html?destination=node%2F2995%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2330"></a>
+
+
+<div  id="comment-2330" class="comment comment-published clear-block decay-9 decay-9">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/helmo/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="helmo&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/helmo/index.html" class="username" title="View user profile.">helmo</a></div><div class='date'>12:43pm Sep 5, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2330" class="active">#8</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Filling in the password can be done via the site edit form.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-293.html?destination=node%2F2995%23comment-form">Login</a> or <a href="../../user/register/index-293.html?destination=node%2F2995%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2331"></a>
+
+
+<div  id="comment-2331" class="comment comment-published clear-block decay-9 decay-9">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/milovan/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="milovan&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/milovan/index.html" class="username" title="View user profile.">milovan</a></div><div class='date'>4:57pm Sep 8, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2331" class="active">#9</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Helmo, I believe you didn't read my the latest message right. I know where to type in password, I said that <strong>verify doesn't mention any password path</strong> setting up like you told me to in your previous post.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-293.html?destination=node%2F2995%23comment-form">Login</a> or <a href="../../user/register/index-293.html?destination=node%2F2995%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2367"></a>
+
+
+<div  id="comment-2367" class="comment comment-published clear-block decay-6 decay-6">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/francewhoa/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-2062/index.png" alt="Francewhoa&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/francewhoa/index.html" class="username" title="View user profile.">Francewhoa</a></div><div class='date'>2:47am Nov 23, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2367" class="active">#10</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>helmo and milovan, we can confirm that <a href="https://www.drupal.org/project/hosting_tasks_extra" title="https://www.drupal.org/project/hosting_tasks_extra">https://www.drupal.org/project/hosting_tasks_extra</a> with "HTTP Basic Authentication (hosting_http_basic_auth)" is not working. We created a bug report at <a href="https://www.drupal.org/node/2380495" title="https://www.drupal.org/node/2380495">https://www.drupal.org/node/2380495</a></p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-293.html?destination=node%2F2995%23comment-form">Login</a> or <a href="../../user/register/index-293.html?destination=node%2F2995%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2381"></a>
+
+
+<div  id="comment-2381" class="comment comment-published clear-block decay-2 decay-2">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/milovan/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="milovan&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/milovan/index.html" class="username" title="View user profile.">milovan</a></div><div class='date'>3:12pm Mar 10, 2015</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2381" class="active">#11</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Thanks Francewhoa! I see it has been commited to branch 3 so I assume there won't be a backport to 2?</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-293.html?destination=node%2F2995%23comment-form">Login</a> or <a href="../../user/register/index-293.html?destination=node%2F2995%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2382"></a>
+
+
+<div  id="comment-2382" class="comment comment-published clear-block decay-2 decay-2">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/francewhoa/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-2062/index.png" alt="Francewhoa&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/francewhoa/index.html" class="username" title="View user profile.">Francewhoa</a></div><div class='date'>8:19pm Mar 10, 2015</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2382" class="active">#12</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>milovan, good question :) Done. I just created a ticket about Back-port HTTP Basic Authentication fix from Aegir 3.x to 2.x at <a href="https://www.drupal.org/node/2449837" title="https://www.drupal.org/node/2449837">https://www.drupal.org/node/2449837</a>
+Any volunteers? To keep all in the communication loop I suggest to reply in that ticket.</p>
+
+<p>We're happy to contribute testing and documentation</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-293.html?destination=node%2F2995%23comment-form">Login</a> or <a href="../../user/register/index-293.html?destination=node%2F2995%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2398"></a>
+
+
+<div  id="comment-2398" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/milovan/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="milovan&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/milovan/index.html" class="username" title="View user profile.">milovan</a></div><div class='date'>7:34pm May 26, 2015</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2398" class="active">#13</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>So I did Aegir upgrade from 2.1 to 2.4 and added hosting_tasks_extra again, and enabled http basic auth. Technically it works, you go to site, it asks for user / pass, then you try /user which is on SSL and again it asks for user / pass. Okay, not a big issue. But then I simply closed browser (Firefox) without clearing browser cache, and opened it again, went to site and it asked me for a user / pass again. Now, devs periodically clear browser caches per day and I can see them already complaining how PITA this HTTP basic auth is because they have to enter user / pass many times per day.</p>
+
+<p>Additionally, this module is still not allowing those with internal IPs to approach site without user / pass and only to ask those with external IPs (look first post).</p>
+
+<p>Is someone still working on this module? Does this kind of feature request makes sense? I might be able to contribute such a feature extension if no one plans to complete http authentication feature. I really need password protected setup on development servers from external approaches (unless we set some IP Whitelist for those with home static IPs for example or some other office), but unfortunately Aegir keeps ignoring .htaccess in platform's root so I have to see how to solve this (for problems and testing results please read first post and few below).</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-293.html?destination=node%2F2995%23comment-form">Login</a> or <a href="../../user/register/index-293.html?destination=node%2F2995%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/htaccess-password-and-ip-protection-doesnt-work-aegir?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 16:18:31 GMT -->
+</html>

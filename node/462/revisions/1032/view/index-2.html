@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/462/revisions/1032/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/installing/manual/nginx-mariadb-php-fpm-single-server-installation/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../installing/ubuntu-1004-specific-how-downgrade-php-52-install/index.html" />
+<link rel="prev" href="../../../../../content/installing/manual/nginx-mariadb-php-fpm-single-server-installation/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../installing/ubuntu-1004-specific-how-downgrade-php-52-install/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Common installation problems from Wed, 03/09/2011 - 18:34 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-462" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Common installation problems</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-462'><p>There are a few things that can go wrong in the install.</p>
+
+<h2>Verify and install run everything through SSH</h2>
+
+<p>Since Aegir has multi-server support, it is possible that you have a misconfigured "FQDN" and that aegir then tries to connect to the local server as a remote server. To check if you have a misconfigured server, run the following commands:</p>
+
+<pre><code>resolveip `uname -n`
+</code></pre>
+
+<p>If the command returns your IP address, you are all set. If it returns an error you will need to edit your <code>/etc/hosts</code> file.</p>
+
+<p>First line of this file looks like:</p>
+
+<pre><code>127.0.0.1  localhost
+</code></pre>
+
+<p>Simply add all domains you want to this line. e.g:</p>
+
+<pre><code>127.0.0.1  localhost aegir.example.com example.com
+</code></pre>
+
+<h2>NameVirtualHost *:80 has no VirtualHosts</h2>
+
+<p>It does not hurt anything, but it can be annoying in your logs.  This may disappear as soon as you define your first virtual site using Aegir. If it does not, you most likely have a second NameVirtualHost statement in your configuration someplace other than in the Aegir configurations.</p>
+
+<p>If you are on a Debian system, that is usually a configuration fragment in /etc/apache2/ports.conf or in a fragment symbolically linked in /etc/apache2/sites-enabled and it is safe to comment out any NameVirtualHost statements you find there as this really is a large part of the job you have asked Aegir to do for you.</p>
+
+<p>Once those are commented out, the message should disappear.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-51.html?destination=node%2F462%23comment-form">Login</a> or <a href="../../../../../user/register/index-51.html?destination=node%2F462%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-51.html?destination=node%2F462%23comment-form">Login</a> or <a href="../../../../../user/register/index-51.html?destination=node%2F462%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/462/revisions/1032/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:53 GMT -->
+</html>

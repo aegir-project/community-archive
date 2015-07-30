@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/416/revisions/884/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:24:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../244/index.html" />
+<link rel="up" href="../../../../518/index.html" />
+<link rel="next" href="../../../../414/index.html" />
+<link rel="prev" href="../../../../244/index.html" />
+<link rel="up" href="../../../../518/index.html" />
+<link rel="next" href="../../../../414/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of HINTS_Solaris.txt from Sat, 02/26/2011 - 17:15 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-416" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">HINTS_Solaris.txt</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-416'><p>.. -<em>- mode: rst; fill-column: 78; -</em>-
+.. This document is formatted using the ReST syntax.</p>
+
+<p>================================================</p>
+
+<h1>Aegir -- Solaris installation instructions hints</h1>
+
+<p>This is a helper file to the canonical INSTALL.txt. It is aimed at helping you
+install Aegir on Solaris. It simply lists commands that diverge from the base
+INSTALL.txt in a concise document that will be easy to maintain in the long
+term.</p>
+
+<p>It is recommended that the INSTALL.txt document is consulted before going
+ahead with this install.</p>
+
+<p>We reuse the same process describe in that document:</p>
+
+<ol>
+<li>Install requirements</li>
+<li>Configure system requirements, which include:
+
+<ul>
+<li>create a Aegir user</li>
+<li>configure Apache, MySQL, DNS, etc</li>
+</ul></li>
+<li>Run the install script</li>
+</ol>
+
+<h1>1. Install software requirements</h1>
+
+<p>TODO: Show how to install:</p>
+
+<ul>
+<li>Apache2</li>
+<li>git</li>
+<li>sudo</li>
+<li>mysql</li>
+<li>PHP 5.2</li>
+<li>wget</li>
+</ul>
+
+<p>unzip and sendmail should be part of the base Solaris install. Other
+applications should be available on the companion CDs or:</p>
+
+<p><a href="http://www.sunfreeware.com/" title="http://www.sunfreeware.com/">http://www.sunfreeware.com/</a></p>
+
+<p>In particular, git can be compiled easily by exporting the following
+environment::
+ export CFLAGS="-I/usr/sfw/include -I/opt/sfw/include"
+ export LD_LIBRARY_PATH="/usr/sfw/lib:/opt/sfw/lib:$LD_LIBRARY_PATH"</p>
+
+<p>Then the compile instructions bundled with git should just be followed
+plainly.</p>
+
+<p>XXX: I had trouble installing the binaries, as git expects ginstall to be
+available in the path. I ended up adding the source directory in the path,
+which works fine for most uses.</p>
+
+<h1>2. Configure system requirements</h1>
+
+<p>Shell commands::
+ groupadd aegir
+ useradd -g aegir -G webservd -d /var/aegir -s /bin/bash -c "Aegir sandbox" aegir
+ chown aegir:aegir /var/aegir
+ echo "Include /var/aegir/config/apache.conf" &gt;&gt; /etc/apache2/httpd.conf</p>
+
+<p>MySQL commands::
+ # Replace 'aegir_password' with the chosen password for 'aegir' mysql account
+ CREATE DATABASE aegir;
+ GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER, \
+   CREATE TEMPORARY TABLES, LOCK TABLES ON aegir.* TO \
+   'aegir'@'localhost' IDENTIFIED BY 'aegir_password';
+ # Create a mysql super user (with GRANT OPTION)
+ # Replace 'aegir_root_password' with a new password
+ GRANT USAGE,CREATE USER ON <em>.</em> TO 'aegir_root'@'localhost' \
+   IDENTIFIED BY 'aegir_root_password' WITH GRANT OPTION;
+ GRANT ALL PRIVILEGES ON <code>site\_%</code>.* TO 'aegir_root'@'localhost';</p>
+
+<h1>3. Run the install script</h1>
+
+<p>Download the install.sh script per the instructions in Step 3 of the canonical
+INSTALL.txt file, with modifications below.</p>
+
+<p>Shell commands::
+ su - aegir
+ bash install.sh.txt aegir.example.com</p>
+
+<p>Be sure to change 'aegir.example.com' to match the URI of your site.</p>
+
+<p>You can append '--client_email=you@example.com' if you wish to receive the
+traditional Drupal 'Welcome' e-mail upon completion of the installation.
+This e-mail address will also be used as the default e-mail address of the
+first user and client in Aegir, but can be changed later.</p>
+
+<h1>4. Common issues</h1>
+
+<h2>Drush issue</h2>
+
+<p>Solaris suffers from the dreaded execution issues of drush:</p>
+
+<p><a href="http://drupal.org/node/637574" title="http://drupal.org/node/637574">http://drupal.org/node/637574</a>
+<a href="http://drupal.org/node/586466" title="http://drupal.org/node/586466">http://drupal.org/node/586466</a></p>
+
+<p>Those can be worked around by hardcoding the --php executable on the
+commandline path. Adding the proper shebang header and using a proper PATH
+that includes the PHP executable also helps.</p>
+
+<h2>Cron issues</h2>
+
+<p>I had numerous problems setting up a proper cron job, as Solaris' crond seems
+pretty anal about what it accepts. The only way I could get it to work was to
+create a wrapper shell script that would be called using the simplest cron
+tab.</p>
+
+<p>Crontab entry::</p>
+
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>/var/aegir/dispatch.sh</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>Content of dispatch.sh::
+ #!/usr/bin/bash</p>
+
+<p>HOME=/var/aegir
+ LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/usr/lib/sparcv9:/opt/mysql/mysql/lib:/usr/sfw/lib:/usr/sfw/lib/gcc:/opt/sfw/lib
+ PATH=/usr/bin:/opt/mysql/mysql/bin:/usr/sfw/bin:/opt/sfw/bin:/opt/SUNWspro/bin:/usr/local/bin:/opt/csw/bin</p>
+
+<p>export HOME
+ export LD_LIBRARY_PATH
+ export PATH</p>
+
+<p>php '/var/aegir/drush/drush.php' --php=/usr/local/bin/php '@hostmaster' hosting-dispatch</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-267.html?destination=node%2F416%23comment-form">Login</a> or <a href="../../../../../user/register/index-267.html?destination=node%2F416%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-267.html?destination=node%2F416%23comment-form">Login</a> or <a href="../../../../../user/register/index-267.html?destination=node%2F416%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/416/revisions/884/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:24:12 GMT -->
+</html>

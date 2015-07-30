@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/able-verify-site-not-able-clone-it-how-can-i-migrate-site-new-updated-codebase?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 21:14:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Able to verify site, not able to clone it. How can I migrate this site to a new, updated codebase? | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2212" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/entropy01/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-160/index.png" alt="entropy01&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/entropy01/index.html" class="username" title="View user profile.">entropy01</a></div><div class='date'>7:23am Dec 28, 2012</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Able to verify site, not able to clone it. How can I migrate this site to a new, updated codebase?</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>I'm not sure what the issue here is, I am trying to migrate a website to a new codebase that contains updated versions of contributed modules and Drupal.</p>
+
+<p>Using Aegir 1.6</p>
+
+<p>The errors I get are:
+<code>Drush command terminated abnormally due to an unrecoverable error. Error: Call to undefined function user_load() in /var/aegir/drush/drush.php, line 235</code></p>
+
+<p>Then, I see 2 identical error messages, listing basically all platforms and sites and aliases in /var/aegir/.drush and beginning with:
+<code>Drush was not able to start (bootstrap) Drupal. Hint: This error can only occur once the database connection has already been successfully initiated, therefore this error generally points to a site configuration issue, and not a problem connecting to the database. Drush was attempting to connect to : Drupal version : 6.26 Site URI : **** Database driver : mysqli Database hostname : ****.com Database username : **** Database name : ***** Database : Connected Default theme : garland Administration theme: garland PHP configuration : /etc/php5/cli/php.ini Drush version : 4.5 Drush configuration: /var/aegir/platforms/*****/drushrc.php /var/aegir/platforms/*****/drushrc.php Drush alias files : /var/aegir/.drush/*****.alias.drushrc.php </code></p>
+
+<p>and ending with:
+<code> Array You can select another site with a working database setup by specifying the URI to use with the --uri parameter on the command line or $options[&#039;uri&#039;] in your drushrc.php file.</code></p>
+
+<p>The site is working though, and other sites in the same codebase clone just fine. I have upped my php.ini resource values to 512MB and 120 execution time.</p>
+
+<p>What could be the problem? Can i manually migrate the website?</p>
+
+<p>Thanks in advance!</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-476.html?destination=node%2F2212%23comment-form">Login</a> or <a href="../../user/register/index-476.html?destination=node%2F2212%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-2326"></a>
+
+
+<div  id="comment-2326" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/fuzzy76/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-1572/index.jpg" alt="fuzzy76&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/fuzzy76/index.html" class="username" title="View user profile.">fuzzy76</a></div><div class='date'>12:36pm Aug 28, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2326" class="active">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>There are some related errors discussed here: <a href="https://www.drupal.org/node/1324466" title="https://www.drupal.org/node/1324466">https://www.drupal.org/node/1324466</a></p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-476.html?destination=node%2F2212%23comment-form">Login</a> or <a href="../../user/register/index-476.html?destination=node%2F2212%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/able-verify-site-not-able-clone-it-how-can-i-migrate-site-new-updated-codebase?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 21:14:56 GMT -->
+</html>

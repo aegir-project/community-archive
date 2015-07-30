@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/888/revisions/3313/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:07:02 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../516/index.html" />
+<link rel="up" href="../../../../../contrib-modules/index.html" />
+<link rel="next" href="../../../../../content/content/administrator/post-install-configuration/create-sudo-user-server-administration/index.html" />
+<link rel="prev" href="../../../../516/index.html" />
+<link rel="up" href="../../../../../contrib-modules/index.html" />
+<link rel="next" href="../../../../../content/content/administrator/post-install-configuration/create-sudo-user-server-administration/index.html" />
+<link rel="prev" href="../../../../516/index.html" />
+<link rel="up" href="../../../../../contrib-modules/index.html" />
+<link rel="next" href="../../../../../content/content/administrator/post-install-configuration/create-sudo-user-server-administration/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Provision CiviCRM from Fri, 04/27/2012 - 15:35 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-888" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../contrib-modules/provision-civicrm/index.html">Provision CiviCRM</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-888'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/527/index.html" class="username" title="View user profile.">bgm</a> on 04/27/2012 - 15:35</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p><a href="http://drupal.org/project/provision_civicrm">provision_civicrm</a> helps manage the CiviCRM configurations (installation, upgrade) for Drupal sites managed with Aegir.</p>
+
+<h3>Requirements</h3>
+
+<ul>
+<li><p>drush_make. Version &gt;= 2.3 is required if you want to download l10n files.</p>
+
+<ul>
+<li>c.f. <a href="http://drupal.org/node/1134326">#1134326</a>: Allow a DrushMakeProject to be installed in a non empty directory.</li>
+</ul></li>
+<li><p>provision. Version &gt;= 1.3 is required if you have multi-lingual CiviCRM (which requires triggers/views).</p>
+
+<ul>
+<li>See: <a href="http://drupal.org/node/881496">#881496</a>: Problem migrating sites with mysql views</li>
+<li>and <a href="http://drupal.org/node/1274896">#1274896</a>: migrate fails if l10n or logging is enabled.</li>
+</ul></li>
+</ul>
+
+<h3>Installation</h3>
+
+<p>Download the provision_civicrm module, either:</p>
+
+<pre><code>drush dl provision_civicrm-6.x
+</code></pre>
+
+<p>or</p>
+
+<pre><code>git clone git://git.drupal.org/project/provision_civicrm
+</code></pre>
+
+<p>You should install it in ~/.drush/provision_civicrm. The git master branch is usually stable.</p>
+
+<h3>Creating a CiviCRM platform</h3>
+
+<p>provision_civicrm assumes that if you have a CiviCRM installation in your sites/all/modules/civicrm, then this is a CiviCRM platform and CiviCRM should be installed automatically.</p>
+
+<p>(A cleaner way, in theory, would be to have an install profile and let the user configure it through the front-end, patches welcome! -- however, you do not want any site to simply enable CiviCRM from the Drupal admin/build/modules, so having dedicated platforms for CiviCRM makes sense in any case.)</p>
+
+<p><span class='diff-deleted'>Here</span><span class='diff-deleted'> </span><span class='diff-deleted'>is</span><span class='diff-deleted'> </span><span class='diff-deleted'>an</span><span class='diff-deleted'> </span><span class='diff-deleted'>example</span><span class='diff-deleted'> </span><span class='diff-deleted'>drush_make</span><span class='diff-deleted'> </span><span class='diff-deleted'>makefile:</span></p><span class='diff-deleted'>
+
+</span><pre><span class='diff-deleted'></span><code><span class='diff-deleted'>;</span><span class='diff-deleted'> </span><span class='diff-deleted'>Drush_make</span><span class='diff-deleted'> </span><span class='diff-deleted'>API</span><span class='diff-deleted'> </span><span class='diff-deleted'>version
+api</span><span class='diff-deleted'> </span><span class='diff-deleted'>=</span><span class='diff-deleted'> </span><span class='diff-deleted'>"2"
+
+;</span><span class='diff-deleted'> </span><span class='diff-deleted'>Drupal</span><span class='diff-deleted'> </span><span class='diff-deleted'>core
+core</span><span class='diff-deleted'> </span><span class='diff-deleted'>=</span><span class='diff-deleted'> </span><span class='diff-deleted'>"6.x"
+projects[drupal][version]</span><span class='diff-deleted'> </span><span class='diff-deleted'>=</span><span class='diff-deleted'> </span><span class='diff-deleted'>"6.22"
+
+;</span><span class='diff-deleted'> </span><span class='diff-deleted'>CiviCRM</span><span class='diff-deleted'> </span><span class='diff-deleted'>core
+libraries[civicrm][destination]</span><span class='diff-deleted'> </span><span class='diff-deleted'>=</span><span class='diff-deleted'> </span><span class='diff-deleted'>"modules"
+libraries[civicrm][directory_name]</span><span class='diff-deleted'> </span><span class='diff-deleted'>=</span><span class='diff-deleted'> </span><span class='diff-deleted'>"civicrm"
+libraries[civicrm][download][type]</span><span class='diff-deleted'> </span><span class='diff-deleted'>=</span><span class='diff-deleted'> </span><span class='diff-deleted'>"get"
+libraries[civicrm][download][url]</span><span class='diff-deleted'> </span><span class='diff-deleted'>=</span><span class='diff-deleted'> </span><span class='diff-deleted'>"http://downloads.sourceforge.net/project/civicrm/civicrm-stable/3.4.4/civicrm-3.4.4-drupal.tar.gz"
+
+;</span><span class='diff-deleted'> </span><span class='diff-deleted'>CiviCRM</span><span class='diff-deleted'> </span><span class='diff-deleted'>localization</span><span class='diff-deleted'> </span><span class='diff-deleted'>files</span><span class='diff-deleted'> </span><span class='diff-deleted'>(optional)
+libraries[civicrm_l10n][destination]</span><span class='diff-deleted'> </span><span class='diff-deleted'>=</span><span class='diff-deleted'> </span><span class='diff-deleted'>"modules"
+libraries[civicrm_l10n][directory_name]</span><span class='diff-deleted'> </span><span class='diff-deleted'>=</span><span class='diff-deleted'> </span><span class='diff-deleted'>"civicrm"
+libraries[civicrm_l10n][download][type]</span><span class='diff-deleted'> </span><span class='diff-deleted'>=</span><span class='diff-deleted'> </span><span class='diff-deleted'>"get"
+libraries[civicrm_l10n][download][url]</span><span class='diff-deleted'> </span><span class='diff-deleted'>=</span><span class='diff-deleted'> </span><span class='diff-deleted'>"http://downloads.sourceforge.net/project/civicrm/civicrm-stable/3.4.4/civicrm-3.4.4-l10n.tar.gz"
+libraries[civicrm_l10n][overwrite]</span><span class='diff-deleted'> </span><span class='diff-deleted'>=</span><span class='diff-deleted'> </span><span class='diff-deleted'>TRUE
+
+;</span><span class='diff-deleted'> </span>A <span class='diff-changed'>sample drush makefile is provided with provision_civicrm.</span></p>
+
+<p>Assuming you are running as the user 'aegir', whose $HOME is /var/aegir/, save this in a file such as ~/makefiles/drupal-6.22-civicrm-3.3.4.make</p>
+
+<p>Then create the new platform:</p>
+
+<pre><code>mkdir ~/platforms/drupal-6.22-civicrm-3.3.4
+cd ~/platforms/drupal-6.22-civicrm-3.3.4
+drush make ~/makefiles/drupal-6.22-civicrm-3.3.4.make
+</code></pre>
+
+<p>You can now add your platform in the Aegir front-end and then create new sites.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-406.html?destination=node%2F888%23comment-form">Login</a> or <a href="../../../../../user/register/index-406.html?destination=node%2F888%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/888/revisions/3313/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:07:02 GMT -->
+</html>

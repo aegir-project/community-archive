@@ -1,0 +1,789 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/515/revisions/3547/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:41:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/injecting-drushrcphp/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../contrib-modules/aegir-services/index.html" />
+<link rel="prev" href="../../../../../content/injecting-drushrcphp/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../contrib-modules/aegir-services/index.html" />
+<link rel="prev" href="../../../../../content/injecting-drushrcphp/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../contrib-modules/aegir-services/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="prev" href="../../../../../contrib-modules/index.html" />
+<link rel="up" href="../../../../../contrib-modules/index.html" />
+<link rel="next" href="../../../../../content/contrib-modules/contribs-aegir-7x-3x/index.html" />
+<link rel="prev" href="../../../../../contrib-modules/aegir-services/index.html" />
+<link rel="up" href="../../../../../contrib-modules/index.html" />
+<link rel="next" href="../../../../../content/contrib-modules/devshop-provision/index.html" />
+<link rel="prev" href="../../../../../content/contrib-modules/contribs-aegir-7x-3x/index.html" />
+<link rel="up" href="../../../../../contrib-modules/index.html" />
+<link rel="next" href="../../../../../content/content/contrib-modules/devshop-provision/commands/index.html" />
+<link rel="prev" href="../../../../../content/contrib-modules/devshop-provision/index.html" />
+<link rel="up" href="../../../../../content/contrib-modules/devshop-provision/index.html" />
+<link rel="next" href="../../../../../content/contrib-modules/provision-acl/index.html" />
+<link rel="prev" href="../../../../../content/content/contrib-modules/devshop-provision/commands/index.html" />
+<link rel="up" href="../../../../../contrib-modules/index.html" />
+<link rel="next" href="../../../../516/index.html" />
+<link rel="prev" href="../../../../../content/contrib-modules/provision-acl/index.html" />
+<link rel="up" href="../../../../../contrib-modules/index.html" />
+<link rel="next" href="../../../../../contrib-modules/provision-civicrm/index.html" />
+<link rel="prev" href="../../../../516/index.html" />
+<link rel="up" href="../../../../../contrib-modules/index.html" />
+<link rel="next" href="../../../../../content/content/administrator/post-install-configuration/create-sudo-user-server-administration/index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Contributed Modules from Fri, 06/08/2012 - 22:31 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-515" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../contrib-modules/index.html">Contributed Modules</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-515'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/sfyn/index.html" class="username" title="View user profile.">sfyn</a> on 06/08/2012 - 22:31</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Extensions_to_Hostmaster_frontend"><span class="toc-number">1. </span>Extensions to Hostmaster (frontend)</a></li>
+	<li class="toc-level-1"><a href="#Extensions_to_Provision_backend"><span class="toc-number">2. </span>Extensions to Provision (backend)</a></li>
+	<li class="toc-level-1"><a href="#Themes"><span class="toc-number">3. </span>Themes</a></li>
+	<li class="toc-level-1"><a href="#Puppet_modules"><span class="toc-number">4. </span>Puppet modules</a></li>
+	<li class="toc-level-1"><a href="#Your_module_here"><span class="toc-number">5. </span>Your module here?</a></li>
+</ol>
+</div>
+</div>
+
+<h2 id="Extensions_to_Hostmaster_frontend">1. Extensions to Hostmaster (frontend)</h2>
+
+<dl>
+<dt><a href="http://drupal.org/project/uc_hosting">Aegir Ubercart Integration</a></dt>
+<dd>This module allows you to sell an Ægir client, with quotas and access to specific platforms, through Ubercart . It automates a number of set-up tasks from the moment the order ...</dd>
+
+<dt><a href="https://github.com/computerminds/aegir_http_basic">Aegir HTTP basic authentication</a></dt>
+<dd>This module allows you to protect sites with passwords.</dd>
+
+<dt><a href="https://github.com/poetaster/aegir_http_basic_ldap">Aegir HTTP basic LDAP authentication</a></dt>
+<dd>A fork of the above to allow you to specify an LDAP server and Require (ldap filter) string for authentication of 'sites'.</dd>
+
+<dt><a href="http://drupal.org/project/aegir_feeds">Aegir feeds</a></dt>
+<dd>This is a very basic module that provides feeds integration with Aegir . Features Provides mapping targets for Aegir site nodes, allowing you to create new sites from a feed or file upload.</dd>
+
+<dt><a href="http://drupal.org/project/aegir_rules">Aegir Rules</a></dt>
+<dd>Aegir Rules provides Rules integration for the Aegir.</dd>
+
+<dt><a href="https://github.com/computerminds/aegir_make_working_copy">Aegir Drush Make Platform working-copy</a></dt>
+<dd>This feature allows you to specify 'working-copy' when adding a platform using a Drush makefile. Working-copy means your .git subdirectories are preserved in the platform, which may be useful for development purposes.</dd>
+
+<dt><a href="http://drupal.org/project/hosting_platform_pathauto">Hosting Platform Pathauto</a></dt>
+<dd>This is an add-on module for the Aegir hosting system: <a href="http://aegirproject.org/" title="http://aegirproject.org/">http://aegirproject.org/</a> This module simply makes a little time-saving tweak when creating a new platform: ...</dd>
+
+<dt><a href="http://drupal.org/project/hosting_queue_runner">Hosting queue runner</a></dt>
+<dd>This module allows the Hosting tasks queue for the Aegir project to be 'daemonized' so that tasks are run as soon as possible instead of waiting for a cron run. This makes Aegir appear much more responsive. This module was inspired by the Waiting queue project. Requirements You will need ...</dd>
+
+<dt><a href="http://drupal.org/project/hosting_reinstall">Hosting Reinstall</a></dt>
+<dd>The Hosting Reinstall module provides a frontend for the <a href="http://drupal.org/project/provision_reinstall">Provision Reinstall</a> module so that you can reinstall any sites via Hostmaster (Aegir).</dd>
+
+<dt><a href="http://drupal.org/project/hosting_backup_gc">Hosting backup garbage collection</a></dt>
+<dd>This is an add-on module for the Aegir hosting system: <a href="http://aegirproject.org/" title="http://aegirproject.org">http://aegirproject.org</a> Introduction This module allows you to specify how long Aegir should retain backups for. You can specify, ...</dd>
+
+<dt><a href="http://drupal.org/project/hosting_backup_queue">Hosting backup queue</a></dt>
+<dd>This is a simple module for the Aegir project that allows scheduling of backups. E.g. backup sites every hour, day or month. The module allows for the general settings to be applied to all sites, ...</dd>
+
+<dt><a href="http://drupal.org/sandbox/gerbenspil/1459830">Hosting site Backup Manager</a></dt>
+<dd>Add a backups tab to a site node. It extends the default backup functionality with the ability to download a backup over HTTP.</dd>
+
+<dt><a href="http://drupal.org/project/hosting_site_git">Hosting site Git</a></dt>
+<dd>This is a simple module for the Aegir project that adds a 'Git pull', 'Git checkout' and 'Git clone' task for sites.</dd>
+
+<dt><a href="http://drupal.org/project/hosting_upload">Hosting upload</a></dt>
+<dd>This module allows administrators to add platforms to aegir and extend platforms and sites with modules, themes, libraries without the need of ssh access.</dd>
+
+<dt><a href="http://drupal.org/project/hosting_profile_roles">Hosting Profile Roles</a></dt>
+<dd>Hosting Profile Roles extends Aegir to enable more control over what role(s) a client is assigned during site install. Since, by default, Aegir client's are given UID1 during site installs, this module also allows UID1 to be assigned to another user.</dd>
+
+<dt><a href="http://drupal.org/project/hosting_server_titles">Hosting server titles</a></dt>
+<dd>This is a really simple module that allows you to change the names of servers that are displayed in lists in the Hosting frontend when choosing what server to use for something.</dd>
+
+<dt><a href="../../../../311/index.html">Services API Support</a></dt>
+<dd>Integrates the Services API framework into the Hostmaster suite of tools. It allows Aegir managers the ability to build Services API connections over any of the available servers for Services API.</dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'></span><a href="http://drupal.org/project/hosting_advanced_cron"><span class='diff-added'>Hosting Advanced Cron</span></a><span class='diff-added'></span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>This module allows an administrator to set the default cron interval globally and to override that interval for individual sites.</span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'></span><a href="http://drupal.org/project/hosting_features"><span class='diff-added'>Hosting Features</span></a><span class='diff-added'></span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>This module provides a Task to Hostmaster that provides integration with a site's Features. (In beta as of June 1,2012)</span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'></span><a href="http://drupal.org/project/hosting_notifications"><span class='diff-added'>Hosting Notifications</span></a><span class='diff-added'></span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>This is a module that integrates with the Notifications framework. This allows you to receive notifications about task execution in various formats.</span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'></span><a href="http://drupal.org/project/hosting_task_gc"><span class='diff-added'>Hosting Task Garbage Collection</span></a><span class='diff-added'></span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>This module will delete rows in the {hosting_task} and {hosting_task_log} tables. (In alpha as of June 1,2012)</span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'></span><a href="http://drupal.org/project/hosting_remote_import"><span class='diff-added'>Hosting Remote Import</span></a><span class='diff-added'></span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>This Drupal module provides a UI for fetching sites from remote Aegir servers. (In development as of June 1, 2012l; "may not work yet")</span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'></span><a href="http://drupal.org/project/hosting_varnish"><span class='diff-added'>Hosting Varnish</span></a><span class='diff-added'></span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>Allows the Varnish cache for Aegir-managed sites to be purged via the user interface. (In alpha as of June 1,2012)</span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'></span><a href="http://drupal.org/project/hosting_civicrm_cron"><span class='diff-added'>Hosting CivicCRM Cron</span></a><span class='diff-added'></span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>This module provides the ability to trigger CiviCRM cron jobs on sites hosted on the Aegir Hosting System.</span></dd>
+</dl>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Extensions_to_Provision_backend">2. Extensions to Provision (backend)</h2>
+
+<dl>
+<dt><a href="http://drupal.org/project/provision_boost">Provision boost support</a></dt>
+<dd>the Aegir project and therefore depends on the provision backend and expects the Aegir environment to be functional. Quickstart Download the provision_boost code into your /var/aegir/.drush/ Download ...</dd>
+
+<dt><a href="http://drupal.org/project/provisionacl">Provision ACL support</a></dt>
+<dd>This drush command aims to provide preliminary ACL support for the Aegir backend . The objective here is to allow administrators to set more granular access policies on files managed by Aegir and resolve more hairy access permissions requirements than what is usually allowed by the Aegir core. ...</dd>
+
+<dt><a href="http://drupal.org/project/project_status">Project Status</a></dt>
+<dd>Project status is an extension for drush which takes a list of drupal platforms as arguments and returns a list of modules which are not in use by any site within these platforms. It is also optionally able to list modules which are use, by platform and site.</dd>
+
+<dt><a href="http://drupal.org/project/provision_civicrm">Provision CiviCRM</a></dt>
+<dd><span class='diff-changed'>A Drush module to automatically setup Drupal instances with the CiviCRM Constituent Relationship Management</span> solution. It is specifically aimed towards the Aegir <span class='diff-changed'>project.</span></dd>
+
+<dt><a href="http://drupal.org/sandbox/helmo/1283656">Provision Backup Platform</a></dt>
+<dd>This hooks into deleting a platform and creates a simple tar backup.</dd>
+
+<dt><a href="http://drupal.org/project/kplatforms">kPlatforms</a></dt>
+<dd>Koumbit's "standard Drupal platforms", a set of makefiles to build and maintain development and production platforms easily.</dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'></span><a href="http://drupal.org/project/provision_git"><span class='diff-added'>Provision Git</span></a><span class='diff-added'></span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>Provision Git is a backend Drush module. It provides 4 drush commands. (In alpha as of June 1,2012)</span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'></span><a href="http://drupal.org/project/provision-mergelog"><span class='diff-added'>Provision Merge Log</span></a><span class='diff-added'></span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>This Aegir extension allows you to automate fetching and merging logs from multiple servers part of the same cluster in a single logfile for later analysis with various analysis tools</span></dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'></span><a href="http://drupal.org/project/provision_cdn"><span class='diff-added'>Provision CDN</span></a><span class='diff-added'></span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>This is a simple module and drush script for that allows you to enable CDN support per site in Aegir. (In dev as of June 1,2012)</span></dd>
+</dl>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Themes">3. Themes</h2>
+
+<ul>
+<li>Koumbit has provided it's <a href="http://drupal.org/project/eldir_kt">custom Aegir theme</a> as a sample subtheme of <a href="http://drupal.org/project/eldir">Eldir</a>.</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Puppet_modules">4. Puppet modules</h2>
+
+<p>Those projects allow you to manage Aegir instance(s) through Puppet. Chef recipes also welcome, we don't discriminate.</p>
+
+<ul>
+<li><a href="http://drupal.org/project/puppet-aegir">Aegir Puppet module</a></li>
+<li><a href="http://drupal.org/project/puppet-aegir">Drush Puppet module</a></li>
+<li><a href="http://drupal.org/project/aegir-up">Aegir up</a> (a Vagrant integration module which uses the above)</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Your_module_here">5. Your module here?</h2>
+
+<p><em>Developers:</em> Please add your contributed module here, and feel free to put install instructions or other documentation in a child page. If you are looking for ways of extending Aegir or have already done so and want to document the <em>internals</em> of your module, head over to the <a href="../../../../../contrib/index.html">extending Aegir</a> page.</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-12.html?destination=node%2F515%23comment-form">Login</a> or <a href="../../../../../user/register/index-12.html?destination=node%2F515%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-12.html?destination=node%2F515%23comment-form">Login</a> or <a href="../../../../../user/register/index-12.html?destination=node%2F515%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+<div  id="node-311" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../contrib-modules/aegir-services/index.html">Aegir Services</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p><a href="http://drupal.org/project/hosting_services">Aegir Services</a> integrates the Services API framework into the Hostmaster suite of tools. It allows Aegir managers the ability to build Services API connections over any of the available servers for Services API.</p>
+
+<p>Using Services 3.x we are aiming at full CRUD support for clients, tasks and sites, as well as read access to profiles, platforms, and eventually, packages.</p>
+
+<p>The 2.x branch of <a href="../../../../516/index.html">Aegir Ubercart Integration</a> will take advantage of this support to provide a remote storefront functionality.</p>
+
+<p>Please report issues and request support via the <a href="http://drupal.org/project/issues/hosting_services?categories=All">issue queue on Drupal.org</a></p>
+
+<h2>Installation</h2>
+
+<ol>
+<li>Install <a href="../../../../../installing/index.html">Aegir</a></li>
+<li>Install the <strong>dev</strong> version of <a href="http://drupal.org/project/services">services 3.x</a>, including at least one server and, ideally, an authentication server.</li>
+<li>Install this module.</li>
+<li><a href="http://drupal.org/node/736522">Configure your endpoint, it's resources and authentication, normally</a>.</li>
+<li>Optionally, test your rest server using the included bash script, <code>hosting_services.rest_test.sh</code></li>
+</ol>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-405.html?destination=node%2F311%23comment-form">Login</a> or <a href="../../../../../user/register/index-405.html?destination=node%2F311%23comment-form">register</a> to post comments</span></li>
+<li class="talk_comments last"><a href="../../../../311/talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-12861" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/contrib-modules/contribs-aegir-7x-3x/index.html">Contribs for Aegir 7.x-3.x</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc3">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Extensions_to_Hostmaster_frontend"><span class="toc-number">1. </span>Extensions to Hostmaster (frontend)</a></li>
+	<li class="toc-level-1"><a href="#Extensions_to_Provision_backend"><span class="toc-number">2. </span>Extensions to Provision (backend)</a></li>
+	<li class="toc-level-1"><a href="#Themes"><span class="toc-number">3. </span>Themes</a></li>
+	<li class="toc-level-1"><a href="#Puppet_modules_and_Chef_cookbooks"><span class="toc-number">4. </span>Puppet modules and Chef cookbooks</a></li>
+	<li class="toc-level-1"><a href="#Others"><span class="toc-number">5. </span>Others</a></li>
+	<li class="toc-level-1"><a href="#Your_module_here"><span class="toc-number">6. </span>Your module here?</a></li>
+</ol>
+</div>
+</div>
+
+<h2 id="Extensions_to_Hostmaster_frontend">1. Extensions to Hostmaster (frontend)</h2>
+
+<dl>
+<dt><a href="http://drupal.org/project/hosting_git">Hosting Git</a></dt>
+<dd>This is a simple module for the Aegir project that adds a 'Git pull', 'Git checkout' and 'Git clone' task for sites.</dd>
+
+<dd>The successor of Hosting site Git &amp; Hosting platform Git</dd>
+
+<dt><a href="http://drupal.org/project/hosting_logs">Hosting Logs</a></dt>
+<dd>This is a simple module for the Aegir project that adds a 'Logs' tab to sites and platforms. Showing Apache error, Git commit and watchdog logs.</dd>
+
+<dt><a href="http://drupal.org/project/hosting_platform_pathauto">Hosting Platform Pathauto</a></dt>
+<dd>This is an add-on module for the Aegir hosting system: <a href="http://aegirproject.org/" title="http://aegirproject.org/">http://aegirproject.org/</a> This module simply makes a little time-saving tweak when creating a new platform: ...</dd>
+
+<dt><a href="https://github.com/mglaman/hosting_site_make">Hosting site make</a></dt>
+<dd>Allows a site to have its modules built from a makefile in the sites directory.</dd>
+
+<dt><a href="http://drupal.org/project/hosting_tasks_extra">Hosting tasks extra</a></dt>
+<dd>This module extends Aegir hostmaster (and drush/provision) with some additional tasks. Such as: cache-clear and registry-rebuild.</dd>
+
+<dd>Now also includes the functionality from <a href="https://github.com/computerminds/aegir_http_basic">Aegir HTTP basic authentication</a></dd>
+</dl>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Extensions_to_Provision_backend">2. Extensions to Provision (backend)</h2>
+
+<p>Starting from Aegir 7.x-3.x the Drush component can be included in a 'drush' directory in the same git repository as the hosting module.</p>
+
+<p>Therefore this list will be shorter then for previous versions.</p>
+
+<dl>
+<dt><a href="https://github.com/mlutfy/provision_sts">Provision STS</a></dt>
+<dd>Adds the Strict Transport Security header to hosts that require SSL.</dd>
+</dl>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Themes">3. Themes</h2>
+
+<ul>
+<li><a href="https://www.drupal.org/project/saeven">Saeven</a></li>
+<li><a href="http://drupal.org/project/eldir">Eldir</a>. (The default theme)</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Puppet_modules_and_Chef_cookbooks">4. Puppet modules and Chef cookbooks</h2>
+
+<p>Those projects allow you to manage Aegir instance(s) through Puppet. Chef recipes also welcome, we don't discriminate.</p>
+
+<ul>
+<li><a href="http://drupal.org/project/puppet-aegir">Aegir Puppet module</a></li>
+<li><a href="http://drupal.org/project/puppet-drush">Drush Puppet module</a></li>
+<li><a href="https://supermarket.chef.io/cookbooks/aegir3">Aegir3 Chef Cookbook</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Others">5. Others</h2>
+
+<dl>
+<dt><a href="http://drupal.org/project/aegir-up">Aegir up</a></dt>
+<dd>Aegir-up is a Drush extension that deploys a local instance of the Aegir Hosting System atop Vagrant and Virtualbox, for development and testing purposes.</dd>
+
+<dt><a href="http://drupal.org/project/devshop">DevShop</a></dt>
+<dd>DevShop is a Drupal Development Environment Manager built on Aegir.</dd>
+
+<dd>
+<p>DevShop creates Aegir platforms and sites automatically from Git URLs.  It tracks multiple Projects and allows multiple environments to be created for each Project, such as dev, test, and live.  It provides tools to Pull Code, Sync Data, Commit Features, and Run Tests on these environments, and provides a dashboard with useful links and information for developers.</p>
+</dd>
+
+<dt><a href="https://github.com/Lab43/aegir-pathologic-files">Aegir Pathologic Files</a></dt>
+<dd>A tiny Drupal Module to simplify file paths in content. This helps prevent broken images when the site directory name changes. Requires an apache rewrite rule to point /files to /sites/example.com/files, which Aegir provides by default.</dd>
+
+<dd>This module is not for hostmaster, but for the sites hosted under Aegir.</dd>
+</dl>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Your_module_here">6. Your module here?</h2>
+
+<p><em>Developers:</em> Please add your contributed module here, and feel free to put install instructions or other documentation in a child page. If you are looking for ways of extending Aegir or have already done so and want to document the <em>internals</em> of your module, head over to the <a href="../../../../../contrib/index.html">extending Aegir</a> page.</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-65.html?destination=node%2F12861%23comment-form">Login</a> or <a href="../../../../../user/register/index-65.html?destination=node%2F12861%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-65.html?destination=node%2F12861%23comment-form">Login</a> or <a href="../../../../../user/register/index-65.html?destination=node%2F12861%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-2325" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/contrib-modules/devshop-provision/index.html">DevShop Provision</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><p>Homepage: <a href="http://drupal.org/project/devshop" title="http://drupal.org/project/devshop">http://drupal.org/project/devshop</a></p>
+
+<h1>DevShop Provision</h1>
+
+<p>Drupal development infrastructure made easy.</p>
+
+<p>This module provides the backend commands needed to 
+deploy and manage sites using the DevShop git and features 
+based development workflow.</p>
+
+<h2>About DevShop</h2>
+
+<p>The goals of DevShop are...</p>
+
+<ol>
+<li>to simplify management of multiple environments for multiple Drupal projects.</li>
+<li>to provide web-based tools that streamline the Drupal site building workflow.</li>
+<li>to provide a common, open-source infrastructure for Drupal development shops.</li>
+</ol>
+
+<h2>Installation</h2>
+
+<p>To install devshop_provision, simply use drush:</p>
+
+<p>$ drush dl devshop_provision</p>
+
+<p>Or, you can download the source code to any available drush commands folder,
+such as /usr/share/drush or ~/.drush</p>
+
+<h2>Usage</h2>
+
+<p>DevShop Provision works by providing a new Provision class called "Project".</p>
+
+<p>To start, you must have a Project drush alias.  Using the DevShop+Hostmaster
+system will make this much easier, but if you wish to only use the backend, you
+can create a project alias with provision-save, for project NAME:
+<div class="codeblock"><code>&nbsp; $ drush provision-save project_NAME --context_type=project --code_path=/var/aegir/projects/NAME --git_url=http://git.url/to/repo.git --base_url=NAME.server.com</code></div></p>
+
+<p><div class="codeblock"><code>&nbsp;&nbsp;&nbsp; $ drush provision-save project_NAME --project_name=NAME --context_type=project --code_path=/var/aegir/projects/NAME --git_url=git@github.com:devudo/drupal-flat.git --base_url=NAME.server.com</code></div></p>
+
+<h2>Commands</h2>
+
+<p>DevShop contains a set of features that make Drupal site building within a
+version-controlled code workflow quick and easy.</p>
+
+<p>Currently you must create new platforms within a project in hostmaster.  Once created, you can execute the following commands:</p>
+
+<h2>1. Pull Code</h2>
+
+<p><div class="codeblock"><code>&nbsp; $ drush @project_NAME provision-devshop-pull ENVIRONMENT</code></div></p>
+
+<p>This task runs on the dev platform for this project. It runs git pull, and
+  optionally runs new updates, reverts features, and clears caches.  It is used
+  to keep the dev server up to date on every commit via the devshop_pull module,
+  and can be used as the deployment task.</p>
+
+<ul>
+<li>Git Pull the code for your site's platform.</li>
+<li>Then, all optionally:
+
+<ul>
+<li>Run update.php.</li>
+<li>Revert all Features modules</li>
+<li>Clear caches</li>
+</ul></li>
+</ul>
+
+<h2>2. Commit Features</h2>
+
+<p><div class="codeblock"><code>&nbsp; $ drush @project_NAME provision-devshop-commit ENVIRONMENT --message=&quot;My Commit&quot;</code></div></p>
+
+<p>This task integrates with Features.module to make it very easy to commit
+  your changes to your features.</p>
+
+<ul>
+<li>Calls drush features-update-all</li>
+<li>Commits the result, with a part automated and part customized commit message.</li>
+<li>(Optionally) pushes the commits.</li>
+<li>(Optionally) force-reverts after a commit.</li>
+</ul>
+
+<h2>3. Sync Content</h2>
+
+<p><div class="codeblock"><code>&nbsp; $ drush @project_NAME provision-devshop-sync SOURCE_ENVIRONMENT DESTINATION_ENVIRONMENT</code></div></p>
+
+<p>This task makes it easy to syncronize the database and files down from other
+  environments within the project.</p>
+
+<p>WARNING: This will DESTROY the destination site's database!</p>
+
+<p>This task:</p>
+
+<ul>
+<li>(optionally) Pulls code</li>
+<li>Drops the @destination database.</li>
+<li>Creates an SQL dump from @source.</li>
+<li>Copies the SQL dump to the local system (if @source is a remote).</li>
+<li>Imports the SQL dump into @destination database.</li>
+<li>(optionally) Runs update.php.</li>
+<li>(optionally) Runs features-revert-all.</li>
+<li>(optionally) Clears all caches.</li>
+</ul>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-66.html?destination=node%2F2325%23comment-form">Login</a> or <a href="../../../../../user/register/index-66.html?destination=node%2F2325%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-66.html?destination=node%2F2325%23comment-form">Login</a> or <a href="../../../../../user/register/index-66.html?destination=node%2F2325%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-2326" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/content/contrib-modules/devshop-provision/commands/index.html">Commands</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><h1>$ drush --filter=devshop_provision</h1>
+
+<p><div class="codeblock"><code>All commands in devshop_provision: (devshop_provision)<br /> provision-devshop-co&nbsp; Export the site&#039;s Features and commit the result.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /> mmit (pdc)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /> provision-devshop-pu&nbsp; Pull &amp; verify platform code and (optionally) run update.php, clear cache, and revert features. <br /> ll (pdp)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /> provision-devshop-sy&nbsp; Sync database (and files, coming soon) from a chosen source site.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /> nc (pds)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /> provision-devshop-te&nbsp; Run a group of SimpleTest tests.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /> st (pdt)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></div></p>
+
+<h1>$ drush provision-devshop-commit --help</h1>
+
+<p><div class="codeblock"><code>Export the site&#039;s Features and commit the result.<br /><br />Examples:<br /> drush @project_mysite&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Recreates and Commits all features from the dev environment of @project_mysite with an additional commit <br /> provision-devshop-commit dev&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; message.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /> --message=&quot;changed some settings&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /><br /><br />Arguments:<br /> environment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The name of the environment to commit from. <br /><br /><br />Options:<br /> --message&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Add a commit message&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /> --revert&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Force revert all features after exporting and committing. <br /><br /><br />Aliases: pdc</code></div></p>
+
+<h1>$ drush provision-devshop-pull --help</h1>
+
+<p><div class="codeblock"><code>Pull &amp; verify platform code and (optionally) run update.php, clear cache, and revert features.<br /><br />Examples:<br /> drush @project_mysite&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Triggers a git pull and a clear cache command on @project_mysite&#039;s dev and test environments. <br /> provision-devshop-pull dev test --cache&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /><br /><br />Arguments:<br /> environments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A list of environment names to Pull Code to. <br /><br /><br />Options:<br /> --update&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Run update.php after code pull.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /> --revert&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Revert all features after code pull. <br /> --cache&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clear all caches after code pull.&nbsp;&nbsp;&nbsp; <br /><br /><br />Aliases: pdp</code></div></p>
+
+<h1>$ drush provision-devshop-sync --help</h1>
+
+<p><div class="codeblock"><code>Sync database (and files, coming soon) from a chosen source site.<br /><br />Examples:<br /> drush @project_mysite&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Syncs the database from for project_mysite&#039;s live to&nbsp; project_mysite&#039;s dev server. <br /> provision-devshop-sync live dev&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /><br /><br />Arguments:<br /> from&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Environment to sync from. <br /> to&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Environment to sync to.&nbsp;&nbsp; <br /><br /><br />Options:<br /> --update&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Run update.php after content sync.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /> --revert&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Revert all features after content sync. <br /> --cache&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clear all caches after content sync.&nbsp;&nbsp;&nbsp; <br /> --files&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sync site files.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /><br /><br />Aliases: pds</code></div></p>
+
+<h1>$ drush provision-devshop-test --help</h1>
+
+<p><div class="codeblock"><code>Run a group of SimpleTest tests.<br /><br />Arguments:<br /> environment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The name of the environment to run tests on. <br /><br /><br />Options:<br /> --tests-to-run&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The list of tests to run.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /> --sync-from-live&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sync contents from Live before running tests. <br /><br /><br />Aliases: pdt</code></div></p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-67.html?destination=node%2F2326%23comment-form">Login</a> or <a href="../../../../../user/register/index-67.html?destination=node%2F2326%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-67.html?destination=node%2F2326%23comment-form">Login</a> or <a href="../../../../../user/register/index-67.html?destination=node%2F2326%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-526" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/contrib-modules/provision-acl/index.html">Provision ACL</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>This page documents the <a href="http://drupal.org/project/provisionacl">Provision ACL extension</a> to Aegir which allows more granular access control over your sites files and directories.</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc4">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Install_instructions"><span class="toc-number">1. </span>Install instructions</a>
+<ol>
+	<li class="toc-level-2"><a href="#Download_and_install_provision"><span class="toc-number">1.1. </span>Download and install provision</a></li>
+	<li class="toc-level-2"><a href="#Enable_ACLs_on_your_filesystem"><span class="toc-number">1.2. </span>Enable ACLs on your filesystem</a></li>
+	<li class="toc-level-2"><a href="#Install_ACL_support_package"><span class="toc-number">1.3. </span>Install ACL support package</a></li>
+	<li class="toc-level-2"><a href="#Create_a_UNIX_group"><span class="toc-number">1.4. </span>Create a UNIX group</a></li>
+	<li class="toc-level-2"><a href="#Add_users_to_the_group"><span class="toc-number">1.5. </span>Add users to the group</a></li>
+	<li class="toc-level-2"><a href="#Create_a_client"><span class="toc-number">1.6. </span>Create a client</a></li>
+	<li class="toc-level-2"><a href="#Create_a_site"><span class="toc-number">1.7. </span>Create a site</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#What_it_does"><span class="toc-number">2. </span>What it does</a></li>
+	<li class="toc-level-1"><a href="#LDAP_integration"><span class="toc-number">3. </span>LDAP integration</a></li>
+	<li class="toc-level-1"><a href="#API_-_how_to_add_ACL_support_to_your_Aegir_extension"><span class="toc-number">4. </span>API - how to add ACL support to your Aegir extension</a></li>
+	<li class="toc-level-1"><a href="#Caveats_ie._what_it_does_not"><span class="toc-number">5. </span>Caveats (ie. what it does not)</a></li>
+	<li class="toc-level-1"><a href="#Debugging"><span class="toc-number">6. </span>Debugging</a></li>
+	<li class="toc-level-1"><a href="#Notes"><span class="toc-number">7. </span>Notes</a></li>
+</ol>
+</div>
+</div>
+
+<h1 id="Install_instructions">1. Install instructions</h1>
+
+<p>First, you'll need a running Aegir install (1.0-rc3 or later), see <a href="../../../../../installing/index.html" title="http://community.aegirproject.org/installing">http://community.aegirproject.org/installing</a>. Most (if not all) of these commands will have to be run as root (or using sudo, etc.)</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Download_and_install_provision">1.1. Download and install provision</h2>
+
+<pre><code>drush dl provisionacl-6.x
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Enable_ACLs_on_your_filesystem">1.2. Enable ACLs on your filesystem</h2>
+
+<pre><code>mount -o remount,acl /
+</code></pre>
+
+<p>Here we assume everything is under the root (<code>/</code>) filesystem here, otherwise run this command for every filesystem Aegir will work on (e.g. <code>/srv</code>, <code>/var</code> or <code>/home</code>).</p>
+
+<p>You also need to edit your <code>/etc/fstab</code> for this configuration to survive reboots.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Install_ACL_support_package">1.3. Install ACL support package</h2>
+
+<pre><code>apt-get install acl
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Create_a_UNIX_group">1.4. Create a UNIX group</h2>
+
+<p>In this case we choose a group called "devs" but you can choose another name.</p>
+
+<pre><code>groupadd devs
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Add_users_to_the_group">1.5. Add users to the group</h2>
+
+<p>Add one or more UNIX users that you want to give access to that group. For an existing user (socrates32), this would look like:</p>
+
+<pre><code>usermod -a -G devs socrates32
+</code></pre>
+
+<p>For a new user (ergonlogic), this would look like:</p>
+
+<pre><code>useradd -G devs ergonlogic
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Create_a_client">1.6. Create a client</h2>
+
+<p>Create a client (should be called "devs" for this example) in the frontend at /node/add/client.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Create_a_site">1.7. Create a site</h2>
+
+<p>Create a site for the client in the frontend at /node/add/site.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="What_it_does">2. What it does</h1>
+
+<p>When the site is installed, members of the "devs" group will be able to write to the sites' directories (e.g. upload files and modules) and run drush commands on the site (yes, including site aliases, although see caveats below).</p>
+
+<p>This works also for existing sites; make sure you create a group matching the internal name of the existing client and reverify the site.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="LDAP_integration">3. LDAP integration</h1>
+
+<p>Provisionacl supports LDAP groups as well. Ensure that an LDAP client is running and that the 'aegir' user can see the LDAP-provided groups:</p>
+
+<pre><code>getent groups
+</code></pre>
+
+<p>You may need to restart the Name Service Cache Daemon (nscd):</p>
+
+<pre><code>/etc/init.d/nscd restart
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="API_-_how_to_add_ACL_support_to_your_Aegir_extension">4. API - how to add ACL support to your Aegir extension</h1>
+
+<p>To change ACLs on files, you should use something like this:</p>
+
+<pre><code>if (function_exists('provisionacl_set_acl')) {
+    provisionacl_files_acls(d()-&gt;site_path . '/mysettings.php');
+}
+</code></pre>
+
+<p>You can optionnally pass a group as an argument, but it will guess that from the client name of the site. Also note that this will raise a drush error if setfacl fails, but just set a warning if the group doesn't exist.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Caveats_ie._what_it_does_not">5. Caveats (ie. what it does not)</h1>
+
+<p>Giving shell access to users in Aegir is still insecure, see this upstream issue: <a href="http://drupal.org/node/762138">#762138</a>.</p>
+
+<p>We aim to refactor this into the Aegir core in 2.x, but in the meantime this should provide a good workaround for the limitations of the existing permission system.</p>
+
+<p>This will only work in 1.0 and above, as it needs the "client_name" field to be populated.</p>
+
+<p>You will need to change your $HOME variable for aliases to work, because of this bug in drush: <a href="http://drupal.org/node/1104438">#1104438</a>. Example:</p>
+
+<p><div class="codeblock"><code>env HOME=/var/aegir drush @hostmaster cc all</code></div></p>
+
+<p>See also <a href="../../../../494/index.html">this post for context and design</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Debugging">6. Debugging</h1>
+
+<p>If for some reason you have lost the ACLs on the directories and you need to restore them, use the following commands, which is basically what the module does:</p>
+
+<p><div class="codeblock"><code>cd sites/example.com<br />setfacl -R -m user:aegir:rwx .<br />setfacl -R -m default:user:aegir:rwx .<br />setfacl -R -m group:www-data:rwx .<br />setfacl -R -m d:group:www-data:rwx .<br />setfacl -R -m group:cl-group:rwx .<br />setfacl -R -m default:group:cl-admin:rwx .</code></div></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Notes">7. Notes</h1>
+
+<p>This page is the reference documentation for the <a href="https://drupal.org/project/provisionacl">Provision ACL module page on Drupal.org</a> - keep this in mind when editing please.</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-68.html?destination=node%2F526%23comment-form">Login</a> or <a href="../../../../../user/register/index-68.html?destination=node%2F526%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-68.html?destination=node%2F526%23comment-form">Login</a> or <a href="../../../../../user/register/index-68.html?destination=node%2F526%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-516" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../516/index.html">Ubercart Integration</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><p>This module provides several features to ubercart products on an Aegir platform.</p>
+
+<h2>Requirements</h2>
+
+<ul>
+<li>Hostmaster 6.x-1.0 or higher</li>
+<li>Ubercart 6.x-2.4 or higher</li>
+<li>Patience</li>
+</ul>
+
+<h2>Installation</h2>
+
+<ol>
+<li>Download the module and its dependencies into sites/all/modules on your hostmaster platform (<code>drush @hostmaster dl uc_hosting ubercart</code> should work)</li>
+<li>Activate the clients feature for hostmaster (<code>admin/hosting/features</code>)</li>
+<li>Enable the module uc_hosting_products. This should enable all dependencies (<code>drush @hostmaster en uc_hosting_products</code>)</li>
+</ol>
+
+<h2>Creating your first site product</h2>
+
+<p><strong>N.B.</strong> A video introduction covering configuration is available from the DrupalCon London session <a href="http://london2011.drupal.org/conference/sessions/aegir-based-business-models">Aegir-based Business Models</a> (starting at 26:30).</p>
+
+<ol>
+<li>Create a product. Make sure it is not shippable. (<code>node/add/product</code>)</li>
+<li>Edit the product. Go to the features tab.</li>
+<li>Choose the "Create a site and adjust quotas accordingly" feature. It should use the sku of your product automatically.</li>
+<li>For single-site products, make sure, on the product feature form, to check off "Force clients to create their site on purchase" if you want to be sure people create their site.</li>
+<li>Now all you need is a drupal platform that any user can create sites on and you are ready to go. (<code>node/add/platform</code>)</li>
+</ol>
+
+<h2>Creating more complex offerings using product kits</h2>
+
+<p>The method we recommend for creating complex offerings, including multiple site quotas and access to restricted platforms, is via Ubercart product kits.</p>
+
+<ol>
+<li>Enable uc_product_kit.</li>
+<li>Create one or more uc_hosting products.</li>
+<li>Create a product kit with these products in them in the appropriate quantities.</li>
+</ol>
+
+<h2>Support</h2>
+
+<p>You can report bugs, request support and propose patches <a href="http://drupal.org/project/issues/uc_hosting">via our issue queue on Drupal.org</a>.</p>
+
+<h2>Development</h2>
+
+<p>If you would like to use uc_hosting to develop your own Aegir dependant product features, be sure to <a href="../../../../../creating-product-features-using-uchosting-1x/index.html">read the relevant documentation</a>.</p>
+
+<p>Check out the <a href="../../../../108/index.html">roadmap</a>.</p>
+
+<h2>Other Resources</h2>
+
+<ul>
+<li><a href="../../../../../index.html">Aegir community site</a></li>
+<li><a href="http://www.ubercart.org/docs">Ubercart Documentation</a></li>
+<li>#aegir IRC channel on <a href="http://freenode.net/">freenode</a></li>
+</ul>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-69.html?destination=node%2F516%23comment-form">Login</a> or <a href="../../../../../user/register/index-69.html?destination=node%2F516%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-69.html?destination=node%2F516%23comment-form">Login</a> or <a href="../../../../../user/register/index-69.html?destination=node%2F516%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-888" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../contrib-modules/provision-civicrm/index.html">Provision CiviCRM</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p><a href="https://drupal.org/project/provision_civicrm">provision_civicrm</a> helps to manage the installation and upgrades of CiviCRM in Drupal sites managed with Aegir.</p>
+
+<p>CiviCRM is not a typical Drupal module. It is a third-party system that integrates with Drupal, WordPress and Joomla for its front-end and permission system. CiviCRM has its own installer, upgrade system and cron. The "provision_civicrm" module helps to manage any CiviCRM+Drupal site as any other Drupal site managed in Aegir.</p>
+
+<h3>Requirements</h3>
+
+<ul>
+<li>Aegir 2.x or 3.x</li>
+<li><a href="https://drupal.org/project/hosting_civicrm">hosting_civicrm</a> must be installed in the hostmaster front-end (~/hostmaster-x-y/sites/example.org/modules).</li>
+</ul>
+
+<h3>Installation</h3>
+
+<p>Download the provision_civicrm module as the "aegir" user:</p>
+
+<pre><code>drush dl provision_civicrm-6.x-2.x
+</code></pre>
+
+<p>This should install the module in ~/.drush/provision_civicrm.</p>
+
+<p>NB: provision_civicrm 6.x-2.x is a Drush module, and works with both Aegir 2 and Aegir 3. However, for Aegir 3, you must use the 7.x-3.x branch of the hosting_civicrm module.</p>
+
+<h3>Creating a CiviCRM platform</h3>
+
+<p>provision_civicrm assumes that if you have a CiviCRM installation in your sites/all/modules/civicrm, then this is a CiviCRM platform and CiviCRM should be installed automatically.</p>
+
+<p>(A cleaner way, in theory, would be to have an install profile and let the user configure it through the front-end, patches welcome! -- however, you do not want any site to simply enable CiviCRM from the Drupal admin/build/modules, so having dedicated platforms for CiviCRM makes sense in any case.)</p>
+
+<p>A sample drush makefile is provided with provision_civicrm.</p>
+
+<p>Assuming you are running as the user 'aegir', whose $HOME is /var/aegir/, save this in a file such as ~/makefiles/drupal-6.22-civicrm-3.3.4.make</p>
+
+<p>Then create the new platform:</p>
+
+<pre><code>mkdir ~/platforms/drupal-6.22-civicrm-3.3.4
+cd ~/platforms/drupal-6.22-civicrm-3.3.4
+drush make ~/makefiles/drupal-6.22-civicrm-3.3.4.make
+</code></pre>
+
+<p>You can now add your platform in the Aegir front-end and then create new sites.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-406.html?destination=node%2F888%23comment-form">Login</a> or <a href="../../../../../user/register/index-406.html?destination=node%2F888%23comment-form">register</a> to post comments</span></li>
+<li class="talk_comments last"><a href="../../../../888/talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/515/revisions/3547/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:41:11 GMT -->
+</html>

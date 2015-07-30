@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/32/revisions/2571/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:44:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../546/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../debian/index.html" />
+<link rel="prev" href="../../../../546/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../debian/index.html" />
+<link rel="prev" href="../../../../546/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../debian/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Release process from Fri, 11/18/2011 - 21:20 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-32" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/release-process/index.html">Release process</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first last"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+</ul></div><div id='diff-inline-32'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 11/18/2011 - 21:20</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>This page aims to document our release process. It's a multi-step process:</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Make_sure_Jenkins_is_all_green"><span class="toc-number">1. </span>Make sure Jenkins is all green</a></li>
+	<li class="toc-level-1"><a href="#Running_the_release.sh_script"><span class="toc-number">2. </span>Running the release.sh script</a></li>
+	<li class="toc-level-1"><a href="#Test_the_manual_install_in_Jenkins"><span class="toc-number">3. </span>Test the manual install in Jenkins</a></li>
+	<li class="toc-level-1"><a href="#Generating_the_release_notes"><span class="toc-number">4. </span>Generating the release notes</a></li>
+	<li class="toc-level-1"><a href="#Creating_release_nodes_on_Drupal.org"><span class="toc-number">5. </span>Creating release nodes on Drupal.org</a></li>
+	<li class="toc-level-1"><a href="#Build_the_release_in_Jenkins_again"><span class="toc-number">6. </span>Build the release in Jenkins again</a></li>
+	<li class="toc-level-1"><a href="#Build_the_Debian_packages"><span class="toc-number">7. </span>Build the Debian packages</a></li>
+	<li class="toc-level-1"><a href="#eventually_Build_the_release_in_Jenkins_yet_again"><span class="toc-number">8. </span>(eventually) Build the release in Jenkins yet again</a></li>
+	<li class="toc-level-1"><a href="#Publish_the_release_notes_widely"><span class="toc-number">9. </span>Publish the release notes widely</a></li>
+</ol>
+</div>
+</div>
+
+<p>For the specifics of release naming conventions and the cycle, see <a href="../../../../187/index.html">the branch naming convention</a>.</p>
+
+<h2 id="Make_sure_Jenkins_is_all_green">1. Make sure Jenkins is all green</h2>
+
+<p>Look into <a href="http://ci.aegirproject.org/">Jenkins</a> to see if all tasks have been performed without errors since the last commit. If there is an error, fix it before the release.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Running_the_release.sh_script">2. Running the release.sh script</h2>
+
+<p>Each time we make a new release, we run a script called <code>release.sh</code> in provision.</p>
+
+<p>This script should only be used by the core dev team when doing an official release. If you are not one of those people, you probably shouldn't be running this.</p>
+
+<p>This script does all the 'hard' work in that it doesn't forget all the very many places to edit version numbers etc of relevant documentation and other scripts. This includes install.sh.txt and upgrade.sh.txt.</p>
+
+<p>Paraphrasing from the script itself:</p>
+
+<p><div class="codeblock"><code>The following operations will be done:<br /> 1. change the makefile to download tarball<br /> 2. change the upgrade.sh.txt version<br /> 3. display the resulting diff<br /> 4. commit those changes to git<br /> 5. lay down the tag (prompting you for a changelog)<br /> 6. revert the commit<br /> 7. (optionally) push those changes<br /><br />The operation can be aborted before step 4 and 7. Don&#039;t forget that as long as changes are not pushed upstream, this can all be reverted (see git-reset(1) and git-revert(1) ).</code></div></p>
+
+<p>So in short, this sums up as:</p>
+
+<p><div class="codeblock"><code>cd provision<br />sh release.sh 6.x-1.2<br />cd ../hostmaster<br />git tag 6.x-1.2<br />git push --tags</code></div></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Test_the_manual_install_in_Jenkins">3. Test the manual install in Jenkins</h2>
+
+<p>Before making a full release, test the release in Jenkins. To do so, create a new build based on the 6.x-1.4 install build. Change the name of your new job to match the release version, and change the default value of the <code>AEGIR_VERSION</code> and <code>DRUSH_VERSION</code> to match what is required for this release.</p>
+
+<p>Start a new build using 'git' as the <code>AEGIR_FETCH_MODE</code>.</p>
+
+<p>If the build fails, delete the remote tags, fix the bugs and start again.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Generating_the_release_notes">4. Generating the release notes</h2>
+
+<p>We build complete release notes for every release. Those are made up of a summary of the release, an outline of key changes, of known issues, install and upgrade instructions and a full list of bugfixes and new features.</p>
+
+<p>We have a handy bookmarklet that takes the list of issues and build a release-notes-ready list:</p>
+
+<p><div class="codeblock"><code>javascript:(function(){x%20=%20open().document;$(&quot;.views-field-title a&quot;).each(%20function()%20{%20x.write(&#039;* [&#039; + $(this).attr(&#039;href&#039;).replace(/\/node\//, &#039;#&#039;) + &#039;: &#039; + $(this).text()+&#039;](http://drupal.org&#039;+$(this).attr(&#039;href&#039;)+ &#039;)&lt;br%20/&gt;&#039;)%20})})()</code></div></p>
+
+<p>The developers then proceed to format/edit the list of fixes as well as list other significant information/changes for this release. These notes end up becoming the Release Notes for the release.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Creating_release_nodes_on_Drupal.org">5. Creating release nodes on Drupal.org</h2>
+
+<p>Once the tags are pushed and release notes published, we create a release node with an excerpt of (and a link to) the release notes so that tarballs are created and issue queue versions updated.</p>
+
+<p>This needs to be done in the <a href="http://drupal.org/project/hostmaster">hostmaster</a> and <a href="http://drupal.org/project/provision">provision</a> projects on Drupal.org.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Build_the_release_in_Jenkins_again">6. Build the release in Jenkins again</h2>
+
+<p>At this point, it's possible that the tarballs on Drupal.org were not created properly. We want to test the real procedure, so run a your build again, but choose 'package' as the <code>AEGIR_FETCH_MODE</code>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Build_the_Debian_packages">7. Build the Debian packages</h2>
+
+<p>Build the package and upload to <a href="http://debian.aegirproject.org/" title="http://debian.aegirproject.org/">http://debian.aegirproject.org/</a>, as explained in those <a href="../../../../543/index.html">detailed instructions</a>. Also test the aegir-build-official job.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="eventually_Build_the_release_in_Jenkins_yet_again">8. (eventually) Build the release in Jenkins yet again</h2>
+
+<pre><code>... once we have such a script (ref.: <a href="http://drupal.org/node/1128614" title="http://drupal.org/node/1128614">http://drupal.org/node/1128614</a>)
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Publish_the_release_notes_widely">9. Publish the release notes widely</h2>
+
+<p>Once all this is done and the tarballs are generated, the release notes are published in:</p>
+
+<ul>
+<li>The <a href="../../../../66/index.html">handbook</a> (this is where the release notes live!)</li>
+<li>A link to the release notes on the <a href="../../../../../index.html">frontpage block</a></li>
+<li>An <a href="../../../../add/event/index.html">event in the calendar</a></li>
+<li>A <a href="../../../../add/discussion/index.html">discussion post</a> (don't forget to make it 'sticky' &amp; remove stickiness from the previous announcement)</li>
+<li>Update the version in the <a href="../../../../../upgrading/script/index.html">script upgrade page</a></li>
+<li>The topic of the IRC channel</li>
+<li>The aegir-announce mailing list</li>
+<li>Twitter as @aegirproject</li>
+</ul>
+
+<p>Optionally, blog posts on <a href="http://koumbit.org/">koumbit.org</a>, <a href="http://greenbeedigital.com.au/">greenbeedigital.com.au</a>, and elsewhere may go into further detail about significant changes, screencasts etc.</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-18.html?destination=node%2F32%23comment-form">Login</a> or <a href="../../../../../user/register/index-18.html?destination=node%2F32%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-18.html?destination=node%2F32%23comment-form">Login</a> or <a href="../../../../../user/register/index-18.html?destination=node%2F32%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/32/revisions/2571/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:44:06 GMT -->
+</html>

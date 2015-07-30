@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/417/revisions/885/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../installing/manual/index.html" />
+<link rel="up" href="../../../../../installing/manual/index.html" />
+<link rel="next" href="../../../../../content/apache-mysql-php-aegir/index.html" />
+<link rel="prev" href="../../../../../installing/manual/index.html" />
+<link rel="up" href="../../../../../installing/manual/index.html" />
+<link rel="next" href="../../../../../content/apache-mysql-php-aegir/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of HINTS_OSX.txt from Sat, 02/26/2011 - 17:16 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-417" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">HINTS_OSX.txt</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-417'><p>.. -<em>- mode: rst; fill-column: 78; -</em>-
+.. This document is formatted using the ReST syntax.</p>
+
+<p>=================================================</p>
+
+<h1>Aegir -- Mac OS X installation instructions hints</h1>
+
+<p>This is a helper file to the canonical INSTALL.txt. It is aimed at
+helping you install Aegir on Mac OS X. It simply lists commands that
+diverge from the base INSTALL.txt in a concise document that will be
+easy to maintain in the long term.</p>
+
+<p>It is recommended that the INSTALL.txt document is consulted before
+going ahead with this install.</p>
+
+<p>We reuse the same process describe in that document:</p>
+
+<ol>
+<li>Install requirements</li>
+<li>Configure system requirements, which include:
+
+<ul>
+<li>create a Aegir user</li>
+<li>configure Apache, MySQL, DNS, etc</li>
+</ul></li>
+<li>Run the install script</li>
+</ol>
+
+<h1>1. Install software requirements</h1>
+
+<p>While Mac OS X comes with Apache &amp; PHP (and even MySQL on the Server
+version), the version of PHP shipped with 10.6 Snow Leopard is 5.3.x
+and thus may not work with Aegir (as of the 0.4alpha-era) and various
+other software. If you're running 10.5 Leopard, it may work out of the
+box, but I haven't tested it.</p>
+
+<p>There are several different ways to get Apache, PHP 5.2, and MySQL 5
+onto a Mac OS X machine. I give detailed instructions for MacPorts
+below, but if that's a bit more than you're ready to bite off right
+now, feel free to use an alternative approach.</p>
+
+<p>One such alternative is MAMP. There is a good but outdated HOWTO for
+installing Aegir on Mac OS X 10.6 (Snow Leopard) using MAMP located
+here: <a href="http://groups.drupal.org/node/30270" title="http://groups.drupal.org/node/30270">http://groups.drupal.org/node/30270</a></p>
+
+<p>MAMP stands for Mac, Apache, MySQL, and PHP and is the Mac equivalent
+of "LAMP". It is a self-contained package of all of these programs
+with a nice graphical installer and control panel.  You can find it
+here: <a href="http://www.mamp.info/" title="http://www.mamp.info/">http://www.mamp.info/</a></p>
+
+<p>MAMP is pretty straightforward, but it's also not very flexible
+(IMHO).  While certainly not without its own headaches, MacPorts is a
+decently powerful way to sanely manage a healthy stack of open source
+UNIX software on your Mac. Since this is what I use, I'm going to
+assume MacPorts is in use for the rest of this HINTS file. I have also
+only tested this on Mac OS X 10.6 Snow Leopard.</p>
+
+<p>If you don't yet have MacPorts installed, go here to get it:
+<a href="http://www.macports.org/install.php" title="http://www.macports.org/install.php">http://www.macports.org/install.php</a></p>
+
+<p>Once it's installed, quit and re-launch your Terminal before
+continuing.  Otherwise MacPorts won't yet be in your PATH.</p>
+
+<p>The first two commands below are optional but recommended.</p>
+
+<p>Shell commands::
+ sudo port selfupdate
+ sudo port upgrade outdated
+ sudo port install apache2 mysql5-server git-core unzip php52 php5-posix \
+   php5-gd php5-apc +mysql5</p>
+
+<p>php5-apc is optional, but highly recommended as it will significantly increase
+PHP performance.</p>
+
+<p>Watch the output of the last port command carefully, as there are
+usually some boring tasks for you to perform once the install is
+done. You'll be wishing you were running Ubuntu/Debian and apt-get by
+the time you're done.</p>
+
+<h1>2. Configure system requirements</h1>
+
+<p>Next we'll create the aegir user and add it to the _www group. This
+part is very different on Mac OS X than Linux or most other
+Unices. Must be a NeXTism. The command we will use he is "dscl", which
+is a short for Directory Service Command Line. In OSX 10.3 and
+earlier, that command is "nicl" (short for Net Info Command Line). It is also
+possible to create the user using the "Workgroup Manager" utility included with
+OS X Server. To obtain Workgroup Manager for the OS X Client, download the
+"Server Admin Tools" from Apple. For example, for Mac OS X 10.6, the admin tools
+can be found at:</p>
+
+<p><a href="http://support.apple.com/downloads/Server_Admin_Tools_10_6" title="http://support.apple.com/downloads/Server_Admin_Tools_10_6">http://support.apple.com/downloads/Server_Admin_Tools_10_6</a></p>
+
+<p>Shell commands::
+ sudo dscl . -create /Users/aegir NFSHomeDirectory /var/aegir</p>
+
+<p>Now you need to find the next spare UID to assign the user.</p>
+
+<p>Here's how you find out on your system:</p>
+
+<p>Shell commands::
+ sudo dsexport users.out /Local/Default dsRecTypeStandard:Users</p>
+
+<p>Then open the file users.out in a text editor, search for the highest
+5xx user ID and add 1 to it (in your brain, not in the file). So if
+you find 506 but no 507, use 507. When you're done, delete users.out
+to be safe.</p>
+
+<p>Shell commands::
+ sudo rm users.out</p>
+
+<p>Now assign this UID to the aegir user, replacing "5xx" with the UID.</p>
+
+<p>Shell commands::
+ sudo dscl . -create /Users/aegir UniqueID 5xx</p>
+
+<p>Set a secure password for the aegir user, as it needs shell access.</p>
+
+<p>Shell Commands::
+ sudo passwd aegir</p>
+
+<p>Create the aegir home directory and set its permissions.</p>
+
+<p>Shell Commands::
+ sudo mkdir /var/aegir
+ sudo chown aegir /var/aegir
+ sudo chgrp _www /var/aegir</p>
+
+<p>Add the aegir user to the _www group. This is the group Apache runs as.</p>
+
+<p>Shell Commands::
+ sudo dscl . -append /Groups/_www GroupMembership aegir</p>
+
+<p>Give the aegir user the ability to restart Apache.</p>
+
+<p>Shell Commands::
+ sudo mv /usr/sbin/apachectl /usr/sbin/apachectl-apple
+ sudo ln -s /opt/local/apache2/bin/apachectl /usr/sbin/apachectl
+ sudo visudo</p>
+
+<p>Go to the last line of the file and add the following.</p>
+
+<p>Sudoers file content::
+ aegir ALL=NOPASSWD: /usr/sbin/apachectl</p>
+
+<p>Save the file and exit your text editor.</p>
+
+<p>Next configure Apache to include the Aegir config.</p>
+
+<p>Shell Commands::
+ echo "Include /var/aegir/config/apache.conf" &gt;&gt; /opt/local/apache2/conf/httpd.conf</p>
+
+<p>Configuring your MySQL database and user accounts is the same as in
+the INSTALL.txt file. But you probably want to add the path to its
+executables to your user's PATH and the aegir user's PATH.</p>
+
+<p>Shell Commands::</p>
+
+<p>echo 'export PATH=/opt/local/lib/mysql5/bin:$PATH' &gt;&gt; ~/.profile
+ su - aegir
+ Password: (the password you setup earlier)
+ echo 'export PATH=/opt/local/lib/mysql5/bin:$PATH' &gt;&gt; ~/.profile
+ exit</p>
+
+<h1>3. Run the install script</h1>
+
+<p>Now follow the instructions of section 3 of INSTALL.txt, except for
+when it tells you to run "su -s /bin/sh aegir -c "sh install.sh.txt 
+aegir.example.com" do the following instead.</p>
+
+<p>Shell commands::
+ su - aegir
+ Password: (you know the drill)
+ sh /path/to/install.sh.txt aegir.example.com
+ sudo /usr/sbin/apachectl restart
+ exit</p>
+
+<p>Be sure to change 'aegir.example.com' to match the URI of your site.</p>
+
+<p>You can append '--client_email=you@example.com' if you wish to receive the
+traditional Drupal 'Welcome' e-mail upon completion of the installation.
+This e-mail address will also be used as the default e-mail address of the
+first user and client in Aegir, but can be changed later.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-46.html?destination=node%2F417%23comment-form">Login</a> or <a href="../../../../../user/register/index-46.html?destination=node%2F417%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-46.html?destination=node%2F417%23comment-form">Login</a> or <a href="../../../../../user/register/index-46.html?destination=node%2F417%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/417/revisions/885/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:05 GMT -->
+</html>

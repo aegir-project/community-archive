@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/installing-hosting-queue-daemon-arch-linux?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:37:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Installing the Hosting Queue Daemon on Arch Linux | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2997" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/janpan/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-2727/index.png" alt="janpan&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/janpan/index.html" class="username" title="View user profile.">janpan</a></div><div class='date'>10:18am Aug 20, 2014</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Installing the Hosting Queue Daemon on Arch Linux</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_544 first last"><a href="../../category/keywords/archlinux-aegir-tasks/index.html" rel="tag" title="">archlinux aegir tasks</a></li>
+</ul></div><p>I know this might be a little off topic. I have installed Aegir on Arch Linux and I had no issues with the installation. Everything works except the tasks are not executed. They refresh every 20Seconds as I have set it up, however they are not executed. I beleive this is because the Hosting queue daemon is not running. I think one should probably create a service in arch to execute the hostmaster calls, however, I would just like to know if there is some documentation on this for Arch, since the rest of the manual made it pretty easy with arch specific instructions.</p>
+
+<p>I tried to run the hosting_queue.sh file however, it gives an error message that reads:</p>
+
+<p>hosting_queued.sh: line 3: @hostmaster: command not found</p>
+
+<p>Would really appreciate any help ! btw thanks for the awesome software, if it works well for me, I will make a donation.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-380.html?destination=node%2F2997%23comment-form">Login</a> or <a href="../../user/register/index-380.html?destination=node%2F2997%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-2320"></a>
+
+
+<div  id="comment-2320" class="comment comment-published clear-block decay-10 decay-10">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/janpan/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-2727/index.png" alt="janpan&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/janpan/index.html" class="username" title="View user profile.">janpan</a></div><div class='date'>11:25am Aug 20, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2320" class="active">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>One other thing, If I run the script with drush as input parameter, I get the following error:</p>
+
+<p>Could not open input file: /var/aegir/hostmaster-7.x-3.x-dev/profiles/hostmaster/modules/hosting/queued/drush.php</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-380.html?destination=node%2F2997%23comment-form">Login</a> or <a href="../../user/register/index-380.html?destination=node%2F2997%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2364"></a>
+
+
+<div  id="comment-2364" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/butler360/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="butler360&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/butler360/index.html" class="username" title="View user profile.">butler360</a></div><div class='date'>12:17am Oct 29, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2364" class="active">#2</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Not sure if this helps, but there are Aegir packages in the AUR: <a href="https://aur.archlinux.org/packages/?O=0&amp;K=aegir" title="https://aur.archlinux.org/packages/?O=0&amp;K=aegir">https://aur.archlinux.org/packages/?O=0&amp;K=aegir</a></p>
+
+<p>Might be able to try those or pick up a trick that makes it work.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-380.html?destination=node%2F2997%23comment-form">Login</a> or <a href="../../user/register/index-380.html?destination=node%2F2997%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/installing-hosting-queue-daemon-arch-linux?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:37:54 GMT -->
+</html>

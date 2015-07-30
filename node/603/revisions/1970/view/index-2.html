@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/603/revisions/1970/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:16:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../1/index-10.html" />
+<link rel="up" href="../../../../../content/release-notes/older-1x-releases/index.html" />
+<link rel="next" href="../../../../../1/index-12.html" />
+<link rel="prev" href="../../../../../1/index-10.html" />
+<link rel="up" href="../../../../../content/release-notes/older-1x-releases/index.html" />
+<link rel="next" href="../../../../../1/index-12.html" />
+<link rel="prev" href="../../../../../1/index-10.html" />
+<link rel="up" href="../../../../../content/release-notes/older-1x-releases/index.html" />
+<link rel="next" href="../../../../../1/index-12.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of 1.1 release notes from Fri, 06/24/2011 - 17:25 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-603" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../1/index-11.html">1.1 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-603'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a> on 06/24/2011 - 17:25</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>The Aegir team is happy to release the second stable release in the 1.x branch. We have found two critical bugs during the more massive deployment of 1.0 and figured we could share the fixes with the community.</p>
+
+<p>The major changes here are that 1.0 had broken the upgrade of Drupal 5 sites and was still allowing duplicate sites to be created under some circumstances.</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Installing_and_upgrading"><span class="toc-number">1. </span>Installing and upgrading</a></li>
+	<li class="toc-level-1"><a href="#Need_help"><span class="toc-number">2. </span>Need help?</a></li>
+	<li class="toc-level-1"><a href="#New_features"><span class="toc-number">3. </span>New features</a></li>
+	<li class="toc-level-1"><a href="#Bugfixes"><span class="toc-number">4. </span>Bugfixes</a></li>
+</ol>
+</div>
+</div>
+
+<h2 id="Installing_and_upgrading">1. Installing and upgrading</h2>
+
+<p>The canonical source of installation documentation is on the community site at:</p>
+
+<pre><code>http://community.aegirproject.org/installing
+</code></pre>
+
+<p>In a similar fashion, the upgrade documentation is:</p>
+
+<pre><code>http://community.aegirproject.org/upgrading
+</code></pre>
+
+<p>Within those sections you'll find step-by-step instructions for performing both <a href="../../../../../upgrading/manual/index.html">manual</a> and <a href="../../../../../upgrading/script/index.html">automatic</a> upgrade processes.</p>
+
+<p>It is still imperative that you read the the <a href="../../../../../upgrading/path/index.html">upgrade path and version-specific information</a> and follow all version-specific upgrade instructions before trying to run the upgrade script or manual upgrade. This especially applies to users upgrading from releases prior to 0.4-alpha8, including 0.3.</p>
+
+<p>For users coming from the 0.4 betas or recent rc releases, there are unlikely to be any version-specific manual steps required to upgrade, but you should make a habit of reading them anyway just to make sure. No-one likes a nasty surprise!</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Need_help">2. Need help?</h2>
+
+<p>If you struggle to install or upgrade your Aegir system, you have a number of options available to you for getting help.</p>
+
+<p>Consult this page for more information: <a href="../../../../../help/index.html" title="http://community.aegirproject.org/help">http://community.aegirproject.org/help</a></p>
+
+<p>Thanks to our awesome <a href="../../../../../index.html">community</a> for their help, support and encouragement as always! Enjoy the new release :)</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="New_features">3. New features</h2>
+
+<p>As per our maintenance policy, we have keep new functionalities to a minimum. We did however, give in and merged the exportable backups feature in 1.1.</p>
+
+<ul>
+<li><a href="http://drupal.org/node/1047992">#1047992: exportable backups</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Bugfixes">4. Bugfixes</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/949044">#949044: It is possible to create broken site or duplicate sites nodes because there is not enough strtolower(trim(domain)) used</a></li>
+<li><a href="http://drupal.org/node/1132514">#1132514: d5 site migration broken</a></li>
+<li><a href="http://drupal.org/node/1129602">#1129602: Quotas uses dropped client fields</a></li>
+</ul><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-178.html?destination=node%2F603%23comment-form">Login</a> or <a href="../../../../../user/register/index-178.html?destination=node%2F603%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-178.html?destination=node%2F603%23comment-form">Login</a> or <a href="../../../../../user/register/index-178.html?destination=node%2F603%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/603/revisions/1970/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:16:57 GMT -->
+</html>

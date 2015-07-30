@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/1080/revisions/2851/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:02:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../installing/debian/index.html" />
+<link rel="up" href="../../../../../installing/debian/index.html" />
+<link rel="next" href="../../../../../installing/manual/index.html" />
+<link rel="prev" href="../../../../../installing/debian/index.html" />
+<link rel="up" href="../../../../../installing/debian/index.html" />
+<link rel="next" href="../../../../../installing/manual/index.html" />
+<link rel="prev" href="../../../../../installing/debian/index.html" />
+<link rel="up" href="../../../../../installing/debian/index.html" />
+<link rel="next" href="../../../../../installing/manual/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Quick Start Installation (Ubuntu 11.04+) from Fri, 02/17/2012 - 18:48 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1080" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/installing/debian/automatic-installation-ubuntu-1104-quickstart/index.html">Quick Start Installation (Ubuntu 11.04+)</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-1080'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/jonpugh/index.html" class="username" title="View user profile.">jonpugh</a> on 02/17/2012 - 18:48</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Here are simplified instructions for installing Aegir on a server, quickly and easily.</p>
+
+<p>The fastest way to install Aegir is on the latest Ubuntu Server LTS Release (Long Term Support).  This release always begins with the year it was released and ends with ".04". <em>Currently 11.04</em></p>
+
+<p><em>This document was originally based on <a href="../../../../../installing/debian/index.html" title="http://community.aegirproject.org/installing/debian">http://community.aegirproject.org/installing/debian</a> but has been trimmed down to list only the steps you need to get Aegir up and running.</em></p>
+
+<h1>Installation Instructions</h1>
+
+<ol>
+<li><h2>Fire up a new server</h2>
+
+<ul>
+<li>Use <strong>Ubuntu 11.04 Server Edition</strong> for the smoothest and most reliable installation experience.  </li>
+<li>Make sure it has at least 1024MB, preferably 2048MB of memory.  Depending on your host you will have to configure a hostname.  It can be convenient to call this 'aegir'.</li>
+<li>If you want the smoothest installation, create a brand new server.  There will be the least chance of conflicts if you start with a brand new <strong>Ubuntu 11.04</strong> server.  If you use Ubuntu Desktop, you should be able follow these instructions without any problems.</li>
+</ul></li>
+<li><h2>Add the project repositories and archive key</h2>
+
+<p>Use this command to add the Aegir package "Software Source" repository to your system:
+<div class="codeblock"><code>echo &quot;deb <a href="http://debian.aegirproject.org/" title="http://debian.aegirproject.org">http://debian.aegirproject.org</a> stable main&quot; | tee -a /etc/apt/sources.list.d/aegir-stable.list</code></div>
+Use this command to add the archive key to your keyring:
+<div class="codeblock"><code>wget -q <a href="http://debian.aegirproject.org/key.asc" title="http://debian.aegirproject.org/key.asc">http://debian.aegirproject.org/key.asc</a> -O- | apt-key add -</code></div>
+Then, finally, update your apt repositories:
+<div class="codeblock"><code>apt-get update</code></div></p></li>
+<li><h2>Install configure Aegir and dependencies</h2>
+
+<p>Once you have added the repositories, you can now fire off the standard debian installation command:
+<div class="codeblock"><code>apt-get install aegir</code></div><span class='diff-changed'>
+This</span> fires off the installation script for AEgir, along all dependencies including Apache, MySQ and PHP.<span class='diff-added'>  You will be asked a number of questions about your server.</span></p>
+
+<ul>
+<li>You will be asked to create a <em>MySQL root user password</em>.  Make this long and random and <span class='diff-changed'>type</span> it down somewhere safe, you won't need it very <span class='diff-changed'>often, but you will need it later on in the installation process.</span></li>
+<li>In <em>Postfix Configuration</em>:  Choose Internet Site, unless you have a reason otherwise.  When asked for the <em>System mail name</em>, pick either the hostname (default) or the domain name you will be hosting this server on.</li>
+<li>In <em>Configure aegir-hostmaster</em>, you will be asked to choose a "URL of the hostmaster frontend".  This should be either the hostname (default) or the domain name the server will be hosting, with "aegir" as a subdomain.  For example, "aegir.example.com".  You may want to change this to whatever you prefer, just don't forget it as it will be where you use the Aegir front-end.</li>
+<li>After entering your domain, Aegir Hostmaster installation will ask you for the MySQL root password you created earlier.  You did write it down, didn't you?<br />
+<strong>NOTE:</strong> The current DEB package requires you to enter the MySQL root password twice.</li>
+</ul><span class='diff-added'></span></li><span class='diff-added'>
+</span></ol>
+
+<p>When this script is done, if everything went ok, you should see this:
+<div class="codeblock"><code>The following settings will be used:<br /> Aegir frontend URL: test<br /> Master server FQDN: test<br /> Aegir root: /var/aegir<br /> Aegir user: aegir<br /> Web group: www-data<br /> Web server: apache<br /> Aegir DB host: localhost<br /> Aegir DB user: root<br /> Aegir DB password: &lt;previously set&gt;<br /> Drush make version: 6.x-2.3<br /> Aegir version: 6.x-1.6<br /> Aegir platform path: /var/aegir/hostmaster-6.x-1.6<br /> Aegir makefile: /usr/share/drush/commands/provision/aegir.make<br /> Admin email: aegir@test<br /><br />Do you really want to proceed with the install (y/n): y<br />Initializing the hosting system<br />This command will replace your crontab for this user. continue? (y/n): y<br />/usr/share/drush/drush.php &#039;@hostmaster&#039; hosting-dispatch <br />************************************************************************<br /><br /><br /><br />Aegir is now installed. You can visit it at <a href="http://test/user/reset/1/1329504351/eda205d9a27abde400a27cf160dff69a<br />************************************************************************<br />Aegir" title="http://test/user/reset/1/1329504351/eda205d9a27abde400a27cf160dff69a<br />************************************************************************<br />Aegir">http://test/user/reset/1/1329504351/eda205d9a27abde400a27cf160dff69a<br />***...</a> frontend bootstrap correctly, operation was a success!<br />Setting up aegir (1.6-1) ...<br />Setting up libhtml-template-perl (2.9-2) ...<br />Setting up mysql-server (5.1.54-1ubuntu4) ...<br />Setting up php5 (5.3.5-1ubuntu7.7) ...<br />Processing triggers for libc-bin ...<br />ldconfig deferred processing now taking place<br />root@test:~# </code></div></p>
+
+<p>Work in Progress...</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-391.html?destination=node%2F1080%23comment-form">Login</a> or <a href="../../../../../user/register/index-391.html?destination=node%2F1080%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/1080/revisions/2851/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:02:48 GMT -->
+</html>

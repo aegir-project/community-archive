@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/501/revisions/1205/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 19:45:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Summary of Koumbit&#039;s work on ACLs and the client node type from Fri, 03/18/2011 - 21:46 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-501" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/anarcat/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-78/index.jpg" alt="anarcat&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a></div><div class='date'>9:46pm Mar 18, 2011</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Summary of Koumbit&#039;s work on ACLs and the client node type</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>We've done a good amount of work on Aegir this week, and so we felt we should document our progress here. This post exposes the big changes and how to make use of them, but also the implementation details of how this was done for programmers.</p>
+
+<h2>Koumbit's contributions</h2>
+
+<p>The general goal we're working on is to harden our shared hosting. Our first target was to simplify the work of our developers by allowing them to <a href="../../../../494/index.html">run drush as a regular user</a>. This implied a lot of intermediate steps. We had to:</p>
+
+<ul>
+<li><a href="../../../../494/index.html">figure out the right permissions</a> - we settled on using POSIX ACLs</li>
+<li><a href="https://drupal.org/node/962330">reshuffle the client node type</a> - this means API breakage and significant upgrade between rc2 and rc3, for which we have requested a <a href="../../../../496/index.html">freeze exception</a></li>
+<li>make user registration mandatory for emails to be sent; <a href="https://drupal.org/node/336068">send registration emails to the logged in user instead of the client</a> - as we have stopped using the Client email field. (Note: this also fixed our <a href="https://drupal.org/node/962338">duplicate client issue</a>)</li>
+<li>write <a href="https://drupal.org/project/provisionacl">ACL support for Provision</a> so that those ACLs can be correctly created in the backend</li>
+</ul>
+
+<p>All this work was released on drupal.org. For core, the patches are in the master branches of provision and hostmaster; we released a <a href="https://drupal.org/project/provisionacl">contrib module</a> for the ACL support.</p>
+
+<h2>How to use ACLs to give your users shell access</h2>
+
+<p>With the above changes, you should be able to give shell access to specific clients through Aegir. To test this, you will need the following:</p>
+
+<ul>
+<li>update your Aegir install to run the master code</li>
+<li>install the <a href="https://drupal.org/node/1097892">provisionacl-1.0</a> release (or later) in ~/.drush</li>
+<li>save/create a client, and note down the "internal name" generated</li>
+<li>create a UNIX group on the server matching that "internal name"</li>
+<li>add users to that group</li>
+<li>verify or install a site owned by that client</li>
+</ul>
+
+<p>The site should then have special ACLs on the settings.php and drushrc.php files:</p>
+
+<p><div class="codeblock"><code>aegir@marcos:~/hostmaster-HEAD/sites/test.orangeseeds.org$ ls -al drushrc.php settings.php<br />-r--r-----+ 1 aegir aegir&nbsp;&nbsp;&nbsp; 32624 18 mar 14:42 drushrc.php<br />-r--r-----+ 1 aegir www-data&nbsp; 3267 18 mar 14:42 settings.php<br />aegir@marcos:~/hostmaster-HEAD/sites/test.orangeseeds.org$ getfacl drushrc.php<br /># file: drushrc.php<br /># owner: aegir<br /># group: aegir<br />user::r--<br />group::---<br />group:anarcat:r--<br />mask::r--<br />other::---</code></div></p>
+
+<p>Notice the "+" in the file listing - this marks files with an ACL. getfacl allows you to see exactly what that ACL is: in this case, the client named "anarcat" has read access to those files. This allows the anarcat user (member of the anarcat group) to run drush in the site without having to sudo to aegir:</p>
+
+<p><div class="codeblock"><code>anarcat@marcos:~/hostmaster-HEAD/sites/test.orangeseeds.org$ drush cc all<br />&#039;all&#039; cache was cleared&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [success]</code></div></p>
+
+<h2>Caveats</h2>
+
+<p>Aegir doesn't care about authorization in the frontend, however: you will still need to create the UNIX groups and map the shell users to them manually for this to work. This is the next iteration of development, where we'll be looking at integrating our LDAP server in the frontend, maybe with the new <a href="http://drupal.org/project/ldap">LDAP module</a>.</p>
+
+<p>Another issue is that giving users shell access like this <em>will</em> expose you to a full compromise of your aegir install unless you take extra steps. Those issues are documented in <a href="https://drupal.org/node/762138">issue #762138</a> and although there's work underway in the <a href="https://drupal.org/project/provision_plesk">provision_plesk module</a> to fix this, it is not clear whether this provides complete security for now. We contributed a <a href="https://drupal.org/node/762138#comment-4230432">summary</a> of the outstanding problems in that issue.</p>
+
+<p>Koumbit is committed to fixing those issues for its own hosting, so rest assured we will be going ahead to fix this in the coming weeks.</p>
+
+<h2>Interesting Aegir APIs used</h2>
+
+<p>Those changes are an interesting way to understand the way Aegir works under the hood. The changes described above required both changes in the frontend and the backend of aegir, and we'll use this to present a few key principles of how the frontend and backend communicate with each other.</p>
+
+<p>First is the distinction between tasks "context_options" and "options", which are two associative arrays used to carry information from the frontend modules to the backend drush commands. They serve two distinc purposes. "context_options" are options that are destined to be <em>saved</em> into the backend "context" (which is basically a drush alias mapped to a site, platform or server). A good example of that is a site's install profile or a platform's Makefile, that need to be recorded in the backend. The plain "options", however, are just one-time parameters that are <em>not</em> stored in the backend context.</p>
+
+<p>In <a href="http://drupalcode.org/project/hostmaster.git/commitdiff/49a5d9f043520ae04e2d6041001babe6e7497ab8">this patch</a>, we switch the client_email between the two contexts: instead of being recorded in the backend (through the context_options), we just send it with this task (through the options) and discard it after. That's because we now  <a href="https://drupal.org/node/336068">send the email to the logged in user instead of the client</a> so it makes no sense to keep that record. Instead, we <a href="http://drupalcode.org/project/provision.git/commitdiff/63ca20ac4ad1858391f64429e19258150e43abfa">store the client name</a> which can be used by other modules, for example as <a href="http://drupalcode.org/project/provisionacl.git/blob/HEAD:/provisionacl.drush.inc#l55">done here in the provisionacl module</a>.</p>
+
+<p>The second interesting feat is how the install process works. You may already know that the backend executes tasks scheduled from the frontend, so there's a provision-install command that installs sites. Before doing that, however, it takes the data from the "context_options" array and stores that in the site context. Then provision-install comes around and installs the site according to the settings stored in the site context. However, now that we have removed the storage of the email in the context, we need to go through extra steps to make sure the installer has the right variables set.</p>
+
+<p>The first step is to make sure we do not reference the context but the option passed on the commandline instead. Usually, we refer to context variables through the <a href="http://api.aegirproject.org/api/Provision/provision.context.inc/function/d/HEAD">d() function</a>, like this:</p>
+
+<p><div class="codeblock"><code>drush_print d()-&gt;name;</code></div></p>
+
+<p>This would print the name of the current (also named '@self') context, that has been specified on the commandline. So for example, if this was injected in the provision install code, running:</p>
+
+<p><div class="codeblock"><code>drush @hostmaster provision-install</code></div></p>
+
+<p>would display:</p>
+
+<p><div class="codeblock"><code>@hostmaster</code></div></p>
+
+<p>This is a recurring pattern used in a lot of places all over the backend. Now for the email, we need to change that to use the option passed on the commandline, not the context. <a href="http://drupalcode.org/project/provision.git/commitdiff/8a2d838d517bcf504ec74bad09b66fc968daa034">This patch</a> basically does that, by using <a href="http://api.drush.ws/api/function/drush_get_option/4.x">drush_get_option()</a> instead of the magic d() function.</p>
+
+<p>Because the provision-install command is split in two (to survive install failures better), we also need to send the setting to that secondary command, as done <a href="http://drupalcode.org/project/provision.git/commitdiff/4e8275e3f7d1e7bfaa9c7dbe0dc38d751c0cd8ee">in this patch</a>. This also shows how to invoke sub-commands and pass them parameters.</p>
+
+<p>The full changes discussed here can be reviewed in <a href="http://drupalcode.org/project/hostmaster.git/commitdiff/b509618f9a88bed3354dc3a5765fb97ca42cd7c2?hp=616053abf7e351d92d64ae5bdf118da76e8f8524">this merge patch</a> of the <a href="http://drupalcode.org/project/hostmaster.git/shortlog/refs/heads/dev-refactor-client-962330">dev-refactor-client-962330 branch</a> and <a href="http://drupalcode.org/project/provision.git/shortlog/refs/heads/dev-noreg-mail-336068">the commits on the dev-noreg-mail-336068 branch</a>.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-418.html?destination=node%2F501%23comment-form">Login</a> or <a href="../../../../../user/register/index-418.html?destination=node%2F501%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/501/revisions/1205/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 19:45:01 GMT -->
+</html>

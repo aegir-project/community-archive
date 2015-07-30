@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/article-archive/aegir-drupalcon-san-francisco?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:47:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../presentation/article-archive/index.html" />
+<link rel="up" href="../../presentation/article-archive/index.html" />
+<link rel="next" href="../introduction-aegir-hosting-system/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Aegir at DrupalCon San Francisco | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-732" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Aegir at DrupalCon San Francisco</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-732'><p>This article first appeared on mig5's blog on 27th April, 2010</p>
+<p>The <a href="http://groups.drupal.org/aegir-hosting-system">Aegir project</a> has seen vigorous development leading up to, during and after <a href="http://sf2010.drupal.org/">DrupalCon San Francisco April 2010</a>.</p>
+<p>Unfortunately due to the <a href="http://en.wikipedia.org/wiki/2010_eruptions_of_Eyjafjallajökull">volcano ash from Iceland</a>, lead developer and Aegir author <a href="http://drupal.org/user/1337">Adrian Rossouw</a> got marooned in Frankfurt and was unable to join the rest of the team at Moscone. </p>
+<p>When <a href="http://groups.drupal.org/aegir/0.3">Aegir 0.3 was released</a> and I joined the development team, Adrian mentioned in the release notes that the <a href="http://en.wikipedia.org/wiki/Bus_factor">'bus factor'</a> threatening to affect the progress of the project was reduced thanks to have extra hands on deck. In a way, although it was a devastating disappointment that he was unable to make it to DrupalCon, the opportunity arose to test what we renamed to be 'the volcano factor' and I think we did well under the circumstances.</p>
+<p>On the initial Code Sprint Sunday, <a href="http://drupal.org/user/1274">Antoine</a> and I sat down and ripped apart the Hostmaster install profile wizard. After a good 5 or 6 hours, Aegir became capable of being installed from the commandline directly, with no need to progress through the traditional browser-based wizard. Significantly, this install profile task wizard has always been one of the most common areas that new users struggle with when installing Aegir, as steps can be missed or misunderstood very easily.</p>
+<p>Now with the new install script (which is currently compatible with our dev-services branch in git), one need only install the usual dependencies (such as Apache, MySQL etc) and then execute the install.sh script, which takes care of the rest. Seconds later, a Login URL is given to you and you can immediately access the Aegir frontend!</p>
+<p>Amongst the sessions on Monday, we also participated in an informal Aegir BOF session that was organised by <a href="http://drupal.org/user/164217">Brian Wood</a>, much to our delight. In this session, we gave a brief overview on where Aegir was headed, but focused on hearing from you guys, our user base, on how you're using Aegir and what issues / benefits you've experienced that we could take back with us.</p>
+<div align="center">
+<a href="http://www.flickr.com/photos/mig5/4537399450/" title="IMG_0680 by mig5ter, on Flickr"><img src="http://farm5.static.flickr.com/4041/4537399450_3a322109cf.jpg" width="500" height="375" alt="IMG_0680" /></a>
+</div>
+<p>That evening after the BOF, we organised an informal Aegir dinner to carry on further discussions. I had a very nice vegetarian Pad Thai, and later we made our way to the Lullabot and official DrupalCon parties :)</p>
+<p><a href="http://www.flickr.com/photos/mgifford/4539294635/" title="Interview with Koumbit by m.gifford, on Flickr"><img src="http://farm3.static.flickr.com/2717/4539294635_079293e5a3_m.jpg" alt="Interview with Koumbit" style="float: right; margin: 2px" /></a> As we approached Wednesday, the Aegir team knuckled down and actually got around to preparing an agenda for our session that got voted in (thanks!). For myself this also meant preparing a local dev demo environment to demonstrate the latest features in Aegir, as well as testing all the demonstrations we'd exhibit and make sure they actually worked :)</p>
+<p>Somewhere along the line, both Antoine and myself were interviewed by Lullabot for their famous <a href="http://www.lullabot.com/podcast/drupal-voices">Drupal Voices podcast series</a>, where we discussed Aegir, best practices for dev/stage/live workflows, <a href="http://drupal.org/project/drush">Drush</a> and <a href="http://drupal.org/project/drush_make">Drush Make</a>. Expect to hear these interviews in the coming months as they trickle into the Drupalsphere.</p>
+<p>For good measure, Adrian discovered why our once-working Drupal7 site provisioning was broken (as we expected, it was due to changes upstream in d7 core) and fixed the issue. At that point we <a href="http://groups.drupal.org/node/63228">released 0.4 alpha7</a>, just in time prior to our session :)</p>
+<p>On Wednesday 21st April at 16:15pm, we presented the <a href="http://sf2010.drupal.org/conference/sessions/aegir-hosting-system-one-drupal-rule-them-all">"Aegir - One Drupal to Rule Them All" session</a>, covering:</p>
+<p>1) a basic introduction into the project<br />
+2) features/functions of aegir<br />
+3) what's changed since Paris<br />
+4) development/security practices<br />
+5) what's coming<br />
+6) some Q/A time</p>
+<div align="center">
+<a href="http://www.flickr.com/photos/mig5/4542872610/" title="IMG_0695 by mig5ter, on Flickr"><img src="http://farm3.static.flickr.com/2683/4542872610_bef3fe1375.jpg" width="500" height="375" alt="IMG_0695" /></a>
+</div>
+<p>We felt the session was a success and it was great to see so many people show up and ask a lot of good questions.</p>
+<p>You can watch the full session here or download/watch on <a href="http://www.archive.org/details/AegirHostingSystem-OneDrupalToRuleThemAll">archive.org</a></p>
+<p><embed type="application/x-shockwave-flash" width="640" 	height="504" 	allowfullscreen="true" 	allowscriptaccess="always" 	src="http://www.archive.org/flow/flowplayer.commercial-3.0.5.swf" 	w3c="true" 	flashvars='config={"key":"#$b6eb72a0f2f1e29f3d4","playlist":[{"url":"http://www.archive.org/download/AegirHostingSystem-OneDrupalToRuleThemAll/format=Thumbnail?.jpg","autoPlay":true,"scaling":"fit"},{"url":"http://www.archive.org/download/AegirHostingSystem-OneDrupalToRuleThemAll/wed_1500_308_2_512kb.mp4","autoPlay":false,"accelerated":true,"scaling":"fit","provider":"h264streaming"}],"clip":{"autoPlay":false,"accelerated":true,"scaling":"fit","provider":"h264streaming"},"canvas":{"backgroundColor":"0x000000","backgroundGradient":"none"},"plugins":{"audio":{"url":"http://www.archive.org/flow/flowplayer.audio-3.0.3-dev.swf"},"controls":{"playlist":false,"fullscreen":true,"gloss":"high","backgroundColor":"0x000000","backgroundGradient":"medium","sliderColor":"0x777777","progressColor":"0x777777","timeColor":"0xeeeeee","durationColor":"0x01DAFF","buttonColor":"0x333333","buttonOverColor":"0x505050"},"h264streaming":{"url":"http://www.archive.org/flow/flowplayer.h264streaming-3.0.5.swf"}},"contextMenu":[{"View+AegirHostingSystem-OneDrupalToRuleThemAll+at+archive.org":"function()"},"-","Flowplayer 3.0.5"]}'> </embed></p>
+<p>After the conference, we made it to the Thursday code sprint at San Francisco State University, and nailed a few more bugs / features! What was also discovered was that one can upgrade a vanilla Drupal 6.16 site to the latest Drupal 7 using our Migrate feature in Aegir, now that an upgrade path exists and drush updatedb succeeds. Wow! </p>
+<div align="center">
+<a href="http://www.flickr.com/photos/ceardach/4551245490/" title="Drupal Code Sprint by muir.ceardach, on Flickr"><img src="http://farm5.static.flickr.com/4045/4551245490_1ea8d5fac3.jpg" width="500" height="333" alt="Drupal Code Sprint" /></a>
+</div>
+<p>DrupalCon SF 2010 is over but progress continues. All the bulk of our hard work at the moment is within the "dev-services" branches of the <a href="http://git.aegirproject.org/?p=provision.git;a=shortlog;h=refs/heads/dev-services">provision</a> and <a href="http://git.aegirproject.org/?p=hostmaster.git;a=shortlog;h=refs/heads/dev-services">hostmaster</a> git repositories on git.aegirproject.org, where our new object-oriented refactoring and introduction of the abstracted 'server' concept and service-based API is paving the way for true multi-server support.. not far away now! </p>
+<p>You're welcome to checkout these branches and start playing with it and fix some issues, or even just to test out the new command-line-only installation process. However, things are changing all the time, so it's volatile and there may be things that are very broken. Definitely don't use the dev-services branches in production!</p>
+<p>Thanks to all who made it to DrupalCon or watched from a distance, attended or are listening/watching our session, came and introduced themselves and/or had a beer with us at some point, or are simply just using Aegir and loving it :) </p>
+<p>I've some more exciting things to discuss in Aegirworld, but those will have to wait :)</p>
+<p>Hope to see you at the next DrupalCon!</p>
+<p><strong>Edit</strong>: I forgot to also give thanks to two other groups: </p>
+<p>1) the organising committee for DrupalCon itself - awesome job! </p>
+<p>2) and also the guys at Koumbit for sending along a great team including Antoine, and equipping them with great Aegir 'One Drupal to Rule them All' stickers :)</p>
+</div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-248.html?destination=node%2F732%23comment-form">Login</a> or <a href="../../user/register/index-248.html?destination=node%2F732%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/article-archive/aegir-drupalcon-san-francisco?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:47:59 GMT -->
+</html>

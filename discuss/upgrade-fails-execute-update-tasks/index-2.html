@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/upgrade-fails-execute-update-tasks?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:56:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Upgrade Fails to Execute Update Tasks | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-13002" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/km/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="km&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/km/index.html" class="username" title="View user profile.">km</a></div><div class='date'>2:46pm Mar 17, 2015</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Upgrade Fails to Execute Update Tasks</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_597 first last"><a href="../../category/keywords/upgrade-21/index.html" rel="tag" title="">upgrade-2.1</a></li>
+</ul></div><p>We recently attempted an upgrade from 1.6 to 1.12, and then to 2.1. The upgrade to 1.12 went fine, but we ran the upgrade script for 2.1, we started to see errors like these:</p>
+
+<pre>
+...
+Do you wish to run all pending updates? (y/n): y
+Executing hosting_alias_update_6203                                                                                      [success]
+ALTER TABLE {hosting_site_alias} CHANGE `redirection` `redirection` VARCHAR(255) NOT NULL                                [success]
+Executing hosting_alias_update_6204                                                                                      [success]
+Unknown column 'db_name' in 'field list'                                                             [warning]
+query: SELECT client, db_server, db_name, platform, profile, language as site_language, last_cron, cron_key, status AS
+site_status, verified FROM hosting_site WHERE vid = 1065 database.mysqli.inc:134
+...
+Duplicate entry '127' for key 'PRIMARY'                                                              [warning]
+query: UPDATE hosting_ip_addresses SET id=127 WHERE nid=707 AND ip_address='10.10.15.23'
+database.mysqli.inc:134
+...
+UPDATE {hosting_ip_addresses} SET id=223 WHERE nid=836 AND ip_address='10.10.11.21'                 [error]
+...
+</pre>
+
+<p>Even though the ALTER TABLE line above states it is a "success", examining the hosting_site_alias table, shows that the redirection field is still a TINYINT. Further, the error "<code>Unknown column &#039;db_name&#039; in &#039;field list&#039;</code>"  error appears way before the ALTER TABLE for <code>hosting_site</code> table -- so there is some statements executed out of sequence, perhaps?</p>
+
+<p>Anyone come across an issue like this during upgrade? How might one go about addressing these issues? We've checked DB permissions, and they are all fine -- after all the upgrade to 1.12 went fine. Nothing unusual on the DB server logs.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-275.html?destination=node%2F13002%23comment-form">Login</a> or <a href="../../user/register/index-275.html?destination=node%2F13002%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-2385"></a>
+
+
+<div  id="comment-2385" class="comment comment-published clear-block decay-10 decay-10">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/helmo/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="helmo&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/helmo/index.html" class="username" title="View user profile.">helmo</a></div><div class='date'>8:43am Mar 18, 2015</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2385" class="active">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Well,
+hosting_alias_update_6204() does call node_load which used the new db_name column.
+So we have to make sure that hosting_site_update_6202() runs before that.</p>
+
+<p>I was already looking at hook_update_dependencies() but that only in D7... :(</p>
+
+<p>The easiest fix is to manually manually add the db_name column as a varchar 64 in the hosting_site table and comment out the lines in hosting_site_update_6202() to prevent an error there.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-275.html?destination=node%2F13002%23comment-form">Login</a> or <a href="../../user/register/index-275.html?destination=node%2F13002%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2387"></a>
+
+
+<div  id="comment-2387" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/km/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="km&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/km/index.html" class="username" title="View user profile.">km</a></div><div class='date'>3:45pm Mar 20, 2015</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2387" class="active">#2</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>In the seqence of events above, hosting_alias_update_6203 and hosting_alias_update_6204 run before hosting_site_update_6202.</p>
+
+<p>It is a little disturbing that the scripts returns "success" for an update that did not occur, and runs an update out of order.</p>
+
+<p>So you're telling me the upgrade script isn't working like it should? And that the updates need to run manually? Are there any options for debugging?</p>
+
+<p>I've these changes, and various UPDATEs similar to what I posted above. Are there any other updates I need to run manually?</p>
+
+<pre>
+ALTER TABLE hosting_site_alias CHANGE `redirection` `redirection` VARCHAR(255) NOT NULL                                
+ALTER TABLE hosting_context CHANGE `name` `name` VARCHAR(235) NOT NULL                                                 
+ALTER TABLE hosting_package_instance ADD `platform` INT NOT NULL DEFAULT 0                                             
+ALTER TABLE hosting_platform ADD `make_working_copy` INT unsigned NOT NULL DEFAULT 0                                   
+ALTER TABLE hosting_platform DROP release_id                                                                           
+ALTER TABLE hosting_ip_addresses DROP INDEX vid                                                                        
+ALTER TABLE hosting_ip_addresses DROP vid                                                                              
+ALTER TABLE hosting_ip_addresses ADD `id` INT unsigned auto_increment DEFAULT NULL, ADD PRIMARY KEY (id)               
+ALTER TABLE hosting_ip_addresses CHANGE `id` `id` INT unsigned NOT NULL auto_increment                                 
+ALTER TABLE hosting_ip_addresses ADD INDEX nid (nid)                                                                   
+
+CREATE TABLE hosting_ssl_cert_ips
+`cid` INT unsigned NOT NULL DEFAULT 0,
+`ip_address` INT unsigned NOT NULL DEFAULT 0,
+INDEX cid (cid),
+INDEX ip_address (ip_address)
+) /*!40100 DEFAULT CHARACTER SET utf8 */
+Executing hosting_server_update_6202
+INSERT INTO hosting_ssl_cert_ips (cid, ip_address)
+  SELECT cert.cid,server_ip.id FROM hosting_ssl_site ssl_site
+    INNER JOIN hosting_ssl_cert cert ON cert.cid = ssl_site.ssl_key
+    INNER JOIN hosting_ip_addresses site_ip ON site_ip.nid = ssl_site.nid
+    INNER JOIN hosting_site site ON site.nid = ssl_site.nid
+    INNER JOIN hosting_ip_addresses server_ip ON server_ip.ip_address =
+site_ip.ip_address
+    INNER JOIN hosting_platform p ON site.platform = p.nid AND p.web_server
+= server_ip.nid
+    WHERE ssl_enabled &gt; %d AND site.status &gt; %d GROUP BY cid
+
+ALTER TABLE hosting_site ADD `db_name` VARCHAR(64) NOT NULL DEFAULT '' 
+</pre>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-275.html?destination=node%2F13002%23comment-form">Login</a> or <a href="../../user/register/index-275.html?destination=node%2F13002%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2388"></a>
+
+
+<div  id="comment-2388" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/helmo/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="helmo&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/helmo/index.html" class="username" title="View user profile.">helmo</a></div><div class='date'>3:54pm Mar 20, 2015</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2388" class="active">#3</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>The 'problem' has been addressed in Drupal 7 by being able to specify in which order update hooks execute.</p>
+
+<p>I don't think you need to run more updates manually, as e.g. hosting_alias_update_6203 does not call node_load.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-275.html?destination=node%2F13002%23comment-form">Login</a> or <a href="../../user/register/index-275.html?destination=node%2F13002%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/upgrade-fails-execute-update-tasks?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:56:32 GMT -->
+</html>

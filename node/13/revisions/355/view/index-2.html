@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/13/revisions/355/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:00:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../help/index.html" />
+<link rel="up" href="../../../../../help/index.html" />
+<link rel="next" href="../../../../../contact/index.html" />
+<link rel="prev" href="../../../../../help/index.html" />
+<link rel="up" href="../../../../../help/index.html" />
+<link rel="next" href="../../../../../contact/index.html" />
+<link rel="prev" href="../../../../../help/index.html" />
+<link rel="up" href="../../../../../help/index.html" />
+<link rel="next" href="../../../../../contact/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Troubleshooting Aegir from Thu, 11/18/2010 - 04:39 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-13" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../aegir-handbook/getting-help/troubleshooting-aegir/index.html">Troubleshooting Aegir</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-13'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 11/18/2010 - 04:39</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Aegir undergoes rigorous testing, but no actively-developed software ever escapes bugs.</p>
+
+<p>If you feel you have encountered a bug, the <a href="../../../../14/index.html">FAQ</a> is the first place to check if there's a simple solution.</p>
+
+<h1>Common installation and configuration errors</h1>
+
+<p>Aegir is a more complex product than your average Drupal site. Something that has far-reaching control over bits of your server and your sites results in more bits and pieces working together, and inevitably it becomes possible to misconfigure, break, or miss setting up any one of these components.</p>
+
+<p>The installation and upgrade procedure has evolved from these pains to becoming something almost purely automated. Nonetheless, making a mistake during the installation of Aegir or Drush is still easy to do, and these tips identify the most common mistakes.</p>
+
+<h2>If Something Goes Wrong</h2>
+
+<p>If an installation fails partway, particularly while using the install.sh script, you may not be able to run it successfully until you've rolled back any changes that the script has made. Delete the contents of the /var/aegir directory (not the directory itself) making sure to remove any hidden directories like /var/aegir/.drush. Also, drop any new MySQL database (which will be named according to the hostmaster domain name).</p>
+
+<h2>The Aegir User</h2>
+
+<p>Make sure you have an aegir user (who we call the Aegir User) and that the Aegir User is properly configured on your server.</p>
+
+<p>Typing 'id aegir' on your system should print something like this as output.</p>
+
+<p><div class="codeblock"><code>aegir:~# id aegir<br />uid=104(aegir) gid=108(aegir) groups=108(aegir),33(www-data)</code></div></p>
+
+<p>If you don't want to use a user called 'aegir' for the installation, that's possible (albeit not recommended). Be cautious about using a different username, and do not use an existing user or a user that will have any other role on the server. The Aegir User has certain privileges and should only be used for Aegir activities.</p>
+
+<h2>Aegir User's home directory</h2>
+
+<p>Verify the Aegir install directory is the user's home. In a standard installation, the Aegir directory is /var/aegir.</p>
+
+<p>Be cautious about installing Aegir in a different directory - it is easy to get confused since nearly all the documentation tries to be consistent by assuming you have used /var/aegir and you'll otherwise constantly have to translate this mentally when trying to learn.</p>
+
+<h2>Aegir User as script user</h2>
+
+<p>Make sure that the 'Server' node in your Aegir system (this is usually the node located at /node/2) lists the 'Script User' as being your Aegir User. You can also find this node by clicking on the Servers menu tab and then clicking on the server URI shown in the list that appears of Aegir-managed servers. In a basic installation, there is only one server.</p>
+
+<h2>Do not run as root</h2>
+
+<p>Do not run aegir as root! It's an unsafe and unsupported configuration that is known to cause problems.</p>
+
+<h2>Drush</h2>
+
+<p>A standard Aegir installation will check that Drush is functioning properly, or if it doesn't find Drush at all, will install it for you.</p>
+
+<p>Always run drush as your aegir user, and never as "root".</p>
+
+<h2>Provision</h2>
+
+<p>Make sure that the Provision module is in the aegir/.drush/provision/ directory. A standard Aegir installation will install this for you.</p>
+
+<h2>MySQL</h2>
+
+<p>Aegir uses the 'root' user of the MySQL server to create and manage databases. If MySQL is running on the same server, Aegir will still attempt to connect to the database as if remotely. If the MySQL server is security hardened to prevent this type of access, this would result in MySQL errors during Aegir installation.</p>
+
+<p>To see the root users. Connect to MySQL database and run the query
+<div class="codeblock"><code>SELECT user, host, password FROM mysql.user WHERE user = &#039;root&#039;;</code></div></p>
+
+<p>There should be separate records for the host <code>localhost</code> and <code>hostname</code>, and the password hashes should be the same to avoid confusion. If the password hashes are different, which is possible if the root user password has been updated with mysqladmin, you can make the passwords consistent by running:</p>
+
+<p><div class="codeblock"><code>UPDATE user SET Password=PASSWORD(&#039;new_password&#039;)&nbsp; WHERE host=&#039;hostname&#039; AND user=&#039;root&#039;;<br />FLUSH PRIVILEGES;</code></div></p>
+
+<h2>Apache</h2>
+
+<p>Make sure the Aegir User can restart Apache without a password and that the corresponding command is defined in your Aegir 'Server' node.</p>
+
+<p>As your Aegir User, run the command shown in the "Restart command" field in your Aegir 'Server' node to ensure that your Aegir User can in fact restart Apache (if not, see the Sudo information below).</p>
+
+<p>On Debian/Ubuntu, the command sudo /usr/sbin/apache2ctl graceful. The command should execute and return without asking for a password when run as the Aegir User.</p>
+
+<p>Make sure Apache can parse its configuration without syntax errors. On Ubuntu, sudo apache2ctl configtest should report "Syntax OK".</p>
+
+<h2>Sudo</h2>
+
+<p>Check that the aegir user is in your /etc/sudoers file with the permission to restart Apache. Instructions and an example for doing this are contained in the INSTALL.txt.</p>
+
+<p>On a Linux system, check that /etc/sudoers is chmod 440 (i.e., read only for the file owner and group, which is usually root)</p>
+
+<h2>Attempt to run the task queue manually from the command line</h2>
+
+<p><div class="codeblock"><code>php /var/aegir/drush/drush.php @hostmaster hosting-tasks --debug</code></div></p>
+
+<h2>Run a specific task in the queue from the command line</h2>
+
+<p><div class="codeblock"><code>php /var/aegir/drush/drush.php @hostmaster hosting-task &lt;nid of the task&gt; --debug</code></div></p>
+
+<h2>Run the 'Cron' queue manually from the command line</h2>
+
+<p><div class="codeblock"><code>php /var/aegir/drush/drush.php @hostmaster hosting-cron --debug</code></div></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-31.html?destination=node%2F13%23comment-form">Login</a> or <a href="../../../../../user/register/index-31.html?destination=node%2F13%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-31.html?destination=node%2F13%23comment-form">Login</a> or <a href="../../../../../user/register/index-31.html?destination=node%2F13%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/13/revisions/355/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:00:54 GMT -->
+</html>

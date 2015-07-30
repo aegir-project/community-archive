@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/266?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 16:37:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Infinite Recursion on Site Import | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-266" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../user/65/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-65/index.jpg" alt="Josh Benner&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../user/65/index.html" class="username" title="View user profile.">Josh Benner</a></div><div class='date'>3:26pm Jan 21, 2011</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Infinite Recursion on Site Import</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class="field field-type-nodereference field-field-referenced-book-page">
+    <div class="field-items">
+            <div class="field-item odd">
+                      <div class="field-label-inline-first">
+              Referenced Page:&nbsp;</div>
+                    <a href="../../content/importing-existing-aegir-backups/index.html">Importing from existing Aegir backups</a>        </div>
+        </div>
+</div>
+<p>We have a shared dev server running Aegir 0.4-beta2, works quite well. Locally, I have Aegir HEAD (from 1/14). I build a script that creates a backup on the remote system, retrieves the backup archive, then follows the instructions found <a href="../117/index.html">here</a> to import the site into my local environment.</p>
+
+<p>This all works great. After the provision-deploy, I run a verify via the frontend on the platform onto which the site was deployed. Aegir sees the new site and queues up an import task. Upon running the import task, it fails due to what appears to be infinite recursion on every site I try to import using this method.</p>
+
+<p>I suspect infinite recursion due to the errors I get. When I have xdebug enabled with a nesting level of 1,000 (or any value I enter), it hits the limit and Xdebug kills it. When I have Xdebug disabled, I get a segfault.</p>
+
+<p>The recursion appears to happen during provision-save. The data visible in the frontend from the failed command is pasted below. You'll see that provisionContext-&gt;service() is calling itself with infinite recursion. I do not understand what is occurring in this code enough to try to figure out what's happening.</p>
+
+<p>I can run the provision-save command that the import task log claims to attempt at the command line without problems.</p>
+
+<p>Any ideas? Is this the right place to submit issues like this?</p>
+
+<p>Thanks!</p>
+
+<p>Import task log is attached.</p><div class="itu-attachments"><table class="itu-attachment-list withoutstats sticky-enabled" id="attachments">
+ <thead><tr><th class="preview">Preview</th><th class="file">Attachment</th><th class="size">Size</th> </tr></thead>
+<tbody>
+ <tr class="odd"><td class="mime mime-txt"></td><td class="file"><a href="../../sites/community.aegirproject.org/files/import/index.txt">import.txt</a></td><td class="size">9.55 KB</td> </tr>
+</tbody>
+</table>
+</div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-307.html?destination=node%2F266%23comment-form">Login</a> or <a href="../../user/register/index-307.html?destination=node%2F266%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/266?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 16:37:17 GMT -->
+</html>

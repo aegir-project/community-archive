@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/432/revisions/1492/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:07:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../upgrading/manual/index.html" />
+<link rel="up" href="../../../../../upgrading/index.html" />
+<link rel="next" href="../../../../../upgrading/script/index.html" />
+<link rel="prev" href="../../../../../upgrading/manual/index.html" />
+<link rel="up" href="../../../../../upgrading/index.html" />
+<link rel="next" href="../../../../../upgrading/script/index.html" />
+<link rel="prev" href="../../../../../upgrading/manual/index.html" />
+<link rel="up" href="../../../../../upgrading/index.html" />
+<link rel="next" href="../../../../../upgrading/script/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Automatic upgrades with Debian packages from Fri, 04/08/2011 - 12:05 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-432" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../upgrading/debian/index.html">Automatic upgrades with Debian packages</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_23 first"><a href="../../../../../taxonomy/term/23/index.html" rel="tag" title="">Debian</a></li>
+<li class="taxonomy_term_2"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+<li class="taxonomy_term_22 last"><a href="../../../../../taxonomy/term/22/index.html" rel="tag" title="">upgrade</a></li>
+</ul></div><div id='diff-inline-432'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 04/08/2011 - 12:05</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Prerequisites:_Adding_repositories_archives_keys_and_backports"><span class="toc-number">1. </span>Prerequisites: Adding repositories, archives keys and backports</a></li>
+	<li class="toc-level-1"><a href="#Regular_update_process"><span class="toc-number">2. </span>Regular update process</a></li>
+	<li class="toc-level-1"><a href="#Upgrading_from_non-Debian_installs"><span class="toc-number">3. </span>Upgrading from non-Debian installs</a></li>
+	<li class="toc-level-1"><a href="#Custom_distributions"><span class="toc-number">4. </span>Custom distributions</a></li>
+	<li class="toc-level-1"><a href="#Rolling_back_the_upgrade"><span class="toc-number">5. </span>Rolling back the upgrade</a></li>
+</ol>
+</div>
+</div>
+
+<h2 id="Prerequisites:_Adding_repositories_archives_keys_and_backports">1. Prerequisites: Adding repositories, archives keys and backports</h2>
+
+<p>If you are running Debian Squeeze or Ubuntu Lucid (10.04) and above, you'll first need to go through steps 1 through 3 of <a href="../../../../../installing/debian/index.html#Adding_the_Koumbit_repositories">Automatic install on Debian</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Regular_update_process">2. Regular update process</h2>
+
+<p>Note that you can upgrade Aegir in steps. Upgrading your backend to the Debian package should be as simple as running:</p>
+
+<pre><code>apt-get install aegir-provision
+</code></pre>
+
+<p>Upgrading the frontend to the Debian package works identically:</p>
+
+<pre><code>apt-get install aegir-hostmaster
+</code></pre>
+
+<p>If you want to upgrade all packages in one shot, use:</p>
+
+<pre><code>apt-get install aegir-provision aegir-hostmaster
+</code></pre>
+
+<p>As during install, you can use the DEBUG variable to run Drush in debugging mode:</p>
+
+<pre><code>env DEBUG=yes apt-get install aegir-hostmaster
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Upgrading_from_non-Debian_installs">3. Upgrading from non-Debian installs</h2>
+
+<p>The Debian package supports migrating from existing installs. You will need to move /var/aegir/.drush/provision out of the way before going ahead:</p>
+
+<pre><code>tar cfz /var/aegir/backups/provision.tgz /var/aegir/.drush/provision
+rm -rf /var/aegir/.drush/provision
+</code></pre>
+
+<p>Then just install the package as if you were installing from scratch.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Custom_distributions">4. Custom distributions</h2>
+
+<p>If you have your own makefile, you can go ahead with the above process, but change the makefile to the one you want:</p>
+
+<pre><code>echo debconf aegir/makefile string /var/aegir/makefiles/aegir/aegir-koumbit.make | debconf-set-selections
+apt-get install aegir
+</code></pre>
+
+<p>Usually no questions are asked when upgrading - this allows you to specify the makefile path for your custom distribution of Aegir, even if you're upgrading. It's also how you can switch distributions.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Rolling_back_the_upgrade">5. Rolling back the upgrade</h2>
+
+<p>If something went wrong with the upgrade, you can rollback by deleting the hostmaster site and redeploying on the older platform:</p>
+
+<pre><code>drush @hostmaster provision-delete
+vi ~/.drush/hostmaster.alias.drushrc.php
+</code></pre>
+
+<p>...And edit the alias to make the following changes:</p>
+
+<pre><code>1. change the platform to point to the older platform alias
+2. change the platform root path
+3. change the site path
+</code></pre>
+
+<p>During the upgrade, a backup was done and you need to find which backup file it was in the backups directory. Use this backup to redeploy the older platform:</p>
+
+<pre><code>drush @hostmaster provision-deploy ~/backups/hostmaster.date.tgz
+</code></pre><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-311.html?destination=node%2F432%23comment-form">Login</a> or <a href="../../../../../user/register/index-311.html?destination=node%2F432%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-2081"></a>
+
+
+<div  id="comment-2081" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/dman/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="dman&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/dman/index.html" class="username" title="View user profile.">dman</a></div><div class='date'>11:56pm Nov 26, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-2081">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>In the course of a normal update (adding php5-xsl) we were a little worried by the following messages:
+<div class="codeblock"><code>The following extra packages will be installed:<br />&nbsp; aegir-provision (..other php5 updates..) <br />The following packages will be REMOVED:<br />&nbsp; aegir aegir-hostmaster (..other php5 updates..)</code></div>
+This - threatening to REMOVE an existing working Aegir infrastructure was a bit scary. Even if it will (probably?) be replaced.
+The original install was from koumbit yeah.</p>
+
+<p>I'd have liked to see a message on this wiki page saying "If you get this message, it's OK to say 'Yes' and everything will be replaced safely". If that is the case...
+It is worrying. Can this be clarified?</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-311.html?destination=node%2F432%23comment-form">Login</a> or <a href="../../../../../user/register/index-311.html?destination=node%2F432%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/432/revisions/1492/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:07:53 GMT -->
+</html>

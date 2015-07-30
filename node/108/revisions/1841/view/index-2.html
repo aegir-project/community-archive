@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/108/revisions/1841/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:20:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../75/index.html" />
+<link rel="up" href="../../../../../contrib/index.html" />
+<link rel="next" href="../../../../../creating-product-features-using-uchosting-1x/index.html" />
+<link rel="prev" href="../../../../75/index.html" />
+<link rel="up" href="../../../../../contrib/index.html" />
+<link rel="next" href="../../../../../creating-product-features-using-uchosting-1x/index.html" />
+<link rel="prev" href="../../../../75/index.html" />
+<link rel="up" href="../../../../../contrib/index.html" />
+<link rel="next" href="../../../../../creating-product-features-using-uchosting-1x/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of E-Commerce Integration Roadmap from Wed, 05/18/2011 - 15:39 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-108" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">E-Commerce Integration Roadmap</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-108'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 05/18/2011 - 15:39</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Related links:</p>
+
+<ul>
+<li>For installation and configuration instructions, see the <a href="../../../../516/index.html">Administrator Manual</a>.</li>
+<li>There was some valuable discussion on <a href="http://groups.drupal.org/node/94959">use cases</a> on groups.drupal.org.</li>
+</ul>
+
+<p><strong><em>Don't put feature requests in here. Submit them to the <a href="http://drupal.org/project/issues/uc_hosting">uc_hosting</a> or <a href="http://drupal.org/project/issues/hostmaster">hostmaster</a> issue queues instead.</em></strong></p>
+
+<p><span class='diff-deleted'>[</span><script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Drupal_6_uc_hosting_1.0"><span class="toc-number">1. </span>Drupal 6 / uc_hosting 1.0</a>
+<ol>
+	<li class="toc-level-2"><a href="#Goals"><span class="toc-number">1.1. </span>Goals</a>
+<ol>
+	<li class="toc-level-3"><a href="#Single_site_products"><span class="toc-number">1.1.1. </span>Single site products</a></li>
+	<li class="toc-level-3"><a href="#Multi_site_packages"><span class="toc-number">1.1.2. </span>Multi site packages</a></li>
+	<li class="toc-level-3"><a href="#Recurring_payments"><span class="toc-number">1.1.3. </span>Recurring payments</a></li>
+</ol>
+</li>
+	<li class="toc-level-2"><a href="#Nice-to-haves"><span class="toc-number">1.2. </span>Nice-to-haves</a>
+<ol>
+	<li class="toc-level-3"><a href="#Purchasing_wizard"><span class="toc-number">1.2.1. </span>Purchasing wizard</a></li>
+	<li class="toc-level-3"><a href="#Make_it_unnecessary_to_log_single-site_purchasers_into_the_aegir_site"><span class="toc-number">1.2.2. </span>Make it unnecessary to log single-site purchasers into the aegir site</a></li>
+	<li class="toc-level-3"><a href="#Deferred_payments"><span class="toc-number">1.2.3. </span>Deferred payments</a></li>
+</ol>
+</li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Drupal_7_uc_hosting_2.0"><span class="toc-number">2. </span>Drupal 7 / uc_hosting 2.0</a>
+<ol>
+	<li class="toc-level-2"><a href="#Goals-1"><span class="toc-number">2.1. </span>Goals</a>
+<ol>
+	<li class="toc-level-3"><a href="#Remote_storefronts"><span class="toc-number">2.1.1. </span>Remote storefronts</a></li>
+</ol>
+</li>
+	<li class="toc-level-2"><a href="#Nice-to-haves-2"><span class="toc-number">2.2. </span>Nice-to-haves</a>
+<ol>
+	<li class="toc-level-3"><a href="#Desjardins_recurring_payments"><span class="toc-number">2.2.1. </span>Desjardins recurring payments</a></li>
+	<li class="toc-level-3"><a href="#Importable_demo_products"><span class="toc-number">2.2.2. </span>Importable demo products</a></li>
+	<li class="toc-level-3"><a href="#Simple_procedure_to_deny_user_1_to_certain_clients"><span class="toc-number">2.2.3. </span>Simple procedure to deny user 1 to certain clients</a></li>
+</ol>
+</li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Wishlist:"><span class="toc-number">3. </span>Wishlist:</a></li>
+	<li class="toc-level-1"><a href="#Unanswered_Questions"><span class="toc-number">4. </span>Unanswered Questions</a></li>
+</ol>
+</div>
+</div><span class='diff-deleted'>]</span></p>
+
+<h1 id="Drupal_6_uc_hosting_1.0">1. Drupal 6 / uc_hosting 1.0</h1>
+
+<p><strong>Aiming for compatibility with:</strong></p>
+
+<ul>
+<li>Hostmaster 1.0</li>
+<li>Ubercart 2.4</li>
+</ul>
+
+<p><strong>Structure:</strong></p>
+
+<ul>
+<li><strong>uc_hosting</strong>: This implements shared functions and classes, including the function to create a client based on an ubercart order and product.</li>
+<li><strong>uc_hosting_products</strong>: This is where we put the ubercart function calls, attribute generation, etc... This module is intended to be used alone for the "my ubercart is on my aegir site" scenario.</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Goals">1.1. Goals</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Single_site_products">1.1.1. Single site products</h3>
+
+<p>In.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Multi_site_packages">1.1.2. Multi site packages</h3>
+
+<p>In.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Recurring_payments">1.1.3. Recurring payments</h3>
+
+<p>We need to test the module using uc_recurring.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Nice-to-haves">1.2. Nice-to-haves</h2>
+
+<p>Given where we are at now, this stuff will most likely not make it in until an eventual 1.1 release. The exception being Hadsie's work on "try before you buy".</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Purchasing_wizard">1.2.1. Purchasing wizard</h3>
+
+<p>Stills needs to be developed. The create my site now option is a start and is already in.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Make_it_unnecessary_to_log_single-site_purchasers_into_the_aegir_site">1.2.2. Make it unnecessary to log single-site purchasers into the aegir site</h3>
+
+<p>Needs some testing but should be doable. Maybe just needs a little documentation. I believe Hadsie's work is related to this.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Deferred_payments">1.2.3. Deferred payments</h3>
+
+<p>Ergonlogic is working on this.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Drupal_7_uc_hosting_2.0">2. Drupal 7 / uc_hosting 2.0</h1>
+
+<p>We are still unsure about whether to support commerce, ubercart, or both with this module. We will most likely wait until development on the D7 port of aegir starts before beginning this work so we will see then what the landscape looks like.</p>
+
+<p><strong>Aiming for compatibility with:</strong></p>
+
+<ul>
+<li>Hostmaster 2.x</li>
+<li>Ubercart 3.x, or Commerce 1.x (maybe both?)</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Goals-1">2.1. Goals</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Remote_storefronts">2.1.1. Remote storefronts</h3>
+
+<p>Hopefully, this will be supported by plans for new xmlrpc methods in the hostmaster signup module.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Nice-to-haves-2">2.2. Nice-to-haves</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Desjardins_recurring_payments">2.2.1. Desjardins recurring payments</h3>
+
+<p>This is a seperate module being developed by Koumbit.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Importable_demo_products">2.2.2. Importable demo products</h3>
+
+<p>This would be really great.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Simple_procedure_to_deny_user_1_to_certain_clients">2.2.3. Simple procedure to deny user 1 to certain clients</h3>
+
+<p>Hadsie's work on this is interesting and it would be useful to enable as an option on a uc_hosting install.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Wishlist:">3. Wishlist:</h1>
+
+<ul>
+<li>A decent ubercart import function (see <a href="http://www.sthlmconnection.se/tips-and-tweaks/exportable-configuration-ctools-revisited">this</a> and <a href="http://stellapower.net/content/using-chaos-tools-module-create-exportables">this</a>... <a href="http://drupal.org/node/349408">this</a> and maybe <a href="http://drupal.org/node/590956">this</a>)</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Unanswered_Questions">4. Unanswered Questions</h1>
+
+<ol>
+<li>Will the Drupal 7 version use Ubercart or Commerce? Both? Neither?</li>
+<li>How and when will people be billed? And what degree of control will uc_hosting offer over that?</li>
+<li>Aegir has clients &amp; UC has clients. How are they related/distinct? How do we keep this clear to users/admins?</li>
+</ol><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-423.html?destination=node%2F108%23comment-form">Login</a> or <a href="../../../../../user/register/index-423.html?destination=node%2F108%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/108/revisions/1841/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:20:55 GMT -->
+</html>

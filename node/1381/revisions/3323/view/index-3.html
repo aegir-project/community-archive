@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/1381/revisions/3323/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:01:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../open-id-tips-and-tricks/index.html" />
+<link rel="up" href="../../../../43/index.html" />
+<link rel="next" href="../../../../20/index.html" />
+<link rel="prev" href="../../../../../open-id-tips-and-tricks/index.html" />
+<link rel="up" href="../../../../43/index.html" />
+<link rel="next" href="../../../../20/index.html" />
+<link rel="prev" href="../../../../../open-id-tips-and-tricks/index.html" />
+<link rel="up" href="../../../../43/index.html" />
+<link rel="next" href="../../../../20/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of The best recipes for disaster and how to avoid them from Sun, 04/29/2012 - 12:04 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1381" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/best-recipes-disaster-and-how-avoid-them/index.html">The best recipes for disaster and how to avoid them</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_4 first"><a href="../../../../../taxonomy/term/4/index.html" rel="tag" title="This level is for users who have access to only their sites and not able to manage all Aegir features, accounts or the server/system.">Client</a></li>
+<li class="taxonomy_term_27"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_3"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-1381'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/3/index.html" class="username" title="View user profile.">omega8cc</a> on 04/29/2012 - 12:04</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>This is a short list of all those bad things you should avoid while still learning how to use Aegir system properly, compiled from many real-world issues, so you could enjoy reading about creative ways to destroy your sites or Aegir system instead of experience it.</p><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><strong><span class='diff-added'>How to get all kinds of failed migrate or clone tasks?</span></strong><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Very easy. Simply use sites/domain-name/modules space for your code. This will guarantee many half-broken migrations with duplicates of the same site existing in two platforms, with fatal errors because some required include file in some module no longer exists, or not yet exists, as all paths to sites/domain-name/modules change on the fly when domain-name changes etc.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>No, really, don't use sites/domain-name/modules for anything and save yourself headaches and frustration.</span></p>
+
+<p><strong>How to break the site so even the Restore task will not help?</strong></p>
+
+<p>To make that happen you need to forget about correct upgrade workflow and good habits, use Backup task in Aegir to create a pseudo-safe copy of your site, upload new contrib modules to your new platform and then use Migrate task to move/upgrade your site to the new platform. To make it even worse, you could then try to use Restore task if anything went wrong with the migration and this will either fail completely or it will revert your database, but it will leave the site in the new platform – because Restore task will never move the site back to the old platform, so all your previous backups are immediately useless, and you are locked in the new platform without any chance to rollback automatically.</p>
+
+<p>OK, so what is the correct workflow for sites upgrades in Aegir? It highly depends on how you manage your code, but some general rules are always valid and we will list them below:</p>
+
+<ol>
+<li>Create or choose new platform.</li>
+<li>Upload all your contrib modules and themes to the new target platform.</li>
+<li>Re-verify the target platform in Aegir.</li>
+<li>Clone your live site with some working subdomain in the old platform.</li>
+<li>Re-verify old platform and also just cloned site.</li>
+<li>Migrate cloned site to the new platform.</li>
+<li>Check if the cloned site works without any issues.</li>
+<li>If the step 7 above works, you can safely migrate also the live site.</li>
+</ol>
+
+<p>Note: if this is a Drupal core version upgrade, it is always better to split the upgrade in two parts: first migrate to the new core, but using the same contrib modules versions, and then migrate to the final target platform with newer contrib modules. This may help if you experience failed upgrades with mysterious errors like "Call to undefined function node_types_rebuild()" without any hint on which module causes the issue.</p>
+
+<p><strong>How to break the site and lock it in the broken state in a one step?</strong></p>
+
+<p>This sounds frightfully, but it is really easy to do. All you need is to skip the steps with creating and testing the site’s clone in the existing platform first and simply use the Clone task to clone the site directly to the new platform. While this appears to be a handy shortcut, it is in fact one of the best recipes for disaster. Why? Because Aegir will not be able to properly check for all possible issues related to the contrib code and db updates to alert you before running the Clone+Migrate task. Yes, this kind of Clone task is in fact Clone and Migrate in a one step. It is very handy, but only when you already tested it with both old and new platform before. To stay safe, just avoid cloning the site to the different platform directly. Instead, clone it first in the existing platform, then migrate to the new platform, and finally re-verify it.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-389.html?destination=node%2F1381%23comment-form">Login</a> or <a href="../../../../../user/register/index-389.html?destination=node%2F1381%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/1381/revisions/3323/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:01:58 GMT -->
+</html>

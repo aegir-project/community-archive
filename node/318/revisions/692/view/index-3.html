@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/318/revisions/692/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:19:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../284/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../319/index.html" />
+<link rel="prev" href="../../../../284/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../319/index.html" />
+<link rel="prev" href="../../../../284/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../319/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="prev" href="../../../index.html" />
+<link rel="up" href="../../../index.html" />
+<link rel="next" href="../../../../320/index.html" />
+<link rel="prev" href="../../../../319/index.html" />
+<link rel="up" href="../../../index.html" />
+<link rel="next" href="../../../../322/index.html" />
+<link rel="prev" href="../../../../320/index.html" />
+<link rel="up" href="../../../index.html" />
+<link rel="next" href="../../../../323/index.html" />
+<link rel="prev" href="../../../../322/index.html" />
+<link rel="up" href="../../../index.html" />
+<link rel="next" href="../../../../325/index.html" />
+<link rel="prev" href="../../../../323/index.html" />
+<link rel="up" href="../../../index.html" />
+<link rel="next" href="../../../../324/index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Provision contexts from Mon, 02/07/2011 - 20:52 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-318" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Provision contexts</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-318'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/steven-jones/index.html" class="username" title="View user profile.">Steven Jones</a> on 02/07/2011 - 20:52</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p><em>This section is currently being written, so its probably going to be full of errors, and possibly not that useful. Feel free to edit.</em><span class='diff-changed'></span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>I'm</span> probably going to pop a nice table of contents here, for now look to the right...</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-199.html?destination=node%2F318%23comment-form">Login</a> or <a href="../../../../../user/register/index-199.html?destination=node%2F318%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-199.html?destination=node%2F318%23comment-form">Login</a> or <a href="../../../../../user/register/index-199.html?destination=node%2F318%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+<div  id="node-319" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../319/index.html">Purpose</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>Contexts are simply a way for Aegir to store certain pieces of information that it thinks may be useful later. They are named so that they can be referred to easily.</p>
+
+<p>Every server, platform and site in Aegir has an associated context. Each one of these contexts stores information about the associated entity. So, for example, a site context stores the base URI of the site. Later, the code responsible for informing the web server of the site's existence can look at this context and determine the requested URI.</p>
+
+<p>In theory contexts allow most of the back-end commands in Aegir to operate just on the name of the context. This is an important concept: the alternative would be to try to guess everything that the command being invoked might want to know and pass it in as a series of command line arguments.</p>
+
+<p>For example, the command that Aegir uses to clone a site just needs to be given the context of the site to clone and the platform to clone it to. From there the code can work out where the destination platform actually is, what servers it needs to talk to, and with what credentials.</p>
+
+<h4>Drush contexts</h4>
+
+<p>Note that Drush also has the concept of a context, but this is not to be confused with Aegir contexts which are different. Aegir contexts are closer to, and stored as, Drush 'aliases'.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-200.html?destination=node%2F319%23comment-form">Login</a> or <a href="../../../../../user/register/index-200.html?destination=node%2F319%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-200.html?destination=node%2F319%23comment-form">Login</a> or <a href="../../../../../user/register/index-200.html?destination=node%2F319%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-320" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../320/index.html">Implementation</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>Contexts are always named to start with a '@' symbol, except for in the filename of the file in which they are stored.</p>
+
+<p>Contexts in Aegir are stored as a simple array of data in a file within the backend of Aegir. However this array of data is accessed and modified with a set of objects and accessors. Here is an example of what a context file looks like:</p>
+
+<p><div class="codeblock"><code>&lt;?php<br />$aliases[&#039;hostmaster&#039;] = array (<br />&nbsp; &#039;context_type&#039; =&gt; &#039;site&#039;,<br />&nbsp; &#039;platform&#039; =&gt; &#039;@platform_hostmaster&#039;,<br />&nbsp; &#039;server&#039; =&gt; &#039;@server_master&#039;,<br />&nbsp; &#039;db_server&#039; =&gt; &#039;@server_localhost&#039;,<br />&nbsp; &#039;uri&#039; =&gt; &#039;aegir.example.com&#039;,<br />&nbsp; &#039;root&#039; =&gt; &#039;/var/aegir/hostmaster-0.4-beta2&#039;,<br />&nbsp; &#039;site_path&#039; =&gt; &#039;/var/aegir/hostmaster-0.4-beta2/sites/aegir.example.com&#039;,<br />&nbsp; &#039;site_enabled&#039; =&gt; true,<br />&nbsp; &#039;language&#039; =&gt; &#039;en&#039;,<br />&nbsp; &#039;client_email&#039; =&gt; &#039;aegir@example.com&#039;,<br />&nbsp; &#039;aliases&#039; =&gt;<br />&nbsp; array (<br />&nbsp; ),<br />&nbsp; &#039;redirection&#039; =&gt; false,<br />&nbsp; &#039;profile&#039; =&gt; &#039;hostmaster&#039;,<br />);</code></div></p>
+
+<p>These files are stored in the <code>/var/aegir/.drush</code> directory on the master Aegir server.</p>
+
+<p>In the above example we can see the properties of the context, like the 'uri' of the site, and the 'profile' that the site is running.</p>
+
+<p>There are also a number of more interesting properties in the example, note the 'db_server' property, which has a value that is another context. We shall see later that these properties are special, and allow developers to easily access functions of the 'db_server' without needing to care which db server they are talking to.</p>
+
+<p>Contexts are used within drush commands as objects, which subclass <code>provision_context</code>. This allows much more flexibility and cleverness, though can make them very confusing to use sometimes! As a developer you will only need to worry about the context objects, as Aegir handles storing them in the files for you. But it is important to note that each context must be representable in a flat text file (or be prepared to do some serious leg-work) by that I mean you probably don't want to be storing massive amounts of relational data in them, use a database for that!</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-201.html?destination=node%2F320%23comment-form">Login</a> or <a href="../../../../../user/register/index-201.html?destination=node%2F320%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-201.html?destination=node%2F320%23comment-form">Login</a> or <a href="../../../../../user/register/index-201.html?destination=node%2F320%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-322" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../322/index.html">Using contexts in your code</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>Getting the current context is really easy, just call the '<code>d</code>' accessor:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$current_context </span><span style="color: #007700">= </span><span style="color: #0000BB">d</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+What the current context is will depend on the drush command that is running and the context that was passed into that drush command. For example if you ran a site verify task, then the caller would name a site context, and thus initially calls to <code>d()</code> would return the site context. The values of the context are accessible as simple properties of this object.</p>
+
+<p>So, suppose a verify task is started for the main Aegir frontend, which has a context that is always called '@hostmaster', the drush command invocation would look like this:</p>
+
+<p><div class="codeblock"><code>drush @hostmaster provision-verify </code></div></p>
+
+<p>Then the drush command for <code>provision-verify</code> could do this:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">drush_provision_verify</span><span style="color: #007700">() {<br />&nbsp; </span><span style="color: #0000BB">$context </span><span style="color: #007700">= </span><span style="color: #0000BB">d</span><span style="color: #007700">();<br />&nbsp; </span><span style="color: #0000BB">drush_print</span><span style="color: #007700">(</span><span style="color: #DD0000">'Passed context of type: ' </span><span style="color: #007700">. </span><span style="color: #0000BB">d</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">type</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+Which would print the type of the context passed to the verify command, in this case 'site'.</p>
+
+<p>The <code>d</code> accessor is not to be feared! It is used all over the place in Aegir and if you're not sure what context you're going to get then you can always print <code>d()-&gt;name</code> and you'll get the name of the context that you're dealing with.</p>
+
+<h3>Loading a named context</h3>
+
+<p>You can pass an optional argument to the <code>d</code> accessor of the name of the context that you want. So, if you feel compelled to access a property about the main Aegir frontend site anywhere you can do this:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$hostmaster_context </span><span style="color: #007700">= </span><span style="color: #0000BB">d</span><span style="color: #007700">(</span><span style="color: #DD0000">'@hostmaster'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p>
+
+<p>though most of the time you'll be dealing with the current context, and contexts that it references.</p>
+
+<h3>'Subcontexts'</h3>
+
+<p>Here's an example context:</p>
+
+<p><div class="codeblock"><code>&lt;?php<br />$aliases[&#039;hostmaster&#039;] = array (<br />&nbsp; &#039;context_type&#039; =&gt; &#039;site&#039;,<br />&nbsp; &#039;platform&#039; =&gt; &#039;@platform_hostmaster&#039;,<br />&nbsp; &#039;server&#039; =&gt; &#039;@server_master&#039;,<br />&nbsp; &#039;db_server&#039; =&gt; &#039;@server_localhost&#039;,<br />&nbsp; &#039;uri&#039; =&gt; &#039;aegir.example.com&#039;,<br />&nbsp; &#039;root&#039; =&gt; &#039;/var/aegir/hostmaster-0.4-beta2&#039;,<br />&nbsp; &#039;site_path&#039; =&gt; &#039;/var/aegir/hostmaster-0.4-beta2/sites/aegir.example.com&#039;,<br />&nbsp; &#039;site_enabled&#039; =&gt; true,<br />&nbsp; &#039;language&#039; =&gt; &#039;en&#039;,<br />&nbsp; &#039;client_email&#039; =&gt; &#039;aegir@example.com&#039;,<br />&nbsp; &#039;aliases&#039; =&gt;<br />&nbsp; array (<br />&nbsp; ),<br />&nbsp; &#039;redirection&#039; =&gt; false,<br />&nbsp; &#039;profile&#039; =&gt; &#039;hostmaster&#039;,<br />);</code></div></p>
+
+<p>Notice that some of the properties are the name of contexts, such as 'db_server' which has a value of '@server_localhost'.</p>
+
+<p>Suppose now that I have some code that wants to get a property of the db_server associated with the @hostmaster context, I can simply do this:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$db_server_context </span><span style="color: #007700">= </span><span style="color: #0000BB">d</span><span style="color: #007700">(</span><span style="color: #DD0000">'@hostmaster'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">db_server</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">// $db_server_context is now a fully populated context object, not the string '@server_localhost'<br /></span><span style="color: #0000BB">drush_print</span><span style="color: #007700">(</span><span style="color: #DD0000">'DB server on port: . $db_server_context-&gt;db_port);<br />?&gt;</span></span></code></div></p>
+
+<p>The <code>provisionContext</code> object will return full context objects for properties that store the names of other contexts. The how and why of determining which to return as strings and which to return as a context object will be covered later. It is entirely possible to have the name of a context stored as a property in a context, that when accessed returns the string, rather than the context named in the string.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-202.html?destination=node%2F322%23comment-form">Login</a> or <a href="../../../../../user/register/index-202.html?destination=node%2F322%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-202.html?destination=node%2F322%23comment-form">Login</a> or <a href="../../../../../user/register/index-202.html?destination=node%2F322%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-323" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../323/index.html">Properties and services</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>Services are the way in which new properties are added to contexts, in fact if you wish to indicate you want to store additional properties in a context, this must be done by a service. There is no other way to store data in a context. One might assume that you can just ask provision to save an additional value on a context, but this will not work, and you'll probably get very frustrated indeed!</p>
+
+<p>For example, the <code>provisionService_pdo</code> service adds a 'master_db' property to the server context, it does this in a method thus:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">init_server</span><span style="color: #007700">() {<br />&nbsp; </span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">init_server</span><span style="color: #007700">();<br />&nbsp; </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setProperty</span><span style="color: #007700">(</span><span style="color: #DD0000">'master_db'</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p>
+
+<p>This means that the 'master_db' property can now be set in a provison-save drush command, and will be persisted when the context is saved.</p>
+
+<p>A service may also define properties on the context as actually representing another context, so that you may access that subcontext directly. You can see an example of using this subcontext in the 'Implementation' section of this Provision Contexts guide, but the an example of how you let provision know that a property name is not just a string, but a named context is with a method on the service:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />&nbsp; </span><span style="color: #FF8000">/**<br />&nbsp;&nbsp; * Register the http handler for platforms, based on the web_server option.<br />&nbsp;&nbsp; */<br />&nbsp; </span><span style="color: #007700">static function </span><span style="color: #0000BB">subscribe_platform</span><span style="color: #007700">(</span><span style="color: #0000BB">$context</span><span style="color: #007700">) {<br />&nbsp;&nbsp;&nbsp; </span><span style="color: #0000BB">$context</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setProperty</span><span style="color: #007700">(</span><span style="color: #DD0000">'web_server'</span><span style="color: #007700">, </span><span style="color: #DD0000">'@server_master'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp; </span><span style="color: #0000BB">$context</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">is_oid</span><span style="color: #007700">(</span><span style="color: #DD0000">'web_server'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp; </span><span style="color: #0000BB">$context</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">service_subscribe</span><span style="color: #007700">(</span><span style="color: #DD0000">'http'</span><span style="color: #007700">, </span><span style="color: #0000BB">$context</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">web_server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name</span><span style="color: #007700">);<br />&nbsp; }<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+Here the <code>provisionService_http</code> is being asked to 'subscribe' to a platform, it sets a property on the context, as above, but additionally uses the <code>is_oid()</code> method to indicate that the property is a named context. It then uses that immediately when it gets the name of the web_server context: <code>$context-&gt;web_server-&gt;name</code>. We'll worry about what 'subscribing' to a platform means later,.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-203.html?destination=node%2F323%23comment-form">Login</a> or <a href="../../../../../user/register/index-203.html?destination=node%2F323%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-203.html?destination=node%2F323%23comment-form">Login</a> or <a href="../../../../../user/register/index-203.html?destination=node%2F323%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-325" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../325/index.html">Using services from contexts</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>This is stub page that will describe the way that you can use the <code>service()</code> method on a context.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-204.html?destination=node%2F325%23comment-form">Login</a> or <a href="../../../../../user/register/index-204.html?destination=node%2F325%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-204.html?destination=node%2F325%23comment-form">Login</a> or <a href="../../../../../user/register/index-204.html?destination=node%2F325%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/318/revisions/692/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:19:58 GMT -->
+</html>

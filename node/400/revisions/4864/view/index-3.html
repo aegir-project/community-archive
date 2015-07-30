@@ -1,0 +1,485 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/400/revisions/4864/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:57:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/installing/system-requirements/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../content/installing/debian/automatic-installation-ubuntu-1104-quickstart/index.html" />
+<link rel="prev" href="../../../../../content/installing/system-requirements/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../content/installing/debian/automatic-installation-ubuntu-1104-quickstart/index.html" />
+<link rel="prev" href="../../../../../content/installing/system-requirements/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../content/installing/debian/automatic-installation-ubuntu-1104-quickstart/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="prev" href="../../../../../installing/debian/index.html" />
+<link rel="up" href="../../../../../installing/debian/index.html" />
+<link rel="next" href="../../../../../installing/manual/index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Automatic install on Debian from Sat, 05/11/2013 - 08:38 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-400" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../installing/debian/index.html">Automatic install on Debian</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-400'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 05/11/2013 - 08:38</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>These are the installation instructions that are recommended on Debian. Aegir dependencies (Apache, MySQL, PHP...) are also automatically installed. If you are managing the installation from a remote Windows computer, well-known open source tools for this task are for example <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTY</a> (<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html">a SSH client for command line</a>), and <a href="http://winscp.net/eng/download.php">WinSCP</a> (<a href="http://winscp.net/eng/docs/start">a SFTP client with easy text file editing</a>).</p>
+
+<p>If you wish to install Debian packages over an existing manual install, it's possible. See <a href="../../../../../upgrading/debian/index.html">the Debian upgrade procedures</a>.</p>
+
+<p>Debian packages are uploaded to <a href="http://debian.aegirproject.org/" title="http://debian.aegirproject.org/">http://debian.aegirproject.org/</a> shortly after a release. We eventually want to upload those packages to the official archives, but this will take some adaptation and time to sponsor the packages in.</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Adding_the_project_repositories"><span class="toc-number">1. </span>Adding the project repositories</a></li>
+	<li class="toc-level-1"><a href="#Adding_the_archive_key_to_your_keyring"><span class="toc-number">2. </span>Adding the archive key to your keyring</a></li>
+	<li class="toc-level-1"><a href="#Adding_backports_for_or_manually_installing_Drush"><span class="toc-number">3. </span>Adding backports for or manually installing Drush</a></li>
+	<li class="toc-level-1"><a href="#DNS_configuration"><span class="toc-number">4. </span>DNS configuration</a></li>
+	<li class="toc-level-1"><a href="#Manual_sudo_configuration"><span class="toc-number">5. </span>Manual sudo configuration</a></li>
+	<li class="toc-level-1"><a href="#Manual_installation_of_MySQL_on_Ubuntu_12.04_LTS"><span class="toc-number">6. </span>Manual installation of MySQL (on Ubuntu 12.04 LTS)</a></li>
+	<li class="toc-level-1"><a href="#Installing_Aegir"><span class="toc-number">7. </span>Installing Aegir</a></li>
+	<li class="toc-level-1"><a href="#Custom_Drupal_distributions_and_make_files"><span class="toc-number">8. </span>Custom Drupal distributions and make files</a></li>
+	<li class="toc-level-1"><a href="#Troubleshooting_the_install"><span class="toc-number">9. </span>Troubleshooting the install</a></li>
+</ol>
+</div>
+</div>
+
+<h2 id="Adding_the_project_repositories">1. Adding the project repositories</h2>
+
+<p>Use this command to add the Aegir package "Software Source" repository to your system:</p>
+
+<p><div class="codeblock"><code>echo &quot;deb <a href="http://debian.aegirproject.org/" title="http://debian.aegirproject.org">http://debian.aegirproject.org</a> stable main&quot; | sudo tee -a /etc/apt/sources.list.d/aegir-stable.list</code></div></p>
+
+<p>To install a customized Debian package, see the <a href="../../../../../debian/index.html">developer instructions for the debian package</a>. Other distributions are available for courageous people that want to try development versions.</p>
+
+<p><strong>2.x note</strong>: to install the development version of Aegir, you will need to use the <code>unstable</code> distribution above.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Adding_the_archive_key_to_your_keyring">2. Adding the archive key to your keyring</h2>
+
+<p>This repository self-signs packages uploaded to it (and packages uploaded are verified against a whitelist of trusted uploaders) using OpenPGP (GnuPG, to be more precise).</p>
+
+<p>Use these commands to download and add the repository's PGP key, then update the package list on your system:</p>
+
+<p><div class="codeblock"><code>wget -q <a href="http://debian.aegirproject.org/key.asc" title="http://debian.aegirproject.org/key.asc">http://debian.aegirproject.org/key.asc</a> -O- | sudo apt-key add -<br />sudo apt-get update</code></div></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Adding_backports_for_or_manually_installing_Drush">3. Adding backports for or manually installing Drush</h2>
+
+<p>If you are running <strong>Debian wheezy</strong> or later, or <strong>Ubuntu Natty 11.04</strong> or later, <strong>you don't need to do anything here</strong>. The Drush package you need is available from your distribution's repositories.</p>
+
+<p>If not, you should also configure <a href="http://backports.debian.org/">backports</a> repositories for Drush. Version 4.4 of Drush is now in Debian <a href="http://packages.debian.org/sid/drush">unstable</a>, <a href="http://packages.debian.org/wheezy/drush">wheezy</a>, <a href="http://packages.debian.org/squeeze-backports/drush">squeeze-backports</a> and <a href="http://packages.ubuntu.com/natty/drush">Ubuntu Natty</a>.</p>
+
+<p><strong>1.x note</strong>: if you are running <strong>Debian Squeeze 6.0</strong>, add the following line to /etc/apt/sources.list :</p>
+
+<p><div class="codeblock"><code>deb <a href="http://backports.debian.org/debian-backports" title="http://backports.debian.org/debian-backports">http://backports.debian.org/debian-backports</a> squeeze-backports main</code></div></p>
+
+<p>You might also have to add a proper Pin-Priority before this works. Create a file called <strong>drush</strong> containing the following and drop it into /etc/apt/preferences.d:
+<div class="codeblock"><code>Package: drush<br />Pin: release a=squeeze-backports<br />Pin-Priority: 1001</code></div></p>
+
+<p><strong>2.x note</strong>: if you are running <strong>Debian Squeeze 6.0</strong>, to get drush-5.8.x and <span class='diff-changed'>above, </span><span class='diff-deleted'></span><a href="http://ftp.debian.org/debian/pool/main/p/php-console-table/php-console-table_1.1.4-1_all.deb">download <span class='diff-added'></span><a href="http://ftp.debian.org/debian/pool/main/p/php-console-table/php-console-table_1.1.4-1_all.deb">php-console-table</a> manually and install it</p>
+
+<p><div class="codeblock"><code><span class='diff-added'>wget &quot;http://ftp.debian.org/debian/pool/main/p/php-console-table/php-console-table_1.1.4-1_all.deb&quot;</span><br />dpkg -i php-console-table_1.1.4-1_all.deb</code></div></p>
+
+<p>You do not need to edit /etc/apt/sources.list or create /etc/apt/preferences.d/drush</p>
+
+<p>Then run:
+<div class="codeblock"><code>sudo apt-get update &amp;&amp; sudo apt-get install drush</code></div></p>
+
+<p>If you are running <strong>Debian lenny 5.0</strong> or <strong>Ubuntu Maverick 10.10</strong> or Karmic Koala or earlier, we recommend downloading and installing the Drush package <a href="http://packages.debian.org/wheezy/all/drush/download">manually</a>.  The version of Drush in the Ubuntu Universe repository for these versions of Ubuntu is outdated.  If you are using <strong>Ubuntu Lucid LTS 10.04</strong>, you can install the Drush package manually or instead use <a href="https://launchpad.net/~brianmercer/+archive/drush">Brian Mercer's PPA</a> (Personal Package Archive) using the following command:</p>
+
+<p><div class="codeblock"><code>sudo apt-get install python-software-properties<br />sudo add-apt-repository ppa:brianmercer/drush</code></div></p>
+
+<p>Now run apt-get update again to refresh the apt database.</p>
+
+<p><div class="codeblock"><code>sudo apt-get update</code></div></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="DNS_configuration">4. DNS configuration</h2>
+
+<p>Aegir requires a properly configured "FQDN" (Fully Qualified Domain Name) be assigned to the machine. In practice, this means that the hostname returned by the <code>hostname -f</code> and <code>uname -n</code> shell commands should resolve to the IP address for this server, and vice versa, with the <code>resolveip</code> command (included with the mysql-server package).</p>
+
+<p>To set this up in a virtual machine (e.g. Virtualbox), here are the steps:</p>
+
+<ol>
+<li>Create a new VM</li>
+<li>Go to settings-&gt;network.  Enable Adapter 2, and set to "host-only"</li>
+<li>Install Ubuntu.  Set hostname as FQDN during install</li>
+<li>You may need to add the lines `auto eth1` and `iface eth1 inet dhcp` to /etc/network/interfaces</li>
+</ol>
+
+<p>If you have a virtual machine already setup and want to change the FDQN:</p>
+
+<ol>
+<li>change /etc/hostname using: `sudo hostname NEW_NAME`</li>
+<li>change /etc/hosts using: `sudo nano /etc/hosts` and change name</li>
+<li>reboot and test `hostname -f`, `uname -n`, `resolveip NEW_NAME`, `resolveip IP`</li>
+<li><a href="http://www.ducea.com/2006/08/07/how-to-change-the-hostname-of-a-linux-system/">YMMV - Your Mileage May Vary</a></li>
+</ol>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Manual_sudo_configuration">5. Manual sudo configuration</h2>
+
+<p>If you are running <strong>Debian squeeze</strong> or later, or <strong>Ubuntu Lucid 11.04</strong> or later, <strong>you don't need to do anything here</strong>. The Aegir package configures sudoers automatically.</p>
+
+<p>If not, you will need to manually modify your /etc/sudoers file to add the following line:</p>
+
+<p><div class="codeblock"><code>echo &quot;aegir ALL=NOPASSWD: /usr/sbin/apache2ctl&quot; | sudo tee -a /etc/sudoers</code></div></p>
+
+<p>The line above assumes that you have created a user aegir as specified in the installation instructions.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Manual_installation_of_MySQL_on_Ubuntu_12.04_LTS">6. Manual installation of MySQL (on Ubuntu 12.04 LTS)</h2>
+
+<p>Please note that Ubuntu 12.04 LTS installs, by default, an insecure MySQL installation that contains an anonymous user grant, allowing anyone to login without a password. This breaks Aegir functionality.</p>
+
+<p>If you are running Ubuntu 12.04, you should install MySQL manually, and then ensure it is installed securely:</p>
+
+<p><div class="codeblock"><code>sudo apt-get install mysql-server<br />sudo mysql_secure_installation</code></div></p>
+
+<p>When running 'sudo mysql_secure_installation', answer 'Y' to 'Remove anonymous users?'</p>
+
+<p><div class="codeblock"><code>By default, a MySQL installation has an anonymous user, allowing anyone<br />to log into MySQL without having to have a user account created for<br />them.&nbsp; This is intended only for testing, and to make the installation<br />go a bit smoother.&nbsp; You should remove them before moving into a<br />production environment.<br /><br />Remove anonymous users? [Y/n] Y<br /> ... Success!</code></div></p>
+
+<p>Now you can proceed with installing Aegir below.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Installing_Aegir">7. Installing Aegir</h2>
+
+<p>To install aegir, frontend and backend, use the following command:
+<div class="codeblock"><code>sudo apt-get install aegir</code></div></p>
+
+<p><strong>2.x note</strong>: to install the development version of Aegir, use <code>sudo apt-get install aegir2</code> instead.</p>
+
+<p>If apt-get reports that the aegir packages have unmet dependencies, then make sure that you have installed Drush (as explained above).  On a debian system, you can force the install of Drush from the squeeze-backports repository:</p>
+
+<p><div class="codeblock"><code>sudo apt-get -t squeeze-backports install drush</code></div></p>
+
+<p>Then install aegir using the apt-get command above.</p>
+
+<p>This will prompt you for the required information (MySQL password, Postfix configuration...) and go ahead with the install.</p>
+
+<p>During the Postfix configuration, the following options appear: "No configuration, Internet site, Internet with smarthost, Satellite system, Local only". That first text screen only allows to use the tab key to select "OK", and then the enter key to display a second screen where you can select one of the choices. The default is "Internet site", useful in most cases to enable the server to send email messages, for example to the admin.</p>
+
+<p>At the end of the installation, you will receive an email message or, if the user "aegir" has been assigned with a local email account during the installation, the file /var/mail/aegir will contain the message. It will include a one-time login to your new Aegir control panel, that is a URL to copy into your browser so that you can set the password for the "admin" user.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Custom_Drupal_distributions_and_make_files">8. Custom Drupal distributions and make files</h2>
+
+<p>If you have your own Drupal make file, you can go ahead with the above process, but change the make file to the one you want:</p>
+
+<pre><code>echo debconf aegir/makefile string /var/aegir/makefiles/aegir/aegir-custom.make | debconf-set-selections
+apt-get install aegir
+</code></pre>
+
+<p>This allows you to specify the makefile path for your custom distribution of Aegir. To maintain these customizations, you'll need to ensure you do the same when upgrading.</p>
+
+<p>An example aegir-custom.make file could look like:</p>
+
+<p><div class="codeblock"><code>core = 6.x<br />api = 2<br /><br />includes[aegir] = &quot;/usr/share/drush/commands/provision/aegir.make&quot;<br /><br />projects[] = module_filter</code></div></p>
+
+<p>Note that for this to work, you may need the patch from <a href="http://drupal.org/node/1118616">this issue</a>, allowing drush_make to reference absolute system paths.  If <code>drush make --version</code> &lt;= 2.2 you need this patch.</p>
+
+<p>After installing Aegir, you can reinstall the front end (hostmaster), with following commands:
+<div class="codeblock"><code>sudo rm -rf /var/aegir/hostmaster-&#42;.&#42;<br />sudo su -s /bin/sh aegir -c &quot;drush -y hostmaster-install --aegir_db_pass=$DB_PASSWORD --makefile=$MAKEFILE $DOMAIN&quot;</code></div>
+<code>su -s /bin/sh aegir -c "some command"</code> runs <code>some command</code> in the <code>/bin/sh</code> shell as user <code>aegir</code>.  <code>sudo</code> runs the <code>su</code> command as root - prompting for your user's password instead <code>su</code> asking for aegir's password.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Troubleshooting_the_install">9. Troubleshooting the install</h2>
+
+<p>To make the install smoother, the install command is run without much debugging information, which can make diagnostics pretty hard. For this, there's a special environment variable you can set that will trigger debugging output. Install aegir with this*:</p>
+
+<p><div class="codeblock"><code>env DPKG_DEBUG=developer apt-get install aegir</code></div></p>
+
+<p>You can build your own Debian packages from our repositories using <a href="../../../../543/index.html">those instructions</a>.</p>
+
+<p><em>Note: Prior to 1.1-4.</em> the command was <code>env DEBUG=yes apt-get install aegir</code></p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-296.html?destination=node%2F400%23comment-form">Login</a> or <a href="../../../../../user/register/index-296.html?destination=node%2F400%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+
+<div  id="node-1080" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/installing/debian/automatic-installation-ubuntu-1104-quickstart/index.html">Automatic Installation on Ubuntu 11.04+ (QuickStart)</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_50 first"><a href="../../../../../category/keywords/install/index.html" rel="tag" title="">Install</a></li>
+<li class="taxonomy_term_70"><a href="../../../../../category/keywords/installation-ubuntu/index.html" rel="tag" title="">installation ubuntu</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><p>Here are simplified instructions for installing Aegir on a server, quickly and easily.</p>
+
+<p>The fastest way to install Aegir is on the latest Ubuntu Server LTS (Long Term Support). <em>Currently 12.04</em>.</p>
+
+<h1>Command Summary</h1>
+
+<p>Here is every command, ready to copy and paste.</p>
+
+<p><div class="codeblock"><code>sudo su<br />echo &quot;deb <a href="http://debian.aegirproject.org/" title="http://debian.aegirproject.org">http://debian.aegirproject.org</a> stable main&quot; | tee -a /etc/apt/sources.list.d/aegir-stable.list<br />wget -q <a href="http://debian.aegirproject.org/key.asc" title="http://debian.aegirproject.org/key.asc">http://debian.aegirproject.org/key.asc</a> -O- | apt-key add -<br />apt-get update<br />apt-get install aegir</code></div></p>
+
+<p>It is highly recommended to read through the <strong>Installation Instructions</strong> step by step to give yourself the feel for how this is done.  In addition, if you are not already familiar in Linux system administration, please read up on the subject.  Standard linux security protocols should be followed.</p>
+
+<h1>Installation Instructions</h1>
+
+<p>Enter all commands in <code>code boxes</code> exactly as they are written.</p>
+
+<p>ALL commands should be entered as <code>root</code> user until these instructions are complete.  After that, you should never have to use the root user.</p>
+
+<p>Self-installation of Ubuntu has you create an additional user in the <code>admin</code> group, which means they can sudo.  If you are using a cloud hosting service, it likely just sent you root user credentials.  <em>Server security and user management is up to you.  Don't give away access to root or the aegir user unless you know what you are doing.  Follow standard web host best practices</em></p>
+
+<p>For a summary of all needed commands, scroll to the bottom of the page.</p>
+
+<ol>
+<li><h2>Fire up a new server</h2>
+
+<ul>
+<li>Use <strong>Ubuntu 11.04 Server Edition</strong> for the smoothest and most reliable installation experience.  </li>
+<li>Make sure it has at least 1024MB, preferably 2048MB of memory.  Depending on your host you will have to configure a hostname.  It can be convenient to call this 'aegir'.</li>
+<li>If you want the smoothest installation, create a brand new server.  There will be the least chance of conflicts if you start with a brand new <strong>Ubuntu 11.04</strong> server.  If you use Ubuntu Desktop, you should be able follow these instructions without any problems.</li>
+<li><em>Run all commands as root.  If you are not root, enter</em>
+<div class="codeblock"><code>sudo su</code></div></li>
+</ul></li>
+<li><h2>Add the project repositories and archive key</h2>
+
+<p>Use this command to add the Aegir package "Software Source" repository to your system:
+<div class="codeblock"><code>echo &quot;deb <a href="http://debian.aegirproject.org/" title="http://debian.aegirproject.org">http://debian.aegirproject.org</a> stable main&quot; | tee -a /etc/apt/sources.list.d/aegir-stable.list</code></div>
+Use this command to add the archive key to your keyring:
+<div class="codeblock"><code>wget -q <a href="http://debian.aegirproject.org/key.asc" title="http://debian.aegirproject.org/key.asc">http://debian.aegirproject.org/key.asc</a> -O- | apt-key add -</code></div>
+Then, finally, update your apt repositories:
+<div class="codeblock"><code>apt-get update</code></div></p></li>
+<li><h2>Install configure Aegir and dependencies</h2>
+
+<p>Once you have added the repositories, you can now fire off the standard debian installation command. For Aegir 1.x, the command is:
+<div class="codeblock"><code>apt-get install aegir</code></div>
+For Aegir 2.x, the command is:
+<div class="codeblock"><code>apt-get install aegir2</code></div>
+This fires off the installation script for AEgir, along all dependencies including Apache, MySQ and PHP.  You will be asked a number of questions about your server.</p>
+
+<ul>
+<li>You will be asked to create a <em>MySQL root user password</em>.  Make this long and random and type it down somewhere safe, you won't need it very often, but you will need it later on in the installation process.</li>
+<li>In <em>Postfix Configuration</em>:  Choose Internet Site, unless you have a reason otherwise.  When asked for the <em>System mail name</em>, pick either the hostname (default) or the domain name you will be hosting this server on.</li>
+<li>In <em>Configure aegir-hostmaster</em>, you will be asked to choose a "URL of the hostmaster frontend".  This should be either the hostname (default) or the domain name the server will be hosting, with "aegir" as a subdomain.  For example, "aegir.example.com".  You may want to change this to whatever you prefer, just don't forget it as it will be where you use the Aegir front-end.</li>
+<li>After entering your domain, Aegir Hostmaster installation will ask you for the MySQL root password you created earlier.  You did write it down, didn't you?<br />
+<strong>NOTE:</strong> The current DEB package requires you to enter the MySQL root password twice.
+When this script is done, if everything went ok, after a lot of other interesting information, you should see this:
+<div class="codeblock"><code>Aegir is now installed. You can visit it at <a href="http://test/user/reset/1/1329504351/eda205d9a27abde400a27cf160dff69a<br />************************************************************************<br />Aegir" title="http://test/user/reset/1/1329504351/eda205d9a27abde400a27cf160dff69a<br />************************************************************************<br />Aegir">http://test/user/reset/1/1329504351/eda205d9a27abde400a27cf160dff69a<br />***...</a> frontend bootstrap correctly, operation was a success!<br />Setting up aegir (1.6-1) ...<br />Setting up libhtml-template-perl (2.9-2) ...<br />Setting up mysql-server (5.1.54-1ubuntu4) ...<br />Setting up php5 (5.3.5-1ubuntu7.7) ...<br />Processing triggers for libc-bin ...<br />ldconfig deferred processing now taking place<br />root@test:~# </code></div></li>
+</ul>
+
+<p>At this point, everything is installed.  Visit the link the script provided you to check out the frontend.  Switch to the <code>aegir</code> user to check out the backend:
+<div class="codeblock"><code>su - aegir</code></div></p>
+
+<p>Once you are the aegir user, check out the drush site aliases  it gives you. <code>@hostmaster</code> is the alias for the new front-end you created.  You will get new site aliases for every platform and site you create.
+<div class="codeblock"><code>drush site-aliases</code></div></p></li>
+<li><h2>Give yourself access to the server</h2>
+
+<p>As the "Administrators Manual" can tell you, you should only manage the Aegir server from the backend as the <code>aegir</code> user.</p>
+
+<p>However, by default, the <code>aegir</code> user cannot sudo (except to restart apache).  The aegir user also does not have a password.  Therefor, the only way to become aegir is to <code>sudo su - aegir</code> from a user that can.</p>
+
+<p>So, to finish the server, you should give yourself a personal account that you can use to login to the server with a password in case all of your SSH keys get lost.</p>
+
+<p>To add yourself as a user:
+<div class="codeblock"><code>adduser yourname</code></div>
+Then fill out the little wizard it gives you.</p>
+
+<p>//@TODO: Add some helpful notes about SSH keys and remote aliases.</p>
+
+<p>Install SSH on your server, generating your SSH keys and install them on your Ubuntu server. (Directions to generate your SSH keys are assuming your PC is Ubuntu as well, Windows users look below for SSH directions)</p>
+
+<ul>
+<li>Tutorial: <a href="https://help.ubuntu.com/11.04/serverguide/C/openssh-server.html" title="https://help.ubuntu.com/11.04/serverguide/C/openssh-server.html">https://help.ubuntu.com/11.04/serverguide/C/openssh-server.html</a></li>
+</ul>
+
+<p>If using Windows, you must use Putty, PuttyGen, and PuttyPageant to generate and use your SSH keys.</p>
+
+<ul>
+<li>Tutorial #1: <a href="http://the.earth.li/~sgtatham/putty/0.53b/htmldoc/Chapter8.html" title="http://the.earth.li/~sgtatham/putty/0.53b/htmldoc/Chapter8.html">http://the.earth.li/~sgtatham/putty/0.53b/htmldoc/Chapter8.html</a></li>
+<li>Tutorial #2: <a href="http://www.howtoforge.com/ssh_key_based_logins_putty" title="http://www.howtoforge.com/ssh_key_based_logins_putty">http://www.howtoforge.com/ssh_key_based_logins_putty</a></li>
+</ul>
+
+<p>You will want to also be a part of the aegir and www-data groups so you can write to some of their files:
+<div class="codeblock"><code>addgroup yourname aegir<br />addgroup yourname www-data</code></div></p></li>
+<li><h2>Start Using!</h2>
+
+<p>Now that aegir is installed, head to the  <a href="../../../../../using/index.html">User Manual</a> page to get your first platform and site up and running.</p></li>
+</ol>
+
+<h1>Credits</h1>
+
+<p><em>This document was originally based on <a href="../../../../../installing/debian/index.html" title="http://community.aegirproject.org/installing/debian">http://community.aegirproject.org/installing/debian</a> but has been trimmed down to list only the steps you need to use on an Ubuntu server to get Aegir up and running as quickly and easily as possible.</em></p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-391.html?destination=node%2F1080%23comment-form">Login</a> or <a href="../../../../../user/register/index-391.html?destination=node%2F1080%23comment-form">register</a> to post comments</span></li>
+<li class="talk_comments last"><a href="../../../../1080/talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+
+<div id="comments">
+  <a id="comment-1857"></a>
+
+
+<div  id="comment-1857" class="comment comment-published clear-block decay-10 decay-10">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/mccrodp/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="mccrodp&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/mccrodp/index.html" class="username" title="View user profile.">mccrodp</a></div><div class='date'>4:26pm Feb 21, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1857">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>On Squeeze, I tried to install aegir2, but have some dependency errors, firstly stating I need hostmaster2 and provision2, then stating I need drush5.5 or greater. I have installed drush5.8 using php-pear package, but apt-get mustn't know about this.</p>
+
+<ul>
+<li>What is the 2.x procedure for the automatic installation? </li>
+<li>Is there a method to add a higher version of drush than 4.5 to squeeze-backports so that apt-get knows the correct drush version? </li>
+</ul>
+
+<p>I thought that running 'apt-get install aegir2' would have picked up the correct hostmaster and provision (aegir-provision2 and aegir-hostmaster2), as I think it does for 'apt-get install aegir'.</p>
+
+<p><div class="codeblock"><code>root@aegir2:~# apt-get install aegir2<br />Reading package lists... Done<br />Building dependency tree&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />Reading state information... Done<br />Some packages could not be installed. This may mean that you have<br />requested an impossible situation or if you are using the unstable<br />distribution that some required packages have not yet been created<br />or been moved out of Incoming.<br />The following information may help to resolve the situation:<br /><br />The following packages have unmet dependencies:<br /> aegir2 : Depends: aegir-provision2 (&gt;= 2.0~alpha1) but it is not going to be installed<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Depends: aegir-hostmaster2 (&gt;= 2.0~alpha1) but it is not going to be installed<br />E: Broken packages<br />root@aegir2:~# apt-get install aegir-provision2 aegir-hostmaster2<br />Reading package lists... Done<br />Building dependency tree&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />Reading state information... Done<br />Some packages could not be installed. This may mean that you have<br />requested an impossible situation or if you are using the unstable<br />distribution that some required packages have not yet been created<br />or been moved out of Incoming.<br />The following information may help to resolve the situation:<br /><br />The following packages have unmet dependencies:<br /> aegir-hostmaster2 : Depends: drush (&gt;= 5.5) but 4.5-2~bpo60+1 is to be installed<br /> aegir-provision2 : Depends: drush (&gt;= 5.5) but 4.5-2~bpo60+1 is to be installed<br />E: Broken packages</code></div></p>
+
+<p>Thanks in advance for any help with this.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-296.html?destination=node%2F400%23comment-form">Login</a> or <a href="../../../../../user/register/index-296.html?destination=node%2F400%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-1859"></a>
+
+
+<div  id="comment-1859" class="comment comment-published clear-block decay-9 decay-9">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/helmo/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="helmo&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/helmo/index.html" class="username" title="View user profile.">helmo</a></div><div class='date'>8:50am Feb 22, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1859">#2</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>@mccrodp: I had a similar experiance, and opend this issue: <a href="http://drupal.org/node/1920152" title="http://drupal.org/node/1920152">http://drupal.org/node/1920152</a></p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-296.html?destination=node%2F400%23comment-form">Login</a> or <a href="../../../../../user/register/index-296.html?destination=node%2F400%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-1936"></a>
+
+
+<div  id="comment-1936" class="comment comment-published clear-block decay-7 decay-7">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/jonpugh/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="jonpugh&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/jonpugh/index.html" class="username" title="View user profile.">jonpugh</a></div><div class='date'>12:03am May 16, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1936">#3</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Would it be possible to add "profile" as an option, just like "makefile"?</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-296.html?destination=node%2F400%23comment-form">Login</a> or <a href="../../../../../user/register/index-296.html?destination=node%2F400%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<div class="indented"><a id="comment-1939"></a>
+
+
+<div  id="comment-1939" class="comment comment-published clear-block decay-7 decay-7">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/helmo/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="helmo&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/helmo/index.html" class="username" title="View user profile.">helmo</a></div><div class='date'>7:21am May 17, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1939">#4</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Sure. It would have to be added to the drush hostmaster-install and possibly hostmaster-migrate commands. Feel free to open an issue. Patches welcome ;)</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-296.html?destination=node%2F400%23comment-form">Login</a> or <a href="../../../../../user/register/index-296.html?destination=node%2F400%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div><a id="comment-1947"></a>
+
+
+<div  id="comment-1947" class="comment comment-published clear-block decay-7 decay-7">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/willmoy/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="willmoy&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/willmoy/index.html" class="username" title="View user profile.">willmoy</a></div><div class='date'>10:28pm May 21, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1947">#5</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Thanks to jonpugh @ #32 and #33 for helping me get aegir 1.9 going with a fresh install of Debian Wheezy. The default wheezy version of drush is now too new (v5.x) for aegir 1.x. You need version 4.x, available in squeeze-backports. If you've already tried to install and run into "The drush command '@hostmaster status' could not be found." you must purge aegir and drush before attempting to reinstall with the correct drush version pinned.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-296.html?destination=node%2F400%23comment-form">Login</a> or <a href="../../../../../user/register/index-296.html?destination=node%2F400%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2229"></a>
+
+
+<div  id="comment-2229" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/ygerasimov/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="ygerasimov&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/ygerasimov/index.html" class="username" title="View user profile.">ygerasimov</a></div><div class='date'>7:39am Jan 21, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-2229">#6</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>I had problem installing aegir2 on debian 7. Warning was</p>
+
+<p>ERROR: Module ssl does not exist!</p>
+
+<p>This can be solved with enabling mod_ssl on your apache2. For my case I needed to create /etc/apache2/mods-available/ssl.load with content</p>
+
+<p>LoadModule ssl_module /usr/lib/apache2/modules/mod_ssl.so</p>
+
+<p>After creating that file and restarting apache enable module sudo a2enmod ssl.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-296.html?destination=node%2F400%23comment-form">Login</a> or <a href="../../../../../user/register/index-296.html?destination=node%2F400%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/400/revisions/4864/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:57:31 GMT -->
+</html>

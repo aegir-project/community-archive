@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/544/revisions/1408/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:17:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../1/index-15.html" />
+<link rel="up" href="../../../../../10-release-candidate/index.html" />
+<link rel="next" href="../../../../../1/index-17.html" />
+<link rel="prev" href="../../../../../1/index-15.html" />
+<link rel="up" href="../../../../../10-release-candidate/index.html" />
+<link rel="next" href="../../../../../1/index-17.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of 1.0-rc4 release notes from Wed, 04/06/2011 - 01:41 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-544" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../1/index-16.html">1.0-rc4 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_4 first"><a href="../../../../../taxonomy/term/4/index.html" rel="tag" title="This level is for users who have access to only their sites and not able to manage all Aegir features, accounts or the server/system.">Client</a></li>
+<li class="taxonomy_term_3"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-544'><p>The Aegir team is very pleased to announce the fourth release candidate of Aegir 1.0!</p>
+
+<p>We have again found critical issues in rc3, detailed below, and a few key features that we wanted to slip into 1.0 that were just low-hanging fruits that deserved to be released. We hope this release candidate will be all shiny and without any critical issues so we can release it as 1.0.</p>
+
+<h2>Key changes in 1.0-rc4</h2>
+
+<ul>
+<li>There is now a <code>~/clients</code> directory in which symlink are automatically created to allow easy access to all your client sites (<a href="http://drupal.org/node/1115960">#1115960</a>)</li>
+<li>A variable is now set in <code>settings.php</code> (<code>aegir_api</code>) to allow contrib modules to inspect what Aegir version they are dealing with, if any. The setting is removed on export, that is, if dbcloaking is off (<a href="http://drupal.org/node/1027358">#1027358</a></li>
+<li>We fixed a big regression where the mass migrate form stopped working in rc3 (<a href="http://drupal.org/node/1111532">#1111532</a>)</li>
+<li>The <code>private</code> directory of Drupal 7 is now properly protected (<a href="http://drupal.org/node/1108810">#1108810</a>)</li>
+</ul>
+
+<h2>New features</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/1115960">#1115960: Moving a site between platforms causes confusion</a></li>
+<li><a href="http://drupal.org/node/1027358">#1027358: Set a variable in settings.php so that modules can check whether the site is in Aegir</a></li>
+<li><a href="http://drupal.org/node/1111932">#1111932: Move the suggestion of a client title into it's own function (for use when creating clients programatically)</a></li>
+</ul>
+
+<h2>Bug fixes</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/1111532">#1111532: Mass Migrate fails in Aegir 1.0 RC3</a> - regression from rc2 caused by the security fix below</li>
+<li><a href="http://drupal.org/node/1117296">#1117296: cross site request forgery issue in tasks</a> - was fixed again due to the above regression</li>
+<li><a href="http://drupal.org/node/1108810">#1108810: Files in sites/example.org/private are accessible.</a></li>
+<li><a href="http://drupal.org/node/1102620">#1102620: provision-deploy fails silently on unavailable database</a></li>
+<li><a href="http://drupal.org/node/1111572">#1111572: Undefined index: profiles deploy.provision.inc:84</a></li>
+</ul>
+
+<h2>Need help?</h2>
+
+<p>If you struggle to install or upgrade your Aegir system, you have a number of options available to you for getting help.</p>
+
+<p>Consult this page for more information: <a href="../../../../../help/index.html" title="http://community.aegirproject.org/help">http://community.aegirproject.org/help</a></p>
+
+<p>Thanks to our awesome community for their help, support and encouragement as always! Enjoy the new release :)</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-184.html?destination=node%2F544%23comment-form">Login</a> or <a href="../../../../../user/register/index-184.html?destination=node%2F544%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-184.html?destination=node%2F544%23comment-form">Login</a> or <a href="../../../../../user/register/index-184.html?destination=node%2F544%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/544/revisions/1408/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:17:57 GMT -->
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/2855/revisions/5468/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/nginx-mariadb-php-aegir-memp%c3%a6/index.html" />
+<link rel="up" href="../../../../../installing/manual/index.html" />
+<link rel="next" href="../../../../../installing/manual/manual-install-web-cluster-aegir-using-nginx/index.html" />
+<link rel="prev" href="../../../../../content/nginx-mariadb-php-aegir-memp%c3%a6/index.html" />
+<link rel="up" href="../../../../../installing/manual/index.html" />
+<link rel="next" href="../../../../../installing/manual/manual-install-web-cluster-aegir-using-nginx/index.html" />
+<link rel="prev" href="../../../../../content/nginx-mariadb-php-aegir-memp%c3%a6/index.html" />
+<link rel="up" href="../../../../../installing/manual/index.html" />
+<link rel="next" href="../../../../../installing/manual/manual-install-web-cluster-aegir-using-nginx/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Centos 6.x Aegir Install Guide from Wed, 03/12/2014 - 07:58 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2855" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/installing/manual/centos-6x-aegir-install-guide/index.html">Centos 6.x Aegir Install Guide</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_520 first"><a href="../../../../../category/keywords/centos-install-guide/index.html" rel="tag" title="">Centos Install Guide</a></li>
+<li class="taxonomy_term_27"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-2855'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/garethhallnz/index.html" class="username" title="View user profile.">garethhallnz</a> on 03/12/2014 - 07:58</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>There are 2 methods of installing AEgir on CentOS both are the same but one is scripted and the other is manual and is documented below.</p>
+
+<h2>Scripted</h2>
+
+<p>The script can be found at <a href="https://github.com/marafa/aegir/tree/master/version2" title="https://github.com/marafa/aegir/tree/master/version2">https://github.com/marafa/aegir/tree/master/version2</a></p>
+
+<p>NB. There is preliminary work to fix selinux at <a href="https://github.com/marafa/aegir/blob/master/aegir_selinux.sh" title="https://github.com/marafa/aegir/blob/master/aegir_selinux.sh">https://github.com/marafa/aegir/blob/master/aegir_selinux.sh</a>.
+Feedback is quite welcome as well as git pulls.</p>
+
+<h2>Explanation</h2>
+
+<p>Connect to the server via ssh as root user.</p>
+
+<blockquote>
+  <p>ssh root@000.000.000.000</p>
+</blockquote>
+
+<h2>Install system requirements</h2>
+
+<blockquote>
+  <p>yum install httpd php php-mysql php-cli php-gd php-process php-pear php-mbstring php-xml php-soap sudo rsync git postfix tree wget cronie unzip mysql-server mlocate nmap samba samba-client samba-common vim</p>
+</blockquote>
+
+<p>Note: The following packages are not required but are very useful to include git wget mlocate nmap samba samba-client samba-common vim</p>
+
+<h2>SElinux</h2>
+
+<p>Make sure Security-Enhanced Linux is disabled as it creates install problems.</p>
+
+<blockquote>
+  <p>vim /etc/selinux/config
+  Make sure SELINUX=disabled</p>
+</blockquote>
+
+<p>If was SELINUX=enabled then we need to restart.</p>
+
+<blockquote>
+  <p>shutdown -r now</p>
+</blockquote>
+
+<p>Note: I am not sure if it can be enabled at the end I have never tried.</p>
+
+<h2>Create the Aegir user</h2>
+
+<p>The provision framework of Aegir requires that the scripts run as a non-root system account, to ensure that it can correctly set the file permissions on the hosted files.</p>
+
+<p>Also to ensure that the file permissions of the hosted sites are always as safe as can be, and especially to make sure that the web server does not have the ability to modify the code of the site, the configured system account needs to be a member of the web server group, in order to be able to correctly set the file permissions.</p>
+
+<p>While you can choose another username, most aegir documentation assumes the Aegir user is aegir, its home directory is /var/aegir and the webserver group is www-data.</p>
+
+<blockquote>
+  <p>useradd --home-dir /var/aegir aegir
+  gpasswd -a aegir apache
+  chmod -R 755 /var/aegir</p>
+</blockquote>
+
+<h2>Apache configuration</h2>
+
+<p><span class='diff-changed'>Start Apache</span></p>
+
+<blockquote>
+  <p><span class='diff-deleted'>ln</span><span class='diff-deleted'> </span><span class='diff-deleted'>-s</span><span class='diff-deleted'> </span><span class='diff-deleted'>/var/aegir/config/apache.conf</span><span class='diff-deleted'> </span><span class='diff-deleted'>/etc/httpd/conf.d/aegir.conf
+</span><span class='diff-deleted'> </span><span class='diff-deleted'></span><span class='diff-deleted'> </span><span class='diff-deleted'>Start</span><span class='diff-deleted'> </span><span class='diff-deleted'>Apache
+</span><span class='diff-deleted'> </span><span class='diff-deleted'></span><span class='diff-deleted'> </span>service httpd start
+  Make apache start automatically after reboot.
+  chkconfig httpd <span class='diff-changed'>on
+  We need to create a symbolic link between aegir and apache.
+  ln -s /var/aegir/config/apache.conf /etc/httpd/conf.d/aegir.confPHP</span> configuration</p><span class='diff-changed'>
+  </span>
+  <p>vim /etc/php.ini</p>
+</blockquote>
+
+<p>Increase the memory limit as complex installation profiles or distributions require a PHP memory limit that is higher than the default (128M)</p>
+
+<blockquote>
+  <p>memory_limit = 192M</p>
+</blockquote>
+
+<p>Set Date Zone to your time zone see <a href="http://www.php.net/manual/en/datetime.configuration.php#ini.date.timezone" title="http://www.php.net/manual/en/datetime.configuration.php#ini.date.timezone">http://www.php.net/manual/en/datetime.configuration.php#ini.date.timezone</a></p>
+
+<blockquote>
+  <p>date.timezone = “”</p>
+</blockquote>
+
+<h2>Sudo configuration</h2>
+
+<p>Next, we need to give the aegir user permission to execute the Apache2 command to restart the web server without entering a password.</p>
+
+<blockquote>
+  <p>visudo</p>
+</blockquote>
+
+<p>Add to end of file</p>
+
+<blockquote>
+  <p>Defaults:aegir  !requiretty</p>
+  
+  <p>aegir ALL=NOPASSWD: /usr/sbin/apachectl</p>
+</blockquote>
+
+<h2>DNS configuration</h2>
+
+<p>Aegir requires a properly configured "FQDN" (Fully Qualified Domain Name) be assigned to the machine. In practice, this means that the hostname returned by the hostname and uname -n shell commands should resolve to the IP address for this server, and vice versa.</p>
+
+<p>If you only intend to use Aegir on a single server, it is acceptable for the resolved IP address to be the '127.0.0.1' loopback address.</p>
+
+<p>If you intend to manage multiple servers using Aegir, you will need to make sure that the IP address is the public IP of this server.</p>
+
+<p>You can add multiple entries to your /etc/hosts file for testing purposes, for example:#&gt; &gt;vim /etc/hosts
+Add your ip and hostname</p>
+
+<blockquote>
+  <p>000.000.000.000 hostname</p>
+</blockquote>
+
+<h2>Database configuration</h2>
+
+<p>Start mysql</p>
+
+<blockquote>
+  <p>service mysqld start
+  Make apache start automatically after reboot.
+  chkconfig mysqld on</p>
+</blockquote>
+
+<p>Configure Mysql</p>
+
+<blockquote>
+  <p>/usr/bin/mysql_secure_installation</p>
+</blockquote>
+
+<p>Recommended:</p>
+
+<blockquote>
+  <p>Set root Password</p>
+  
+  <p>Remove anonymous users? y</p>
+  
+  <p>Disallow root login remotely? y</p>
+  
+  <p>Remove test database and access to it? y</p>
+  
+  <p>Reload privilege tables now? y</p>
+</blockquote>
+
+<h2>Install drush</h2>
+
+<blockquote>
+  <p>pear channel-discover pear.drush.org</p>
+  
+  <p>pear install drush/drush-4.5.0</p>
+</blockquote>
+
+<p>Check if drush works
+If you get PHP Fatal error:  Class 'Console_Table' not found then</p>
+
+<blockquote>
+  <p>pear install Console_Table</p>
+</blockquote>
+
+<h2>Stop! Now become the Aegir user!</h2>
+
+<p>The remaining of this manual assumes you are running as the Aegir user. Things will go very wrong if you do not change your shell credentials to become that user.</p>
+
+<blockquote>
+  <p>su -s /bin/bash - aegir</p>
+</blockquote>
+
+<p>Install provision</p>
+
+<blockquote>
+  <p>drush dl --destination=/var/aegir/.drush provision-6.x</p>
+</blockquote>
+
+<p>Running hostmaster-install</p>
+
+<blockquote>
+  <p>drush hostmaster-install</p>
+</blockquote></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-48.html?destination=node%2F2855%23comment-form">Login</a> or <a href="../../../../../user/register/index-48.html?destination=node%2F2855%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-48.html?destination=node%2F2855%23comment-form">Login</a> or <a href="../../../../../user/register/index-48.html?destination=node%2F2855%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/2855/revisions/5468/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:32 GMT -->
+</html>

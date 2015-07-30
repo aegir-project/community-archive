@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/543/revisions/1418/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:09:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/release-process/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../roadmap/1/index.html" />
+<link rel="prev" href="../../../../../content/release-process/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../roadmap/1/index.html" />
+<link rel="prev" href="../../../../../content/release-process/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../roadmap/1/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Building the debian packages from Wed, 04/06/2011 - 02:15 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-543" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../debian/index.html">Building the debian packages</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-543'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a> on 04/06/2011 - 02:15</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><h2><span class='diff-added'>Building a package for a new release</span></h2><span class='diff-added'>
+
+</span><p><span class='diff-added'>Assuming we have just released 1.0-rc4, those instructions will merge that code into the </span><code><span class='diff-added'>upstream</span></code><span class='diff-added'> branch (which is used to create the Debian diff) and then merged again in the </span><code><span class='diff-added'>debian</span></code><span class='diff-added'> branch (where the Debian code lives). We then use </span><code><span class='diff-added'>git-buildpackage</span></code><span class='diff-added'> to build the package and tag it, then push those changes back in the repository.</span></p><span class='diff-added'>
+
+</span><p><div class="codeblock"><code><span class='diff-added'>git fetch</span><br />git checkout upstream<br /><span class='diff-added'>git rebase origin/upstream</span><br />git merge 6.x-1.0-rc4<br />git checkout debian<br /><span class='diff-added'>git rebase origin/debian</span><br />git merge upstream<br />dch <span class='diff-changed'>-v 1.0~rc4-1</span><br />git-buildpackage --git-tag -kanarcat@koumbit.org<br /><span class='diff-added'>dput builder ../build-area/aegir-provision_1.0~rc4-1_i386.changes</span><br /><span class='diff-added'>git push</span><br /><span class='diff-added'>git push --tags</span></code></div></p><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><em><span class='diff-added'>Note</span></em><span class='diff-added'>: notice how the version number is slightly different in Debian - we use the "magic" ~ separator to indicate that </span><code><span class='diff-added'>1.0~rc4</span></code><span class='diff-added'> is actually lower than </span><code><span class='diff-added'>1.0</span></code><span class='diff-added'>...</span></p>
+
+<h2>Building a branch package</h2><span class='diff-added'>
+
+</span><p><span class='diff-added'>Sometimes you want to have a test package for a given branch without going through a full release. Here how it's done.</span></p>
+
+<p><div class="codeblock"><code>git checkout upstream<br />git merge 6.x-1.x<br />git checkout debian<br />git merge upstream<br />git describe<br />dch -v <span class='diff-changed'>1.0~rc3+28-1</span><br />git-buildpackage --git-tag -kanarcat@koumbit.org</code></div></p>
+
+<h2>Installing packages manually</h2>
+
+<p><div class="codeblock"><code>dpkg -i aegir-provision_1.0~rc3+g6632e6e-1_all.deb</code></div></p>
+
+<p>We also make sure our custom makefile fetches the right one from provision:</p>
+
+<p><div class="codeblock"><code>-includes[aegir] = &quot;http://drupalcode.org/project/provision.git/blob_plain/6.x-1.0-rc3:/aegir.make&quot;<br />+includes[aegir] = &quot;http://drupalcode.org/project/provision.git/blob_plain/6.x-1.x:/aegir.make&quot;</code></div></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-81.html?destination=node%2F543%23comment-form">Login</a> or <a href="../../../../../user/register/index-81.html?destination=node%2F543%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-81.html?destination=node%2F543%23comment-form">Login</a> or <a href="../../../../../user/register/index-81.html?destination=node%2F543%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/543/revisions/1418/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:09:13 GMT -->
+</html>

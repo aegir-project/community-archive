@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/1144/revisions/3003/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:16:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../1/index-4.html" />
+<link rel="up" href="../../../../../content/release-notes/older-1x-releases/index.html" />
+<link rel="next" href="../../../../../1/index-6.html" />
+<link rel="prev" href="../../../../../1/index-4.html" />
+<link rel="up" href="../../../../../content/release-notes/older-1x-releases/index.html" />
+<link rel="next" href="../../../../../1/index-6.html" />
+<link rel="prev" href="../../../../../1/index-4.html" />
+<link rel="up" href="../../../../../content/release-notes/older-1x-releases/index.html" />
+<link rel="next" href="../../../../../1/index-6.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of 1.7 release notes from Thu, 03/08/2012 - 23:04 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1144" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../1/index-5.html">1.7 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_4 first"><a href="../../../../../taxonomy/term/4/index.html" rel="tag" title="This level is for users who have access to only their sites and not able to manage all Aegir features, accounts or the server/system.">Client</a></li>
+<li class="taxonomy_term_27"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_3"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-1144'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a> on 03/08/2012 - 23:04</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>The Aegir team is proud to announce the seventh release in the stable 1.x release branch!</p>
+
+<p>This release ships various bugfixes that have accumulated in the issue queue since the <a href="../../../../../1/index-6.html">1.6 release</a>, including a lot of fixes on Nginx support. We also ship a new clustering module aimed at lightweight slave deployments named the <a href="../../../../../content/web-clusters/index.html">pack module</a>, designed to replace the cluster module which has performance and configuration issues.</p>
+
+<p>Also note that 2.x development is moving ahead with Drush 5 and Drupal 7 support, along with code refactoring and other features. Debian package builds will be available shortly in a separate Debian repository.</p>
+
+<p>We also want to take this opportunity to welcome to our <a href="../../../../../maintainers/index.html">core team</a> omega8cc, a long time contributor that will now be responsible for the maintenance of the Nginx code. Welcome on board Grace!</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Installing_and_upgrading"><span class="toc-number">1. </span>Installing and upgrading</a></li>
+	<li class="toc-level-1"><a href="#Need_help"><span class="toc-number">2. </span>Need help?</a></li>
+	<li class="toc-level-1"><a href="#Features"><span class="toc-number">3. </span>Features</a></li>
+	<li class="toc-level-1"><a href="#Bug_fixes"><span class="toc-number">4. </span>Bug fixes</a></li>
+	<li class="toc-level-1"><a href="#Known_issues"><span class="toc-number">5. </span>Known issues</a></li>
+</ol>
+</div>
+</div>
+
+<h2 id="Installing_and_upgrading">1. Installing and upgrading</h2>
+
+<p>The canonical source of installation documentation is on the community site at:</p>
+
+<pre><code>http://community.aegirproject.org/installing
+</code></pre>
+
+<p>In a similar fashion, the upgrade documentation is:</p>
+
+<pre><code>http://community.aegirproject.org/upgrading
+</code></pre>
+
+<p>Within those sections you'll find step-by-step instructions for performing both <a href="../../../../../upgrading/manual/index.html">manual</a> and <a href="../../../../../upgrading/script/index.html">automatic</a> upgrade processes.</p>
+
+<p>It is still imperative that you read the the <a href="../../../../../upgrading/path/index.html">upgrade path and version-specific information</a> and follow all version-specific upgrade instructions before trying to run the upgrade script or manual upgrade. This especially applies to users upgrading from releases prior to 0.4-alpha8, including 0.3.</p>
+
+<p>For users coming from the 0.4 betas or recent rc releases, there are unlikely to be any version-specific manual steps required to upgrade, but you should make a habit of reading them anyway just to make sure. No-one likes a nasty surprise!</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Need_help">2. Need help?</h2>
+
+<p>If you struggle to install or upgrade your Aegir system, you have a number of options available to you for getting help.</p>
+
+<p>Consult this page for more information: <a href="../../../../../help/index.html" title="http://community.aegirproject.org/help">http://community.aegirproject.org/help</a></p>
+
+<p>Thanks to our awesome <a href="../../../../../index.html">community</a> for their help, support and encouragement as always! Enjoy the new release :)</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Features">3. Features</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/1463494">#1463494: Radioactivity does not work with Nginx configuration</a></li>
+<li><a href="http://drupal.org/node/1353608">#1353608: ad module incompatible with current nginx_simple_include.conf settings</a></li>
+<li><a href="http://drupal.org/node/1259098">#1259098: nginx HTTP service should support different restart commands</a></li>
+<li><a href="http://drupal.org/node/1171508">#1171508: Nginx capabilities detection is not reliable</a></li>
+<li><a href="http://drupal.org/node/1408410">#1408410: Add microcaching to Nginx config by default</a></li>
+<li><a href="http://drupal.org/node/1062168">#1062168: chained certificates support</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Bug_fixes">4. Bug fixes</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/1439196">#1439196: Don't lock the DB during backups</a></li>
+<li><a href="http://drupal.org/node/1442906">#1442906: Nginx does not listen on all supplied IP addresses</a></li>
+<li><a href="http://drupal.org/node/962044">#962044: Fixing broken Boost support for the home/root location in Nginx #104004</a></li>
+<li><a href="http://drupal.org/node/1388906">#1388906: It is possible to break Nginx based install with upload progress by enabling nginx_ssl feature</a></li>
+<li><a href="http://drupal.org/node/1346712">#1346712: Nginx config files required as includes in vhosts are not copied when Nginx SSL feature is enabled</a></li>
+<li><a href="http://drupal.org/node/1444172">#1444172: Syntax error in the help description of provision-login_reset</a></li>
+<li><a href="http://drupal.org/node/1346794">#1346794: Nginx SSL declarations need to be added to redirect vhosts</a></li>
+<li><a href="http://drupal.org/node/1450134">#1450134: aliases are not validated in the validate step</a></li>
+<li><a href="http://drupal.org/node/1435340">#1435340: node param "created" is refreshed on node_save</a></li>
+<li><a href="http://drupal.org/node/1421356">#1421356: Wrong variables for files paths hardcoded for D7 sites</a></li>
+<li><a href="http://drupal.org/node/1369608">#1369608: Provision shoudl add extra config for nginx ssl hosts</a></li>
+<li><a href="http://drupal.org/node/1437386">#1437386: Notices from hosting_package.module</a></li>
+<li><a href="http://drupal.org/node/1018596">#1018596: Aegir forms don't work in MSIE 8.0 (?)</a></li>
+<li><a href="http://drupal.org/node/1405380">#1405380: drushrc file permissions are set to 0400, perhaps should be 0440</a></li>
+<li><a href="http://drupal.org/node/1396326">#1396326: Mod rewrite double escapes URLs</a></li>
+<li><a href="http://drupal.org/node/1359258">#1359258: Broken DB URL when installing 1.6</a></li>
+<li><a href="http://drupal.org/node/1202960">#1202960: Aegir Install Script Not Picking up db information from $_SERVER</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Known_issues">5. Known issues</h2>
+
+<p>None so far!</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-173.html?destination=node%2F1144%23comment-form">Login</a> or <a href="../../../../../user/register/index-173.html?destination=node%2F1144%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-173.html?destination=node%2F1144%23comment-form">Login</a> or <a href="../../../../../user/register/index-173.html?destination=node%2F1144%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/1144/revisions/3003/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:16:03 GMT -->
+</html>

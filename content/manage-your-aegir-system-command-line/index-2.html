@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/content/manage-your-aegir-system-command-line?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:37:50 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Manage your Aegir system from the command-line | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-953" class="node node-feed_item clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/mig5/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-5/index.png" alt="mig5&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/mig5/index.html" class="username" title="View user profile.">mig5</a></div><div class='date'>12:09am Nov 15, 2011</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Manage your Aegir system from the command-line</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">Tags: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="../../category/tags/aegir/index.html">aegir</a></li><li class="taxonomy-term-reference-1"><a href="../../category/tags/drupal/index.html">drupal</a></li><li class="taxonomy-term-reference-2"><a href="../../category/tags/sysadmin/index.html">sysadmin</a></li><li class="taxonomy-term-reference-3"><a href="../../category/tags/deployment/index.html">deployment</a></li><li class="taxonomy-term-reference-4"><a href="../../taxonomy/term/172/index.html">cli</a></li></ul></div>
+
+<div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>As you probably know if you've been using it for a while, <a href="http://aegirproject.org/">Aegir</a> is generally considered to have two hemispheres: one is <a href="http://drupal.org/project/hostmaster">Hostmaster / Hosting</a>, the install profile and module set that make up the web-based Aegir frontend control panel.</p>
+<p>Hostmaster installs your site and provides the dispatcher to run the queues on your system. Hosting and its submodules provide all the functionality that lets you add site and platform nodes and kick off tasks on them (such as Migrate, Clone etc), from a web browser.</p>
+<p>The other hemisphere is <a href="http://drupal.org/project/provision">Provision</a>, which is the 'backend' and guts of the Aegir system. It's essentially a large extension module to <a href="http://drupal.org/project/drush">Drush</a> that actually performs all the tasks sent into the queue. This component is what installs sites, moves them around, deletes them, creates the VirtualHost configurations and databases and so on.</p>
+<p>So really, the Hosting frontend exists simply to provide a convenient method of placing tasks (say, 'hosting-task install @site' into the queue, which hostmaster 'dispatches' and hands to Provision in the form of a Drush command (drush @site provision-install').</p>
+<p>In the old Drush 2.x days, we used to have pass a whole bunch of arguments for tasks so that Provision knew what site to operate on and its various components (what platform it was on, etc). These days thanks to Drush 3, we make heavy use of <a href="http://developmentseed.org/blog/2010/mar/10/drush-30-more-powerful-flexible-and-magical/">Drush Aliases</a>, which are essentially little registry configs per each object, such as a site, platform or server, that can be loaded in one go with all attributes on-hand ready to use by Drush.</p>
+<p>You can see these Drush aliases in your /var/aegir/.drush/ directory. They are the files that end in .alias.drushrc.php</p>
+<p>Drush provides you with the command 'drush site-alias' or 'drush sa' to also view what aliases are able to be loaded in the system.</p>
+<p>The presence of a Drush alias per object makes things really interesting in Aegir if you want to drive this whole system from the command-line as opposed to use the frontend.</p>
+<p>Now, why would you want to do that? Well, think like a sysadmin: by being able to drive a system from a command line, that means you ought to be able to go some ways to <em>automating</em> that system, resulting in less effort, faster turnaround, automated turn-key services.. giving birth to Skynet.. well, the list goes on and on :)</p>
+<p>In this tutorial, I'm going to show you how to create two separate Drupal platforms (codebases), install a site on one platform, and migrate (upgrade) that site between the two platforms - all from the command line.</p>
+<p>Users who want to skip ahead and learn how to automate processes like this using fancy tools like Jenkins, Fabric or Capistrano: I highly recommend you <a href="../../node/342/index.html">read my article and watch my screencast on Zero-touch Drupal deployment with Jenkins, Aegir, Git, Fabric and Drush.</a></p>
+<h2>Step 1: Build your platforms</h2>
+<p>Sites in Aegir have to exist on top of (or within, whatever analogy you prefer) a <a href="../../node/20/index.html">platform</a>. A platform is simply a Drupal codebase - this can be vanilla Drupal, <a href="http://pressflow.org/">Pressflow</a>, or a custom packaged Distribution such as <a href="http://openatrium.com/">OpenAtrium</a> or your own awesome forked version of Drupal that has no bugs (right?).</p>
+<p>I'll be assuming you have got Aegir already installed but haven't set up any platforms. Let's add some platforms now from the command line, using a Drush Makefile.</p>
+<p>Become the aegir user if you haven't already: su -s /bin/bash aegir</p>
+<p>Create a directory called 'makefiles'</p>
+<pre>
+mkdir ~/makefiles
+</pre><p>
+Create a file in this directory called 'drupal-6.22.make' that contains this:</p>
+<pre>
+api = 2
+
+core = 6.x
+projects[drupal][type] = "core"
+projects[drupal][download][type] = "get"
+projects[drupal][download][url] = "http://ftp.drupal.org/files/projects/drupal-6.22.tar.gz"
+</pre><p>
+Make another makefile for Drupal 7 called 'drupal-7.9.make':</p>
+<pre>
+api = 2
+
+core = 7.x
+projects[drupal][type] = "core"
+projects[drupal][download][type] = "get"
+projects[drupal][download][url] = "http://ftp.drupal.org/files/projects/drupal-7.9.tar.gz"
+</pre><h2>Step 2: Generate Drush Aliases for your platforms</h2>
+<p>The next thing we can do is generate a Drush alias that defines each platform. To do that, you use the Drush (Provision) command 'provision-save', with appropriate arguments likeso:</p>
+<pre>
+drush --root='/var/aegir/platforms/drupal-6.22' provision-save '@platform_drupal622' --context_type='platform' --makefile='/var/aegir/makefiles/drupal-6.22.make'
+</pre><p>
+Now you should see a new file in /var/aegir/.drush/ called platform_drupal622.alias.drushrc.php. It should look like this:</p>
+<pre>
+$aliases['platform_drupal622'] = array (
+  'context_type' =&gt; 'platform',
+  'server' =&gt; '@server_master',
+  'web_server' =&gt; '@server_master',
+  'root' =&gt; '/var/aegir/platforms/drupal-6.22',
+  'makefile' =&gt; '/var/aegir/makefiles/drupal-6.22.make',
+);
+</pre><p>
+Repeat the procedure to save an alias for your Drupal 7.9 platform.</p>
+<pre>
+drush --root='/var/aegir/platforms/drupal-7.9' provision-save '@platform_drupal79' --context_type='platform' --makefile='/var/aegir/makefiles/drupal-7.9.make'
+</pre><h2>Step 3: Verify (and build) your platforms</h2>
+<p>Now, obviously this has not built the platform - we haven't executed Drush make or ended up with actual codebases on our filesystem yet. But because we made makefiles and referenced them in our Drush aliases, Aegir is smart enough to go right ahead and build the platforms for us when we Verify these platforms.</p>
+<pre>
+drush @platform_drupal622 provision-verify
+</pre><p>
+Because this invokes Drush Make as the codebase doesn't exist, you should see something like</p>
+<pre>
+drupal downloaded from <a href="http://ftp.drupal.org/files/projects/drupal-6.22.tar.gz" title="http://ftp.drupal.org/files/projects/drupal-6.22.tar.gz">http://ftp.drupal.org/files/projects/drupal-6.22.tar.gz</a>.      [ok]
+</pre><p>
+Rinse and repeat for Drupal 7!</p>
+<pre>
+drush @platform_drupal79 provision-verify
+</pre><h2>Step 4: (Optional) - Import the changes into the Hostmaster frontend</h2>
+<p>You have a choice now: if you *do* expect that you want to use the frontend web interface to manage this platform and sites on it, in future, then you probably want to import this new platform into the Aegir frontend. It's important to remember that so far, we have operated entirely from the command line: if you visit your Aegir web interface, no Drupal 6 or Drupal 7 platforms exist there yet.</p>
+<p>If you ever want to install or manage sites on these platforms from the web interface, you will need to import this platform into Aegir. Fortunately, Aegir provides a magic command that lets you 'refresh' the frontend with information gleaned from the backend. This includes importing new platforms and sites as nodes, if the Drush alias exists for those objects.</p>
+<pre>
+drush @hostmaster hosting-import @platform_drupal622
+</pre><p>
+There'll be no output here. If you watch your Aegir frontend, you'll see a new 'Verify drupal622' task added to the queue, and your Platform node will now exist too. Magic!</p>
+<div align="center"><img src="../../files/platform_imported/index.html" /></div>
+<p>As always: if you're doing this, repeat with the Drupal 7 platform:</p>
+<pre>
+drush @hostmaster hosting-import @platform_drupal79
+</pre><h2>Step 5: Save a Drush alias for a new site</h2>
+<p>We have our platforms now,  but no sites. Let's repeat the pattern of this process but for a site. Because a site is an object in Aegir, just like a Platform, we need to define a Drush alias for it before we can do anything clever with it.</p>
+<pre>
+drush provision-save '@test.example.com' --context_type='site' --uri='test.example.com' --platform='@platform_drupal622' --server='@server_master' --db_server='@server_localhost' --profile='default' --client_name='admin'
+</pre><p>
+Note these options: we define the *type* of alias as a site (as opposed to a platform). We also link this site to the Drupal 6.22 platform using its alias name. We then go ahead and define the 'server' (this is the HTTP component, by default '@server_master' on a standalone Aegir system), the db_server (the MySQL component, which by default is '@server_localhost' on a standalone Aegir system), the install profile and so on.</p>
+<p>Your Drush alias in /var/aegir/.drush/ should look something like this:</p>
+<pre>
+$aliases['test.example.com'] = array (
+  'context_type' =&gt; 'site',
+  'platform' =&gt; '@platform_drupal622',
+  'server' =&gt; '@server_master',
+  'db_server' =&gt; '@server_localhost',
+  'uri' =&gt; 'test.example.com',
+  'root' =&gt; '/var/aegir/platforms/drupal-6.22',
+  'site_path' =&gt; '/var/aegir/platforms/drupal-6.22/sites/test.example.com',
+  'site_enabled' =&gt; true,
+  'language' =&gt; 'en',
+  'client_name' =&gt; 'admin',
+  'aliases' =&gt; 
+  array (
+  ),
+  'redirection' =&gt; false,
+  'cron_key' =&gt; '',
+  'profile' =&gt; 'default',
+);
+</pre><p>
+Note the various other options for saving Drush aliases in Aegir. You can see all options by running 'drush help provision-save' too.</p>
+<h2>Step 6: Install your site</h2>
+<p>In just the same fashion that we saved an alias for our platform, then ran 'provision-verify' to build it, we'll do the same with our site; except that we use 'provision-install' for sites.</p>
+<pre>
+drush @test.example.com provision-install
+</pre><h2>Step 7: (Optional) - import your site in to the frontend</h2>
+<p>Again, if you elected to maintain management of the site and platforms in the Aegir frontend for later, you will want to import this site into the frontend now.</p>
+<p>Importing the site is a bit different: Aegir will think it needs to 'install' the site even though we've already installed it. To work around this, simply execute a 'Verify' of the platform this site sits on, via the frontend. This will invoke a proper import of the site. (This probably needs to be improved in a future version of Aegir itself so we don't have to jump through such a hoop)</p>
+<pre>
+drush @hostmaster hosting-task @platform_drupal622 verify
+</pre><p>
+This will automatically discover the site and spawn an 'Import' task for the frontend to import this site.</p>
+<h2>Step 8: Migrate (upgrade) your site between Drupal 6 to Drupal 7</h2>
+<p>I'm going to presume you've saved your Drupal 7 alias, ran provision-verify to build the actual codebase, and optionally imported that platform into the frontend with hosting-import.</p>
+<p>Now let's migrate our site from the command-line, from the Drupal 6 to Drupal 7 platform. This is analogous to 'upgrading' the site between releases, because the migration process in Aegir puts the site on the new codebase and then runs drush updatedb (equivalent of running update.php) to apply database updates.</p>
+<pre>
+drush @test.example.com provision-migrate @platform_drupal79
+</pre><p>
+Because this example is a rather dramatic one (a jump between core versions!) you'll see a lot of activity eventually occur, whilst a lot of database updates take place. You can, obviously, use this procedure simply to apply small module upgrades within the one version of Drupal core. </p>
+<p>It is highly recommended, in fact, to use this 'migrate between platforms' workflow for applying *any* code/database changes to your site, because you can take advantage of the Aegir ability to detect a failed update and 'roll back' automatically to the original version. See <a href="../drupal-deployments-workflows-version-control-drushmake-and-aegir/index.html">other</a> <a href="../building-drupal-applications-drushmake-provisioning-sites-aegir/index.html">articles</a> on best practices for Aegir site update workflows.</p>
+<p>Your site is now a Drupal 7 site!</p>
+<h2>Step 9: (Optional) - refresh the frontend with the migration change</h2>
+<p>Once again: the frontend doesn't know that you migrated the site between the two platforms directly from the commandline. If you want the frontend to be notified of this change, run the following:</p>
+<pre>
+drush @hostmaster hosting-import @test.example.com
+</pre><p>
+You'll note that the site's 'platform' in the frontend is now drupal79 instead of drupal622.</p>
+<h2>Step 10: Fix the site's alias to use default profile</h2>
+<p>Now, we incidentally have an obscure bug here which resets the profile to 'N/A' in the frontend: this is because the migration retained the 'default' profile in the alias instead of switching it to 'standard', the new default profile in Drupal 7. To fix this, we need to re-save the Drush alias with the updated details:</p>
+<pre>
+drush provision-save '@test.example.com' --context_type='site' --uri='test.example.com' --platform='@platform_drupal79' --server='@server_master' --db_server='@server_localhost' --profile='standard' --client_name='admin'
+</pre><p>
+Now re-verify the site (updates the defined profile in the site's settings.php:</p>
+<pre>
+drush @test.example.com provision-verify
+</pre><p>
+And if you are keeping the frontend up to date, run:</p>
+<pre>
+drush @hostmaster hosting-task @test.example.com verify
+</pre><p>
+... and you should see the profile is now 'Standard' in the site listing in the frontend.</p>
+<p>This should not be necessary if you are simply migrating between point releases within the same version of core, or even migrating between the same version of core but applying upgrades of specific contrib or custom modules.</p>
+<h2>Deleting sites</h2>
+<p>Note that you can run drush @test.example.com provision-delete to delete the site from the system. Currently, however, we don't have a mechanism in place for reflecting that change in the frontend via hosting-import - but hopefully we will soon. See <a href="http://drupal.org/node/1341698">this ticket</a></p>
+<h2>Programatically add aliases</h2>
+<p>This is an edit 24 hours after I posted this: someone on IRC asked 'can you programatically add URL aliases to a site'? And the answer is, yes you can :)</p>
+<p>Make sure you have the Site Aliasing feature enabled in /admin/hosting/features, then, (in this example, assuming your site already existed and was in the Aegir frontend) simply re-save your Drush alias for the site, passing a comma-delimited list of aliases as an argument:</p>
+<pre>
+drush provision-save '@mig3.test.dev' --context_type='site' --uri='mig3.test.dev' --platform='@platform_drupal622' --server='@server_master' --db_server='@server_localhost' --profile='default' --client_name='admin' --aliases='www.mig3.test.dev, test.dev'
+</pre><p>
+Check your alias file in ~/.drush/ and you should see an array of aliases listed now:</p>
+<pre>
+$aliases['mig3.test.dev'] = array (
+  'context_type' =&gt; 'site',
+ (snip for readability)
+  'aliases' =&gt; 
+  array (
+    0 =&gt; 'www.mig3.test.dev',
+    1 =&gt; ' test.dev',
+  ),
+</pre><p>
+Now run </p>
+<pre>drush @mig3.test.dev provision-verify</pre><p>, which will rewrite your Apache vhost to include these aliases as ServerAlias parameters and will restart Apache to make those aliases active.</p>
+<p>Finally: your site node in the frontend still doesn't show any aliases, as discussed several times in this post. To refresh the frontend and see those aliases listed, run the magic hosting-import command:</p>
+<pre>
+drush @hostmaster hosting-import @mig3.test.dev
+</pre><p>
+And now your aliases will be visible in the site node!</p>
+<div align="center">
+<img src="../../files/aliases_imported/index.html" /></div>
+<h2>Other commands</h2>
+<p>There are other commands available in Provision, including the ability to reset the one-time login URL for an administrator on a site, cloning sites, and so on. Use 'drush help' as the aegir user to view the various provision commands, and use 'drush help provision-(command)' to get more detailed instructions on syntax.</p>
+</div></div></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-378.html?destination=comment%2Freply%2F953%23comment-form">Login</a> or <a href="../../user/register/index-378.html?destination=comment%2Freply%2F953%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/content/manage-your-aegir-system-command-line?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:37:50 GMT -->
+</html>

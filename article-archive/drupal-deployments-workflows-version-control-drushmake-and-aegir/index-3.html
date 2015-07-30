@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/article-archive/drupal-deployments-workflows-version-control-drushmake-and-aegir?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:24:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../introduction-aegir-hosting-system/index.html" />
+<link rel="up" href="../../presentation/article-archive/index.html" />
+<link rel="next" href="../../content/presentation/article-archive/how-install-aegir-and-use-it-deploy-drupal-sites-debian-vps/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Drupal deployments &amp; workflows with version control, drush_make, and Aegir | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-728" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Drupal deployments &amp; workflows with version control, drush_make, and Aegir</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-728'><p>This article first appeared on mig5's blog on 28th October, 2009.</p>
+<p>It's the million dollar question. And it's rarely been answered because it's so darn hard to do so. </p>
+<div align="center"><img src="../../sites/community.aegirproject.org/files/confused/index.jpg" alt="How to solve the dev / staging / live workflow problem in Drupal?" /></div>
+<p><br /><br />
+Today I'd like to tell you how I do it with my favourite deployment weapons: <a href="http://groups.drupal.org/aegir">Aegir</a>, <a href="http://progit.org/book">Version control</a>, and <a href="http://drupal.org/project/drush_make">Drush Make</a>.<br />
+<br /><br />
+This'll be a rather low-level article designed for power-users. For a more high-level overview of the benefits described, check out the recent <a href="http://developmentseed.org/blog/2009/oct/27/drupal-distributions-drush-make">blog post by Development Seed</a>.<br />
+<br /></p>
+<h1>The Problem</h1>
+<p>While many or most of us are using version control to keep track of our code and so on, a problem still persists, and it is twofold:</p>
+<p>1) A lot of important data gets stored in the database in many database-driven content management systems, such as Drupal<br />
+2) The transition of updates through version control to the site can be a royal PITA.</p>
+<p>Recently 1) has pretty much been conquered thanks to <a href="http://drupal.org/project/features">Features</a>, which provides the ability to export the 'mechanics' of a Drupal site from the database into module-like code, which can then be version-controlled.</p>
+<p><a href="http://drupal.org/user/1337">Adrian Rossouw</a> covered how Features can help solve the classic Dev / Stage / Production workflow problem in a <a href="http://developmentseed.org/blog/2009/jul/09/development-staging-production-workflow-problem-drupal">great blog post</a>. Features is one of those big guns we've all been waiting for. I mean, google 'development live workflow', and it's this post that is number 1.</p>
+<p>With the rising popularity of the <a href="http://groups.drupal.org/aegir">Aegir hosting system</a>, and its ability to fire off sites like a proverbial machine gun, the other question is becoming even more important.</p>
+<p>Because Aegir is this fantastic system for managing your sites, right? Of course, I would say that. But how can you keep a site under version control when Aegir's capable of making and manipulating sites almost on-the-fly with the click of a button?</p>
+<h1>The Solution</h1>
+<p><strong>Enter: Drush Make</strong></p>
+<p>The answer has come in the form of <a href="http://drupal.org/project/drush_make">Drush Make</a>, which provides an extension to <a href="http://drupal.org/project/drush">Drush</a>, the command line tool I often refer to as 'apt-get' for Drupal.</p>
+<p>What Drush Make does, is <a href="http://developmentseed.org/blog/2009/sep/03/5-minute-feature-server">through the implementation of flat files</a> (similar in appearance to .info files from modules), provide a mechanism to fetch data from practically any source you tell it to, and do $stuff.</p>
+<p>This can include downloading Drupal core, as well as a bunch of contrib modules from drupal.org . However, it also supports the ability to fetch:</p>
+<ul>
+<li> code from CVS repos, including tag-specific</li>
+<li> ditto for svn</li>
+<li> ditto for git, including checking out a particular branch after cloning the repo</li>
+<li> grabs .tar.gz stuff, wget-style, useful for libraries</li>
+<li> can fetch and apply patches</li>
+</ul>
+<p>Sure, you say, that's great. It's basically doing batch <code>drush dl</code>'s  with some extra features/protocols thrown in. But how does this help with version control? Not only that, but how is that going to help keep this stuff under control while managing the site in Aegir? </p>
+<p>Certainly for me, much of the issue has been that Aegir is inherently 'on the fly' with its actions. It has no concept of version control. But eventually I realised I had to stop expecting Aegir to handle this aspect, and realise  that I could work with it by bringing version-controlled data <em>to it</em> for processing. </p>
+<p>Or, put another way, I realised the very act of moving data around, does not need to be a version-control procedure in itself. </p>
+<p>One must start to think like Aegir: and that is that the Platform and its application is the important data, that needs to be controlled. The site is just an instance of the application, and so long as your application is controlled, your site can be manipulated as an instance of it.</p>
+<p>Adrian mentioned it in his <a href="http://www.lullabot.com/drupal-voices/drupal-voices-62-adrian-rossouw-aegir-drush-and-future-drupal-distributions">podcast interview with Lullabot on October 15th</a>:</p>
+<blockquote><p>
+It helps to think of install profiles as applications, and sites as instances of those applications.
+</p></blockquote>
+<p>If you can grasp that, you're on the home stretch already.</p>
+<p><strong>The Platform becomes the Platform Build.</strong></p>
+<p>One of the concepts I struggle with the most when training users on Aegir, is that of the 'Platform'. It turns out that many developers haven't been using Drupal's multisite design even prior to Aegir, despite the fact that the design's been around forever. So the idea of having multiple sites inside the /sites/ folder of Drupal core - in other words, sharing the core codebase between sites - is somehow (often, but not always) already enough of a paradigm shift.</p>
+<p>In Aegir, one creates Platforms, which are just code bases, or a copy of Drupal core (or Open Atrium, etc). Only then can we create and manage Sites, which live on Platforms. </p>
+<p>The analogy is directly like this:</p>
+<p><strong>/var/aegir/drupal-6.14</strong> &lt;&lt; this the core, the Platform<br />
+<strong>/var/aegir/drupal-6.14/sites/www.mig5.net</strong> &lt;&lt; this is the site, 'on' or 'inside' the Platform</p>
+<p>What makes this hard is that some users are still getting used to this idea, even though Aegir isn't doing anything different here. It's just exposing that multisite design of Drupal, by making it easier.</p>
+<p>If you can grasp the idea of multisite, you'll find it easier to understand how Aegir works with your sites, and how a workflow can be developed to handle build management.</p>
+<p>I mentioned Drush Make, and it's ability to grab the Drupal core.<br />
+And I mentioned shifting one's mindset to think of Install profiles as just 'Profiles', or 'Applications', and sites as <em>instances</em> of those Applications.</p>
+<p>With this in mind, a bigger picture starts to form regarding the potential of Drush Make, since it can, in one fell swoop,</p>
+<ul>
+<li> download the core, </li>
+<li> fetch the install profile from your git repo </li>
+<li> fetch some contrib modules</li>
+<li> fetch some custom themes and modules from your other repos</li>
+<li> maybe apply a patch against a module</li>
+<li> fetch some extra third-party libraries, i.e jquery.ui, or geshi</li>
+</ul>
+<p>No, really. Look at this (entry-level) example of mig5_net.build:</p>
+<div class="codeblock"><code>core = 6.x<br />projects[] =&nbsp; drupal<br />projects[mig5_net][type] = &quot;profile&quot;<br />projects[mig5_net][download][type] = &quot;git&quot;<br />projects[mig5_net][download][url] = &quot;git@git.mig5.net:/drupal/profiles/mig5_net&quot;<br />projects[mig5_net][download][branch] = &quot;build_2009101601&quot;</code></div>
+<p>Executable from the command line like this:</p>
+<div class="codeblock"><code>php /var/aegir/drush/drush.php make mig5_net.build /var/aegir/drupal-6.14_build_2009101601</code></div>
+<p>My install profile or 'application' is the git repo that I'm cloning. Note the branch reference: after Drush_make 'git clone's it, it'll check out a specific branch, or 'build'. This is how this release is different from past and future builds: it's a specific release I'm building for.</p>
+<p>Suddenly with this one execution of a single flat file, you've built a copy of Drupal core, and dropped in the profile or 'application' into its /profiles/ directory. That's a platform in Aegir's eyes, and not just any platform: but what I call a 'Platform build'. It's a specific <em>release</em> of a your application, right from the top of core, down to the last css file of your site's theme. </p>
+<p><strong>Hang on, .css file? Where's the contrib and all that? You only cloned the install profile from git</strong></p>
+<p>Yes, in the makefile above, I'm only grabbing the core and my install profile application. Here's the secret: it turns out Drush Make has a recursive nature! I tuck away another makefile inside my install profile repo, called mig5_net.make, and this is the real gem.</p>
+<div class="codeblock"><code>core = 6.x<br />projects[] = admin_menu<br />projects[] = captcha<br />projects[] = geshifilter<br />projects[] = install_profile_api<br />projects[] = pathauto<br />projects[] = recaptcha<br />projects[] = tagadelic<br />projects[] = token<br />projects[] = twitter<br />projects[] = views<br />projects[singular][type] = &quot;theme&quot;<br />projects[singular][download][type] = &quot;git&quot;<br />projects[singular][download][url] = &quot;git@git.mig5.net:/drupal/themes/singular&quot;<br />projects[tao][location] = &quot;http://code.developmentseed.org/fserver&quot;<br />projects[mig5][type] = &quot;module&quot;<br />projects[mig5][download][type] = &quot;git&quot;<br />projects[mig5][download][url] = &quot;git@git.mig5.net:/drupal/modules/mig5&quot;</code></div>
+<p>What we have here is a series of contrib modules from drupal.org. Also I have a slightly hacked version of singular (css stuff), so I don't use Development Seed's feature server repo to grab this: I keep my own copy in my own git server. However, I *do* use the Tao base theme from their feature server, because I know, like contrib, I don't make any changes to it.</p>
+<p>Alternatively, if I was smarter, I could have grabbed Singular from DevSeed's feature server, and written a patch for the css change, and asked Drush Make to apply the patch instead. Here's a snippet of such a thing, taken from the <a href="http://managingnews.com/">Managing News</a> makefile in its <a href="http://drupal.org/project/managingnews">install profile</a>, where the Context module is patched:</p>
+<div class="codeblock"><code>; Patched.<br />; Explicit versions specified to ensure patches apply cleanly.<br />projects[context][subdir] = &quot;contrib&quot;<br />projects[context][version] = &quot;2.0-beta7&quot;<br />projects[context][patch][] = &quot;http://drupal.org/files/issues/606816-1_node_form_context.patch&quot;</code></div>
+<p>...just so you don't think I'm making this stuff up :) Yes, such features exist, and are in active use!</p>
+<p>So, this make file gets downloaded when the install profile git repo gets cloned and the build-specific branch is checked out. While Drush Make grabs the profile from the first makefile (I call it the .build file), it scans the directory and finds this make file, and recursively executes it - thus grabbing all the site-specific components in the process.</p>
+<p><strong>Time to tell Aegir about the new Platform build</strong></p>
+<p>Suddenly what I have is the entire platform, complete with any updated components I made in the makefile of that specific branch in git. At this point, I just have to tell Aegir about it!</p>
+<p>So I go to Create Content > Platform in Aegir, give it a name (usually suffixed with the build number I give it as above), and tell it the path to the new platform I made (/var/aegir/drupal-6.14_build_2009101601)</p>
+<div align="center"><img src="../../sites/community.aegirproject.org/files/build_migrate/index.png" /></div>
+<p>Aegir goes and checks the platform, learns about it, adds the package information it finds within it to its database, and if all's well, gives me the big green tick.</p>
+<p><strong>But where's the settings.php? The site files? This isn't actually the *site*!</strong></p>
+<p>Exactly. It's only the application that we've built, and it's only the application we store in version control and generate with makefiles. The site still exists on the old platform, and Aegir knows it does. What we have to do here is stop thinking of the /sites/www.mig5.net/settings.php etc as the *site*, but rather, the current running 'instance' of the application.</p>
+<p>It sounds a bit weird, doesn't it? But you don't realise, if you're already using Aegir, you're already probably <a href="../../content/migrate-your-drupal-sites-new-drupal-core-security-release-%c3%a6gir/index.html">doing this already</a>. Drupal 6.14 came out recently, and your sites were on 6.13. You built a new platform (6.14, by downloading it), told Aegir about it, and you used the Migrate task to upgrade all your 6.13 sites to 6.14 at the click of a button.</p>
+<p>We're doing exactly the same thing here: you've got your new platform, with your updates. Now you just need to Migrate the site onto that new build. Your settings.php and files from /sites/www.mig5.net/ get carried across to the new build, and any component code/database updates will get applied in the process. </p>
+<div align="center"><img src="../../sites/community.aegirproject.org/files/build_migrate_process/index.png" /></div>
+<p>Suddenly, you've just exercised the perfect workflow: </p>
+<ul>
+<li> You kept the application, important stuff, in version control</li>
+<li> You managed to keep *less* of a) in version control because drush make can fetch the contrib you don't hack, from drupal.org and other sources</li>
+<li> You built the whole new release with just one command on the shell</li>
+<li> You managed to seamlessly upgrade your site onto the new release, applying all the updates, and</li>
+<li> you did that last one via Aegir, which means you were protected with the rollback functionality of Provision and Drush, meaning if it all went pear-shaped, you'd be back on the previous release as though nothing had happened.</li>
+</ul>
+<p><em>This</em> is how Aegir can cooperate with version control: all it needs from you is to get that Platform, or build, in place, so it can use it and take care of the release process for you.</p>
+<p>And while it used to be <a href="http://developmentseed.org/blog/2009/oct/27/drupal-distributions-drush-make">difficult to build an entire distribution complete with all the nitty gritty components required</a>, it's now never been easier to do this step in a matter of seconds, because Drush Make does this job for you.</p>
+<p>This application, <a href="http://www.mig5.net/" title="www.mig5.net">www.mig5.net</a>, is literally <a href="http://git.mig5.net/?p=profiles/mig5_net/.git;a=tree">two files in my git repository</a>, plus the theme (I hacked on Young Hahn's Singular theme a bit). The two files are the install profile itself (which, of course, I only ever once: first time install of the site) and the mig5_net.make file, that does everything else.</p>
+<h1>Dealing with the dev > live process</h1>
+<p>This really packs a powerful punch when you're working on a development version of your site to make changes prior to sending live (and if you're not, you should be). The process above fits perfectly into this model. This is how one does it:</p>
+<p>Need to make changes?</p>
+<p><strong>Dev</strong></p>
+<ul>
+<li> Make a new build using drush_make to grab the latest bits of everything. Add that platform to Aegir. I might call this build 'drupal-6.14_build_dev_2009102601'</li>
+<li> Use the 'Clone' feature to clone your current Live site to the test build.</li>
+<li> Make your changes to the dev site (maybe you are changing the theme, or adding a module)</li>
+<li> Commit those changes back to the repo (the theme changes, maybe adding that new module as a ''project' in your drush_make file inside your install profile). Make a branch of the repo in preparation for a new live build.</li>
+</ul>
+<p><strong>Live</strong></p>
+<ul>
+<li> Make a new build using drush_make to grab the latest bits of everything (this grabs the changes you just committed). Add that platform to Aegir. I might call this build 'drupal-6.14_build_live_2009102601'</li>
+<li> Use the 'Migrate' feature to migrate your live site to the new build, which picks up and applies any changes/upgrades</li>
+</ul>
+<p>I shared some ideas with Adrian Simmons (<a href="http://twitter.com/adrinux">@adrinux</a>) who has taken the build/deployment logic I describe here and generated an absolutely fantastic workflow diagram showing the transition of data from dev to live, as well as the relationship between drush_make, version control, and Aegir. Here is the diagram - it does a hell of a better job explaining it all than me and my wordy ways :)</p>
+<div align="center"><a href="http://s3.amazonaws.com/ember/fwyl37Fjb60ht0jIUyn0c0e9vq2wJYMH_o.png"><img src="http://s3.amazonaws.com/ember/fwyl37Fjb60ht0jIUyn0c0e9vq2wJYMH_m.png" /></a></div>
+<p><br /></p>
+<h1>The status of Drush Make</h1>
+<p>Awesomeness.</p>
+<p>No, you'd know by now that I'd say that, but that's actually the <a href="http://drupal.org/node/616478">release notes</a> for the 6.x-2.0-beta1 release, which <a href="http://twitter.com/dmitrig01">Dmitri</a> unleashed today, after an amazing night (well, my time) by Adrian Rossouw who obliterated a bunch of bugs after being given commit access. The Aegir project now depends on drush_make to build the frontend system and its relevant components, as of HEAD and the upcoming release 0.4-alpha3 (stay tuned for that very shortly). For this reason, we have a direct interest in the project and its future, and so we were lucky to work with Dmitri and squash a few issues very quickly - some of which were actually identified during the writing of this article :)</p>
+<p>The recent changes to Drush Make include bringing it in line with changes in the <a href="http://drupal.org/node/614830">also-recently-released Drush 2.1</a>, adding support for checking out git branches after a git clone, and supporting absolute paths for destination of builds on the server.</p>
+<p>Need to play with it some more to try it out? You can see examples of my 'build' makefiles in my <a href="http://git.mig5.net/?p=builds/.git;a=tree">git repo</a> as well as my application <a href="http://git.mig5.net/?p=profiles/mig5_net/.git;a=summary">install profile</a> for mig5.net, which contains the 'bigger' drush_make file. Or check out the <a href="http://drupal.org/project/managingnews">Managing News</a> install profile and its make file - it's the first project other than Aegir to use a make file to build itself.</p>
+<p>If you're new to Aegir, Drush and Drush make, I hope this article gives you the incentive to try it out and see why it rocks. If you're using Aegir and Drush already, I hope Drush Make makes more sense now, and that this gives you that 'ah hah!' moment if you've been scratching your head about how to handle build management in an Aegir environment.</p>
+<p>(thanks to Adrian Simmons, Adrian Rossouw and Eric Gundersen for their contributions/ideas for this article, and most of all to Dmitri Gaskin for his mad skills.. thanks for changing the game with Drush Make!)</p>
+<div class="itu-attachments"><table class="itu-attachment-list withoutstats sticky-enabled" id="attachments">
+ <thead><tr><th class="preview">Preview</th><th class="file">Attachment</th><th class="size">Size</th> </tr></thead>
+<tbody>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/build_migrate/index.png" title="build_migrate.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/build_migrate/index.png" alt="build_migrate.png" title="build_migrate.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/build_migrate/index.png">build_migrate.png</a></td><td class="size">25.99 KB</td> </tr>
+ <tr class="even"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/build_migrate_process/index.png" title="build_migrate_process.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/build_migrate_process/index.png" alt="build_migrate_process.png" title="build_migrate_process.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/build_migrate_process/index.png">build_migrate_process.png</a></td><td class="size">19.1 KB</td> </tr>
+ <tr class="odd"><td class="mime mime-jpg"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/confused/index.jpg" title="confused.jpg"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/confused/index.jpg" alt="confused.jpg" title="confused.jpg" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/confused/index.jpg">confused.jpg</a></td><td class="size">55.36 KB</td> </tr>
+ <tr class="even"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/fwyl37fjb60ht0jiuyn0c0e9vq2wjymh_m/index.png" title="fwyl37fjb60ht0jiuyn0c0e9vq2wjymh_m.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/fwyl37fjb60ht0jiuyn0c0e9vq2wjymh_m/index.png" alt="fwyl37fjb60ht0jiuyn0c0e9vq2wjymh_m.png" title="fwyl37fjb60ht0jiuyn0c0e9vq2wjymh_m.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/fwyl37fjb60ht0jiuyn0c0e9vq2wjymh_m/index.png">fwyl37fjb60ht0jiuyn0c0e9vq2wjymh_m.png</a></td><td class="size">176.32 KB</td> </tr>
+</tbody>
+</table>
+</div></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-27.html?destination=node%2F728%23comment-form">Login</a> or <a href="../../user/register/index-27.html?destination=node%2F728%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/article-archive/drupal-deployments-workflows-version-control-drushmake-and-aegir?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:24:38 GMT -->
+</html>

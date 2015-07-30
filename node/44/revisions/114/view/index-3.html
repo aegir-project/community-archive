@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/44/revisions/114/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:02:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../20/index.html" />
+<link rel="up" href="../../../../20/index.html" />
+<link rel="next" href="../../../../27/index.html" />
+<link rel="prev" href="../../../../20/index.html" />
+<link rel="up" href="../../../../20/index.html" />
+<link rel="next" href="../../../../27/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Verifying servers, platforms and sites from Sun, 10/31/2010 - 01:17 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-44" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Verifying servers, platforms and sites</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-44'><p>One of the common tasks available to all three of the major entities in Aegir (Servers, Platforms and Sites) is the Verify task.</p>
+
+<p>You can think of the Verify task as a sort of routine 'sanity check' of that specific entity, with a sort of checklist of expected behaviour with which it runs through to confirm that the entity is operating as normal.</p>
+
+<p>The Verify task also can be used to regularly 'sync' your platform or site with the Aegir package registry, to keep it up to date on whether any modules have changed (been removed or enabled/disabled). This will aid running Migration and Clone tasks, since Aegir needs to have a precise knowledge of what modules, themes or profiles are on the system before it can accurately judge whether an upgrade is possible.</p>
+
+<p>It is recommended to run the Verify task on your entities routinely to keep them in sync with the Aegir database, and to run a Verify of your site, current platform and target platform prior to attempting a Migration or Clone task.</p>
+
+<h2>What happens in a Verify task?</h2>
+
+<ol>
+<li><p>Servers</p>
+
+<ul>
+<li>When you add a new server node in the Aegir frontend, a Verify task is spawned for the first time.</li>
+<li>the configuration directories are created if they don't exist and set to the correct permissions, or set to the correct permissions if they already existed but were incorrectly set</li>
+<li>if the server is the master server, some additional configuration and backup directories are created</li>
+<li>generates or updates a Drush alias file for the server.</li>
+<li>some configuration directories are synced from the master server to remote servers</li>
+<li>Checks that new databases and database users can be created</li>
+<li>Checks that the HTTP web server can be restarted</li>
+</ul></li>
+<li><p>Platforms</p>
+
+<ul>
+<li>When you add a new platform node in the Aegir frontend, a Verify task is spawned for the first time. </li>
+<li>If the platform directory didn't exist on the file system and a Drush makefile was provided, Drush Make will be called to build the platform in that location</li>
+<li>If the platform directory didn't exist and no Drush makefile was provided, the task will fail with the error 'Does not contain a valid Drupal installation'.</li>
+<li>Checks that the permissions are correct, at least of the 'sites' folder of the platform directory (so we can create new sites here)</li>
+<li>Searches for existing sites on the platform that are not yet in the system. These sites will be 'imported' into Aegir.</li>
+<li>Scans the platform and builds or updates the package registry in the Aegir database. </li>
+<li>Generates or updates a Drush alias for the platform, and a drushrc.php file in the platform's directory root.</li>
+<li>Reads in the platform's .htaccess file into a platform-wide web server vhost configuration file.</li>
+<li>Restart the web server</li>
+</ul></li>
+<li><p>Sites</p>
+
+<ul>
+<li>When you add a new site in the Aegir system, an Install task is spawned, This is contrasted with the above entities which spawn only Verify tasks initially.</li>
+<li>Scans the site and builds or updates the package registry in the Aegir database.</li>
+<li>Creates important directories in the site folder, such as 'files'. Sets or corrects the appropriate permissions </li>
+<li>Manages/updates any site aliases (symlinks, redirects etc)</li>
+<li>Re-generates the settings.php </li>
+<li>Re-generates the site's web server vhost configuration file</li>
+<li>Re-generates the site's drushrc.php and a Drush alias</li>
+<li>Clears caches.</li>
+</ul></li>
+</ol>
+
+<p>You can run or re-run the Verify task at any time on a server, platform or site, and it is encouraged to do so.</p>
+
+<p>Certain tasks, such as 'deploy' when a site is being imported, automatically imply a verify of the site.</p>
+
+<p>Each Verify task, like all tasks generated by Aegir, emit a 'task log' available for review after the task has completed (or failed).</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-41.html?destination=node%2F44%23comment-form">Login</a> or <a href="../../../../../user/register/index-41.html?destination=node%2F44%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-41.html?destination=node%2F44%23comment-form">Login</a> or <a href="../../../../../user/register/index-41.html?destination=node%2F44%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/44/revisions/114/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:02:08 GMT -->
+</html>

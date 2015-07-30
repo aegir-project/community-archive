@@ -1,0 +1,103 @@
+Submitted by admin on Thu, 02/09/2012 - 13:51
+Site: vcard.ll
+Status: Successful
+Executed: Thu, 02/09/2012 - 13:52
+Execution time: 2 sec
+Log message
+Task starts processing
+Running: /usr/share/drush/drush.php @vcard.ll provision-delete --backend 2>&1
+Bootstrap to phase 0.
+Drush bootstrap phase : _drush_bootstrap_drush()
+Load alias @vcard.ll
+Loading drushrc "/var/aegir/platforms/vcard-t1/sites/vcard.ll/drushrc.php" into "site" scope.
+Bootstrap to phase 0.
+Found command: provision-delete (commandfile=provision)
+Initializing drush commandfile: drush_make
+Initializing drush commandfile: drush_make_d_o
+Initializing drush commandfile: provision
+Load alias @server_localhost
+Load alias @server_master
+Loading apache driver for the http service
+Loading mysql driver for the db service
+Load alias @platform_vcardt1
+Initializing drush commandfile: user
+Including /usr/share/drush/commands/provision/db/delete.provision.inc
+Including /usr/share/drush/commands/provision/dns/delete.provision.inc
+Including /usr/share/drush/commands/provision/http/delete.provision.inc
+Including /usr/share/drush/commands/provision/platform/delete.provision.inc
+Including /usr/share/drush/commands/provision/db/backup.provision.inc
+Including /usr/share/drush/commands/provision/platform/backup.provision.inc
+Drush bootstrap phase : _drush_bootstrap_drupal_root()
+Loading drushrc "/var/aegir/platforms/vcard-t1/drushrc.php" into "drupal" scope.
+Initialized Drupal 7.12 root directory at /var/aegir/platforms/vcard-t1
+Drush bootstrap phase : _drush_bootstrap_drupal_site()
+Initialized Drupal site vcard.ll at sites/vcard.ll
+Loading drushrc "/var/aegir/platforms/vcard-t1/sites/vcard.ll/drushrc.php" into "site" scope.
+Drush bootstrap phase : _drush_bootstrap_drupal_configuration()
+Adding sites directory to /var/aegir/backups/vcard.ll-20120209.135202.tar.gz
+Temporarily uncloaking database credentials for backup
+Re-cloaking database credentials after backup
+Deleted mysql dump from sites directory
+Backed up site up to /var/aegir/backups/vcard.ll-20120209.135202.tar.gz.
+Client backup directory for admin path /var/aegir/clients/admin/backups exists.
+Client backup directory for admin ownership of /var/aegir/clients/admin/backups has been changed to aegir.
+Client backup directory for admin permissions of /var/aegir/clients/admin/backups have been changed to 750.
+Client backup directory for admin path /var/aegir/clients/admin/backups is writable.
+Created symlink /var/aegir/backups/vcard.ll-20120209.135202.tar.gz to /var/aegir/clients/admin/backups/vcard.ll-20120209.135202.tar.gz
+Dropping database vcardll
+Revoking privileges of vcardll@localhost from vcardll
+apache on server has been restarted
+Deleting /var/aegir/platforms/vcard-t1/sites/vcard.ll/private/temp directory successful.
+Deleting /var/aegir/platforms/vcard-t1/sites/vcard.ll/private/files directory successful.
+rmdir(/var/aegir/platforms/vcard-t1/sites/vcard.ll/private): Permission denied provision.file.inc:123
+Deleting /var/aegir/platforms/vcard-t1/sites/vcard.ll/private directory failed.
+rmdir(/var/aegir/platforms/vcard-t1/sites/vcard.ll/libraries): Permission denied provision.file.inc:123
+Deleting /var/aegir/platforms/vcard-t1/sites/vcard.ll/libraries directory failed.
+unlink(/var/aegir/platforms/vcard-t1/sites/vcard.ll/settings.php): Permission denied provision.file.inc:141
+Deleting /var/aegir/platforms/vcard-t1/sites/vcard.ll/settings.php file failed.
+rmdir(/var/aegir/platforms/vcard-t1/sites/vcard.ll/modules): Permission denied provision.file.inc:123
+Deleting /var/aegir/platforms/vcard-t1/sites/vcard.ll/modules directory failed.
+unlink(/var/aegir/platforms/vcard-t1/sites/vcard.ll/drushrc.php): Permission denied provision.file.inc:141
+Deleting /var/aegir/platforms/vcard-t1/sites/vcard.ll/drushrc.php file failed.
+rmdir(/var/aegir/platforms/vcard-t1/sites/vcard.ll/themes): Permission denied provision.file.inc:123
+Deleting /var/aegir/platforms/vcard-t1/sites/vcard.ll/themes directory failed.
+Deleting /var/aegir/platforms/vcard-t1/sites/vcard.ll/files/styles directory successful.
+Deleting /var/aegir/platforms/vcard-t1/sites/vcard.ll/files/css directory successful.
+Deleting /var/aegir/platforms/vcard-t1/sites/vcard.ll/files/locations directory successful.
+Deleting /var/aegir/platforms/vcard-t1/sites/vcard.ll/files/ctools directory successful.
+Deleting /var/aegir/platforms/vcard-t1/sites/vcard.ll/files/pictures directory successful.
+Deleting /var/aegir/platforms/vcard-t1/sites/vcard.ll/files/images directory successful.
+Deleting /var/aegir/platforms/vcard-t1/sites/vcard.ll/files/js directory successful.
+Deleting /var/aegir/platforms/vcard-t1/sites/vcard.ll/files/tmp directory successful.
+Deleting /var/aegir/platforms/vcard-t1/sites/vcard.ll/files/imagecache directory successful.
+rmdir(/var/aegir/platforms/vcard-t1/sites/vcard.ll/files): Permission denied provision.file.inc:123
+Deleting /var/aegir/platforms/vcard-t1/sites/vcard.ll/files directory failed.
+rmdir(/var/aegir/platforms/vcard-t1/sites/vcard.ll): Directory not empty provision.file.inc:123
+Deleting /var/aegir/platforms/vcard-t1/sites/vcard.ll directory failed.
+Template loaded: /usr/share/drush/commands/provision/platform/provision_drupal_sites.tpl.php
+Generated config Drupal sites.php file
+Changed permissions of /var/aegir/platforms/vcard-t1/sites/sites.php to 644
+Command dispatch complete
+Peak memory usage was 9.54 MB
+Running: /usr/share/drush/drush.php --root='/var/aegir/hostmaster-6.x-1.6' --uri='server.local.net' provision-save '@vcard.ll' --backend 2>&1
+Bootstrap to phase 0.
+Drush bootstrap phase : _drush_bootstrap_drush()
+Bootstrap to phase 0.
+Found command: provision-save (commandfile=provision)
+Initializing drush commandfile: drush_make
+Initializing drush commandfile: drush_make_d_o
+Initializing drush commandfile: provision
+Load alias @self
+Load alias @server_master
+Loading apache driver for the http service
+Initializing drush commandfile: user
+Load alias @vcard.ll
+Loading drushrc "/var/aegir/platforms/vcard-t1/sites/vcard.ll/drushrc.php" into "site" scope.
+Load alias @server_localhost
+Loading mysql driver for the db service
+Load alias @platform_vcardt1
+Command dispatch complete
+Peak memory usage was 7.93 MB
+Command dispatch complete
+Peak memory usage was 17.73 MB
+

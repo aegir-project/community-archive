@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/463?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../383/index.html" />
+<link rel="up" href="../../content/scrums/archive-2011/index.html" />
+<link rel="next" href="../490/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2011-03-09 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-463" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2011-03-09</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_6 first last"><a href="../../taxonomy/term/6/index.html" rel="tag" title="">weekly scrums</a></li>
+</ul></div><div id='diff-inline-463'><pre>
+09:01 &lt;@anarcat&gt; mig5: hey
+09:01 &lt;@mig5&gt; up for scrum or inconvenient time?
+09:01 &lt;@anarcat&gt; i can't believe i can't find those revisionsw <a href="http://drupal.org/node/1068280#comment-4131534" title="http://drupal.org/node/1068280#comment-4131534">http://drupal.org/node/1068280#comment-4131534</a>
+09:01 &lt;@anarcat&gt; hey, scrum time, look at that
+09:01 &lt;@anarcat&gt; sure
+09:01 &lt;@anarcat&gt; at a session here, but it still works :)
+09:01 &lt;@mig5&gt; alright, go! :)
+09:02 &lt;@mig5&gt; actually
+09:02 &lt;@mig5&gt; first, i believe i saw you mention that this scrum time is inconvenient for you 
+09:02 &lt;@anarcat&gt; did something fuckup on d.o or something?
+09:02 &lt;@mig5&gt; drupalcon aside
+09:02 &lt;@mig5&gt; anarcat: you'll have to be more specific about d.o fuckups :)
+09:02 &lt;@anarcat&gt; every first wednesday of the month i have a meeting during this scrum
+09:02 &lt;@mig5&gt; ah. let's move it then
+09:03 &lt;@anarcat&gt; what's convenient for ya?
+09:03 &lt;@mig5&gt; the following day, but i think that's when it used to be for you
+09:04 &lt;@mig5&gt; and you couldn't do later
+09:04 &lt;@anarcat&gt; right
+09:04 &lt;@anarcat&gt; that is correct
+09:04 &lt;@mig5&gt; so maybe we go earlier in the week
+09:04 &lt;@anarcat&gt; yeah, i can do the day before or before before
+09:04 &lt;@mig5&gt; let's do day before, so Wednesday for us, unless it's a problem for univate
+09:04 &lt;@anarcat&gt; got it
+09:04 &lt;@mig5&gt; anyway!
+09:04 &lt;@anarcat&gt; tuesday for us
+09:04 &lt;@mig5&gt; d.o issues?
+09:04 &lt;@anarcat&gt; right
+09:05 &lt;@anarcat&gt; so about the upgrade path
+09:05 &lt;@anarcat&gt; <a href="http://drupal.org/node/1068280#comment-4131534" title="http://drupal.org/node/1068280#comment-4131534">http://drupal.org/node/1068280#comment-4131534</a>
+09:05 &lt;@mig5&gt; i noticed i committed a change to provision and all my old commits are still unattributed to my user account. yay
+09:05 &lt;@anarcat&gt; that comment refers to two patches that are supposedly on head
+09:05 &lt;@anarcat&gt; and that i can't find
+09:05 &lt;@mig5&gt; hmm
+09:05 &lt;@mig5&gt; they're in master aren't they?
+09:05 &lt;@anarcat&gt; i can't find them
+09:05 &lt;@anarcat&gt; git fetch
+09:06 &lt;@anarcat&gt; git show f64487706638
+09:06 &lt;@anarcat&gt; fatal: ambiguous argument 'f64487706638': unknown revision or path not in the working tree.
+09:06 &lt;@mig5&gt; <a href="http://drupalcode.org/project/hostmaster.git/commitdiff/75191804926c5c299faded5d2325053e33916155" title="http://drupalcode.org/project/hostmaster.git/commitdiff/75191804926c5c299faded5d2325053e33916155">http://drupalcode.org/project/hostmaster.git/commitdiff/75191804926c5c29...</a>
+09:06 &lt;@mig5&gt; <a href="http://drupalcode.org/project/hostmaster.git/commitdiff/a8dfee3391cb89f0aa96f96edc3593559b7de11d" title="http://drupalcode.org/project/hostmaster.git/commitdiff/a8dfee3391cb89f0aa96f96edc3593559b7de11d">http://drupalcode.org/project/hostmaster.git/commitdiff/a8dfee3391cb89f0...</a>
+09:06 &lt;@mig5&gt; are you sure your origin is not git.aegirproject.org ? :)
+09:06 &lt;@anarcat&gt; um
+09:07 &lt;@anarcat&gt; well
+09:07 &lt;@anarcat&gt; those are not the commits i am looking for
+09:07 &lt;@mig5&gt; oh
+09:07 &lt;@anarcat&gt; that above comment refers to two other commits
+09:07 &lt;@mig5&gt; oh oops
+09:08 &lt;@mig5&gt; yeah i don't see it
+09:08 &lt;@mig5&gt; weird
+09:08 &lt;@anarcat&gt; oh well
+09:08 &lt;@anarcat&gt; maybe i didn't push them and it works anyways... (?!)
+09:08 &lt;@anarcat&gt; anywho
+09:08 &lt;@anarcat&gt; so i wanted to merge shit in and release rc2 this week
+09:09 &lt;@anarcat&gt; i talked to a bunch of people here at drupalcon about aegir
+09:09 &lt;@anarcat&gt; i just did a aegir 101 session to about 20 people
+09:09 &lt;@mig5&gt; nice
+09:09 &lt;@mig5&gt; how'd that go
+09:10 &lt;@anarcat&gt; pretty well
+09:10 &lt;@anarcat&gt; people didn't really *want* to install aegir so that part didn't really work
+09:10 &lt;@anarcat&gt; but we had good exchanges and dispelled common myths
+09:10 &lt;@anarcat&gt; and gave away cool stickers :)
+09:10 &lt;@anarcat&gt; we have a roadmap session planned for tomorrow
+09:10 &lt;@anarcat&gt; at 2, in missouri again
+09:10 &lt;@anarcat&gt; and then we are thinking of having a doc/code sprint on friday
+09:11 &lt;@mig5&gt; nice
+09:11 &lt;@anarcat&gt; maybe help people out writing drush extensions, and a bunch of other ideas
+09:11 &lt;@mig5&gt; we have about 20 'for reviews' in the queues
+09:11 &lt;@anarcat&gt; yeah
+09:11 &lt;@mig5&gt; mostly eugen :P
+09:11 &lt;@anarcat&gt; i'll try to throw people at those
+09:11 &lt;@anarcat&gt; we may have new people to get into the project
+09:11 &lt;@mig5&gt; excellent
+09:11 &lt;@anarcat&gt; i met with shrop, EclipseGc and others
+09:11 &lt;@anarcat&gt; what else
+09:12 &lt;@anarcat&gt; i want to release rc2 :P
+09:12 &lt;@mig5&gt; well - you can, i didn't see any errors doing an upgrade to master from 0.3
+09:12 &lt;@anarcat&gt; i was hoping someone could shed light on this - but maybe i'll just do it myself: <a href="http://drupal.org/node/1081528" title="http://drupal.org/node/1081528">http://drupal.org/node/1081528</a>
+09:12 &lt;@mig5&gt; regardless of that missing commit
+09:12 &lt;@anarcat&gt; oh, and i have pushed 6.x-1.x as the stable branch
+09:12 &lt;@anarcat&gt; for provision
+09:13 &lt;@mig5&gt; yeah that sounds expected: drupal keeps those paths in the db, you need to cache clear before it fixes itself up, so your theory is probably right there
+09:13 &lt;@mig5&gt; that would happen with or without a Migrate task, basically
+09:13 &lt;@mig5&gt; but would be nice for Migrate to fix it
+09:13 &lt;@anarcat&gt; and for hostmaster now
+09:13 &lt;@anarcat&gt; cool
+09:14 &lt;@anarcat&gt; so i'll look at that before the release
+09:14 &lt; shrop&gt; anarcat: you have aegir stickers?
+09:14 &lt; shrop&gt; that would be cool
+09:14 &lt;@anarcat&gt; shrop: yes!
+09:14 &lt;@anarcat&gt; of course :)
+09:14 &lt; shrop&gt; ok.. want one tomorrow at the meetup if you have any.. :)
+09:14 &lt;@anarcat&gt; come to the bof tomorrow :)
+09:14 &lt;@anarcat&gt; of course
+09:14 &lt; shrop&gt; will do
+09:14 &lt;@anarcat&gt; alright
+09:14 &lt;@anarcat&gt; so what else for the scrum
+09:14 &lt;@anarcat&gt; we did a little spike on the install docs manual for the purpose of the session
+09:15 &lt;@anarcat&gt; i'd actually like to get a debian package working for rc2, but i'm not sure i'll have time to do this
+09:15 &lt;@anarcat&gt; ideally, we'd get rc2 out during that code sprint
+09:15 &lt;@mig5&gt; maybe for 1.0 :)
+09:15 &lt;@anarcat&gt; ok, i think that's it for me
+09:16 &lt;@anarcat&gt; well, i'd like the package to be tested :)
+09:16 &lt;@mig5&gt; i've got nothing to report. univate, you here?
+09:16 &lt;@mig5&gt; omega8cc?
+09:16 &lt; univate&gt; hey
+09:16 &lt; hefring&gt; eh oh
+09:17 &lt;@mig5&gt; did you want to add anything to the scrum?
+09:17 &lt;@anarcat&gt; mig5: i have merged the two commits you mentionned on the stable branch
+09:18 &lt;@mig5&gt; cheers
+09:19 &lt;@anarcat&gt; and then some more
+09:19 &lt;@mig5&gt; i dont fully understand omega8cc's patches here <a href="http://drupal.org/node/949044#comment-4144944" title="http://drupal.org/node/949044#comment-4144944">http://drupal.org/node/949044#comment-4144944</a>
+09:19 &lt;@mig5&gt; +  $form_state['values']['parameters']['new_uri'] = $url; // force lowercase
+09:19 &lt;@mig5&gt; does that variable assignment really force lowercase?
+09:20 &lt;@mig5&gt; maybe it's for readability.
+09:20 &lt;@mig5&gt; anyway
+09:21 &lt;@anarcat&gt; that doesn't force lowercase
+09:21 &lt;@anarcat&gt; at all
+09:22 &lt;@anarcat&gt; otherwise, i think that's it for our scrum
+09:23 &lt;@mig5&gt; yep
+09:23 &lt;@mig5&gt; thanks all
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-98.html?destination=node%2F463%23comment-form">Login</a> or <a href="../../user/register/index-98.html?destination=node%2F463%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/463?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:39 GMT -->
+</html>

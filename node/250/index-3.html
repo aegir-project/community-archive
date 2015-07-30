@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/250?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:18 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../240/index.html" />
+<link rel="up" href="../../content/scrums/archive-2011/index.html" />
+<link rel="next" href="../264/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2011-01-14 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-250" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2011-01-14</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first"><a href="../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+<li class="taxonomy_term_6 last"><a href="../../taxonomy/term/6/index.html" rel="tag" title="">weekly scrums</a></li>
+</ul></div><div id='diff-inline-250'><pre>
+06:59 &lt;@anarcat&gt; SCRUM START NOW!
+06:59 &lt;@anarcat&gt; welcome everyone :)
+06:59 &lt;@anarcat&gt; i'll start with myself
+06:59 &lt;@anarcat&gt; i am just out of a lenghty (2.5 week) vacation
+06:59 &lt;@anarcat&gt; which was very good
+06:59 &lt;@anarcat&gt; i have done absolutely no aegir work since decembre
+07:00 &lt;@anarcat&gt; and i don't plan on doing anything until monday
+07:00 &lt;@anarcat&gt; at which point we'll update our prod server to head and try to make it work
+07:00 &lt;@anarcat&gt; i had big unexpected issues last time with that <a href="http://drupal.org/node/1003700" title="http://drupal.org/node/1003700">http://drupal.org/node/1003700</a>
+07:00 &lt;@anarcat&gt; in general, i feel there's something very fishy with aliases, i feel this affects more than one of my server instances\
+07:00 &lt;@anarcat&gt; i suspect it may be related to drush 3.3 or the drush package of
+07:01 &lt;@anarcat&gt; so i'll be working on that
+07:01 &lt;@anarcat&gt; i have also a huge backlog of internal aegir issues that may yield a few bugfixes
+07:01 &lt;@anarcat&gt; this will be a good Q/A to maybe lead to an RC somewhere next week
+07:01 &lt;@anarcat&gt; so that's it for me
+07:01 &lt;@mig5&gt; nice one
+07:02 &lt;@mig5&gt; i've not done much except, updated our makefiles to depend on drush 4 and new drush make
+07:02 &lt;@mig5&gt; i also updated the upgrade script to remove some hardcoded crap and be more consistent with the install.sh
+07:02 &lt;@anarcat&gt; coool
+07:02 &lt;@mig5&gt; i *wanted* to work on DNS but sorry, I am just really struggling to do anything aegir :(
+07:02 &lt;@anarcat&gt; you've actually done some real work, crazy ;)
+07:02 &lt;@mig5&gt; well not really.. :s
+07:03 &lt;@mig5&gt; finally, i'll just note on what i think is our most critical bug right now, and i hope to focus on this instead
+07:03 &lt;@mig5&gt; <a href="http://drupal.org/node/976300" title="http://drupal.org/node/976300">http://drupal.org/node/976300</a>
+07:03 &lt;@anarcat&gt; Vertice: anything to add? how is the DNS change coming up?
+07:03  * anarcat takes a look
+07:03 &lt;@mig5&gt; verify a remote platform/site and it deletes shit in your site's /files dir :s
+07:03 &lt;@anarcat&gt; right, ok
+07:03 &lt;@anarcat&gt; mig5: i think it's good to sync only some files and not the whole dir
+07:03 &lt;@mig5&gt; because we do these crazy syncs of the entire codebase *after just syncing the settings.php, and then the drushrc.php, etc*
+07:03 &lt;@mig5&gt; yes
+07:04 &lt;@mig5&gt; anyway, can discuss that later, just wanted to mention what i think i'll focus on for the moment
+07:04 &lt;@anarcat&gt; that's very good.
+07:04 &lt;@mig5&gt; and that's it from me
+07:04 &lt;@anarcat&gt; and it it's RC indeed
+07:04 &lt;@anarcat&gt; i need Vertice to do changes to the DNS to activate ergonlogic's API site so we have api.aegirproject.org
+07:04 &lt;@anarcat&gt; anyone else wants to add something?
+07:04 &lt;@mig5&gt; i'd like to add to that and possibly take over the hosting of aegirproject.org at least, so we can get that updated
+07:05 &lt; ergonlogic&gt; thanks anarcat
+07:05 &lt;@mig5&gt; or possibly even take over the DNS for aegirproject.org itself, in the event i ever need to move the mailing list server or something
+07:05 &lt; eft_&gt; mig5 : +1 to that idea
+07:05 &lt;@mig5&gt; just for the sake of speed, but it's up to devseed
+07:05 &lt;@anarcat&gt; yeah
+07:05 &lt;@anarcat&gt; i don't mind you hosting that, koumbit can also host DNS and the site
+07:05 &lt;@mig5&gt; yeah either way :)
+07:05 &lt;@anarcat&gt; i offered this to Vertice, i expect us to have DNS soon
+07:05 &lt;@mig5&gt; cool
+07:05 &lt;@anarcat&gt; (us = koumbit)
+07:05 &lt;@mig5&gt; yep
+07:06 &lt;@anarcat&gt; but for the site, yeah, it would be important to at least have a backup ...
+07:06 &lt;@mig5&gt; darthsteven: feel free to chime in - you've been doing great work with contrib aegir stuff
+07:06 &lt; darthsteven&gt; ah okay
+07:06 &lt; eft_&gt; either way, it would be nice to increase the cookie timeout on community.aegir.org
+07:06 &lt;@anarcat&gt; yeah, if anyone else wants to jump in, feel free to talk :)
+07:06 &lt; darthsteven&gt; So I've been thinking mostly
+07:06 &lt;@anarcat&gt; if you're doing dev on aegir, now's the time to talk (after darthsteven :)
+07:06 &lt; darthsteven&gt; Mainly about provision contexts
+07:07 &lt; darthsteven&gt; and provision-save and services and how all the pieces fit together
+07:07 &lt; darthsteven&gt; I have an outline for a handbook page(s) that should document most of what's going on
+07:08 &lt;@mig5&gt; oh that'd be nice. since you have chosen the bit that no-one understands how it really is meant to work :)
+07:08 &lt; darthsteven&gt; Nothing new in contrib land from me this week
+07:08 &lt;@anarcat&gt; cool
+07:08 &lt;@anarcat&gt; i think Vertice did some work in that direction in the handbook already
+07:08 &lt;@anarcat&gt; ok
+07:08 &lt;@anarcat&gt; anyone else?
+07:08 &lt; darthsteven&gt; mig5: yeah, it is complex...
+07:08 &lt; darthsteven&gt; that's it from me
+07:08 &lt;@mig5&gt; yes darthsteven <a href="../41/index.html" title="http://community.aegirproject.org/node/41">http://community.aegirproject.org/node/41</a> have a read of that if you've not already
+07:09 &lt;@anarcat&gt; cool
+07:09 &lt;@anarcat&gt; ok last call, anyone else?
+07:09 &lt;@anarcat&gt; anybody have time to log this into the community site?
+07:09 &lt;@mig5&gt; sure
+07:09 &lt;@mig5&gt; thanks all! goodscrum
+07:10 &lt;@anarcat&gt; thanks!
+07:10 &lt;@anarcat&gt; happy new year everybody, and thanks for attending!
+07:10 &lt;@anarcat&gt; SCRUM END!
+07:10 &lt; darthsteven&gt; 
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-91.html?destination=node%2F250%23comment-form">Login</a> or <a href="../../user/register/index-91.html?destination=node%2F250%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/250?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:18 GMT -->
+</html>

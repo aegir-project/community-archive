@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  
+<!-- Mirrored from community.aegirproject.org/node/355/revisions/758/view by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:10:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+    <link type="text/css" rel="stylesheet" media="all" href="../../../../../profiles/openatrium/modules/contrib/codefilter/codefilter/index.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_b8ca3ff360daa12eff502993554e60d0/index.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../../../../../sites/community.aegirproject.org/files/css/css_c151a4313ed94e62ccee94ea27ad58ed/index.css" />
+<link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<style type='text/css'>
+.atrium-welcome-links a:hover,
+.dropdown-blocks .block-toggle li a:hover,
+.dropdown-blocks .block-toggle li a:focus,
+.dropdown-blocks .block-toggle ul.links li a:hover,
+.dropdown-blocks .block-toggle ul.links li a:focus,
+.dropdown-blocks .block-toggle .item-list li a:hover,
+.dropdown-blocks .block-toggle .item-list li a:focus,
+.pager li.pager-current,
+.more-link a:hover,
+#global,
+#navigation { background-color:#143352; }
+
+body #space-tools .block-title { background-color:#0e2339; }
+
+body #header .block-widget .block-content,
+body #header .block .block-title { background-color:#112b45; }
+
+body .page-region .block .block-title {
+  background-color:#c2c8ce;
+  border-color:#b4bbc1;
+  border-bottom-color:#a7adb3;
+  }
+
+.drilldown .trail a {
+  border-top-color:#f3f4f6;
+  border-bottom-color:#d2d4d6;
+  background-color:#e3e4e6;
+  }
+
+.decay-10 .comment-title { border-color:#eeeeee; }
+.decay-9 .comment-title { border-color:#d8dbde; }
+.decay-8 .comment-title { border-color:#c2c8ce; }
+.decay-7 .comment-title { border-color:#acb5bf; }
+.decay-6 .comment-title { border-color:#96a3af; }
+.decay-5 .comment-title { border-color:#8190a0; }
+.decay-4 .comment-title { border-color:#6b7d90; }
+.decay-3 .comment-title { border-color:#556b80; }
+.decay-2 .comment-title { border-color:#3f5871; }
+.decay-1 .comment-title { border-color:#294561; }
+.decay-0 .comment-title { border-color:#143352; }
+</style>
+    <script type="text/javascript" src="../../../../../sites/community.aegirproject.org/files/js/js_dddbfcfef882b2074d904e22eb494d08/index.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/"});
+//--><!]]>
+</script>
+    <!--[if lte IE 8]><style type='text/css' media='screen'>@import '/profiles/openatrium/themes/ginkgo/ie.css';</style><![endif]-->    <title>Revision of How this site crashed when it was last verified - lessons learned from migrating a &quot;standard site&quot; from Thu, 02/17/2011 - 19:44 | community.aegirproject.org</title>
+  </head>
+  <body  class="not-front not-logged-in page-node node-type-discussion one-sidebar sidebar-right designkit tao rubik admin-static page">
+
+  <a id='skipnav' href='#content'>Skip navigation</a>
+  <div id='global'><div class='limiter clear-block'>
+          <div id='header' class='dropdown-blocks toggle-blocks clear-block'>
+          
+
+<div  id="block-atrium-account" class="block block-atrium block-widget block-notitle">
+  
+  
+      <div class='block-content clear-block '>
+      <a href="../../../../../user/login/index.html">Log in</a>    </div>
+  
+  </div>
+
+
+  
+
+<div  id="block-boxes-search_issues" class="block block-boxes block-toggle">
+      <div class='block-title'>
+            <a href="index.html#block-boxes-search_issues" class="toggle element-invisible active">Toggle</a>LOOKING FOR HELP?    </div>
+  
+  
+      <div class='block-content clear-block '>
+      <div id='boxes-box-search_issues' class='boxes-box'><div class="boxes-box-content"><table class="prose">
+<tr>
+<td width="50%">
+<span style="font-size:16px;width:100%">Type some keywords below and hit "enter":</span><br />
+<input type="text" class="drupal-issue-redirect" style="width:100%;min-width:200px;background-color:#DDEEFF; font-size:30px;border-style:dotted;border-width:1px" />
+<p>This will search the drupal.org issue queues across the various projects that make up the Aegir system. If there are no relevant results, please submit an issue there.</p></td>
+<td style="padding:10px">Other support resources:
+<ul>
+<li><a href="irc://irc.freenode.net/aegir">#aegir on IRC</a></li>
+<li><a href="../../../../../faq/index.html">FAQ</a></li>
+<li><a href="../../../../../handbook/index.html">Aegir Handbook</a></li>
+<li><a href="../../../../../service-providers/index.html">Aegir service providers</a></li>
+<li><a href="https://drupal.org/project/issues?text=&amp;projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir),Hosting+Platform+Pathauto&amp;status=Open&amp;priorities=All&amp;categories=All">All Aegir issues</a></li>
+<li><a href="http://drupal.stackexchange.com/questions/tagged/aegir">Aegir tag on Drupal Stackexchange</a></li>
+</ul>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+$("input.drupal-issue-redirect").change(function() {
+  searchURL= "http://drupal.org/project/issues?text="+$(this).val()+"&projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir),Hosting+Platform+Pathauto&status=Open&priorities=All&categories=All";
+  window.location = searchURL;
+});
+</script></div></div>    </div>
+  
+  </div>
+
+
+      </div>
+        <div class='breadcrumb'><span class='link link-0'><a href="../../../../../index.html">Home</a></span></div>    <a href="../../../../../index.html" class="logo" style="background-position:100% 50%; background-image:url(../%27http_/community.aegirproject.org/sites/community.aegirproject.org/files/imagecache/designkit-image-logo/logo/index.html)"></a>  </div></div>
+
+    <div id='navigation'><div class='limiter clear-block'>
+    <ul id="features-menu" class="links primary-links"><li class="menu-617 first"><a href="../../../../../dashboard/index.html" class=" icon-dashboard"><span class='icon'></span><span class='label'>Dashboard</span></a></li>
+<li class="menu-618"><a href="../../../../../handbook/index.html" class=" icon-handbook"><span class='icon'></span><span class='label'>Documentation</span></a></li>
+<li class="menu-2427 active"><a href="../../../../../discussion/index.html" class="active icon-discussion"><span class='icon'></span><span class='label'>Discussion</span></a></li>
+<li class="menu-2426"><a href="../../../../../calendar/index.html" class="spaces-menu-editable icon-calendar"><span class='icon'></span><span class='label'>Calendar</span></a></li>
+<li class="menu-823"><a href="../../../../../reader/index.html" class=" icon-reader"><span class='icon'></span><span class='label'>Feed reader</span></a></li>
+<li class="menu-2429 last"><a href="../../../../../members/index.html" class=" icon-members"><span class='icon'></span><span class='label'>Members</span></a></li>
+</ul>          <div id='space-tools'><div class='dropdown-blocks toggle-blocks clear-block'>  
+
+<div  id="block-atrium-search" class="block block-atrium block-toggle">
+      <div class='block-title'>
+            <a href="index.html#block-atrium-search" class="toggle element-invisible active">Toggle</a><span class='icon'></span> Search    </div>
+  
+  
+      <div class='block-content clear-block '>
+      <form action="http://community.aegirproject.org/node/355/revisions/758/view"  accept-charset="UTF-8" method="post" id="atrium-search-form">
+<div><div  class="form-item form-item-labeled" id="edit-search-wrapper">
+      <label  for="edit-search">Search: <span class='form-required' title='This field is required.'>*</span></label>
+    <input type="text" maxlength="128" name="search" id="edit-search" value="" class="form-text required fluid" />  </div>
+<input type="submit" name="op" id="edit-submit" value="Search"  class="form-submit" />
+<input type="hidden" name="form_build_id" id="form--9CjrcahJwfPrOUwdwngcyKeVqoRWubagkxaOupfQmw" value="form--9CjrcahJwfPrOUwdwngcyKeVqoRWubagkxaOupfQmw"  />
+<input type="hidden" name="form_id" id="edit-atrium-search-form" value="atrium_search_form"  />
+
+</div></form>
+    </div>
+  
+  </div>
+
+
+</div></div>
+      </div></div>
+  
+  <div id='page-tools'><div class='limiter clear-block'>
+    <h1  class="page-title page-title-hidden">Revision of <em>How this site crashed when it was last verified - lessons learned from migrating a &quot;standard site&quot;</em> from <em>Thu, 02/17/2011 - 19:44</em></h1>        <a href="index.html#block-atrium-help" id="help-toggler" class="palette-toggle active">Help</a>          </div></div>
+
+  
+  
+  <div id='page'><div class='limiter clear-block'>
+    
+<div id='content'><div class='page-region'>
+      <div class='page-content content-wrapper clear-block'>
+
+<div  id="node-355" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/anarcat/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-78/index.jpg" alt="anarcat&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a></div><div class='date'>7:44pm Feb 17, 2011</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">How this site crashed when it was last verified - lessons learned from migrating a &quot;standard site&quot;</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>We just had a pretty nasty outage on this site, about an hour ago (thanks to smthomas on IRC for the heads up!). All modules were disabled and the frontpage was unthemed and saying only "Page not found".</p>
+
+<p>Ouch.</p>
+
+<p>While distributions can make hosting and porting sites between providers a breeze (I didn't have to guess what Drupal modules I needed to install to import the site), it can have some tricky implications most people are not used to when doing certain operations. I have taken some time to explain here how I fixed this and how to avoid the problem in the future so that others can profit from that nasty experience...</p>
+
+<p>After freaking out (<a href="http://koumbit.org/">Koumbit</a> is the one taking care of hosting this site, so those things often fall on me), I started looking at the problem, and found out that all modules, or more precisely, all OpenAtrium-related modules were disabled. After a "what the heck" headbang, I realized I had the exact same issue back when we deployed the site during the original migration. Back then, the problem was that I didn't pass the <code>--profile=openatrium</code> option to <code>provision-deploy</code> when installing the new site. That, in turn, made the update script disable all OpenAtrium modules, because the Drupal bootstrap can't find them, because they are in the <code>profiles/openatrium</code>...</p>
+
+<p>(Now you're supposed to have that "aaaaaaah... i seeeeee!!" moment.)</p>
+
+<p>I fixed <a href="https://wiki.koumbit.net/FoireAuxQuestions/MigrerMonSiteDansAegir">our procedure</a> (in french, a bit chaotic) by adding the <code>--profile</code> option to the <code>provision-deploy</code> call, which fixed it during that original deployment. But then, the site got imported, and it picked up the profile not from the <code>settings.php</code> (which was correctly configured by <code>provision-deploy</code>) but from the <strong>alias</strong>, which was created earlier with <code>provision-save</code>, and which then defaulted to the <code>default</code> install profile. On import, the site node was created to the frontend with the default profile.</p>
+
+<p>So when the site was verified after a migrate, the profile was reset back to <code>default</code> again and all modules were disabled when the cache was cleared.</p>
+
+<p>The proper way of doing that deployment was to set the profile right in the alias (through <code>provision-save</code>) in the first place - that way all would have been right.</p>
+
+<p>If you ever end up in a similar situation, you have a few options:</p>
+
+<ol>
+<li>restore from a backup - not possible, we had live data in there and changes since the last backup</li>
+<li>enable all missing modules manuall - yuck: how do I know? i can look at "Disabled" (as opposed to "Not installed") modules in <code>drush pm-list</code>, but that's not really reliable</li>
+<li>partially restore from backup - what I ended up doing</li>
+</ol>
+
+<p>I took the original backup that was used to deploy the site in the first place and extracted the <code>database.sql</code>:</p>
+
+<p><code>tar zxf backup.tgz ./database.sql</code></p>
+
+<p>Then I edited the file (in vi!!) to remove everything but the system table instructions (including the <code>DROP TABLE <code>system</code></code>). And I loaded the dump in the site:</p>
+
+<p><code>drush @community.aegirproject.org sqlc &lt; database.sql</code></p>
+
+<p>That way, the system table, and only the system table, was restored from backups and all modules were back in their original enabled/disable state. A little cache clear (<code>drush @community.aegirproject.org cc all</code>) and the site was fully functional again.</p>
+
+<p>Bottomline: be careful with distributions when you move them around. Setting the profile in <code>settings.php</code> and in <code>provision-save</code> is essential for the site to work.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-318.html?destination=node%2F355%23comment-form">Login</a> or <a href="../../../../../user/register/index-318.html?destination=node%2F355%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div></div>
+<div id='right'><div class='page-region'>
+    
+
+<div  id="block-boxes-search_issues" class="block block-boxes">
+      <div class='block-title'>
+            LOOKING FOR HELP?    </div>
+  
+  
+      <div class='block-content clear-block '>
+      <div id='boxes-box-search_issues' class='boxes-box'><div class="boxes-box-content"><table class="prose">
+<tr>
+<td width="50%">
+<span style="font-size:16px;width:100%">Type some keywords below and hit "enter":</span><br />
+<input type="text" class="drupal-issue-redirect" style="width:100%;min-width:200px;background-color:#DDEEFF; font-size:30px;border-style:dotted;border-width:1px" />
+<p>This will search the drupal.org issue queues across the various projects that make up the Aegir system. If there are no relevant results, please submit an issue there.</p></td>
+<td style="padding:10px">Other support resources:
+<ul>
+<li><a href="irc://irc.freenode.net/aegir">#aegir on IRC</a></li>
+<li><a href="../../../../../faq/index.html">FAQ</a></li>
+<li><a href="../../../../../handbook/index.html">Aegir Handbook</a></li>
+<li><a href="../../../../../service-providers/index.html">Aegir service providers</a></li>
+<li><a href="https://drupal.org/project/issues?text=&amp;projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir),Hosting+Platform+Pathauto&amp;status=Open&amp;priorities=All&amp;categories=All">All Aegir issues</a></li>
+<li><a href="http://drupal.stackexchange.com/questions/tagged/aegir">Aegir tag on Drupal Stackexchange</a></li>
+</ul>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+$("input.drupal-issue-redirect").change(function() {
+  searchURL= "http://drupal.org/project/issues?text="+$(this).val()+"&projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir),Hosting+Platform+Pathauto&status=Open&priorities=All&categories=All";
+  window.location = searchURL;
+});
+</script></div></div>    </div>
+  
+  </div>
+
+
+  
+
+<div  id="block-views-discussion_comments-block_1" class="block block-views">
+      <div class='block-title'>
+            Recent comments    </div>
+  
+  
+      <div class='block-content clear-block '>
+      <div class="view view-discussion-comments view-id-discussion_comments view-display-id-block_1 view-dom-id-1">
+    
+  
+  
+      <div class="view-empty">
+      <p>No recent comments found.</p>    </div>
+  
+  
+  
+  
+  
+  
+</div>     </div>
+  
+  </div>
+
+
+</div></div>
+
+  </div></div>
+
+    <div id="footer"><div class='limiter clear-block'>
+        <ul class="links"><li class="atrium first last"><a href="http://www.openatrium.com/" target="_blank">OpenAtrium.com</a></li>
+</ul>  </div></div>
+  
+  <div id='palette'>  
+
+<div  id="block-atrium-help" class="block block-atrium">
+      <div class='block-title'>
+            <span class='close'></span>Need help?    </div>
+  
+  
+      <div class='block-content clear-block '>
+      
+
+<div  id="help-text" class="path-admin-help clear-block toggleable">
+  
+    
+  
+  
+  
+      <div class='help-content clear-block prose'>
+      <span class='icon'></span><p>The revisions let you track differences between multiple versions of a post.</p>
+<h3>Discussion</h3><p>The discussion area lets your team communicate by posting updates and discussing issues. It is a great place for sharing progress, discussing challenges, and exploring ideas.</p>
+    </div>
+  
+  </div>
+
+
+    </div>
+  
+  </div>
+
+
+</div>
+  
+  </body>
+
+<!-- Mirrored from community.aegirproject.org/node/355/revisions/758/view by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:10:23 GMT -->
+</html>

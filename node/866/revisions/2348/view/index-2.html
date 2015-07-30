@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/866/revisions/2348/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:23:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../handbook/strategy/open-app-standard-draft/index.html" />
+<link rel="up" href="../../../../../handbook/strategy/index.html" />
+<link rel="next" href="../../../../../content/handbook/strategy/universities-using-aegir/index.html" />
+<link rel="prev" href="../../../../../handbook/strategy/open-app-standard-draft/index.html" />
+<link rel="up" href="../../../../../handbook/strategy/index.html" />
+<link rel="next" href="../../../../../content/handbook/strategy/universities-using-aegir/index.html" />
+<link rel="prev" href="../../../../../handbook/strategy/open-app-standard-draft/index.html" />
+<link rel="up" href="../../../../../handbook/strategy/index.html" />
+<link rel="next" href="../../../../../content/handbook/strategy/universities-using-aegir/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Software-as-a-Service Business Model Specification from Mon, 09/19/2011 - 01:17 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-866" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../handbook/strategy/saas-business-model-spec/index.html">Software-as-a-Service Business Model Specification</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-866'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 09/19/2011 - 01:17</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p><strong>THIS DOCUMENT IS A DRAFT</strong></p>
+
+<p>The Software-as-a-Service (SaaS) model allows clients to purchase subscriptions to pre-built sites (whether pre-packaged profiles such as Open Atrium, or custom-built profiles), which are then provisioned for them by an Aegir system.</p>
+
+<p>In the <a href="http://london2011.drupal.org/conference/sessions/aegir-based-business-models">Aegir-based Business Models session</a> at DrupalCon London, I outlined a number of business models supported by Aegir, with a particular focus on SaaS.</p>
+
+<p>My intention with putting together this roadmap is to plan and then deploy a reference implementation at openatria.com. Basically, this comes down to "one-click" sites that, in it's simplest form (from a customer stand-point) bypasses Aegir all together.</p>
+
+<h2>Order Workflow</h2>
+
+<ol>
+<li>After perusing the service catalog, the client decides on an Open Atrium site and adds it to her cart;</li>
+<li>She then decides on some options, such as:
+
+<ol>
+<li>Extended features (i.e., experimental, in-house or 3rd party custom features, &amp;c.);</li>
+<li>Premium themes;</li>
+<li>A quota on the number of users (users seems like a good basis for estimating resource and support requirements);</li>
+</ol></li>
+<li>She decides on a level of support (e.g., 8x5 vs. 24/7, phone vs. email vs. forum, automated backup frequency, &amp;c.);</li>
+<li>She pays;</li>
+<li>She then receives her welcome email from her new Open Atrium site, where a user account has already been created for her and assigned the role of "manager".</li>
+<li>Finally, based on her level of support (from step 3), she might be granted access to additional resources outside her site, such as the ability to submit support requests to the service providers issue-tracking system.</li>
+</ol>
+
+<h2>Details</h2>
+
+<ul>
+<li>The client needn't ever see Aegir.</li>
+<li>She is not assigned UID 1.</li>
+<li>No doubt other options will also need to be made available such as:
+
+<ul>
+<li>Level of security, possibly w/ bundled SSL certificates;</li>
+<li>Use of a subdomain vs. new domain name registration.</li>
+</ul></li>
+<li>Service levels may not need to use uc_hosting or Aegir, per se. They could perhaps be handled by building product kits (i.e. Community/Business/Enterprise levels);</li>
+<li>As noted in step 6 above, access to additional resources (i.e., creating a user account and assigning a role on some other site) could be handled by some other mechanism. However, if this mechanism was implemented in or managed by uc_hosting/Aegir, it could allow for other interesting possibilities, such as a free/cheap/demo package that simply creates a group (in the context of OA) for the client, rather than a full site.</li>
+</ul>
+
+<h2>Modules</h2>
+
+<p>Several modules are already under development to support these features:</p>
+
+<dl><span class='diff-changed'>
+</span><dt>Hosting Profile <span class='diff-changed'>Roles</span></dt><span class='diff-changed'>
+</span><dd>Assign uid1 to an admin user, and give a role to the created client user.</dd>
+
+<dt>User <span class='diff-changed'>Limit</span></dt><span class='diff-changed'>
+</span><dd>Limit the number of users on a site. The plan is eventully integrate with User Role Limit, so that quotas an e assigned per role.</dd>
+
+<dt>Registrar <span class='diff-changed'>API</span></dt><span class='diff-changed'>
+</span><dd>Provides a drupal form to register domain names with a pluggable back-end to support various registrars.</dd>
+
+<dt>Hosting <span class='diff-changed'>Support</span></dt><span class='diff-changed'>
+</span><dd>Keep support clients in sync with the aegir clients created by uc_hosting.</dd>
+
+<dt>Hosting <span class='diff-changed'>Subdomains</span></dt><span class='diff-changed'>
+</span><dd>Alter the site creation form to only allow the creation of sites using a subdomain of a specific domain.</dd>
+
+<dt>Hosting <span class='diff-changed'>Services</span></dt><span class='diff-changed'>
+</span><dd>Allow uc_hosting (and thus all of Übercart) to run on a separate  Drupal site.</dd><span class='diff-changed'>
+</span></dl>
+
+<p>Additionally, some modules are currently only in the planning phase:</p>
+
+<dl><span class='diff-changed'>
+</span><dt>Provision Profile <span class='diff-changed'>Roles</span></dt><span class='diff-changed'>
+</span><dd>Drush extension (back-end) to support Hosting Profile Roles.</dd>
+
+<dt>Hosting User <span class='diff-changed'>Limit</span></dt><span class='diff-changed'>
+</span><dd>Provide a quota on the number of users on a given hosted site. Requires User Limit to run on the site, and refactoring on the current Aegir quota system.</dd>
+
+<dt>Provision User <span class='diff-changed'>Limit</span></dt><span class='diff-changed'>
+</span><dd>Drush extension (back-end) to support Hosting User Limit.</dd>
+
+<dt>Hosting Expiry <span class='diff-changed'>Date</span></dt><span class='diff-changed'>
+</span><dd>Schedule disabling and/or deletion (after backup) of sites after a certain date. Eventually, to integrate w/uc_hosting an uc_recurring.</dd>
+
+<dt>Provision Expiry <span class='diff-changed'>Date</span></dt><span class='diff-changed'>
+</span><dd>Drush extension (back-end) to support Hosting User Limit.</dd><span class='diff-changed'>
+</span></dl>
+
+<p>Other useful contrib modules are already in production use:
+ * Hosting Queue Runner
+ * Hosting Backup Queue
+ * Hosting Backup Garbage Collection</p>
+
+<h2>Notes</h2>
+
+<p>This is based on an initial spec I wrote last year: <a href="http://groups.drupal.org/node/94959#comment-306609" title="http://groups.drupal.org/node/94959#comment-306609">http://groups.drupal.org/node/94959#comment-306609</a></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-263.html?destination=node%2F866%23comment-form">Login</a> or <a href="../../../../../user/register/index-263.html?destination=node%2F866%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-263.html?destination=node%2F866%23comment-form">Login</a> or <a href="../../../../../user/register/index-263.html?destination=node%2F866%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/866/revisions/2348/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:23:30 GMT -->
+</html>

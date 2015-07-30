@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/513?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../490/index.html" />
+<link rel="up" href="../../content/scrums/archive-2011/index.html" />
+<link rel="next" href="../541/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2011-03-29 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-513" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2011-03-29</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_6 first last"><a href="../../taxonomy/term/6/index.html" rel="tag" title="">weekly scrums</a></li>
+</ul></div><div id='diff-inline-513'><pre>
+08:58 &lt;@anarcat&gt; alright, so we're 1 minute away from the scrum, but i'll start anyways :P
+08:59 &lt;@anarcat&gt; i'm a bit in a rush since we're going to replace a switch at the datacenter in about an hour
+08:59 &lt;@mig5&gt; np
+08:59 &lt;@anarcat&gt; which could affect community.a.o momentarily
+08:59 &lt;@anarcat&gt; we had a few issues with the server
+08:59 &lt;@anarcat&gt; it was replaced with a spare recently and we diagnosed a problem with a corrupted bios
+08:59 &lt;@anarcat&gt; our hw provider is running more tests and we hope to get the original server back online shortly
+09:00 &lt;@anarcat&gt; as for actual dev
+09:00 &lt;@anarcat&gt; i have worked on provisionacl recently and got it in good shape
+09:00 &lt;@anarcat&gt; i hope to deploy it in production here this week and get rid of our ugly sudo -u aegir kludges we were giving to workers
+09:00 &lt; Aurorus&gt; sounds interesting anarcat
+09:00 &lt;@anarcat&gt; so now not only can worker access modules/ files/ etc without problems, but they can run drush commands as their regular user
+09:01 &lt;@anarcat&gt; *plus* this gives access to the regular drush aliases
+09:01 &lt;@anarcat&gt; although there are still warnings (fixed in drush 5 and drush 4-head)
+09:01 &lt;@anarcat&gt; i'm working on having site aliases respect drush -i
+09:01 &lt;@anarcat&gt; i have worked a lot on the debian packages too, they are mostly ready
+09:02 &lt; Aurorus&gt; anarcat: Are there plans to allow the deletion of sites and platforms that fail verify?
+09:02 &lt;@anarcat&gt; provision is packaged, and there's a meta-package for hostmaster that downloads provision
+09:02 &lt;@anarcat&gt; i also want to get the debian packages finished this week and we'll update the docs accordingly
+09:02 &lt;@anarcat&gt; hopefully we can ship 1.0 with debian
+09:02 &lt;@anarcat&gt; i started coordination of the rc3 release, but we have a significant blocker with d.o that refuses to release hostmaster
+09:03 &lt;@anarcat&gt; see <a href="http://drupal.org/node/1105824" title="http://drupal.org/node/1105824">http://drupal.org/node/1105824</a>
+09:03 &lt;@anarcat&gt; for the drush issues: <a href="http://drupal.org/node/1104450" title="http://drupal.org/node/1104450">http://drupal.org/node/1104450</a> and <a href="http://drupal.org/node/957182" title="http://drupal.org/node/957182">http://drupal.org/node/957182</a>
+09:04 &lt;@anarcat&gt; i am going to work more on security in the coming weeks, i plan to work two weeks in a retreat in the woods with internet access :)
+09:04 &lt;@anarcat&gt; i will make sure we don't bootstrap evil modules so that allowing access to modules and themes is secure
+09:04 &lt;@anarcat&gt; i'd like to release rc3 tomorrow
+09:05 &lt;@anarcat&gt; i am thinking of starting work on the d7 port and ldap integration for 2.x during the next two weeks
+09:05 &lt;@anarcat&gt; and koumbit has done its internal roadmap and we'll be working hard on 2.x for the summer
+09:05 &lt;@anarcat&gt; i think that's pretty much it for me!
+09:05 &lt;@mig5&gt; nice one. you have given yourself a lot of work as usual :)
+09:05 &lt;@anarcat&gt; i am glad to see that crazy stuff darthsteven has been doing here :) <a href="http://www.computerminds.co.uk/articles/aegir-tasks-daemon" title="http://www.computerminds.co.uk/articles/aegir-tasks-daemon">http://www.computerminds.co.uk/articles/aegir-tasks-daemon</a>
+09:05 &lt;@anarcat&gt; i think it should be merged in
+09:06 &lt;@anarcat&gt; well, if anyone wants to pick up rc3 or similar things, be my guest :)
+09:06 &lt;@mig5&gt; i read that: i think the queue thing would be good in aegir, hopefully doesn't have too many dependencies?
+09:06 &lt;@anarcat&gt; drush especially needs a lot of love - and we'll need to work with them for aegir 2.0, which i suspect will support only drush 5 or above
+09:06 &lt;@anarcat&gt; mig5: seems to be standalone contrib!
+09:06 &lt;@mig5&gt; ok cool
+09:06 &lt;@anarcat&gt; it's just a ghetto php daemon :)
+09:06 &lt;@anarcat&gt; what Vertice didn't want :)
+09:06 &lt;@mig5&gt; i thought it deopeneded on some obscure launchd-like OSX daemon
+09:07 &lt;@mig5&gt; but i admit i didn't read it thoroughly
+09:07 &lt;@anarcat&gt; darthsteven: recommends supervisor, but it's just to keep the php script alive - you could use whatever you want
+09:07 &lt;@anarcat&gt; hey, we could even use the cronjob to restart the daemon if it fails
+09:07 &lt;@mig5&gt; anyway: not much from me, as usual. i basically encountered some significant stability issues with the master branch, and fixed it as best as I could, though I worry i broke some of your ideas there. <a href="http://drupal.org/node/1106768" title="http://drupal.org/node/1106768">http://drupal.org/node/1106768</a>
+09:08 &lt;@mig5&gt; i found the bug while writing my aegir build test in jenkins, which was exactly what it was designed to do (although it didn't literally fail the test :) )
+09:08 &lt;@mig5&gt; and that's the other main thing i've been toying with (jenkins), although it's at an early stage in terms of aegir tests.
+09:08 &lt;@anarcat&gt; cool :)
+09:08 &lt;@mig5&gt; but i think we could use it more and more
+09:08 &lt;@anarcat&gt; that is freakin awesome
+09:08 &lt;@anarcat&gt; can you paste urls for that here?
+09:08 &lt;@anarcat&gt; i'm really lazy, nevermind :)
+09:09 &lt;@mig5&gt; sure <a href="http://jenkins.greenbeedigital.com.au:8080/job/aegir install/" title="http://jenkins.greenbeedigital.com.au:8080/job/aegir%20install/">http://jenkins.greenbeedigital.com.au:8080/job/aegir%20install/</a>
+09:09 &lt;@mig5&gt; i'd like to at least give you or other developers access to that properly, so you can run tests
+09:09 &lt;@mig5&gt; at my expense :)
+09:09 &lt;@mig5&gt; as i figure you might catch migressions, and do me a favour
+09:09 &lt;@mig5&gt; :)
+09:10 &lt;@anarcat&gt; haha
+09:10 &lt;@anarcat&gt; well, in this case the regression was mine wasn't it ;)
+09:10 &lt;@mig5&gt; no matter
+09:10 &lt;@mig5&gt; one other thing:
+09:10 &lt;@mig5&gt; i'm less worried than you re: drupal.org's issues in releasing hostmaster
+09:10 &lt;@mig5&gt; i think it would be nice
+09:10 &lt;@mig5&gt; but it's not a blocker in my opinion
+09:10 &lt;@anarcat&gt; ok
+09:10 &lt;@mig5&gt; as our design works around it already
+09:11 &lt;@anarcat&gt; ... since we depend on git
+09:11 &lt;@mig5&gt; yeah
+09:11 &lt;@anarcat&gt; ok
+09:11 &lt;@anarcat&gt; but the release.sh doesn't know that :p
+09:11 &lt;@mig5&gt; ah, true :)
+09:11 &lt;@anarcat&gt; so i almost released a broken rc3 here :)
+09:11 &lt;@mig5&gt; don't worry, i broke rc2
+09:11 &lt;@mig5&gt; but i ignored it :)
+09:11 &lt;@anarcat&gt; eh
+09:11 &lt;@anarcat&gt; ok
+09:12 &lt;@anarcat&gt; so if you want to break^Wrelease rc3 tomorrow, or anytime, in fact, be my guest
+09:12 &lt;@mig5&gt; don't want to make more work for us in the release.sh though. but, i'm afraid i'm still crippled with a 'don't wait for drupal.org to catch up with us' mentality :)
+09:12 &lt;@mig5&gt; ok
+09:12 &lt;@anarcat&gt; that's alright
+09:13 &lt;@anarcat&gt; alright, anyone else?
+09:13 &lt;@mig5&gt; i'll have some time, this time tomorrow
+09:13 &lt;@anarcat&gt; omega8cc doesn't seem to be here, so i'll talk for her a little :)
+09:13 &lt;@anarcat&gt; she found a vhost injection vulnerability in the alias
+09:13 &lt;@mig5&gt; oh yeah
+09:13 &lt;@anarcat&gt; it was fixed in head and I *think* i merged in stable
+09:13 &lt;@mig5&gt; did the security team say anything?
+09:13 &lt;@anarcat&gt; which is why i wanted to make a release
+09:13 &lt;@anarcat&gt; yeah
+09:13 &lt;@anarcat&gt; no embargo, just release
+09:14 &lt;@anarcat&gt; since it's not a stable release, it's ok
+09:14 &lt;@mig5&gt; ok
+09:14 &lt;@anarcat&gt; so don't tag it as a security release either, because then it gets unpublished and all the shit
+09:14 &lt;@mig5&gt; she has some nginx batch updates in the queue as well, since we never really test those ourselves, we should probably just roll them in
+09:15 &lt;@mig5&gt; they missed rc2 already
+09:15 &lt;@mig5&gt; <a href="http://drupal.org/project/issues?text=&amp;projects=hosting%2C+provision%2C+eldir%2C+Hostmaster+%28Aegir%29&amp;status=8&amp;priorities=All&amp;categories=All" title="http://drupal.org/project/issues?text=&amp;projects=hosting%2C+provision%2C+eldir%2C+Hostmaster+%28Aegir%29&amp;status=8&amp;priorities=All&amp;categories=All">http://drupal.org/project/issues?text=&amp;projects=hosting%2C+provision%2C+...</a>
+09:15 &lt;@anarcat&gt; yup
+09:15 &lt;@anarcat&gt; a good review of the needs review patches would be good, but not mandatory
+09:15 &lt;@anarcat&gt; too bad we got that silly security issue otherwise that would have been 1.0 :P
+09:15 &lt;@mig5&gt; oh well. i admit i didn't read the security vulnerability properly. how was it exploitable?
+09:15 &lt;@anarcat&gt; darthsteven: please do submit a patch for that stuff, it seems like gold
+09:15 &lt;@mig5&gt; i spose i could find the ticket
+09:16 &lt;@anarcat&gt; oh and i think we should fix this too: <a href="http://drupal.org/node/1108810" title="http://drupal.org/node/1108810">http://drupal.org/node/1108810</a>
+09:16 &lt;@anarcat&gt; Files in sites/example.org/private are accessible.
+09:16 &lt;@mig5&gt; yeah
+09:16 &lt;@anarcat&gt; this is the security issue: <a href="http://drupal.org/node/1098304" title="http://drupal.org/node/1098304">http://drupal.org/node/1098304</a>
+09:16 &lt;@anarcat&gt; i thought the private files was already done
+09:16 &lt;@mig5&gt; i thought we could stick it in the platform vhost
+09:16 &lt;@mig5&gt; the deny all
+09:16 &lt;@mig5&gt; his .htaccess is probably being ignored for that reason
+09:17 &lt;@mig5&gt; in that we don't have AllowOverride
+09:17 &lt;@anarcat&gt; yes, the .htaccess are ignored, on purpose
+09:17 &lt;@mig5&gt; yep
+09:17 &lt;@anarcat&gt; okay folks, i need to go!
+09:17 &lt;@mig5&gt; so i thought we could inject that into the template ourselves
+09:17 &lt;@mig5&gt; sound sane?
+09:17 &lt;@mig5&gt; ok
+09:17 &lt;@anarcat&gt; yep
+09:17 &lt;@mig5&gt; have fun with your switch
+09:17 &lt;@mig5&gt; cheers
+09:17 &lt;@anarcat&gt; hehe i will :)
+09:17 &lt;@anarcat&gt; ciao ciao
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-100.html?destination=node%2F513%23comment-form">Login</a> or <a href="../../user/register/index-100.html?destination=node%2F513%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/513?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:41 GMT -->
+</html>

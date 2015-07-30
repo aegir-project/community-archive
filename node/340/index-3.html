@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/340?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../301/index.html" />
+<link rel="up" href="../../content/scrums/archive-2011/index.html" />
+<link rel="next" href="../356/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2011-02-10 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-340" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2011-02-10</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_7 first last"><a href="../../taxonomy/term/7/index.html" rel="tag" title="">scrum</a></li>
+</ul></div><div id='diff-inline-340'><pre>
+07:00 &lt;@anarcat&gt; aaaalright
+07:00 &lt;@anarcat&gt; hellow everybodyyy!
+07:00 &lt;@anarcat&gt; welcome to our weekly scrums
+07:00 &lt;@anarcat&gt; (we need a bot for that cheering crap - anyways)
+07:00 &lt;@anarcat&gt; i
+07:00 &lt;@anarcat&gt; have done nothing again. :P
+07:00 &lt;@anarcat&gt; actually, that's not true
+07:00 &lt;@anarcat&gt; i have done a good review of the queue
+07:00 &lt;@anarcat&gt; to try to prepare for the RC
+07:01 &lt;@anarcat&gt; committed a bunch of things lying around
+07:01 &lt;@mig5&gt; you've done great
+07:01 &lt;@anarcat&gt; and then univate decided to submit a bunch of patches on top of that, so i'll have to start all over again
+07:01 &lt;@anarcat&gt; univate: thanks ;)
+07:01 &lt;@anarcat&gt; yeah, it's been good
+07:01 &lt;@anarcat&gt; i still have to review my own internal aegir shit before we go towards a release
+07:01 &lt;@anarcat&gt; we have around 200+ issues in our internal queue, it's a mess
+07:02 &lt;@anarcat&gt; we had a marketing meeting today where we determined our priorities, but i am not sure i should talk about that now ;)
+07:02 &lt;@mig5&gt; :)
+07:02 &lt;@anarcat&gt; expect another announce soon
+07:02 &lt;@anarcat&gt; we are in talks with devseed to migrate the OA site (community.a.o) to Koumbit (? or mig5 ?) THIS MONDAY!
+07:03 &lt;@anarcat&gt; so consider this the first announcement:
+07:03 &lt;@anarcat&gt; ON MONDAY, 16H EST, the community site will go down for a migration
+07:03 &lt;@anarcat&gt; (that's about the same time as now +1h)
+07:03 &lt;@anarcat&gt; i still hope that we can RC next week, which will mean creating the 0.4.x branch
+07:04 &lt;@anarcat&gt; but before that, i want to do some tests on my side and review our queue
+07:04 &lt;@anarcat&gt; we had a weird issue with cron not running on a site here, that i have trouble making a diagnostic of
+07:04 &lt;@anarcat&gt; with that
+07:04 &lt;@anarcat&gt; i think i am done, mig5 ?
+07:04 &lt;@mig5&gt; ok
+07:04 &lt;@mig5&gt; not much to report, other than i think the only real blocker to getting an rc out, is that the upgrade path is broken
+07:05 &lt;@mig5&gt; <a href="http://drupal.org/node/1056864" title="http://drupal.org/node/1056864">http://drupal.org/node/1056864</a>
+07:05 &lt;@anarcat&gt; i was scared to read that issue
+07:05 &lt;@mig5&gt; i really need to speak to unconed about this since it's his patch, 
+07:05 &lt;@mig5&gt; and only he understands it, it's like talking to another Vertice :)
+07:06 &lt;@anarcat&gt; good good :)
+07:06 &lt;@mig5&gt; that's really all from me :s
+07:06 &lt;@anarcat&gt; plans for next week?
+07:06 &lt;@mig5&gt; to try and fix that, I suppose
+07:06 &lt;@anarcat&gt; cool
+07:07 &lt;@anarcat&gt; (as an aside, we just found this code in /var/aegir/fuck.php on our prod server, before destroying it, i pastebin'd it in the idea it might be useful for others: <a href="http://pastebin.com/163byC1z" title="http://pastebin.com/163byC1z">http://pastebin.com/163byC1z</a>)
+07:07 &lt;@anarcat&gt; (i am not sure what it does)
+07:07 &lt;@mig5&gt; wtf
+07:07 &lt;@anarcat&gt; okay, anyone else?
+07:07 &lt;+omega8cc&gt; Last week I worked on some new features in the Nginx for Aegir configuration, like improved caching and performance (patches to be submitted), and tested everything with Drush 4 and 5 (head)
+07:07 &lt;+omega8cc&gt; Now still working on issues like <a href="http://drupal.org/node/1056864" title="http://drupal.org/node/1056864">http://drupal.org/node/1056864</a>, and hope to fix more Drush related issues next week to get Aegir Drush 4 compatible. That is it from me :)
+07:08 &lt;@anarcat&gt; adrinux / darthsteven / EclipseGc / ergonlogic / grugnog_ / mvc / sfyn / skwashd / univate : you're all aegir contributors and welcome to say hi during this scrum - what you're working on these days... etc
+07:08 &lt;@anarcat&gt; thanks omega8cc !
+07:08 &lt;+darthsteven&gt; Sure...
+07:08 &lt;@mig5&gt; oh yeas darthsteven wrote some killer docs :)
+07:08 &lt;+darthsteven&gt; I added the first part if some docs about context
+07:09 &lt;+darthsteven&gt; More to follow, and extra docs about services too
+07:09 &lt;+EclipseGc&gt; anarcat: oh awesome
+07:09 &lt;+darthsteven&gt; That's it from me
+07:09 &lt;@anarcat&gt; thanks darthsteven
+07:10 &lt;+EclipseGc&gt; all of my time these days has been devoted to non-aegir-specific Drupal 7 work these days, though I do see a number of potential point of collaboration on various items in D7 for whenever aegir decides to make that jump
+07:10 &lt;@anarcat&gt; EclipseGc: have you done d6 to d7 porting work?
+07:10 &lt;@anarcat&gt; would you be interested in contributing to that?
+07:11 &lt;+EclipseGc&gt; anarcat: I've worked on ctools/page_manager porting to D7 yes, as well as my own context_admin
+07:11 &lt;@anarcat&gt; how's that going? :)
+07:12 &lt;+EclipseGc&gt; anarcat: very good all things considered, native support for all entity types in page_manager is a pretty freaking awesome thing
+07:12 &lt;@anarcat&gt; :)
+07:12 &lt;@anarcat&gt; alright
+07:12 &lt;@anarcat&gt; thank you EclipseGc
+07:12 &lt;@anarcat&gt; anyone else has anything to add to this mighty scrum?
+07:13 &lt;+EclipseGc&gt; anarcat: from an aegir perspective, (as an example) if say, "site nodes" became "site entities" in the D7 version, we could still utilize panels to display the site information (not that we're doing that now, but it is a possibility)
+07:13 &lt;@anarcat&gt; oh, an idea i had: we should have a "wildcard domains" variable in the frontend for wildcards pointing to the aegir server while we fix DNS, then when people create sites, they can just type the left part of the domain and choose the wildcard from a dropdown
+07:13 &lt;@anarcat&gt; EclipseGc: right, ok
+07:13 &lt;@anarcat&gt; EclipseGc: should we wait for d7 before creating the "dns zone" content-type for example?
+07:13 &lt;@anarcat&gt; how easy is it to declare entities programmatically?
+07:14 &lt;@anarcat&gt; anyways, i have to head out now, so thanks everyone for attending, and have a nice day
+07:14 &lt;+EclipseGc&gt; anarcat: well, the only way to declare an entity is programatically, there's no... entity ui or anything that allows you to build new entities
+07:14 &lt;@anarcat&gt; can anyone take care of uploading this to the community site?
+07:14 &lt;@anarcat&gt; EclipseGc: ok
+07:14 &lt;+EclipseGc&gt; anarcat: thus far, a new entity, front to back all manual is minimum about 400 lines of code if you want it to be fairly usable
+07:15 &lt;@mig5&gt; yeah i'll sort it later
+07:15 &lt;@anarcat&gt; EclipseGc: ow?
+07:15 &lt;+EclipseGc&gt; anarcat: I'm hoping that fago's entity_api and ctools can have a meeting of the minds and do something really great to make all of that (including user interfaces) much easier
+07:16 &lt;+EclipseGc&gt; but that is still non-existent yet, and many people are uncomfortable depending on entity_api at the moment (though I hear it cuts down on the necessary code for an entity significantly)
+07:16 &lt;@anarcat&gt; aand how easy is it to port existing content types to that ... stuff?
+07:16 &lt;+EclipseGc&gt; anarcat: I'm going to change your vocabulary real quick (if you don't mind) just so there's no confusion
+07:17 &lt;@anarcat&gt; i really have to head out, but feel free, i'll read on later tonight
+07:17 &lt;@anarcat&gt; ciao everyone
+07:17 &lt;+EclipseGc&gt; anarcat: "content types" or what we call node types in D6 and below are actually "bundles" (generic term) of the node entity now.  You can still call them whatever you like, but to be precise I usually say "node bundles".  All entity types can have bundles
+07:18 &lt;@anarcat&gt; fuck
+07:18 &lt;@anarcat&gt; sorry, screwed up there
+07:18 &lt;@anarcat&gt; EclipseGc: got it :)
+07:18 &lt;@anarcat&gt; ciao for real
+07:18 &lt;+omega8cc&gt; cia
+07:18 &lt;+omega8cc&gt; o
+07:18 &lt;+omega8cc&gt; :)
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-95.html?destination=node%2F340%23comment-form">Login</a> or <a href="../../user/register/index-95.html?destination=node%2F340%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/340?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:25 GMT -->
+</html>

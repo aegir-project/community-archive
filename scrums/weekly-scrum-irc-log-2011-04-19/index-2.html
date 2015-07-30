@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/scrums/weekly-scrum-irc-log-2011-04-19?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../weekly-scrum-irc-log-2011-04-12/index.html" />
+<link rel="up" href="../../content/scrums/archive-2011/index.html" />
+<link rel="next" href="../weekly-scrum-irc-log-2011-04-26/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2011-04-19 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-601" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2011-04-19</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first last"><a href="../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+</ul></div><div id='diff-inline-601'><pre>
+[22:00:51]  &lt;@anarcat&gt;  alright, welcome everybody to our weekly scrum
+[22:01:04]  &lt;@anarcat&gt;  i'm your host for this week and we have a wonderful agenda :)
+[22:01:09]  &lt;@anarcat&gt;  enough with the bull
+[22:01:14]  &lt;@anarcat&gt;  1.0 IS RELEASED!!!!!
+[22:01:17]  &lt;@anarcat&gt;  YEEHAAA! :)
+[22:01:24]  &lt;@mvc&gt;  :)
+[22:01:26]  &lt;@darthsteven&gt;  YEAH!!!
+[22:01:26]  &lt;@anarcat&gt;  *AND* we have found our first RC bug!
+[22:01:33]  &lt;@anarcat&gt;  <a href="http://drupal.org/node/1132514" title="http://drupal.org/node/1132514">http://drupal.org/node/1132514</a>
+[22:01:38]  &lt;@anarcat&gt;  d5 migrations are fucked! :)
+[22:01:42]  &lt;@anarcat&gt;  so that's already fixed and great
+[22:01:48]  &lt;@anarcat&gt;  and i am thinking of making 1.1 already
+[22:02:06]  &lt;@anarcat&gt;  also, we found a low-hanging fruit here to make exportable backups easy: <a href="http://drupal.org/node/1047992" title="http://drupal.org/node/1047992">http://drupal.org/node/1047992</a>
+[22:02:17]  &lt;@anarcat&gt;  and i merged this in by mistake in 1.x, but now i think i won't revert it
+[22:02:36]  &lt;@anarcat&gt;  <a href="http://drupalcode.org/project/provision.git/patch/1edd757f95b3f86a84ba72" title="http://drupalcode.org/project/provision.git/patch/1edd757f95b3f86a84ba72">http://drupalcode.org/project/provision.git/patch/1edd757f95b3f86a84ba72</a>...
+[22:02:43]  &lt;@anarcat&gt;  if anyone opposes, feel free to revert
+[22:03:03]  &lt;@anarcat&gt;  it's not an API change, and it's a nice quick fix to have people with SFTP access able to download backups of their sites
+[22:03:09]  &lt;@anarcat&gt;  so i think it would be nice to get this in
+[22:03:18]  &lt;@anarcat&gt;  koumbit is now running 1.0 in production
+[22:03:35]  &lt;@anarcat&gt;  and we're going to test head 1.x tomorrow, and if that works well we'll release 1.1
+[22:03:46]  &lt;@anarcat&gt;  what else, what else
+[22:04:04]  &lt;@anarcat&gt;  did i mention we have a candidate student for the summer of code?
+[22:04:16]  &lt;@anarcat&gt;  <a href="http://www.google-melange.com/gsoc/proposal/review/google/gsoc2011/sdv_3" title="http://www.google-melange.com/gsoc/proposal/review/google/gsoc2011/sdv_3">http://www.google-melange.com/gsoc/proposal/review/google/gsoc2011/sdv_3</a>...
+[22:04:19]  &lt;@anarcat&gt;  here, i mentionned it
+[22:04:24]  * mapleleaf has quit (Quit: ChatZilla 0.9.86.1 [Firefox 3.6.16/20110319135224])
+[22:04:24]  &lt;@anarcat&gt;  results should be announced somewhere next week
+[22:04:33]  &lt;@anarcat&gt;  his focus would be on the d7 port and maybe dns
+[22:04:40]  &lt;@anarcat&gt;  so i decided to hold off on those tasks for now
+[22:04:54]  * Chipie has quit (Quit: Leaving.)
+[22:04:55]  &lt;@anarcat&gt;  i will however look more at inter site security
+[22:04:57]  &lt;@darthsteven&gt;  all very cool
+[22:05:02]  * FatGuyLaughing has quit (Quit: FatGuyLaughing)
+[22:05:09]  &lt;@anarcat&gt;  and queueing, and i'd like to talk with darthsteven about that, but prolly more next week
+[22:05:16]  &lt;@anarcat&gt;  so that's about it for me
+[22:05:49]  &lt;@anarcat&gt;  mig5 darthsteven ergonlogic mvc omega8cc sfyn shrop skwashd - something to add to our weekly scrum?
+[22:05:55]  &lt;@darthsteven&gt;  yup
+[22:06:20]  &lt;@anarcat&gt;  oh, and of course, i forgot: <a href="../../discuss/2x-branch-created/index.html" title="http://community.aegirproject.org/discuss/2x-branch-created">http://community.aegirproject.org/discuss/2x-branch-created</a> 2.x is opened for dev, and i merged the chained cert support there
+[22:06:33]  &lt;@darthsteven&gt;  I've just come from a Drupal Meetup where I saw that drupal 5 migration bug demoed
+[22:06:42]  &lt;@darthsteven&gt;  and now I know what caused it
+[22:06:44]  &lt;@darthsteven&gt;  :)
+[22:06:58]  &lt;@anarcat&gt;  and now you can tell them it's fixed already :)_
+[22:07:17]  &lt;@darthsteven&gt;  So I took a look at at patch to add SSL chained certificates to provision
+[22:07:32]  &lt;@darthsteven&gt;  It needed a bit of cleanup, but was okay
+[22:07:43]  &lt;@anarcat&gt;  i agree, and merged it into 2.x
+[22:08:06]  &lt;@darthsteven&gt;  I think I added some docs since the last scrum, and ergonlogic got the api.c.o site working
+[22:08:36]  &lt;@darthsteven&gt;  ermm...that's it for me, nothing else Aegir related really
+[22:08:45]  &lt;@darthsteven&gt;  hoping to write more docs though...
+[22:08:51]  &lt;@darthsteven&gt;  done
+[22:08:55]  &lt;@darthsteven&gt;  anyone else?
+[22:09:09]  &lt;@anarcat&gt;  cool
+[22:09:22]  &lt;@anarcat&gt;  omega8cc: ?
+[22:09:35]  &lt;@anarcat&gt;  omega8cc: you mentionned something about tracking 2.x, can you expand on that?
+[22:09:36]  &lt;@omega8cc&gt; I released Barracuda/Octopus 1.0-boa-T-8 with Aegir 1.0
+[22:10:08]  &lt;@omega8cc&gt; anarcat: just switched to 2.x to continue with patches related to Nginx
+[22:10:22]  &lt;@anarcat&gt;  i am, in general, a bit worried that we won't get as much testing on 2.x than we have on 1.x now that 1.x is declared stable, but i'll try to run 2.x on my home server - we were also thinking of running 2.x on a dev server at koumbit, but that has yet to happen
+[22:10:26]  &lt;@anarcat&gt;  omega8cc: cool, nice to hear
+[22:11:04]  &lt;@omega8cc&gt; anarcat: I will use 2.x in Barracuda head, so people will test it and I hope to get more feedback
+[22:11:08]  &lt;@anarcat&gt;  cool
+[22:11:31]  &lt;@anarcat&gt;  i was thinking of reworking the platform access control for april, we set that as a target, so maybe that will land in 2.x and maybe get merged in 1.x if it doesn't break any apis
+[22:11:41]  &lt;@omega8cc&gt; interesting that 5.x to 6.x to 7.x migrations worked for me
+[22:11:48]  &lt;@anarcat&gt;  i am still looking for ways to radically change 2.x so that it's really different from 1.x :P
+[22:12:01]  &lt;@omega8cc&gt; but I tested it only on basic core installs
+[22:12:07]  &lt;@anarcat&gt;  i see
+[22:12:12]  &lt;@anarcat&gt;  nice to hear anyways :)
+[22:12:13]  &lt;@ryanarmstrong&gt;    anarcat: cross-site stats :P
+[22:12:21]  &lt;@ryanarmstrong&gt;    *goes back into the background*
+[22:13:25]  &lt;@anarcat&gt;  oh, darthsteven - this could use some more eyes as it touches on the context/services stuff that you may be familiar with: <a href="http://drupal.org/node/1074966" title="http://drupal.org/node/1074966">http://drupal.org/node/1074966</a>
+[22:13:41]  &lt;@anarcat&gt;  omega8cc: thanks for your feedback
+[22:13:44]  &lt;@anarcat&gt;  anyone else?
+[22:13:54]  &lt;@anarcat&gt;  ryanarmstrong: you'll have to expand on that after the scrum :)
+[22:14:03]  &lt;@ryanarmstrong&gt;    will do, didn't want to derail :)
+[22:14:07]  &lt;@omega8cc&gt; we need UI improved in 2.x, I will submit patches soon, and will propose Fetaures integration etc
+[22:14:17]  &lt;@anarcat&gt;  omega8cc: great idea!
+[22:14:31]  &lt;@anarcat&gt;  omega8cc: one idea about features was to drop our idea of "features" in favor of features.module
+[22:14:38]  &lt;@darthsteven&gt;  anarcat: yeah I saw that, and it is on my radar, but I've not used any of the DNS stuff, but could look at the code anyways
+[22:14:57]  &lt;@omega8cc&gt; right, and move install profile to profiler
+[22:15:06]  &lt;@omega8cc&gt; maybe
+[22:15:10]  &lt;@anarcat&gt;  omega8cc: yeah
+[22:15:20]  &lt;@anarcat&gt;  omega8cc: ergonlogic was saying it was a good upgrade path to d7
+[22:15:33]  &lt;@anarcat&gt;  alright
+[22:15:35]  &lt;@omega8cc&gt; anarcat: yes, noticed that
+[22:15:47]  &lt;@anarcat&gt;  we're pretty much done here, thanks for attending our scrum session and see you next week!
+[22:16:02]  &lt;@darthsteven&gt;  I'm not sure that converting to features features would get us much, as we don't use CCK/fields
+[22:16:07]  &lt;@anarcat&gt;  anyone wants to upload this log to the com site?
+[22:16:26]  &lt;@darthsteven&gt;  will do
+[22:16:28]  &lt;@anarcat&gt;  darthsteven: indeed..
+[22:16:31]  &lt;@anarcat&gt;  darthsteven: cool! tx
+[22:16:59]  &lt;@anarcat&gt;  darthsteven: as for the dns issue, it's not as much for the DNS but for the part where he changes the way config information is stored in the services objects
+[22:17:03]  &lt;@anarcat&gt;  hairy stuff
+[22:17:09]  &lt;@anarcat&gt;  alright, scrum end!
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-103.html?destination=node%2F601%23comment-form">Login</a> or <a href="../../user/register/index-103.html?destination=node%2F601%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/scrums/weekly-scrum-irc-log-2011-04-19?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:45 GMT -->
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/2730/revisions/5114/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:14:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../2/index-9.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-11.html" />
+<link rel="prev" href="../../../../../2/index-9.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-11.html" />
+<link rel="prev" href="../../../../../2/index-9.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-11.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of DRAFT: 2.0-beta3 release notes from Fri, 07/19/2013 - 19:31 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2730" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../2/index-10.html">DRAFT: 2.0-beta3 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_4 first"><a href="../../../../../taxonomy/term/4/index.html" rel="tag" title="This level is for users who have access to only their sites and not able to manage all Aegir features, accounts or the server/system.">Client</a></li>
+<li class="taxonomy_term_27"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_3"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-2730'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 07/19/2013 - 19:31</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>The Aegir team is pleased to announce the third stabilization (beta) release of the Aegir 2.x branch.</p>
+
+<p>This release mainly targets a few critical bugs that were found in the first beta, namely IP allocation on non-SSL and non-cluster sites which was completely broken and bugs the Debian package. We also introduce a few new features and finally drop support for provisionning Drupal 5 sites completely.</p>
+
+<p>While we are in feature freeze, we have continued to add some UI improvements, since they don't affect the API. We've added some long-standing UI enhancements, and fixed a number of bugs in the views integration and other usability problems.</p>
+
+<p>We are down to only one active critical bug. If no other critical bugs are discovered during the time it takes us to fix it, we should move on to our first release candidate!</p>
+
+<h1>Known issues</h1>
+
+<p>Our release process is still done by hand instead of automated because we can't use our aegir distribution as core (<a href="https://drupal.org/node/1991764">issue #1991764</a>)</p>
+
+<p><a href="https://drupal.org/node/1931000">Issue #1931000: Missing drush backend output in frontend log</a> has been fixed, but may require a <a href="https://drupal.org/node/2025527#comment-7566747">patch to Drush</a> for the use of hosting-queued.</p>
+
+<p>Subdirectory support is still very preliminary and needs those issues to be fixed before completion:</p>
+
+<ul>
+<li>Nginx support missing (<a href="https://drupal.org/node/2020091">issue #2020091</a>)</li>
+<li>If <code>example.com/foo</code> is created, the <code>example.com</code> virtual will be overwritten and the site inaccessible under that domain (<a href="https://drupal.org/node/2020089">issue #2020089</a>)</li>
+<li>Multi-server support is untested (<a href="https://drupal.org/node/2020079">issue #2020079</a>)</li>
+<li>Code needs to be refactored to the new 2.x API (<a href="https://drupal.org/node/2020075">issue #2020075</a>)</li>
+</ul>
+
+<p>The move to Views has highlighted some additional issues:</p>
+
+<ul>
+<li><a href="https://drupal.org/node/2025355">#2025355: view platform' permission broken</a></li>
+<li><a href="https://drupal.org/node/2005310">#2005310: No actions available on platforms view</a></li>
+</ul>
+
+<p>Fixing <a href="https://drupal.org/node/2027269">#2027269: warnings and errors in front-end pre- and post- hooks are ignored for task status</a> required a new Drush commandfile, and thus a 'drush cc drush' if upgrade between an alpha/beta release and HEAD.</p>
+
+<p>The debian package <em>still</em> doesn't properly configure the webserver, a patch has been committed and a workaround is available in <a href="https://drupal.org/node/2040285">issue #2040285</a>.</p>
+
+<h1>New features</h1>
+
+<ul>
+<li><a href="http://drupal.org/node/600350">#600350: provide a nice "history" of ran tasks</a></li>
+<li><a href="http://drupal.org/node/1988642">#1988642: Add site by platform</a></li>
+<li><a href="http://drupal.org/node/1912238">#1912238: automatically build and upload aegir 2.x packages</a></li>
+<li><a href="http://drupal.org/node/585830">#585830: usability story: "How do I create a client?"</a></li>
+<li><a href="http://drupal.org/node/1830220">#1830220: Drop support for Drupal 5 in 2.x</a></li>
+<li><a href="http://drupal.org/node/1212086">#1212086: Platforms should be locked by default</a></li>
+<li><a href="http://drupal.org/node/1403208">#1403208: Add additional roles</a></li>
+<li><a href="http://drupal.org/node/1174440">#1174440: provide a way to show site's DB username/password in the frontend</a></li>
+<li><a href="http://drupal.org/node/606120">#606120: Disabled sites should be class hosting-warning, enabled but problematic sites should be hosting-error</a></li>
+</ul>
+
+<h1>Bug fixes</h1>
+
+<ul>
+<li><a href="http://drupal.org/node/1992254">#1992254: restarting the mysql server crashes hosting-queued</a></li>
+<li><a href="http://drupal.org/node/1761932">#1761932: Explain that updates will require the verify task to run</a></li>
+<li><a href="http://drupal.org/node/1603702">#1603702: allows creation of SSL site even if there are no IPs available</a></li>
+<li><a href="http://drupal.org/node/1130992">#1130992: User 1 has lost the ability to create platforms</a></li>
+<li><a href="http://drupal.org/node/1126638">#1126638: two sites can take the same server IP for SSL</a></li>
+<li><a href="http://drupal.org/node/1994000">#1994000: Nginx looking in wrong place for SSL setup information</a></li>
+<li><a href="http://drupal.org/node/2023621">#2023621: Unable to allocate IP address for certificate, disabling SSL.</a></li>
+<li><a href="http://drupal.org/node/1929454">#1929454: hosting_cron.modules requires hosting_site.module but lacks a dependency.</a></li>
+<li><a href="http://drupal.org/node/2014589">#2014589: Views-based package list omits module/theme version</a></li>
+<li><a href="https://drupal.org/node/2005246">#2005246: It is possible to disable Hostmaster site via bulk site operations</a></li>
+<li><a href="http://drupal.org/node/2025533">#2025533: Mod Rewrite and Apache.conf symlink not created with debian package - beta2</a><span class='diff-added'></span></li><span class='diff-added'>
+</span></ul><span class='diff-added'>
+
+</span><p><span class='diff-added'>Other issue list - dupe?</span></p><span class='diff-added'>
+
+</span><ul><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/2045907"><span class='diff-added'>#2045907: Deleted platforms should not have 'Add site' or 'Clients' tabs</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/2035873"><span class='diff-added'>#2035873: Show package 'popularity' on platform package view</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/2036793"><span class='diff-added'>#2036793: Ignore test packages</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/2036283"><span class='diff-added'>#2036283: Make Aegir aware of site-specific packages</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/2031747"><span class='diff-added'>#2031747: Properly control Views access</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/2031491"><span class='diff-added'>#2031491: Aegir-provided roles don't provide intended functionality</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/2044251"><span class='diff-added'>#2044251: drush command '@none provision-save' could not be found</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/1238618"><span class='diff-added'>#1238618: Client form validation allows duplicate client names</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/2044513"><span class='diff-added'>#2044513: Provide an easy link to our issue queues</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/1201174"><span class='diff-added'>#1201174: UID1 username should be configurable</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/1345118"><span class='diff-added'>#1345118: platform access control should be an autocomplete form</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/905326"><span class='diff-added'>#905326: Cloning a site doesn't handle file path change in the variables table</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/2022813"><span class='diff-added'>#2022813: Expose the 'hosting_site_backups' table to Views.</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/1263264"><span class='diff-added'>#1263264: Install profile added as ordinary module</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/1861898"><span class='diff-added'>#1861898: Remove the hard-coded array(site, platform, server) from hosting_task_menu()</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/2037965"><span class='diff-added'>#2037965: Clean up pause.hosting.inc</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/2038891"><span class='diff-added'>#2038891: Switch from '--invoke' to '--strict=0' for backend calls</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/2031765"><span class='diff-added'>#2031765: Use Actions Permissions to clean up VBO operations</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/2037045"><span class='diff-added'>#2037045: Update _hosting_task_log_class() to match drush _drush_print_log()</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/2025787"><span class='diff-added'>#2025787: Log in to and Go to links should open in a new window/tab by default</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/1599076"><span class='diff-added'>#1599076: Use Vagrant for the testing</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/2027269"><span class='diff-added'>#2027269: warnings and errors in front-end pre- and post- hooks are ignored for task status</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/1830220"><span class='diff-added'>#1830220: Drop support for Drupal 5 in 2.x</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/1975086"><span class='diff-added'>#1975086: tasks sometimes are marked as running when they have in fact crashed</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/2040285"><span class='diff-added'>#2040285: debian package STILL doesn't configure webserver properly</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/2033549"><span class='diff-added'>#2033549: Restore from backup fails : The version of the x module ... has a lower Schema version than the one the site has installed</span></a></li>
+</ul></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-165.html?destination=node%2F2730%23comment-form">Login</a> or <a href="../../../../../user/register/index-165.html?destination=node%2F2730%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-165.html?destination=node%2F2730%23comment-form">Login</a> or <a href="../../../../../user/register/index-165.html?destination=node%2F2730%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/2730/revisions/5114/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:14:34 GMT -->
+</html>

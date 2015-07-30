@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/34/revisions/250/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:00:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../handbook/operating-system-support/index.html" />
+<link rel="up" href="../../../../../intro/index.html" />
+<link rel="next" href="../../../../../project-history/index.html" />
+<link rel="prev" href="../../../../../handbook/operating-system-support/index.html" />
+<link rel="up" href="../../../../../intro/index.html" />
+<link rel="next" href="../../../../../project-history/index.html" />
+<link rel="prev" href="../../../../../handbook/operating-system-support/index.html" />
+<link rel="up" href="../../../../../intro/index.html" />
+<link rel="next" href="../../../../../project-history/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Project goals from Fri, 11/05/2010 - 20:13 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-34" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Project goals</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_3 first"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-34'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 11/05/2010 - 20:13</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><h4>Open</h4>
+
+<p>This project is developed using Git. It used to be developed using CVS on drupal.org. It may return to drupal.org when the switch to Git is complete.</p>
+
+<p>People are free to download the source code for the project (and in fact are required to to run it). <a href="../../../../31/index.html">Git access is available here</a>.</p>
+
+<p>After many discussions with many different developers working in this space, it has become apparent to the developers that many people have developed their own custom set of utilities and scripts to manage many of the issues this project encompasses.</p>
+
+<p>This project aims to be an open framework that will allow us to collaborate on a single set of community developed / maintained utilities, so that the quality and the capabilities will improve for all of us.</p>
+
+<h4>Easy</h4>
+
+<p>This functions on both a developer and a user level.</p>
+
+<p>For the user, the intent is to make the system as simple to install and operate as possible, which means drastically lowering the requirements for installing and getting up and running with the system. To that end the system has an installation script to automate the installation of Aegir, which has developed a long way from a multi-step install.php wizard and even more complex requirements before then.</p>
+
+<p>The system will auto-detect as many of the settings it requires to run as is possible from within the confines of PHP, and will provide detailed and accurate inline documentation on the server configuration required, based on the configured settings.</p>
+
+<p>This system aims to be self documenting, to aid in troubleshooting, in the event that an error occurs. This documentation is both translatable and extendable when new services are enabled.</p>
+
+<p>For developers we aim to keep the implementation simple, clear and concise, and use as few as possible additional requirements outside of Drupal itself. We aim to provide <a href="../../../../5/index.html">extensive developer documentation</a>, to lower the barrier for people wanting to integrate with the system.</p>
+
+<p>The system will never require any additional core patches for the sake of base functionality. It is a 'contrib' project.</p>
+
+<p>Basically, the aim is to do everything possible to ensure that the user and developer experience is a positive one.</p>
+
+<h4>Useful</h4>
+
+<p>The system aims to help maintain many sites, not just when they are initially installed, but over the entire lifetime of the site.</p>
+
+<p>It is designed to install new sites, provisioning all the required services (such as Apache, Mysql and DNS), with the flexibility to provision additional services (such as Mail, LDAP etc.) through optional contributed modules or features.</p>
+
+<p>It provides the ability to revert back to previous versions of your sites, as well as re-deploy existing sites under different domain names (mysite.com copied to dev.mysite.com). These backups will be usable on any system with the provisioning backend installed (such as a developer's machine, or a staging server).</p>
+
+<p>This aspect of the system will also be used to manage upgrades between multiple versions of Drupal, and will allow you to schedule upgrades. It will do its utmost to ensure that your site has been successfully upgraded, and features dependency tracking to keep track of which sites are eligible to be upgraded.</p>
+
+<p>It will provide a mechanism that ensures the cron process is run on all your sites within the specified time frame, and additionally will allow for scheduled backups of all your sites.</p>
+
+<p>Through optional modules it will be able to extract usage statistics from your hosted sites and provide an overview of site usage through the administration interface, it will also be able to keep track of server health and load for each of the configured servers.</p>
+
+<p><em>These are the stated feature goals, many of these features will not be available in the initial releases, as they are not considered a base requirement.</em></p>
+
+<h4>Secure</h4>
+
+<p>The system will make sure that it has the least amount of power available to it to accomplish it's task, and will ensure that all file permissions are set to the strictest possible levels they need to be, and that no sensitive information is web accessible.</p>
+
+<p>None of the functionality or code required to accomplish it's tasks will ever be available in the provisioned sites, and the hosting front end itself will make extensive usage of Drupal's access control requirements to ensure that users will not have access to things they are not meant to see.</p>
+
+<p><em>to be extended</em></p>
+
+<h4>Distributed</h4>
+
+<p>The system functions entirely on the command line, using unix pipes for inter-process communication.</p>
+
+<p>As such, once ssh has been configured for the user the back end script is running as, it will be able to freely communicate with the external server through the only mechanism it knows how (the command line).</p>
+
+<p>As an extension of the backup/restore functionality, you will be able to seamlessly move sites between servers, while providing a redirect to an always accessible site alias for users who have cached dns entries.</p>
+
+<p>You will also be able to change database servers through simply modifying the site record on the user frontend.</p>
+
+<p><em>to be extended</em></p>
+
+<h4>Diagnostics</h4>
+
+<p>The system will provide accurate and complete logs of everything that has occurred on the system, as well as feature complete error reporting and notification of all issues that have occurred. It will first verify that it is able to complete the requested task, and then it will verify that the task has been completed successfully, before completing the task.</p>
+
+<p>When an error occurs, it will rollback to its last working state before exiting, so that failures will not negatively
+affect sites.</p>
+
+<p>All node types in the front end are revision controlled, to allow for complete history of all objects.</p>
+
+<p><em>to be extended</em></p>
+
+<h4>Flexible</h4>
+
+<p>This system aims to be as flexible as Drupal itself is.</p>
+
+<p>It will provide a complete and useful set of hooks to module developers, for both the front end and the back end, to accomplish whatever tasks they need.</p>
+
+<p>The administration interface will provide complete views support for all data in the site, to allow for custom reporting on your network.</p>
+
+<p>The core node types are all standard Drupal nodes, that can be extended through CCK by the implementor. This could be used for tracking additional client information or additional information on sites.</p>
+
+<p>You will be able to integrate Drupal contributed modules such as Organic Groups or Ecommerce/Ubercart to build support or billing functionality directly into the hosting front end.</p>
+
+<p>The system is completely white boxed, so that it will work with almost any Drupal theme, and as such can have your own corporate identity.</p>
+
+<p><em>to be extended</em></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-28.html?destination=node%2F34%23comment-form">Login</a> or <a href="../../../../../user/register/index-28.html?destination=node%2F34%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-28.html?destination=node%2F34%23comment-form">Login</a> or <a href="../../../../../user/register/index-28.html?destination=node%2F34%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/34/revisions/250/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:00:47 GMT -->
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/installing-aegir-arm-architecture-raspberry-pi?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:56:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Installing aegir on ARM architecture (Raspberry Pi) | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-12932" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/technikh/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="TechNikh&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/technikh/index.html" class="username" title="View user profile.">TechNikh</a></div><div class='date'>9:18pm Feb 17, 2015</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Installing aegir on ARM architecture (Raspberry Pi)</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_582 first"><a href="../../category/keywords/arm/index.html" rel="tag" title="">arm</a></li>
+<li class="taxonomy_term_50"><a href="../../category/keywords/install/index.html" rel="tag" title="">Install</a></li>
+<li class="taxonomy_term_581 last"><a href="../../category/keywords/x86/index.html" rel="tag" title="">x86</a></li>
+</ul></div><p>When I try to run sudo apt-get update
+<div class="codeblock"><code>echo &quot;deb <a href="http://debian.aegirproject.org/" title="http://debian.aegirproject.org">http://debian.aegirproject.org</a> stable main&quot; | sudo tee -a /etc/apt/sources.list.d/aegir-stable.list<br />curl <a href="http://debian.aegirproject.org/key.asc" title="http://debian.aegirproject.org/key.asc">http://debian.aegirproject.org/key.asc</a> | sudo apt-key add -<br />sudo apt-get update</code></div>
+I get the following error
+<code>W: Failed to fetch <a href="http://debian.aegirproject.org/dists/stable/InRelease" title="http://debian.aegirproject.org/dists/stable/InRelease">http://debian.aegirproject.org/dists/stable/InRelease</a>&nbsp; Unable to find expected entry &#039;main/binary-armhf/Packages&#039; in Release file (Wrong sources.list entry or malformed file)</code></p>
+
+<p>binary-armhf missing in sources?</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-277.html?destination=node%2F12932%23comment-form">Login</a> or <a href="../../user/register/index-277.html?destination=node%2F12932%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-2380"></a>
+
+
+<div  id="comment-2380" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../user/54/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-54/index.png" alt="ergonlogic&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a></div><div class='date'>10:42pm Feb 17, 2015</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2380" class="active">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>I don't think the Aegir Project intends to specifically publish multiple architectures. That said, it'd certainly be interesting to hear whether you get something like this working.</p>
+
+<p>I think the place to start would be: <a href="http://www.raspbian.org/RaspbianFAQ#Can_I_mix_packages_from_the_Debian_repositories_with_Raspbian.3F" title="http://www.raspbian.org/RaspbianFAQ#Can_I_mix_packages_from_the_Debian_repositories_with_Raspbian.3F">http://www.raspbian.org/RaspbianFAQ#Can_I_mix_packages_from_the_Debian_r...</a></p>
+
+<p>After that, I guess you'd need to work through the Multiarch setup: <a href="https://wiki.debian.org/Multiarch/HOWTO" title="https://wiki.debian.org/Multiarch/HOWTO">https://wiki.debian.org/Multiarch/HOWTO</a></p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-277.html?destination=node%2F12932%23comment-form">Login</a> or <a href="../../user/register/index-277.html?destination=node%2F12932%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/installing-aegir-arm-architecture-raspberry-pi?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:56:33 GMT -->
+</html>

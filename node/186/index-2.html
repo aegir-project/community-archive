@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/186?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:44:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../185/index.html" />
+<link rel="up" href="../31/index.html" />
+<link rel="next" href="../../content/branch-and-tagging-conventions/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Basic git workflow: committing and pushing | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-186" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Basic git workflow: committing and pushing</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-186'><p>So say you have some work you want to do on the hostmaster module. You first need to clone the repository:</p>
+
+<p><div class="codeblock"><code>git clone http://git.drupal.org/project/hostmaster.git</code></div></p>
+
+<p>That will create a <code>hostmaster</code> directory with the whole history of the project, and a checkout of the "master" branch (which is the equivalent of CVS's "HEAD" in git).</p>
+
+<p>You make some modifications to the code to fix a bug, and then, you make a commit. That commit will only be local for now, that's the way git works:</p>
+
+<p><div class="codeblock"><code>vi hostmaster.profile<br />git commit -m &quot;#12345 fix the install profile to do X&quot; hostmaster.profile</code></div></p>
+
+<p>Note that contrarily to subversion or CVS, you need to explicitly mention which file(s) you want to commit. You can also use the -a flag to commit all changes.</p>
+
+<p>If you have write access to the repository, you can now push your changes straight into git. However, the git:// url above is readonly, so you will want to use SSH to push your changes. For that, we will have had to add your SSH public key to our repositories. You may also want to add a special "remote" repository to push your changes. You will need to do this only once (per repository):</p>
+
+<p><div class="codeblock"><code>git remote add drupalorg ssh://[username]@git.drupal.org/project/hostmaster.git</code></div></p>
+
+<p>You can now push your changes to that repository.</p>
+
+<p><div class="codeblock"><code>git push drupalorg</code></div></p>
+
+<p>If you do <em>not</em> have write access to the repository, you can send the Aegir developers patches by submitting them for review in the <a href="http://drupal.org/project/issues?text=&amp;projects=hosting,+provision,+eldir,+Hostmaster+(Aegir)&amp;status=Open&amp;priorities=All&amp;categories=All">Issue queues</a> (see the <a href="http://drupal.org/node/1054616">patch contributor guide on drupal.org</a> for more details) or by uploading them to your <a href="http://drupal.org/node/1053378">personnal sandbox</a>.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/186?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:44:24 GMT -->
+</html>

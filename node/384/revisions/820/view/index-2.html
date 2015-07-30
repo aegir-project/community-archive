@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/384/revisions/820/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:37:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Aegir source repositories migrating back to Drupal.org - instructions for migration from Thu, 02/24/2011 - 08:05 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-384" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/anarcat/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-78/index.jpg" alt="anarcat&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a></div><div class='date'>8:01am Feb 24, 2011</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Aegir source repositories migrating back to Drupal.org - instructions for migration</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>After <a href="../../../../369/index.html">thorough discussions</a> where we weighted the pros and cons of profiting from the <a href="http://drupal.org/project/great_git_migration">Great Git Migration</a>, I think it's pretty clear that we have a great opportunity to migrate our source repositories back to Drupal.org. We will get:</p>
+
+<ul>
+<li>more visibility - people will find us through drupal.org easily</li>
+<li>more consistency - versions in the issue queue matching the real releases</li>
+<li>even more consistency - people will find the source better from drupal.org</li>
+<li>and then more consistency - usage stats will work again!</li>
+</ul>
+
+<p>We will be able to:</p>
+
+<ul>
+<li>host our module and theme within the install profile - the major reason why we migrated away back then</li>
+<li>use whatever naming convention we want for tags and branches - although only some will be used for releases for now, see <a href="http://drupal.org/node/322626#comment-4116688">this issue</a> for followup</li>
+<li>keep our history - the git team was nice enough to clone directly from our repositories (although see below, we're taking the opportunity of the migration to clean up our history)</li>
+</ul>
+
+<h1>What it means for you</h1>
+
+<p>This does have an impact on your existing repositories. When we migrate to git.drupal.org (which should happen by the end of the week, according to my <a href="http://groups.drupal.org/node/127394">precious sources</a>), the repositories will change location. The other thing is that the commit IDs have changed, and you will need to refresh your local checkouts before you can work with them effectively.</p>
+
+<h1>URL changes</h1>
+
+<p>So the repositories will move. At some point, <a href="http://koumbit.org/">Koumbit</a> will close <a href="../git.aegirproject/index.html">git.aegirproject.org</a> and everyone will have to fetch the source code from <a href="http://git.drupal.org/">git.drupal.org</a> instead. Concretely, Koumbit will keep the mirror running for a while just to be on the safe side, but as soon as the Drupal git migration is officially done, you shouldn't expect git.aegirproject.org to work and should switch URLs, as detailed below.</p>
+
+<p>This documentation is taken from the <a href="http://drupal.org/node/1054594">Drupal.org git workflows documentation</a>.</p>
+
+<h2>Readonly repositories URL change</h2>
+
+<p>The readonly access will change from:</p>
+
+<p><div class="codeblock"><code>git://git.aegirproject.org/provision.git<br />git://git.aegirproject.org/hostmaster.git</code></div></p>
+
+<p>to:</p>
+
+<p><div class="codeblock"><code>http://git.drupal.org/project/provision.git<br />http://git.drupal.org/project/hostmaster.git</code></div></p>
+
+<p>See also the <a href="http://drupal.org/node/1054616">git patch maitnainer guide</a>.</p>
+
+<h2>Core committers repositories URL change</h2>
+
+<p>The read/write access will change from:</p>
+
+<p><div class="codeblock"><code>ssh://gitosis@git.aegirproject.org/provision.git<br />ssh://gitosis@git.aegirproject.org/hostmaster.git</code></div></p>
+
+<p>to:</p>
+
+<p><div class="codeblock"><code>ssh://[username]@git.drupal.org:project/provision.git<br />ssh://[username]@git.drupal.org:project/hostmaster.git</code></div></p>
+
+<p>... notice how you will need to set your Drupal.org username in the URL. Drupal.org has good documentation on <a href="http://drupal.org/node/1027094">how  authentication works on git.drupal.org</a>. See also <a href="http://drupal.org/node/1059322">the project maintainer git guide</a>.</p>
+
+<h2>Sandboxes</h2>
+
+<p>The migration to Drupal.org also introduces sandboxes, something we didn't have before, and which allows you to host your own branches of our modules (even if you're not a core committer) or contrib/test modules, directly on Drupal.org. See the <a href="http://drupal.org/node/1053378">sandbox collaboration guide</a> for more information on that.</p>
+
+<h2>What if I pull/push from/to the wrong one?</h2>
+
+<p>It could happen before/during/after the migration that you pull or push from or to the wrong repository: don't worry. Because git handles those things very well, you will always be able to push back to the right one.</p>
+
+<p>To be able to push to the new repositories, however, you will need to follow instructions below to cleanup your repositories.</p>
+
+<h1>Rewriting history</h1>
+
+<p>I have taken the liberty of rewriting our collective history. There were a lot of commits with inconsistent authors: some had invalid emails, some had no real names, some had multiple different email addresses for the same person. I narrowed the list down, through extensive detective work, to a complete list of 14 distinct authors.</p>
+
+<p>I have rewritten all commit authors that didn't seem right to follow a consistent pattern:</p>
+
+<p><div class="codeblock"><code>Firstname Lastname &lt;email&gt;</code></div></p>
+
+<p>The firstname/lastname is the combination you have used in certain commits. It's not the most popular way (ie. most commits had the nickname instead of first/last), but it seems the most logical one.</p>
+
+<p>The email was your most often used email or the one you have registered as such at drupal.org, if you didn't have an email address specified (in case you committed your code back in the days of CVS). (There are 6 commits from someone with a box at ovh.net that I could track, and that I can only guess are Miguel's, but I'm not sure so I have let those one fly. :)</p>
+
+<p>You <strong>should</strong> make sure you have your <a href="http://drupal.org/node/1022156">identity set straight in your git configuration</a>, especially your email address, if you want your contributions to be properly credited in the future on Drupal.org. In short, this means:</p>
+
+<p><div class="codeblock"><code>git config --global user.name &quot;User Name&quot;<br />git config --global user.email user@example.com</code></div></p>
+
+<p>Again, see <a href="http://drupal.org/node/1022156">the manual</a> for more information, especially how this maps to your Drupal.org account.</p>
+
+<h1>Rebase (or fresh clone) is necessary!!!!</h1>
+
+<p>Note that, because we rewrote history, you will <strong>need</strong> to update your repository to the new remote. That should work fine, without duplicate commits or similar nightmares - normally (I tested this!) git is smart enough to see that only the metadata has changed and will ditch the old metadata.</p>
+
+<p>But you <strong>do need</strong> to fixup your repository to be able to push to git.drupal.org. This can be done by cloning from scratch or by rebasing your branch to the upstream.</p>
+
+<h2>Cloning again</h2>
+
+<p>Recloning the new repos is the easiest and most obvious way, but may be annoying if you work on a bunch of branches or have local branches you want to keep. To do this, just trash or move away the old repository and clone from the above URLs.</p>
+
+<h2>Rebasing</h2>
+
+<p>To rebase, it's a bit more complicated, but it will allow you to keep your local changes transparently. I have successfully done the following steps:</p>
+
+<p><div class="codeblock"><code>git clone git://git.aegirproject.org/provision<br />cd provision/<br />git remote rm origin<br />git remote add origin ssh://anarcat@git.drupal.org:project/provision.git<br />git rebase origin/master</code></div></p>
+
+<p>(well, I'm cheating here: I used a test URL with the repo as it will be after the migration)</p>
+
+<p>This looks something like this:</p>
+
+<p><div class="codeblock"><code>anarcat@angela:test$ git clone git://git.aegirproject.org/provision<br />Cloning into provision...<br />remote: Counting objects: 8230, done.<br />remote: Compressing objects: 100% (5492/5492), done.<br />remote: Total 8230 (delta 5966), reused 3629 (delta 2660)<br />Receiving objects: 100% (8230/8230), 1.26 MiB | 628 KiB/s, done.<br />Resolving deltas: 100% (5966/5966), done.<br />anarcat@angela:test$ cd provision/<br />anarcat@angela:provision$ git remote rm origin<br />anarcat@angela:provision$ git remote add origin gitosis@git.aegirproject.org:/export/provision<br />anarcat@angela:provision$ git fetch origin<br />warning: no common commits<br />remote: Counting objects: 7842, done.<br />remote: Compressing objects: 100% (2985/2985), done.<br />remote: Total 7842 (delta 4886), reused 7790 (delta 4834)<br />Receiving objects: 100% (7842/7842), 6.37 MiB | 625 KiB/s, done.<br />Resolving deltas: 100% (4886/4886), done.<br />From git.aegirproject.org:/export/origin<br /> * [new branch]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; debian&nbsp;&nbsp;&nbsp;&nbsp; -&gt; origin/debian<br />[...]<br /> * [new branch]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; provision-0.4 -&gt; origin/provision-0.4<br /> * [new branch]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ssl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; origin/ssl<br />anarcat@angela:provision$ git rebase origin/master<br />First, rewinding head to replay your work on top of it...<br />Nothing to do.<br />anarcat@angela:provision$</code></div></p>
+
+<h1>Closing words</h1>
+
+<p>People unfamiliar with git or specifically git on Drupal.org should read the <a href="http://drupal.org/documentation/git">growing git handbook</a> on Drupal.org.</p>
+
+<p>People that <em>are</em> familiar with git should <em>contribute</em> to that manual. :)</p>
+
+<p>I think we're all happy that we're finally going back to our roots at Drupal.org. I am proud to see the community move away from CVS, and especially proud to see us go back with everyone, to join the great git party. :)</p>
+
+<p>See you on the other side!</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-294.html?destination=node%2F384%23comment-form">Login</a> or <a href="../../../../../user/register/index-294.html?destination=node%2F384%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/384/revisions/820/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:37:26 GMT -->
+</html>

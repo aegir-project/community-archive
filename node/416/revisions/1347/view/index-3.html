@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/416/revisions/1347/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:24:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../244/index.html" />
+<link rel="up" href="../../../../518/index.html" />
+<link rel="next" href="../../../../414/index.html" />
+<link rel="prev" href="../../../../244/index.html" />
+<link rel="up" href="../../../../518/index.html" />
+<link rel="next" href="../../../../414/index.html" />
+<link rel="prev" href="../../../../244/index.html" />
+<link rel="up" href="../../../../518/index.html" />
+<link rel="next" href="../../../../414/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Solaris installation instructions hints from Fri, 04/01/2011 - 05:10 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-416" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Solaris installation instructions hints</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-416'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 04/01/2011 - 05:10</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p><span class='diff-deleted'>..</span><span class='diff-deleted'> </span><span class='diff-deleted'>-</span><em><span class='diff-deleted'>-</span><span class='diff-deleted'> </span><span class='diff-deleted'>mode:</span><span class='diff-deleted'> </span><span class='diff-deleted'>rst;</span><span class='diff-deleted'> </span><span class='diff-deleted'>fill-column:</span><span class='diff-deleted'> </span><span class='diff-deleted'>78;</span><span class='diff-deleted'> </span><span class='diff-deleted'>-</span></em><span class='diff-deleted'>-
+..</span><span class='diff-deleted'> </span><span class='diff-deleted'>This</span><span class='diff-deleted'> </span><span class='diff-deleted'>document</span><span class='diff-deleted'> </span><span class='diff-deleted'>is</span><span class='diff-deleted'> </span><span class='diff-deleted'>formatted</span><span class='diff-deleted'> </span><span class='diff-deleted'>using</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>ReST</span><span class='diff-deleted'> </span><span class='diff-deleted'>syntax.</span></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>================================================</span></p><span class='diff-deleted'>
+
+</span><h1><span class='diff-changed'>Special</span> software requirements</h1>
+
+<p>TODO: Show how to install:</p>
+
+<ul>
+<li>Apache2</li>
+<li>git</li>
+<li>sudo</li>
+<li>mysql</li>
+<li>PHP 5.2</li>
+<li>wget</li>
+</ul>
+
+<p>unzip and sendmail should be part of the base Solaris install. Other
+applications should be available on the companion CDs or:</p>
+
+<p><a href="http://www.sunfreeware.com/" title="http://www.sunfreeware.com/">http://www.sunfreeware.com/</a></p>
+
+<p>In particular, git can be compiled easily by exporting the following
+environment::
+ export CFLAGS="-I/usr/sfw/include -I/opt/sfw/include"
+ export LD_LIBRARY_PATH="/usr/sfw/lib:/opt/sfw/lib:$LD_LIBRARY_PATH"</p>
+
+<p>Then the compile instructions bundled with git should just be followed
+plainly.</p>
+
+<p>XXX: I had trouble installing the binaries, as git expects ginstall to be
+available in the path. I ended up adding the source directory in the path,
+which works fine for most uses.</p>
+
+<h1><span class='diff-deleted'>2.</span><span class='diff-deleted'> </span><span class='diff-deleted'>Configure</span><span class='diff-deleted'> </span><span class='diff-deleted'>system</span><span class='diff-deleted'> </span><span class='diff-deleted'>requirements</span></h1><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>Shell</span><span class='diff-deleted'> </span><span class='diff-deleted'>commands::
+</span><span class='diff-deleted'> </span><span class='diff-deleted'>groupadd</span><span class='diff-deleted'> </span><span class='diff-deleted'>aegir
+</span><span class='diff-deleted'> </span><span class='diff-deleted'>useradd</span><span class='diff-deleted'> </span><span class='diff-deleted'>-g</span><span class='diff-deleted'> </span><span class='diff-deleted'>aegir</span><span class='diff-deleted'> </span><span class='diff-deleted'>-G</span><span class='diff-deleted'> </span><span class='diff-deleted'>webservd</span><span class='diff-deleted'> </span><span class='diff-deleted'>-d</span><span class='diff-deleted'> </span><span class='diff-deleted'>/var/aegir</span><span class='diff-deleted'> </span><span class='diff-deleted'>-s</span><span class='diff-deleted'> </span><span class='diff-deleted'>/bin/bash</span><span class='diff-deleted'> </span><span class='diff-deleted'>-c</span><span class='diff-deleted'> </span><span class='diff-deleted'>"Aegir</span><span class='diff-deleted'> </span><span class='diff-deleted'>sandbox"</span><span class='diff-deleted'> </span><span class='diff-deleted'>aegir
+</span><span class='diff-deleted'> </span><span class='diff-deleted'>chown</span><span class='diff-deleted'> </span><span class='diff-deleted'>aegir:aegir</span><span class='diff-deleted'> </span><span class='diff-deleted'>/var/aegir
+</span><span class='diff-deleted'> </span><span class='diff-deleted'>echo</span><span class='diff-deleted'> </span><span class='diff-deleted'>"Include</span><span class='diff-deleted'> </span><span class='diff-deleted'>/var/aegir/config/apache.conf"</span><span class='diff-deleted'> </span><span class='diff-deleted'>&gt;&gt;</span><span class='diff-deleted'> </span><span class='diff-deleted'>/etc/apache2/httpd.conf</span></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>MySQL</span><span class='diff-deleted'> </span><span class='diff-deleted'>commands::
+</span><span class='diff-deleted'> </span><span class='diff-deleted'>#</span><span class='diff-deleted'> </span><span class='diff-deleted'>Replace</span><span class='diff-deleted'> </span><span class='diff-deleted'>'aegir_password'</span><span class='diff-deleted'> </span><span class='diff-deleted'>with</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>chosen</span><span class='diff-deleted'> </span><span class='diff-deleted'>password</span><span class='diff-deleted'> </span><span class='diff-deleted'>for</span><span class='diff-deleted'> </span><span class='diff-deleted'>'aegir'</span><span class='diff-deleted'> </span><span class='diff-deleted'>mysql</span><span class='diff-deleted'> </span><span class='diff-deleted'>account
+</span><span class='diff-deleted'> </span><span class='diff-deleted'>CREATE</span><span class='diff-deleted'> </span><span class='diff-deleted'>DATABASE</span><span class='diff-deleted'> </span><span class='diff-deleted'>aegir;
+</span><span class='diff-deleted'> </span><span class='diff-deleted'>GRANT</span><span class='diff-deleted'> </span><span class='diff-deleted'>SELECT,</span><span class='diff-deleted'> </span><span class='diff-deleted'>INSERT,</span><span class='diff-deleted'> </span><span class='diff-deleted'>UPDATE,</span><span class='diff-deleted'> </span><span class='diff-deleted'>DELETE,</span><span class='diff-deleted'> </span><span class='diff-deleted'>CREATE,</span><span class='diff-deleted'> </span><span class='diff-deleted'>DROP,</span><span class='diff-deleted'> </span><span class='diff-deleted'>INDEX,</span><span class='diff-deleted'> </span><span class='diff-deleted'>ALTER,</span><span class='diff-deleted'> </span><span class='diff-deleted'>\
+</span><span class='diff-deleted'> </span><span class='diff-deleted'></span><span class='diff-deleted'> </span><span class='diff-deleted'></span><span class='diff-deleted'> </span><span class='diff-deleted'>CREATE</span><span class='diff-deleted'> </span><span class='diff-deleted'>TEMPORARY</span><span class='diff-deleted'> </span><span class='diff-deleted'>TABLES,</span><span class='diff-deleted'> </span><span class='diff-deleted'>LOCK</span><span class='diff-deleted'> </span><span class='diff-deleted'>TABLES</span><span class='diff-deleted'> </span><span class='diff-deleted'>ON</span><span class='diff-deleted'> </span><span class='diff-deleted'>aegir.*</span><span class='diff-deleted'> </span><span class='diff-deleted'>TO</span><span class='diff-deleted'> </span><span class='diff-deleted'>\
+</span><span class='diff-deleted'> </span><span class='diff-deleted'></span><span class='diff-deleted'> </span><span class='diff-deleted'></span><span class='diff-deleted'> </span><span class='diff-deleted'>'aegir'@'localhost'</span><span class='diff-deleted'> </span><span class='diff-deleted'>IDENTIFIED</span><span class='diff-deleted'> </span><span class='diff-deleted'>BY</span><span class='diff-deleted'> </span><span class='diff-deleted'>'aegir_password';
+</span><span class='diff-deleted'> </span><span class='diff-deleted'>#</span><span class='diff-deleted'> </span><span class='diff-deleted'>Create</span><span class='diff-deleted'> </span><span class='diff-deleted'>a</span><span class='diff-deleted'> </span><span class='diff-deleted'>mysql</span><span class='diff-deleted'> </span><span class='diff-deleted'>super</span><span class='diff-deleted'> </span><span class='diff-deleted'>user</span><span class='diff-deleted'> </span><span class='diff-deleted'>(with</span><span class='diff-deleted'> </span><span class='diff-deleted'>GRANT</span><span class='diff-deleted'> </span><span class='diff-deleted'>OPTION)
+</span><span class='diff-deleted'> </span><span class='diff-deleted'>#</span><span class='diff-deleted'> </span><span class='diff-deleted'>Replace</span><span class='diff-deleted'> </span><span class='diff-deleted'>'aegir_root_password'</span><span class='diff-deleted'> </span><span class='diff-deleted'>with</span><span class='diff-deleted'> </span><span class='diff-deleted'>a</span><span class='diff-deleted'> </span><span class='diff-deleted'>new</span><span class='diff-deleted'> </span><span class='diff-deleted'>password
+</span><span class='diff-deleted'> </span><span class='diff-deleted'>GRANT</span><span class='diff-deleted'> </span><span class='diff-deleted'>USAGE,CREATE</span><span class='diff-deleted'> </span><span class='diff-deleted'>USER</span><span class='diff-deleted'> </span><span class='diff-deleted'>ON</span><span class='diff-deleted'> </span><span class='diff-deleted'></span><em><span class='diff-deleted'>.</span></em><span class='diff-deleted'></span><span class='diff-deleted'> </span><span class='diff-deleted'>TO</span><span class='diff-deleted'> </span><span class='diff-deleted'>'aegir_root'@'localhost'</span><span class='diff-deleted'> </span><span class='diff-deleted'>\
+</span><span class='diff-deleted'> </span><span class='diff-deleted'></span><span class='diff-deleted'> </span><span class='diff-deleted'></span><span class='diff-deleted'> </span><span class='diff-deleted'>IDENTIFIED</span><span class='diff-deleted'> </span><span class='diff-deleted'>BY</span><span class='diff-deleted'> </span><span class='diff-deleted'>'aegir_root_password'</span><span class='diff-deleted'> </span><span class='diff-deleted'>WITH</span><span class='diff-deleted'> </span><span class='diff-deleted'>GRANT</span><span class='diff-deleted'> </span><span class='diff-deleted'>OPTION;
+</span><span class='diff-deleted'> </span><span class='diff-deleted'>GRANT</span><span class='diff-deleted'> </span><span class='diff-deleted'>ALL</span><span class='diff-deleted'> </span><span class='diff-deleted'>PRIVILEGES</span><span class='diff-deleted'> </span><span class='diff-deleted'>ON</span><span class='diff-deleted'> </span><span class='diff-deleted'></span><code><span class='diff-deleted'>site\_%</span></code><span class='diff-deleted'>.*</span><span class='diff-deleted'> </span><span class='diff-deleted'>TO</span><span class='diff-deleted'> </span><span class='diff-deleted'>'aegir_root'@'localhost';</span></p><span class='diff-deleted'>
+
+</span><h1><span class='diff-deleted'>3.</span><span class='diff-deleted'> </span><span class='diff-deleted'>Run</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>install</span><span class='diff-deleted'> </span><span class='diff-deleted'>script</span></h1><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>Download</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>install.sh</span><span class='diff-deleted'> </span><span class='diff-deleted'>script</span><span class='diff-deleted'> </span><span class='diff-deleted'>per</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>instructions</span><span class='diff-deleted'> </span><span class='diff-deleted'>in</span><span class='diff-deleted'> </span><span class='diff-deleted'>Step</span><span class='diff-deleted'> </span><span class='diff-deleted'>3</span><span class='diff-deleted'> </span><span class='diff-deleted'>of</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>canonical
+INSTALL.txt</span><span class='diff-deleted'> </span><span class='diff-deleted'>file,</span><span class='diff-deleted'> </span><span class='diff-deleted'>with</span><span class='diff-deleted'> </span><span class='diff-deleted'>modifications</span><span class='diff-deleted'> </span><span class='diff-deleted'>below.</span></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>Shell</span><span class='diff-deleted'> </span><span class='diff-deleted'>commands::
+</span><span class='diff-deleted'> </span><span class='diff-deleted'>su</span><span class='diff-deleted'> </span><span class='diff-deleted'>-</span><span class='diff-deleted'> </span><span class='diff-deleted'>aegir
+</span><span class='diff-deleted'> </span><span class='diff-deleted'>bash</span><span class='diff-deleted'> </span><span class='diff-deleted'>install.sh.txt</span><span class='diff-deleted'> </span><span class='diff-deleted'>aegir.example.com</span></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>Be</span><span class='diff-deleted'> </span><span class='diff-deleted'>sure</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>change</span><span class='diff-deleted'> </span><span class='diff-deleted'>'aegir.example.com'</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>match</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>URI</span><span class='diff-deleted'> </span><span class='diff-deleted'>of</span><span class='diff-deleted'> </span><span class='diff-deleted'>your</span><span class='diff-deleted'> </span><span class='diff-deleted'>site.</span></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>You</span><span class='diff-deleted'> </span><span class='diff-deleted'>can</span><span class='diff-deleted'> </span><span class='diff-deleted'>append</span><span class='diff-deleted'> </span><span class='diff-deleted'>'--client_email=you@example.com'</span><span class='diff-deleted'> </span><span class='diff-deleted'>if</span><span class='diff-deleted'> </span><span class='diff-deleted'>you</span><span class='diff-deleted'> </span><span class='diff-deleted'>wish</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>receive</span><span class='diff-deleted'> </span><span class='diff-deleted'>the
+traditional</span><span class='diff-deleted'> </span><span class='diff-deleted'>Drupal</span><span class='diff-deleted'> </span><span class='diff-deleted'>'Welcome'</span><span class='diff-deleted'> </span><span class='diff-deleted'>e-mail</span><span class='diff-deleted'> </span><span class='diff-deleted'>upon</span><span class='diff-deleted'> </span><span class='diff-deleted'>completion</span><span class='diff-deleted'> </span><span class='diff-deleted'>of</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>installation.
+This</span><span class='diff-deleted'> </span><span class='diff-deleted'>e-mail</span><span class='diff-deleted'> </span><span class='diff-deleted'>address</span><span class='diff-deleted'> </span><span class='diff-deleted'>will</span><span class='diff-deleted'> </span><span class='diff-deleted'>also</span><span class='diff-deleted'> </span><span class='diff-deleted'>be</span><span class='diff-deleted'> </span><span class='diff-deleted'>used</span><span class='diff-deleted'> </span><span class='diff-deleted'>as</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>default</span><span class='diff-deleted'> </span><span class='diff-deleted'>e-mail</span><span class='diff-deleted'> </span><span class='diff-deleted'>address</span><span class='diff-deleted'> </span><span class='diff-deleted'>of</span><span class='diff-deleted'> </span><span class='diff-deleted'>the
+first</span><span class='diff-deleted'> </span><span class='diff-deleted'>user</span><span class='diff-deleted'> </span><span class='diff-deleted'>and</span><span class='diff-deleted'> </span><span class='diff-deleted'>client</span><span class='diff-deleted'> </span><span class='diff-deleted'>in</span><span class='diff-deleted'> </span><span class='diff-deleted'>Aegir,</span><span class='diff-deleted'> </span><span class='diff-deleted'>but</span><span class='diff-deleted'> </span><span class='diff-deleted'>can</span><span class='diff-deleted'> </span><span class='diff-deleted'>be</span><span class='diff-deleted'> </span><span class='diff-deleted'>changed</span><span class='diff-deleted'> </span><span class='diff-deleted'>later.</span></p><span class='diff-deleted'>
+
+</span><h1><span class='diff-deleted'>4.</span><span class='diff-deleted'> </span>Common issues</h1>
+
+<h2>Drush issue</h2>
+
+<p>Solaris suffers from the dreaded execution issues of drush:</p>
+
+<p><a href="http://drupal.org/node/637574" title="http://drupal.org/node/637574">http://drupal.org/node/637574</a>
+<a href="http://drupal.org/node/586466" title="http://drupal.org/node/586466">http://drupal.org/node/586466</a></p>
+
+<p>Those can be worked around by hardcoding the --php executable on the
+commandline path. Adding the proper shebang header and using a proper PATH
+that includes the PHP executable also helps.</p>
+
+<h2>Cron issues</h2>
+
+<p>I had numerous problems setting up a proper cron job, as Solaris' crond seems
+pretty anal about what it accepts. The only way I could get it to work was to
+create a wrapper shell script that would be called using the simplest cron
+tab.</p>
+
+<p>Crontab entry::</p>
+
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>/var/aegir/dispatch.sh</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>Content of dispatch.sh::
+ #!/usr/bin/bash</p>
+
+<p>HOME=/var/aegir
+ LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/usr/lib/sparcv9:/opt/mysql/mysql/lib:/usr/sfw/lib:/usr/sfw/lib/gcc:/opt/sfw/lib
+ PATH=/usr/bin:/opt/mysql/mysql/bin:/usr/sfw/bin:/opt/sfw/bin:/opt/SUNWspro/bin:/usr/local/bin:/opt/csw/bin</p>
+
+<p>export HOME
+ export LD_LIBRARY_PATH
+ export PATH</p>
+
+<p>php '/var/aegir/drush/drush.php' --php=/usr/local/bin/php '@hostmaster' hosting-dispatch</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-267.html?destination=node%2F416%23comment-form">Login</a> or <a href="../../../../../user/register/index-267.html?destination=node%2F416%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-267.html?destination=node%2F416%23comment-form">Login</a> or <a href="../../../../../user/register/index-267.html?destination=node%2F416%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/416/revisions/1347/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:24:12 GMT -->
+</html>

@@ -1,0 +1,131 @@
+Task starts processing
+Running: /usr/bin/php /usr/share/php/drush-3.3/drush.php --php=/usr/bin/php --uri='example.dev' provision-save '@example.dev' --backend
+The external command could not be executed due to an application error.
+Drush bootstrap phase : _drush_bootstrap_drush()
+Found command: provision-save (commandfile=provision)
+Initializing drush commandfile: drush_make
+Initializing drush commandfile: drush_make_d_o
+Initializing drush commandfile: provision
+Load alias @self
+Load alias @
+Load alias @platform_Basiclegacy
+Load alias @server_master
+Loading mysql driver for the db service
+Loading apache driver for the http service
+Drush command could not be completed.
+Output from failed command : Fatal error: Maximum function nesting level of '1000' reached, aborting! in /var/aegir/.drush/provision/provision.context.inc on line 23 Call Stack: 0.0006 184112 1. {main}() /usr/share/php/drush-3.3/drush.php:0 0.0151 2607624 2. drush_main() /usr/share/php/drush-3.3/drush.php:40 0.1364 10592600 3. drush_dispatch() /usr/share/php/drush-3.3/drush.php:90 0.1365 10596592 4. call_user_func_array() /usr/share/php/drush-3.3/includes/drush.inc:51 0.1365 10597368 5. drush_command() /usr/share/php/drush-3.3/includes/drush.inc:0 0.1371 10604920 6. call_user_func_array() /usr/share/php/drush-3.3/includes/command.inc:376 0.1371 10605704 7. provision_drush_init() /usr/share/php/drush-3.3/includes/command.inc:0 0.1371 10605904 8. d() /var/aegir/.drush/provision/provision.drush.inc:60 0.1390 10611768 9. provisionContext->method_invoke() /var/aegir/.drush/provision/provision.context.inc:44 0.1390 10612656 10. provision::method_invoke() /var/aegir/.drush/provision/provision.context.inc:205 0.1391 10613656 11. call_user_func_array() /var/aegir/.drush/provision/provision.inc:414 0.1391 10614416 12. provisionContext->init() /var/aegir/.drush/provision/provision.inc:0 0.1396 10620776 13. call_user_func() /var/aegir/.drush/provision/provision.context.inc:274 0.1396 10621304 14. provisionService_db::subscribe_site() /var/aegir/.drush/provision/provision.context.inc:0 0.1400 10622464 15. provisionContext->__get() /var/aegir/.drush/provision/provision.context.inc:0 0.1400 10622592 16. d() /var/aegir/.drush/provision/provision.context.inc:140 0.1435 10673176 17. provisionContext->method_invoke() /var/aegir/.drush/provision/provision.context.inc:44 0.1444 10677744 18. provisionContext->services_invoke() /var/aegir/.drush/provision/provision.context.inc:209 0.1551 10741904 19. provisionContext->service() /var/aegir/.drush/provision/provision.context.inc:359 0.1551 10742360 20. provisionContext->service() /var/aegir/.drush/provision/provision.context.inc:335 0.1551 10743584 21. provisionContext->service() /var/aegir/.drush/provision/provision.context.inc:335 0.1551 10744040 22. provisionContext->service() /var/aegir/.drush/provision/provision.context.inc:335 0.1551 10744496 23. provisionContext->service() /var/aegir/.drush/provision/provision.context.inc:335 0.1552 10744992 24. provisionContext->service() /var/aegir/.drush/provision/provision.context.inc:335
+<MANY REPEAT LINES REMOVED FOR SANITY'S SAKE>
+0.1552 10745448 25. provisionContext->service() /var/aegir/.drush/provision/provision.context.inc:335 0.1715 11539640 999. d() /var/aegir/.drush/provision/provision.context.inc:335
+Running: /usr/bin/php /usr/share/php/drush-3.3/drush.php --php=/usr/bin/php @example.dev provision-import --backend
+Drush bootstrap phase : _drush_bootstrap_drush()
+Load alias @example.dev
+Loading drushrc "/var/aegir/platforms/basic/sites/example.dev/drushrc.php" into "site" scope.
+Drush bootstrap phase : _drush_bootstrap_drupal_root()
+Loading drushrc "/var/aegir/platforms/basic/drushrc.php" into "drupal" scope.
+Initialized Drupal 6.20 root directory at /var/aegir/platforms/basic
+Found command: provision-import (commandfile=provision)
+Initializing drush commandfile: drush_make
+Initializing drush commandfile: drush_make_d_o
+Initializing drush commandfile: provision
+Load alias @server_master
+Loading mysql driver for the db service
+Loading apache driver for the http service
+Load alias @platform_Basiclegacy
+Including /var/aegir/.drush/provision/platform/import.provision.inc
+Drush bootstrap phase : _drush_bootstrap_drupal_site()
+Initialized Drupal site example.dev at sites/example.dev
+Loading drushrc "/var/aegir/platforms/basic/sites/example.dev/drushrc.php" into "site" scope.
+Drush bootstrap phase : _drush_bootstrap_drupal_configuration()
+Drush bootstrap phase : _drush_bootstrap_drupal_database()
+Successfully connected to the Drupal database.
+Drush bootstrap phase : _drush_bootstrap_drupal_full()
+Template loaded: /var/aegir/.drush/provision/provision_drushrc_alias.tpl.php
+Changed permissions of /var/aegir/.drush/example.dev.alias.drushrc.php to 600
+Generated config Drush configuration file
+Changed permissions of /var/aegir/.drush/example.dev.alias.drushrc.php to 400
+Template loaded: /var/aegir/.drush/provision/provision_drushrc_site.tpl.php
+Changed permissions of /var/aegir/platforms/basic/sites/example.dev/drushrc.php to 600
+Generated config Site Drush configuration file
+Changed permissions of /var/aegir/platforms/basic/sites/example.dev/drushrc.php to 400
+Running: /usr/bin/php /usr/share/php/drush-3.3/drush.php --php=/usr/bin/php @example.dev provision-verify --backend
+Drush bootstrap phase : _drush_bootstrap_drush()
+Load alias @example.dev
+Loading drushrc "/var/aegir/platforms/basic/sites/example.dev/drushrc.php" into "site" scope.
+Found command: provision-verify (commandfile=provision)
+Initializing drush commandfile: drush_make
+Initializing drush commandfile: drush_make_d_o
+Initializing drush commandfile: provision
+Load alias @server_master
+Loading mysql driver for the db service
+Loading apache driver for the http service
+Load alias @platform_Basiclegacy
+Including /var/aegir/.drush/provision/dns/verify.provision.inc
+Including /var/aegir/.drush/provision/platform/backupmigrate/verify.provision.inc
+Including /var/aegir/.drush/provision/platform/verify.provision.inc
+Drush bootstrap phase : _drush_bootstrap_drupal_root()
+Loading drushrc "/var/aegir/platforms/basic/drushrc.php" into "drupal" scope.
+Initialized Drupal 6.20 root directory at /var/aegir/platforms/basic
+Drush bootstrap phase : _drush_bootstrap_drupal_site()
+Initialized Drupal site example.dev at sites/example.dev
+Loading drushrc "/var/aegir/platforms/basic/sites/example.dev/drushrc.php" into "site" scope.
+Template loaded: /var/aegir/.drush/provision/platform/provision_drupal_settings.tpl.php
+Changed permissions of /var/aegir/platforms/basic/sites/example.dev/settings.php to 640
+Generated config Drupal settings.php file
+Changed permissions of /var/aegir/platforms/basic/sites/example.dev/settings.php to 440
+Change group ownership of /var/aegir/platforms/basic/sites/example.dev/settings.php to www-data
+Drush bootstrap phase : _drush_bootstrap_drupal_configuration()
+Drush bootstrap phase : _drush_bootstrap_drupal_database()
+Successfully connected to the Drupal database.
+Drush bootstrap phase : _drush_bootstrap_drupal_full()
+Found install profile default
+Found install profile message_agency_basic
+Found 142 modules
+Found 10 themes
+Changed permissions of sites/example.dev to 755
+Changed permissions of sites/example.dev/themes to 2775
+Changed permissions of sites/example.dev/modules to 2775
+Changed permissions of sites/example.dev/libraries to 2775
+Changed permissions of sites/example.dev/files to 2770
+Changed permissions of sites/example.dev/files/tmp to 2770
+Changed permissions of sites/example.dev/files/images to 2770
+Changed permissions of sites/example.dev/files/pictures to 2770
+Changed permissions of sites/example.dev/private to 2770
+Changed permissions of sites/example.dev/private/files to 2770
+Changed permissions of sites/example.dev/private/temp to 2770
+Changed group ownership of sites/example.dev/files to www-data
+Changed group ownership of sites/example.dev/files/tmp to www-data
+Changed group ownership of sites/example.dev/files/images to www-data
+Changed group ownership of sites/example.dev/files/pictures to www-data
+Changed group ownership of sites/example.dev/private to www-data
+Changed group ownership of sites/example.dev/private/files to www-data
+Changed group ownership of sites/example.dev/private/temp to www-data
+Removed symlink for alias /var/aegir/platforms/basic/sites/comhar.messageagency.com
+Created symlink for alias /var/aegir/platforms/basic/sites/comhar.messageagency.com
+Template loaded: /var/aegir/.drush/provision/platform/provision_drupal_settings.tpl.php
+Changed permissions of /var/aegir/platforms/basic/sites/example.dev/settings.php to 640
+Generated config Drupal settings.php file
+Changed permissions of /var/aegir/platforms/basic/sites/example.dev/settings.php to 440
+Change group ownership of /var/aegir/platforms/basic/sites/example.dev/settings.php to www-data
+Template loaded: /var/aegir/.drush/provision/http/apache/vhost.tpl.php
+Generated config virtual host configuration file
+apache on phobos has been restarted
+Cleared all caches
+Rebuild node type cache
+Rebuild module cache
+Rebuild theme cache
+Rebuild node access cache
+Rebuild menu cache
+Content permissions have been rebuilt.
+Template loaded: /var/aegir/.drush/provision/provision_drushrc_site.tpl.php
+Changed permissions of /var/aegir/platforms/basic/sites/example.dev/drushrc.php to 600
+Generated config Site Drush configuration file
+Changed permissions of /var/aegir/platforms/basic/sites/example.dev/drushrc.php to 400
+Command dispatch complete
+Peak memory usage was 116.01 MB
+Reloading site drushrc.php from sites/example.dev/drushrc.php
+Command dispatch complete
+Peak memory usage was 68.62 MB
+Output from failed command :
+An error occurred at function : drush_hosting_task
+Command dispatch complete
+Peak memory usage was 31.92 MB

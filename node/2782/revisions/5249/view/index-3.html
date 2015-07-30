@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/2782/revisions/5249/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:14:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../2/index-6.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-8.html" />
+<link rel="prev" href="../../../../../2/index-6.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-8.html" />
+<link rel="prev" href="../../../../../2/index-6.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-8.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of 2.0-rc4 release notes from Sat, 09/07/2013 - 23:44 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2782" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../2/index-7.html">2.0-rc4 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-2782'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 09/07/2013 - 23:44</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>An error in the manual portion of our <a href="../../../../../content/release-process/index.html">release process</a> resulted in the incorrect version of the code-base being built. See the <a href="../../../../../2/index-8.html">release notes for 2.0-rc3</a> for relevant changes since 2.0-rc2.</p>
+
+<h1>Known bugs</h1>
+
+<p>In addition to those listed in the [release notes for 2.0-rc3], note that some people have experienced problems with downloading a patch in the main Aegir makefile. This is most likely due to problems with drupal.org's SSL certificate. If you are experiencing such an issue, there is a simple work-around: edit the aegir.make file in the provision/ directory to make the path use http:// instead of https://.</p><span class='diff-changed'>
+
+</span><p>For a Debian-based <span class='diff-changed'>system (including Ubuntu),</span> this would look something like:</p>
+
+<pre><code>$ sudo vi /usr/bin/drush/commands/provision/aegir.make
+</code><span class='diff-added'></span></pre><span class='diff-added'>
+
+</span><p><span class='diff-added'>For 'manual' installs on other OS's, it would probably be:</span></p><span class='diff-added'>
+
+</span><pre><span class='diff-added'></span><code><span class='diff-added'>$ sudo vi /var/aegir/provision/aegir.make
+</span></code></pre>
+
+<p>Change the line:</p>
+
+<pre><code>projects[drupal][patch][] = "https://drupal.org/files/common.inc_6.28.patch"
+</code></pre>
+
+<p>to read:</p>
+
+<pre><code>projects[drupal][patch][] = "http://drupal.org/files/common.inc_6.28.patch"
+</code></pre>
+
+<p>Then re-run the <span class='diff-changed'>install.</span> On <span class='diff-changed'>Debian/Ubuntu</span> machines:</p>
+
+<pre><code>$ sudo apt-get install aegir2
+</code></pre>
+
+<ul><span class='diff-deleted'>
+</span><li><span class='diff-deleted'></span><p>On <span class='diff-changed'>manually installed systems (CentOS, etc.)</span> as the aegir user:</p>
+
+<pre><span class='diff-changed'></span><code>$ drush <span class='diff-changed'>hostmaster-install
+</span></code></pre>
+
+<h1>Detailed list of changes</h1>
+
+<h2>API CHANGES</h2>
+
+<p>None.</p>
+
+<h2>NEW FEATURES</h2>
+
+<p>None.</p>
+
+<h2>BUG FIXES</h2>
+
+<ul>
+  <li>Fixed makefiles to point to proper versions of projects.</li>
+</ul></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-162.html?destination=node%2F2782%23comment-form">Login</a> or <a href="../../../../../user/register/index-162.html?destination=node%2F2782%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-162.html?destination=node%2F2782%23comment-form">Login</a> or <a href="../../../../../user/register/index-162.html?destination=node%2F2782%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/2782/revisions/5249/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:14:17 GMT -->
+</html>

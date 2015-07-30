@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/26/revisions/3295/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:00:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../45/index.html" />
+<link rel="up" href="../../../../43/index.html" />
+<link rel="next" href="../../../../../open-id-tips-and-tricks/index.html" />
+<link rel="prev" href="../../../../45/index.html" />
+<link rel="up" href="../../../../43/index.html" />
+<link rel="next" href="../../../../../open-id-tips-and-tricks/index.html" />
+<link rel="prev" href="../../../../45/index.html" />
+<link rel="up" href="../../../../43/index.html" />
+<link rel="next" href="../../../../../open-id-tips-and-tricks/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Deleting sites from Thu, 04/26/2012 - 10:17 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-26" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Deleting sites</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_3 first"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-26'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 04/26/2012 - 10:17</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>There may come a time when you want to remove a website from your Aegir system and your server altogether. As you'd expect, Aegir handles this for you too. It ships with a 'Delete' task that is capable of removing the site from the Aegir system, as well as carrying out backend tasks to remove the site from the filesystem and web/db servers.</p>
+
+<p>The Aegir frontend is a Drupal site in itself, and sites are represented in that system as nodes. New users that are familiar with Drupal often make the mistake of thinking that the process of deleting a site is like deleting a node in Drupal, and attempt to delete the site node (or are confused by the fact we hide the Delete button for this reason).</p>
+
+<p>This is an incorrect method of deleting a site, and doesn't actually spawn a task to clear away the site from the server at all. Below are the steps to correctly remove a site.</p>
+
+<h2>Method 1 (default) - Disable the site first</h2>
+
+<p>Part of this confusion can stem from the fact that when viewing a site node in Aegir, the Delete button is not actually present in the list of available tasks by default:</p>
+
+<div align="center"><img src="../../../../../sites/community.aegirproject.org/files/delete_disablefirst/index.png" /></div>
+
+<p>This is because, in the default Aegir configuration, you must run the Disable task against a site before you may Delete it. This logic is in Aegir to help users avoid accidentally deleting a site either by accidentally processing the task (despite having to confirm it first) or to prompt the user to think a little bit more on the decision before irreversibly blowing away the data.</p>
+
+<p>The decision stems from Aegir development policy of being uncomfortable making such risky actions on your data. While it is possible to delete a site, we'd like you to really be sure that's what you want to do.</p>
+
+<p>Once you Disable a site (<a href="../../../../25/index.html">see the Disable section prior to this chapter</a>), the list of available tasks is modified to only offer an Enable or Delete button. At this point you can run the Delete task and permanently remove your site.</p>
+
+<div align="center"><img src="../../../../../sites/community.aegirproject.org/files/delete/index.png" /></div>
+
+<h2>Method 2 (optional) - Delete without Disabling</h2>
+
+<p>The first method above is the default Aegir configuration. However, some users might be too confused by the lack of the Delete button altogether, which may not be ideal for your situation.</p>
+
+<p>For this reason, Aegir also provides a configurable setting allowing a site to be Deleted without requiring a Disable first. This option makes the 'Delete' button appear in the list of available tasks, even when a site is currently in an Enabled state.</p>
+
+<p>To activate this setting, visit <code>/admin/hosting/settings</code> on your site and uncheck the checkbox that is titled "Require site to be disabled before deletion".</p>
+
+<p>Re-visit the site node and you'll see that the Delete button is now present and clickable, alongside the Disable button.</p>
+
+<div align="center"><img src="../../../../../sites/community.aegirproject.org/files/delete_nodisable/index.png" /></div>
+
+<h2>The deletion process</h2>
+
+<p>When you click Delete and confirm your intentions in the modaldialog that loads, a 'Delete' task is spawned and added to the Task queue to await dispatch by the backend system.</p>
+
+<p>The process runs through a series of steps to remove this site from your server. These are as follows:</p>
+
+<ul>
+<li>Make a backup of the site and its database for the last time (safety first, remember!</li>
+<li>Drops the site database</li>
+<li>Revokes the GRANT to that database for the database user (effectively deleting the database user)</li>
+<li>Deletes the site folder and everything inside it, from the platform that the site was hosted on</li>
+<li>Removes the Drush alias file for the site</li>
+<li>Removes the site's web server vhost configuration file</li>
+<li>Reloads the web server</li>
+<li>Sets the site's status to 'Deleted' in the Aegir system. Note: it does not delete the site node from the Aegir system. This is by design: the site node is retained in the Aegir database for historical purposes (you could customise Aegir by adding the ability to run a report or a View of all deleted historical sites, for example)</li>
+<li>The deleted status of the site, removes it from the list of sites in the 'Sites' page (and thus front page) of the Aegir system.</li>
+<li>Historical tasks run on the site remain in the Task queue history.</li>
+</ul>
+
+<h2>Manually deleting the site</h2>
+
+<p>Sometimes something goes wrong during an Install or a Delete task and a site doesn't install or get deleted successfully. The Delete task cannot be run or re-run on this site because Aegir has no way of knowing just how much of it got deleted (whether the files are still there but not the database, for example). Re-running the Delete task is likely to fail because some of these steps listed above will not exit successfully on completion.</p>
+
+<p>At the time of writing, no task in Aegir exists to 'force' a removal of a site without having to bootstrap it first, so some manual steps are required on your part to remove this site.</p>
+
+<ul>
+<li>Manually remove the site files on the server if they exist (i.e /var/aegir/platforms/drupal-6.16/sites/my-failed-site.com</li>
+<li>Drop the database and revoke db user privileges associated with this site if it got created before failing (check the vhost  configuration file's 'SetEnv' parameters, or the settings.php if the credentials are uncloaked, for the site's database name and user)</li>
+<li>Manually remove the Apache vhost file for this site if it is still present (in /var/aegir/config/server_master/apache/vhost.d/)</li>
+<li>Manually remove the Drush alias for this site if it is still present (in /var/aegir/.drush/)</li>
+<li>Enter the Aegir database from mysql and set the status of the node in the <code>hosting_site</code>table to -2 (deleted). For example, if your site node was nid 83 (the 'Edit' tab of the site node will tell you this), run <code>UPDATE hosting_site SET status = &#039;-2&#039; WHERE nid = 83;</code></li>
+<li>Alternatively, if you want to even remove the node altogether from the system (not recommended), go to /node/83/delete in your browser on the Aegir frontend and delete the node. This will remove the site node and all associated task nodes from the system, as well as remove the entry from the hosting_site table in the database.</li>
+<li>If you are using the SSL feature and had Encryption enabled for this site, you may also need to manually delete the SSL certificate folder located in <code>/var/aegir/config/ssl.d/[domain of site you are deleting]</code> and/or <code>/var/aegir/config/server_master/ssl.d/[domain of site you are deleting]</code>. Additionally you may also need to delete the entry for the domain you are deleting in the <code>hosting_ssl_cert</code> table of the Aegir <span class='diff-changed'>database.</span></li>
+<li>If you are using the DNS feature you may also need to remove the site's entry in the zone file by running the following command: <span class='diff-added'></span><code>drush @server_master provision-zone rr-delete example.com sub.domain A</code></li>
+<li>Re-verify the Platform node where the Platform is the one where your site was hosted on. This will regenerate some metadata whereby the Platform believed it still had that site contained within it.</li>
+</ul>
+
+<p>If you need to manually remove the site's platform see the instructions here: <a href="../../../../27/index.html" title="http://community.aegirproject.org/node/27">http://community.aegirproject.org/node/27</a></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-384.html?destination=node%2F26%23comment-form">Login</a> or <a href="../../../../../user/register/index-384.html?destination=node%2F26%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/26/revisions/3295/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:00:06 GMT -->
+</html>

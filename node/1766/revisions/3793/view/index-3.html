@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/1766/revisions/3793/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:01:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../migration-tips/index.html" />
+<link rel="up" href="../../../../23/index.html" />
+<link rel="next" href="../../../../24/index.html" />
+<link rel="prev" href="../../../../../migration-tips/index.html" />
+<link rel="up" href="../../../../23/index.html" />
+<link rel="next" href="../../../../24/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Renaming the Aegir hostmaster site itself from Mon, 08/27/2012 - 18:29 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1766" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/renaming-aegir-hostmaster-site-itself/index.html">Renaming the Aegir hostmaster site itself</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-1766'><p>From <a href="../../../../363/index.html" title="http://community.aegirproject.org/node/363">http://community.aegirproject.org/node/363</a> :</p>
+
+<ol>
+<li>manually edit the crontab for aegir to stop the periodic execution of the command 'hosting-dispatch' (the drush command 'hostmaster-pause' did not exist on my system)
+</li><li>delete the site as specified (backup created)
+</li><li>change the alias file as specified.
+</li><li>deploy the backup as specified.
+</li><li>checked that all changes appeared correct - YES
+</li><li>Reneabled the hosting-dispatch task by editing the crontab again
+</li><li>ran a verify task against the new hostmaster site. Noticed that the site is listed on the site page with the old domain name. The verify failed.
+</li><li>Found that the verify task had created a new entry in the hostmaster-6.x-1.7/sites directory for the old domain name. I removed this created directory. I found and edited (using phpMyAdmin) the relevant entries in the node and node revision tables for the hostmaster site to update the domain name (change the title field). The hosting_site_alias table may also need to be updated if you have site aliases.
+</li><li>The verify task also seemed to have regressed the @hostmaster alias file (~/.drush/hostmaster.alias.drushrc.php) as it had the URI and aliases details from the old site back in it. I edited this file to return these items to their new values.
+</li><li>The verify task now completed successfully and all seems to be working correctly.
+</li></ol></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-388.html?destination=node%2F1766%23comment-form">Login</a> or <a href="../../../../../user/register/index-388.html?destination=node%2F1766%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/1766/revisions/3793/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:01:41 GMT -->
+</html>

@@ -1,0 +1,1468 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/78/revisions/1512/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:19:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../385/index.html" />
+<link rel="up" href="../../../../../developing/index.html" />
+<link rel="next" href="../../../../36/index.html" />
+<link rel="prev" href="../../../../385/index.html" />
+<link rel="up" href="../../../../../developing/index.html" />
+<link rel="next" href="../../../../36/index.html" />
+<link rel="prev" href="../../../../385/index.html" />
+<link rel="up" href="../../../../../developing/index.html" />
+<link rel="next" href="../../../../36/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="prev" href="../../../../../developing/architecture/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../../architecture/aegir-architecture/index.html" />
+<link rel="prev" href="../../../../36/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../77/index.html" />
+<link rel="prev" href="../../../../../architecture/aegir-architecture/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../41/index.html" />
+<link rel="prev" href="../../../../77/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../284/index.html" />
+<link rel="prev" href="../../../../41/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../318/index.html" />
+<link rel="prev" href="../../../../284/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../319/index.html" />
+<link rel="prev" href="../../../../318/index.html" />
+<link rel="up" href="../../../../318/index.html" />
+<link rel="next" href="../../../../320/index.html" />
+<link rel="prev" href="../../../../319/index.html" />
+<link rel="up" href="../../../../318/index.html" />
+<link rel="next" href="../../../../322/index.html" />
+<link rel="prev" href="../../../../320/index.html" />
+<link rel="up" href="../../../../318/index.html" />
+<link rel="next" href="../../../../323/index.html" />
+<link rel="prev" href="../../../../322/index.html" />
+<link rel="up" href="../../../../318/index.html" />
+<link rel="next" href="../../../../325/index.html" />
+<link rel="prev" href="../../../../323/index.html" />
+<link rel="up" href="../../../../318/index.html" />
+<link rel="next" href="../../../../324/index.html" />
+<link rel="prev" href="../../../../325/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../../developing/architecture/unix-group-limitations/index.html" />
+<link rel="prev" href="../../../../324/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../494/index.html" />
+<link rel="prev" href="../../../../../developing/architecture/unix-group-limitations/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../../contrib/index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Architecture Guide from Fri, 04/08/2011 - 18:31 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-78" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../developing/architecture/index.html">Architecture Guide</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-78'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 04/08/2011 - 18:31</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>This section deals with providing coherence and understanding of various aspects of Aegir - what it is, and what it is not.</p>
+
+<p>It tries to explain some of the concepts with which Aegir is developed for and how all the bits hook together.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-197.html?destination=node%2F78%23comment-form">Login</a> or <a href="../../../../../user/register/index-197.html?destination=node%2F78%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-197.html?destination=node%2F78%23comment-form">Login</a> or <a href="../../../../../user/register/index-197.html?destination=node%2F78%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+<div  id="node-36" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../36/index.html">Aegir design and terminology</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_3 first"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><p>@TODO - this document is out of date and needs updating.</p>
+
+<p>This page documents all the different terms used when referring to components of the Hostmaster system, and how the different entities relate to each other.</p>
+
+<h4>Front End</h4>
+
+<p>The user interface used to administrate your sites. The front end is provided by the Hostmaster install profile, and the Hosting contributed module. It defines a complete Drupal based data model for managing the various aspects of your installation.</p>
+
+<h4>Entities</h4>
+
+<p>These entities are used primarily in the front end to manage the configuration and data. Upon calling the back end, the system breaks
+down the properties of these entities to be passed as options for the command line, so the back end only has a flat data structure to
+work with. During this process, all relationships are automatically retrieved, making it a one step process for the developer.</p>
+
+<dl>
+<dt><a name='glossary-client'></a>Client</dt><dd><strong>The person or group that runs the site.</strong> 
+                This information is usually required for billing and access purposes, to assure
+                that only certain people are able to view the information for sites they run. 
+                If you do not intend on having more than one client access the system, 
+                you will not need to create any additional clients for your purposes.</dd>
+
+<dt><a name='glossary-site'></a>Site</dt><dd><strong>An instance of a hosted site.</strong>
+                It contains information relating to the site, most notably the domain name, database server 
+                and platform it is being published on. A site may also have several aliases for additional
+                domains the site needs to be accessible on.</dd>
+
+<dt><a name='glossary-task'></a>Task</dt><dd><strong>The mechanism whereby Hostmaster keeps track of all changes that occur to the system.</strong>
+                Each task acts as a command for the back end, and contains a full log of all changes that have occurred.
+                If a task should fail, the administrator will be notified with an explanation of exactly what went wrong,
+                and how to fix it.</dd>
+
+<dt><a name='glossary-platform'></a>Platform</dt><dd><strong>The file system location on a specific web server on which to publish sites.</strong>
+                Multiple platforms can co-exist on the same web server, and need to do so for
+                upgrades to be managed, as this is accomplished by moving the site to a platform
+                hosting an updated release.
+                Platforms are most commonly built for specific releases of Drupal.</dd>
+
+<dt><a name='glossary-server'></a>Server</dt><dd><strong>The server that provides various services.</strong>
+
+<dt><a name='glossary-service'></a>Service</dt><dd><strong>The service that runs on the server.</strong> This might be HTTP or a Database server.
+                Each web server hosts one or more platforms, which act as publishing points for the hosted sites.
+                If you are not intending to use Hostmaster in a distributed fashion, you will not need to create
+                additional web servers for your purposes.
+
+                Most web servers and database servers are on the same machine, but for performance reasons 
+                external database servers might be required. It is not uncommon for one database server
+                to be shared amongst all site instances.
+                If you are not intending to use an external database server, or multiple database servers, you
+                will not need to create any additional database servers for your purposes.</dd>
+
+<dt><a name='glossary-service_type'></a>Service type</dt><dd><strong>The type of service that runs on the server.</strong> In the example of 'HTTP' as a service, a service *type* is Apache or Nginx, for example. MySQL is a *type* of service 'Database'.</dd>
+
+<dt><a name='glossary-package'></a>Package</dt><dd><strong>An installable component for a site.</strong>
+  Hostmaster keeps tracks of all the modules, themes and install profiles installed across your entire network.
+  These packages most commonly link to their project on drupal.org, but might not in the case of custom modules.
+  Users are not able to create nodes of this type, as they are generated automatically during verify and sync tasks.
+</dd>
+
+<dt><a name='glossary-package_release'></a>Package Release</dt><dd><strong>The release of a specific package.</strong>
+  Each package on your network has at least one installed release, and each platform (including Drupal itself) may
+  have several releases installed across your network.
+</dd>
+
+<dt><a name='glossary-db_server'></a>Package Instance</dt><dd><strong>Where a package release has been installed.</strong>
+  A package release may be installed in multiple places on a platform, and sites may have access to multiple versions of packages.
+  This entity also tracks which modules are enabled, and what version of the schema (if any) they have installed.
+</dd>
+
+</dd></dl>
+
+<p><img src="http://groups.drupal.org/files/HostmasterERD3.png" /></p>
+
+<h4>Task types</h4>
+
+<p>These are "hosting commands" that the server can accomplish. These are mapped to back end commands by the task queue processor.</p>
+
+<dl>
+
+<dt>Verify platform</dt>
+<dd>Verify that a platform is correctly installed. Automatically created when new platforms are added, to ensure that they are capable of having new sites installed on them. Operates on: <strong>platforms</strong></dd>
+
+<dt>Import sites</dt>
+<dd>Import existing sites onto a platform.  Operates on: <strong>platforms</strong></dd>
+
+<dt>Install site</dt>
+<dd>Install a new site. This is automatically generated when a site node is created.  Operates on: <strong>sites</strong></dd>
+
+<dt>Sync site</dt>
+<dd>Synchronize changes to the site record with the back end. Automatically generated on editing of the site node.  Operates on: <strong>sites</strong></dd>
+
+<dt>Backup site</dt>
+<dd>Generate a backup of an existing site. This backup contains everything needed to run the site.  Operates on: <strong>sites</strong></dd>
+
+<dt>Restore backup</dt>
+<dd>Restore a site to a previous backed up version. Operates on: <strong>sites</strong></dd>
+
+<dt>Disable site</dt>
+<dd>Disable a running site. This is commonly used in the case of non-payment from clients. Operates on: <strong>sites</strong></dd>
+
+<dt>Enable site</dt>
+<dd>Enable a disabled site. The opposite of Disable. Operates on: <strong>sites</strong></dd>
+
+</dl>
+
+<p><strong>This is an incomplete list, and will be updated as more tasks are added</strong></p>
+
+<h4>Queues</h4>
+
+<p>The front end uses and maintains several queues, which are then processed through the <code>drush.php hosting dispatch</code> command.
+More queues can be added by optional contributed modules, and are often used to provide regularly scheduled back end commands, 
+such as backing up sites.</p>
+
+<dl>
+<dt>Task Queue</dt>
+<dd>The primary and most important queue. Whenever a change is made to the data set, the front end creates a "Task" node. These task relate to such things as installing new sites, regenerating the configuration files of sites, verifying that a platform has been correctly configured and importing existing sites on a newly added platform.</dd>
+
+<dt>Cron Queue</dt>
+<dd>This queue is used to manage the regular execution of the cron process required by most sites. It is configurable with a frequency you want all the sites to be cronned within. This is commonly 1 hour, but might be higher or lower. Higher frequency will cause higher system load. This command will iterate through all enabled sites, and batch the cron calls, based on how many sites are available, and how frequently it is running.</dd>
+
+<dt>Backup Queue</dt>
+<dd>This queue operates in the same way as the cron queue, in that it iterates through all installed sites, based on a configurable frequency. This executes the same functionality as requesting a site backup through the user interface. You are able to revert back 
+to a previous backup of your sites.</dd>
+
+<dt>Statistics Queue</dt>
+<dd>This queue operates on the same mechanism as the cron queue, and alows you to retrieve statistics of your installed sites. This will retrieve such metrics as number of registered and active users, and number of posts / comments, which will then be viewable on the front end.</dd>
+</dl>
+
+<h4>Back End</h4>
+
+<p>The back end is a command line interface provided by the Provisioning Framework, of all the tasks it is capable of performing.</p>
+
+<p>It is designed to operate separately from the front end, so that you can have multiple back ends on one or more servers.</p>
+
+<p>The back end handles the server level configuration of the system, such as creating new databases and virtual host records and
+restarting the apache process for new installations to take effect.</p>
+
+<p>When the queues are processed by the front end, these are turned into calls to the back end, for whichever server they happen
+to be on. The back end communicates to the front end through a very simple mechanism, whereby it returns a serialized string containing state information and log messages / error return codes.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-421.html?destination=node%2F36%23comment-form">Login</a> or <a href="../../../../../user/register/index-421.html?destination=node%2F36%23comment-form">register</a> to post comments</span></li>
+<li class="talk_comments last"><a href="../../../../36/talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-76" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../architecture/aegir-architecture/index.html">Aegir Architecture</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><p>This wiki page documents the Aegir architecture in schematic form. It is intented to complement a <a href="../../../../77/index.html">related page on the typical file system structure</a> on an Aegir installation.</p>
+
+<p><a href="../../../../../sites/community.aegirproject.org/files/aegir-architecture-multiserver-2010-09-29/index.png"><img src="../../../../../sites/community.aegirproject.org/files/aegir-architecture-multiserver-2010-09-29-640/index.png" /></a></p>
+
+<p>Click on image for a larger version.</p><div class="itu-attachments"><table class="itu-attachment-list withoutstats sticky-enabled" id="attachments">
+ <thead><tr><th class="preview">Preview</th><th class="file">Attachment</th><th class="size">Size</th> </tr></thead>
+<tbody>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../../../../sites/community.aegirproject.org/files/aegir-architecture-multiserver-2010-09-29/index.png" title="aegir-architecture-multiserver-2010-09-29.png"><img src="../../../../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/aegir-architecture-multiserver-2010-09-29/index.png" alt="aegir-architecture-multiserver-2010-09-29.png" title="aegir-architecture-multiserver-2010-09-29.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../../../../sites/community.aegirproject.org/files/aegir-architecture-multiserver-2010-09-29/index.png">aegir-architecture-multiserver-2010-09-29.png</a></td><td class="size">246.43 KB</td> </tr>
+ <tr class="even"><td class="mime mime-pdf"></td><td class="file"><a href="../../../../../sites/community.aegirproject.org/files/aegir-architecture-2010-09-29/index.pdf">aegir-architecture-2010-09-29.pdf</a></td><td class="size">174.58 KB</td> </tr>
+</tbody>
+</table>
+</div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-198.html?destination=node%2F76%23comment-form">Login</a> or <a href="../../../../../user/register/index-198.html?destination=node%2F76%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-198.html?destination=node%2F76%23comment-form">Login</a> or <a href="../../../../../user/register/index-198.html?destination=node%2F76%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-77" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../77/index.html">Aegir file system structure</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><p>This page documents the typical file system structure on an Aegir installation. It is intended to complement a related wiki page on <a href="../../../../76/index.html">Aegir Architecture</a>. The following paths are based on an Aegir 0.4-x installation and assume that all directories are within the /var/aegir folder.</p>
+
+<h3>Scripts and Configuration Files</h3>
+
+<table>
+<tr><th>Path</th><th>Notes</th></tr>
+<tr><td>/backups</td><td>site-specific tar balls containing a database dump and folders under path/to/platform/sites/example.com</td></tr>
+<tr><td>/config</td><td></td></tr>
+<tr><td>/config/server_master</td><td></td></tr>
+<tr><td>/config/server_master/apache</td><td></td></tr>
+<tr><td>/config/server_master/apache/conf.d</td><td>non-aegir or non-drupal virtual hosts files</td></tr>
+<tr><td>/config/server_master/apache/platform.d</td><td>contains .htaccess information for each aegir platform</td></tr>
+<tr><td>/config/server_master/apache/vhost.d</td><td>apache virtual host files for aegir platforms</td></tr>
+<tr><td>/config/server_master/apache/vhost.d/aegir.example.com</td><td>virtual host file for aegir web site - specifies path to platform directory and site database settings (so that database credentials are not exposed directly in site settings.php file) </td></tr>
+<tr><td>/config/server_master/apache/vhost.d/site-1.com</td><td>virtual host file for deployed web site</td></tr>
+<tr><td>/config/server_master/apache/vhost.d/site-2.com</td><td></td></tr>
+<tr><td>/config/server_master/apache/vhost.d/site-3.com</td><td></td></tr>
+<tr><td>/<a href="http://drupal.org/project/drush" title="link to drush project on drupal.org">drush</a></td><td>drush folder</td></tr>
+<tr><td>/drush/drush.php </td><td>drush script</td></tr>
+<tr><td>/.drush</td><td>drush extensions and server, platform and site aliases</td></tr>
+<tr><td>/.drush/<a href="http://drupal.org/project/drush_make" title="link to drush_make project on drupal.org">drush_make</a></td><td>drush_make project folder - used for building web sites from .make files</td></tr>
+<tr><td>/.drush/<a href="http://drupal.org/project/provision" title="link to provision project on drupal.org">provision<a /></a></a></td><td>provision folder</td></tr>
+<tr><td>/.drush/server_master.alias.drushrc.php</td><td>settings for the master server where the main aegir database, hosting platform and aegir site reside</td></tr>
+<tr><td>/.drush/platform_hostmaster.alias.drushrc.php</td><td>settings for the hostmaster platform on which the aegir site is based</td></tr>
+<tr><td>/.drush/hostmaster.alias.drushrc.php</td><td>settings for the aegir site</td></tr>
+<tr><td>/.drush/platform_platform1.alias.drushrc.php</td><td>settings for platform1 on which site-1.com is based</td></tr>
+<tr><td>/.drush/site-1.com.alias.drushrc.php</td><td>settings for site-1.com</td></tr>
+</table>
+
+<table>
+<h3>Hostmaster Platform and Aegir (front-end) Site</h3>
+<tr><th>Path</th><th>Notes</th></tr>
+<tr><td>/hostmaster-0.x</td><td>hostmaster platform</td></tr>
+<tr><td>/hostmaster-0.x/profiles</td><td></td></tr>
+<tr><td>/hostmaster-0.x/profiles/default</td><td></td></tr>
+<tr><td>/hostmaster-0.x/profiles/<a href="http://drupal.org/project/hostmaster" title="link to hostmaster distribution on drupal.org">hostmaster</a></td><td>hostmaster profile</td></tr>
+<tr><td>/hostmaster-0.x/profiles/hostmaster/modules</td><td></td></tr>
+<tr><td>/hostmaster-0.x/profiles/hostmaster/modules/admin_menu</td><td></td></tr>
+<tr><td>/hostmaster-0.x/profiles/hostmaster/modules/<a href="http://drupal.org/project/hosting" title="link to hostmaster project on drupal.org">hosting</a></td><td>hosting module</td></tr>
+<tr><td>/hostmaster-0.x/profiles/hostmaster/modules/install_profile_api</td><td>install_profile_api – facilitates provisioning of sites based on a non-default profile</td></tr>
+<tr><td>/hostmaster-0.x/profiles/hostmaster/modules/jquery_ui</td><td></td></tr>
+<tr><td>/hostmaster-0.x/profiles/hostmaster/modules/modalframe</td><td></td></tr>
+<tr><td>/hostmaster-0.x/profiles/hostmaster/themes</td><td></td></tr>
+<tr><td>/hostmaster-0.x/profiles/hostmaster/themes/<a href="http://drupal.org/project/hostmaster" title="link to eldir theme on drupal.org">eldir</a></td><td>eldir theme – provides Aegir front end look and feel</td></tr>
+<tr><td>/hostmaster-0.x/profiles/hostmaster/hostmaster.profile</td><td>profile file – used in site provisioning to configure a drupal database</td></tr>
+<tr><td>/hostmaster-0.x/profiles/hostmaster/hostmaster.make</td><td>make file – used to include modules, themes, libraries etc. from various sources</td></tr>
+<tr><td>/hostmaster-0.x/modules</td><td></td></tr>
+<tr><td>/hostmaster-0.x/themes</td><td></td></tr>
+<tr><td>/hostmaster-0.x/sites</td><td></td></tr>
+<tr><td>/hostmaster-0.x/sites/aegir.example.com</td><td>aegir web site folders</td></tr>
+</table>
+
+<h3>Deployed Platforms</h3>
+
+<p>Note: the directory /platforms is optional but can be useful to separate deployed platforms from directories for scripts, config files and hostmaster platform.</p>
+
+<table>
+<tr><th>Path</th><th>Notes</th></tr>
+<tr><td>/platforms</td><td></td></tr>
+<tr><td>/platforms/platform-1</td><td></td></tr>
+<tr><td>/platforms/platform-1/profiles</td><td></td></tr>
+<tr><td>/platforms/platform-1/profiles/default</td><td></td></tr>
+<tr><td>/platforms/platform-1/profiles/custom-profile</td><td></td></tr>
+<tr><td>/platforms/platform-1/profiles/custom-profile/modules</td><td></td></tr>
+<tr><td>/platforms/platform-1/profiles/custom-profile/themes</td><td></td></tr>
+<tr><td>/platforms/platform-1/profiles/custom-profile/custom.profile</td><td>profile file – used in site provisioning to configure a drupal database</td></tr>
+<tr><td>/platforms/platform-1/profiles/custom-profile/custom.make</td><td>make file – used to include modules, themes, libraries etc. from various sources</td></tr>
+<tr><td>/platforms/platform-1/modules</td><td></td></tr>
+<tr><td>/platforms/platform-1/themes</td><td></td></tr>
+<tr><td>/platforms/platform-1/sites</td><td></td></tr>
+<tr><td>/platforms/platform-1/sites/site-1.com</td><td></td></tr>
+<tr><td>/platforms/platform-1/sites/site-1.com/modules</td><td></td></tr>
+<tr><td>/platforms/platform-1/sites/site-1.com/themes</td><td></td></tr>
+<tr><td>/platforms/platform-1/sites/site-1.com/files</td><td></td></tr>
+<tr><td>/platforms/platform-1/sites/site-1.com/settings.php</td><td>site-specific drupal configuration file</td></tr>
+<tr><td>/platforms/platform-1/sites/site-1.com/drushrc.php </td><td>site-specific aegir-specific configuration file</td></tr>
+<tr><td>/platforms/platform-1/sites/site-2.com</td><td></td></tr>
+<tr><td>/platforms/platform-1/sites/site-3.com</td><td></td></tr>
+<tr><td>/platforms/platform-1/sites/site-n.com</td><td></td></tr>
+<tr><td>/platforms/platform-2</td><td></td></tr>
+<tr><td>/platforms/platform-3</td><td></td></tr>
+<tr><td>/platforms/platform-n</td><td></td></tr>
+</table>
+
+<p><br /></p>
+
+<h3>Platform permissions</h3>
+
+<table>
+<tr>
+<th>Path</th>
+<th>Directory<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></th>
+<th>File<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></th>
+<th>Notes</th>
+</tr>
+
+<tr>
+<td><code>./*</code></td>
+<td>
+<code>aegir:aegir</code><br />
+<code>drwxr-xr-x</code></td>
+<td>
+<code>aegir:aegir</code><br />
+<code>-rw-r--r--</code>
+</td>
+<td>The webserver has no business writing or moving files in the Drupal codebase.</td>
+</tr>
+
+<tr>
+<td colspan="4"><em>Inside ./sites/example.com:</em></td>
+</tr>
+
+<tr>
+<td><code>drushrc.php</code></td>
+<td></td>
+<td>
+<code>aegir:aegir</code><br />
+<code>-r--------</code>
+</td>
+<td>Web server shouldn't be able to read drushrc.php, it's not a component of the Drupal site.</td>
+</tr>
+
+<tr>
+<td><code>settings.php</code></td>
+<td></td>
+<td>
+<code>aegir:www-data</code><br />
+<code>-r--r-----</code>
+</td>
+<td>Web server can read this file, but otherwise tight control over this file which can contain sensitive information.</td>
+</tr>
+
+<tr>
+<td>
+<code>libraries</code><br />
+<code>modules</code>
+<code>themes</code>
+</td>
+<td>
+<code>aegir:aegir</code><br />
+<code>drwxrwsr-x</code>
+</td>
+<td>
+<code>aegir:aegir</code><br />
+<code>-rw-r--r--</code>
+</td>
+<td>
+Because of the sticky bit (s) on the parent directory, each child directory will inherit attributes of the parent. The attribute that is consistently inherited is the group. This means that a developer in the "aegir" group can add files which will retain the "aegir" group ownership of the parent directory.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>files</code><br />
+<code>private</code>
+</td>
+<td>
+<code>aegir:www-data</code><br />
+<code>drwxrws---</code>
+</td>
+<td></td>
+<td>Aegir sets these directories with a sticky bit (s) so that under certain conditions new folders and files will inherit parent permissions. There are only a few cases where this happens though.</td>
+</tr>
+
+<tr>
+<td>
+<code>files/*</code><br />
+<code>private/*</code>
+</td>
+<td>
+<code>www-data:www-data</code><br />
+<code>drwxr-sr-x</code>
+</td>
+<td>
+<code>www-data:www-data</code><br />
+<code>-rw-r--r--</code>
+</td>
+<td>
+The permissions shown here are how files and directories created by www-data will look. When verifying a platform, Aegir won't "correct" these files and directories to match the parents.
+
+If you have trouble with permissions/ownership on these directories, you can safely run the following commands (in this case on the files directory):
+<div class="codeblock"><code># chown -R aegir:www-data /path/to/site/files/*<br /># chmod -R 775 /path/to/site/files/*</code></div>
+</td>
+</tr>
+
+</table>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-297.html?destination=node%2F77%23comment-form">Login</a> or <a href="../../../../../user/register/index-297.html?destination=node%2F77%23comment-form">register</a> to post comments</span></li>
+<li class="talk_comments last"><a href="../../../../77/talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-41" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../41/index.html">Provision - the Aegir backend.</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><p>Each of the major entities managed by Aegir (namely servers, platforms and sites) are represented by nodes in the front end, which in turn generate Drush 'named contexts' in the backend. Named contexts are similar to what Drush 3.0 refers to as 'site aliases', but are more structured and cover more than just sites.</p>
+
+<p>Whenever you create or edit a node on the front end, Aegir will create or update the named context on the backend, and any tasks run on the entity will be run on that named context, ie:</p>
+
+<pre><code>drush @server_master provision-verify
+</code></pre>
+
+<p>All of the actual work related to managing your system is done by the backend, and the front end primarily serves as a way
+to manage these aliases. You can very easily use the backend on it's own if you so choose.</p>
+
+<h3>Creating or updating named contexts.</h3>
+
+<p>Contexts are created and updated through the provision-save command. The format of the command is :</p>
+
+<pre><code>drush provision-save @contextname --context_type=type --property=value --other_property=value
+</code></pre>
+
+<p>Every time this command is called, it will update the named context and only modify the properties that have been specified. It is important to note that the provision-save command <strong>never</strong> has a site alias or context name before the  command, but requires you to specify which context you are modifying as the first argument.</p>
+
+<h4>Deleting named contexts.</h4>
+
+<p>To delete an existing named context, you simply need to pass the 'delete' option to the provision-save command, ie:</p>
+
+<pre><code>drush provision-save @contextname --delete
+</code></pre>
+
+<h3>Using named contexts</h3>
+
+<p>Named contexts are used in 3 ways in provision: as aliases, arguments or options.</p>
+
+<p><strong>Aliases :</strong> Aliases appear to the left of the drush command, and are making use of the Drush 'site alias' functionality.</p>
+
+<pre><code># Verify the site represented by @example.com
+drush @example.com provision-verify 
+</code></pre>
+
+<p><strong>Options :</strong> Certain options to provision-save require you to pass the alias of another named context of a specific type,
+and uses this information to build relationships between objects.</p>
+
+<pre><code> # generate a new site context in the directory represented by @platform_test
+ drush provision-save @example.com --context_type=site --uri=example.com --platform=@platform_example
+</code></pre>
+
+<p><strong>Arguments :</strong> A select few provision commands require you to pass the alias of another specific type of named context as an argument.</p>
+
+<pre><code># Migrate the site to the platform represented by @platform_newversion
+drush @example.com provision-migrate @platform_newversion
+</code></pre>
+
+<h2>Context types</h2>
+
+<p>There are (currently) 3 different entities represented as named contexts in the aegir backend. You determine which type of entity you are working with by specifying the context_type option to the provision-save command. You dont need to specify it every time, but it is best to always explicitly specify it, just in case.</p>
+
+<p>Because the namespace of all contexts is shared, they each have different naming conventions to avoid collisions.
+There are certain named contexts of each type which are always present in the system.</p>
+
+<p>Each of the context types have different semantics and properties, and certain provision commands will only operate on certain types of entities.</p>
+
+<h3>Server contexts</h3>
+
+<p><strong>Naming guideline :</strong> Server with a hostname of server.example.com becomes @server_serverexamplecom.</p>
+
+<p><strong>Special contexts :</strong> @server_master always refers to the local server where aegir is installed.</p>
+
+<p><strong>Required properties :</strong></p>
+
+<ul>
+<li><strong>remote_host :</strong> This should always be set to the FQDN of the server being managed.</li>
+</ul>
+
+<p><strong>Services :</strong> Servers are the only entities which have services associated to them. Services are things such as http, db or dns.</p>
+
+<p>Each service may select one service_type, which chooses which implementation to load for this service. Examples
+of these are the 'mysql' implementation of the 'db' service, or the 'apache' and 'apache_ssl' implementations of the http
+service.</p>
+
+<p>All services that are found by Aegir are enabled, but unless you specifically select one of the implementations,
+the 'null' service type is loaded. Each service type has additional required properties and values that can be passed
+to it, but describing them all is outside of the scope of this document.</p>
+
+<p><strong>Important commands :</strong></p>
+
+<ul>
+<li><strong>provision-verify :</strong> Verify that the configuration is correct and fix them if they aren't. </li>
+</ul>
+
+<p><strong>Example :</strong></p>
+
+<pre><code># Enable a new remote server hosting sites with apache on port 8080
+drush provision-save @server_webexamplecom --context_type=server \
+  --remote_host=web.example.com \
+  --http_service_type='apache' \
+  --http_port=8080
+
+# Verify that the settings are correct
+drush @server_webexamplecom provision-verify --debug
+</code></pre>
+
+<h3>Platform contexts</h3>
+
+<p>Platforms are how aegir refers to a specific copy of Drupal checked out on a file system. Platforms are hosted on web servers and sites are hosted on platforms.</p>
+
+<p><strong>Naming guideline :</strong> A platform in /var/aegir/codebase-6.1 becomes @platform_codebase61 , but this is not strictly enforced. We only use that naming convention when we do not have a node representing the platform available. If a node is available, we use the title of the node to generate the context name.</p>
+
+<p>Basically, you can name your platform anything but it should still be prefixed with 'platform_'.</p>
+
+<p><strong>Special contexts :</strong> There are no special contexts per se, but the hostmaster-install and hostmaster-migrate commands generate aliases for the hostmaster platform in the form of '@platform_hostmaster$version'. If the front end is present,
+one or more of these contexts are usually available too.</p>
+
+<p><strong>Required properties :</strong></p>
+
+<ul>
+<li><strong>root :</strong> The absolute path to a Drupal directory, generally in the form /var/aegir/platformdir.</li>
+</ul>
+
+<p><strong>Optional properties :</strong></p>
+
+<ul>
+<li><strong>web_server :</strong> The name of a server context that provides the http service. The default is to @server_master</li>
+<li><strong>makefile :</strong> The absolute path or url to a <a href="http://drupal.org/project/drush_make">drush make</a> makefile. If the root directory does not exist and the makefile property does, provision will call drush_make to attempt to create the directory.</li>
+</ul>
+
+<p><strong>Important commands :</strong></p>
+
+<ul>
+<li><strong>provision-verify :</strong> This will ensure that all the files are the correct permissions, and are all present on the correct remote servers. Also rebuild package database. Run this command whenever the contents of the platform changes.</li>
+</ul>
+
+<p><strong>Example :</strong></p>
+
+<pre><code># New open atrium platform in /var/aegir/atrium-head that will be built from a remotely hosted
+# makefile and published on an external web server.
+drush provision-save @platform_atriumhead --context_type=platform \
+        --root=/var/aegir/atrium-head \
+        --web_server=@server_webexamplecom \
+        --makefile='http://omega8.cc/dev/atrium_stub.make.txt'
+
+# Verify settings and generate the directory with drush make, pushing to the remote server after.
+drush provision-verify @platform_atriumhead
+</code></pre>
+
+<h3>Site contexts</h3>
+
+<p><strong>Naming guidelines :</strong> A site with the url 'site1.example.com' becomes @site1.example.com. The context name is always the url.</p>
+
+<p><strong>Special contexts :</strong> @hostmaster always refers to the site running the hostmaster front end. This helps with debugging and makes it more easily scriptable.</p>
+
+<p><strong>Required properties :</strong></p>
+
+<ul>
+<li><strong>uri :</strong> The FQDN of the site. should match the context name.</li>
+<li><strong>platform :</strong> The name of a platform context that the site will be hosted on.</li>
+</ul>
+
+<p><strong>Optional properties :</strong></p>
+
+<ul>
+<li><strong>db_server :</strong> The name of a server context which provides the db server. defaults to @server_master.</li>
+<li><strong>client_email :</strong> The email address to send the login information for the admin user.</li>
+<li><strong>profile :</strong> The installation profile the site is running. dependent on the platform supporting it.</li>
+<li><strong>language :</strong> The ISO language code of the site. dependent on the platform and profile supporting it.</li>
+</ul>
+
+<p><strong>Important commands :</strong></p>
+
+<p>Almost all of the provision commands are related to sites, so this is just the very core of them. Check drush help for more.</p>
+
+<ul>
+<li><strong>provision-install :</strong> Install the site represented by the context. Just creating the context doesn't install the site yet.</li>
+<li><strong>provision-verify :</strong> Verify the site is running correctly, and ensure the files are all published to the correct servers.</li>
+<li><strong>provision-delete :</strong> Delete the site and all it's information. The context will still be there.</li>
+</ul>
+
+<p><strong>Example :</strong></p>
+
+<pre><code># Set up a new site to be installed on the open atrium platform (hosted on a remote server),
+# using an external database server , with the openatrium profile and localize it into spanish.
+drush provision-save @atrium.example.com --context_type=site \
+        --uri=atrium.example.com \
+        --platform=@platform_atriumhead \
+        --db_server=@server_dbexamplecom \
+        --client_email=client@example.com \
+        --profile=openatrium \
+        --language=es
+
+# Install the new site to the specifications requested above.
+drush @atrium.example.com provision-install --debug
+
+# Verify the site to make sure everything is ok.
+drush @atrium.example.com provision-verify --debug
+</code></pre>
+
+<h4>Importing contexts into the front end</h4>
+
+<p>Hostmaster provides a drush command which will attempt to generate or updates front end nodes that match your defined contexts. To import a context into the front end, just run :</p>
+
+<pre><code>drush @hostmaster hosting-import @contextname
+</code></pre>
+
+<p>This will import that context, and every context it depends on into the front end. This is useful for integration with other systems such as the <a href="http://github.com/Vertice/puppet-aegir">puppet-aegir module</a> for <a href="http://puppetlabs.com/">Puppet</a>, which can add newly configured servers directly to the front end.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-359.html?destination=node%2F41%23comment-form">Login</a> or <a href="../../../../../user/register/index-359.html?destination=node%2F41%23comment-form">register</a> to post comments</span></li>
+<li class="talk_comments last"><a href="../../../../41/talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-284" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../284/index.html">Messaging systems evaluation</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>So we've been talking seemingly forever about possible queuing system instead of our crappy "PHP/Vixie Cron based" one, but we have yet to document pro/cons of possible alternatives. Here are the goods (or the beginning of em).</p>
+
+<p>Note that this document was written before (in <a href="http://groups.drupal.org/node/36428">november 2009</a>) the current multiserver implementation was designed and completed.</p>
+
+<h2>Current design</h2>
+
+<p>Tasks are basically serialized in a MySQL database and polled at regular interval by a cron job, running <code>drush hosting dispatch</code>, which bootstraps Drupal, fetches the object, and fires up provision commands.</p>
+
+<p>The possibility here is to have another dispatcher that would always run, and maybe not even talk to the mysql database, to fire up the provision commands.</p>
+
+<p>Another requirement is that the queuing system may be network-aware. We want multi-server support and that is a critical issue for the next release (0.4 at the time of writing). One thing to consider is how we pass files around...</p>
+
+<h2>Roll our own</h2>
+
+<p>Pro:</p>
+
+<ul>
+<li>full control over the API, functionality and whatnot (ie. function of manpower invested)</li>
+</ul>
+
+<p>Con:</p>
+
+<ul>
+<li>rolling our own is <em>hard</em>! let's go shopping!</li>
+</ul>
+
+<h2>Meta: AMQP vs JMS</h2>
+
+<p>So yeah, there's a standard in development for all this stuff: <a href="http://www.amqp.org/" title="http://www.AMQP.org/">http://www.AMQP.org/</a> . There is also a Drupal module being developed to work with it: <a href="http://drupal.org/project/amqp" title="http://drupal.org/project/amqp">http://drupal.org/project/amqp</a></p>
+
+<p>JMS on the other hand is the "Java Messenging Service", that creates a language- (as opposed to network-) based API.</p>
+
+<p>Maybe we should just not care about which messaging system you use in the backend and allow our frontend to talk to any backend, with the stupid cronjob mysql poller as a default...</p>
+
+<h2>Gearman</h2>
+
+<p>Pros (mostly out of the <a href="http://gearman.org/">home page</a>):</p>
+
+<ul>
+<li>supports PHP in frontend and backend</li>
+<li>Multi-language - There are interfaces for a number of languages, and this list is growing. You also have the option to write heterogeneous applications with clients submitting work in one language and workers performing that work in another.</li>
+<li>Flexible - You are not tied to any specific design pattern. You can quickly put together distributed applications using any model you choose, one of those options being Map/Reduce.</li>
+<li>Fast - Gearman has a simple protocol and interface with a new optimized server in C to minimize your application overhead.</li>
+<li>Embeddable - Since Gearman is fast and lightweight, it is great for applications of all sizes. It is also easy to introduce into existing applications with minimal overhead.</li>
+<li>No single point of failure - Gearman can not only help scale systems, but can do it in a fault tolerant way.</li>
+<li>Production ready - ran on digg, yahoo, livejournal, ...</li>
+<li>Gearman uses an efficient binary protocol and no XML. There's an a line-based text protocol for admin so you can use telnet and hook into Nagios plugins.</li>
+<li><a href="http://gearman.org/index.php?id=manual:job_server#persistent_queues">Persistent queues are available using mysql, memcached or sqlite</a></li>
+<li>There's pretty good <a href="http://us3.php.net/gearman">PHP support</a> and it's easy to get up and running quickly.</li>
+</ul>
+
+<p>Cons:</p>
+
+<ul>
+<li>"somewhat higher latency, signal-and-pull architecture"</li>
+<li>The system makes no guarantees. If there's a failure the client is told about the failure and the client is responsible for retries.</li>
+<li>gearman-specific binary/network protocol</li>
+<li>Notice how sixapart.com maintains both gearman and the shwartz, below</li>
+</ul>
+
+<p>OHLOH:</p>
+
+<ul>
+<li>Mostly written in Perl</li>
+<li>Increasing year-over-year development activity</li>
+<li>Established codebase</li>
+<li>Few source code comments</li>
+</ul>
+
+<h2>Resque</h2>
+
+<p>Pro:</p>
+
+<ul>
+<li><a href="http://code.google.com/p/redis/">redis-based</a> (therefore somehow language agnostic deep in there, but certainly network-centric)</li>
+<li>github's (aka: it's got to work at least somewhere in production)</li>
+</ul>
+
+<p>Con:</p>
+
+<ul>
+<li>ruby-centric</li>
+<li>I haven't actually <em>looked</em> at the thing or tested it</li>
+</ul>
+
+<h2>Active MQ</h2>
+
+<p>Apache <a href="http://activemq.apache.org/">ActiveMQ</a>:</p>
+
+<p>Pros:</p>
+
+<ul>
+<li>Supports a variety of Cross Language Clients and Protocols from Java, C, C++, C#, Ruby, Perl, Python, PHP  </li>
+<li>Supports many advanced features such as Message Groups, Virtual Destinations, Wildcards and Composite  Destinations</li>
+<li>Supports pluggable transport protocols such as in-VM, TCP, SSL, NIO, UDP, multicast, JGroups and JXTA transports</li>
+<li>REST API to provide technology agnostic and language neutral web based API to messaging</li>
+<li>Persistent</li>
+</ul>
+
+<p>Cons:</p>
+
+<ul>
+<li>uses too many acronyms on the frontpage (really.)</li>
+<li>uses a lot of Java jargon</li>
+<li>production-ready?</li>
+</ul>
+
+<p>OHLOH:</p>
+
+<ul>
+<li>Mostly written in Java</li>
+<li>Large, active development team</li>
+</ul>
+
+<h2>RabbitMQ</h2>
+
+<p><a href="http://www.rabbitmq.com/">RabbitMQ</a></p>
+
+<p>Pros:</p>
+
+<ul>
+<li>"high reliability, availability and scalability along with good throughput and latency performance that is predictable and consistent"</li>
+<li>"based on the emerging AMQP standard"</li>
+<li><a href="http://packages.debian.org/rabbitmq-server">in debian</a></li>
+<li>Drupal module - <a href="http://drupal.org/projects/amqp">AMQP</a></li>
+<li>apparently very fast, according to dellintosh </li>
+</ul>
+
+<p>Cons:</p>
+
+<ul>
+<li><a href="http://www.ohloh.net/p/rabbitmq/analyses/latest">erlang</a>? do <em>you</em> know <a href="http://ftp.sunet.se/pub/lang/erlang/">erlang</a>? (Arguably not really necessary, since all publishers and consumers can be written in other languages that have AMQP support)</li>
+</ul>
+
+<p><a href="http://www.ohloh.net/p/rabbitmq">OHLOH</a></p>
+
+<ul>
+<li>Mostly written in Erlang</li>
+<li>Large, active development team</li>
+<li>Well-commented source code</li>
+</ul>
+
+<h2>Open Messenging Queue</h2>
+
+<p><a href="https://mq.dev.java.net/overview.html" title="https://mq.dev.java.net/overview.html">https://mq.dev.java.net/overview.html</a></p>
+
+<p>Pros:</p>
+
+<ul>
+<li>SOAP/HTTP interface</li>
+<li>Scalable</li>
+</ul>
+
+<p>Con:</p>
+
+<ul>
+<li>Java/C specific</li>
+</ul>
+
+<h2>The Schwartz</h2>
+
+<p><a href="http://search.cpan.org/~bradfitz/TheSchwartz-1.07/lib/TheSchwartz.pm">The Schwartz</a></p>
+
+<p>Pros:</p>
+
+<ul>
+<li>Perl (come on, perl is everywhere... isn't it?)</li>
+<li>"reliable job queue"</li>
+<li>has retry</li>
+<li>"lightweight"</li>
+</ul>
+
+<p>Cons:</p>
+
+<ul>
+<li>Perl (aka write only)</li>
+<li>"library, so some assembly required"</li>
+<li>"light on documentation"</li>
+<li>Notice how sixapart.com maintains both the shwartz and gearman, above</li>
+</ul>
+
+<h2>Open AMQ</h2>
+
+<p><a href="http://www.openamq.org/">Open AMQ</a></p>
+
+<p>Pros:</p>
+
+<ul>
+<li>Multi-language (but not PHP)</li>
+<li>"learn in a day or so" then "another day or two for wireAPI", development will take "some weeks"...</li>
+<li>"remote admin tools, one-line failover, instant federation, protection against slow clients, detailed logging"</li>
+<li><a href="http://www.amqp.org/">AMQP standard</a> </li>
+<li>"Linux, AIX, Solaris, Mac OS/X, other UNIX"</li>
+</ul>
+
+<p>Cons:</p>
+
+<ul>
+<li>"for C/C++ and JMS"</li>
+</ul>
+
+<p><a href="http://www.ohloh.net/p/rabbitmq">OHLOH</a></p>
+
+<ul>
+<li>Mostly written in C</li>
+<li>Well-commented source code</li>
+<li>Short source control history</li>
+<li>Only a single active developer</li>
+<li>Apache Software License may conflict with GPL</li>
+<li>Apache License 2.0 may conflict with GPL</li>
+</ul>
+
+<h2 id="beanstalkd">Beanstalkd</h2>
+
+<p><a href="http://kr.github.com/beanstalkd/" title="http://kr.github.com/beanstalkd/">http://kr.github.com/beanstalkd/</a></p>
+
+<p>Drupal Module for Drupal 6 and 7 is at <a href="http://drupal.org/project/beanstalkd" title="http://drupal.org/project/beanstalkd">http://drupal.org/project/beanstalkd</a></p>
+
+<p>Pros:
+ * used in production ("causes" application in facebook)</p>
+
+<p>Cons:</p>
+
+<ul>
+<li>C</li>
+</ul>
+
+<p><a href="http://www.ohloh.net/p/beanstalkd" title="http://www.ohloh.net/p/beanstalkd">http://www.ohloh.net/p/beanstalkd</a></p>
+
+<ul>
+<li>Mostly written in C</li>
+<li>Large, active development team</li>
+<li>Few source code comments</li>
+</ul>
+
+<h2>SimpleMQ</h2>
+
+<p><a href="http://code.google.com/p/simple-mq/" title="http://code.google.com/p/simple-mq/">http://code.google.com/p/simple-mq/</a></p>
+
+<p>Pros:</p>
+
+<ul>
+<li>persistent or in-memory</li>
+</ul>
+
+<p>Cons:</p>
+
+<ul>
+<li>java-only.</li>
+</ul>
+
+<h2>Zero MQ</h2>
+
+<p><a href="http://www.zeromq.org/" title="http://www.zeromq.org/">http://www.zeromq.org/</a></p>
+
+<p>Pros:</p>
+
+<ul>
+<li>fast</li>
+<li>lightweight messaging implementation.</li>
+<li>supports different messaging models.</li>
+<li>already very fast. We're getting 13.4 microseconds end-to-end latencies and up to 4,100,000 messages a second today.</li>
+<li>very thin. Requires just a couple of pages in resident memory. </li>
+<li>provides C, C++, Java, Python, .NET/Mono, Ruby, Fortran, COBOL, Tcl, Lua and Delphi language APIs.</li>
+<li>supports different wire-level protocols: TCP, PGM, AMQP, SCTP.</li>
+<li>runs on AIX, FreeBSD, HP-UX, Linux, Mac OS X, OpenBSD, OpenVMS, QNX Neutrino, Solaris and Windows.</li>
+<li>supports i386, x86-64, Sparc, Itanium, Alpha and ARM microarchitectures.</li>
+<li>fully distributed: no central servers to crash, millions of WAN and LAN nodes.</li>
+</ul>
+
+<p>Cons:</p>
+
+<ul>
+<li>no PHP whatsoever</li>
+<li>production?</li>
+</ul>
+
+<p>OHLOH:</p>
+
+<ul>
+<li>Mostly written in C++</li>
+</ul>
+
+<h2>Jenkins</h2>
+
+<p>There's a <a href="http://fourkitchens.com/blog/2010/05/09/drop-cron-use-hudson-instead">good vibe</a> around using Jenins (formerly known as Hudson) in place of cron for those kind of things. In our scenario, Aegir would queue up jobs to Jenkins, which would take care of dispatching them to remote servers.</p>
+
+<p>Pros:</p>
+
+<ul>
+<li>supports tons of different notification modes</li>
+<li>scales well</li>
+<li>supports remote servers</li>
+</ul>
+
+<p>Cons:</p>
+
+<ul>
+<li>application-specific (unclear?) protocol to queue up tasks</li>
+<li>Java (so a bit heavy)</li>
+</ul>
+
+<p>OHLOH:
+ * has had 63,860 commits made by 708 contributors 
+ * representing 893,049 lines of code
+ * is mostly written in Java 
+ * with an average number of source code comments
+ * has a well established, mature codebase 
+ * maintained by a very large development team 
+ * with decreasing year-over-year commits</p>
+
+<h2>Others to evaluate?</h2>
+
+<ul><li><a href="http://aws.amazon.com/sqs/">Amazon's SQS</a>. The latencies for this service tend to be high and variable so it may not be appropriate for all tasks.</li>
+<li><a href="http://search.cpan.org/~jmay/Spread-Queue-0.4/">Spread Queue</a> ([[http://search.cpan.org/~jmay/Spread-Queue-0.4/Queue.pod|alpha software]]</li>
+<li><a href="http://rubyforge.org/projects/starling/">Starling</a></li> (apparently, <a href="http://www.rubyinside.com/rabbitmq-a-fast-reliable-queuing-option-for-rubyists-1681.html">twitter ditched starling</a> for <a href="http://www.scala-lang.org/">scala</a>)
+<li><a href="http://houstoncommand.com//">Houston</a> From Zivtech, not much documentation yet</li>
+</ul>
+
+<p>Others mentionned <a href="http://highscalability.com/blog/2009/11/6/product-resque-githubs-distrubuted-job-queue.html">here</a>: ActiveMessaging, BackgroundJob, DelayedJob, and Kestrel.</p>
+
+<h2>Requirements</h2>
+
+<p>All the above must have:</p>
+
+<ul>
+<li>Open Source - It's free as in beer and speech</li>
+</ul>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-360.html?destination=node%2F284%23comment-form">Login</a> or <a href="../../../../../user/register/index-360.html?destination=node%2F284%23comment-form">register</a> to post comments</span></li>
+<li class="talk_comments last"><a href="../../../../284/talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-318" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../318/index.html">Provision contexts</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p><em>This section is currently being written, so its probably going to be full of errors, and possibly not that useful. Feel free to edit.</em></p>
+
+<p>I'm probably going to pop a nice table of contents here, for now look to the right...</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-199.html?destination=node%2F318%23comment-form">Login</a> or <a href="../../../../../user/register/index-199.html?destination=node%2F318%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-199.html?destination=node%2F318%23comment-form">Login</a> or <a href="../../../../../user/register/index-199.html?destination=node%2F318%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-319" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../319/index.html">Purpose</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>Contexts are simply a way for Aegir to store certain pieces of information that it thinks may be useful later. They are named so that they can be referred to easily.</p>
+
+<p>Every server, platform and site in Aegir has an associated context. Each one of these contexts stores information about the associated entity. So, for example, a site context stores the base URI of the site. Later, the code responsible for informing the web server of the site's existence can look at this context and determine the requested URI.</p>
+
+<p>In theory contexts allow most of the back-end commands in Aegir to operate just on the name of the context. This is an important concept: the alternative would be to try to guess everything that the command being invoked might want to know and pass it in as a series of command line arguments.</p>
+
+<p>For example, the command that Aegir uses to clone a site just needs to be given the context of the site to clone and the platform to clone it to. From there the code can work out where the destination platform actually is, what servers it needs to talk to, and with what credentials.</p>
+
+<h4>Drush contexts</h4>
+
+<p>Note that Drush also has the concept of a context, but this is not to be confused with Aegir contexts which are different. Aegir contexts are closer to, and stored as, Drush 'aliases'.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-200.html?destination=node%2F319%23comment-form">Login</a> or <a href="../../../../../user/register/index-200.html?destination=node%2F319%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-200.html?destination=node%2F319%23comment-form">Login</a> or <a href="../../../../../user/register/index-200.html?destination=node%2F319%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-320" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../320/index.html">Implementation</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>Contexts are always named to start with a '@' symbol, except for in the filename of the file in which they are stored.</p>
+
+<p>Contexts in Aegir are stored as a simple array of data in a file within the backend of Aegir. However this array of data is accessed and modified with a set of objects and accessors. Here is an example of what a context file looks like:</p>
+
+<p><div class="codeblock"><code>&lt;?php<br />$aliases[&#039;hostmaster&#039;] = array (<br />&nbsp; &#039;context_type&#039; =&gt; &#039;site&#039;,<br />&nbsp; &#039;platform&#039; =&gt; &#039;@platform_hostmaster&#039;,<br />&nbsp; &#039;server&#039; =&gt; &#039;@server_master&#039;,<br />&nbsp; &#039;db_server&#039; =&gt; &#039;@server_localhost&#039;,<br />&nbsp; &#039;uri&#039; =&gt; &#039;aegir.example.com&#039;,<br />&nbsp; &#039;root&#039; =&gt; &#039;/var/aegir/hostmaster-0.4-beta2&#039;,<br />&nbsp; &#039;site_path&#039; =&gt; &#039;/var/aegir/hostmaster-0.4-beta2/sites/aegir.example.com&#039;,<br />&nbsp; &#039;site_enabled&#039; =&gt; true,<br />&nbsp; &#039;language&#039; =&gt; &#039;en&#039;,<br />&nbsp; &#039;client_email&#039; =&gt; &#039;aegir@example.com&#039;,<br />&nbsp; &#039;aliases&#039; =&gt;<br />&nbsp; array (<br />&nbsp; ),<br />&nbsp; &#039;redirection&#039; =&gt; false,<br />&nbsp; &#039;profile&#039; =&gt; &#039;hostmaster&#039;,<br />);</code></div></p>
+
+<p>These files are stored in the <code>/var/aegir/.drush</code> directory on the master Aegir server.</p>
+
+<p>In the above example we can see the properties of the context, like the 'uri' of the site, and the 'profile' that the site is running.</p>
+
+<p>There are also a number of more interesting properties in the example, note the 'db_server' property, which has a value that is another context. We shall see later that these properties are special, and allow developers to easily access functions of the 'db_server' without needing to care which db server they are talking to.</p>
+
+<p>Contexts are used within drush commands as objects, which subclass <code>provision_context</code>. This allows much more flexibility and cleverness, though can make them very confusing to use sometimes! As a developer you will only need to worry about the context objects, as Aegir handles storing them in the files for you. But it is important to note that each context must be representable in a flat text file (or be prepared to do some serious leg-work) by that I mean you probably don't want to be storing massive amounts of relational data in them, use a database for that!</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-201.html?destination=node%2F320%23comment-form">Login</a> or <a href="../../../../../user/register/index-201.html?destination=node%2F320%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-201.html?destination=node%2F320%23comment-form">Login</a> or <a href="../../../../../user/register/index-201.html?destination=node%2F320%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-322" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../322/index.html">Using contexts in your code</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>Getting the current context is really easy, just call the '<code>d</code>' accessor:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$current_context </span><span style="color: #007700">= </span><span style="color: #0000BB">d</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+What the current context is will depend on the drush command that is running and the context that was passed into that drush command. For example if you ran a site verify task, then the caller would name a site context, and thus initially calls to <code>d()</code> would return the site context. The values of the context are accessible as simple properties of this object.</p>
+
+<p>So, suppose a verify task is started for the main Aegir frontend, which has a context that is always called '@hostmaster', the drush command invocation would look like this:</p>
+
+<p><div class="codeblock"><code>drush @hostmaster provision-verify </code></div></p>
+
+<p>Then the drush command for <code>provision-verify</code> could do this:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">drush_provision_verify</span><span style="color: #007700">() {<br />&nbsp; </span><span style="color: #0000BB">$context </span><span style="color: #007700">= </span><span style="color: #0000BB">d</span><span style="color: #007700">();<br />&nbsp; </span><span style="color: #0000BB">drush_print</span><span style="color: #007700">(</span><span style="color: #DD0000">'Passed context of type: ' </span><span style="color: #007700">. </span><span style="color: #0000BB">d</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">type</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+Which would print the type of the context passed to the verify command, in this case 'site'.</p>
+
+<p>The <code>d</code> accessor is not to be feared! It is used all over the place in Aegir and if you're not sure what context you're going to get then you can always print <code>d()-&gt;name</code> and you'll get the name of the context that you're dealing with.</p>
+
+<h3>Loading a named context</h3>
+
+<p>You can pass an optional argument to the <code>d</code> accessor of the name of the context that you want. So, if you feel compelled to access a property about the main Aegir frontend site anywhere you can do this:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$hostmaster_context </span><span style="color: #007700">= </span><span style="color: #0000BB">d</span><span style="color: #007700">(</span><span style="color: #DD0000">'@hostmaster'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p>
+
+<p>though most of the time you'll be dealing with the current context, and contexts that it references.</p>
+
+<h3>'Subcontexts'</h3>
+
+<p>Here's an example context:</p>
+
+<p><div class="codeblock"><code>&lt;?php<br />$aliases[&#039;hostmaster&#039;] = array (<br />&nbsp; &#039;context_type&#039; =&gt; &#039;site&#039;,<br />&nbsp; &#039;platform&#039; =&gt; &#039;@platform_hostmaster&#039;,<br />&nbsp; &#039;server&#039; =&gt; &#039;@server_master&#039;,<br />&nbsp; &#039;db_server&#039; =&gt; &#039;@server_localhost&#039;,<br />&nbsp; &#039;uri&#039; =&gt; &#039;aegir.example.com&#039;,<br />&nbsp; &#039;root&#039; =&gt; &#039;/var/aegir/hostmaster-0.4-beta2&#039;,<br />&nbsp; &#039;site_path&#039; =&gt; &#039;/var/aegir/hostmaster-0.4-beta2/sites/aegir.example.com&#039;,<br />&nbsp; &#039;site_enabled&#039; =&gt; true,<br />&nbsp; &#039;language&#039; =&gt; &#039;en&#039;,<br />&nbsp; &#039;client_email&#039; =&gt; &#039;aegir@example.com&#039;,<br />&nbsp; &#039;aliases&#039; =&gt;<br />&nbsp; array (<br />&nbsp; ),<br />&nbsp; &#039;redirection&#039; =&gt; false,<br />&nbsp; &#039;profile&#039; =&gt; &#039;hostmaster&#039;,<br />);</code></div></p>
+
+<p>Notice that some of the properties are the name of contexts, such as 'db_server' which has a value of '@server_localhost'.</p>
+
+<p>Suppose now that I have some code that wants to get a property of the db_server associated with the @hostmaster context, I can simply do this:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$db_server_context </span><span style="color: #007700">= </span><span style="color: #0000BB">d</span><span style="color: #007700">(</span><span style="color: #DD0000">'@hostmaster'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">db_server</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">// $db_server_context is now a fully populated context object, not the string '@server_localhost'<br /></span><span style="color: #0000BB">drush_print</span><span style="color: #007700">(</span><span style="color: #DD0000">'DB server on port: . $db_server_context-&gt;db_port);<br />?&gt;</span></span></code></div></p>
+
+<p>The <code>provisionContext</code> object will return full context objects for properties that store the names of other contexts. The how and why of determining which to return as strings and which to return as a context object will be covered later. It is entirely possible to have the name of a context stored as a property in a context, that when accessed returns the string, rather than the context named in the string.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-202.html?destination=node%2F322%23comment-form">Login</a> or <a href="../../../../../user/register/index-202.html?destination=node%2F322%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-202.html?destination=node%2F322%23comment-form">Login</a> or <a href="../../../../../user/register/index-202.html?destination=node%2F322%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-323" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../323/index.html">Properties and services</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>Services are the way in which new properties are added to contexts, in fact if you wish to indicate you want to store additional properties in a context, this must be done by a service. There is no other way to store data in a context. One might assume that you can just ask provision to save an additional value on a context, but this will not work, and you'll probably get very frustrated indeed!</p>
+
+<p>For example, the <code>provisionService_pdo</code> service adds a 'master_db' property to the server context, it does this in a method thus:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">init_server</span><span style="color: #007700">() {<br />&nbsp; </span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">init_server</span><span style="color: #007700">();<br />&nbsp; </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setProperty</span><span style="color: #007700">(</span><span style="color: #DD0000">'master_db'</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p>
+
+<p>This means that the 'master_db' property can now be set in a provison-save drush command, and will be persisted when the context is saved.</p>
+
+<p>A service may also define properties on the context as actually representing another context, so that you may access that subcontext directly. You can see an example of using this subcontext in the 'Implementation' section of this Provision Contexts guide, but the an example of how you let provision know that a property name is not just a string, but a named context is with a method on the service:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />&nbsp; </span><span style="color: #FF8000">/**<br />&nbsp;&nbsp; * Register the http handler for platforms, based on the web_server option.<br />&nbsp;&nbsp; */<br />&nbsp; </span><span style="color: #007700">static function </span><span style="color: #0000BB">subscribe_platform</span><span style="color: #007700">(</span><span style="color: #0000BB">$context</span><span style="color: #007700">) {<br />&nbsp;&nbsp;&nbsp; </span><span style="color: #0000BB">$context</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setProperty</span><span style="color: #007700">(</span><span style="color: #DD0000">'web_server'</span><span style="color: #007700">, </span><span style="color: #DD0000">'@server_master'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp; </span><span style="color: #0000BB">$context</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">is_oid</span><span style="color: #007700">(</span><span style="color: #DD0000">'web_server'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp; </span><span style="color: #0000BB">$context</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">service_subscribe</span><span style="color: #007700">(</span><span style="color: #DD0000">'http'</span><span style="color: #007700">, </span><span style="color: #0000BB">$context</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">web_server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name</span><span style="color: #007700">);<br />&nbsp; }<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+Here the <code>provisionService_http</code> is being asked to 'subscribe' to a platform, it sets a property on the context, as above, but additionally uses the <code>is_oid()</code> method to indicate that the property is a named context. It then uses that immediately when it gets the name of the web_server context: <code>$context-&gt;web_server-&gt;name</code>. We'll worry about what 'subscribing' to a platform means later,.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-203.html?destination=node%2F323%23comment-form">Login</a> or <a href="../../../../../user/register/index-203.html?destination=node%2F323%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-203.html?destination=node%2F323%23comment-form">Login</a> or <a href="../../../../../user/register/index-203.html?destination=node%2F323%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-325" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../325/index.html">Using services from contexts</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>This is stub page that will describe the way that you can use the <code>service()</code> method on a context.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-204.html?destination=node%2F325%23comment-form">Login</a> or <a href="../../../../../user/register/index-204.html?destination=node%2F325%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-204.html?destination=node%2F325%23comment-form">Login</a> or <a href="../../../../../user/register/index-204.html?destination=node%2F325%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-324" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../324/index.html">Provision services</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>We should add some documentation about Provision services, what they are and how they work and interact with contexts.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-205.html?destination=node%2F324%23comment-form">Login</a> or <a href="../../../../../user/register/index-205.html?destination=node%2F324%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-205.html?destination=node%2F324%23comment-form">Login</a> or <a href="../../../../../user/register/index-205.html?destination=node%2F324%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-557" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../developing/architecture/unix-group-limitations/index.html">UNIX group limitations</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>While working on the security enhancements, I stumbled upon a few fundamental UNIX limitations with groups.  These limitations similarly apply to GNU/Linux.</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Group_name_length_limits"><span class="toc-number">1. </span>Group name length limits</a></li>
+	<li class="toc-level-1"><a href="#Group_membership_limits"><span class="toc-number">2. </span>Group membership limits</a></li>
+</ol>
+</div>
+</div>
+
+<h2 id="Group_name_length_limits">1. Group name length limits</h2>
+
+<p>A group name (e.g. <code>dialout</code>) has a length limit, usually hardcoded in the operating system. This limit varies across different UNIX systems and implementations.</p>
+
+<ul>
+<li>NIS: 8 characters (<a href="http://unix.derkeiler.com/Newsgroups/comp.unix.solaris/2007-02/msg00818.html">source</a>)</li>
+<li>HPUX: 8 characters, 16 starting from HPUX 10 (<a href="http://h30097.www3.hp.com/docs/base_doc/DOCUMENTATION/V51B_HTML/MAN/MAN8/0353____.HTM">source</a>, <a href="http://lists.alioth.debian.org/pipermail/pkg-shadow-devel/2009-March/007031.html">source</a>)</li>
+<li>AIX: 8 characters, 255 for AIX 5.3 and above (<a href="http://publib.boulder.ibm.com/infocenter/pseries/v5r3/index.jsp?topic=/com.ibm.aix.security/doc/security/user_group_name_length.htm">source</a>)</li>
+<li>Debian: 16 characters (<a href="http://lists.alioth.debian.org/pipermail/pkg-shadow-devel/2009-March/007031.html">source</a>, <a href="http://svn.debian.org/wsvn/pkg-shadow/upstream/trunk/configure.in">defined in shadow at compile-time</a>)</li>
+<li>Redhat: 16 characters, 32 starting from 2005 (<a href="https://rhn.redhat.com/errata/RHBA-2005-164.html">source</a>, <a href="http://www.unixresources.net/linux/lf/5/archive/00/00/16/35/163570.html">source</a>, <a href="http://www.linuxquestions.org/questions/red-hat-31/max-group-length-in-red-hat-enterprise-linux-5-1-a-662171/">source</a>)</li>
+<li>Solaris: 8 characters? (<a href="http://arc.opensolaris.org/caselog/PSARC/2007/064/issues">source</a>)</li>
+<li>Active Directory: 11 or 64 characters (<a href="http://msdn.microsoft.com/en-us/library/ee824527(v=cs.10).aspx">source unclear</a>)</li>
+</ul>
+
+<p>In general, we can probably assume that 16 characters is a safe limit, and that's what's being used in <a href="../api.aegirproject.org/hosting_client_sanitize/index.html">hosting_client_sanitize</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Group_membership_limits">2. Group membership limits</h2>
+
+<p>A UNIX user has a primary group, defined in the <code>passwd</code> database, but can also be a member of many other groups, defined in the <code>groups</code> database. UNIX has a hardcoded limit of 16 groups a user can be a member of (<a href="http://www.insectnation.org/articles/2007/05/08/linux-nfs-16-group-limit">source</a>). This means that if we translate Aegir clients into UNIX groups and you have access to multiple Aegir clients, you'll be able to access only 16 of those clients at a time. Rather annoying.</p>
+
+<p>The problem is related with NFS, or rather <code>AUTH_SYS</code> (<a href="http://www.sage.org/lists/sage-members-archive/2004/msg00389.html">source</a>), which has an in-kernel data structure where the groups a user has access to is hardcoded as an array of 16 identifiers (<code>gids</code> to be more precise, see <a href="http://blogs.sun.com/peteh/date/20050614">this post for details</a>). Even though Linux now supports <a href="http://lxr.linux.no/linux-bk+v2.6.10/include/linux/limits.h#L6">65536 groups</a>, it is still not possible to operate on more than 16 from userland, <em>through NFS</em> - on a regular ext3 filesystem, it works without problems (tested in Debian Squeeze).</p>
+
+<p>Solutions for this are not obvious. The <a href="http://blogs.sun.com/peteh/date/20050614">blog post on sun.com</a> proposes a technical enhancement to OpenSolaris. It's unclear whether that fix was implemented. <a href="http://www.sage.org/lists/sage-members-archive/2004/msg00389.html">This SAGE post</a> explains that using <code>GSS_API</code> (used in NFSv4) should (should!) resolve the issue.</p>
+
+<p>This <a href="http://nfsworld.blogspot.com/2005/03/whats-deal-on-16-group-id-limitation.html">more thorough analysis of the problem</a> is more direct, to shamelessly quote it:</p>
+
+<ul>
+<li>Use NFSv4</li>
+<li>Use RPCSEC_GSS authentication</li>
+<li>Use ACLs</li>
+</ul>
+
+<p>As mentionned above, this only applies to NFS mounts. NFSv4 should (should!) be simple enough and available on Linux. It is also unclear exactly how to use <code>RPCSEC_GSS</code> (is that Kerberos?). As for ACLs, we are fully supporting this now with the <a href="http://drupal.org/project/provisionacl">provision ACL extension</a>, so that shouldn't be an issue.</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-206.html?destination=node%2F557%23comment-form">Login</a> or <a href="../../../../../user/register/index-206.html?destination=node%2F557%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-206.html?destination=node%2F557%23comment-form">Login</a> or <a href="../../../../../user/register/index-206.html?destination=node%2F557%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-494" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../494/index.html">Running drush on Aegir sites as a regular user</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p><strong>N.B.</strong> The ACL-based approach, described below, has been implemented as an extension to Provision in <a href="http://drupal.org/project/provisionacl" title="http://drupal.org/project/provisionacl">http://drupal.org/project/provisionacl</a>.</p>
+
+<h2>What's the problem here?</h2>
+
+<p>As things stand, you cannot run tasks as a regular UNIX user on your Aegir Drupal sites:</p>
+
+<p><div class="codeblock"><code>anarcat@marcos:~$ drush @hostmaster cc all<br />A Drupal installation directory could not be found&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]<br />The drush command &#039;@hostmaster cc all&#039; could not be found.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]</code></div></p>
+
+<p>The reason the site is not found is because the alias cannot be loaded. If we change our home directory to find the alaises, we then get permission problems:</p>
+
+<p><div class="codeblock"><code>anarcat@marcos:~$ env HOME=/var/aegir drush @hostmaster cc all<br />include(/var/aegir/.drush/platform_hostmaster.alias.drushrc.php): failed to open stream:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />Permission denied sitealias.inc:433<br />include(): Failed opening &#039;/var/aegir/.drush/platform_hostmaster.alias.drushrc.php&#039; for&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />inclusion (include_path=&#039;.:/usr/share/php:/usr/share/pear&#039;) sitealias.inc:433<br />include(/var/aegir/.drush/hostmaster.alias.drushrc.php): failed to open stream: Permission&nbsp;&nbsp;&nbsp; [warning]<br />denied sitealias.inc:433<br />include(): Failed opening &#039;/var/aegir/.drush/hostmaster.alias.drushrc.php&#039; for inclusion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />(include_path=&#039;.:/usr/share/php:/usr/share/pear&#039;) sitealias.inc:433<br />A Drupal installation directory could not be found&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]<br />The drush command &#039;@hostmaster cc all&#039; could not be found.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]</code></div></p>
+
+<p>... so that doesn't seem to be a good approach, although one could just fix the permissions on the alias files for the site  (which don't contain the DB password, oddly enough) and platforms (which have been safe since the "server" seperation):</p>
+
+<p><div class="codeblock"><code>cd /var/aegir/.drush<br />chmod a+r <code>ls *alias* | grep -v &amp;#039;server&amp;#039;</code></code></div></p>
+
+<p>Then we end up with another problem:</p>
+
+<p><div class="codeblock"><code>Cannot open drushrc &quot;/var/aegir/hostmaster-HEAD/sites/aegir.anarcat.ath.cx/drushrc.php&quot;,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />ignoring.<br />Cannot open drushrc &quot;/var/aegir/hostmaster-HEAD/drushrc.php&quot;, ignoring.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />Cannot open drushrc &quot;/var/aegir/hostmaster-HEAD/sites/aegir.anarcat.ath.cx/drushrc.php&quot;,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />ignoring.<br />include_once(/var/aegir/hostmaster-HEAD/sites/aegir.anarcat.ath.cx/settings.php): failed to&nbsp;&nbsp; [warning]<br />open stream: Permission denied bootstrap.inc:400<br />include_once(): Failed opening &#039;./sites/aegir.anarcat.ath.cx/settings.php&#039; for inclusion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />(include_path=&#039;.:/usr/share/php:/usr/share/pear&#039;) bootstrap.inc:400<br />Cannot modify header information - headers already sent by (output started at&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />/usr/share/drush/includes/drush.inc:820) install.inc:618<br />Cannot modify header information - headers already sent by (output started at&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />/usr/share/drush/includes/drush.inc:820) install.inc:619<br />Drush command could not be completed.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]</code></div></p>
+
+<p>... and this is really the core of the issue here: we need to allow more than one user to access those files, and aegir must be able to fix those permissions when the site is created/verified.</p>
+
+<p>So to sum up:</p>
+
+<ul>
+<li>a regular user doesn't have permissions to access the drushrc.php and settings.php files</li>
+<li>the aliases are not accessible unless you change your home directory (note that -i doesn't work either, for some reason)</li>
+</ul>
+
+<h2>Hackish solution: add user to more groups</h2>
+
+<p><a href="http://perlucida.com/blog/software/four-tips-for-developing-drupal-under-aegir#comment-52">Miguel indicates here that files should be writable by the Aegir group</a>, and, if we start with this idea, we can actually get pretty far. The drushrc.php file is owned by the Aegir group, so adding yourself to that group and fixing up the file to be group-readable actually goes a long way. You also need to add the user to the www-data group since drush expects to be able to open the settings.php file also:</p>
+
+<p><div class="codeblock"><code>adduser anarcat aegir<br />adduser anarcat www-data<br />chmod g+r drushrc.php</code></div></p>
+
+<p>With the above changes, we can actually run drush commands!</p>
+
+<p><div class="codeblock"><code>anarcat@marcos:~$ env HOME=/var/aegir drush @hostmaster cc all<br />Cannot open drushrc &quot;/var/aegir/hostmaster-HEAD/drushrc.php&quot;, ignoring.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />WD php: include(/var/aegir/.drush/server_localhost.alias.drushrc.php): failed to open stream: [error]<br />Permission denied in /usr/share/drush/includes/sitealias.inc on line 433.<br />WD php: include(): Failed opening &#039;/var/aegir/.drush/server_localhost.alias.drushrc.php&#039; for&nbsp; [error]<br />inclusion (include_path=&#039;.:/usr/share/php:/usr/share/pear&#039;) in<br />/usr/share/drush/includes/sitealias.inc on line 433.<br />WD php: include(/var/aegir/.drush/server_master.alias.drushrc.php): failed to open stream:&nbsp;&nbsp;&nbsp; [error]<br />Permission denied in /usr/share/drush/includes/sitealias.inc on line 433.<br />WD php: include(): Failed opening &#039;/var/aegir/.drush/server_master.alias.drushrc.php&#039; for&nbsp;&nbsp;&nbsp;&nbsp; [error]<br />inclusion (include_path=&#039;.:/usr/share/php:/usr/share/pear&#039;) in<br />/usr/share/drush/includes/sitealias.inc on line 433.<br />include(/var/aegir/.drush/server_localhost.alias.drushrc.php): failed to open stream:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />Permission denied in /usr/share/drush/includes/sitealias.inc on line 433.<br />include(): Failed opening &#039;/var/aegir/.drush/server_localhost.alias.drushrc.php&#039; for inclusion[warning]<br />(include_path=&#039;.:/usr/share/php:/usr/share/pear&#039;) in /usr/share/drush/includes/sitealias.inc<br />on line 433.<br />include(/var/aegir/.drush/server_master.alias.drushrc.php): failed to open stream: Permission [warning]<br />denied in /usr/share/drush/includes/sitealias.inc on line 433.<br />include(): Failed opening &#039;/var/aegir/.drush/server_master.alias.drushrc.php&#039; for inclusion&nbsp;&nbsp; [warning]<br />(include_path=&#039;.:/usr/share/php:/usr/share/pear&#039;) in /usr/share/drush/includes/sitealias.inc<br />on line 433.<br />&#039;all&#039; cache was cleared&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [success]</code></div></p>
+
+<p>We get a bunch of warnings, because provision can't load the server aliases (for a good reason - they contain DB passwords), but the command runs fine! In fact, if we want, we can avoid the luxury of using the aliases and just run the drush command in the site directory:</p>
+
+<p><div class="codeblock"><code>anarcat@marcos:aegir.anarcat.ath.cx$ drush cc all<br />Cannot open drushrc &quot;/var/aegir/hostmaster-HEAD/drushrc.php&quot;, ignoring.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />&#039;all&#039; cache was cleared&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [success]</code></div></p>
+
+<p>That warning can be removed by simply fixing the permissions on the drushrc.php file to be group-readable.</p>
+
+<p>However, the problem with that approach is that the user has access to <em>all</em> sites, from there on. No regard to what client the user has access to. Obviously, this can work for a dedicated server (and it would need patches to provision so that drushrc.php files and optionnally aliases are group-readable) but it will not work for shared hosting, which is my prime objective here.</p>
+
+<p><strong>Patches necessary</strong>:</p>
+
+<ul>
+<li>group-readable drushrc.php (changes in provision)</li>
+<li>add users to the aegir and www-data groups manually</li>
+<li>optional: group-readable site aliases (so that users can access the aliases)</li>
+</ul>
+
+<p><strong>Issues</strong>:</p>
+
+<ul>
+<li>all or nothing: the user has access to all sites or none as we have a single group</li>
+</ul>
+
+<h2>Traditionnal UNIX permission-based approach</h2>
+
+<p>In order for this to work really correctly, we would need the following permissions setup. Instead of having the typical following:</p>
+
+<p><div class="codeblock"><code>-r--r-----&nbsp; 1 aegir aegir&nbsp;&nbsp;&nbsp; 55456 16 mar 13:35 drushrc.php<br />drwxrws--- 10 aegir www-data&nbsp; 4096 16 mar 13:34 files<br />drwxrwsr-x&nbsp; 2 aegir aegir&nbsp;&nbsp;&nbsp;&nbsp; 4096 16 mar 13:34 modules<br />-r--r-----&nbsp; 1 aegir www-data&nbsp; 3276 16 mar 13:35 settings.php</code></div></p>
+
+<p>(I am skipping libraries, themes and private directories for simplicity - libraries and themes are the same as modules and private is the same as files.)</p>
+
+<p>... We would need to have the following:</p>
+
+<p><div class="codeblock"><code>-r--r-----&nbsp; 1 aegir&nbsp;&nbsp;&nbsp; client&nbsp;&nbsp; 55456 16 mar 13:35 drushrc.php<br />drwxrws--- 10 www-data client&nbsp;&nbsp;&nbsp; 4096 16 mar 13:34 files<br />drwxrwsr-x&nbsp; 2 aegir&nbsp;&nbsp;&nbsp; client&nbsp;&nbsp;&nbsp; 4096 16 mar 13:34 modules<br />-r--r-----&nbsp; 1 www-data client&nbsp;&nbsp;&nbsp; 3276 16 mar 13:35 settings.php</code></div></p>
+
+<p>That is, all files and directories are readable by the "client" group (which allow inter-client isolation) and some would be readable or writable by the webserver (which allows for uploads and the webserver to read the settings.php and so on).</p>
+
+<p>In this scenario, the webserver has access to all sites all the time: it can read/write uploaded files of other modules, but, because of database cloaking, it can't access other sites' databases. If we want to fix this we would have to go with ACLs.</p>
+
+<p>Note that this setup doesn't require the webserver running any special patch or daemon to run the PHP process as a normal user: it still runs as the www-data user.</p>
+
+<p><strong>Patches necessary</strong>:</p>
+
+<ul>
+<li>patches mentionned above (group-readable drushrc and aliases)</li>
+<li>creating the client group and adding users to it</li>
+<li>adding the aegir user to the client group</li>
+<li>patching provision so it changes the group of some files to the client group</li>
+<li>patching provision so it changes the owner of some files to the www-data user (this actually requires root: <strong>ouch</strong>!)</li>
+</ul>
+
+<p><strong>Issues</strong>:</p>
+
+<ul>
+<li>requires aegir to run as root</li>
+<li>aegir need to be a member of <em>every</em> group</li>
+</ul>
+
+<h2>The ACL approach</h2>
+
+<p>This is based on <a href="http://groups.drupal.org/node/43910#comment-117454">this excellent comment</a> from <a href="https://drupal.org/user/420589">malclocke</a>.</p>
+
+<p>This is one of the simplest and elegant approach, as it:</p>
+
+<ul>
+<li>doesn't require root access</li>
+<li>fits well with the n to n client access list model of aegir</li>
+<li>works without having to change the existing permissions (so would fit well in a contrib module)</li>
+</ul>
+
+<p>To configure ACLs, you need to add the option to your mountpoint in fstab and remount the mountpoint (or reboot):</p>
+
+<p><div class="codeblock"><code>apt-get install acl<br />mount -o remount,acl /var # and edit /etc/fstab to add the acl option to the mountpoint</code></div></p>
+
+<p>The rest is fairly simple: we just need to add access to the required groups to the drushrc and settings.php files:</p>
+
+<p><div class="codeblock"><code>setfacl -m g:client:r-- settings.php drushrc.php</code></div></p>
+
+<p>... where "client" is the client group.</p>
+
+<p>Optionnally, we can also give access to the alias files the same way, but we end up with the same warning on the server level files.</p>
+
+<p><em>Note</em>: <a href="http://www.vanemery.com/Linux/ACL/linux-acl.html">this is a good introduction to ACLs, in Redhat</a></p>
+
+<p><strong>Patches necessary</strong>:</p>
+
+<ul>
+<li>make platform-level drushrc readable by all (or add an ACL for each client with access to the platform..)</li>
+<li>patch provision to add relevant ACLs on verify and install, to drushrc.php and settings.php:</li>
+<li>system-level configuration of mountpoints and extra package</li>
+<li>creating the client group and adding users to it</li>
+</ul>
+
+<p><strong>Issues</strong>:</p>
+
+<ul>
+<li>requires system-level modifications</li>
+<li>NFS has not supported ACLs very well traditionnally (see <a href="http://wiki.linux-nfs.org/wiki/index.php/ACLs">the NFSv4 implementation notes</a> and <a href="http://acl.bestbits.at/problems.html">the issues page for ACLs</a> for more information) - but according to my tests (vanilla Debian squeeze), it just works</li>
+</ul>
+
+<h2>Other similar research</h2>
+
+<p>This is actually a well-discussed topic in the community, although nobody came up with a clean and complete solution for this.</p>
+
+<ul>
+<li><a href="http://perlucida.com/blog/software/four-tips-for-developing-drupal-under-aegir#comment-2">Brilliant comment from mig5</a> explaining group-ownership of key files</li>
+<li><a href="http://groups.drupal.org/node/87414">A similar solution proposed here</a> actually shows which chunks of code need to be modified in 0.4-alpha6</li>
+<li><a href="http://groups.drupal.org/node/43910">Aegir permissions best practices thread</a> - mentions everything from the "aegir group" to ACLs</li>
+<li><a href="http://groups.drupal.org/node/12066">My original research into this problem</a></li>
+</ul>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-207.html?destination=node%2F494%23comment-form">Login</a> or <a href="../../../../../user/register/index-207.html?destination=node%2F494%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-207.html?destination=node%2F494%23comment-form">Login</a> or <a href="../../../../../user/register/index-207.html?destination=node%2F494%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/78/revisions/1512/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:19:37 GMT -->
+</html>

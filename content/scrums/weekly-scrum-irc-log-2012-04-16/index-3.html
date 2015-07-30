@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/content/scrums/weekly-scrum-irc-log-2012-04-16?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:36:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../weekly-scrum-irc-log-2012-04-12/index.html" />
+<link rel="up" href="../../../scrums/index.html" />
+<link rel="next" href="../weekly-scrum-irc-log-2012-04-26/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2012-04-16 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1313" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2012-04-16</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first"><a href="../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-1313'><p><div class="codeblock"><code>[04:59:05]&nbsp;&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; darthsteven anarcat mig5 omega8cc: scrum?<br />[04:59:33]&nbsp;&nbsp;&nbsp; &lt;anarcat&gt; yep, i can<br />[04:59:43]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; k, great<br />[05:00:03] &lt;ergonlogic&gt;&nbsp; was a Thursday scrum last week, which is good to see<br />[05:01:06] &lt;ergonlogic&gt;&nbsp; discussion of 1.8 release this week?<br />[05:01:14] &lt;anarcat&gt; cool<br />[05:01:22] &lt;anarcat&gt; the thursday scrum is at 7hAM is that right?<br />[05:01:31] &lt;anarcat&gt; i am worried about the dual scrums<br />[05:01:45]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; anarcat: I think it&#039;s like 4am here in Mtl<br />[05:01:52]&nbsp; &lt;anarcat&gt; i feel it&#039;s splitting the community<br />[05:01:57] &lt;anarcat&gt; it&#039;s 6am here<br />[05:02:09]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; ah, ok, well, no difference to me :)<br />[05:02:25] &lt;anarcat&gt; so anyways<br />[05:02:30]&nbsp;&nbsp; &lt;anarcat&gt; i really think we should release 1.8 soon<br />[05:02:35]&nbsp;&nbsp;&nbsp; &lt;anarcat&gt; i am not sure i will have time to do this now<br />[05:02:42]&nbsp;&nbsp;&nbsp; &lt;anarcat&gt; but maybe we can call for patches before the release<br />[05:02:47] &lt;ergonlogic&gt;&nbsp; since we log them, I think we&#039;ll be ok, as long as we bother to read the ones we miss<br />[05:02:52]&nbsp;&nbsp; &lt;anarcat&gt; i have worked on provisionacl last week<br />[05:03:02]&nbsp; &lt;anarcat&gt; and i have made it so it changes the mode on the whole sites directory<br />[05:03:10]&nbsp;&nbsp; &lt;anarcat&gt; so that users can create local.settings.php or .git and so on<br />[05:03:17]&nbsp;&nbsp;&nbsp; &lt;anarcat&gt; this fixes a bunch of issues at koumbit<br />[05:03:21]&nbsp; &lt;ergonlogic&gt;&nbsp; sweet<br />[05:03:28]&nbsp;&nbsp;&nbsp; &lt;anarcat&gt; but makes securing aegir harder<br />[05:03:46]&nbsp; &lt;anarcat&gt; i still have to do that estime for the subsites thing<br />[05:04:38]&nbsp;&nbsp;&nbsp; &lt;anarcat&gt; and i am looking at moving files/modules/... out of the sites directory, maybe even making the whole directory a symlink<br />[05:04:51] &lt;anarcat&gt; that&#039;s about it for me<br />[05:05:03]&nbsp; &lt;ergonlogic&gt;&nbsp; moving them to clients/?<br />[05:05:21] &lt;anarcat&gt; yeah, basically<br />[05:05:38]&nbsp; &lt;ergonlogic&gt;&nbsp; that&#039;d probably simplify sftp and such<br />[05:06:05]&nbsp; &lt;ergonlogic&gt;&nbsp; ok, well on my part, I&#039;ve been granted commit access to drush-vagrant<br />[05:06:23]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; so I&#039;m migrating a bunch of code from aegir-up over there<br />[05:06:43]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; which should help to stabilize aegir-up somewhat<br />[05:07:05] &lt;ergonlogic&gt;&nbsp; as I tease apart the templating framework for vagrant, and the template that deploys Aegir<br />[05:07:55]&nbsp;&nbsp; &lt;anarcat&gt; that&#039;s good<br />[05:07:56] &lt;ergonlogic&gt;&nbsp; anyway, that and getting our AegirVPS infrastructure worted out thave been keeping me busy<br />[05:08:20]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; that latter, I might blog about in a week or two, once I&#039;ve got it running the way I&#039;d like<br />[05:08:29]&nbsp;&nbsp;&nbsp; &lt;anarcat&gt; cool<br />[05:08:44] &lt;ergonlogic&gt;&nbsp; and so that aegir-up can create a working local environment that more or less matches it<br />[05:09:18] &lt;ergonlogic&gt;&nbsp; I&#039;ve started a second template to work similarly to aegir-up, that includes a Jenkins server<br />[05:10:22]&nbsp;&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; it&#039;s also planned to have bind, squid and git servers<br />[05:11:08]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; so it can be the local end of a continuous integration workflow, but it depends on drush-vagrant stabilizing a bit more first<br />[05:11:17]&nbsp;&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; anyway, that&#039;s pretty much it from me<br />[05:11:48]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; darthsteven omega8cc mig5 others: anything to add?<br />[05:12:15]&nbsp;&nbsp; &lt;omega8cc&gt;&nbsp;&nbsp;&nbsp; I fixed a few small bugs in the nginx config so it should now just work with dotdeb build, as it should be recommended build for nginx based installs on Debian, then started to review the code missing in 2.x, as there are patches committed only in 1.x, however so far only 3 are tagged, but I will review also previous months to find them all<br />[05:12:34]&nbsp;&nbsp; &lt;omega8cc&gt;&nbsp;&nbsp;&nbsp; http://drupal.org/project/issues?text=&amp;projects=provision%2C+hosting%2C+...<br />[05:13:27]&nbsp; &lt;omega8cc&gt;&nbsp;&nbsp;&nbsp; then I will move to the deb based build, finally<br />[05:13:47] &lt;omega8cc&gt;&nbsp;&nbsp;&nbsp; I mean, to make the deb install working with nginx<br />[05:14:13]&nbsp;&nbsp; &lt;omega8cc&gt;&nbsp;&nbsp;&nbsp; and that is it from me, I guess<br />[05:14:56]&nbsp; &lt;ergonlogic&gt;&nbsp; darthsteven, mig5, anyone else?<br />[05:15:33]&nbsp; &lt;ergonlogic&gt;&nbsp; Office hours are worth noting<br />[05:15:40]&nbsp;&nbsp;&nbsp; &lt;omega8cc&gt;&nbsp;&nbsp;&nbsp; right<br />[05:15:46]&nbsp;&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; http://community.aegirproject.org/content/office-hours<br />[05:15:49]&nbsp;&nbsp; &lt;omega8cc&gt;&nbsp;&nbsp;&nbsp; great idea<br />[05:15:59]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; agreed<br />[05:16:51]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; anarcat: aha, that&#039;s what&#039;s scheduled for 4:00am :)<br />[05:17:06]&nbsp;&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; anyway, I&#039;ll post the log<br />[05:17:10]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; hefring: log pointer</code></div></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../user/login/index-137.html?destination=node%2F1313%23comment-form">Login</a> or <a href="../../../user/register/index-137.html?destination=node%2F1313%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/content/scrums/weekly-scrum-irc-log-2012-04-16?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:36:43 GMT -->
+</html>

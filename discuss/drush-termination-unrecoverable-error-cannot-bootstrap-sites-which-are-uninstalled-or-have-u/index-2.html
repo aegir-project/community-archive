@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/drush-termination-unrecoverable-error-cannot-bootstrap-sites-which-are-uninstalled-or-have-u?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:37:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Drush termination - unrecoverable error - cannot bootstrap sites, which are: uninstalled or have unconfigured databases | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2801" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/feldmand/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="feldmand&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/feldmand/index.html" class="username" title="View user profile.">feldmand</a></div><div class='date'>7:41am Oct 2, 2013</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Drush termination - unrecoverable error - cannot bootstrap sites, which are: uninstalled or have unconfigured databases</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_349 first"><a href="../../category/keywords/bootstrap/index.html" rel="tag" title="">Bootstrap</a></li>
+<li class="taxonomy_term_71"><a href="../../category/keywords/clone/index.html" rel="tag" title="">clone</a></li>
+<li class="taxonomy_term_351"><a href="../../category/keywords/database/index.html" rel="tag" title="">database</a></li>
+<li class="taxonomy_term_510"><a href="../../category/keywords/drupal-722/index.html" rel="tag" title="">drupal-7.22</a></li>
+<li class="taxonomy_term_50"><a href="../../category/keywords/install/index.html" rel="tag" title="">Install</a></li>
+<li class="taxonomy_term_345"><a href="../../category/keywords/installation/index.html" rel="tag" title="">installation</a></li>
+<li class="taxonomy_term_509 last"><a href="../../category/keywords/unrecoverable-error/index.html" rel="tag" title="">Unrecoverable error</a></li>
+</ul></div><p>While attempting to clone a drupal-7.22 site using Aegir running on a Linode, I encountered the following error.  Installing and migrating sites resulting in similar errors.  The database server is localhost.  A google search revealed similar unrecoverable errors which other individuals faced when attempting to install a site using drush.</p>
+
+<p>Aegir was functioning properly just a few weeks earlier, and no major system changes have been made since.</p>
+
+<p>Any idea how this may have occurred?  The error message suggests that the issue can be resolved by selecting another site with a working database setup.  Would this resolve my problem?  How do I avoid this issue moving forward?</p>
+
+<p><div class="codeblock"><code>Drush command terminated abnormally due to an unrecoverable error.<br />Drush was not able to start (bootstrap) the Drupal database. Hint: This may occur when Drush is trying to: * bootstrap a site that has not been installed or does not have a configured database. In this case you can select another site with a working database setup by specifying the URI to use with the --uri parameter on the command line. See <code>drush topic docs-aliases</code> for details. * connect the database through a socket. The socket file may be wrong or the php-cli may have no access to it in a jailed shell. See <a href="http://drupal.org/node/1428638" title="http://drupal.org/node/1428638">http://drupal.org/node/1428638</a> for details. Drush was attempting to connect to: Drupal version : 7.22 Site URI : test101.liebens.biz Default theme : garland Administration theme: garland PHP configuration : /etc/php5/cli/php.ini Drush version : 5.9 Drush configuration: /var/aegir/platforms/drupal-7.22/sites/test101.liebens.biz/drushrc.php /var/aegir/platforms/drupal-7.22/sites/all/drush/drushrc.php Drush alias files : /var/aegir/.drush/platform_drupal723.alias.drushrc.php /var/aegir/.drush/platform_hostmaster.alias.drushrc.php /var/aegir/.drush/platform_Drupal628.alias.drushrc.php /var/aegir/.drush/test101.liebens.biz.alias.drushrc.php /var/aegir/.drush/hostmaster.alias.drushrc.php /var/aegir/.drush/test002.liebens.biz.alias.drushrc.php /var/aegir/.drush/test001.liebens.biz.alias.drushrc.php /var/aegir/.drush/test005.liebens.biz.alias.drushrc.php /var/aegir/.drush/platform_Drupal722.alias.drushrc.php /var/aegir/.drush/platform_fmomega17.alias.drushrc.php /var/aegir/.drush/server_localhost.alias.drushrc.php /var/aegir/.drush/server_master.alias.drushrc.php /var/aegir/.drush/test003.liebens.biz.alias.drushrc.php /var/aegir/.drush/test723000.liebens.biz.alias.drushrc.php /var/aegir/.drush/test100.liebens.biz.alias.drushrc.php /var/aegir/.drush/test723-001.liebens.biz.alias.drushrc.php Drupal root : /var/aegir/platforms/drupal-7.22 Site path : sites/test101.liebens.biz Modules path : sites/test101.liebens.biz/modules Themes path : sites/test101.liebens.biz/themes File directory path: sites/test101.liebens.biz/files %paths : Array</code></div></p>
+
+<p>Thank you for your help.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-370.html?destination=node%2F2801%23comment-form">Login</a> or <a href="../../user/register/index-370.html?destination=node%2F2801%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-2040"></a>
+
+
+<div  id="comment-2040" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/feldmand/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="feldmand&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/feldmand/index.html" class="username" title="View user profile.">feldmand</a></div><div class='date'>7:44am Oct 2, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2040" class="active">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Since the time which I created and clone sites with Aegir some weeks ago, Drupal-7.22 has been superceded by Drupal-7.23.  Could this be related?</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-370.html?destination=node%2F2801%23comment-form">Login</a> or <a href="../../user/register/index-370.html?destination=node%2F2801%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/drush-termination-unrecoverable-error-cannot-bootstrap-sites-which-are-uninstalled-or-have-u?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:37:07 GMT -->
+</html>

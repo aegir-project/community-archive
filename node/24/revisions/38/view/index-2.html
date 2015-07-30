@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/24/revisions/38/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:01:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/renaming-aegir-hostmaster-site-itself/index.html" />
+<link rel="up" href="../../../../43/index.html" />
+<link rel="next" href="../../../../25/index.html" />
+<link rel="prev" href="../../../../../content/renaming-aegir-hostmaster-site-itself/index.html" />
+<link rel="up" href="../../../../43/index.html" />
+<link rel="next" href="../../../../25/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Cloning websites from Wed, 10/27/2010 - 02:27 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-24" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Cloning websites</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-24'><p>Cloning websites</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-302.html?destination=node%2F24%23comment-form">Login</a> or <a href="../../../../../user/register/index-302.html?destination=node%2F24%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-1983"></a>
+
+
+<div  id="comment-1983" class="comment comment-published clear-block decay-10 decay-10">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/dman/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="dman&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/dman/index.html" class="username" title="View user profile.">dman</a></div><div class='date'>2:13am Jul 29, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1983">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Although the front-end does not yet permit you to re-clone over the top of an existing site, this is possible at the lower level by using the drush CLI adn provision-clone.
+<div class="codeblock"><code>&nbsp;&nbsp; drush $phase2site provision-clone $phase3site $phase3platform</code></div>
+eg I have several platforms in the same project and continuously rebuild them (as part of a trial upgrade migration) so I need to copy between phase2 and phase3
+<div class="codeblock"><code>&nbsp;&nbsp; drush @phase2d7.projectname.devhost provision-clone @phase3d7.projectname.devhost @platform_ProjectnameD7Phase3</code></div></p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-302.html?destination=node%2F24%23comment-form">Login</a> or <a href="../../../../../user/register/index-302.html?destination=node%2F24%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2064"></a>
+
+
+<div  id="comment-2064" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/dman/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="dman&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/dman/index.html" class="username" title="View user profile.">dman</a></div><div class='date'>10:23pm Oct 30, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-2064">#2</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Further to the above - though it seems to re-clone - it does not delete the original DB - you end up with a new DB each time (numbered incrementally) and the old one is detached and becomes unused, but never deleted.</p>
+
+<p>Suggestion : to re-clone, you really do have to delete the target, then clone anew.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-302.html?destination=node%2F24%23comment-form">Login</a> or <a href="../../../../../user/register/index-302.html?destination=node%2F24%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/24/revisions/38/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:01:46 GMT -->
+</html>

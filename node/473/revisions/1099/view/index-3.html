@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/473/revisions/1099/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:18:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../1/index-17.html" />
+<link rel="up" href="../../../../../10-release-candidate/index.html" />
+<link rel="next" href="../../../../../0/index.html" />
+<link rel="prev" href="../../../../../1/index-17.html" />
+<link rel="up" href="../../../../../10-release-candidate/index.html" />
+<link rel="next" href="../../../../../0/index.html" />
+<link rel="prev" href="../../../../../1/index-17.html" />
+<link rel="up" href="../../../../../10-release-candidate/index.html" />
+<link rel="next" href="../../../../../0/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of DRAFT:: 1.0-rc2 release notes from Fri, 03/11/2011 - 21:36 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-473" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../1/index-18.html">DRAFT:: 1.0-rc2 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-473'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 03/11/2011 - 21:36</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><span class='diff-added'></span><p><span class='diff-added'>The Aegir team is very pleased to announce the second release candidate of Aegir 1.0!</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Note that we have decided to rename the 0.4 branch to 1.0.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>This is the second rc from which we will test fixes to critical bugs from rc1, as well as fix any additional critical bugs found since, until we have no criticals and will then roll out the official 1.0.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Key changes in 1.0-rc2</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>There are a lot of bug fixes and features added into this release.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>INSTALL.txt and UPGRADE.txt, along with the various architecture hints, and other developer docs, have been moved to the community site under:</span></p><span class='diff-added'>
+
+</span><pre><span class='diff-added'></span><code><span class='diff-added'>http://community.aegirproject.org/administrator-manual
+</span></code><span class='diff-added'></span></pre><span class='diff-added'>
+
+</span><p><span class='diff-added'>The Aegir git repositories have moved back to drupal.org</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Known Issues</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>DNS has no access control - anybody can create any zone (#922252)
+The site form suffers from some performance issues when you have a lot of platforms (#955854)
+Cluster servers are probably broken right now (#1016890)
+Aliases are not persisted across Migrate, (Rename), Clone (provision-deploy) (#1004526)
+See all the issues tagged as aegir-0.4 and issues marked as 'major' for our comprehensive list of outstanding issues.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Installing and upgrading</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>The canonical source of installation documentation has moved from the usual INSTALL.txt to the community site at:</span></p><span class='diff-added'>
+
+</span><pre><span class='diff-added'></span><code><span class='diff-added'>http://community.aegirproject.org/installing
+</span></code><span class='diff-added'></span></pre><span class='diff-added'>
+
+</span><p><span class='diff-added'>The hostmaster and provision tarballs have the following checksums:</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>provision-
+hostmaster-</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>For users who have Rackspace Cloud accounts and want to install Aegir in the cloud, you are welcome to try mig5's Frigg script, which automatically creates a new virtual server and installs Aegir, with one command!</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>For users of 0.4-rc1 and earlier, we offer an upgrade.sh script in Provision, which tries to automate many of the steps outlined at:</span></p><span class='diff-added'>
+
+</span><pre><span class='diff-added'></span><code><span class='diff-added'>http://community.aegirproject.org/upgrading
+</span></code><span class='diff-added'></span></pre><span class='diff-added'>
+
+</span><p><span class='diff-added'>It is still imperative that you read the the Upgrade Guide (</span><a href="../../../../../upgrading/index.html" title="http://community.aegirproject.org/upgrading"><span class='diff-added'>http://community.aegirproject.org/upgrading</span></a><span class='diff-added'>) and follow all version-specific upgrade instructions located at the end of the document before trying to run the upgrade script. This especially applies to users upgrading from before 0.4-alpha8, including 0.3.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>For users coming from 0.4-beta1, beta2 or rc1, there are unlikely to be any version-specific manual steps required to upgrade to 1.0-rc2, but you should make a habit of reading them anyway just to make sure. No-one likes a nasty surprise!</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>The upgrade.sh script attempts to backup the existing backend components, download new versions, and then run the hostmaster-migrate command. It assumes you are upgrading from the previous release (hostmaster-0.4-rc1). If you are not, you may have to edit the script to change the OLD_DRUPAL_DIR variable.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Bugs fixed</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>New features</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>No Drush 4?</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Some people might be wondering why we haven't changed the install.sh or upgrade.sh scripts to fetch the latest Drush 4.2 release.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Drush</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Drush 4.2 has a bug which breaks rsync and possibly other stuff when using multiserver.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>It's been fixed in Drush, but we are awaiting a 4.3 release before we roll with it. If you see 4.3 come out, you can probably upgrade your Drush if you wish (we tested this morning and are in fact compatible with Drush HEAD at time of writing).</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>See this ticket for more: </span><a href="http://drupal.org/node/1041386" title="http://drupal.org/node/1041386"><span class='diff-added'>http://drupal.org/node/1041386</span></a><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>We are working with the Drush developers to attempt to 'sync' our releases in future, but we wanted to roll out rc2 to all you good folk sooner rather than later this time :)</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Need help?</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>If you struggle to install or upgrade your Aegir system, you have a number of options available to you for getting help.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Consult this page for more: </span><a href="../../../../../help/index.html" title="http://community.aegirproject.org/help"><span class='diff-added'>http://community.aegirproject.org/help</span></a><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Thanks to our awesome community for their help, support and encouragement as always!</span></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-186.html?destination=node%2F473%23comment-form">Login</a> or <a href="../../../../../user/register/index-186.html?destination=node%2F473%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-186.html?destination=node%2F473%23comment-form">Login</a> or <a href="../../../../../user/register/index-186.html?destination=node%2F473%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/473/revisions/1099/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:18:14 GMT -->
+</html>

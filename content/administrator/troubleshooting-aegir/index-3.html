@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/content/administrator/troubleshooting-aegir?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:33:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../extracting-drupal-site-aegir/index.html" />
+<link rel="up" href="../../../administrator/index.html" />
+<link rel="next" href="../../../node/321/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="prev" href="index.html" />
+<link rel="up" href="index.html" />
+<link rel="next" href="../../../debugging/index.html" />
+<link rel="prev" href="../../../node/321/index.html" />
+<link rel="up" href="index.html" />
+<link rel="next" href="../../content/administrator/troubleshooting-aegir/strict-warning-error/index.html" />
+<link rel="prev" href="../../../debugging/index.html" />
+<link rel="up" href="index.html" />
+<link rel="next" href="../../../node/546/index.html" />
+<link rel="shortcut icon" href="../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Troubleshooting Aegir | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-950" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Troubleshooting Aegir</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-950'><p>Aegir is a complex system that depends on a number of components being properly integrated. This can obviously lead to difficulties on occasion. However, fear not! In all likelihood, any problem you can get yourself into has probably already been solved, and documented in this section. Just one of the benefits of using a popular open source system ;)</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../user/login/index-76.html?destination=node%2F950%23comment-form">Login</a> or <a href="../../../user/register/index-76.html?destination=node%2F950%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+<div  id="node-321" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../node/321/index.html">How to fix a stuck task</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>It is possible a task may run longer than expected and you suspect something has gone wrong. It is even possible the task may cause a server to become unresponsive. Restarting the server will not stop the task, although it may make the server become responsive again.</p>
+
+<p>To stop a Task, find the related task node (install: mysite.com) in the content list: /admin/content/node/overview, and delete it. This will stop Aegir from trying to run the task.</p>
+
+<p>In the case of a site install, it may also be necessary to also delete the node for the site itself. The site may have actually installed properly. Verify the affected platform and see if Aegir imports the site. If so, you may need to reset the password to gain access to the new site. If the site doesn't import in the verify, delete any files from the sites folder on the selected platform and either try again and/or research why the task may have failed.</p>
+
+<p>It can also be very helpful to try running tasks from the command line with drush (the entire Aegir web frontend is basically a user-friendly interface to a series of drush commands). You can see which command is being run by looking at a task node in Aegir. For example, if you are having problems verifying a site, you could run: <br />
+<code>drush @mysite.com provision-verify --debug</code></p>
+
+<p>Another option is to run the hosting task itself within the hostmaster context, which will then invoke the drush command on the applicable site. You can find the task node ID in the web frontend (look at the URL generated by Aegir to create the popup box which shows the log). If the task ID was 1234, you would then run this from the command line:  <br />
+<code>drush @hostmaster hosting-task 1234 --debug</code></p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="talk_forbidden first last"><span><a href="../../../user/login/index-77.html?destination=node%2F321%23comment-form">Login</a> or <a href="../../../user/register/index-77.html?destination=node%2F321%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-751" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../debugging/index.html">Debugging Aegir</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first"><a href="../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><p>Installation and configuration of Aegir has been greatly simplified with the release of .deb packages. However, for other operating systems, or for those installing manually, making a mistake during the installation or upgrade of Aegir or Drush is easy to do, and these tips identify some of the most common mistakes.</p>
+
+<h3>The Aegir User</h3>
+
+<ul>
+<li>Make sure you have an aegir user (who we call the Aegir User) and that the Aegir User is properly configured on your server:
+
+<ul>
+<li><code>cat /etc/passwd</code> prints all users.  Find the line <code>aegir:x:1000:1000:,,,:/var/aegir:/bin/bash</code>.  <code>aegir</code> usually is the Aegir User.  Be cautious about using a different username, and <strong>do not</strong>use an existing user or a user that will have any other role on the server.  The Aegir User should only be used for Aegir activities.</li>
+<li>Verify the Aegir install directory is the user's home.  Usually, the Aegir directory is <code>/var/aegir</code>.  Be cautious about installing Aegir in a different directory only because you are likely to get confused and nearly all the documentation assumes you have used <code>/var/aegir</code></li>
+<li>Make sure that the node that defines your Aegir server (e.g., <code>www.example.com/node/2</code>) identifies the <code>Script User</code> as your Aegir User.  (You can find this node by clicking on the Servers menu tab and then clicking on the server URI shown in the list that appears of Aegir servers.)</li>
+<li>All this is detailed in the install profile wizard</li>
+</ul></li>
+<li><strong>Do not run aegir as root!</strong> - It's an unsafe and unsupported configuration that is known to cause problems</li>
+</ul>
+
+<h3>Make Sure drush Is Installed Properly</h3>
+
+<ul>
+<li>Make sure that the node that defines your Aegir Server has the correct path to drush.
+
+<ul>
+<li>See <code>/var/aegir/drush/readme.txt</code> for install instructions</li>
+</ul></li>
+<li>Check your Drush setup:
+
+<ul>
+<li>Always run drush as your aegir user, and never as "root".</li>
+<li>Make sure that the Provision module is in the <code>aegir/.drush/provision/</code> directory.</li>
+<li>Make sure that the Hosting module is in <code>~aegir/hostmaster-0.x/profiles/hostmaster/modules/hosting</code> (substitute the platform <code>hostmaster-0.x</code> to match the directory on your system in which you have installed the Drupal code that is running your Aegir site)</li>
+<li>Run "drush help" and make sure that "provision" commands appear.  "hosting" commands will not appear in the latest (after 2009/05/18) Drush versions, unless Drupal can be fully bootstrapped</li>
+</ul></li>
+</ul>
+
+<h3>Apache</h3>
+
+<ul>
+<li>Make sure the Aegir User can restart Apache without a password and that the corresponding command is defined in your Aegir Server Node
+
+<ul>
+<li>As your Aegir User, run the command shown in the "Restart command" field in your Aegir Server Node to ensure that your Aegir User can restart Apache</li>
+<li>On Ubuntu, it's <code>sudo /usr/sbin/apache2ctl graceful</code>.  The command should execute and return without asking for a password when run as the Aegir User</li>
+</ul></li>
+<li>Make sure Apache can parse its configuration 
+
+<ul>
+<li>On Ubuntu, <code>sudo apache2ctl configtest</code> should report "System Ok"</li>
+</ul></li>
+</ul>
+
+<h3>Other Things</h3>
+
+<ul>
+<li>On a Linux system, check that /etc/sudoers is chmod 440 (i.e., read only for the file owner and group, which is usually root)</li>
+<li>Attempt to run the cron tasks manually from the command line
+
+<ul>
+<li><code>php /var/aegir/drush/drush.php --root=/var/aegir/hostmaster-0.x --uri=http://youraegirsite.com hosting-tasks --debug</code></li>
+</ul></li>
+<li>Or you can retry a specific task form the command line
+
+<ul>
+<li><code>php /var/aegir/drush/drush.php --root=&#039;/var/aegir/hostmaster-0.4-alpha5&#039; --uri=&#039;youraegirsite.net&#039; hosting-task &lt;nid of the task&gt; --debug </code></li>
+</ul></li>
+</ul>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="talk_forbidden first last"><span><a href="../../../user/login/index-78.html?destination=node%2F751%23comment-form">Login</a> or <a href="../../../user/register/index-78.html?destination=node%2F751%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-3065" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../content/administrator/troubleshooting-aegir/strict-warning-error/index.html">&quot;strict warning&quot; error</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_567 first"><a href="../../../category/keywords/non-static/index.html" rel="tag" title="">non-static</a></li>
+<li class="taxonomy_term_566"><a href="../../../category/keywords/strict/index.html" rel="tag" title="">strict</a></li>
+<li class="taxonomy_term_565"><a href="../../../category/keywords/strict-warning/index.html" rel="tag" title="">strict warning</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><p><strong>Aegir 2.x returns the following error message</strong></p>
+
+<p>strict warning: Non-static method view::load() should not be called statically in /var/aegir/hostmaster-6.x-2.1/profiles/hostmaster/modules/views/views.module on line 1113.</p>
+
+
+
+<p><strong>Cause</strong></p>
+
+<p>It's due to a conflict between Views 3.x and PHP 5.4. For example, your server uses PHP 5.4 or more recent. And you updated Drupal core for Aegir to Drupal 6.34 or more recent and this error message is showing on all Aegir pages.</p>
+
+
+
+<p><strong>Solutions</strong></p>
+
+<p>Option 1: Install "<a href="http://drupal.org/project/disable_messages">disable_messages</a>" module. And disable all messages related to:</p>
+
+<blockquote>
+<code>strict .*.</code>
+</blockquote>
+
+<p><a href="http://www.howtoeverything.net/linux/drupal/selectively-hide-strict-warning-errors-php-5.4-drupal-6.x-views">Read more here</a>, under <em>"How to hide only specific error messages to specific users"</em> section.</p>
+
+<p>Option 2: Patch Views 3.x. Read more at <a href="https://www.drupal.org/node/780156" title="https://www.drupal.org/node/780156">https://www.drupal.org/node/780156</a> or <a href="https://www.drupal.org/node/893128#comment-4760978" title="https://www.drupal.org/node/893128#comment-4760978">https://www.drupal.org/node/893128#comment-4760978</a></p>
+
+<p>Option 3: Turn off Strict warnings in your "php.ini" file. Read more at <a href="https://www.drupal.org/node/1833170#comment-6994142" title="https://www.drupal.org/node/1833170#comment-6994142">https://www.drupal.org/node/1833170#comment-6994142</a> or <a href="https://www.drupal.org/node/465332#comment-6533810" title="https://www.drupal.org/node/465332#comment-6533810">https://www.drupal.org/node/465332#comment-6533810</a></p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="talk_forbidden first last"><span><a href="../../../user/login/index-79.html?destination=node%2F3065%23comment-form">Login</a> or <a href="../../../user/register/index-79.html?destination=node%2F3065%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/content/administrator/troubleshooting-aegir?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:33:23 GMT -->
+</html>

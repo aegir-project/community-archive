@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/462/revisions/2391/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/installing/manual/nginx-mariadb-php-fpm-single-server-installation/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../installing/ubuntu-1004-specific-how-downgrade-php-52-install/index.html" />
+<link rel="prev" href="../../../../../content/installing/manual/nginx-mariadb-php-fpm-single-server-installation/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../installing/ubuntu-1004-specific-how-downgrade-php-52-install/index.html" />
+<link rel="prev" href="../../../../../content/installing/manual/nginx-mariadb-php-fpm-single-server-installation/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../installing/ubuntu-1004-specific-how-downgrade-php-52-install/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Common installation problems from Fri, 10/07/2011 - 16:29 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-462" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Common installation problems</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-462'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a> on 10/07/2011 - 16:29</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>There are a few things that can go wrong in the install.</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Verify_and_install_run_everything_through_SSH"><span class="toc-number">1. </span>Verify and install run everything through SSH</a></li>
+	<li class="toc-level-1"><a href="#NameVirtualHost_:80_has_no_VirtualHosts"><span class="toc-number">2. </span>NameVirtualHost *:80 has no VirtualHosts</a></li>
+	<li class="toc-level-1"><a href="#Making_sure_it_works"><span class="toc-number">3. </span>Making sure it works</a></li>
+	<li class="toc-level-1"><a href="#Access_by_the_server-s_physical_IP_address"><span class="toc-number">4. </span>Access by the server's physical IP address</a></li>
+	<li class="toc-level-1"><a href="#CentOS_firewall_settings"><span class="toc-number">5. </span>CentOS firewall settings</a></li>
+	<li class="toc-level-1"><a href="#CentOS_cron_requires_restart"><span class="toc-number">6. </span>CentOS cron requires restart?!</a></li>
+	<li class="toc-level-1"><a href="#CentOS_aegir.conf_permission_denied"><span class="toc-number">7. </span><span class='diff-added'>CentOS aegir.conf permission denied</span></a><span class='diff-added'></span></li><span class='diff-added'>
+	</span><li class="toc-level-1"><span class='diff-added'></span><a href="#Solaris_cron_issues"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>8.</span> </span>Solaris cron issues</a></li>
+	<li class="toc-level-1"><a href="#Drush_execution_path_issues"><span class="toc-number"><span class='diff-changed'>9.</span> </span>Drush execution path issues</a></li>
+	<li class="toc-level-1"><a href="#APC_issues"><span class="toc-number"><span class='diff-changed'>10.</span> </span>APC issues</a></li>
+</ol>
+</div>
+</div>
+
+<h2 id="Verify_and_install_run_everything_through_SSH">1. Verify and install run everything through SSH</h2>
+
+<p>Since Aegir has multi-server support, it is possible that you have a misconfigured "FQDN" and that aegir then tries to connect to the local server as a remote server. To check if you have a misconfigured server, run the following commands:</p>
+
+<pre><code>resolveip `uname -n`
+</code></pre>
+
+<p>If the command returns your IP address, you are all set. If it returns an error you will need to edit your <code>/etc/hosts</code> file.</p>
+
+<p>First line of this file looks like:</p>
+
+<pre><code>127.0.0.1  localhost
+</code></pre>
+
+<p>Simply add all domains you want to this line. e.g:</p>
+
+<pre><code>127.0.0.1  localhost aegir.example.com example.com
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="NameVirtualHost_:80_has_no_VirtualHosts">2. NameVirtualHost *:80 has no VirtualHosts</h2>
+
+<p>It does not hurt anything, but it can be annoying in your logs.  This may disappear as soon as you define your first virtual site using Aegir. If it does not, you most likely have a second NameVirtualHost statement in your configuration someplace other than in the Aegir configurations.</p>
+
+<p>If you are on a Debian system, that is usually a configuration fragment in /etc/apache2/ports.conf or in a fragment symbolically linked in /etc/apache2/sites-enabled and it is safe to comment out any NameVirtualHost statements you find there as this really is a large part of the job you have asked Aegir to do for you.</p>
+
+<p>Once those are commented out, the message should disappear.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Making_sure_it_works">3. Making sure it works</h2>
+
+<p>Your new Aegir server will be installed with a single site named the way you specified in your install script.  That's great, but you may have more paths to that same server.</p>
+
+<p>When you try to browse to your server for the first time from a non-localhost browser you may get an addressing issue.  If you do, make sure that you actually have the server defined in DNS and that the DNS server was reloaded.  If it was reloaded and you use slave servers, make sure that the serial number in the zone file was incremented so that the slaves automatically reload.</p>
+
+<p>If you already have multiple URLs in your DNS which resolve to the same Aegir, you should check them.  For instance: if your DNS resolves both aegir.example.com and sitecontrol.example.com to your new Aegir server's IP, you need to make sure that both are accommodated.  If they will both get the same physical hostmaster site, one should be set up as an alias to the other.  If they are indeed going to be separate sites you will have to create a new site node with the other name as a virtual site.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Access_by_the_server-s_physical_IP_address">4. Access by the server's physical IP address</h2>
+
+<p>Another "gotcha" that you may run into is http access using the actual IP itself.  Remember that the IP is not picked up by the site vhost and will not match a ServerName or ServerAlias - so it gets picked up by the default vhost.  This is just standard apache stuff, nothing Aegir or Drupal specific here, but quite the annoyance and a potential problem.</p>
+
+<p>You can easily work around it by simply adding the IP as a Site Alias in the site node in either the Aegir site (or another site that you may have defined which you would prefer the IP to address).</p>
+
+<p>You can tell if you have the IP problem by simply pointing your browser to the server by IP as <a href="http://999.999.999.999/" title="http://999.999.999.999/">http://999.999.999.999/</a> and seeing what comes up.  If you get an install screen, you have the problem.  You certainly do not want that install screen getting executed!</p>
+
+<p>The good news is that fixing it is easy.</p>
+
+<p>Simply log into Aegir, click on Sites, click on the site name that you want the IP to address, click on Edit and scroll down to Domain Aliases.  Put the IP into the box, click on the Redirect checkbox so that Aegir instructs Apache to do a rewrite to the real domain name, and finally click Save.</p>
+
+<p>If you do not have the Domain Aliases entry box, you need to turn that feature on.  In that case, go to your administration menu at the top of the page, point to Hosting and then click on Features.  Click the checkbox for Site Aliasing and then Save Configuration.  The Aliases box will now appear when you edit a site.  There is excellent information about the site alias feature in this handbook at <a href="../../../../60/index.html" title="http://community.aegirproject.org/node/60">http://community.aegirproject.org/node/60</a> with much more detail.</p>
+
+<p>After the Verify job completes you should test your server again.  Now when you address the server by it's IP address the URL should automatically change to the site you selected and the install screen never appears.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="CentOS_firewall_settings">5. CentOS firewall settings</h2>
+
+<p>You may need to adjust CentOS's firewall settings to allow HTTP
+traffic on port 80.  If you installed CentOS with a UI, enable
+"Firewall settings -- WWW (HTTP)".</p>
+
+<p>Alternatively, another solution may be to edit /etc/sysconfig/iptables 
+and add a rule accepting traffic on the relevant interface on port 80.</p>
+
+<p>Afterwards, you can restart the firewall with this command:</p>
+
+<p>Shell commands::
+<div class="codeblock"><code> service iptables restart</code></div></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="CentOS_cron_requires_restart">6. CentOS cron requires restart?!</h2>
+
+<p>Also, in some configurations, it seems necessary to restart crond for
+the user crontab changes to take effect (very bizarre). For that, use:</p>
+
+<p>Shell commands::
+<div class="codeblock"><code> service crond restart</code></div></p>
+
+<p>See <a href="http://drupal.org/node/632308" title="http://drupal.org/node/632308">http://drupal.org/node/632308</a> if you have more information about
+this issue.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="CentOS_aegir.conf_permission_denied">7.<span class='diff-added'> CentOS aegir.conf permission denied</span></h2><span class='diff-added'>
+
+</span><p><span class='diff-added'>If you receive:
+</span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'>Starting httpd: httpd: Syntax error on line 209 of /etc/httpd/conf/httpd.conf: Could not open configuration file /etc/httpd/conf.d/aegir.conf: Permission denied</span></code><span class='diff-added'></span></div><span class='diff-added'>
+when trying to restart httpd, check your SELinux settings. If enabled, you can run the following command on the aegir.conf file in /var/aegir/config/server_master directory:
+</span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'>chcon -t httpd_config_t apache.conf</span></code><span class='diff-added'></span></div><span class='diff-added'>
+Alternatively, you can disable SELinux completely if you desire. Both options will result in removing the permisson denied error.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>You can see this comment: </span><a href="http://drupal.org/node/1286926#comment-5028062" title="http://drupal.org/node/1286926#comment-5028062"><span class='diff-added'>http://drupal.org/node/1286926#comment-5028062</span></a><span class='diff-added'> for a little more info.</span></p><span class='diff-added'>
+
+</span><div class="toc-back-to-top"><span class='diff-added'></span><a href="#toc"><span class='diff-added'>Back to top</span></a><span class='diff-added'></span></div><span class='diff-added'></span><h2 id="Solaris_cron_issues"><span class='diff-added'>8.</span> Solaris cron issues</h2>
+
+<p>I had numerous problems setting up a proper cron job, as Solaris' crond seems
+pretty anal about what it accepts. The only way I could get it to work was to
+create a wrapper shell script that would be called using the simplest cron
+tab.</p>
+
+<p>Crontab entry:</p>
+
+<p><div class="codeblock"><code>* * * * * /var/aegir/dispatch.sh</code></div></p>
+
+<p>Content of dispatch.sh:</p>
+
+<p><div class="codeblock"><code>#!/usr/bin/bash<br /><br />HOME=/var/aegir<br />LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/usr/lib/sparcv9:/opt/mysql/mysql/lib:/usr/sfw/lib:/usr/sfw/lib/gcc:/opt/sfw/lib<br />PATH=/usr/bin:/opt/mysql/mysql/bin:/usr/sfw/bin:/opt/sfw/bin:/opt/SUNWspro/bin:/usr/local/bin:/opt/csw/bin<br /><br />export HOME<br />export LD_LIBRARY_PATH<br />export PATH<br /><br />php &#039;/var/aegir/drush/drush.php&#039; --php=/usr/local/bin/php &#039;@hostmaster&#039; hosting-dispatch</code></div></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Drush_execution_path_issues"><span class='diff-changed'>9.</span> Drush execution path issues</h2>
+
+<p>Solaris (and maybe others) suffers from the dreaded execution issues of drush:</p>
+
+<ul>
+<li><a href="http://drupal.org/node/637574" title="http://drupal.org/node/637574">http://drupal.org/node/637574</a></li>
+<li><a href="http://drupal.org/node/586466" title="http://drupal.org/node/586466">http://drupal.org/node/586466</a></li>
+</ul>
+
+<p>Those can be worked around by hardcoding the --php executable on the
+commandline path. Adding the proper shebang (<code>#!/usr/local/bin/php</code>, for example) header and using a proper PATH
+that includes the PHP executable also helps.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="APC_issues"><span class='diff-changed'>10.</span> APC issues</h2>
+
+<p>If you are having trouble running APC with Aegir, try downgrading to APC 3.1.4.  This can be achieved by the following:</p>
+
+<p><code>sudo pecl uninstall apc</code></p>
+
+<p><code>sudo pecl install apc-3.1.4</code></p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-51.html?destination=node%2F462%23comment-form">Login</a> or <a href="../../../../../user/register/index-51.html?destination=node%2F462%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-51.html?destination=node%2F462%23comment-form">Login</a> or <a href="../../../../../user/register/index-51.html?destination=node%2F462%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/462/revisions/2391/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:49 GMT -->
+</html>

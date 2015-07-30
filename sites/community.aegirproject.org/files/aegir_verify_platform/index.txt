@@ -1,0 +1,71 @@
+Task starts processing
+Running: /usr/share/drush/drush.php --root='/var/aegir/platforms/hk_old' provision-save '@platform_GammelHK' --backend 2>&1
+Bootstrap to phase 0.
+Drush bootstrap phase : _drush_bootstrap_drush()
+Bootstrap to phase 0.
+Found command: provision-save (commandfile=provision)
+Initializing drush commandfile: drush_make
+Initializing drush commandfile: drush_make_d_o
+Initializing drush commandfile: provision
+Load alias @self
+Load alias @server_master
+Loading mysql driver for the db service
+Loading apache driver for the http service
+Initializing drush commandfile: user
+Load alias @platform_GammelHK
+Template loaded: /usr/share/drush/commands/provision/provision_drushrc_alias.tpl.php
+Generated config Drush configuration file
+Changed permissions of /var/aegir/.drush/platform_GammelHK.alias.drushrc.php to 440
+Command dispatch complete
+Peak memory usage was 10.66 MB
+Running: /usr/share/drush/drush.php @platform_GammelHK provision-verify --backend 2>&1
+Bootstrap to phase 0.
+Drush bootstrap phase : _drush_bootstrap_drush()
+Load alias @platform_GammelHK
+Bootstrap to phase 0.
+Found command: provision-verify (commandfile=provision)
+Initializing drush commandfile: drush_make
+Initializing drush commandfile: drush_make_d_o
+Initializing drush commandfile: provision
+Load alias @server_master
+Loading mysql driver for the db service
+Loading apache driver for the http service
+Initializing drush commandfile: user
+Including /usr/share/drush/commands/provision/dns/verify.provision.inc
+Including /usr/share/drush/commands/provision/platform/backupmigrate/verify.provision.inc
+Including /usr/share/drush/commands/provision/platform/verify.provision.inc
+Drush bootstrap phase : _drush_bootstrap_drupal_root()
+Initialized Drupal 6.26 root directory at /var/aegir/platforms/hk_old
+Drupal sites directory /var/aegir/platforms/hk_old/sites is writable by the provisioning script
+This platform is running drupal 6.26
+Found 33 modules in base
+Found 6 themes in base
+Found 338 modules in sites/all
+Found 5 themes in sites/all
+Found install profile default
+Template loaded: /usr/share/drush/commands/provision/http/apache/platform.tpl.php
+Generated config platform configuration file
+apache on helsekompetanse.no has been restarted
+Template loaded: /usr/share/drush/commands/provision/provision_drushrc.tpl.php
+Generated config Platform Drush configuration file
+Changed permissions of /var/aegir/platforms/hk_old/drushrc.php to 444
+Command dispatch complete
+Peak memory usage was 17.04 MB
+Undefined property: stdClass::$uid hosting.module:192
+Undefined property: stdClass::$site_language hosting_site.nodeapi.inc:144
+Undefined property: stdClass::$ip_addresses hosting.ip.inc:43
+Undefined property: stdClass::$profile hosting_site.nodeapi.inc:153
+Undefined property: stdClass::$verified hosting_site.nodeapi.inc:153
+Undefined property: stdClass::$hosting_name hosting_site.nodeapi.inc:155
+WD path: The alias 'hosting/c/helsekompetanse.no' for path 'node/614' (language '') was not created, because the path 'node/517' already has the same alias.
+Imported existing site helsekompetanse.no
+Undefined property: stdClass::$uid hosting.module:192
+Undefined property: stdClass::$site_language hosting_site.nodeapi.inc:144
+Undefined property: stdClass::$ip_addresses hosting.ip.inc:43
+Undefined property: stdClass::$profile hosting_site.nodeapi.inc:153
+Undefined property: stdClass::$verified hosting_site.nodeapi.inc:153
+Undefined property: stdClass::$hosting_name hosting_site.nodeapi.inc:155
+WD path: The alias 'hosting/c/palrehab.org' for path 'node/616' (language '') was not created, because the path 'node/519' already has the same alias.
+Imported existing site palrehab.org
+Command dispatch complete
+Peak memory usage was 31.36 MB

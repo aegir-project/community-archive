@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/990/revisions/2668/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:06:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../70/index.html" />
+<link rel="up" href="../../../../70/index.html" />
+<link rel="next" href="../../../../71/index.html" />
+<link rel="prev" href="../../../../70/index.html" />
+<link rel="up" href="../../../../70/index.html" />
+<link rel="next" href="../../../../71/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Overriding site-specific PHP values from Thu, 12/15/2011 - 14:40 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-990" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/overriding-site-specific-php-values/index.html">Overriding site-specific PHP values</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-990'><p>Sometimes it is useful to override certain PHP values on a per-site basis. Depending on the value you want to override, a couple of options present themselves.</p>
+
+<p>First, let's consider where PHP values can be changed. <a href="http://www.php.net/manual/en/ini.list.php" title="http://www.php.net/manual/en/ini.list.php">http://www.php.net/manual/en/ini.list.php</a> lists <code>php.ini</code> directives, and under the "Changeable" column, indicates <a href="http://www.php.net/manual/en/configuration.changes.modes.php">where a configuration setting may be set</a>. If your value shows either <code>PHP_INI_USER</code> or <code>PHP_INI_ALL</code>, then the easiest way to change this value would be using <code>ini_set()</code> in a <code>local.settings.php</code>:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /> </span><span style="color: #007700">@</span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'memory_limit'</span><span style="color: #007700">, </span><span style="color: #DD0000">'128M'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p>
+
+<p>On the other hand, if the changes mode is either <code>PHP_INI_PERDIR</code> or <code>PHP_INI_SYSTEM</code>, <code>php_ini()</code> won't work. In this case, the solution is to inject the value into the vhost. Since vhosts are managed by Aegir, manually adding an override to <code>/var/aegir/config/server_master/apache/vhost.d/&lt;uri&gt;</code> would get blown away the next time that the site is verified.</p>
+
+<p>As described in <a href="../../../../70/index.html">Injecting into site vhosts</a>, we can inject values into vhosts using a Drush hook. For example, to raise the file upload size limit on <a href="http://ergonlogic.com/" title="http://ergonlogic.com">http://ergonlogic.com</a>, I added the following code in <code>/var/aegir/.drush/ergonlogiccom.drush.inc</code>:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />&nbsp; </span><span style="color: #007700">function </span><span style="color: #0000BB">ergonlogiccom_provision_apache_vhost_config</span><span style="color: #007700">(</span><span style="color: #0000BB">$uri</span><span style="color: #007700">, </span><span style="color: #0000BB">$data</span><span style="color: #007700">) {<br />&nbsp;&nbsp;&nbsp; if (</span><span style="color: #0000BB">$uri </span><span style="color: #007700">== </span><span style="color: #DD0000">"ergonlogic.com"</span><span style="color: #007700">) {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return array(</span><span style="color: #DD0000">"php_value upload_max_filesize 100M"</span><span style="color: #007700">, </span><span style="color: #DD0000">"php_value post_max_size 200M"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp; }<br />&nbsp; }<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p>
+
+<p>One challenge this may present is inspecting the values of the parameters passed into this function. It appears that the Hostmaster site doesn't get bootstrapped, and so common debugging tools (such as devel.module's <a href="http://api.drupal.org/api/devel/devel.module/function/dd/6">dd()</a>) aren't available. However <a href="http://api.drush.ws/api/function/drush_log/4.x">drush_log()</a> is, and when called, will push arbitrary messages back into your Aegir site's verify task log.</p>
+
+<p>So sticking the following into the function above can help:
+<div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp; drush_log</span><span style="color: #007700">(</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$uri</span><span style="color: #DD0000">: " </span><span style="color: #007700">. </span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$uri</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-62.html?destination=node%2F990%23comment-form">Login</a> or <a href="../../../../../user/register/index-62.html?destination=node%2F990%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-62.html?destination=node%2F990%23comment-form">Login</a> or <a href="../../../../../user/register/index-62.html?destination=node%2F990%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/990/revisions/2668/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:06:24 GMT -->
+</html>

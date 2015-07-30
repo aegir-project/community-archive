@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/13149/revisions/15960/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:25:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of database.sql file in site&#039;s root directory does not get deleted from remote web servers after site migrations from Mon, 05/04/2015 - 20:14 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-13149" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/km/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="km&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/km/index.html" class="username" title="View user profile.">km</a></div><div class='date'>8:14pm May 4, 2015</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="../../../../../discuss/databasesql-file-sites-root-directory-does-not-get-deleted-remote-web-servers-after-site-mig/index.html">database.sql file in site&#039;s root directory does not get deleted from remote web servers after site migrations</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>The</p>
+
+<pre>database.sql</pre>
+
+<p>isn't being deleted after site migrations -- not from the remote web servers, but only from the Aegir server.</p>
+
+<p>According to the task log:</p>
+
+<p><div class="codeblock"><code>...<br />Found database dump at /app/aegir/platforms/1.4/sites/example.com/database.sql.<br />Database dump at /app/aegir/platforms/1.4/sitesexample.com/database.sql is readable<br />...<br />Removed dump file /app/aegir/platforms/1.4/sites/example.com/database.sql after restoring from it<br />...</code></div></p>
+
+<p>My questions are: 
+1. Is this file needed on the remote web servers? Or can it be safely deleted? It appears in the the backup archives on the aegir server.
+2. Is there a feature in Aegir that we have not enabled that can delete this from remote web servers?</p>
+
+<p>The relevant code is 
+&lt;?php
+function drush_db_post_provision_deploy() {
+  provision_file()-&gt;unlink(d()-&gt;site_path . '/database.sql')
+    -&gt;succeed('Removed dump file @path after restoring from it')
+    -&gt;fail('Could not remove dump file @path', 'DRUSH_PERM_ERROR');
+}
+&gt;</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-6.html?destination=node%2F13149%23comment-form">Login</a> or <a href="../../../../../user/register/index-6.html?destination=node%2F13149%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/13149/revisions/15960/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:25:51 GMT -->
+</html>

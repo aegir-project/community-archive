@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/content/scrums/weekly-scrum-irc-log-2012-05-28?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:36:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../weekly-scrum-irc-log-2012-05-10/index.html" />
+<link rel="up" href="../../../scrums/index.html" />
+<link rel="next" href="../../../roadmap/3/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2012-05-28 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1524" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2012-05-28</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_7 first"><a href="../../../taxonomy/term/7/index.html" rel="tag" title="">scrum</a></li>
+<li class="taxonomy_term_6 last"><a href="../../../taxonomy/term/6/index.html" rel="tag" title="">weekly scrums</a></li>
+</ul></div><div id='diff-inline-1524'><pre>
+[05:02:37]  &lt;@darthsteven&gt;  anarcat, mig5, omega8cc, EclipseGc, mvc, sfyn, shrop, skwashd: scrum?
+[05:02:43]  &lt;@anarcat&gt;  yay
+[05:03:49]  &lt;@darthsteven&gt;  shall I go first?
+[05:03:55]  &lt;@darthsteven&gt;  I've done not a lot
+[05:03:58]  &lt;@shrop&gt;    Not at my computer, but will watch from mobile. Cheers!
+[05:04:09]  &lt;@darthsteven&gt;  released 1.9 a little while ago
+[05:04:23]  &lt;@anarcat&gt;  upgrade went through like a breeze here
+[05:04:24]  &lt;@darthsteven&gt;  that's it from me!
+[05:04:30]  &lt;@anarcat&gt;  alright
+[05:04:31]  &lt;@darthsteven&gt;  next!
+[05:04:43]  &lt;@anarcat&gt;  well, for me, thanks to omega8cc's grant, i have been able to free up more time for the project
+[05:04:53]  &lt;@anarcat&gt;  my first focus was on urgent drush security issues
+[05:05:07]  &lt;@anarcat&gt;  <a href="http://drupal.org/node/671906" title="http://drupal.org/node/671906">http://drupal.org/node/671906</a>
+[05:05:09]  &lt;@hefring&gt;  <a href="http://drupal.org/node/671906" title="http://drupal.org/node/671906">http://drupal.org/node/671906</a> =&gt; mysql credentials leak in drush sqlc =&gt; Drush, PM (dl, en, up ...), critical, needs review, 44 comments, 3 IRC mentions
+[05:05:33]  &lt;@anarcat&gt;  this is mostly fixed, but i have found deep issues in the sql code and other credentials leaks that are not yet fixd
+[05:05:44]  &lt;@anarcat&gt;  my progress can be followed here: <a href="http://drupal.org/user/1274/track" title="http://drupal.org/user/1274/track">http://drupal.org/user/1274/track</a>
+[05:06:01]  &lt;@anarcat&gt;  and here: <a href="http://drupal.org/user/1274/track/code" title="http://drupal.org/user/1274/track/code">http://drupal.org/user/1274/track/code</a>
+[05:06:32]  &lt;@anarcat&gt;  which reminds me: i have started work on a pretty dumb merge script for apache log files
+[05:06:35]  &lt;@anarcat&gt;  <a href="http://drupal.org/project/provision-mergelog" title="http://drupal.org/project/provision-mergelog">http://drupal.org/project/provision-mergelog</a>
+[05:06:51]  &lt;@anarcat&gt;  it is designed to suck apache logs from remote servers into a single file that can then be parsed by logfile analysis software
+[05:07:11]  &lt;@anarcat&gt;  i have done some tests with awstats, and it works well, considering awstats haven't been updated in 3 years
+[05:07:17]  &lt;@anarcat&gt;  btw, piwik sucks for that
+[05:07:21]  &lt;@darthsteven&gt;  cool!
+[05:07:31]  &lt;@anarcat&gt;  while it *can* process those logfiles, it's not reliable at all and makes *ONE HIT PER LINE* on the webserver
+[05:07:42]  &lt;@anarcat&gt;  which is a lot of fun if the piwik site is in the logfile itself :P
+[05:08:03]  &lt;@anarcat&gt;  i have also dug my head in the SSL code again, and found quite a lot of issues
+[05:08:14]  &lt;@anarcat&gt;  found new bugs:
+[05:08:15]  &lt;@anarcat&gt;  <a href="http://drupal.org/node/1603722" title="http://drupal.org/node/1603722">http://drupal.org/node/1603722</a>
+[05:08:15]  &lt;@hefring&gt;  <a href="http://drupal.org/node/1603722" title="http://drupal.org/node/1603722">http://drupal.org/node/1603722</a> =&gt; deleting a site doesn't delete its SSL certificate =&gt; Hostmaster (Aegir), Code, normal, needs work, 2 comments, 1 IRC mention
+[05:08:32]  &lt;@anarcat&gt;  and updated the existing one: <a href="http://drupal.org/node/1126640" title="http://drupal.org/node/1126640">http://drupal.org/node/1126640</a>
+[05:08:33]  &lt;@hefring&gt;  <a href="http://drupal.org/node/1126640" title="http://drupal.org/node/1126640">http://drupal.org/node/1126640</a> =&gt; move the SSL IP allocation to the frontend =&gt; Hostmaster (Aegir), Code, normal, needs work, 20 comments, 1 IRC mention
+[05:08:40]  &lt;@anarcat&gt;  but we need to redo the SSL code, it's quite crappy right now
+[05:08:52]  &lt;@anarcat&gt;  i am not sure we want to ditch IP management, as SNI doesn't seem quite mature enough yet
+[05:08:59]  &lt;@anarcat&gt;  so i'd like to support both SNI and non-SNI setups
+[05:09:19]  &lt;@anarcat&gt;  alright what else have i done
+[05:09:40]  &lt;@anarcat&gt;  well, i guess all is left is what next:
+[05:09:51]  &lt;@anarcat&gt;  i will work on improving migrate performance
+[05:10:09]  &lt;@anarcat&gt;  <a href="https://drupal.org/node/1484214" title="https://drupal.org/node/1484214">https://drupal.org/node/1484214</a>
+[05:10:19]  &lt;@anarcat&gt;  i will attack <a href="https://drupal.org/node/1205458" title="https://drupal.org/node/1205458">https://drupal.org/node/1205458</a> shortly
+[05:10:24]  &lt;@anarcat&gt;  and i'm looking for advice on how to do that
+[05:10:32]  &lt;@anarcat&gt;  should files reside in the clients directory?
+[05:11:00]  &lt;@anarcat&gt;  anyways, that's about it for me
+[05:11:14]  &lt;@anarcat&gt;  i am going for a trip in sao paulo brasil between june 5th and 18th
+[05:11:26]  &lt;@anarcat&gt;  if people want to hookup or organize a little aegir meetup there, that could be fun and useful
+[05:11:32]  &lt;@anarcat&gt;  next up?
+[05:12:35]  &lt;@anarcat&gt;  that was quite a monologue
+[05:12:52]  &lt;@darthsteven&gt;  (all good stuff though)
+[05:13:52]  &lt;@darthsteven&gt;  anyone else?
+[05:14:20]  &lt;@omega8cc&gt; not much from me to report, other that we have now nice ssd machine for project testing etc
+[05:15:12]  &lt;@darthsteven&gt;  indeed, thanks very much for that!
+[05:15:30]  &lt;@anarcat&gt;  cool
+[05:15:35]  &lt;@anarcat&gt;  who's following up on that setup?
+[05:15:59]  &lt;@darthsteven&gt;  I am
+[05:16:07]  &lt;@anarcat&gt;  alright
+[05:16:09]  &lt;@anarcat&gt;  that's awesome
+[05:16:18]  &lt;@anarcat&gt;  i noticed that ergonlogic posted something about vagrant
+[05:16:21]  &lt;@darthsteven&gt;  should be able to get it sorted this week or next
+[05:16:25]  &lt;@anarcat&gt;  he showed me his work, it's pretty good
+[05:16:26]  &lt;@omega8cc&gt; ah, I have added r1soft backups there, just in case
+[05:16:40]  &lt;@darthsteven&gt;  I'm trying to 'do it right' and set it all up using puppet
+[05:18:10]  &lt;@anarcat&gt;  that's awesome
+[05:19:32]  &lt;@darthsteven&gt;  we'll call that a scrum there
+[05:19:34]  &lt;@darthsteven&gt;  oh
+[05:20:11]  &lt;@darthsteven&gt;  actually, Drush 5 got itself a bit more sorted, and so Aegir could probably be released for Drush 5 now, if we wanted, but we'll have a better release if we wait a bit
+[05:20:25]  &lt;@darthsteven&gt;  but we'll call it a scrum now.
+
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../user/login/index-141.html?destination=node%2F1524%23comment-form">Login</a> or <a href="../../../user/register/index-141.html?destination=node%2F1524%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/content/scrums/weekly-scrum-irc-log-2012-05-28?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:36:45 GMT -->
+</html>

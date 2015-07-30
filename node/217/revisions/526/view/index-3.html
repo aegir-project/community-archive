@@ -1,0 +1,996 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/217/revisions/526/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:55:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/aegir-handbook/index.html" />
+<link rel="up" href="../../../../../content/aegir-handbook/index.html" />
+<link rel="next" href="../../../../../handbook/operating-system-support/index.html" />
+<link rel="prev" href="../../../../../content/aegir-handbook/index.html" />
+<link rel="up" href="../../../../../content/aegir-handbook/index.html" />
+<link rel="next" href="../../../../../handbook/operating-system-support/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="prev" href="../../../../../intro/index.html" />
+<link rel="up" href="../../../../../intro/index.html" />
+<link rel="next" href="../../../../34/index.html" />
+<link rel="prev" href="../../../../../handbook/operating-system-support/index.html" />
+<link rel="up" href="../../../../../intro/index.html" />
+<link rel="next" href="../../../../../project-history/index.html" />
+<link rel="prev" href="../../../../34/index.html" />
+<link rel="up" href="../../../../../intro/index.html" />
+<link rel="next" href="../../../../../faq/index.html" />
+<link rel="prev" href="../../../../../project-history/index.html" />
+<link rel="up" href="../../../../../intro/index.html" />
+<link rel="next" href="../../../../../faq/ubercart-integration-faq/index.html" />
+<link rel="prev" href="../../../../../faq/index.html" />
+<link rel="up" href="../../../../../faq/index.html" />
+<link rel="next" href="../../../../../intro/case-studies/index.html" />
+<link rel="prev" href="../../../../../faq/ubercart-integration-faq/index.html" />
+<link rel="up" href="../../../../../intro/index.html" />
+<link rel="next" href="../../../../../wikipedia-article/index.html" />
+<link rel="prev" href="../../../../../intro/case-studies/index.html" />
+<link rel="up" href="../../../../../intro/index.html" />
+<link rel="next" href="../../../../../help/index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Why Aegir? from Mon, 12/20/2010 - 21:16 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-217" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../intro/index.html">Why Aegir?</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_8 first"><a href="../../../../../taxonomy/term/8/index.html" rel="tag" title="">benefits</a></li>
+<li class="taxonomy_term_9"><a href="../../../../../taxonomy/term/9/index.html" rel="tag" title="">features</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-217'><p>If you are new to Aegir you may have heard great things about the project but not know about many of the <em>benefits</em> of using it.  Here are some - feel free to add to this list.</p>
+
+<h2>Introduction</h2>
+
+<p>One of the great architectural features of Drupal is that you can have multiple web sites that share a common <em>platform</em> of modules, themes and other code used to manage content and appearance.  If you make a change to the platform (e.g. update a module, change a theme etc.) all sites based on the platform are immediately updated.  At the same time, each site has its own database and file system that can be tailored to the specific needs of the site. In addition to the concept of platforms, Drupal lets you create installation <em>profiles</em>.  A platform can have one or more profiles which allows you create different sites based on your choice of platform and profile.</p>
+
+<h2>Multiple Site Installations</h2>
+
+<p>Aegir provides a web interface to <em>define a platform and then create multiple sites</em> based on that platform.  Aegir creates the site database, site-specific file folders and the web server files that point browser requests to the right place.</p>
+
+<h2>Site Management</h2>
+
+<p>Through the Aegir interface you can create backups, restore a specific backup, disable or delete individual sites.  Thus Aegir  is a very helpful way of tracking and managing lots of sites spread over several platforms.  Moreover, you can perform bulk tasks on all sites based on a particular platform.</p>
+
+<h2>Site Developement</h2>
+
+<p>When you are building a platform from scratch or simply extending or upgrading an existing platform, Aegir can significantly speed up development time and minimize impacts to sites in production.</p>
+
+<p>With Aegir you can <em>clone</em> a site to the same or a different platform.  So, say you have a number of sites running on a Platform A and you decide to upgrade a platform module but you want to test your sites to make sure they are compatible with the upgrade.  Using Aegir you would create another platform, Platform B that is identical except for the module upgrade.  Then you can use clone to create a copy of one of your sites from Platform A to Platform B.  The database and all your files are copied by Aegir and you can then test your cloned site without worrying that you might impact the existing production site.</p>
+
+<p>Once you are satisfied that your cloned site is working properly you can then <em>migrate</em> one or all of your sites from Platform A to Platform B.</p>
+
+<p>This process can be very useful for building out new platforms, troubleshooting issues etc.</p>
+
+<h2>Site Aliasing</h2>
+
+<p>Through the Aegir interface you can define <em>aliases</em> for your web sites so that, for example, traffic to <a href="http://www.example.com/" title="http://www.example.com">http://www.example.com</a> and <a href="http://example.com/" title="http://example.com">http://example.com</a> is directed to the same site.</p>
+
+<h2>Multiple Servers</h2>
+
+<p>The Aegir interface can also be used to manage platforms and web sites on different web servers, which gives you latitude to tailor a hosting architecture to your own needs.</p>
+
+<h2>Scheduled Tasks (Cron)</h2>
+
+<p>Most Drupal sites rely on recurring scheduled tasks also known as cron jobs to perform operations like checking for updates, cleaning up log files etc.  Aegir can be configured to run cron jobs for hosted sites on regular intervals without having to utilitize other tools or configure cron jobs manually on a site-by-site basis.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-21.html?destination=node%2F217%23comment-form">Login</a> or <a href="../../../../../user/register/index-21.html?destination=node%2F217%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-21.html?destination=node%2F217%23comment-form">Login</a> or <a href="../../../../../user/register/index-21.html?destination=node%2F217%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+<div  id="node-582" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../handbook/operating-system-support/index.html">Operating system support</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>Aegir is primarily developed on Debian GNU/Linux, but it supports a whole slew of other platforms, Debian packages have been available for that platform for a while and the <a href="../../../../../installing/debian/index.html">install instructions</a> have been originally written primarily for Debian.</p>
+
+<p>This page documents Aegir support for various operating system, including specifics on how it is best recommended to install Aegir on those platforms, quirks and problems, packaging issues and coordination.</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Debian_support"><span class="toc-number">1. </span>Debian support</a>
+<ol>
+	<li class="toc-level-2"><a href="#Fully_supported"><span class="toc-number">1.1. </span>Fully supported</a></li>
+	<li class="toc-level-2"><a href="#Packaging_complete"><span class="toc-number">1.2. </span>Packaging complete</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Ubuntu_support"><span class="toc-number">2. </span>Ubuntu support</a>
+<ol>
+	<li class="toc-level-2"><a href="#Well_supported"><span class="toc-number">2.1. </span>Well supported</a></li>
+	<li class="toc-level-2"><a href="#Packaging_almost_complete"><span class="toc-number">2.2. </span>Packaging almost complete</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Arch_Linux"><span class="toc-number">3. </span>Arch Linux</a>
+<ol>
+	<li class="toc-level-2"><a href="#Well_supported-1"><span class="toc-number">3.1. </span>Well supported</a></li>
+	<li class="toc-level-2"><a href="#No_packaging"><span class="toc-number">3.2. </span>No packaging</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#CentOS_and_Redhat-descendants"><span class="toc-number">4. </span>CentOS and Redhat-descendants</a>
+<ol>
+	<li class="toc-level-2"><a href="#Well_supported-2"><span class="toc-number">4.1. </span>Well supported</a></li>
+	<li class="toc-level-2"><a href="#No_packaging-3"><span class="toc-number">4.2. </span>No packaging</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Gentoo"><span class="toc-number">5. </span>Gentoo</a>
+<ol>
+	<li class="toc-level-2"><a href="#Supported"><span class="toc-number">5.1. </span>Supported</a></li>
+	<li class="toc-level-2"><a href="#No_packaging-4"><span class="toc-number">5.2. </span>No packaging</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Mac_OS_X"><span class="toc-number">6. </span>Mac OS X</a>
+<ol>
+	<li class="toc-level-2"><a href="#Partially_supported"><span class="toc-number">6.1. </span>Partially supported</a></li>
+	<li class="toc-level-2"><a href="#No_packaging-5"><span class="toc-number">6.2. </span>No packaging</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Solaris"><span class="toc-number">7. </span>Solaris</a>
+<ol>
+	<li class="toc-level-2"><a href="#Supported-6"><span class="toc-number">7.1. </span>Supported</a></li>
+	<li class="toc-level-2"><a href="#No_packaging-7"><span class="toc-number">7.2. </span>No packaging</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#FreeBSD"><span class="toc-number">8. </span>FreeBSD</a>
+<ol>
+	<li class="toc-level-2"><a href="#Supported-8"><span class="toc-number">8.1. </span>Supported</a></li>
+	<li class="toc-level-2"><a href="#No_packaging-9"><span class="toc-number">8.2. </span>No packaging</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Other_platforms"><span class="toc-number">9. </span>Other platforms</a></li>
+</ol>
+</div>
+</div>
+
+<h1 id="Debian_support">1. Debian support</h1>
+
+<ul>
+<li><a href="../../../../../installing/debian/index.html">Install using Debian packages</a></li>
+<li><a href="../../../../../upgrading/debian/index.html">Upgrade using Debian packages</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Fully_supported">1.1. Fully supported</h2>
+
+<p>Aegir is <strong>fully supported</strong> in Debian, with multiple reports of successful installations, both <a href="../../../../../installing/manual/index.html">manual</a> and <a href="../../../../../installing/debian/index.html">automatic</a> installs and upgrades.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Packaging_complete">1.2. Packaging complete</h2>
+
+<p>Debian packaging is currently done in Koumbit's private repositories, as documented in the <a href="../../../../../installing/debian/index.html">install instructions</a>.</p>
+
+<p>Drush is also fully supported in Debian, with regularly Debian packages in unstable, Wheezy, and Squeeze-backports.</p>
+
+<p>Drush make doesn't yet have a Debian package.</p>
+
+<p>To <a href="../../../../543/index.html">building Debian packages</a>, follow <a href="../../../../543/index.html">those instructions</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Ubuntu_support">2. Ubuntu support</h1>
+
+<ul>
+<li><a href="../../../../../installing/debian/index.html">Install using Debian packages</a></li>
+<li><a href="../../../../../upgrading/debian/index.html">Upgrade using Debian packages</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Well_supported">2.1. Well supported</h2>
+
+<p>Because none of the core developpers actually run Ubuntu daily, it is less well supported. But because Ubuntu is actually based on Debian, lots of people are happily running Aegir on Ubuntu without problems.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Packaging_almost_complete">2.2. Packaging almost complete</h2>
+
+<dl>
+<dt>Through the Debian packages, packaging is almost complete. The key piece missing is Drush in Ubuntu Maverick and previous versions. See <a href="https://bugs.launchpad.net/ubuntu/+source/drush/+bug/755169">this bug report</a> for more information.</dt>
+<dd>
+<p>(Ubuntu <a href="https://bugs.launchpad.net/ubuntu/+source/drush/+bug/755172">synced</a> Drush 4.4 in Natty Narwhal 11.04, which should be released <a href="https://wiki.ubuntu.com/NattyReleaseSchedule">by the end of april</a>, but we're still looking for a Ubuntu <a href="https://wiki.ubuntu.com/MOTU">MOTU</a> to handle the backporting on the Ubuntu side of things.)</p>
+</dd>
+
+<dd>
+<p>There are unofficial install scripts also available for Ubuntu: <a href="https://github.com/doka/install-aegir-on-ubuntu" title="https://github.com/doka/install-aegir-on-ubuntu">https://github.com/doka/install-aegir-on-ubuntu</a></p>
+</dd>
+</dl>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Arch_Linux">3. Arch Linux</h1>
+
+<ul>
+<li><a href="../../../../../installing/manual/index.html">Install using the manual install process</a></li>
+<li><a href="../../../../../upgrading/script/index.html">Upgrade using the automated script</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Well_supported-1">3.1. Well supported</h2>
+
+<p>Some people definitely run Aegir in Arch Linux, as the <a href="../../../../../installing/manual/index.html">manual install process</a> documentation has extensive details of the Arch Linux specific steps.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="No_packaging">3.2. No packaging</h2>
+
+<p>Unfortunately, no package is available for this platform.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="CentOS_and_Redhat-descendants">4. CentOS and Redhat-descendants</h1>
+
+<ul>
+<li><a href="../../../../../installing/manual/index.html">Install using the manual install process</a></li>
+<li><a href="../../../../../upgrading/script/index.html">Upgrade using the automated script</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Well_supported-2">4.1. Well supported</h2>
+
+<p>A few people are running Aegir on RedHat and related operating systems, mostly CentOS. There are a few tricks documented in the manual install process but it's still fairly straightward to install.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="No_packaging-3">4.2. No packaging</h2>
+
+<p>Unfortunately, no package is available for this platform, we are looking for volunteers to write a spec file to create RPMs.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Gentoo">5. Gentoo</h1>
+
+<ul>
+<li><a href="../../../../../installing/manual/index.html">Install using the manual install process</a></li>
+<li><a href="../../../../../upgrading/manual/index.html">Upgrade using the manual upgrade process</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Supported">5.1. Supported</h2>
+
+<p>We believe that Aegir works on Gentoo right now, according to <a href="../../../../../discuss/10rc7-install-gentoo-segfaults/index.html#comment-738">this post</a>. Follow the manual install instructions.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="No_packaging-4">5.2. No packaging</h2>
+
+<p>No packages are provided on this platform.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Mac_OS_X">6. Mac OS X</h1>
+
+<ul>
+<li><a href="../../../../417/index.html">Install using the special instructions for OSX</a> and <a href="../../../../../installing/manual/index.html">the manual install process</a></li>
+<li><a href="../../../../../upgrading/script/index.html">Upgrade using the automated script</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Partially_supported">6.1. Partially supported</h2>
+
+<p>OS X can be difficult for web developers, because it doesn't ship with a good Apache/PHP/MySQL stack and the UNIX internals are a bit awkward. Still, Aegir was originally developed on OS X, so it's perfectly possible to use Aegir on OS X.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="No_packaging-5">6.2. No packaging</h2>
+
+<p>There are currently no packages for OS X and none planned. Special instructions are provided for installing on OS X but once it's installed, the usage should be similar to other platforms, including for upgrades.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Solaris">7. Solaris</h1>
+
+<ul>
+<li><a href="../../../../../installing/manual/index.html">Install using the manual install process</a></li>
+<li><a href="../../../../../upgrading/manual/index.html">Upgrade using the manual upgrade process</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Supported-6">7.1. Supported</h2>
+
+<p>There are at least two Solaris installs out there, and significant work was done to make sure that Aegir was UNIX-agnostic enough to respect Solaris' idiosyncracies. The manual install instructions include some of those exceptions clearly documented and outline. Because the upgrade can be iffy, it is recommended to upgrade using the full manual install process.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="No_packaging-7">7.2. No packaging</h2>
+
+<p>No packages are provided on this platform.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="FreeBSD">8. FreeBSD</h1>
+
+<ul>
+<li><a href="../../../../../installing/manual/index.html">Install using the manual install process</a> and cherry-pick some commands from <a href="https://drupal.org/files/issues/HINTS_FreeBSD_0.txt">this HINTS file</a> for prerequisites</li>
+<li><a href="../../../../../upgrading/manual/index.html">Upgrade using the manual upgrade process</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Supported-8">8.1. Supported</h2>
+
+<p>We had one report of Aegir being installable on FreeBSD. The pre-requesites have not yet been merged into the main <a href="../../../../../install/manual/index.html">install instructions</a> (see <a href="https://drupal.org/node/659024">#659024</a> for followup on that), so you'll need a bit of guesswork.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="No_packaging-9">8.2. No packaging</h2>
+
+<p>No packages are provided on this platform, but it should be fairly simple to make a port inspired by the Debian packaging, considering how it currently works.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Other_platforms">9. Other platforms</h1>
+
+<p>Other platforms are probably supported but those have not been explicitly and clearly documented so they are not yet included here. Feel free to edit this page to add a section for those users!</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-26.html?destination=node%2F582%23comment-form">Login</a> or <a href="../../../../../user/register/index-26.html?destination=node%2F582%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-26.html?destination=node%2F582%23comment-form">Login</a> or <a href="../../../../../user/register/index-26.html?destination=node%2F582%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-34" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../34/index.html">Project goals</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_3 first"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><h4>Open</h4>
+
+<p>This project is developed using Git. People are free to download the source code for the project (and in fact are required to run it). <a href="../../../../31/index.html">Git access is available here</a>.</p>
+
+<p>After many discussions with many different developers working in this space, it has become apparent to the developers that many people have developed their own custom set of utilities and scripts to manage many of the issues this project encompasses.</p>
+
+<p>This project aims to be an open framework that will allow us to collaborate on a single set of community developed / maintained utilities, so that the quality and the capabilities will improve for all of us.</p>
+
+<h4>Easy</h4>
+
+<p>This functions on both a developer and a user level.</p>
+
+<p>For the user, the intent is to make the system as simple to install and operate as possible, which means drastically lowering the requirements for installing and getting up and running with the system. To that end the system has an <a href="../../../../../installing/debian/index.html">installation script to automate the installation of Aegir</a>, which has developed a long way from a multi-step install.php wizard and even more complex requirements before then.</p>
+
+<p>The system will auto-detect as many of the settings it requires to run as is possible from within the confines of PHP, and will provide detailed and accurate inline documentation on the server configuration required, based on the configured settings.</p>
+
+<p>This system aims to be self documenting, to aid in troubleshooting, in the event that an error occurs. This documentation is both translatable and extendable when new services are enabled.</p>
+
+<p>For developers we aim to keep the implementation simple, clear and concise, and use as few as possible additional requirements outside of Drupal itself. We aim to provide <a href="../../../../5/index.html">extensive developer documentation</a>, to lower the barrier for people wanting to integrate with the system.</p>
+
+<p>The system will never require any additional core patches for the sake of base functionality. It is a 'contrib' project.</p>
+
+<p>Basically, the aim is to do everything possible to ensure that the user and developer experience is a positive one.</p>
+
+<h4>Useful</h4>
+
+<p>The system aims to help maintain many sites, not just when they are initially installed, but over the entire lifetime of the site.</p>
+
+<p>It is designed to install new sites, provisioning all the required services (such as Apache, Mysql and DNS), with the flexibility to provision additional services (such as Mail, LDAP etc.) through optional contributed modules or features.</p>
+
+<p>It provides the ability to revert back to previous versions of your sites, as well as re-deploy existing sites under different domain names (mysite.com copied to dev.mysite.com). These backups will be usable on any system with the provisioning backend installed (such as a developer's machine, or a staging server).</p>
+
+<p>This aspect of the system will also be used to manage upgrades between multiple versions of Drupal, and will allow you to schedule upgrades. It will do its utmost to ensure that your site has been successfully upgraded, and features dependency tracking to keep track of which sites are eligible to be upgraded.</p>
+
+<p>It will provide a mechanism that ensures the cron process is run on all your sites within the specified time frame, and additionally will allow for scheduled backups of all your sites.</p>
+
+<p>Through optional modules it will be able to extract usage statistics from your hosted sites and provide an overview of site usage through the administration interface, it will also be able to keep track of server health and load for each of the configured servers.</p>
+
+<p><em>These are the stated feature goals, many of these features will not be available in the initial releases, as they are not considered a base requirement.</em></p>
+
+<h4>Secure</h4>
+
+<p>The system will make sure that it has the least amount of power available to it to accomplish it's task, and will ensure that all file permissions are set to the strictest possible levels they need to be, and that no sensitive information is web accessible.</p>
+
+<p>None of the functionality or code required to accomplish it's tasks will ever be available in the provisioned sites, and the hosting front end itself will make extensive usage of Drupal's access control requirements to ensure that users will not have access to things they are not meant to see.</p>
+
+<p><em>to be extended</em></p>
+
+<h4>Distributed</h4>
+
+<p>The system functions entirely on the command line, using unix pipes for inter-process communication.</p>
+
+<p>As such, once ssh has been configured for the user the back end script is running as, it will be able to freely communicate with the external server through the only mechanism it knows how (the command line).</p>
+
+<p>As an extension of the backup/restore functionality, you will be able to seamlessly move sites between servers, while providing a redirect to an always accessible site alias for users who have cached dns entries.</p>
+
+<p>You will also be able to change database servers through simply modifying the site record on the user frontend.</p>
+
+<p><em>to be extended</em></p>
+
+<h4>Diagnostics</h4>
+
+<p>The system will provide accurate and complete logs of everything that has occurred on the system, as well as feature complete error reporting and notification of all issues that have occurred. It will first verify that it is able to complete the requested task, and then it will verify that the task has been completed successfully, before completing the task.</p>
+
+<p>When an error occurs, it will rollback to its last working state before exiting, so that failures will not negatively
+affect sites.</p>
+
+<p>All node types in the front end are revision controlled, to allow for complete history of all objects.</p>
+
+<p><em>to be extended</em></p>
+
+<h4>Flexible</h4>
+
+<p>This system aims to be as flexible as Drupal itself is.</p>
+
+<p>It will provide a complete and useful set of hooks to module developers, for both the front end and the back end, to accomplish whatever tasks they need.</p>
+
+<p>The administration interface will provide complete views support for all data in the site, to allow for custom reporting on your network.</p>
+
+<p>The core node types are all standard Drupal nodes, that can be extended through CCK by the implementor. This could be used for tracking additional client information or additional information on sites.</p>
+
+<p>You will be able to integrate Drupal contributed modules such as Organic Groups or Ecommerce/Ubercart to build support or billing functionality directly into the hosting front end.</p>
+
+<p>The system is completely white boxed, so that it will work with almost any Drupal theme, and as such can have your own corporate identity.</p>
+
+<p><em>to be extended</em></p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-28.html?destination=node%2F34%23comment-form">Login</a> or <a href="../../../../../user/register/index-28.html?destination=node%2F34%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-28.html?destination=node%2F34%23comment-form">Login</a> or <a href="../../../../../user/register/index-28.html?destination=node%2F34%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-788" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../project-history/index.html">Project history</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_4 first"><a href="../../../../../taxonomy/term/4/index.html" rel="tag" title="This level is for users who have access to only their sites and not able to manage all Aegir features, accounts or the server/system.">Client</a></li>
+<li class="taxonomy_term_27"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_3"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><p>Aegir is a completely new iteration of the original Hostmaster project written by <a href="http://drupal.org/user/1337">Adrian Rossouw</a>. The original version has been running the hosted service provided at <a href="http://bryght.com/" title="http://bryght.com">http://bryght.com</a> for nearly 4 years, hosting literally thousands of sites, and has been implemented for several large clients.
+Originally, the system would only manage a single Drupal instance, on a single web server with a single database server, and as the requirements grew (concurrently running multiple versions of Drupal and then needing to manage several servers), it grew considerably in (unplanned) complexity.</p>
+
+<p>There were also non-ideal implementation and licensing issues, such as the choice of Python and PostgreSQL for the backend and not developing the system as an "invite-only" GPL project, which severely limited the number of developers that were attracted to the project. Because of the system requirements, it was also very difficult for new users to install, and had many unnecessary points of failure.</p>
+
+<p>The Aegir hosting system has been designed with all these issues in mind, and the lessons learned have formed the basis of many of the <a href="../../../../34/index.html">Aegir Project Goals</a>. The code was committed to Drupal.org in november 2007 and has seen multiple production-ready but still "alpha" releases there in the two following years.</p>
+
+<ul>
+<li>0.1 marked the first Drupal 5 and "multi-site" capable version.</li>
+<li>0.2 marked the first multi-platform version, which supported upgrades between different Drupal versions</li>
+<li>0.3 marked the port of the frontend to Drupal 6</li>
+</ul>
+
+<p>Then in 2009, a major overhaul of the code was performed to provide "multi-server" support, which led to numerous 0.4-alpha releases (about 20) and, around the end of 2009, <a href="http://developmentseed.org/blog/2009/nov/22/aegir-hosting-system-moves-git">required the move to git as a version control system</a> even though Drupal.org was still stuck in CVS-land, which meant <a href="http://koumbit.org/">Koumbit.org</a> started hosting the git repositories on their servers.</p>
+
+<p>All this led to, about a year and a half later (early 2011), to the <a href="../../../../../1/index-12.html">1.0 release</a> of our beloved platform and the Aegir project migrating <a href="../../../../384/index.html">back to drupal.org</a> at last</p>
+
+<p>Aegir now exceeds the capabilities of the original HostMaster system and is in use by numerous real world projects.</p>
+
+<p>Aegir is now supported by <a href="http://koumbit.org/">Koumbit.org</a>, <a href="http://computerminds.co.uk/">Computer Minds</a> and <a href="http://mig5.net/">mig5</a> and is being used to deploy sites in universities, private companies and non-profits around the world.</p>
+
+<p>On January 8, 2014 the <a href="../../../../../2/index-3.html">2.0 release</a> ships with significant stability improvements, Drush 5 and 6 support, subdirectory multisite support, improved nginx support, native views and much, much more.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-20.html?destination=node%2F788%23comment-form">Login</a> or <a href="../../../../../user/register/index-20.html?destination=node%2F788%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-20.html?destination=node%2F788%23comment-form">Login</a> or <a href="../../../../../user/register/index-20.html?destination=node%2F788%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-14" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../faq/index.html">FAQ</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_4 first"><a href="../../../../../taxonomy/term/4/index.html" rel="tag" title="This level is for users who have access to only their sites and not able to manage all Aegir features, accounts or the server/system.">Client</a></li>
+<li class="taxonomy_term_3"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Help"><span class="toc-number">1. </span>Help!</a>
+<ol>
+	<li class="toc-level-2"><a href="#Where_can_I_get_help"><span class="toc-number">1.1. </span>Where can I get help?</a></li>
+	<li class="toc-level-2"><a href="#Can_I_ask_you_a_question"><span class="toc-number">1.2. </span>Can I ask you a question?</a></li>
+	<li class="toc-level-2"><a href="#Who_are_the_Aegir_developers"><span class="toc-number">1.3. </span>Who are the Aegir developers?</a></li>
+	<li class="toc-level-2"><a href="#I-d_like_to_help_out_become_a_developer"><span class="toc-number">1.4. </span>I'd like to help out / become a developer!</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Installing_Aegir"><span class="toc-number">2. </span>Installing Aegir</a>
+<ol>
+	<li class="toc-level-2"><a href="#Can_I_run_Aegir_on_a_shared_hosting_environment"><span class="toc-number">2.1. </span>Can I run Aegir on a shared hosting environment?</a></li>
+	<li class="toc-level-2"><a href="#Can_I_run_Aegir_on_Windows"><span class="toc-number">2.2. </span>Can I run Aegir on Windows?</a></li>
+	<li class="toc-level-2"><a href="#Can_Aegir_be_installed_next_to_CPanelPleskAlternCetc"><span class="toc-number">2.3. </span>Can Aegir be installed next to CPanel/Plesk/AlternC/etc?</a></li>
+	<li class="toc-level-2"><a href="#Where_can_I_get_support_for_BarracudaOctopus_Aegir"><span class="toc-number">2.4. </span>Where can I get support for Barracuda/Octopus Aegir?</a></li>
+	<li class="toc-level-2"><a href="#Do_I_really_need_to_create_an_aegir_user"><span class="toc-number">2.5. </span>Do I really need to create an aegir user?</a></li>
+	<li class="toc-level-2"><a href="#Install_fails_with_-dummy_connection_failed_to_fail-_on_Ubuntu_12.04_LTS"><span class="toc-number">2.6. </span>Install fails with 'dummy connection failed to fail' on Ubuntu 12.04 LTS!</a></li>
+	<li class="toc-level-2"><a href="#How_can_I_tell_what_version_of_Aegir_I_have_installed"><span class="toc-number">2.7. </span>How can I tell what version of Aegir I have installed?</a></li>
+	<li class="toc-level-2"><a href="#After_installing_Aegir_I_have_two_servers_listed_is_this_normal"><span class="toc-number">2.8. </span>After installing Aegir I have two servers listed, is this normal?</a></li>
+	<li class="toc-level-2"><a href="#I_followed_the_installation_instructions._What_directory_holds_all_of_my_sites_now"><span class="toc-number">2.9. </span>I followed the installation instructions.  What directory holds all of my sites now?</a></li>
+	<li class="toc-level-2"><a href="#I_tried_to_create_a_site_but_the_create_task_failed_and_retries_don-t_succeed._How_do_I_delete_the_partially_created_site_and_associated_Aegir_tasks"><span class="toc-number">2.10. </span>I tried to create a site, but the create task failed and retries don't succeed.  How do I delete the partially created site and associated Aegir tasks?</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Upgrading_Aegir"><span class="toc-number">3. </span>Upgrading Aegir</a>
+<ol>
+	<li class="toc-level-2"><a href="#What_is_a_patch_or_-hotfix-_and_how_can_I_apply_it_to_fix_my_site_if_I_can-t_don-t_want_to_upgrade_to_HEAD"><span class="toc-number">3.1. </span>What is a patch or 'hotfix', and how can I apply it to fix my site if I can't / don't want to upgrade to HEAD?</a></li>
+	<li class="toc-level-2"><a href="#I_upgraded_Aegir_by_mistake_can_I_downgrade_it"><span class="toc-number">3.2. </span>I upgraded Aegir by mistake, can I downgrade it?</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Using_Aegir"><span class="toc-number">4. </span>Using Aegir</a>
+<ol>
+	<li class="toc-level-2"><a href="#Cron_isn-t_running_scheduled_tasks_aren-t_being_executed_what_do_I_do"><span class="toc-number">4.1. </span>Cron isn't running (scheduled tasks aren't being executed), what do I do?</a></li>
+	<li class="toc-level-2"><a href="#How_do_I_get_debugverbose_info_from_Drush_when_running_the_hosting_commands"><span class="toc-number">4.2. </span>How do I get debug/verbose info from Drush when running the hosting commands?</a></li>
+	<li class="toc-level-2"><a href="#How_do_I_update_a_site-s_or_platform-s_modules_using_Aegir"><span class="toc-number">4.3. </span>How do I update a site's or platform's modules using Aegir?</a></li>
+	<li class="toc-level-2"><a href="#Is_it_best_to_set_up_sites_under_aegir_as_www.example.com_or_just_as_example.com"><span class="toc-number">4.4. </span>Is it best to set up sites under aegir as www.example.com or just as example.com?</a></li>
+	<li class="toc-level-2"><a href="#How_can_I_setup_a_site_to_use_https:_under_Aegir"><span class="toc-number">4.5. </span>How can I setup a site to use https:// under Aegir?</a></li>
+	<li class="toc-level-2"><a href="#Aegir_is_not_verifying_deleting_migrating_my_site_because_of_file_permission_problems."><span class="toc-number">4.6. </span>Aegir is not verifying / deleting / migrating my site because of file permission problems.</a></li>
+	<li class="toc-level-2"><a href="#I_can_verify_a_platform_but_Aegir_fails_to_provision_a_site_on_it_often_OpenAtrium"><span class="toc-number">4.7. </span>I can verify a platform but Aegir fails to provision a site on it (often OpenAtrium)</a></li>
+	<li class="toc-level-2"><a href="#A_platform_with_an_installation_profile_has_verified_okay_but_Aegir_doesn-t_seem_to_be_able_to_use_the_profile"><span class="toc-number">4.8. </span>A platform with an installation profile has verified okay, but Aegir doesn't seem to be able to use the profile</a></li>
+	<li class="toc-level-2"><a href="#I_tried_to_migrate_a_site_but_Aegir_incorrectly_reported_an_incompatibility_between_one_or_more_modules_in_my_source_and_destination_platforms._How_do_I_force_Aegir_to_see_that_the_two_platforms_are_compatible"><span class="toc-number">4.9. </span>I tried to migrate a site, but Aegir incorrectly reported an incompatibility between one or more modules in my source and destination platforms.  How do I force Aegir to see that the two platforms are compatible?</a></li>
+	<li class="toc-level-2"><a href="#What_about_.htaccess_settings"><span class="toc-number">4.10. </span>What about .htaccess settings?</a></li>
+	<li class="toc-level-2"><a href="#I-m_using_a_Git_repo_for_a_site_but_symlinks_make_crazy_things_happen"><span class="toc-number">4.11. </span>I'm using a Git repo for a site, but symlinks make crazy things happen!</a></li>
+	<li class="toc-level-2"><a href="#How_can_I_tell_what_database_name_my_site_is_using"><span class="toc-number">4.12. </span>How can I tell what database name my site is using?</a></li>
+	<li class="toc-level-2"><a href="#Can_I_use_the_subdirectory_multisite_feature_of_Drupal_in_Aegir"><span class="toc-number">4.13. </span>Can I use the subdirectory multisite feature of Drupal in Aegir?</a></li>
+	<li class="toc-level-2"><a href="#My_cacheperformance_settings_in_adminsettingsperformance_keep_resetting_themselves"><span class="toc-number">4.14. </span>My cache/performance settings in /admin/settings/performance keep resetting themselves!</a></li>
+	<li class="toc-level-2"><a href="#I_get_warn_NameVirtualHost_:80_has_no_VirtualHosts_when_I_restart_Apache"><span class="toc-number">4.15. </span>I get [warn] NameVirtualHost *:80 has no VirtualHosts when I restart Apache</a></li>
+	<li class="toc-level-2"><a href="#I_get_-Dummy_connection_failed_to_fail-_when_doing_stuff"><span class="toc-number">4.16. </span>I get 'Dummy connection failed to fail' when doing $stuff</a></li>
+	<li class="toc-level-2"><a href="#How_do_I_make_custom_changes_to_a_site-s_settings.php"><span class="toc-number">4.17. </span>How do I make custom changes to a site's settings.php?</a></li>
+	<li class="toc-level-2"><a href="#How_to_migrate_site_via_drush"><span class="toc-number">4.18. </span>How to migrate site via drush</a></li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+
+<h1 id="Help">1. <a name="help">Help!</a></h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Where_can_I_get_help">1.1. <a name="helpwhere">Where can I get help?</a></h2>
+
+<p>From the <a href="../../../../../handbook/index.html">Aegir Handbook</a> (which should be the first place you look) :</p>
+
+<p>The Issue Queue for all the projects that make up Aegir is here: <a href="http://is.gd/ek2Dl" title="http://is.gd/ek2Dl">http://is.gd/ek2Dl</a></p>
+
+<p>This is the first place to look - chances are someone's had the same problem as you before, and you'll get the quickest answers by searching for what they discovered.</p>
+
+<p>Before asking a question or reporting an issue, you should read <a href="http://groups.drupal.org/node/21890">the bug reporting guidelines</a>.</p>
+
+<p>You can join the #aegir channel at Freenode on IRC. (IRC instructions for drupal users are at: <a href="http://drupal.org/irc" title="http://drupal.org/irc">http://drupal.org/irc</a>). It's a friendly community, but a small one, so ask nicely and be patient!</p>
+
+<p>If you find a solution to a problem that isn't in the documentation or in this FAQ, be the first to login and edit these pages to bring them up to date! The rest of the community thrives on your helpful information!</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Can_I_ask_you_a_question">1.2. <a name="ask">Can I ask you a question?</a></h2>
+
+<p>Of course you can! Don't ask to ask, just ask! It is polite to look if the question has already been answered in the documentation, the issue queue or here, but if not, please do ask around! If you ask a question and we have a nice answer, you can even add it to the FAQ here so that others can have your valuable answer.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Who_are_the_Aegir_developers">1.3. <a name="devs">Who are the Aegir developers?</a></h2>
+
+<p>The Aegir core developers are listed on the <a href="../../../../../maintainers/index.html">Aegir maintainers page</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="I-d_like_to_help_out_become_a_developer">1.4. <a name="givehelp">I'd like to help out / become a developer!</a></h2>
+
+<p>We love people who want to help and get involved! <a href="../../../../../howtohelp/index.html">We even made a page for you to read</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Installing_Aegir">2. <a name="installing">Installing Aegir</a></h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Can_I_run_Aegir_on_a_shared_hosting_environment">2.1. <a name="sharedhosting">Can I run Aegir on a shared hosting environment?</a></h2>
+
+<p>Shared hosting will not give you enough permissions to install new sites. Toughen up, read some Linux beginners tutorials and buy a cheap VPS which will do nicely.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Can_I_run_Aegir_on_Windows">2.2. <a name="windows">Can I run Aegir on Windows?</a></h2>
+
+<p>To install Aegir you need a unix based operating system (for details see: <a href="../../../../../handbook/operating-system-support/index.html" title="http://community.aegirproject.org/handbook/operating-system-support">http://community.aegirproject.org/handbook/operating-system-support</a>). Aegir will not work on Windows and there are no plans to add support for it.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Can_Aegir_be_installed_next_to_CPanelPleskAlternCetc">2.3. <a name="cpanel">Can Aegir be installed next to CPanel/Plesk/AlternC/etc?</a></h2>
+
+<p>No, or rather "it's not supported". See <a href="http://drupal.org/node/587554" title="http://drupal.org/node/587554">http://drupal.org/node/587554</a></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Where_can_I_get_support_for_BarracudaOctopus_Aegir">2.4. <a name="barracuda">Where can I get support for Barracuda/Octopus Aegir?</a></h2>
+
+<p>Barracuda/Octopus are custom scripts for Aegir that install or set up various things that Aegir doesn't do out of the box. This is a custom solution tailored to Nginx systems, provided by <a href="http://omega8.cc/">Omega8.cc</a> and is not officially supported by the core Aegir project or team. For help or more information, please visit <a href="http://groups.drupal.org/boa">BOA Group</a>, <a href="http://drupal.org/project/barracuda">Barracuda</a> and <a href="http://drupal.org/project/octopus">Octopus</a> project pages / issue queue on drupal.org.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Do_I_really_need_to_create_an_aegir_user">2.5. <a name="user">Do I really need to create an aegir user?</a></h2>
+
+<p>If you have a UNIX system, you already have a <em>user</em>. It just needs to not be root for safety reasons. But you don't really have to <em>create</em> a user.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Install_fails_with_-dummy_connection_failed_to_fail-_on_Ubuntu_12.04_LTS">2.6. <a name="ubuntu1204">Install fails with 'dummy connection failed to fail' on Ubuntu 12.04 LTS!</a></h2>
+
+<p>Ubuntu 12.04, by default, installs an insecure MySQL server configuration that allows anonymous users to login without a password. This must be rectified by running 'mysql_secure_installation' before attempting to apt-get install Aegir.</p>
+
+<p>Please see <a href="../../../../../installing/debian/index.html#Manual_installation_of_MySQL_on_Ubuntu_12.04_LTS">this step in the Install Documentation</a> and <a href="../../../../../faq/index.html#I_get_-Dummy_connection_failed_to_fail-_when_doing_stuff">this other FAQ item</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="How_can_I_tell_what_version_of_Aegir_I_have_installed">2.7. <a name="findver">How can I tell what version of Aegir I have installed?</a></h2>
+
+<p>This works for version 1.1 and above . . . maybe earlier too . . . .
+<div class="codeblock"><code>grep &#039;[hostmaster][download][tag]&#039; /var/aegir/.drush/provision/aegir.make</code></div></p>
+
+<p>Also, if you have drush installed someplace other than in /var/aegir/.drush, then you should grep the aegir.make file in the directory tree where you have drush installed.  For example, on Ubuntu, apt-get may install drush in /usr/share/drush/.  So, the file to be grep'd would be /usr/share/drush/commands/provision/aegir.make.</p>
+
+<p>If you're still unsure or this didn't work, contact a developer on IRC and we'll be able to tell you after you answer a few questions.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="After_installing_Aegir_I_have_two_servers_listed_is_this_normal">2.8. <a name="twoservers">After installing Aegir I have two servers listed, is this normal?</a></h2>
+
+<p>Yes. By default, after installing Aegir, a server node is created that represents your webserver. This also generates the 'server_master' Drush alias on your system. The second server node is called 'localhost' and has your database service attached to it, because by default MySQL listens on localhost and not your webserver's IP (or on all interfaces). This corresponds to the 'server_localhost' Drush alias on your system.</p>
+
+<p>This is normally fine: you want your websites to be serve-able via your web server's IP / all interfaces, and your database server to only listen on localhost.</p>
+
+<p>If you end up creating remote webservers, you'll not be able to have them use databases on this Aegir server is all.</p>
+
+<p>If you know you want to have remote webservers communicate back to the Aegir server as the 'remote database server', you'll need to attach the database service type to the non-localhost server node, comment out bind-address in /etc/mysql/my.cnf and perform the necessary firewall changes to allow remote access to TCP port 3306 on the Aegir server.</p>
+
+<p>But generally its recommended to create remote database servers too (or combine web  + db on the one remote server), so this is generally a non-issue, rather than use the original Aegir server as a 'remote' database server for remote web servers.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="I_followed_the_installation_instructions._What_directory_holds_all_of_my_sites_now">2.9. <a name="sitedir">I followed the installation instructions.  What directory holds all of my sites now?</a></h2>
+
+<p>For a full overview of a typical Aegir filesystem structure, <a href="../../../../77/index.html">read this</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="I_tried_to_create_a_site_but_the_create_task_failed_and_retries_don-t_succeed._How_do_I_delete_the_partially_created_site_and_associated_Aegir_tasks">2.10. <a name="sitecreatefailed">I tried to create a site, but the create task failed and retries don't succeed.  How do I delete the partially created site and associated Aegir tasks?</a></h2>
+
+<p>See the section 'Manually deleting the site' from <a href="../../../../26/index.html">the documentation</a></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Upgrading_Aegir">3. <a name="upgrading">Upgrading Aegir</a></h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="What_is_a_patch_or_-hotfix-_and_how_can_I_apply_it_to_fix_my_site_if_I_can-t_don-t_want_to_upgrade_to_HEAD">3.1. <a name="patch">What is a patch or 'hotfix', and how can I apply it to fix my site if I can't / don't want to upgrade to HEAD?</a></h2>
+
+<p>Sometimes releases are made and bugs are discovered afterward. We commit fixes for such bugs to HEAD, but HEAD is often volatile and you don't want to use a non-stable release in your environment. Fortunately we do (or should: if it's critical, please ask for a patch otherwise) provide a 'hotfix' or patch for users. A patch means that you can 'patch' your Aegir system to fix the bug without running the risks of using HEAD.</p>
+
+<p>To patch an Aegir component, use the following example, in which we fix the Provision module with an imaginary patch. The same or similar steps apply for Hosting or Hostmaster (though you shouldn't need to patch Hostmaster, you only use it once to install!)</p>
+
+<p>Run the steps as the aegir user.</p>
+
+<p><div class="codeblock"><code>1) Backup /var/aegir/.drush/provision to somewhere else for safety, such as /tmp/provision<br /><br />2) Download the patch given in the ticket, to your server. Use wget or a similar useful tool for downloading it over the commandline. You can download the file to anywhere.<br /><br />3) edit your aegir user&#039;s crontab (crontab -e) and comment out the dispatch entry (place a &#039;#&#039; in front of the hosting dispatch cron entry). This is a precautionary step in case you patch the module, something goes wrong and it breaks the module. The hosting dispatch cron might come around and try and run the queue dispatcher and break/complain due to a broken component. If you know what you are doing and are fast enough to fix it, you may skip this.<br /><br />4) cd /var/aegir/.drush/provision/<br /><br />5) patch -p0 &lt; /path/to/the/patch/file<br /><br />6) crontab -e and uncomment the dispatch cron task</code></div></p>
+
+<p>If the patch doesn't apply or prompts you to enter the filename to patch, try running patch -p1 instead of -p0 above.</p>
+
+<p>If it still asks for clarification, verify that you are in the top-level directory of the component (in this case, we are inside /var/aegir/.drush/provision)</p>
+
+<p>If it still doesn't work, it might be an unclean patch, and you should make a request in the relevant ticket to be given a cleaner patch to apply.</p>
+
+<p>For more information on patches, please read the <a href="http://drupal.org/patch/apply">Drupal documentation</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="I_upgraded_Aegir_by_mistake_can_I_downgrade_it">3.2. <a name="downgrading">I upgraded Aegir by mistake, can I downgrade it?</a></h2>
+
+<p>Short answer: no, that would be crazy.</p>
+
+<p>Long answer: well... maybe. Actually, yes. But it could destroy your house, your cat, your life insurance and certainly give you headaches. We will tell you anyways because we're nice.</p>
+
+<p>This assumes you have a backup from before the upgrade. We will be deploying that backup, so understand that you will loose any changes done on the frontend since the upgrade was performed (or more precisely, since that backup was done). That's the way Drupal works, you can't downgrade Drupal, and we're just cheating by restoring a previous backup.</p>
+
+<p>So first, delete that frontend site:</p>
+
+<pre>
+drush @hostmaster provision-delete
+</pre>
+
+<p>This is not absolutely mandatory, but you should make a backup, and deleting the site does that, plus it's important to cleanup after ourselves. We can use the backup to restore to that upgraded version if we give up on the downgrade.</p>
+
+<p>Then remove the Debian packages (if you installed through those, if not, you're on your own: but you need to at least remove the provision code):</p>
+
+<pre>
+apt-get purge aegir2 aegir2-provision aegir2-hostmaster
+</pre>
+
+<p>This may also be:</p>
+
+<pre>
+apt-get purge aegir2 aegir-provision2 aegir-hostmaster2
+</pre>
+
+<p>Depending on the release candidate you installed.</p>
+
+<p>Next, you install the old provision, but <em>only that</em> - don't go around installing the frontend just yet because you will have an empty site to overwrite.</p>
+
+<pre>
+apt-get install aegir-provision
+</pre>
+
+<p>Then you need to edit the <code>@hostmaster</code> alias to point to the old platform, which supposedly exists (if not, you're in trouble: create it by hand or something).</p>
+
+<p>(Alternatively, you <em>could</em> install aegir-hostmaster, which would create you the alias, but this could fail exactly because the alias already exists. Just edit the alias already.)</p>
+
+<p>So you need to change three parameters:</p>
+
+<pre>
+  'platform' =&gt; '@platform_hostmaster6x1x',
+  'root' =&gt; '/var/aegir/hostmaster-6.x-1.x',
+  'site_path' =&gt; '/var/aegir/hostmaster-6.x-1.x/sites/aegirphp52.koumbit.net',
+</pre>
+
+<p>Then you can deploy your backup on that platform:</p>
+
+<pre>
+drush @hostmaster provision-deploy $PWD/backups/aegirphp52.koumbit.net-20131017.173034.tar.gz
+</pre>
+
+<p>From there the frontend should be back. Maybe. Probably. Well, the purge earlier may have killed the aegir.conf symlink, so if you want to test the frontend right now, restore that. Otherwise, be bold and upgrade to the latest 1.x release using the debian packages, which should restore everything you need:</p>
+
+<pre>
+apt-get install aegir
+</pre>
+
+<p>This should perform an upgrade from your older 1.x release to (for example here) 1.11.</p>
+
+<p>If it doesn't work, sorry, i told you it could break. :)</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Using_Aegir">4. <a name="using">Using Aegir</a></h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Cron_isn-t_running_scheduled_tasks_aren-t_being_executed_what_do_I_do">4.1. <a name="cron">Cron isn't running (scheduled tasks aren't being executed), what do I do?</a></h2>
+
+<p>If you're using Aegir 2.x ensure the "Task queue" feature is activated. To do so go to /admin/hosting/queues check "Task queue". Click on "Save changes" button. With default settings the item(s) in the queue will be process in roughly 1 min.</p>
+
+<p>Below are other options to resolve that issue</p>
+
+<p>At the shell prompt as the aegir user, type 
+<div class="codeblock"><code>crontab -e</code></div></p>
+
+<p>a) If you get an error that the command is not found, then you need to install cron on your server (some basic images don't include it - Linode's Ubuntu 9.04 image is one):
+<div class="codeblock"><code>sudo apt-get install cron</code></div>
+Now go back to the directory /var/aegir/drupal-6.19 and re-execute the hosting dispatch:
+<div class="codeblock"><code>/var/aegir/drush/drush.php @hostmaster hosting-setup</code></div>
+Type 'crontab -e' again.</p>
+
+<p>b) You should see the default entry: 
+<div class="codeblock"><code>*/1 * * * * (php&nbsp; &#039;/&lt;path to drush&gt;/drush.php&#039; @hostmaster hosting-dispatch</code></div></p>
+
+<p>But if this is still not working it may well be a permissions issue. An example error :
+<div class="codeblock"><code>Forking : (php /&lt;path to drush&gt;/drush.php&nbsp; --quiet @hostmaster&nbsp; &#039;hosting&#039; &#039;task&#039; &#039;266&#039; --backend &amp;) &gt; /dev/null [0.432 sec]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [notice]<br />sh: /dev/null: Permission denied</code></div></p>
+
+<p>This means the system doesn't have permissions to access /dev/null. To resolve it, give the system permissions to write to /dev/null (it should have this anyway), by executing:
+<div class="codeblock"><code>sudo chmod a+w /dev/null</code></div></p>
+
+<p>c) If this still hasn't worked, have you moved the location of drush?
+If so - see <a href="http://drupal.org/node/540152" title="http://drupal.org/node/540152">http://drupal.org/node/540152</a></p>
+
+<p>d)  If you are a *BSD user (verified on freebsd at least) 
+You need to add the line :
+<code>PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin</code> at the TOP of your cron file.
+Simply log in as the aegir user and type crontab -e and insert the above line on top.
+Thanks goes to mauror  for <a href="http://drupal.org/node/323732" title="http://drupal.org/node/323732">http://drupal.org/node/323732</a>.</p>
+
+<p>e) When cron for your sites stops working, it is possible that for some reason (system overload, broken site, timeout etc), Aegir failed to release a sites cron semaphore. To release it, use this simple recipe:</p>
+
+<p><div class="codeblock"><code>$ su -s /bin/bash - aegir<br />$ cd /path/to/hostmaster/sites/domain<br />$ drush vdel hosting_queue_cron_running -y</code></div></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="How_do_I_get_debugverbose_info_from_Drush_when_running_the_hosting_commands">4.2. <a name="drushdebug">How do I get debug/verbose info from Drush when running the hosting commands?</a></h2>
+
+<p>Add these to the drush call :</p>
+
+<p><div class="codeblock"><code>--debug</code></div></p>
+
+<p>If you're having specific problems when using the frontend, you can easily run the hosting commands from the command line by:</p>
+
+<ol>
+<li>Click the view button and then copy the Drush command which was executed at the top of the log;</li>
+<li>While logged in as the aegir user, paste the command in at the terminal and replace --backend with --debug at the end of the commandline.</li>
+</ol>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="How_do_I_update_a_site-s_or_platform-s_modules_using_Aegir">4.3. <a name="modules">How do I update a site's or platform's modules using Aegir?</a></h2>
+
+<p>Aegir isn't a package management GUI for installing modules or themes on your site.</p>
+
+<p>It's designed to help manage your site between builds. To upgrade sites, you should be using the <a href="../../../../23/index.html">Migrate tool</a> to move your site between two platforms, which invokes drush updatedb.</p>
+
+<p><strong>If you aren't ready for this paradigm, and are frustrated that Aegir isn't some GUI for wildly updating or installing new modules with no regards for rollback or dealing with when it will inevitably break your site, Aegir is probably not for you.</strong></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Is_it_best_to_set_up_sites_under_aegir_as_www.example.com_or_just_as_example.com">4.4. <a name="vhostalias">Is it best to set up sites under aegir as <a href="http://www.example.com/" title="www.example.com">www.example.com</a> or just as example.com?</a></h2>
+
+<p>Aegir supports either method and can even automatically create whichever one you didn't use as the main site name. Read more about Aliases and this feature in our <a href="../../../../60/index.html">documentation</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="How_can_I_setup_a_site_to_use_https:_under_Aegir">4.5. <a name="ssl">How can I setup a site to use https:// under Aegir?</a></h2>
+
+<p>Aegir ships with an experimental SSL feature, but currently doesn't provide any means of managing SSL certificates.</p>
+
+<p>You can follow the ongoing SSL work <a href="http://drupal.org/project/issues/search/hostmaster?issue_tags=aegir-ssl">here</a>.</p>
+
+<p>In the meantime, to set up SSL with basic self-signed certs, follow our <a href="../../../../29/index.html">documentation</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Aegir_is_not_verifying_deleting_migrating_my_site_because_of_file_permission_problems.">4.6. <a name="fileperms">Aegir is not verifying / deleting / migrating my site because of file permission problems.</a></h2>
+
+<p>Aegir releases prior to 0.3 RC3 encountered an error when the web server has uploaded files and made new directory in the sites/$url/files directory. A prevalent example of this occurring is with the color module and when imagecache is used (such as in atrium).</p>
+
+<p>This bug (see: <a href='http://drupal.org/node/203204'>#203204</a> ) was introduced with Drupal 6, and has since been fixed with Drupal 7. The patch has however not been backported yet, and the patch won't fix existing files that were created incorrectly.</p>
+
+<p>In Aegir 0.3 RC3 we introduced a work around which sets the umask for the site, which forces new files and directories to be the correct permissions, but this will only take effect after the site has been succesfully verified. To enforce the correct file ownership and permissions on the files, run the following command on each of your Drupal 6 platforms :</p>
+
+<p><div class="codeblock"><code>&nbsp; sudo chown -R $aegir_user $platform/sites/*/files</code></div></p>
+
+<p>This will allow the verify task to correctly set the permissions and succesfully modify/remove the files.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="I_can_verify_a_platform_but_Aegir_fails_to_provision_a_site_on_it_often_OpenAtrium">4.7. <a name="memlimit">I can verify a platform but Aegir fails to provision a site on it (often OpenAtrium)</a></h2>
+
+<p>A premature failure of a site install with an unhelpful message such as 'The external command could not be executed due to an application error' often, but not always, means your php-cli's memory_limit is set too low.</p>
+
+<p>To confirm that this is an issue, try running drush @example.org provision-verify --debug from the command line to find out what caused the problem. Remember to replace 'example.org' with the URL of the site you are trying to verify.</p>
+
+<p>Raise your memory_limit in your php cli php.ini file to something like 128MB, or maybe 64MB if that's too much. On Debian-based distributions this is /etc/php5/cli/php.ini. Apache does not need a restart for this: installations fail because the command is being executed via drush using php cli.</p>
+
+<p>This is a common issue for OpenAtrium as it requires more memory to run its install profile as it has a lot more to do than a regular Drupal install.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="A_platform_with_an_installation_profile_has_verified_okay_but_Aegir_doesn-t_seem_to_be_able_to_use_the_profile">4.8. <a name="namespace">A platform with an installation profile has verified okay, but Aegir doesn't seem to be able to use the profile</a></h2>
+
+<p>Your platform has been setup and verified okay, but when you go to create a new site Aegir keeps giving an error message about the profile, or the list doesn't offer you the profile you're expecting. This could be a namespace issue. Modules, themes and profiles in Drupal all have a machine name - which is essentially their folder name. This is also used to prefix their functions etc, so that there are no clashes.
+What isn't often recognised or well documented is that Drupal has a single namespace for all items - so your themes, modules and install profiles can't have the same name as each other.
+Often an installation profile will be created called 'OpenPotato' and the theme for it will also be called 'OpenPotato'. This makes Drupal unhappy, and when Drupal's unhappy Aegir's unhappy. We don't want that, but it isn't Aegir's fault, it's the developer's limited or lack of understanding of this Drupal caveat.
+The easiest thing is to name your installation profile directory 'OpenPotato_install' and name the profile file 'OpenPotato_install.profile'. You'll also need to rename the functions inside this file.
+Then everything should work just fine.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="I_tried_to_migrate_a_site_but_Aegir_incorrectly_reported_an_incompatibility_between_one_or_more_modules_in_my_source_and_destination_platforms._How_do_I_force_Aegir_to_see_that_the_two_platforms_are_compatible">4.9. <a name="migratefailed">I tried to migrate a site, but Aegir incorrectly reported an incompatibility between one or more modules in my source and destination platforms.  How do I force Aegir to see that the two platforms are compatible?</a></h2>
+
+<p>This problem can arise for at least two different reasons.  First, you may have updated a module in a platform that you imported and forgotten to run update.php before you imported the site into Aegir.  Second, you may have updated a module in a platform and not re-verified the platform in Aegir.  Be sure that you have run update.php on a drupal platform that you will be importing into Aegir before you import.  Also, if you make any change to the modules in an Aegir Platform, re-verify that platform and all sites using that platform.  (At least, experience suggests that doing these things will allow the migration to succeed.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="What_about_.htaccess_settings">4.10. <a name="htaccess">What about .htaccess settings?</a></h2>
+
+<p>As of recent 0.4 alpha releases, Aegir now reads in the contents of a platform's .htaccess file when generating the Apache configurations. You can safely make additions/changes to the platform .htaccess and expect the relevant site to respect those changes.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="I-m_using_a_Git_repo_for_a_site_but_symlinks_make_crazy_things_happen">4.11. <a name="symlinks">I'm using a Git repo for a site, but symlinks make crazy things happen!</a></h2>
+
+<p>If you're symlinking an entire /sites/ folder, Aegir may not acknowledge the site, as this will cause problems when cloning/migrating a site.</p>
+
+<p>If you are using Git to version control your themes, custom modules, etc, and symlinking these into your sites folder, you will find that cloning a site will clone those symlinks (by virtue of copying the sites folder). This is probably not what you want to happen!</p>
+
+<p>Themes and custom modules are better off being checked out to or symlinked into the install profile folder. If your site's install profile is 'foobar' (there's an 'install_profile' variable in the variables table), Drupal core understands to look inside the /var/aegir/yourplatform/profiles/foobar/ folder for modules and themes directories.</p>
+
+<p>The files directory for uploads (which I don't think can be efficiently versioned anyway in most cases) and the settings.php file will be all that's left in your sites folder, and Aegir will happily move that all around as you clone or migrate your site between platforms.</p>
+
+<p>Storing your site's dir in git is an archaic and inefficient method of developing sites. It's 2010 and there are more elegant ways of doing things thanks to Drush Make and Aegir. You might like to look at mig5's excellent article where he provides some great tips on how to manage <a href="../../../../../article-archive/drupal-deployments-workflows-version-control-drushmake-and-aegir/index.html">Drupal deployments &amp; workflows with version control, drush_make, and Aegir</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="How_can_I_tell_what_database_name_my_site_is_using">4.12. <a name="dbname">How can I tell what database name my site is using?</a></h2>
+
+<p>Check the site's vhost configuration file in /var/aegir/config/server_$whatever/apache/vhost.d/. The db name (and user/password) are stored as 'SetEnv' parameters to Apache, allowing us to cloak database credentials in the settings.php so that they are protected in a multisite environment from prying eyes (admins with PHP filter permissions).</p>
+
+<p>You can also use 'drush st' on your site to get a status report containing the database name, user, password, among other things.</p>
+
+<p>In modern releases (0.4-alpha9 or so and above), the site database names have switched from site_$nid style names to more properly reflect the site name/URL itself.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Can_I_use_the_subdirectory_multisite_feature_of_Drupal_in_Aegir">4.13. <a name="subdir">Can I use the subdirectory multisite feature of Drupal in Aegir?</a></h2>
+
+<p>Also known as "http://example.com/site1" and "http://example.com/site2" are different sites.</p>
+
+<p>Short answer: not yet - at least not natively. (see the '<a href="http://mig5.net/content/aegir-subfolder-support">aegir_subfolders</a>' experimental extension)</p>
+
+<p>Long answer: this is currently not supported, because multiple sites usually end up sharing the same virtual host entry in the webserver and you will be required to upgrade/migrate all of the sites simultaneously. That is because /site1 is on the same drupal root as /site2. Another problem is that they can't be on separate servers...</p>
+
+<p>To fix this, you would need to decouple virtual hosts and sites in Aegir, which is a fairly deeply rooted assumption. It <em>would</em> be possible to use Aliases to work around that and have the sites be in different document roots.</p>
+
+<p>But even if you actually coerce Aegir into having multiple sites in the same domain, you get into crazy namespace issues. Do you want to allow the site on example.com to completely break sites example.com/site1 or example.com/site2? If so, who can? The same client? The same user? If not, you need to implement checks so there's no overlap...</p>
+
+<p>Tools shouldn't dictate policy, people should. Therefore, this should probably be allowed, from a strictly technical perspective.</p>
+
+<p>The thing is: domain names are cheap, contrary to common opinion. You only have to get <em>one</em> domain and you can have as many sub-domains as you want. Hell, you can even have sub sub domains and have your whole domain tree down there, you're free to go. Providers often give out a free DNS namespace to their customers based on their username (full disclosure: <a href="http://koumbit.org/">Koumbit</a> does :P).</p>
+
+<p>The other thing is: /site1 is exactly what drupal does: ot dispatches menus callbacks based those GET URLs. So trying to make Aegir (or Apache + Drupal, rather) do that is rather backward. On the other hand, Drupal is notoriously bad (if you make exception of the <a href="http://drupal.org/project/domain">Domain module</a>) at dispatching requests based on domains, and that's where Apache, DNS, Aegir and all their happy friends gets in.</p>
+
+<p>In short, it's been very low priority for the use cases of the development team so far. If developers step up or if funding is provided, this could very well be part of a future release. See this feature request for followup: <a href="http://drupal.org/node/705026" title="http://drupal.org/node/705026">http://drupal.org/node/705026</a></p>
+
+<p>Also see <a href="http://mig5.net/content/aegir-subfolder-support">an extension for Aegir</a>, written by mig5, called 'aegir_subfolders', which works (mostly)</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="My_cacheperformance_settings_in_adminsettingsperformance_keep_resetting_themselves">4.14. <a name="settings_override">My cache/performance settings in /admin/settings/performance keep resetting themselves!</a></h2>
+
+<p>Some values such as <code>$conf[&#039;cache&#039;]</code> are hardcoded in the site's settings.php, which Aegir generates. This prevents some settings from being changed in the admin interface.</p>
+
+<p>You can change the value of cache, and other variables, by creating a brand new file called 'local.settings.php' inside your site directory (e.g, alongside the settings.php). Put any value you want in it, e.g:</p>
+
+<p><div class="codeblock"><code>&lt;?php<br />$conf[&#039;cache&#039;] = 3;</code></div></p>
+
+<p>..leave off the closing <code>?&gt;</code> tag, and this setting will now override all others. Aegir will not edit or remove this file.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="I_get_warn_NameVirtualHost_:80_has_no_VirtualHosts_when_I_restart_Apache">4.15. <a name="warnnamevirtualhosts">I get [warn] NameVirtualHost *:80 has no VirtualHosts when I restart Apache</a></h2>
+
+<p>This is a harmless warning that Apache throws when you have duplicate 'NameVirtualHost *:80' entries in the Apache config somewhere. It doesn't cause any problem.</p>
+
+<p>Aegir inserts this config line into an Aegir-managed apache config file just to make sure it's there at least once. If it's annoying you and you want to remove this warning, you need to remove the IP address from the server node and verify the server again. Note that this may fail in 2.x if the IP address is used by an SSL certificate yet the SSL certificate is unused. This shouldn't generally happen unless you are running a pre-2.0 release candidate, see <a href="https://drupal.org/node/2159265">#2159265</a> for details and [/discuss/how-delete-unused-ssl-certificate#comment-2163](this workaround).</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="I_get_-Dummy_connection_failed_to_fail-_when_doing_stuff">4.16. <a name="failedtofail">I get 'Dummy connection failed to fail' when doing $stuff</a></h2>
+
+<p>Aegir attempts to make a connection to your database server that is deliberately designed to fail. The intention of this, is to get the 'remote host' of your webserver as seen from the perspective of the database server. This is used to generate appropriate GRANT statements so that your Aegir-managed sites can connect to their appropriate databases.</p>
+
+<p>If you get the message 'Dummy connection failed to fail', this means that Aegir was able to login to your mysql server using username 'intntnllyInvalid' with a null password. This is a security problem on your behalf!</p>
+
+<p>You should secure your MySQL service by running 'mysql_secure_installation' or manually by removing users in your mysql database's User table that don't have a valid password. See <a href="http://dev.mysql.com/doc/refman/5.1/en/default-privileges.html" title="http://dev.mysql.com/doc/refman/5.1/en/default-privileges.html">http://dev.mysql.com/doc/refman/5.1/en/default-privileges.html</a> for more information.</p>
+
+<p>Alternatively, if your MySQL server is sufficiently secured, there's always a possibility that your MySQL server responded with something Aegir didn't understand. Aegir expects either of these error messages:</p>
+
+<p>Access denied for user(.... etc)</p>
+
+<p>Host (...) is not allowed to connect to (....etc).</p>
+
+<p>If your MySQL server responded with something else, but is secure, please <a href="http://drupal.org/node/add/project-issue/provision">open a bug report</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="How_do_I_make_custom_changes_to_a_site-s_settings.php">4.17. <a name="settingsphp">How do I make custom changes to a site's settings.php?</a></h2>
+
+<p>Aegir re-generates the settings.php for a site on certain tasks (Verify, Migrate, Backup, Restore, etc). For this reason it is not wise to put custom settings in the settings.php as you will probably lose them.</p>
+
+<p>Instead, create a file 'local.settings.php' alongside your site's settings.php and put your custom changes in there.</p>
+
+<p>If you want to make a change and have it apply to <em>all</em> sites immediately, put that change in /var/aegir/config/includes/global.inc.</p>
+
+<p>Neither of these files will be overwritten by Aegir on any task. thus preserving your changes.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="How_to_migrate_site_via_drush">4.18. <a name="migrateviadrush">How to migrate site via drush</a></h2>
+
+<p><code>drush @www.site.alias provision-migrate &#039;@platform_new_platform_alias&#039;</code></p>
+
+<p>Then, to update the frontend to reflect the changes:</p>
+
+<p><code>drush @hostmaster hosting-import &#039;@www.site.alias&#039;</code></p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-23.html?destination=node%2F14%23comment-form">Login</a> or <a href="../../../../../user/register/index-23.html?destination=node%2F14%23comment-form">register</a> to post comments</span></li>
+<li class="talk_comments last"><a href="../../../../14/talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-606" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../faq/ubercart-integration-faq/index.html">Ubercart Integration FAQ</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>These are frequently asked questions about <a href="http://drupal.org/uc_hosting">Aegir Ubercart Integration</a>. For basic install and usage instructions please consult the <a href="../../../../516/index.html">guide</a>.</p>
+
+<h2>Contents</h2>
+
+<ul>
+<li><a href="#site-install">Does this module create a site install task after product is purchased?</a></li>
+</ul>
+
+<h2><a name="#site-install">Does this module create a site install task after product is purchased?</a></h2>
+
+<p>There may be some adjustment to UI needed to make this clearer, but the short answer is "Yes".</p>
+
+<p>This is done conditionally: The module adds a checkbox saying "Create my site later" to the purchase form displayed on a product, if that product has the site feature. If that checbox is checked, then we go right to payment completion, and the client will create their site later using the regular aegir interface.</p>
+
+<p>If that checkbox is not checked, we throw the user into a site creation form, store the data they input, and then use it on payment completion to create the site.</p>
+
+<p>Regardless of whether or not they enter their site info during ordering, their client's quota is incremented.</p>
+
+<p>In the case of a product kit with multiple sites included, only the first site can be created in this manner.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-22.html?destination=node%2F606%23comment-form">Login</a> or <a href="../../../../../user/register/index-22.html?destination=node%2F606%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-22.html?destination=node%2F606%23comment-form">Login</a> or <a href="../../../../../user/register/index-22.html?destination=node%2F606%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-864" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../intro/case-studies/index.html">Case Studies</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>Case studies are intended to help explain the utility of Aegir by showcasing its use in some real-world example.</p>
+
+<dl>
+<dt><a href="http://drupal.org/node/993166">Pagebuild Case Study</a></dt>
+<dd>Pagebuild allows non technical users to build websites very quickly and easily. It was built on top of Drupal, with the idea behind it being to provide an editing interface that is so simple, even an adult could use it. This is a explanation of what we did and how we went about doing it (and why).</dd>
+</dl>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-29.html?destination=node%2F864%23comment-form">Login</a> or <a href="../../../../../user/register/index-29.html?destination=node%2F864%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-29.html?destination=node%2F864%23comment-form">Login</a> or <a href="../../../../../user/register/index-29.html?destination=node%2F864%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-766" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../wikipedia-article/index.html">Wikipedia Article</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>Ref.: <a href="http://en.wikipedia.org/wiki/Aegir_Hosting_System" title="http://en.wikipedia.org/wiki/Aegir_Hosting_System">http://en.wikipedia.org/wiki/Aegir_Hosting_System</a></p>
+
+<p>Feel free to enhance and improve!</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-30.html?destination=node%2F766%23comment-form">Login</a> or <a href="../../../../../user/register/index-30.html?destination=node%2F766%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-30.html?destination=node%2F766%23comment-form">Login</a> or <a href="../../../../../user/register/index-30.html?destination=node%2F766%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/217/revisions/526/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:55:12 GMT -->
+</html>

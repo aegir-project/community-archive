@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/10/revisions/393/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:07:18 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../handbook/administrator/post-install-configuration/using-proxy-cache-accelerate-platform-build/index.html" />
+<link rel="up" href="../../../../../administrator/index.html" />
+<link rel="next" href="../../../../../upgrading/manual/index.html" />
+<link rel="prev" href="../../../../../handbook/administrator/post-install-configuration/using-proxy-cache-accelerate-platform-build/index.html" />
+<link rel="up" href="../../../../../administrator/index.html" />
+<link rel="next" href="../../../../../upgrading/manual/index.html" />
+<link rel="prev" href="../../../../../handbook/administrator/post-install-configuration/using-proxy-cache-accelerate-platform-build/index.html" />
+<link rel="up" href="../../../../../administrator/index.html" />
+<link rel="next" href="../../../../../upgrading/manual/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Upgrading Aegir from Thu, 11/18/2010 - 15:57 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-10" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../upgrading/index.html">Upgrading Aegir</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-10'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 11/18/2010 - 15:57</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Upgrading Aegir is designed to be as easy as it possibly can be, and regularly improves over time as the developers attempt to streamline the process for users.</p>
+
+<p>Nonetheless, the upgrade process can seem a little daunting to users. This is mainly because some expectation arises that because Aegir is built on Drupal, and is made for managing Drupal sites, it seems reasonable to expect the upgrade process to be as straightforward as, say, upgrading a regular Drupal site.</p>
+
+<p>Aegir is a powerful system that goes beyond a normal Drupal application by being split into two parts: a frontend (the browser-based control panel) and the backend (bits on the system in /var/aegir, such as Drush and Drush extensions), along with a system user on your server that runs command-line scripts and restarts services, and cronjobs.</p>
+
+<p>Typically what this means is that when it comes time to upgrade Aegir, you not only have to upgrade the frontend site, but also update the components that reside in the 'backend'.</p>
+
+<p>But don't panic! We have instructions and even a script to run, to take care of almost all of it for you, eliminating as much as possible the chance for human error.</p>
+
+<p>This guide is not the official upgrade instructions for your system. It merely explains the purpose of UPGRADE.txt and what it actually does. You <strong>must</strong> follow the UPGRADE.txt precisely in order to upgrade your system.</p>
+
+<h2>UPGRADE.txt</h2>
+
+<p>In a similar fashion to the <a href="../../../../9/index.html">Install instructions</a>, the upgrade process for Aegir resides in an UPGRADE.txt that ships with each release inside the 'Provision' component.</p>
+
+<p>It is kept in each release so that it may be versioned, as some upgrade steps may and often do differ between releases.</p>
+
+<p>The UPGRADE.txt is stored in the 'docs' directory of the Provision component, which gets installed in /var/aegir/.drush/ on standard systems. However, the announcement for each release (published here and on the mailing lists) always contains a link to the UPGRADE.txt, so you'll probably find it's easier to fetch it from there.</p>
+
+<p>Each time a new release of Aegir is made, there may be some 'version-specific' notes contained towards the bottom of the file. The reason for this is that sometimes a change in Aegir requires a new change or modification of some other component of your server. This might include adding, removing or changing a line in MySQL's /etc/mysql/my.cnf, or changing the location of an 'Include' path in Apache to read configurations from a new location.</p>
+
+<p>Because these modifications typically require administrative privileges to perform, they can't be automated or run by the system 'aegir' user on your server. This is the reason these notes are included in the UPGRADE.txt.</p>
+
+<p><strong>It is extremely important that you read the version-specific notes before following any other instructions in the UPGRADE.txt.</strong></p>
+
+<p>If you fail to apply any of the version-specific steps and proceed with the generic upgrade process, that process is likely to fail.</p>
+
+<h2>Upgrade process</h2>
+
+<p>The typical upgrade process outlined at the start of the UPGRADE.txt is as follows:</p>
+
+<ul>
+<li>Read and apply the version-specific notes</li>
+<li>Read the conventions and tips</li>
+<li>Run the upgrade.sh.txt script, or the next three steps:</li>
+<li>Set the environment variables</li>
+<li>Upgrade the backend</li>
+<li>Upgrade the frontend</li>
+</ul>
+
+<h2>upgrade.sh.txt</h2>
+
+<p>An upgrade.sh.txt is mentioned in the UPGRADE.txt. This automates the last three steps listed above, including backing up old components first. The upgrade.sh.txt has to assume that you have read and completed the version-specific steps first before attempting to run it.</p>
+
+<h2>Manually upgrading</h2>
+
+<p>Alternatively if you don't wish to run the script, you may proceed to export the environment variables. These are just abstractions to avoid having to re-type the same URLs or version numbers of Aegir and other components, which would otherwise introduce extra potential for human error.</p>
+
+<p>After your environment  variables are exported, you must then proceed to upgrade the backend. The reason for upgrading the backend first before the frontend, is that the frontend upgrade process (explained further below) is instigated by the backend using Drush Make. Thus you need to be running the new backend first in order to successfully produce a new frontend.</p>
+
+<p>Upgrading the backend is as simple as replacing your copy of Drush, Provision, and if necessary, Drush Make, with the new versions if available. These manual steps are provided to you in the UPGRADE.txt; you can literally copy and paste the steps into your terminal and expect good results.</p>
+
+<p>Once your backend is upgraded, you can upgrade your frontend. Think of this as the backend fetching a new copy of Drupal core and the Hostmaster frontend application onto your server, and then moving the Aegir site's settings.php and other bits and pieces over to the new codebase.</p>
+
+<p>The procedure for upgrading the frontend is entering your old hostmaster directory, (say, /var/aegir/hostmaster-$old-version) and running 'drush hostmaster-migrate $youraegirdomain.com'.</p>
+
+<p>The precise steps for performing this, just like the earlier parts, are all provided by the UPGRADE.txt. You can copy and paste the commands provided and you should get good results if you followed all the earlier steps.</p>
+
+<p>Did we remind you to <strong>read the version-specific notes</strong> first? This is the most common pitfall for users trying to upgrade their system.</p>
+
+<h2>New release of Drupal core?</h2>
+
+<p>Just as you would use the Migrate task in Aegir to upgrade one of your sites to a new copy of Drupal core, you can follow the UPGRADE.txt to upgrade your actual Aegir frontend system to a new copy of Drupal core too. The upgrade process (including the script) will always fetch the latest available copy of Drupal core to place the frontend on.</p>
+
+<p>Currently you cannot upgrade the Aegir site itself from the frontend with a Migrate task as you do for your managed sites. This may change in the future, but has not been developed yet.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-72.html?destination=node%2F10%23comment-form">Login</a> or <a href="../../../../../user/register/index-72.html?destination=node%2F10%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-72.html?destination=node%2F10%23comment-form">Login</a> or <a href="../../../../../user/register/index-72.html?destination=node%2F10%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/10/revisions/393/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:07:18 GMT -->
+</html>

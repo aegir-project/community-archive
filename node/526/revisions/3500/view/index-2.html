@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/526/revisions/3500/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:06:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/content/contrib-modules/devshop-provision/commands/index.html" />
+<link rel="up" href="../../../../../contrib-modules/index.html" />
+<link rel="next" href="../../../../516/index.html" />
+<link rel="prev" href="../../../../../content/content/contrib-modules/devshop-provision/commands/index.html" />
+<link rel="up" href="../../../../../contrib-modules/index.html" />
+<link rel="next" href="../../../../516/index.html" />
+<link rel="prev" href="../../../../../content/content/contrib-modules/devshop-provision/commands/index.html" />
+<link rel="up" href="../../../../../contrib-modules/index.html" />
+<link rel="next" href="../../../../516/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Provision ACL from Thu, 05/31/2012 - 17:45 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-526" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/contrib-modules/provision-acl/index.html">Provision ACL</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-526'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 05/31/2012 - 17:45</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>This page documents the <a href="http://drupal.org/project/provisionacl">Provision ACL extension</a> to Aegir which allows more granular access control over your sites files and directories.</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Install_instructions"><span class="toc-number">1. </span>Install instructions</a>
+<ol>
+	<li class="toc-level-2"><a href="#Download_and_install_provision"><span class="toc-number">1.1. </span>Download and install provision</a></li>
+	<li class="toc-level-2"><a href="#Enable_ACLs_on_your_filesystem"><span class="toc-number">1.2. </span>Enable ACLs on your filesystem</a></li>
+	<li class="toc-level-2"><a href="#Install_ACL_support_package"><span class="toc-number">1.3. </span>Install ACL support package</a></li>
+	<li class="toc-level-2"><a href="#Create_a_UNIX_group"><span class="toc-number">1.4. </span>Create a UNIX group</a></li>
+	<li class="toc-level-2"><a href="#Add_users_to_the_group"><span class="toc-number">1.5. </span>Add users to the group</a></li>
+	<li class="toc-level-2"><a href="#Create_a_client"><span class="toc-number">1.6. </span>Create a client</a></li>
+	<li class="toc-level-2"><a href="#Create_a_site"><span class="toc-number">1.7. </span>Create a site</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#What_it_does"><span class="toc-number">2. </span>What it does</a></li>
+	<li class="toc-level-1"><a href="#API_-_how_to_add_ACL_support_to_your_Aegir_extension"><span class="toc-number">3. </span>API - how to add ACL support to your Aegir extension</a></li>
+	<li class="toc-level-1"><a href="#Caveats_ie._what_it_does_not"><span class="toc-number">4. </span>Caveats (ie. what it does not)</a></li>
+	<li class="toc-level-1"><a href="#Debugging"><span class="toc-number">5. </span>Debugging</a></li>
+	<li class="toc-level-1"><a href="#Notes"><span class="toc-number">6. </span>Notes</a></li>
+</ol>
+</div>
+</div>
+
+<h1 id="Install_instructions">1. Install instructions</h1>
+
+<p>First, you'll need a running Aegir install (1.0-rc3 or later), see <a href="../../../../../installing/index.html" title="http://community.aegirproject.org/installing">http://community.aegirproject.org/installing</a>. Most (if not all) of these commands will have to be run as root (or using sudo, etc.)</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Download_and_install_provision">1.1. Download and install provision</h2>
+
+<pre><code>drush dl provisionacl-6.x
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Enable_ACLs_on_your_filesystem">1.2. Enable ACLs on your filesystem</h2>
+
+<pre><code>mount -o remount,acl /
+</code></pre>
+
+<p>Here we assume everything is under the root (<code>/</code>) filesystem here, otherwise run this command for every filesystem Aegir will work on (e.g. <code>/srv</code>, <code>/var</code> or <code>/home</code>).</p>
+
+<p>You also need to edit your <code>/etc/fstab</code> for this configuration to survive reboots.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Install_ACL_support_package">1.3. Install ACL support package</h2>
+
+<pre><code>apt-get install acl
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Create_a_UNIX_group">1.4. Create a UNIX group</h2>
+
+<p>In this case we choose a group called "devs" but you can choose another name.</p>
+
+<pre><code>groupadd devs
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Add_users_to_the_group">1.5. Add users to the group</h2>
+
+<p>Add one or more UNIX users that you want to give access to that group. For an existing user (socrates32), this would look like:</p>
+
+<pre><code>usermod -a -G devs socrates32
+</code></pre>
+
+<p>For a new user (ergonlogic), this would look like:</p>
+
+<pre><code>useradd -G devs ergonlogic
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Create_a_client">1.6. Create a client</h2>
+
+<p>Create a client (should be called "devs" for this example) in the frontend at /node/add/client.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Create_a_site">1.7. Create a site</h2>
+
+<p>Create a site for the client in the frontend at /node/add/site.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="What_it_does">2. What it does</h1>
+
+<p>When the site is installed, members of the "devs" group will be able to write to the sites' directories (e.g. upload files and modules) and run drush commands on the site (yes, including site aliases, although see caveats below).</p>
+
+<p>This works also for existing sites; make sure you create a group matching the internal name of the existing client and reverify the site.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="API_-_how_to_add_ACL_support_to_your_Aegir_extension">3. API - how to add ACL support to your Aegir extension</h1>
+
+<p>To change ACLs on files, you should use something like this:</p>
+
+<pre><code>if (function_exists('provisionacl_set_acl')) {
+    provisionacl_files_acls(d()-&gt;site_path . '/mysettings.php');
+}
+</code></pre>
+
+<p>You can optionnally pass a group as an argument, but it will guess that from the client name of the site. Also note that this will raise a drush error if setfacl fails, but just set a warning if the group doesn't exist.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Caveats_ie._what_it_does_not">4. Caveats (ie. what it does not)</h1>
+
+<p>Giving shell access to users in Aegir is still insecure, see this upstream issue: <a href="http://drupal.org/node/762138">#762138</a>.</p>
+
+<p>We aim to refactor this into the Aegir core in 2.x, but in the meantime this should provide a good workaround for the limitations of the existing permission system.</p>
+
+<p>This will only work in 1.0 and above, as it needs the "client_name" field to be populated.</p>
+
+<p>You will need to change your $HOME variable for aliases to work, because of this bug in drush: <a href="http://drupal.org/node/1104438">#1104438</a>. Example:</p>
+
+<p><div class="codeblock"><code>env HOME=/var/aegir drush @hostmaster cc all</code></div></p>
+
+<p>See also <a href="../../../../494/index.html">this post for context and design</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Debugging">5. Debugging</h1>
+
+<p>If for some reason you have lost the ACLs on the directories and you need to restore them, use the following commands, which is basically what the module does:</p>
+
+<p><div class="codeblock"><code><span class='diff-added'>cd sites/example.com</span><br />setfacl -R -m user:aegir:rwx <span class='diff-changed'>.</span><br />setfacl -R -m default:user:aegir:rwx <span class='diff-changed'>.</span><br />setfacl -R -m group:www-data:rwx <span class='diff-changed'>.</span><br />setfacl -R -m d:group:www-data:rwx <span class='diff-changed'>.</span><br />setfacl -R -m group:cl-group:rwx <span class='diff-changed'>.</span><br />setfacl -R -m default:group:cl-admin:rwx <span class='diff-changed'>.</span></code></div></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Notes">6. Notes</h1>
+
+<p>This page is the reference documentation for the <a href="https://drupal.org/project/provisionacl">Provision ACL module page on Drupal.org</a> - keep this in mind when editing please.</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-68.html?destination=node%2F526%23comment-form">Login</a> or <a href="../../../../../user/register/index-68.html?destination=node%2F526%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-68.html?destination=node%2F526%23comment-form">Login</a> or <a href="../../../../../user/register/index-68.html?destination=node%2F526%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/526/revisions/3500/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:06:45 GMT -->
+</html>

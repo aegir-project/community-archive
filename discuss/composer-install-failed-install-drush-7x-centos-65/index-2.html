@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/composer-install-failed-install-drush-7x-centos-65?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:37:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>&quot;composer install&quot; failed for install drush 7.x in CentOS 6.5 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-12868" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/jackniu/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="jackniu&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/jackniu/index.html" class="username" title="View user profile.">jackniu</a></div><div class='date'>4:28pm Jan 15, 2015</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">&quot;composer install&quot; failed for install drush 7.x in CentOS 6.5</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>Hi guys,</p>
+
+<p>I have tried to install drush 7 in CentOS 6.5 as commands below:</p>
+
+<p><div class="codeblock"><code>curl -sS <a href="https://getcomposer.org/installer" title="https://getcomposer.org/installer">https://getcomposer.org/installer</a> | php<br />mv composer.phar /usr/local/bin/composer<br />ln -s /usr/local/bin/composer /usr/bin/composer<br /><br />git clone <a href="https://github.com/drush-ops/drush.git" title="https://github.com/drush-ops/drush.git">https://github.com/drush-ops/drush.git</a> /usr/local/src/drush<br />cd /usr/local/src/drush<br />git checkout master&nbsp; #or whatever version you want.<br />ln -s /usr/local/src/drush/drush /usr/bin/drush<br />composer install<br />drush --version</code></div></p>
+
+<p>But when I input "composer install",then press Enter button, I get some errors:
+<div class="codeblock"><code>[root@localhost drush]# composer install<br />Loading composer repositories with package information<br />Installing dependencies (including require-dev) from lock file<br />&nbsp; - Installing pear/console_table (1.2.1)<br />&nbsp;&nbsp;&nbsp; Downloading: 100%<br />&nbsp;&nbsp;&nbsp; Downloading: 100%<br />&nbsp;&nbsp;&nbsp; Downloading: 100%<br />&nbsp;&nbsp;&nbsp; Failed to download pear/console_table from dist: The &quot;https://api.github.com<br />/repos/RobLoach/Console_Table/zipball/10d89fbbe533351dcfe5dc1e84de25d9a8395950&quot;<br />file could not be downloaded: php_network_getaddresses: getaddrinfo failed: Temp<br />orary failure in name resolution<br />failed to open stream: php_network_getaddresses: getaddrinfo failed: Temporary f<br />ailure in name resolution<br />&nbsp;&nbsp;&nbsp; Now trying to download from source<br />&nbsp; - Installing pear/console_table (1.2.1)<br />&nbsp;&nbsp;&nbsp; Cloning 10d89fbbe533351dcfe5dc1e84de25d9a8395950<br /><br /><br /><br />&nbsp; [RuntimeException]<br />&nbsp; Failed to clone git@github.com:RobLoach/Console_Table.git via git, https, s<br />&nbsp; sh protocols, aborting.<br /><br />&nbsp; - git://github.com/RobLoach/Console_Table.git<br />&nbsp;&nbsp;&nbsp; github.com[0: 192.30.252.129]: errno=Connection timed out<br />&nbsp;&nbsp;&nbsp; fatal: unable to connect a socket (Connection timed out)<br /><br />&nbsp; - <a href="https://github.com/RobLoach/Console_Table.git<br />" title="https://github.com/RobLoach/Console_Table.git<br />">https://github.com/RobLoach/Console_Table.git<br /></a>&nbsp;&nbsp;&nbsp; error: Couldn&#039;t resolve host &#039;github.com&#039; while accessing <a href="https://github.<br />" title="https://github.<br />">https://github.<br /></a>&nbsp; com/RobLoach/Console_Table.git/info/refs<br /><br />&nbsp;&nbsp;&nbsp; fatal: HTTP request failed<br /><br />&nbsp; - git@github.com:RobLoach/Console_Table.git<br />&nbsp;&nbsp;&nbsp; ssh: Could not resolve hostname github.com: Temporary failure in name res<br />&nbsp; olution<br />&nbsp;&nbsp;&nbsp; fatal: The remote end hung up unexpectedly<br /><br /><br /><br /><br />install [--prefer-source] [--prefer-dist] [--dry-run] [--dev] [--no-dev] [--no-p<br />lugins] [--no-custom-installers] [--no-autoloader] [--no-scripts] [--no-progress<br />] [-v|vv|vvv|--verbose] [-o|--optimize-autoloader] [--ignore-platform-reqs] [pac<br />kages1] ... [packagesN]</code></div></p>
+
+<p>Anyone can help me? Thanks a lot!</p><div class="itu-attachments"><table class="itu-attachment-list withoutstats sticky-enabled" id="attachments">
+ <thead><tr><th class="preview">Preview</th><th class="file">Attachment</th><th class="size">Size</th> </tr></thead>
+<tbody>
+ <tr class="odd"><td class="mime mime-jpg"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/2015-01-16_composer-install-errors/index.jpg" title="2015-01-16_composer-install-errors.jpg"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/2015-01-16_composer-install-errors/index.jpg" alt="2015-01-16_composer-install-errors.jpg" title="2015-01-16_composer-install-errors.jpg" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/2015-01-16_composer-install-errors/index.jpg">2015-01-16_composer-install-errors.jpg</a></td><td class="size">191.49 KB</td> </tr>
+</tbody>
+</table>
+</div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-279.html?destination=node%2F12868%23comment-form">Login</a> or <a href="../../user/register/index-279.html?destination=node%2F12868%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/composer-install-failed-install-drush-7x-centos-65?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:37:34 GMT -->
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/2731/revisions/5104/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:15:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/release-notes/older-1x-releases/index.html" />
+<link rel="up" href="../../../../../content/release-notes/older-1x-releases/index.html" />
+<link rel="next" href="../../../../../1/index-3.html" />
+<link rel="prev" href="../../../../../content/release-notes/older-1x-releases/index.html" />
+<link rel="up" href="../../../../../content/release-notes/older-1x-releases/index.html" />
+<link rel="next" href="../../../../../1/index-3.html" />
+<link rel="prev" href="../../../../../content/release-notes/older-1x-releases/index.html" />
+<link rel="up" href="../../../../../content/release-notes/older-1x-releases/index.html" />
+<link rel="next" href="../../../../../1/index-3.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of 1.10 release notes from Wed, 07/17/2013 - 21:52 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2731" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../1/index-2.html">1.10 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_4 first"><a href="../../../../../taxonomy/term/4/index.html" rel="tag" title="This level is for users who have access to only their sites and not able to manage all Aegir features, accounts or the server/system.">Client</a></li>
+<li class="taxonomy_term_27"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_3"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-2731'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 07/17/2013 - 21:52</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>The Aegir team is proud to announce the tenth release in the stable 1.x release branch! This release ships <span class='diff-changed'>a moderately critical</span> security<span class='diff-added'> fix (see the Security</span> fixes<span class='diff-added'> section below)</span> and <span class='diff-changed'>a number of</span> bugfixes that have accumulated in the issue queue since the <a href="../../../../../1/index-3.html">1.9 release</a>.<span class='diff-added'> Everyone is encouraged to upgrade.</span></p>
+
+<p>We also want to announce that <a href="../../../../../user/54/index.html">ergonlogic</a> and <a href="../../../../../user/708/index.html">helmo</a> have joined the <a href="../../../../../maintainers/index.html">list of core maintainers</a> supporting the core development of the Aegir project. Along with the existing commitments of the Aegir core maintainer team, Aegir is well assured of continuous development and long term maintenance.</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Installing_and_upgrading"><span class="toc-number">1. </span>Installing and upgrading</a></li>
+	<li class="toc-level-1"><a href="#Need_help"><span class="toc-number">2. </span>Need help?</a></li>
+	<li class="toc-level-1"><a href="#Features"><span class="toc-number">3. </span>Features</a></li>
+	<li class="toc-level-1"><a href="#Security_fixes"><span class="toc-number">4. </span>Security fixes</a></li>
+	<li class="toc-level-1"><a href="#Bug_fixes"><span class="toc-number">5. </span>Bug fixes</a></li>
+	<li class="toc-level-1"><a href="#Known_issues"><span class="toc-number">6. </span>Known issues</a></li>
+</ol>
+</div>
+</div>
+
+<h2 id="Installing_and_upgrading">1. Installing and upgrading</h2>
+
+<p>The canonical source of installation documentation is on the community site at:</p>
+
+<pre><code>http://community.aegirproject.org/installing
+</code></pre>
+
+<p>In a similar fashion, the upgrade documentation is:</p>
+
+<pre><code>http://community.aegirproject.org/upgrading
+</code></pre>
+
+<p>Within those sections you'll find step-by-step instructions for performing both <a href="../../../../../upgrading/manual/index.html">manual</a> and <a href="../../../../../upgrading/script/index.html">automatic</a> upgrade processes.</p>
+
+<p>It is still imperative that you read the the <a href="../../../../../upgrading/path/index.html">upgrade path and version-specific information</a> and follow all version-specific upgrade instructions before trying to run the upgrade script or manual upgrade. This especially applies to users upgrading from releases prior to 0.4-alpha8, including 0.3.</p>
+
+<p>For users coming from the 0.4 betas or rc releases, there are unlikely to be any version-specific manual steps required to upgrade, but you should make a habit of reading them anyway just to make sure. No-one likes a nasty surprise!</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Need_help">2. Need help?</h2>
+
+<p>If you struggle to install or upgrade your Aegir system, you have a number of options available to you for getting help.</p>
+
+<p>Consult this page for more information: <a href="../../../../../help/index.html" title="http://community.aegirproject.org/help">http://community.aegirproject.org/help</a></p>
+
+<p>Thanks to our awesome <a href="../../../../../index.html">community</a> for their help, support and encouragement as always! Enjoy the new release :)</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Features">3. Features</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/1781832">#1781832</a> by Steven Jones: Added hosting_available_tasks() should invoke alter.</li>
+<li><a href="http://drupal.org/node/1760962">#1760962</a> by Jon Pugh: Added Allow any hosting task to flag itself for needing a provision-save.</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Security_fixes">4. Security fixes</h2>
+
+<ul>
+<li><span class='diff-changed'>Fix access control to sites.</span></li>
+</ul>
+
+<p>See also the security advisory (<a href="http://drupal.org/node/2044299"><span class='diff-changed'>SA-CONTRIB-2013-059</span></a>) for more information.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Bug_fixes">5. Bug fixes</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/1990370">#1990370</a> by ergonlogic: Enable Hosting feature dependencies.</li>
+<li><a href="http://drupal.org/node/1435098">#1435098</a> by Steven Jones: Fixed Client name validate sometimes gives erroneous results.</li>
+<li><a href="http://drupal.org/node/1585820">#1585820</a> by Steven Jones: Fixed Can't disable the 'client" feature.</li>
+<li><a href="http://drupal.org/node/1573162">#1573162</a> by mig5, Steven Jones: Fixed Drush hosting_task_()%task_rollback() invocations are never executed.</li>
+<li><a href="http://drupal.org/node/1513678">#1513678</a> by Jon Pugh, fastangel: Fixed Hooks based on TASK_NAME should handle task names with dashes in them.</li>
+<li><a href="http://drupal.org/node/913228">#913228</a> by Steven Jones: Fixed Unresponsive submit button in platform migration form.</li>
+<li><a href="http://drupal.org/node/1441970">#1441970</a> by Steven Jones: Fixed Client Block assigned by default to non-existing region.</li>
+<li><a href="http://drupal.org/node/1441970">#1441970</a> by jlscott: Fixed Client Block assigned by default to non-existing region.</li>
+<li><a href="http://drupal.org/node/1597648">#1597648</a> by jlscott: Fixed Hosting Queues Summary Block is stale.</li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/2044251"><span class='diff-added'>#2044251</span></a><span class='diff-added'>: Remove '@none' from call to drush_invoke_process(), since it isn't supported in Drush 4.5.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/1678528"><span class='diff-added'>#1678528</span></a><span class='diff-added'> by helmo: Fixed Database deleted on edge cases.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/1912666"><span class='diff-added'>#1912666</span></a><span class='diff-added'> by ergonlogic: Fixed Stable manual 6.x-1.x install test failure.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/1912666"><span class='diff-added'>#1912666</span></a><span class='diff-added'> by ergonlogic: Fix command to run tests for 6.x-1.x.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Nginx: Fix typo in the location regex.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Nginx Security: BEAST attack protection and fix for PCI compliance.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/1906900"><span class='diff-added'>#1906900</span></a><span class='diff-added'> by fall_0ut - Nginx microcaching not disabled on localized/prefixed admin URIs.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Nginx: Make upload progress configuration compatible with latest release of Nginx extension and integration module for Drupal 7.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Nginx: Move some dynamic directives up in the location.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Nginx: Better protection for private URLs from bots/spiders (2)</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Nginx: Improve locations for static files.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Nginx: Better protection for private URLs from bots/spiders.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Nginx: Add support for </span><a href="http://drupal.org/project/js" title="http://drupal.org/project/js"><span class='diff-added'>http://drupal.org/project/js</span></a><span class='diff-added'> module.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Nginx: Improve no-cache exceptions for known AJAX and webform requests.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Nginx: Improve performance for dynamic requests and reduce logging 404 errors.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Nginx: Remove duplicate location - already protected in the server template.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Nginx: Do not use device-specific, never working paths for Boost cache.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Nginx: Make json compatible with boost caching but dynamic for POST requests.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Nginx: Add Wysiwyg Fields support.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Nginx: Do not block spiders on URIs with event/calendar regex match.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Nginx: Avoid breaking WordPress import when WP-specific URI is used.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Nginx: Avoid caching /civicrm* and protect it from bots.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>remove perlism in sed which would never match (\s).</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>explain why we do the crazy sed on dump (mysql bug)</span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/1786702"><span class='diff-added'>#1786702</span></a><span class='diff-added'> by clemens.tolboom - be nice to non-aegir backups like drush archive.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/1788398"><span class='diff-added'>#1788398</span></a><span class='diff-added'> by marvil07: Fixed Force dependency to drush &lt; 5.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>add missing robots and files/ rules to SSL hosts.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>remove redundant paramenters to the CSR, fix email to use a standard default.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>clarify comment on self-signed certificates.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/941870"><span class='diff-added'>#941870</span></a><span class='diff-added'> - check for errors when copying certificates.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>improve error handling in SSL key generation.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>bump up the SSL key size to 2048 bit.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>clarify the SSL key signing code.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>don't encrypt SSL keys only to decrypt them after.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/1741814"><span class='diff-added'>#1741814</span></a><span class='diff-added'> by wamilton: Fixed Support For Non-Alphanumeric MySQL Passwords in provision-backup, migrate, and clone.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/1612252"><span class='diff-added'>#1612252</span></a><span class='diff-added'> by mig5, Steven Jones: Fixed 'site_offline()' variable needs to be 'maintenance_mode()' in Drupal 7.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/1440646"><span class='diff-added'>#1440646</span></a><span class='diff-added'> by tstoeckler, cafuego, mig5: Make Drush be runnable as Root with Provision installed.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/1734500"><span class='diff-added'>#1734500</span></a><span class='diff-added'> by Steven Jones: Fixed Can't run tests with Drush 4.6.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>move files and robots.txt rewrite rules to the vhost.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><a href="http://drupal.org/node/1108810"><span class='diff-added'>#1108810</span></a><span class='diff-added'> - protect the complete private files directory.</span></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Known_issues">6. Known issues</h2>
+
+<p>No know issues at this time.</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-170.html?destination=node%2F2731%23comment-form">Login</a> or <a href="../../../../../user/register/index-170.html?destination=node%2F2731%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-170.html?destination=node%2F2731%23comment-form">Login</a> or <a href="../../../../../user/register/index-170.html?destination=node%2F2731%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/2731/revisions/5104/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:15:46 GMT -->
+</html>

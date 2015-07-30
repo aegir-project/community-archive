@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/557/revisions/1503/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:20:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../324/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../494/index.html" />
+<link rel="prev" href="../../../../324/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../494/index.html" />
+<link rel="prev" href="../../../../324/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../494/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of UNIX group limitations from Fri, 04/08/2011 - 16:38 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-557" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../developing/architecture/unix-group-limitations/index.html">UNIX group limitations</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-557'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a> on 04/08/2011 - 16:38</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>While working on the security enhancements, I stumbled upon a few fundamental UNIX limitations with groups.</p>
+
+<script type="text/javascript"><span class='diff-changed'>toc_collapse=0;</span></script><span class='diff-changed'></span><div class="toc" id="toc1"><span class='diff-changed'>
+</span><div class="toc-title"><span class='diff-changed'>Table of Contents</span><span class="toc-toggle-message"><span class='diff-changed'>&nbsp;</span></span><span class='diff-changed'></span></div><span class='diff-changed'>
+</span><div class="toc-list"><span class='diff-changed'>
+</span><ol><span class='diff-changed'>
+	</span><li class="toc-level-1"><span class='diff-changed'></span><a href="#Group_name_length_limits"><span class='diff-changed'></span><span class="toc-number"><span class='diff-changed'>1. </span></span><span class='diff-changed'>Group name length limits</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+	</span><li class="toc-level-1"><span class='diff-changed'></span><a href="#Group_membership_limits"><span class='diff-changed'></span><span class="toc-number"><span class='diff-changed'>2. </span></span><span class='diff-changed'>Group membership limits</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span></ol><span class='diff-changed'>
+</span></div><span class='diff-changed'>
+</span></div><span class='diff-changed'>
+
+</span><h2 id="Group_name_length_limits"><span class='diff-changed'>1. </span>Group name length limits</h2>
+
+<p>A group name (e.g. <code>dialout</code>) has a length limit, usually hardcoded in the operating system. This limit varies across different UNIX systems and implementations.</p>
+
+<ul>
+<li>NIS: 8 characters (<a href="http://unix.derkeiler.com/Newsgroups/comp.unix.solaris/2007-02/msg00818.html">source</a>)</li>
+<li>HPUX: 8 characters, 16 starting from HPUX 10 (<a href="http://h30097.www3.hp.com/docs/base_doc/DOCUMENTATION/V51B_HTML/MAN/MAN8/0353____.HTM">source</a>, <a href="http://lists.alioth.debian.org/pipermail/pkg-shadow-devel/2009-March/007031.html">source</a>)</li>
+<li>AIX: 8 characters, 255 for AIX 5.3 and above (<a href="http://publib.boulder.ibm.com/infocenter/pseries/v5r3/index.jsp?topic=/com.ibm.aix.security/doc/security/user_group_name_length.htm">source</a>)</li>
+<li>Debian: 16 characters (<a href="http://lists.alioth.debian.org/pipermail/pkg-shadow-devel/2009-March/007031.html">source</a>, <a href="http://svn.debian.org/wsvn/pkg-shadow/upstream/trunk/configure.in">defined in shadow at compile-time</a>)</li>
+<li>Redhat: 16 characters, 32 starting from 2005 (<a href="https://rhn.redhat.com/errata/RHBA-2005-164.html">source</a>, <a href="http://www.unixresources.net/linux/lf/5/archive/00/00/16/35/163570.html">source</a>, <a href="http://www.linuxquestions.org/questions/red-hat-31/max-group-length-in-red-hat-enterprise-linux-5-1-a-662171/">source</a>)</li>
+<li>Solaris: 8 characters? (<a href="http://arc.opensolaris.org/caselog/PSARC/2007/064/issues">source</a>)</li>
+<li>Active Directory: 11 or 64 characters (<a href="http://msdn.microsoft.com/en-us/library/ee824527(v=cs.10).aspx">source unclear</a>)</li>
+</ul>
+
+<p>In general, we can probably assume that 16 characters is a safe limit, and that's what's being used in <a href="../api.aegirproject.org/hosting_client_sanitize/index.html">hosting_client_sanitize</a>.</p>
+
+<div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h2 id="Group_membership_limits"><span class='diff-changed'>2. </span>Group membership limits</h2>
+
+<p>A UNIX user has a primary group, defined in the <code>passwd</code> database, but can also be a member of many other groups, defined in the <code>groups</code> database. UNIX has a hardcoded limit of 16 groups a user can be a member of (<a href="http://www.insectnation.org/articles/2007/05/08/linux-nfs-16-group-limit">source</a>). This means that if we translate Aegir clients into UNIX groups and you have access to multiple Aegir clients, you'll be able to access only 16 of those clients at a time. Rather annoying.</p>
+
+<p>The problem is related with NFS, or rather <code>AUTH_SYS</code> (<a href="http://www.sage.org/lists/sage-members-archive/2004/msg00389.html">source</a>), which has an in-kernel data structure where the groups a user has access to is hardcoded as an array of 16 identifiers (<code>gids</code> to be more precise, see <a href="http://blogs.sun.com/peteh/date/20050614">this post for details</a>). Even though Linux now supports <a href="http://lxr.linux.no/linux-bk+v2.6.10/include/linux/limits.h#L6">65536 groups</a>, it is still not possible to operate on more than 16 from userland, probably because of the above authorization checks.</p>
+
+<p>Solutions for this are not obvious. The <a href="http://blogs.sun.com/peteh/date/20050614">blog post on sun.com</a> proposes a technical enhancement to OpenSolaris. It's unclear whether that fix was implemented. <a href="http://www.sage.org/lists/sage-members-archive/2004/msg00389.html">This SAGE post</a> explains that using <code>GSS_API</code> (used in NFSv4) should (should!) resolve the issue.</p>
+
+<p>This <a href="http://nfsworld.blogspot.com/2005/03/whats-deal-on-16-group-id-limitation.html">more thorough analysis of the problem</a> is more direct:</p>
+
+<ul>
+<li>Use NFSv4</li>
+<li>Use RPCSEC_GSS authentication</li>
+<li>Use ACLs</li>
+</ul><span class='diff-added'></span><div class="toc-back-to-top"><span class='diff-added'></span><a href="#toc"><span class='diff-added'>Back to top</span></a><span class='diff-added'></span></div><span class='diff-added'></span><script type="text/javascript"><span class='diff-added'>toc_scroll_back_to_top = 1;</span></script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-206.html?destination=node%2F557%23comment-form">Login</a> or <a href="../../../../../user/register/index-206.html?destination=node%2F557%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-206.html?destination=node%2F557%23comment-form">Login</a> or <a href="../../../../../user/register/index-206.html?destination=node%2F557%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/557/revisions/1503/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:20:26 GMT -->
+</html>

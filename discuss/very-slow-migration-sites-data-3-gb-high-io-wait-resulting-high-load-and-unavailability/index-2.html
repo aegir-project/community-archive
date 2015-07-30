@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/very-slow-migration-sites-data-3-gb-high-io-wait-resulting-high-load-and-unavailability?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 22:06:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Very slow migration of sites with data &gt; 3 GB? High IO wait resulting in high load and unavailability. | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1937" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/rasmusluckow/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="rasmusluckow&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/rasmusluckow/index.html" class="username" title="View user profile.">rasmusluckow</a></div><div class='date'>7:16pm Oct 24, 2012</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Very slow migration of sites with data &gt; 3 GB? High IO wait resulting in high load and unavailability.</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_101 first"><a href="../../category/keywords/backup/index.html" rel="tag" title="">backup</a></li>
+<li class="taxonomy_term_202"><a href="../../category/keywords/gzip/index.html" rel="tag" title="">gzip</a></li>
+<li class="taxonomy_term_203"><a href="../../category/keywords/iowait/index.html" rel="tag" title="">iowait</a></li>
+<li class="taxonomy_term_201 last"><a href="../../category/keywords/performance/index.html" rel="tag" title="">performance</a></li>
+</ul></div><p>Hi Guys
+We are starting to use Aegir on more and more customer sites, and have been experiencing some problems lately.</p>
+
+<p>We have some sites with 3-4 GBs data on rather powerful virtual servers.
+When we migrate them to a new version of a platform it takes a really long time (20-50 mins), and during that migration the load on the server gets very high (due to IOWait as far as I can see), and the site gets unresponsive in the meantime (due to high serverload).
+One of the servers are specced with 8 CPUs, 16 GB ram and 100 GB SAN disk, running debian squeeze.
+The other is smaller specced but similar, and running Ubuntu.</p>
+
+<p>When running IOtop while this is in process, I can see that Aegir runs a "gzip" command most of the time. When that task is finished, then the rest of the migration finishes very quickly.</p>
+
+<p>Is this normal?
+Because even though SAN disks can be slow-ish, this seems excessive?</p>
+
+<p>Thanks,
+Rasmus
+reload.dk</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-483.html?destination=node%2F1937%23comment-form">Login</a> or <a href="../../user/register/index-483.html?destination=node%2F1937%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/very-slow-migration-sites-data-3-gb-high-io-wait-resulting-high-load-and-unavailability?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 22:06:03 GMT -->
+</html>

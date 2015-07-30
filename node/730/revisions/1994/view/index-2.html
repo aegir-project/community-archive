@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/730/revisions/1994/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:22:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../article-archive/test-your-drupal-distro-building-continuous-integration-server-aegir-jenkins/index.html" />
+<link rel="up" href="../../../../../presentation/article-archive/index.html" />
+<link rel="next" href="../../../../../presentation/slidedecks/index.html" />
+<link rel="prev" href="../../../../../article-archive/test-your-drupal-distro-building-continuous-integration-server-aegir-jenkins/index.html" />
+<link rel="up" href="../../../../../presentation/article-archive/index.html" />
+<link rel="next" href="../../../../../presentation/slidedecks/index.html" />
+<link rel="prev" href="../../../../../article-archive/test-your-drupal-distro-building-continuous-integration-server-aegir-jenkins/index.html" />
+<link rel="up" href="../../../../../presentation/article-archive/index.html" />
+<link rel="next" href="../../../../../presentation/slidedecks/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Upgrading Aegir itself to the latest version of Drupal from Sun, 06/26/2011 - 06:10 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-730" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../article-archive/upgrading-aegir-itself-latest-version-drupal/index.html">Upgrading Aegir itself to the latest version of Drupal</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-730'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 06/26/2011 - 06:10</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p><span class='diff-added'>This article first appeared on mig5's blog on 26th May, 2011</span></p><span class='diff-added'>
+</span><p>Today, Drupal <a href="http://drupal.org/drupal-7.2">released a security/bugfix for Drupal 6 and 7</a>, bringing the latest version of Drupal 6 to 6.22.</p>
+<p><a href="http://aegirproject.org/">Aegir</a> is well known for making site upgrades very easy, fast and safe by way of the Migrate task. But some users might be wondering how to make the Aegir 'frontend', which is a Drupal-6 site itself, run on the latest version of Drupal without having to reinstall Aegir entirely.</p>
+<p>For instance, if you installed Aegir 1.0 or 1.1, your Aegir system is probably running on Drupal 6.20.</p>
+<p>Fortunately, our <a href="../../../../../upgrading/manual/index.html">Upgrade instructions</a> for Aegir, while typically describing how to update your Aegir instance to a new release of Aegir specifically, can also be used as-is to perform an upgrade of your Aegir system to the latest version of Drupal only.</p>
+<p>In other words, follow the Aegir upgrade instructions per that link above as though you were upgrading Aegir, but retain the same version number in the steps:</p>
+<div class="codeblock"><code>export OLD_AEGIR_DIR=/var/aegir/hostmaster-6.x-1.1<br />export AEGIR_VERSION=6.x-1.1<br />export AEGIR_DOMAIN=aegir.example.com</code></div>
+<p>The next step in the upgrade would normally be:</p>
+<div class="codeblock"><code>cd $OLD_AEGIR_DIR<br />drush hostmaster-migrate $AEGIR_DOMAIN $HOME/hostmaster-$AEGIR_VERSION</code></div>
+<p>The upgrade steps will actually build a new Drupal platform ($HOME/hostmaster-$AEGIR_VERSION) automatically using Drush Make. </p>
+<p>However, you can't have two directories in /var/aegir called 'hostmaster-6.x-1.1' because Drush Make will abort on this.</p>
+<p>To work around this, adjust the 'target platform' part of this command so that the new platform directory will have a unique name:</p>
+<div class="codeblock"><code>cd $OLD_AEGIR_DIR<br />drush hostmaster-migrate $AEGIR_DOMAIN $HOME/hostmaster-$AEGIR_VERSION-d6.22</code></div>
+<p>The naming convention is arbitrary here: I am simply suffixing it with d6.22 so I understand why I did it if I forget later :)</p>
+<p>So long as it's a unique new target platform, your Aegir instance will 'upgrade' itself by backing up and then moving the Aegir frontend onto the new Drupal 6.22 platform, then running through the rest of the upgrade/ update.php steps automatically.</p>
+<p>Afterward, you can safely visit the old Hostmaster platform node (usually /hosting/c/platform_hostmaster) in your Aegir frontend and remove it by running the 'Delete' task. I recommend you don't simply rm -rf the old hostmaster platform manually, but let the Delete task take care of this, and other cleanup tasks, for you.</p>
+<p>As always if you have questions or get stuck, let us know on the <a href="../../../../../index.html">Community portal</a>, on the <a href="http://lists.aegirproject.org/">mailing lists</a>, the <a href="http://drupal.org/node/add/project-issue/hostmaster">Support ticket queue</a> or on IRC in #aegir on Freenode.</p>
+<p>Good luck!</p>
+<p>------</p>
+<p><em>If you need a consultant to handle the tasks of installing, upgrading or troubleshooting your Aegir instance, consider reviewing our <a href="../../../../../services/aegir/index.html">consultancy services</a>. mig5 is a core developer of the opensource Aegir hosting system.</em></p>
+</div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-251.html?destination=node%2F730%23comment-form">Login</a> or <a href="../../../../../user/register/index-251.html?destination=node%2F730%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-251.html?destination=node%2F730%23comment-form">Login</a> or <a href="../../../../../user/register/index-251.html?destination=node%2F730%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/730/revisions/1994/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:22:55 GMT -->
+</html>

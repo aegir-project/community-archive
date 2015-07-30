@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/second-quarterly-report-q4-2012-aegir-funding-work?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:56:20 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Second quarterly report (Q4-2012) of Aegir funding work | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2051" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/anarcat/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-78/index.jpg" alt="anarcat&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a></div><div class='date'>6:57pm Nov 16, 2012</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Second quarterly report (Q4-2012) of Aegir funding work</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_222 first"><a href="../../category/keywords/funding/index.html" rel="tag" title="">funding</a></li>
+<li class="taxonomy_term_149"><a href="../../category/keywords/koumbit/index.html" rel="tag" title="">koumbit</a></li>
+<li class="taxonomy_term_204"><a href="../../category/keywords/omega8/index.html" rel="tag" title="">omega8</a></li>
+<li class="taxonomy_term_147 last"><a href="../../category/keywords/report/index.html" rel="tag" title="">report</a></li>
+</ul></div><p>There has been little feedback to the community of the Aegir work funded jointly by <a href="http://omega8.cc/">Omega8cc</a> and <a href="http://koumbit.org/">Koumbit.org</a> since the <a href="../first-quarterly-report-aegir-funding-work/index.html">first report</a>. While we have previously agreed to issue such a report every two months, we have been lagging behind in development during the summer so there was little to report. Work has picked up however, and we should be reporting regularly, so here we go!</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Executive_summary"><span class="toc-number">1. </span>Executive summary</a></li>
+	<li class="toc-level-1"><a href="#Notable_accomplishments"><span class="toc-number">2. </span>Notable accomplishments</a>
+<ol>
+	<li class="toc-level-2"><a href="#Issue_tracking_and_queue_support"><span class="toc-number">2.1. </span>Issue tracking and queue support</a></li>
+	<li class="toc-level-2"><a href="#SSL_and_IP_allocation_work"><span class="toc-number">2.2. </span>SSL and IP allocation work</a></li>
+	<li class="toc-level-2"><a href="#Optimisation:_moving_files_out_of_the_sites_directory"><span class="toc-number">2.3. </span>Optimisation: moving files out of the sites directory</a></li>
+	<li class="toc-level-2"><a href="#Client_importation_failures"><span class="toc-number">2.4. </span>Client importation failures</a></li>
+	<li class="toc-level-2"><a href="#Nginx_support_in_the_Debian_package"><span class="toc-number">2.5. </span>Nginx support in the Debian package</a></li>
+	<li class="toc-level-2"><a href="#Hurricane_Sandy"><span class="toc-number">2.6. </span>Hurricane Sandy</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Upcoming_work"><span class="toc-number">3. </span>Upcoming work</a>
+<ol>
+	<li class="toc-level-2"><a href="#x_release_schedule_update"><span class="toc-number">3.1. </span>2.x release schedule update</a></li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+
+<h1 id="Executive_summary">1. Executive summary</h1>
+
+<p>Koumbit has spent 62 hours of raw work (excluding breaks and overhead) until november, roughly 5.5 hours a week, which is a little less than the previous period, but still a respectable number, considering the holidays.</p>
+
+<p>Indeed, development was seriously hindered by that nasty thing called "vacations" here, which made the core Aegir developer (anarcat, me!) unavailable for more than 4 weeks this summer. We have decided to include the work ergonlogic has performed on the sites directory in this report and funded that work accordingly.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Notable_accomplishments">2. Notable accomplishments</h1>
+
+<p>I personnally performed about 30 commits and participated in over 100 issues on Drupal.org in the last 3-4 months.</p>
+
+<p>All the gory details are on my tracker here:</p>
+
+<ul>
+<li><a href="https://drupal.org/user/1274/track">Drupal.org tracking page</a></li>
+<li><a href="../../user/78/index.html">Community site contributions</a></li>
+</ul>
+
+<p>Here's an outline of significant contributions.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Issue_tracking_and_queue_support">2.1. Issue tracking and queue support</h2>
+
+<p>I have kept on performing review duties in the queue during that time, although at a reduced pace. I also need to catchup for the weeks I have been on vacation this summer, so to all the people who submitted patches and feedback, do not panic, you are not lost and will be responded to!</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="SSL_and_IP_allocation_work">2.2. SSL and IP allocation work</h2>
+
+<p><em><a href="https://drupal.org/node/1126640">Issue #1126640</a> and related</em></p>
+
+<p>This work, mentionned in the last report, concerns rewiring the SSL code to move policy back in the frontend where it belongs, and fix a bunch of bugs and the weird ways the SSL functionality works.</p>
+
+<p>I have done a significant dent in this problem since the last report. I have started an actual implementation of IP allocation in the frontend. The code still need to be tested, but I think it's is a step in the right direction. I started priorising this work because of the problems found in the <a href="https://drupal.org/node/1784108">SSL support of the pack module</a>. This is my main priority right now.</p>
+
+<p>The approach I have taken is to remove the IP allocation from the backend completely, rendering it dumb like it is done elsewhere in Aegir. One big question that remains is whether sites should have an IP associated to them, or only an SSL certificate and then SSL certificates have (or not, in case of SNI) IPs associated to them. I tend towards the latter (SSL-site mapping only), but I am really not certain and would welcome feedback in the issue.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Optimisation:_moving_files_out_of_the_sites_directory">2.3. Optimisation: moving files out of the sites directory</h2>
+
+<p><em><a href="https://drupal.org/node/1205458">Issue #1205458</a> and related</em></p>
+
+<p>Christopher has done significant work in adding this feature which promises to improve migrate performance significantly while at the same time making it easier to host those files on a SAN or external storage layers. Christopher has taken an innovative approach based on tokens to let the administrator choose the policy of where the files should be stored. The code is sound and the approach is really interesting, but this code needs testing before we factor it into 2.x. This API-breaking change will not be part of 1.x unfortunately, but we aim to release 2.x shortly anyways, so that shouldn't be a problem. ;)</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Client_importation_failures">2.4. Client importation failures</h2>
+
+<p><em><a href="http://drupal.org/node/1146014">Issue #1146014</a></em></p>
+
+<p>Some issues were discovered in the 2.x code thanks to the Barracuda team about how we handle clones and old site imports, which could leave a site without an owner and vulnerable to all users on the Aegir site. The patch is still pending review, but should be factored into 2.x shortly.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Nginx_support_in_the_Debian_package">2.5. Nginx support in the Debian package</h2>
+
+<p><em><a href="https://drupal.org/node/1348560">Issue #1348560</a></em></p>
+
+<p>I finally bit the bullet and made the Debian package support Nginx out of the box. The code was pushed directly to the 2.x branch after some basic tests. No extra configuration screen is necessary, the idea is that the package does an educated guess based on what packages are already installed so to install Aegir with Nginx should be as simple as:</p>
+
+<pre><code>apt-get install nginx aegir
+</code></pre>
+
+<p>Apache still remains the default webserver for now however.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Hurricane_Sandy">2.6. Hurricane Sandy</h2>
+
+<p><em><a href="../debian-archive-down-because-sandy/index.html">Main article</a></em></p>
+
+<p>The Aegir team struggled quite a bit with Hurricane Sandy, which knocked down our Debian archive and Jenkins server. Thanks to the invaluable work of Omega8cc people (hosting) in coordination with Koumbit (DNS), the services were brought back online fairly quickly after jumping between the available datacenters.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Upcoming_work">3. Upcoming work</h1>
+
+<p>On top of the aforementionned issues and the upcoming work mentionned in the previous report, which are still relevant, we have the following updates to add to this report.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="x_release_schedule_update">3.1. 2.x release schedule update</h2>
+
+<p><em><a href="../another-stab-short-and-long-term-roadmap-aegir-2x-and-3x/index.html">Original discussion</a></em></p>
+
+<p>The 2.x release schedule was seriously compromised because of the holidays, so the previous release plan has obviously been scrapped now. The objective remain, however, and we could say we are almost halfway through our primary objectives. It is my hope that I am able to finish the SSL and nginx cleanup before christmas vacations, which would mean alpha/beta releases in january. I expect the 2.x beta/RC release cycle to be fairly short as it is already used in production in some places so we are likely to make a full release of Aegir 2.0 in early 2013.</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-434.html?destination=node%2F2051%23comment-form">Login</a> or <a href="../../user/register/index-434.html?destination=node%2F2051%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/second-quarterly-report-q4-2012-aegir-funding-work?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:56:20 GMT -->
+</html>

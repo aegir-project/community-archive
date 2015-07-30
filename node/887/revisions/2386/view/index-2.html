@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/887/revisions/2386/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/installing/manual/centos-6x-aegir-install-guide/index.html" />
+<link rel="up" href="../../../../../installing/manual/index.html" />
+<link rel="next" href="../../../../../content/installing/manual/nginx-mariadb-php-fpm-single-server-installation/index.html" />
+<link rel="prev" href="../../../../../content/installing/manual/centos-6x-aegir-install-guide/index.html" />
+<link rel="up" href="../../../../../installing/manual/index.html" />
+<link rel="next" href="../../../../../content/installing/manual/nginx-mariadb-php-fpm-single-server-installation/index.html" />
+<link rel="prev" href="../../../../../content/installing/manual/centos-6x-aegir-install-guide/index.html" />
+<link rel="up" href="../../../../../installing/manual/index.html" />
+<link rel="next" href="../../../../../content/installing/manual/nginx-mariadb-php-fpm-single-server-installation/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Manual install of a web cluster aegir using nginx from Wed, 10/05/2011 - 02:41 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-887" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../installing/manual/manual-install-web-cluster-aegir-using-nginx/index.html">Manual install of a web cluster aegir using nginx</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-887'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/halcyoncorsair/index.html" class="username" title="View user profile.">halcyonCorsair</a> on 10/05/2011 - 02:41</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>These are some really rough notes on how to go about creating a 4 server aegir installation (aegir, mysql, web1, web2).</p>
+
+<p>Adapted from reading through the BOA project and my own experimentation.</p>
+
+<p>** Note -- regarding the wildcard SSL, your sites will need some configuration in your settings.php or local.settings.php to check for the X-Forwarded-Proto headers.  I can't recall if the wildcard SSL config.</p>
+
+<p>These notes also assume the last Ubuntu LTS -- 10.04/Lucid.</p>
+
+<pre>
+aegirmysql:
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install vim mysql-server
+
+
+_USER="aegir"
+_DOMAIN="aegir.domain.com"
+_AEGIR_HOST="aegir.server.hostname"
+_AEGIR_HOST_IP="123.456.789.01"
+_AEGIR_PASSWORD="password"
+
+#AEGIR_DB_USER=aegir_root
+#AEGIR_DB_PASS=`echo $RANDOM:\`date\`:$AEGIR_HOST | openssl md5`
+
+echo "[client]
+user=root
+password=password" &gt;&gt; .my.cnf
+
+mysql -uroot mysql&lt;&lt;EOFMYSQL
+GRANT ALL PRIVILEGES ON *.* TO '$_USER'@'$_DOMAIN' IDENTIFIED BY 'password' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO '$_USER'@'$_AEGIR_HOST' IDENTIFIED BY 'password' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO '$_USER'@'$_AEGIR_HOST_IP' IDENTIFIED BY 'password' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO '$_USER'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+EOFMYSQL
+
+
+========================
+
+# <a href="https://launchpad.net/~brianmercer/+archive/nginx" title="https://launchpad.net/~brianmercer/+archive/nginx">https://launchpad.net/~brianmercer/+archive/nginx</a>
+# <a href="https://launchpad.net/~nginx/+archive/php5" title="https://launchpad.net/~nginx/+archive/php5">https://launchpad.net/~nginx/+archive/php5</a>
+
+aegircontrol:
+
+sudo apt-get update
+sudo apt-get upgrade
+
+sudo mkdir -p /var/www/nginx-default
+
+#php5-suhosin
+CATHOSTDEBDEPS="git-core git-doc mysql-client-5.1 vim nginx-custom drush postfix php5-cli php5-mysql php5-fpm php5-gd rsync unzip bzr patch curl"
+sudo apt-get -V install $CATHOSTDEBDEPS
+
+#postfix config already sorted
+
+sudo adduser --system --group --home /var/aegir aegir
+sudo adduser aegir www-data
+sudo chsh -s /bin/bash aegir
+
+#patch drush, re: ereg()
+
+#as root:
+echo "aegir ALL=NOPASSWD: /etc/init.d/nginx" &gt;&gt; /etc/sudoers
+
+ln -s /var/aegir/config/nginx.conf /etc/nginx/conf.d/aegir.conf
+invoke-rc.d nginx restart
+
+#install SSL cert to:
+/etc/ssl/private/domain.com.cert.pem
+cd /etc/ssl/private/
+ln -s domain.com.cert.pem nginx-wild-ssl.crt
+ln -s domain.com.cert.pem nginx-wild-ssl.key
+
+#install SSL config to:
+/var/aegir/config/server_master/nginx/pre.d/nginx_wild_ssl.conf
+#TODO: also install for /var/aegir/config/server_aegirweb{1,2}.host.name
+
+#as aegir:
+cd ~
+
+mkdir .ssh
+ssh-keygen -t rsa
+
+ln -s /usr/share/drush /var/aegir/drush
+mkdir ~/.drush
+cd ~/.drush
+wget -c <a href="http://ftp.drupal.org/files/projects/provision-6.x-1.3.tar.gz" title="http://ftp.drupal.org/files/projects/provision-6.x-1.3.tar.gz">http://ftp.drupal.org/files/projects/provision-6.x-1.3.tar.gz</a>
+tar -zxf provision-6.x-1.3.tar.gz
+
+#htaccess password bit
+mkdir ~/tmp
+cd ~/tmp
+git clone --branch develop git://github.com/computerminds/aegir_http_basic.git
+#must be develop branch to use crypt() and for nginx support
+cp -r aegir_http_basic/provision ~/.drush/provision/aegir_http_basic
+cp -r aegir_http_basic/hosting ~/hostmaster-6.x-1.3/profiles/hostmaster/modules/hosting/http_basic_auth
+#set directory permissions? -- patch aegir/http_basic module to do so?
+
+_DOMAIN="aegir.domain.com"
+_USER="aegir"
+#_AEGIR_HOST=`uname <span class='diff-changed'>-n`
+_AEGIR_HOST="aegir.server.hostname"
+_AEGIR_HOME="$HOME"
+_AEGIR_DB_PASS="password"
+_AEGIR_DB_HOST="mysql.server.fqdn"
+_AEGIR_VERSION="1.3"
+#_AEGIR_ROOT="$_AEGIR_HOME/hostmaster-$_AEGIR_VERSION"
+_ADM_EMAIL="admin@domain.com""
+_WEBG=www-data
+_USRG=users
+
+#going</span> vanilla
+echo "drush hostmaster-install $_DOMAIN --aegir_host=$_AEGIR_HOST --aegir_db_user=$_USER --aegir_db_pass=$_AEGIR_DB_PASS --http_service_type=nginx --db_service_type=mysql --db_port=3306 --aegir_db_host=$_AEGIR_DB_HOST --client_email=$_ADM_EMAIL --script_user=$_USER --web_group=$_WEBG --profile=hostmaster -d -v"
+
+drush hostmaster-install $_DOMAIN --aegir_host=$_AEGIR_HOST --aegir_db_user=$_USER --aegir_db_pass=$_AEGIR_DB_PASS --http_service_type=nginx --db_service_type=mysql --db_port=3306 --aegir_db_host=$_AEGIR_DB_HOST --client_email=$_ADM_EMAIL --script_user=$_USER --web_group=$_WEBG --profile=hostmaster -d -v
+
+cd hostmaster-6.x-1.3
+echo "alive" &gt;&gt; healthcheck
+
+#enable aegir modules
+drush @hostmaster en hosting_web_cluster
+drush @hostmaster en hosting_alias
+drush @hostmaster en hosting_http_basic_auth
+#*** enable hosting client in features -- disabling client module cause WSOD on site add page
+
+# setup aegirweb{1,2}
+# test ssh to aegirweb{1,2}
+# add to known_hosts
+
+# NOTE: Aegir web clusters need to share the files, and private directories between web servers (also cache directory, if using boost module)
+# Setup provision hook for NFS links
+# <a href="http://drupal.org/node/1283738" title="http://drupal.org/node/1283738">http://drupal.org/node/1283738</a>
+
+mkdir -p /var/lib/sitedata/aegir
+chown -R aegir:www-data /var/lib/sitedata/aegir
+
+mkdir -p /var/lib/sitedata/aegir/cache
+chown -R aegir:www-data /var/lib/sitedata/aegir/cache
+
+
+# add web servers
+# add web cluster
+#TODO: Add DR web servers to cluster
+#TODO: Add WR, re: DR web servers &amp; firewall
+
+# set date/time settings in Aegir
+
+#TODO: Logrotate webserver logs
+
+#TODO: Add an alias for the aegir user:
+#aegir: "admin@domain.com""
+
+========================
+
+aegirweb{1,2}:
+#TODO: Check puppeted stuff, fix, etc
+
+sudo apt-get update
+sudo apt-get upgrade
+
+sudo mkdir -p /var/www/nginx-default
+
+CATWEBDEBDEPS="mysql-client-5.1 vim nginx-custom drush postfix php5-cli php5-mysql php5-fpm php5-gd rsync unzip patch"
+sudo apt-get -V install $CATWEBDEBDEPS
+
+
+sudo adduser --system --group --home /var/aegir aegir
+sudo adduser aegir www-data
+sudo chsh -s /bin/bash aegir
+
+#install SSL cert to:
+/etc/ssl/private/domain.com.cert.pem
+cd /etc/ssl/private/
+ln -s domain.com.cert.pem nginx-wild-ssl.crt
+ln -s domain.com.cert.pem nginx-wild-ssl.key
+
+#install SSL config to:
+/var/aegir/config/server_master/nginx/pre.d/nginx_wild_ssl.conf
+#TODO: also install for /var/aegir/config/server_aegirweb{1,2}.host.name
+
+#as root:
+echo "aegir ALL=NOPASSWD: /etc/init.d/nginx" &gt;&gt; /etc/sudoers
+
+#as aegir:
+mkdir /var/aegir/.ssh
+cat aegir.aegircontrol.id_rsa.pub &gt;&gt; /var/aegir/.ssh/authorized_keys2
+
+
+#TODO: Logrotate webserver logs
+
+==========================
+
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-49.html?destination=node%2F887%23comment-form">Login</a> or <a href="../../../../../user/register/index-49.html?destination=node%2F887%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-49.html?destination=node%2F887%23comment-form">Login</a> or <a href="../../../../../user/register/index-49.html?destination=node%2F887%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/887/revisions/2386/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:37 GMT -->
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/1080/revisions/2843/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:02:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../installing/debian/index.html" />
+<link rel="up" href="../../../../../installing/debian/index.html" />
+<link rel="next" href="../../../../../installing/manual/index.html" />
+<link rel="prev" href="../../../../../installing/debian/index.html" />
+<link rel="up" href="../../../../../installing/debian/index.html" />
+<link rel="next" href="../../../../../installing/manual/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Quick Start Installation (Ubuntu 11.04+) from Fri, 02/17/2012 - 18:27 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1080" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/installing/debian/automatic-installation-ubuntu-1104-quickstart/index.html">Quick Start Installation (Ubuntu 11.04+)</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-1080'><p>Here are simplified instructions for installing Aegir on a server, quickly and easily.</p>
+
+<p>The fastest way to install Aegir is on the latest Ubuntu Server LTS Release (Long Term Support).  This release always begins with the year it was released and ends with ".04". <em>Currently 11.04</em></p>
+
+<p><em>This document was originally based on <a href="../../../../../installing/debian/index.html" title="http://community.aegirproject.org/installing/debian">http://community.aegirproject.org/installing/debian</a> but has been trimmed down to list only the steps you need to get Aegir up and running.</em></p>
+
+<h1>Installation Instructions</h1>
+
+<ol>
+<li><h2>Fire up a new server</h2>
+
+<ul>
+<li>Use <strong>Ubuntu 11.04 Server Edition</strong> for the smoothest and most reliable installation experience.  </li>
+<li>Make sure it has at least 1024MB, preferably 2048MB of memory.  Depending on your host you will have to configure a hostname.  It can be convenient to call this 'aegir'.</li>
+<li>If you want the smoothest installation, create a brand new server.  There will be the least chance of conflicts if you start with a brand new <strong>Ubuntu 11.04</strong> server.  If you use Ubuntu Desktop, you should be able follow these instructions without any problems.</li>
+</ul></li>
+<li><h2>Add the project repositories and archive key</h2>
+
+<p>Use this command to add the Aegir package "Software Source" repository to your system:
+<div class="codeblock"><code>echo &quot;deb <a href="http://debian.aegirproject.org/" title="http://debian.aegirproject.org">http://debian.aegirproject.org</a> stable main&quot; | tee -a /etc/apt/sources.list.d/aegir-stable.list</code></div>
+Use this command to add the archive key to your keyring:
+<div class="codeblock"><code>wget -q <a href="http://debian.aegirproject.org/key.asc" title="http://debian.aegirproject.org/key.asc">http://debian.aegirproject.org/key.asc</a> -O- | sudo apt-key add -<br />apt-get update</code></div>
+Then, finally, update your apt repositories:
+<div class="codeblock"><code>apt-get update</code></div></p></li>
+<li>##Install Aegir##
+Once you have added the repositories, you can now fire off the standard debian installation command:
+<div class="codeblock"><code>apt-get install aegir</code></div></li>
+</ol>
+
+<p>Work in Progress...</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-391.html?destination=node%2F1080%23comment-form">Login</a> or <a href="../../../../../user/register/index-391.html?destination=node%2F1080%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/1080/revisions/2843/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:02:53 GMT -->
+</html>

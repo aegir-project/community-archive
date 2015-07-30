@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/content/scrums/weekly-scrum-irc-log-2011-11-21?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:36:20 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../weekly-scrum-irc-log-2011-11-14/index.html" />
+<link rel="up" href="../archive-2011/index.html" />
+<link rel="next" href="../weekly-scrum-irc-log-2011-11-28/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2011-11-21 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-960" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2011-11-21</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-960'><pre>
+07:00 &lt;@mig5&gt; ok, time for a quick scrum
+07:00 &lt;@mig5&gt; good morning
+07:00 &lt;@mig5&gt; it appears darthsteven sends his apologies!
+07:00 &lt;@darthsteven&gt; Nothing from me, will do a 1.6 release tomorrow if I have time!
+07:00 &lt;@mig5&gt; so ping anarcat, ergonlogic, etc
+07:00 &lt;@mig5&gt; oh he's here! :)
+07:00 &lt;@mig5&gt; cool
+07:00 &lt;@mig5&gt; thanks darthsteven 
+07:00 &lt;@darthsteven&gt; Now I'm gone...
+07:01 &lt;@mig5&gt; not much from me this week: I posted the first of a fortnightly Aegir newsletter last wednesday, I got some good feedback from anarcat but that was 
+              about it :)
+07:01 &lt;@mig5&gt; ok. 1.6 release will be tomorrow
+07:01 &lt;@mig5&gt; my stickers have arrived, i ordered way too many for DrupalDownUnder, maybe I'll send some in the post to people :)
+07:02 &lt;@mig5&gt; we fixed the Reset Password bug that broke resetting of passwords in Drupal 5, so that will go into the 1.6 release which is nice
+07:02 &lt;@mig5&gt; that's all from me I think. anarcat?
+07:03 &lt; teeyza&gt; so anyone have any ideas why my aegir wont upgrade?
+07:03 &lt;@mig5&gt; right, i have a feeling anarcat isn't here, and we have a hijacker, so I might end the scrum earlier than usual..
+07:03 &lt;@mig5&gt; thanks all
+07:14 &lt;@anarcat&gt; oops
+07:14 &lt;@anarcat&gt; missed the scrum
+07:14 &lt;+ergonlogic&gt; sorry
+07:14 &lt;@anarcat&gt; mig5 / darthsteven : pong
+07:14 &lt;@mig5&gt; hehe
+07:14 &lt;@anarcat&gt; we were in our own planning session over here, maybe we can touchbase on that
+07:14 &lt;@mig5&gt; sure thing
+07:15 &lt;@anarcat&gt; we are reorienting my work a bit, away from <a href="../../../discuss/back-vacation/index.html" title="http://community.aegirproject.org/discuss/back-vacation">http://community.aegirproject.org/discuss/back-vacation</a>
+07:15 &lt; teeyza&gt; my apologies mig i was corrected, so were stuck on step 4 of the that link
+07:15 &lt;@anarcat&gt; we'll focus on the debian packaging and puppet manifests
+07:15 &lt;@anarcat&gt; i'm going to work on a provision-upgrade command which will be basically like drush upgrade
+07:15 &lt;@anarcat&gt; but really safe
+07:15 &lt;@anarcat&gt; and designed specifically with the upgrade of aegir itself in mind
+07:16 &lt;@anarcat&gt; so that we can ship the files with the aegir-hostmaster package
+07:16 &lt;@anarcat&gt; and overwrite existing files, and run the update and so on
+07:16 &lt;@anarcat&gt; we're also going to work on D7 LDAP integration so that Drupal can be used to manage LDAP groups and user memberships
+07:16 &lt;@mig5&gt; will that open itself up to <a href="http://drupal.org/node/711746" title="http://drupal.org/node/711746">http://drupal.org/node/711746</a> in any way?
+07:16 &lt; hefring&gt; <a href="http://drupal.org/node/711746" title="http://drupal.org/node/711746">http://drupal.org/node/711746</a> =&gt; allow upgrade of hostmaster sites from the frontend =&gt; Hosting, Code, minor, postponed, 3 comments, 1 IRC mention
+07:16 &lt;@anarcat&gt; which is a bit offtopic here
+07:16 &lt;@anarcat&gt; mig5: i don't know
+07:16 &lt;@anarcat&gt; maybe
+07:17 &lt;@mig5&gt; we need that external queue daemon :)
+07:17 &lt;@anarcat&gt; so those are our priorities, shifting the other ones in the list down
+07:17 &lt;@anarcat&gt; yes
+07:17 &lt;@anarcat&gt; so that's still in the list
+07:17 &lt;@anarcat&gt; but probably after christmas if not summer
+07:17 &lt;@mig5&gt; sure
+07:17 &lt;@anarcat&gt; same with unit tests, which get pushed away
+07:17 &lt;@anarcat&gt; we're going to also sponsor more uc_hosting and hosting_services development
+07:18 &lt;@anarcat&gt; with sfyn waiting to do a lot of improvements there, apparently
+07:18 &lt;@anarcat&gt; expect the "official puppet module for aegir" to come out soon
+07:18 &lt;@anarcat&gt; oh
+07:18 &lt;@mig5&gt; awesome! :) 
+07:18 &lt;@anarcat&gt; and just random name-dropping here: openstack.
+07:18 &lt;@anarcat&gt; that's it for me.
+07:18 &lt;@mig5&gt; thanks anarcat
+07:18 &lt;+sfyn&gt; 3~hey folks
+07:19 &lt;+sfyn&gt; guess its scrum time
+07:19 &lt;@mig5&gt; hey sfyn 
+07:19 &lt;+ergonlogic&gt; for my part, I'll be helping with the aegir puppet module
+07:19 &lt;+ergonlogic&gt; yeah... a little late
+07:19 &lt; teeyza&gt; hey mig, you have any other suggestions i could try?
+07:19 &lt;@anarcat&gt; sfyn: it *was* :)
+07:19 &lt;@mig5&gt; teeyza: please wait a bit, we are in the middle of a regular meeting
+07:19 &lt;+ergonlogic&gt; and otherwise continuing to push aegir-up towards a release
+07:19 &lt;+sfyn&gt; oops
+07:19 &lt; teeyza&gt; kk
+07:19 &lt;@anarcat&gt; sfyn: we had a great discussion on prioritizing work for aegir in the following week here
+07:19 -!- mode/#aegir [+m] by anarcat
+07:20 -!- mode/#aegir [+v mig5] by anarcat
+07:20 -!- mode/#aegir [+v darthsteven] by anarcat, anarcat
+07:20 &lt;@mig5&gt; thanks..
+07:20 &lt;+ergonlogic&gt; that's most of it for me
+07:20 &lt;+sfyn&gt; short term my efforts are more on civicrm support right now
+07:20 &lt;@anarcat&gt; sfyn: we'll be looking from feedback from you about estimates on how much time we should spend on hostnig_services integration this year
+07:20 &lt;@mig5&gt; i'm very interested in the aegir puppet stuff, i use vagrant for dev now, let me know if you need extra eyes on that :)
+07:20 &lt;@anarcat&gt; mig5: we certainly will!
+07:20 &lt;+ergonlogic&gt; mig5: indeed, yes!
+07:21 &lt;@mig5&gt; and i know puppet pretty well these days
+07:21 &lt;@anarcat&gt; now that's cool
+07:21 &lt;+sfyn&gt; anarcat: hosting_services is a mess right now
+07:21 &lt;@anarcat&gt; sfyn: and yes, maybe we need to add provision_civi to our shopping list, if it's not budgeted in other teams
+07:21 &lt;@mig5&gt; although ergonlogic taught me you can preseed directly in puppet, didn't know that :)
+07:21 &lt;+ergonlogic&gt; :)
+07:21 &lt;@anarcat&gt; sfyn: how much hours does that mean, "mess"? ;)
+07:22 &lt;+sfyn&gt; anarcat: means i don't know
+07:22 &lt;@anarcat&gt; sfyn: awesome
+07:22 &lt;@anarcat&gt; sfyn: i've put a mostly random guess of 100h
+07:22 &lt;@anarcat&gt; maybe we can try to fine-grain the thing in smaller iterations
+07:22 &lt;@anarcat&gt; and do a better estimate
+07:22 &lt;@anarcat&gt; but we don't need to do it now :)
+07:22 &lt;@anarcat&gt; just a heads up that we'd like to push this out
+07:22 &lt;@anarcat&gt; for the next reflexion meeting
+07:22 &lt;+sfyn&gt; anarcat: ok
+07:23 &lt;@anarcat&gt; alright, i think that's it for our part of the scrum, unless sfyn or ergonlogic have anything to add
+07:23 &lt;+sfyn&gt; anarcat: I will break down the work for both projects over the week
+07:23 &lt;@anarcat&gt; sfyn: awesome
+07:23 -!- mode/#aegir [-m] by anarcat
+07:23 &lt;@mig5&gt; thanks guys
+07:23 &lt;+ergonlogic&gt; no, I'm done
+07:23 &lt;@anarcat&gt; sorry for the censorship here :)
+07:23 &lt;+sfyn&gt; thats it for me
+07:23 &lt;@anarcat&gt; thanks\
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../user/login/index-123.html?destination=node%2F960%23comment-form">Login</a> or <a href="../../../user/register/index-123.html?destination=node%2F960%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/content/scrums/weekly-scrum-irc-log-2011-11-21?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:36:20 GMT -->
+</html>

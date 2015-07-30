@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/301/revisions/665/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:10:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../280/index.html" />
+<link rel="up" href="../../../../../content/scrums/archive-2011/index.html" />
+<link rel="next" href="../../../../340/index.html" />
+<link rel="prev" href="../../../../280/index.html" />
+<link rel="up" href="../../../../../content/scrums/archive-2011/index.html" />
+<link rel="next" href="../../../../340/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Weekly Scrum IRC Log: 2011-02-04 from Thu, 02/03/2011 - 20:14 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-301" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Weekly Scrum IRC Log: 2011-02-04</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-301'><pre>
+06:59 &lt;@anarcat&gt; scrum time!
+06:59 &lt;@anarcat&gt; mig5: you there?
+06:59 &lt;@mig5&gt; yep
+06:59 &lt;@anarcat&gt; omega8cc / ergonlogic / others... scrum starts now
+06:59 &lt;@anarcat&gt; mig5: you wanna start?
+06:59 &lt;@anarcat&gt; need to remove my skis
+07:00 &lt;@mig5&gt; ok
+07:00 &lt;@mig5&gt; i haven't done much, i still would like testers of <a href="http://drupal.org/node/1004526" title="http://drupal.org/node/1004526">http://drupal.org/node/1004526</a>
+07:00 &lt;@mig5&gt; but it sounds like we have two different issues there
+07:00 &lt;@mig5&gt; and that i misunderstood the first issue
+07:01 &lt;@mig5&gt; drush 4 remains unusable at least for multiserver, i had some difficulty convincing the drush guys that it was their problem <a href="http://drupal.org/node/1041386" title="http://drupal.org/node/1041386">http://drupal.org/node/1041386</a>
+07:01 &lt;@anarcat&gt; i wanted to test that and <a href="http://drupal.org/node/1016890" title="http://drupal.org/node/1016890">http://drupal.org/node/1016890</a> for ya before the RC
+07:01 &lt;@mig5&gt; yes it's that cluster thing and the aliases that would be nice to get in before the RC
+07:01 &lt;@mig5&gt; oh
+07:02 &lt;@mig5&gt; and the package indexes
+07:02 &lt;@mig5&gt; which i confirmed did seem to speed things up even on my tiny system
+07:02 &lt;@mig5&gt; so do go ahead and merge that
+07:02 &lt;@mig5&gt; that's all from me I think :s
+07:02 &lt;@anarcat&gt; okay
+07:02 &lt;@anarcat&gt; i can take a look at the drush 4 issue
+07:03 &lt;@anarcat&gt; they are correct that the API is not supposed to change in dr4
+07:03 &lt;@anarcat&gt; so if it's a dr bug, we'll have to wait until dr5 for a fix
+07:03 &lt;@mig5&gt; yeah, on the other hand, they have completely reversed the logic
+07:03 &lt;@mig5&gt; mmm.
+07:03 &lt;@anarcat&gt; which is fine because dr5 is coming soon
+07:03 &lt;@mig5&gt; o rly. fair enough!
+07:03 &lt;@anarcat&gt; i'll weigh in on that one and we'll see
+07:03 &lt;@anarcat&gt; on my side
+07:03 &lt;@anarcat&gt; i haven't done much. :)
+07:03 &lt;@anarcat&gt; still swamped with internal work here
+07:04 &lt;@anarcat&gt; i wanted to do an RC, but failed to find time, i have scheduled time to review patches and do the RC on monday
+07:04 &lt;@mig5&gt; oh nice, thanks
+07:04 &lt;@anarcat&gt; maybe we should stick with 3.3 for aegir 4
+07:04 &lt;@anarcat&gt; if you want to take care of the release before that, that's fine with me too though :)
+07:04 &lt;@anarcat&gt; otherwise well i opened a few crazy issues
+07:05 &lt;@mig5&gt; oh i need to try and reproduce omega8cc's report here: <a href="http://drupal.org/node/1047922" title="http://drupal.org/node/1047922">http://drupal.org/node/1047922</a> . not sure that's drush 4's fault, unless we know it works fine on 
+              3.3 too
+07:05 &lt;@anarcat&gt; most notably the exportable backup and wordpress support craziness
+07:05 &lt;@mig5&gt; haha
+07:06 &lt;@anarcat&gt; also, we have migrated to koumbit's DNS servers so i can do DNS changes if people need that to happen from now on
+07:06 &lt;@anarcat&gt; api.aegirproject.org is up
+07:06 &lt;@anarcat&gt; and aegirproject.org has been fixed
+07:06 &lt;@mig5&gt; awesome stuff
+07:07 &lt;@anarcat&gt; i think this is it for me too, i'm getting more and more towards freeing up my time to work on aegir, and we are aiming to work on our internal roadmap
+                 'real soon' here at koumbit
+07:07 &lt;@anarcat&gt; anybody else wants to cue in?
+07:08 &lt;@anarcat&gt; anybody else is awake? :)
+07:09 &lt;@anarcat&gt; so i guess this just makes for a short scrum! :)
+07:09 &lt;@mig5&gt; no problem - i can go back to bed :)
+07:10 &lt; kvanderw&gt; anarcat: what is a scrum? and could dummies help?
+07:10 &lt;@anarcat&gt; thank you all
+07:11 &lt;@anarcat&gt; kvanderw: <a href="../../../../../scrums/index.html" title="http://community.aegirproject.org/scrums">http://community.aegirproject.org/scrums</a>
+
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-94.html?destination=node%2F301%23comment-form">Login</a> or <a href="../../../../../user/register/index-94.html?destination=node%2F301%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-94.html?destination=node%2F301%23comment-form">Login</a> or <a href="../../../../../user/register/index-94.html?destination=node%2F301%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/301/revisions/665/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:10:16 GMT -->
+</html>

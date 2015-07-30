@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/1182/revisions/3036/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:12:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/scrums/weekly-scrum-irc-log-2012-03-05/index.html" />
+<link rel="up" href="../../../../../scrums/index.html" />
+<link rel="next" href="../../../../../content/scrums/weekly-scrum-irc-log-2012-03-19/index.html" />
+<link rel="prev" href="../../../../../content/scrums/weekly-scrum-irc-log-2012-03-05/index.html" />
+<link rel="up" href="../../../../../scrums/index.html" />
+<link rel="next" href="../../../../../content/scrums/weekly-scrum-irc-log-2012-03-19/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Weekly Scrum IRC Log: 2012-03-12 from Mon, 03/12/2012 - 20:26 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1182" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/scrums/weekly-scrum-irc-log-2012-03-12/index.html">Weekly Scrum IRC Log: 2012-03-12</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first last"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+</ul></div><div id='diff-inline-1182'><pre>
+[07:01:35]     scrum time!
+[07:03:44]      hi
+[07:04:30]     hello!
+[07:04:30]     salut
+[07:04:37]    hi
+[07:04:37]     hello
+[07:04:56]    hefring: botsnack
+[07:04:56]     thanks omega8cc :)
+[07:05:39]  * scientist_ has joined #aegir
+[07:05:50]      I believe anarcat is on vacation, and has found his way out to the woods
+[07:05:55]     mig5: scrum?
+[07:06:02]      so he won't likely be joining us
+[07:06:20]     I shall kick things off by saying well done to Anarcat for getting the 1.7 release done
+[07:06:31]     and well done to omega8cc for getting tons of stuff into that release
+[07:06:42]     that's it from me
+[07:06:52]    :)
+[07:07:11]    My work on porting Hostmaster BOA UI improvements to 6.x-2.x is still in progress, so I'm submitting some minor Nginx patches in the meantime. Not much to report this week.
+[07:08:21]    However, I'm really tired with this bug: <a href="http://drupal.org/node/1004526" title="http://drupal.org/node/1004526">http://drupal.org/node/1004526</a>
+[07:08:22]     <a href="http://drupal.org/node/1004526" title="http://drupal.org/node/1004526">http://drupal.org/node/1004526</a> =&gt; Automatic aliases are not persisted across rename and clone =&gt; Hostmaster (Aegir), Code, major, needs work, 25 comments, 3 IRC mentions
+[07:08:33]     ah yes, that one
+[07:08:34]    it causes tons of support requests
+[07:08:44]    so I plan to attack it
+[07:09:20]     ok cool
+[07:09:36]    it is a major Aegir WTF/fail for most of our users
+[07:11:49]  * SqyD has joined #aegir
+[07:12:25]  * penyaskito has joined #aegir
+[07:12:45]     indeed
+[07:12:49]     anything else?
+[07:12:58]    that is it from me
+[07:13:09]      For my part I submitted some issues and patches to port Hostmaster to the Profiler library, making sub-profiles possible, and fairly easy. This also required a ptch to Provision to support alternative profile names.
+[07:14:00]      I also depends on splitting Eldir and Hosting back out of Hostmaster for the 6.x-2.x branch, and I submitted an issue on that as well
+[07:14:23]     yeah, I'm not 100% sure where I feel about a split tbh
+[07:14:34]      ok
+[07:15:03]     it's a good idea for us, but not sure if it will confuse people, and lead to lots of where should I post this issue type questions?
+[07:15:15]     but I can see the benefits too
+[07:15:21]      well, we already get lots of that
+[07:15:57]      I'm pretty sure it will confise some people
+[07:16:08]      but the other projects already exist
+[07:16:56]     yup
+[07:17:04]     anyway…anyone got anything else to add?
+[07:17:18]      Beyond making hosting and eldir reusable, I think it could also make engagement in the project easier
+[07:17:18]  * Artusamak_afk is now known as Artusamak
+[07:18:55]     possibly
+[07:18:57]      anyway, I's also been making lots of headway with Aegir-up, which now supports full development builds of Aegir, including custom (i.e. sandbox) provision repos and alternative branches
+[07:19:05]     awesome
+[07:19:19]     got a link for that work?
+[07:19:23]      along with custom aegir.make makefiles
+[07:20:07]      a bit short on docs, but <a href="http://community.openatria.com/team/node/552" title="http://community.openatria.com/team/node/552">http://community.openatria.com/team/node/552</a>
+[07:20:29]      Aegir-up itself is at <a href="http://drupal.org/project/aegir-up" title="http://drupal.org/project/aegir-up">http://drupal.org/project/aegir-up</a>
+[07:20:50]      that's about it from me
+[07:21:13]      I have a aegir installed on two server, now when i create server content type from other to other, then aegir ui does not work anymore on other server, why?
+[07:21:43]     thanks ergonlogic
+[07:21:52]     i think we'll call that a scrum then
+[07:22:02]     anyone care to do the logs?
+[07:22:06]      I can
+[07:22:20]     ergonlogic: thanks
+[07:22:34]      darthsteven: can we discuss splitting hosting/eldir?
+[07:22:47]     ergonlogic: sure, can you give me ten mins?
+[07:22:47]      darthsteven: I'd like to make sure I understand your reservations
+[07:22:52]      sure
+[07:23:10]      hefring: logs
+[07:23:21]      gah, what is that command again?
+[07:23:27]      hefring: timestamp
+[07:23:31]     hefring: log pointer?
+[07:23:31]     <a href="http://hefring.mig5.net/bot/log/aegir/2012-03-12#T182454" title="http://hefring.mig5.net/bot/log/aegir/2012-03-12#T182454">http://hefring.mig5.net/bot/log/aegir/2012-03-12#T182454</a>
+[07:23:42]      right... thanks
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-132.html?destination=node%2F1182%23comment-form">Login</a> or <a href="../../../../../user/register/index-132.html?destination=node%2F1182%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-132.html?destination=node%2F1182%23comment-form">Login</a> or <a href="../../../../../user/register/index-132.html?destination=node%2F1182%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/1182/revisions/3036/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:12:11 GMT -->
+</html>

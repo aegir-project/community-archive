@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/workflow-best-practice?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 19:59:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Workflow Best Practice | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2890" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/howardjacobson/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="howardjacobson&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/howardjacobson/index.html" class="username" title="View user profile.">howardjacobson</a></div><div class='date'>1:26am Apr 24, 2014</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Workflow Best Practice</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_205 first last"><a href="../../category/keywords/workflow/index.html" rel="tag" title="">workflow</a></li>
+</ul></div><p>I am struggling to define a best practice workflow for site development, testing and deployment with Aegir. I have read as much as I could find on the topic, but I don't believe I have found the holy grail.  I understand the following to be true:</p>
+
+<ul>
+<li>Production and development should be on different platforms. I should never be doing development work on a platform that is hosting a production site.
+</li><li>Once I have a platform ready for testing, I can test the platform with the current production database by cloning the production site to the new platform using my testing domain name (e.g., testing.mysite.com).
+</li><li>Once testing and bug fixes are complete on the new platform, I can migrate my production site to the new platform using the Aegir Migrate capability.
+</li><li>Any site configuration that I want to migrate from dev to testing to production need to be put into a Feature.  There is no way to move configuration changes from a dev or testing site to a production site.  In other words, all configuration changes (stored by Drupal in the database) made on a dev or testing site must be re-implemented on the production site through the UI, if I do not use Features do encapsulate the configuration changes.
+</li><li>Therefore, best practice dictates that no configuration change should be made that cannot be encapsulated in a Feature, unless the change simply cannot be encapsulated in a Feature in which case excellent notes are necessary.
+</li></ul>
+
+<p>Have I summarized the best practice workflow correctly. If not, I will appreciate pointers to documentation, blog posts, or other resources that will help me keep my workflow simple and reliable.</p>
+
+<p>Thanks.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-467.html?destination=node%2F2890%23comment-form">Login</a> or <a href="../../user/register/index-467.html?destination=node%2F2890%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/workflow-best-practice?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 19:59:05 GMT -->
+</html>

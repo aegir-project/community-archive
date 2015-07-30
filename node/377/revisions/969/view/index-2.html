@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/377/revisions/969/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:51:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of How about moving install documentation back here? from Mon, 02/28/2011 - 19:56 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-377" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/anarcat/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-78/index.jpg" alt="anarcat&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a></div><div class='date'>2:49pm Feb 21, 2011</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">How about moving install documentation back here?</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class="field field-type-nodereference field-field-referenced-book-page">
+    <div class="field-items">
+            <div class="field-item odd">
+                      <div class="field-label-inline-first">
+              Referenced Page:&nbsp;</div>
+                    <a href="../../../../../installing/index.html">Installation Guide</a>        </div>
+        </div>
+</div>
+<p>It seems that people <strong>want</strong> the install documentation here. I take for example <a href="../../../../246/index.html">this page</a> that details a (non-official!) install script for Ubuntu, while the INSTALL.txt is almost an install script in itself for Debian derivatives.</p>
+
+<p>It seems to me that people are <em>not</em> reading the stuff in the docs/ directory out there. Even worse, we have installation instructions stuck in the issue queue since forever for <a href="http://drupal.org/node/837704">Gentoo</a> and <a href="http://drupal.org/node/659024">FreeBSD</a>...</p>
+
+<p>I therefore propose that we move all the documentation from the git repository into the Handbook, now that we have one that stands. (One of the reasons why we had docs in git was that the wiki on groups.drupal.org was utterly chaotic and scary.) I am not sure yet, but I think we can <em>merge</em> (gasp!) the HINTS files into the INSTALL.txt to provide a one-size-fits-all handbook that covers all supported platforms. The examples can be separated by platform in each page</p>
+
+<p>I propose the following structure, with each item here being a page in the handbook.</p>
+
+<ul>
+<li><a href="../../../../../installing/index.html">Installing Aegir</a> - strip down to just an introduction, stop pointing to the INSTALL.txt
+
+<ul>
+<li><a href="../../../../389/index.html">Manual install</a>
+
+<ul>
+<li>&#x2713; <a href="../../../../17/index.html">System requirements</a> - merge with top of INSTALL.txt, keep platform-agnostic</li>
+<li><a href="../../../../390/index.html">Configure system</a> - this section will have examples for all supported platforms, inline - <strong>mostly empty</strong> - needs INSTALL.txt and HINTS merged in
+
+<ul>
+<li>&#x2713; <a href="../../../../391/index.html">Aegir user</a></li>
+<li>&#x2713; <a href="../../../../392/index.html">DNS configuration</a></li>
+<li>&#x2713; <a href="../../../../393/index.html">PHP configuration</a></li>
+<li>&#x2713; <a href="../../../../394/index.html">Webserver configuration</a></li>
+<li>&#x2713; <a href="../../../../395/index.html">Database configuration</a></li>
+<li>&#x2713; <a href="../../../../396/index.html">Remote webserver configuration</a> - move elsewhere? isn't this post-install?</li>
+</ul></li>
+<li>&#x2713; <a href="../node/397/index.html">Run the install script</a> - merge in the above? or this is a very simple page that shows how to download and install drush and provision... hum.</li>
+<li>&#x2713; <a href="../../../../398/index.html">Complete the installation manually</a> - maybe merge with the above? just have one step called "installing everything" or something?</li>
+<li>&#x2713; <a href="../../../../413/index.html">Checkpoint / Finished!</a> - describes the end-state - this was all that was left in INSTALL.TXT</li>
+</ul></li>
+<li><a href="../../../../399/index.html">Automatic install</a> - <strong>empty</strong>
+
+<ul>
+<li><a href="../../../../400/index.html">Debian packages</a> - <strong>empty</strong> - should point to where the repos are and <a href="http://drupal.org/node/490004">those</a> <a href="http://drupal.org/node/490054">issues</a></li>
+<li><a href="../../../../246/index.html">Debian/Ubuntu install script</a> - <strong>unofficial, needs review</strong> - maybe should be rewritten so it's generic? certainly a Debian install script should be replaced by the Debian package, and that should also work for ubuntu</li>
+<li><a href="../../../../401/index.html">Barracuda install scripts</a> - <strong>empty</strong> - do we want to support barracuda docs here?</li>
+<li><a href="../../../../403/index.html">Writing an install script for your platform</a> - <strong>empty</strong> - needs to be written</li>
+</ul></li>
+</ul></li>
+<li><a href="../../../../../upgrading/index.html">Upgrading Aegir</a> - <strong>empty</strong>
+
+<ul>
+<li><a href="../../../../429/index.html">Manual upgrade</a> - <strong>empty</strong></li>
+<li><a href="../../../../430/index.html">Automatic upgrade</a> - <strong>empty</strong>
+
+<ul>
+<li><a href="../../../../432/index.html">Debian package upgrades</a> - <strong>empty</strong></li>
+<li><a href="../../../../431/index.html">Upgrade script</a> - <strong>empty</strong> - is this OS agnostic?</li>
+<li><a href="../../../../433/index.html">Barracuda upgrade scripts</a> - <strong>empty</strong></li>
+<li><a href="../../../../434/index.html">Writing an upgrade script for your platform</a> - <strong>empty</strong> - needs to be written</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>You will understand from there that I would gladly <em>ditch</em> the current install.sh (my long-lasting phantasm) in favor of Debian packages or scripts (like barracuda or <a href="../../../../246/index.html">this Ubuntu one</a> ) that actually run as root and do everything up to hostmaster-install. Now, I don't like the idea of giving people stuff to run as root, but since <em>others</em> seem to be doing it <strong>and</strong> posting it in our wiki, might as well cut our losses, commit that script to provision, and maintain it. If people don't want to run stuff as root, then they follow the manual install process, which covers all cases anyways.</p>
+
+<p>How does this sound? Who wants to do that magic?</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-319.html?destination=node%2F377%23comment-form">Login</a> or <a href="../../../../../user/register/index-319.html?destination=node%2F377%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/377/revisions/969/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:51:34 GMT -->
+</html>

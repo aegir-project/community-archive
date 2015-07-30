@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/797/revisions/2188/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:23:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../474/index.html" />
+<link rel="up" href="../../../../474/index.html" />
+<link rel="next" href="../../../../../handbook/strategy/index.html" />
+<link rel="prev" href="../../../../474/index.html" />
+<link rel="up" href="../../../../474/index.html" />
+<link rel="next" href="../../../../../handbook/strategy/index.html" />
+<link rel="prev" href="../../../../474/index.html" />
+<link rel="up" href="../../../../474/index.html" />
+<link rel="next" href="../../../../../handbook/strategy/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of DrupalCon Training - Aegir Hosting System: Deep Dive from Wed, 08/03/2011 - 17:21 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-797" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../drupalcon-training-aegir-hosting-system-deep-dive/index.html">DrupalCon Training - Aegir Hosting System: Deep Dive</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-797'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 08/03/2011 - 17:21</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><script type="text/javascript"><span class='diff-changed'>toc_collapse=0;</span></script><span class='diff-changed'></span><div class="toc" id="toc1"><span class='diff-changed'>
+</span><div class="toc-title"><span class='diff-changed'>Table of Contents</span><span class="toc-toggle-message"><span class='diff-changed'>&nbsp;</span></span><span class='diff-changed'></span></div><span class='diff-changed'>
+</span><div class="toc-list"><span class='diff-changed'>
+</span><ol><span class='diff-changed'>
+	</span><li class="toc-level-1"><span class='diff-changed'></span><a href="#Intro_to_Aegir"><span class='diff-changed'></span><span class="toc-number"><span class='diff-changed'>1. </span></span>Intro to Aegir</a>
+<ol><span class='diff-changed'>
+	</span><li class="toc-level-2"><span class='diff-changed'></span><a href="#Community"><span class='diff-changed'></span><span class="toc-number"><span class='diff-changed'>1.1. </span></span>Community</a><span class='diff-added'></span></li><span class='diff-added'>
+	</span><li class="toc-level-2"><span class='diff-added'></span><a href="#Terminology"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>1.2. </span><span class='diff-changed'></span></span><span class='diff-changed'>Terminology</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+	</span><li class="toc-level-2"><span class='diff-changed'></span><a href="#Architecture"><span class='diff-changed'></span><span class="toc-number"><span class='diff-changed'>1.3. </span></span><span class='diff-changed'>Architecture</span></a><span class='diff-changed'></span></li>
+</ol><span class='diff-changed'>
+</span></li><span class='diff-changed'>
+	</span><li class="toc-level-1"><span class='diff-changed'></span><a href="#Installation"><span class='diff-changed'></span><span class="toc-number"><span class='diff-changed'>2. </span></span><span class='diff-changed'>Installation</span></a><span class='diff-changed'>
+</span><ol><span class='diff-changed'>
+	</span><li class="toc-level-2"><span class='diff-changed'></span><a href="#The_easy_way"><span class='diff-changed'></span><span class="toc-number"><span class='diff-changed'>2.1. </span></span><span class='diff-changed'>The easy way</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+	</span><li class="toc-level-2"><span class='diff-changed'></span><a href="#The_hard_way"><span class='diff-changed'></span><span class="toc-number"><span class='diff-changed'>2.2. </span></span><span class='diff-changed'>The hard way</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+	</span><li class="toc-level-2"><span class='diff-changed'></span><a href="#Other_operating_systems"><span class='diff-changed'></span><span class="toc-number"><span class='diff-changed'>2.3. </span></span><span class='diff-changed'>Other operating systems</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+	</span><li class="toc-level-2"><span class='diff-changed'></span><a href="#Remote_database_servers_and_clusters"><span class='diff-changed'></span><span class="toc-number"><span class='diff-changed'>2.4. </span></span><span class='diff-changed'>Remote database servers and clusters</span></a><span class='diff-changed'></span></li>
+</ol><span class='diff-changed'>
+</span></li><span class='diff-changed'>
+	</span><li class="toc-level-1"><span class='diff-changed'></span><a href="#Debugging"><span class='diff-changed'></span><span class="toc-number"><span class='diff-changed'>3. </span></span><span class='diff-changed'>Debugging</span></a><span class='diff-changed'>
+</span><ol><span class='diff-changed'>
+	</span><li class="toc-level-2"><span class='diff-changed'></span><a href="#Checking_your_install"><span class='diff-changed'></span><span class="toc-number"><span class='diff-changed'>3.1. </span></span><span class='diff-changed'>Checking your install</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+	</span><li class="toc-level-2"><span class='diff-changed'></span><a href="#Manipulating_the_task_queue_and_reading_the_task_log"><span class='diff-changed'></span><span class="toc-number"><span class='diff-changed'>3.2. </span></span><span class='diff-changed'>Manipulating the task queue and reading the task log</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+	</span><li class="toc-level-2"><span class='diff-changed'></span><a href="#Checking_crontab"><span class='diff-changed'></span><span class="toc-number"><span class='diff-changed'>3.3. </span></span><span class='diff-changed'>Checking crontab</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+</span></ol><span class='diff-changed'>
+</span></li><span class='diff-changed'>
+	</span><li class="toc-level-1"><span class='diff-changed'></span><a href="#The_Aegir_interface"><span class='diff-changed'></span><span class="toc-number"><span class='diff-changed'>4. </span></span><span class='diff-changed'>The Aegir interface</span></a><span class='diff-changed'>
+</span><ol><span class='diff-changed'>
+	</span><li class="toc-level-2"><span class='diff-changed'></span><a href="#Platforms_and_sites"><span class='diff-changed'></span><span class="toc-number"><span class='diff-changed'>4.1. </span></span><span class='diff-changed'>Platforms</span> &amp; <span class='diff-changed'>sites</span></a><span class='diff-changed'></span></li><span class='diff-changed'>
+	</span><li class="toc-level-2"><span class='diff-changed'></span><a href="#Servers_and_services"><span class='diff-changed'></span><span class="toc-number"><span class='diff-changed'>4.2. </span><span class='diff-added'></span></span><span class='diff-added'>Servers &amp; services</span></a><span class='diff-added'></span></li><span class='diff-added'>
+	</span><li class="toc-level-2"><span class='diff-added'></span><a href="#Tasks_and_queues"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>4.3. </span></span><span class='diff-added'>Tasks &amp; queues</span></a></li>
+</ol><span class='diff-added'>
+</span></li><span class='diff-added'>
+	</span><li class="toc-level-1"><span class='diff-added'></span><a href="#Creating_Platforms"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>5. </span></span><span class='diff-added'>Creating Platforms</span></a><span class='diff-added'>
+</span><ol><span class='diff-added'>
+	</span><li class="toc-level-2"><span class='diff-added'></span><a href="#Creating_a_Drupal_x_platform_from_scratch"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>5.1. </span></span><span class='diff-added'>Creating a Drupal x platform from scratch</span></a><span class='diff-added'></span></li><span class='diff-added'>
+	</span><li class="toc-level-2"><span class='diff-added'></span><a href="#Some_handy_drush_commands_and_an_explanation_of_nodeaddplatform"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>5.2. </span></span><span class='diff-added'>Some handy drush commands and an explanation of node/add/platform</span></a><span class='diff-added'></span></li><span class='diff-added'>
+	</span><li class="toc-level-2"><span class='diff-added'></span><a href="#Creating_a_platform_using_a_drush_makefile"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>5.3. </span></span><span class='diff-added'>Creating a platform using a drush makefile</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span></ol><span class='diff-added'>
+</span></li><span class='diff-added'>
+	</span><li class="toc-level-1"><span class='diff-added'></span><a href="#Sites"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>6. </span></span><span class='diff-added'>Sites</span></a><span class='diff-added'>
+</span><ol><span class='diff-added'>
+	</span><li class="toc-level-2"><span class='diff-added'></span><a href="#Creating_a_site_on_our_new_platform"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>6.1. </span></span><span class='diff-added'>Creating a site on our new platform</span></a><span class='diff-added'></span></li><span class='diff-added'>
+	</span><li class="toc-level-2"><span class='diff-added'></span><a href="#Common_Site_tasks"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>6.2. </span></span><span class='diff-added'>Common Site tasks</span></a><span class='diff-added'></span></li><span class='diff-added'>
+	</span><li class="toc-level-2"><span class='diff-added'></span><a href="#Cron_configuration_via_Aegir"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>6.3. </span></span><span class='diff-added'>Cron configuration via Aegir</span></a><span class='diff-added'></span></li><span class='diff-added'>
+	</span><li class="toc-level-2"><span class='diff-added'></span><a href="#Site_aliases"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>6.4. </span></span><span class='diff-added'>Site aliases</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span></ol><span class='diff-added'>
+</span></li><span class='diff-added'>
+	</span><li class="toc-level-1"><span class='diff-added'></span><a href="#Aegir_vs._the_Drupal_7_Upgrade_Path"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>7. </span></span><span class='diff-added'>Aegir vs. the Drupal 7 Upgrade Path</span></a><span class='diff-added'></span></li><span class='diff-added'>
+	</span><li class="toc-level-1"><span class='diff-added'></span><a href="#Importing_sites"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>8. </span></span><span class='diff-added'>Importing sites</span></a><span class='diff-added'></span></li><span class='diff-added'>
+	</span><li class="toc-level-1"><span class='diff-added'></span><a href="#Drush_Make_Advanced"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>9. </span></span><span class='diff-added'>Drush Make Advanced</span></a><span class='diff-added'></span></li><span class='diff-added'>
+	</span><li class="toc-level-1"><span class='diff-added'></span><a href="#Client_management"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>10. </span></span><span class='diff-added'>Client management</span></a><span class='diff-added'></span></li><span class='diff-added'>
+	</span><li class="toc-level-1"><span class='diff-added'></span><a href="#Extending_Aegir"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>11. </span></span><span class='diff-added'>Extending Aegir</span></a><span class='diff-added'></span></li><span class='diff-added'>
+	</span><li class="toc-level-1"><span class='diff-added'></span><a href="#Whiteboxing_Aegir"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>12. </span></span><span class='diff-added'>Whiteboxing Aegir</span></a><span class='diff-added'></span></li><span class='diff-added'>
+	</span><li class="toc-level-1"><span class='diff-added'></span><a href="#Advanced_Topics_Manual_Uprades_and_other_Black_Magic"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>13. </span></span><span class='diff-added'>Advanced Topics, Manual Uprades, and other Black Magic</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span></ol><span class='diff-added'>
+</span></div><span class='diff-added'>
+</span></div>
+
+<h1 id="Intro_to_Aegir"><span class='diff-changed'>1. Intro to Aegir</span></h1>
+
+<div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h2 id="Community"><span class='diff-changed'>1.1. Community</span></h2><span class='diff-changed'>
+
+</span><ul>
+<li><span class='diff-added'>aegirproject.org</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>#aegir</span></li><span class='diff-added'>
+</span></ul><span class='diff-added'>
+
+</span><div class="toc-back-to-top"><span class='diff-added'></span><a href="#toc"><span class='diff-added'>Back to top</span></a><span class='diff-added'></span></div><span class='diff-added'></span><h2 id="Terminology"><span class='diff-added'>1.2. Terminology</span></h2><span class='diff-added'>
+
+</span><ul><span class='diff-added'>
+</span><li><span class='diff-added'>site</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>platform</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>task</span></li><span class='diff-added'>
+</span></ul><span class='diff-added'>
+
+</span><div class="toc-back-to-top"><span class='diff-added'></span><a href="#toc"><span class='diff-added'>Back to top</span></a><span class='diff-added'></span></div><span class='diff-added'></span><h2 id="Architecture"><span class='diff-added'>1.3. Architecture</span></h2><span class='diff-added'>
+
+</span><ul><span class='diff-added'>
+</span><li><span class='diff-added'>Provision</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Hostmaster</span></li><span class='diff-added'>
+</span></ul><span class='diff-added'>
+
+</span><div class="toc-back-to-top"><span class='diff-added'></span><a href="#toc"><span class='diff-added'>Back to top</span></a><span class='diff-added'></span></div><span class='diff-added'></span><h1 id="Installation"><span class='diff-added'>2. Installation</span></h1><span class='diff-added'>
+
+</span><div class="toc-back-to-top"><span class='diff-added'></span><a href="#toc"><span class='diff-added'>Back to top</span></a><span class='diff-added'></span></div><span class='diff-added'></span><h2 id="The_easy_way"><span class='diff-added'>2.1. </span>The easy way</h2><span class='diff-changed'>
+
+</span><ul><span class='diff-changed'>
+</span><li><span class='diff-changed'>using</span> Debian <span class='diff-changed'>packages</span></li>
+</ul><span class='diff-changed'>
+
+</span><div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h2 id="The_hard_way"><span class='diff-changed'>2.2. </span>The hard way</h2><span class='diff-added'>
+
+</span><ul><span class='diff-added'>
+</span><li><span class='diff-added'>manual </span><span class='diff-changed'>installs</span></li>
+</ul><span class='diff-changed'>
+
+</span><div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h2 id="Other_operating_systems"><span class='diff-changed'>2.3. </span>Other operating systems</h2><span class='diff-changed'>
+
+</span><div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h2 id="Remote_database_servers_and_clusters"><span class='diff-changed'>2.4. </span>Remote database servers and clusters</h2><span class='diff-added'>
+
+</span><div class="toc-back-to-top"><span class='diff-added'></span><a href="#toc"><span class='diff-added'>Back to top</span></a></div><span class='diff-changed'></span><h1 id="Debugging"><span class='diff-changed'>3. </span>Debugging</h1>
+
+<div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h2 id="Checking_your_install"><span class='diff-changed'>3.1. </span>Checking your install</h2><span class='diff-changed'>
+
+</span><div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h2 id="Manipulating_the_task_queue_and_reading_the_task_log"><span class='diff-changed'>3.2. </span>Manipulating the task queue and reading the task log</h2><span class='diff-changed'>
+
+</span><div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h2 id="Checking_crontab"><span class='diff-changed'>3.3. </span>Checking crontab</h2><span class='diff-added'>
+
+</span><div class="toc-back-to-top"><span class='diff-added'></span><a href="#toc"><span class='diff-added'>Back to top</span></a></div><span class='diff-changed'></span><h1 id="The_Aegir_interface"><span class='diff-changed'>4. </span>The Aegir interface</h1>
+
+<div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h2 id="Platforms_and_sites"><span class='diff-changed'>4.1. </span>Platforms &amp; sites</h2><span class='diff-changed'>
+
+</span><div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h2 id="Servers_and_services"><span class='diff-changed'>4.2. </span>Servers &amp; services</h2><span class='diff-changed'>
+
+</span><div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h2 id="Tasks_and_queues"><span class='diff-changed'>4.3. </span>Tasks &amp; queues</h2><span class='diff-added'>
+
+</span><div class="toc-back-to-top"><span class='diff-added'></span><a href="#toc"><span class='diff-added'>Back to top</span></a></div><span class='diff-changed'></span><h1 id="Creating_Platforms"><span class='diff-changed'>5. </span>Creating Platforms</h1>
+
+<div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h2 id="Creating_a_Drupal_x_platform_from_scratch"><span class='diff-changed'>5.1. </span>Creating a Drupal x platform from scratch</h2><span class='diff-changed'>
+
+</span><div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h2 id="Some_handy_drush_commands_and_an_explanation_of_nodeaddplatform"><span class='diff-changed'>5.2. </span>Some handy drush commands and an explanation of node/add/platform</h2><span class='diff-changed'>
+
+</span><div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h2 id="Creating_a_platform_using_a_drush_makefile"><span class='diff-changed'>5.3. </span>Creating a platform using a drush makefile</h2><span class='diff-added'>
+
+</span><div class="toc-back-to-top"><span class='diff-added'></span><a href="#toc"><span class='diff-added'>Back to top</span></a></div><span class='diff-changed'></span><h1 id="Sites"><span class='diff-changed'>6. </span>Sites</h1>
+
+<div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h2 id="Creating_a_site_on_our_new_platform"><span class='diff-changed'>6.1. </span>Creating a site on our new platform</h2><span class='diff-changed'>
+
+</span><div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h2 id="Common_Site_tasks"><span class='diff-changed'>6.2. Common Site tasks</span></h2><span class='diff-changed'>
+
+</span><ul><span class='diff-changed'>
+</span><li><span class='diff-changed'>install</span></li>
+<li><span class='diff-added'>clone</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>backup</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>restore</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>migrate</span></li><span class='diff-added'>
+</span></ul><span class='diff-added'>
+
+</span><div class="toc-back-to-top"><span class='diff-added'></span><a href="#toc"><span class='diff-added'>Back to top</span></a><span class='diff-added'></span></div><span class='diff-added'></span><h2 id="Cron_configuration_via_Aegir"><span class='diff-added'>6.3. </span>Cron configuration via Aegir</h2><span class='diff-changed'>
+
+</span><div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h2 id="Site_aliases"><span class='diff-changed'>6.4. </span>Site aliases</h2><span class='diff-added'>
+
+</span><div class="toc-back-to-top"><span class='diff-added'></span><a href="#toc"><span class='diff-added'>Back to top</span></a></div><span class='diff-changed'></span><h1 id="Aegir_vs._the_Drupal_7_Upgrade_Path"><span class='diff-changed'>7. </span>Aegir vs. the Drupal 7 Upgrade Path</h1>
+
+<ol>
+<li>Create a 7.x platform from scratch</li>
+<li>Migrate our site from 6.x to 7.x </li>
+</ol>
+
+<div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h1 id="Importing_sites"><span class='diff-changed'>8. </span>Importing sites</h1>
+
+<ol>
+<li>Single sites (provision-deploy)</li>
+<li>Complete platforms (provision-verify) </li>
+</ol>
+
+<div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h1 id="Drush_Make_Advanced"><span class='diff-changed'>9. </span>Drush Make Advanced</h1>
+
+<ol>
+<li>Patching and branching with git</li>
+<li>Creating cascading makefiles, using includes and overrides </li>
+</ol>
+
+<div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h1 id="Client_management"><span class='diff-changed'>10. </span>Client management</h1>
+
+<ol>
+<li>Clients &amp; the quota api </li>
+</ol>
+
+<div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h1 id="Extending_Aegir"><span class='diff-changed'>11. </span>Extending Aegir</h1>
+
+<ol>
+<li>Overview of Aegir contib modules</li>
+<li>Scheduled backups &amp; garbage collection</li>
+<li>E-commerce integration</li>
+<li>ACLs &amp; SFTP </li>
+</ol>
+
+<div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h1 id="Whiteboxing_Aegir"><span class='diff-changed'>12. </span>Whiteboxing Aegir</h1>
+
+<ol>
+<li>Theming with Eldir</li>
+<li>Overriding the Aegir makefile</li>
+<li>Overriding settings.php and apache config files </li>
+</ol>
+
+<div class="toc-back-to-top"><span class='diff-changed'></span><a href="#toc"><span class='diff-changed'>Back to top</span></a><span class='diff-changed'></span></div><span class='diff-changed'></span><h1 id="Advanced_Topics_Manual_Uprades_and_other_Black_Magic"><span class='diff-changed'>13. </span>Advanced Topics, Manual Uprades, and other Black Magic</h1>
+
+<ol>
+<li>Advanced Debugging (running tasks by hand, force-deleting, etc...)</li>
+<li>Manual upgrades</li>
+<li>Aliases &amp; contexts</li>
+<li>Performance &amp; security</li>
+<li>Extending Provision &amp; Hostmaster </li>
+</ol><span class='diff-added'></span><div class="toc-back-to-top"><span class='diff-added'></span><a href="#toc"><span class='diff-added'>Back to top</span></a><span class='diff-added'></span></div><span class='diff-added'></span><script type="text/javascript"><span class='diff-added'>toc_scroll_back_to_top = 1;</span></script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-260.html?destination=node%2F797%23comment-form">Login</a> or <a href="../../../../../user/register/index-260.html?destination=node%2F797%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-260.html?destination=node%2F797%23comment-form">Login</a> or <a href="../../../../../user/register/index-260.html?destination=node%2F797%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/797/revisions/2188/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:23:14 GMT -->
+</html>

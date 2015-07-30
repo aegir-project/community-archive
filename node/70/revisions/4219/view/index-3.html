@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/70/revisions/4219/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:06:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../72/index.html" />
+<link rel="up" href="../../../../39/index.html" />
+<link rel="next" href="../../../../../content/overriding-site-specific-php-values/index.html" />
+<link rel="prev" href="../../../../72/index.html" />
+<link rel="up" href="../../../../39/index.html" />
+<link rel="next" href="../../../../../content/overriding-site-specific-php-values/index.html" />
+<link rel="prev" href="../../../../72/index.html" />
+<link rel="up" href="../../../../39/index.html" />
+<link rel="next" href="../../../../../content/overriding-site-specific-php-values/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="prev" href="../../../index.html" />
+<link rel="up" href="../../../index.html" />
+<link rel="next" href="../../../../71/index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Injecting into site vhosts from Fri, 11/30/2012 - 21:20 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-70" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Injecting into site vhosts</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-70'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 11/30/2012 - 21:20</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Aegir provides some hook functions in its API, one of which allows you to inject extra configuration snippets into your Apache vhost files for sites.</p>
+
+<h2>When would I want to do this?</h2>
+
+<p>A good example for this is when you may need to inject a custom Rewrite rule that goes beyond what the Aegir Aliases 'redirection' feature provides.</p>
+
+<p>Or, perhaps you have to inject some htpasswd mod_auth password protection for your site, or perhaps a CustomLog definition.</p>
+
+<p>Typically you'd just add what you need to the vhost file, but the problem is that Aegir manages these vhosts, and on every Verify task, will rewrite the config from a template, blowing away your changes in the process. Ouch!</p>
+
+<p>Fortunately there is a very easy and elegant solution to this problem to save your configurations persistently across Verify tasks and the like, by means of invoking the Provision hook <code>provision_apache_vhost_config()</code>, or, if you are using Nginx, <code>provision_nginx_vhost_config()</code> (and just replace the below examples with 'nginx' instead of 'apache' where necessary). Below "mig5" is just an example, you can replace this with anything as drush looks for all *.drush.inc files in <code>~aegir/.drush</code></p>
+
+<h2>A simple example</h2>
+
+<p>In this example I'll inject a simple 'ErrorLog' apache definition into a vhost to save the site error logs to a file.</p>
+
+<ol>
+<li>Create a file in <code>~aegir/.drush</code> called <code>mig5.drush.inc</code></li>
+<li>Add this snippet of PHP to the file:
+<div class="codeblock"><code> <br /> &lt;?php<br />&nbsp; function mig5_provision_apache_vhost_config($uri, $data) {<br />&nbsp;&nbsp;&nbsp; return &quot;ErrorLog /var/aegir/&quot; . $uri . &quot;.error.log&quot;;<br />&nbsp; }</code></div></li>
+<li>Install a site or verify an existing one</li>
+</ol>
+
+<p>Check your site's vhost config file (in <code>/var/aegir/config/server_master/apache/vhost.d/</code>) and you'll see the line has been injected into the '#Extra configuration' area of the vhost</p>
+
+<p><div class="codeblock"><code>&lt;VirtualHost *:80&gt;<br /><br />&nbsp; DocumentRoot /var/aegir/hostmaster-HEAD <br />&nbsp;&nbsp;&nbsp; <br />&nbsp; ServerName 1.mig5-forge.net<br />&nbsp; SetEnv db_type&nbsp; mysqli<br />&nbsp; SetEnv db_name&nbsp; 1mig5forgenet<br />&nbsp; SetEnv db_user&nbsp; 1mig5forgenet<br />&nbsp; SetEnv db_passwd&nbsp; X7KzsFhxhp<br />&nbsp; SetEnv db_host&nbsp; tardis<br />&nbsp; SetEnv db_port&nbsp; 3306<br /><br /><br /><br /># Extra configuration from modules:<br />&nbsp; ErrorLog /var/aegir/1.mig5-forge.net.error.log<br />&nbsp;&nbsp;&nbsp; # Error handler for Drupal &gt; 4.6.7<br />&nbsp;&nbsp;&nbsp; &lt;Directory &quot;/var/aegir/hostmaster-HEAD/sites/1.mig5-forge.net/files&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SetHandler This_is_a_Drupal_security_line_do_not_remove<br />&nbsp;&nbsp;&nbsp; &lt;/Directory&gt;<br /><br />&lt;/VirtualHost&gt;</code></div></p>
+
+<p>It's that simple! You can see that via the hook, we pass $uri and the drush data to the function, allowing me to abstract the site url so that each site will get its own error log. You could do extra PHP conditionals to ensure certain data only gets inserted into certain sites of a specific name.</p>
+
+<p>To inject multiple lines instead of one, use an array, i.e</p>
+
+<p><div class="codeblock"><code>&lt;?php<br />function mig5_provision_apache_vhost_config($uri, $data) {<br />&nbsp;&nbsp;&nbsp; return array(&quot;ErrorLog /var/aegir/&quot; . $uri . &quot;.error.log&quot;, &quot;LogLevel warn&quot;);<br />}</code></div></p>
+
+<p>The key point of this is that the file <code>~aegir/.drush/mig5.drush.inc</code> file will never be touched by Aegir, so you can rest assured your changes will be respected.</p>
+
+<p>If you want to only inject code into a specific site, wrap your code with an if statement, i.e
+<div class="codeblock"><code>&lt;?php<br />function mig5_provision_apache_vhost_config($uri, $data) {<br />&nbsp;&nbsp;&nbsp; if ($uri === &quot;&lt;site-name-in-aegir&gt;&quot;) {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return array(&quot;ErrorLog /var/aegir/&quot; . $uri . &quot;.error.log&quot;, &quot;LogLevel warn&quot;);<br />&nbsp;&nbsp;&nbsp; }<br />}</code></div></p>
+
+<h2>A more advance example</h2>
+
+<p>In this case we need to inject a rewrite notice to redirect all aliases to one canonical domain. While we could use the GUI option in Aegir, for our workflow, we found that to be unusable.</p>
+
+<p>Our workflow sometimes creates an instance where we need to spin up a copy of the site into production and then switch which site the cname points to. For example. the site's name is Example, and the site url is example.com. In Aegir we have a site called d6.example.com and the new one called d7.example.com. Currently example.com is an alias for d6.example.com and when we are ready to switch over, we will move the "example.com" alias d7.example.com. We cannot redirect all d6.example.com traffic to example.com with the GUI since it would do the opposite, redirect example.com to d6.example.com. Inserting a redirect rule into the vhost will allow us to choose which alias is the canonical one. The code is added to a .drush.inc file. In this case I named it <code>aliasredirects.druch.inc</code></p>
+
+<p><div class="codeblock"><code>&lt;?php<br />function aliasredirects_provision_apache_vhost_config($uri, $data) {<br />&nbsp;&nbsp;&nbsp; // the uri to check here is the name of the site in Aegir<br />&nbsp;&nbsp;&nbsp; if ($uri === &quot;d6.example.com&quot;) {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $rval[] = &quot;&quot;;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $rval[] = &quot;# Forces redirect to one uri&quot;;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $rval[] = &quot;RewriteEngine On&quot;;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // if the host is not example.com <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $rval[] = &quot;RewriteCond %{HTTP_HOST} !^example.com$ [NC]&quot;;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // rewrite to example.com with a 301 redirect<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $rval[] = &quot;RewriteRule ^(.*)$ http://example.com$1 [R=301,L]&quot;;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $rval[] = &quot;&quot;;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return $rval;<br />&nbsp;&nbsp;&nbsp; }<br />}</code></div><span class='diff-changed'>
+When we are ready to switch over to d7.example.com I'd update the code to look for the d7.example.com uri.</span></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-310.html?destination=node%2F70%23comment-form">Login</a> or <a href="../../../../../user/register/index-310.html?destination=node%2F70%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+
+<div  id="node-990" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/overriding-site-specific-php-values/index.html">Overriding site-specific PHP values</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><p>Sometimes it is useful to override certain PHP values on a per-site basis, but changes to <code>php.ini</code> are generally server-wide. Depending on the value you want to override, a couple of options present themselves.</p>
+
+<p>First, let's consider where PHP values can be changed. <a href="http://www.php.net/manual/en/ini.list.php" title="http://www.php.net/manual/en/ini.list.php">http://www.php.net/manual/en/ini.list.php</a> lists <code>php.ini</code> directives, and under the "Changeable" column, indicates <a href="http://www.php.net/manual/en/configuration.changes.modes.php">where a configuration setting may be set</a>. If your value shows either <code>PHP_INI_USER</code> or <code>PHP_INI_ALL</code>, then the easiest way to change this value would be using <code>ini_set()</code> in a <code>local.settings.php</code>:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /> </span><span style="color: #007700">@</span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'memory_limit'</span><span style="color: #007700">, </span><span style="color: #DD0000">'128M'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p>
+
+<p>On the other hand, if the changes mode is either <code>PHP_INI_PERDIR</code> or <code>PHP_INI_SYSTEM</code>, <code>php_ini()</code> won't work. In this case, the solution is to inject the value into the vhost. Since vhosts are managed by Aegir, manually adding an override to <code>/var/aegir/config/server_master/apache/vhost.d/&lt;uri&gt;</code> would get blown away the next time that the site is verified.</p>
+
+<p>As described in <a href="../../../index.html">Injecting into site vhosts</a>, we can inject values into vhosts using a Drush hook. For example, to raise the file upload size limit on <a href="http://ergonlogic.com/" title="http://ergonlogic.com">http://ergonlogic.com</a>, I added the following code in <code>/var/aegir/.drush/ergonlogiccom.drush.inc</code>:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />&nbsp; </span><span style="color: #007700">function </span><span style="color: #0000BB">ergonlogiccom_provision_apache_vhost_config</span><span style="color: #007700">(</span><span style="color: #0000BB">$uri</span><span style="color: #007700">, </span><span style="color: #0000BB">$data</span><span style="color: #007700">) {<br />&nbsp;&nbsp;&nbsp; if (</span><span style="color: #0000BB">$uri </span><span style="color: #007700">== </span><span style="color: #DD0000">"ergonlogic.com"</span><span style="color: #007700">) {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #0000BB">drush_log</span><span style="color: #007700">(</span><span style="color: #DD0000">"Overriding PHP file size values. See .drush/ergonlogiccom.drush.inc"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return array(</span><span style="color: #DD0000">"php_value upload_max_filesize 100M"</span><span style="color: #007700">, </span><span style="color: #DD0000">"php_value post_max_size 200M"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp; }<br />&nbsp; }<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p>
+
+<p>This results in the insertion of the following lines into <code>/var/aegir/config/server_master/apache/vhost.d/ergonlogic.com</code>:
+<div class="codeblock"><code>php_value upload_max_filesize 100M<br />php_value post_max_size 200M</code></div></p>
+
+<p>Also, in the verify task log I get the following informative message:
+<div class="codeblock"><code>Overriding PHP file size values. See .drush/ergonlogiccom.drush.inc</code></div></p>
+
+<p>One challenge this technique may present is inspecting the values of the parameters passed into this function. It appears that the Hostmaster site doesn't get bootstrapped, and so common debugging tools (such as devel.module's <a href="http://api.drupal.org/api/devel/devel.module/function/dd/6">dd()</a>) aren't available. However <a href="http://api.drush.ws/api/function/drush_log/4.x">drush_log()</a> is, and when called, will push arbitrary messages back into your Aegir site's verify task log.</p>
+
+<p>So sticking the following into the function above can help:
+<div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp; drush_log</span><span style="color: #007700">(</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$uri</span><span style="color: #DD0000">: " </span><span style="color: #007700">. </span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$uri</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-62.html?destination=node%2F990%23comment-form">Login</a> or <a href="../../../../../user/register/index-62.html?destination=node%2F990%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-62.html?destination=node%2F990%23comment-form">Login</a> or <a href="../../../../../user/register/index-62.html?destination=node%2F990%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+<div id="comments">
+  <a id="comment-2008"></a>
+
+
+<div  id="comment-2008" class="comment comment-published clear-block decay-10 decay-10">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/staceyb/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="staceyb&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/staceyb/index.html" class="username" title="View user profile.">staceyb</a></div><div class='date'>7:05pm Aug 27, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-2008">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Hello, I am trying to find a way to redirect all users of my website to https instead of http. I am trying to follow the "More Advanced example" at the bottom of the documentation, but I really don't have much php experience so I don't want to mess it up. Would this work to redirect all access from the http version to https instead? I have a feeling I might need something different in the  $rval[] = "RewriteCond %{HTTPS_HOST} !^example.com$ [NC]"; line, to make it about the https instead of example.com, but I'm not sure. Any thoughts or help? Thank you!</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">aliasredirects_provision_apache_vhost_config</span><span style="color: #007700">(</span><span style="color: #0000BB">$uri</span><span style="color: #007700">, </span><span style="color: #0000BB">$data</span><span style="color: #007700">) {<br />&nbsp;&nbsp;&nbsp; </span><span style="color: #FF8000">// the uri to check here is the name of the site in Aegir<br />&nbsp;&nbsp;&nbsp; </span><span style="color: #007700">if (</span><span style="color: #0000BB">$uri </span><span style="color: #007700">=== </span><span style="color: #DD0000">"example.com"</span><span style="color: #007700">) {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #0000BB">$rval</span><span style="color: #007700">[] = </span><span style="color: #DD0000">""</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #0000BB">$rval</span><span style="color: #007700">[] = </span><span style="color: #DD0000">"# Forces redirect to one uri"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #0000BB">$rval</span><span style="color: #007700">[] = </span><span style="color: #DD0000">"RewriteEngine On"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #FF8000">// if not https<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #0000BB">$rval</span><span style="color: #007700">[] = </span><span style="color: #DD0000">"RewriteCond %{HTTPS_HOST} !^example.com$ [NC]"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #FF8000">// rewrite to example.com with a 301 redirect<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #0000BB">$rval</span><span style="color: #007700">[] = </span><span style="color: #DD0000">"RewriteRule ^(.*)$ https://example.com$1 [R=301,L]"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #0000BB">$rval</span><span style="color: #007700">[] = </span><span style="color: #DD0000">""</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return </span><span style="color: #0000BB">$rval</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp; }<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-310.html?destination=node%2F70%23comment-form">Login</a> or <a href="../../../../../user/register/index-310.html?destination=node%2F70%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2009"></a>
+
+
+<div  id="comment-2009" class="comment comment-published clear-block decay-9 decay-9">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/staceyb/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="staceyb&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/staceyb/index.html" class="username" title="View user profile.">staceyb</a></div><div class='date'>8:09pm Aug 27, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-2009">#2</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>I think I've gotten closer with some more research. This is what i have now:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">aliasredirects_provision_apache_vhost_config</span><span style="color: #007700">(</span><span style="color: #0000BB">$uri</span><span style="color: #007700">, </span><span style="color: #0000BB">$data</span><span style="color: #007700">) {<br /></span><span style="color: #FF8000">// the uri to check here is the name of the site in Aegir<br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">$uri </span><span style="color: #007700">=== </span><span style="color: #DD0000">"example.com"</span><span style="color: #007700">) {<br /></span><span style="color: #0000BB">$rval</span><span style="color: #007700">[] = </span><span style="color: #DD0000">""</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$rval</span><span style="color: #007700">[] = </span><span style="color: #DD0000">"RewriteEngine On"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$rval</span><span style="color: #007700">[] = </span><span style="color: #DD0000">"RewriteCond %{HTTPS} !=on"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$rval</span><span style="color: #007700">[] = </span><span style="color: #DD0000">"RewriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$rval</span><span style="color: #007700">[] = </span><span style="color: #DD0000">""</span><span style="color: #007700">;<br />return </span><span style="color: #0000BB">$rval</span><span style="color: #007700">;<br />}<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-310.html?destination=node%2F70%23comment-form">Login</a> or <a href="../../../../../user/register/index-310.html?destination=node%2F70%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2010"></a>
+
+
+<div  id="comment-2010" class="comment comment-published clear-block decay-9 decay-9">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/staceyb/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="staceyb&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/staceyb/index.html" class="username" title="View user profile.">staceyb</a></div><div class='date'>8:18pm Aug 27, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-2010">#3</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>OK! This works now! Just make sure that your file is called aliasredirects.drush.inc (the first part needs to be the same as your function, at least that is what seemed to get it to work for me).</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">aliasredirects_provision_apache_vhost_config</span><span style="color: #007700">(</span><span style="color: #0000BB">$uri</span><span style="color: #007700">, </span><span style="color: #0000BB">$data</span><span style="color: #007700">) {<br />&nbsp;&nbsp;&nbsp; </span><span style="color: #FF8000">// the uri to check here is the name of the site in Aegir<br />&nbsp;&nbsp;&nbsp; </span><span style="color: #007700">if (</span><span style="color: #0000BB">$uri </span><span style="color: #007700">=== </span><span style="color: #DD0000">"example.com"</span><span style="color: #007700">) {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #0000BB">$rval</span><span style="color: #007700">[] = </span><span style="color: #DD0000">""</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #0000BB">$rval</span><span style="color: #007700">[] = </span><span style="color: #DD0000">"RewriteEngine On"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #FF8000">// check to see if https is not on first<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #0000BB">$rval</span><span style="color: #007700">[] = </span><span style="color: #DD0000">"RewriteCond %{HTTPS} !=on"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #FF8000">// rewrite to https with a 301 redirect<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #0000BB">$rval</span><span style="color: #007700">[] = </span><span style="color: #DD0000">"RewriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #0000BB">$rval</span><span style="color: #007700">[] = </span><span style="color: #DD0000">""</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return </span><span style="color: #0000BB">$rval</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp; }<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-310.html?destination=node%2F70%23comment-form">Login</a> or <a href="../../../../../user/register/index-310.html?destination=node%2F70%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2284"></a>
+
+
+<div  id="comment-2284" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/deadbeef/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="deadbeef&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/deadbeef/index.html" class="username" title="View user profile.">deadbeef</a></div><div class='date'>8:57am Mar 1, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-2284">#4</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>We have (at the moment unstable) modules to allow custom entries in settings.php and vhosts from the site settings page.<br />
+See: <a href="http://drupal.org/project/hosting_injections">Hosting injections</a><br />
+and: <a href="http://drupal.org/project/provision_hosting_injections">Provision hosting injections</a></p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-310.html?destination=node%2F70%23comment-form">Login</a> or <a href="../../../../../user/register/index-310.html?destination=node%2F70%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/70/revisions/4219/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:06:05 GMT -->
+</html>

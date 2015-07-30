@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/1080/revisions/5433/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:02:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../installing/debian/index.html" />
+<link rel="up" href="../../../../../installing/debian/index.html" />
+<link rel="next" href="../../../../../installing/manual/index.html" />
+<link rel="prev" href="../../../../../installing/debian/index.html" />
+<link rel="up" href="../../../../../installing/debian/index.html" />
+<link rel="next" href="../../../../../installing/manual/index.html" />
+<link rel="prev" href="../../../../../installing/debian/index.html" />
+<link rel="up" href="../../../../../installing/debian/index.html" />
+<link rel="next" href="../../../../../installing/manual/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Automatic Installation on Ubuntu 11.04+ (QuickStart) from Thu, 01/23/2014 - 23:52 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1080" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/installing/debian/automatic-installation-ubuntu-1104-quickstart/index.html">Automatic Installation on Ubuntu 11.04+ (QuickStart)</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_50 first"><a href="../../../../../category/keywords/install/index.html" rel="tag" title="">Install</a></li>
+<li class="taxonomy_term_70"><a href="../../../../../category/keywords/installation-ubuntu/index.html" rel="tag" title="">installation ubuntu</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-1080'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/jonpugh/index.html" class="username" title="View user profile.">jonpugh</a> on 01/23/2014 - 23:52</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Here are simplified instructions for installing Aegir on a server, quickly and easily.</p>
+
+<p>The fastest way to install Aegir is on the latest Ubuntu Server LTS (Long Term Support). <em>Currently 12.04</em>.</p>
+
+<h1>Command Summary</h1>
+
+<p>Here is every command, ready to copy and paste.</p>
+
+<p><div class="codeblock"><code>sudo su<br />echo &quot;deb <a href="http://debian.aegirproject.org/" title="http://debian.aegirproject.org">http://debian.aegirproject.org</a> stable main&quot; | tee -a /etc/apt/sources.list.d/aegir-stable.list<br />wget -q <a href="http://debian.aegirproject.org/key.asc" title="http://debian.aegirproject.org/key.asc">http://debian.aegirproject.org/key.asc</a> -O- | apt-key add -<br />apt-get update<br />apt-get install aegir</code></div></p>
+
+<p>It is highly recommended to read through the <strong>Installation Instructions</strong> step by step to give yourself the feel for how this is done.  In addition, if you are not already familiar in Linux system administration, please read up on the subject.  Standard linux security protocols should be followed.</p>
+
+<h1>Installation Instructions</h1>
+
+<p>Enter all commands in <code>code boxes</code> exactly as they are written.</p>
+
+<p>ALL commands should be entered as <code>root</code> user until these instructions are complete.  After that, you should never have to use the root user.</p>
+
+<p>Self-installation of Ubuntu has you create an additional user in the <code>admin</code> group, which means they can sudo.  If you are using a cloud hosting service, it likely just sent you root user credentials.  <em>Server security and user management is up to you.  Don't give away access to root or the aegir user unless you know what you are doing.  Follow standard web host best practices</em></p>
+
+<p>For a summary of all needed commands, scroll to the bottom of the page.</p>
+
+<ol>
+<li><h2>Fire up a new server</h2>
+
+<ul>
+<li>Use <strong>Ubuntu 11.04 Server Edition</strong> for the smoothest and most reliable installation experience.  </li>
+<li>Make sure it has at least 1024MB, preferably 2048MB of memory.  Depending on your host you will have to configure a hostname.  It can be convenient to call this 'aegir'.</li>
+<li>If you want the smoothest installation, create a brand new server.  There will be the least chance of conflicts if you start with a brand new <strong>Ubuntu 11.04</strong> server.  If you use Ubuntu Desktop, you should be able follow these instructions without any problems.</li>
+<li><em>Run all commands as root.  If you are not root, enter</em>
+<div class="codeblock"><code>sudo su</code></div></li>
+</ul></li>
+<li><h2>Add the project repositories and archive key</h2>
+
+<p>Use this command to add the Aegir package "Software Source" repository to your system:
+<div class="codeblock"><code>echo &quot;deb <a href="http://debian.aegirproject.org/" title="http://debian.aegirproject.org">http://debian.aegirproject.org</a> stable main&quot; | tee -a /etc/apt/sources.list.d/aegir-stable.list</code></div>
+Use this command to add the archive key to your keyring:
+<div class="codeblock"><code>wget -q <a href="http://debian.aegirproject.org/key.asc" title="http://debian.aegirproject.org/key.asc">http://debian.aegirproject.org/key.asc</a> -O- | apt-key add -</code></div>
+Then, finally, update your apt repositories:
+<div class="codeblock"><code>apt-get update</code></div></p></li>
+<li><h2>Install configure Aegir and dependencies</h2>
+
+<p>Once you have added the repositories, you can now fire off the standard debian installation <span class='diff-changed'>command. For Aegir 1.x, the command is:
+</span><div class="codeblock"><code>apt-get install aegir</code><span class='diff-added'></span></div><span class='diff-added'>
+For Aegir 2.x, the command is:
+</span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'>apt-get install aegir2</span></code></div>
+This fires off the installation script for AEgir, along all dependencies including Apache, MySQ and PHP.  You will be asked a number of questions about your server.</p>
+
+<ul>
+<li>You will be asked to create a <em>MySQL root user password</em>.  Make this long and random and type it down somewhere safe, you won't need it very often, but you will need it later on in the installation process.</li>
+<li>In <em>Postfix Configuration</em>:  Choose Internet Site, unless you have a reason otherwise.  When asked for the <em>System mail name</em>, pick either the hostname (default) or the domain name you will be hosting this server on.</li>
+<li>In <em>Configure aegir-hostmaster</em>, you will be asked to choose a "URL of the hostmaster frontend".  This should be either the hostname (default) or the domain name the server will be hosting, with "aegir" as a subdomain.  For example, "aegir.example.com".  You may want to change this to whatever you prefer, just don't forget it as it will be where you use the Aegir front-end.</li>
+<li>After entering your domain, Aegir Hostmaster installation will ask you for the MySQL root password you created earlier.  You did write it down, didn't you?<br />
+<strong>NOTE:</strong> The current DEB package requires you to enter the MySQL root password twice.
+When this script is done, if everything went ok, after a lot of other interesting information, you should see this:
+<div class="codeblock"><code>Aegir is now installed. You can visit it at <a href="http://test/user/reset/1/1329504351/eda205d9a27abde400a27cf160dff69a<br />************************************************************************<br />Aegir" title="http://test/user/reset/1/1329504351/eda205d9a27abde400a27cf160dff69a<br />************************************************************************<br />Aegir">http://test/user/reset/1/1329504351/eda205d9a27abde400a27cf160dff69a<br />***...</a> frontend bootstrap correctly, operation was a success!<br />Setting up aegir (1.6-1) ...<br />Setting up libhtml-template-perl (2.9-2) ...<br />Setting up mysql-server (5.1.54-1ubuntu4) ...<br />Setting up php5 (5.3.5-1ubuntu7.7) ...<br />Processing triggers for libc-bin ...<br />ldconfig deferred processing now taking place<br />root@test:~# </code></div></li>
+</ul>
+
+<p>At this point, everything is installed.  Visit the link the script provided you to check out the frontend.  Switch to the <code>aegir</code> user to check out the backend:
+<div class="codeblock"><code>su - aegir</code></div></p>
+
+<p>Once you are the aegir user, check out the drush site aliases  it gives you. <code>@hostmaster</code> is the alias for the new front-end you created.  You will get new site aliases for every platform and site you create.
+<div class="codeblock"><code>drush site-aliases</code></div></p></li>
+<li><h2>Give yourself access to the server</h2>
+
+<p>As the "Administrators Manual" can tell you, you should only manage the Aegir server from the backend as the <code>aegir</code> user.</p>
+
+<p>However, by default, the <code>aegir</code> user cannot sudo (except to restart apache).  The aegir user also does not have a password.  Therefor, the only way to become aegir is to <code>sudo su - aegir</code> from a user that can.</p>
+
+<p>So, to finish the server, you should give yourself a personal account that you can use to login to the server with a password in case all of your SSH keys get lost.</p>
+
+<p>To add yourself as a user:
+<div class="codeblock"><code>adduser yourname</code></div>
+Then fill out the little wizard it gives you.</p>
+
+<p>//@TODO: Add some helpful notes about SSH keys and remote aliases.</p>
+
+<p>Install SSH on your server, generating your SSH keys and install them on your Ubuntu server. (Directions to generate your SSH keys are assuming your PC is Ubuntu as well, Windows users look below for SSH directions)</p>
+
+<ul>
+<li>Tutorial: <a href="https://help.ubuntu.com/11.04/serverguide/C/openssh-server.html" title="https://help.ubuntu.com/11.04/serverguide/C/openssh-server.html">https://help.ubuntu.com/11.04/serverguide/C/openssh-server.html</a></li>
+</ul>
+
+<p>If using Windows, you must use Putty, PuttyGen, and PuttyPageant to generate and use your SSH keys.</p>
+
+<ul>
+<li>Tutorial #1: <a href="http://the.earth.li/~sgtatham/putty/0.53b/htmldoc/Chapter8.html" title="http://the.earth.li/~sgtatham/putty/0.53b/htmldoc/Chapter8.html">http://the.earth.li/~sgtatham/putty/0.53b/htmldoc/Chapter8.html</a></li>
+<li>Tutorial #2: <a href="http://www.howtoforge.com/ssh_key_based_logins_putty" title="http://www.howtoforge.com/ssh_key_based_logins_putty">http://www.howtoforge.com/ssh_key_based_logins_putty</a></li>
+</ul>
+
+<p>You will want to also be a part of the aegir and www-data groups so you can write to some of their files:
+<div class="codeblock"><code>addgroup yourname aegir<br />addgroup yourname www-data</code></div></p></li>
+<li><h2>Start Using!</h2>
+
+<p>Now that aegir is installed, head to the  <a href="../../../../../using/index.html">User Manual</a> page to get your first platform and site up and running.</p></li>
+</ol>
+
+<h1>Credits</h1>
+
+<p><em>This document was originally based on <a href="../../../../../installing/debian/index.html" title="http://community.aegirproject.org/installing/debian">http://community.aegirproject.org/installing/debian</a> but has been trimmed down to list only the steps you need to use on an Ubuntu server to get Aegir up and running as quickly and easily as possible.</em></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-391.html?destination=node%2F1080%23comment-form">Login</a> or <a href="../../../../../user/register/index-391.html?destination=node%2F1080%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/1080/revisions/5433/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:02:30 GMT -->
+</html>

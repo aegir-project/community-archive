@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/446/revisions/3434/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:05:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../396/index.html" />
+<link rel="up" href="../../../../30/index.html" />
+<link rel="next" href="../../../../../content/web-clusters/index.html" />
+<link rel="prev" href="../../../../396/index.html" />
+<link rel="up" href="../../../../30/index.html" />
+<link rel="next" href="../../../../../content/web-clusters/index.html" />
+<link rel="prev" href="../../../../396/index.html" />
+<link rel="up" href="../../../../30/index.html" />
+<link rel="next" href="../../../../../content/web-clusters/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Adding a platform on a remote web server from Wed, 05/16/2012 - 20:14 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-446" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Adding a platform on a remote web server</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_119 first"><a href="../../../../../category/keywords/add-platform/index.html" rel="tag" title="">add platform</a></li>
+<li class="taxonomy_term_120 last"><a href="../../../../../category/keywords/remote-server/index.html" rel="tag" title="">remote server</a></li>
+</ul></div><div id='diff-inline-446'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/349/index.html" class="username" title="View user profile.">Jeff.Brower</a> on 05/16/2012 - 20:14</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Especially if you have been using Aegir for a while simply because it handles updates, moving to new releases, cloning, aliases and everything Drupal with such elegance on a single server - you might not be entirely clear on what changes when you make the move to multiple servers.  Hopefully this will help.</p>
+
+<h2>Understanding the process</h2>
+
+<p>Multiple servers are great even if you do not have to manage a server farm.  Having a server for development that you are free to break, one for testing that you hope will not break, one for approvals so your clients can go to see how their "real" website will look, and one for production that serves the daily grind of live sites is a wonderful thing.  This DTAP (Development, Testing, Acceptance, and Production) structure works and it is surprisingly easy to accomplish under Aegir.</p>
+
+<p>If you are managing a farm, creating massive numbers of servers is quick and easy with Aegir - especially if you use virtual machines like Xen where a server image can be cloned or generated using LVM disks that can be migrated (even while running) to other physical machines.</p>
+
+<p>When it is time break out an Aegir master controller and remote slaves you have to remember that Aegir is the place that it (almost) all happens.  Everything is stored in Aegir - including your remote platforms and your sites - and then distributed to the slave servers by Aegir in the Verify process.</p>
+
+<p>Remember too that sites reside on platforms, and platforms reside on servers.  You are turning your Aegir install into an Aegir Master as the hub, and the Aeger Remote Slaves as the spokes.  To move into this "hub and spoke" architecture, you must build the remote server, tell the Aegir Master about that server and verify it, install a Drupal platform for that server on the Aegir Master and finally tell the Aegir Master about that Drupal install and verify that.  You then create the sites on the platform you want based upon the install profile you select for that site.  Need more?  How about an example:</p>
+
+<h2>The mechanics</h2>
+
+<p>(1) Build a server image on your network to become your Aegir Slave.  This can be anything from a separate headless server to a Virtual Machine image on physical machine with a dozen other Virtual Machines on it.  As long as it has its own IP and is capable of running a Drupal image, it will work.</p>
+
+<p>(2) Insure that your new server image is resolved in your DNS by adding it to your zone files and incrementing the serial number in the zone file.  Aegir can manage that for you now to some extent, but you might want to wait until that feature leaves the experimental status.  Make sure the entries in /etc/hostname and /etc/hosts all match your zone files (including reverse DNS).  Reload/restart the DNS server.  Any DNS slaves should automatically get notified and the incremented serial number should make sure they reload automatically.  Test the resolution and ping the new Aegir Slave server image from the Aegir Master to insure that the IPs all resolved properly.</p>
+
+<p>(2) Follow the steps in the Aegir Handbook page at <a href="../../../../30/index.html" title="http://community.aegirproject.org/node/30">http://community.aegirproject.org/node/30</a> carefully.  You should be able to use cut and paste if you are using Debian Stable or the like.  In any case, you will need those packages.  You do not need Aegir on the slave, but you do need the aegir user and that user must have a shell.  I prefer the bash shell, but the sh shell in the instructions will do.</p>
+
+<p>(3) You need to have the "passphraseless" ssh working and proven before you continue.  A web search on the terms "passphraseless ssh" plus your operating system will generally get you great instructions, but putting those instructions here for every possible combination is beyond the scope of this example.  In terms of helpful hints, however, you do not need to have a password for the aegir user on the Aegir Slave.  Your access will be this certificate.  By simply hitting enter when it asks for the passphrase, you make the certificate passphraseless.  You should carefully set the permissions and back these certificates up to a secure location.  You MUST log in manually from the Aegir Master to the Aegir Slave the first time or your verify will fail.  This is because the system has to add the ssh keys to the known hosts and it will ask about about it before it will allow the connection.  Aegir nows nothing about this and will not answer, so the verify will fail.  To be absolutely sure it works, after exiting the initial login, you should retry the login to verify it does not ask for a password and then exit the login and try an rsync (which is the process by which the Aegir Master controls the Aegir Slaves).  All of these commands should work from the Aegir Master to the new Aegir Slave while logged into the Aegir Master as the aegir user with no request for a password, proving that the systems are exchanging keys (do not proceed until you can do this flawlessly without having to enter a response):</p>
+
+<p><div class="codeblock"><code>##&nbsp; Start from the Aegir Master as the aegir user<br /># Log in to the slave from the Aegir Master and exit without any password or reply required<br />ssh slavename.example.com<br />exit<br /># Create a test file for rsync<br />echo &#039;rsync test file&#039; &gt; MyRsyncTest<br /># Send the test file to the remote slave by name using rsync<br />rsync -azvv /var/aegir/MyRsyncTest aegir@slavename.example.com:/var/aegir<br /># Log back into the remote slave<br />ssh slavename.example.com<br /># Make sure the file is there and readable<br />cat /var/aegir/MyRsyncTest<br /># Delete the test file from the remote slave<br />rm /var/aegir/MyRsyncTest<br /># Exit the ssh login session on the remote<br />exit<br /># Delete the test file on the Aegir Master<br />rm /var/aegir/MyRsyncTest</code></div></p>
+
+<p>(4) Go to Add Content/Server and put in the server name, leave the Database set as None (Your sites will use the Aegir Master database and none is required on the Remote Slave) and under Web select apache or apache ssl (to match the example) then click Save. After the process completes you should see that it found the IP address properly on its own, plugged it in all by itself and then Verify quite nicely. If you look on the Aegir Slave remote server you will see that you now have directories named config and platform.</p>
+
+<p>(5) Now that hard decision for platform choice comes in play.  My preference is a Drupal install that is the same release as the Aegir Master server or higher.  Since sites are eventually destined to be Drupal 7 one day, and the Aegir system is not Drupal 7 ready as of this writing but heading that direction, making at least one Drupal 7 slave is a good idea so that you can migrate sites to that platform as they are ready.  If you are migrating sites off of your existing Aegir and onto slaves, migrating to platforms of the same Drupal version makes that process much easier.  In any case, firm up your decision about which Drupal version you want to install on your new Aegir Slave Platform.</p>
+
+<p>(6) Time to create that platform.  The big thing here is to do it right the first time and make certain that the name of the platform is unique to any platform on your Aegir Master server.  If you look in your /var/aegir directory you will notice that Aegir has its own naming convention.  For instance, you should see /var/aegir/hostmaster-0.4-rc1 as the platform for the Aegir 0.4 release candidate 1.  You need to consider doing the same.  For instance, name your platform something like: /var/aegir/slavename-drupal-version and you will make it easier to distinguish which server the platform resides upon and the drupal version so that you can manage updates and migrations more easily.  Make certain that you are not destroying one platform when creating another.<span class='diff-added'>  Be aware that at some point Aegir started organizing platforms into a separate directory: /var/aegir/platforms and you should change to that structure if you have an older original install.  Again, be careful you are not overwriting an existing install when you create the new one.</span>  For instance, if you already have a Drupal install in <span class='diff-changed'>/var/aegir/platforms/drupal-7.14</span> the code below will attempt to recreate it on top of the existing install.  If you are using a Makefile, be sure that the same problem does not occur in that makefile.  To create a Drupal 7 Aegir Remote Slave Platform, log into the Aegir Master as the aegir user and run this simple <span class='diff-changed'>code (of course edit it to match the platform and name you want to create:
+</span><div class="codeblock"><code># Make sure you are in the proper directory<br />cd <span class='diff-changed'>/var/aegir/platforms</span><br /># Install Drupal <span class='diff-changed'>7.14</span><br />drush/drush.php dl <span class='diff-changed'>drupal-7.14</span><br /># Rename the platform to your own naming convention<br />mv <span class='diff-changed'>/var/aegir/platforms/drupal-7.14 /var/aegir/platforms/slavename-drupal-7.14</span></code></div></p>
+
+<p>(7) The final step in creating this platform is to actually tell the Aegir Master about it so that it can distribute it (via rsync) to the new Aegir Remote Slave.  Simple enough.  Just go to Create Content/Platform and the Create Platform screen comes up.  Under Name write something descriptive and unique.  In the example so far, this will be something like 'slavename Drupal <span class='diff-changed'>7.14'</span> or in some way adhere to your chosen naming convention.<span class='diff-added'>  I use the directory name I created above since that serves two purposes.</span>  Under Publish Path you will put the path that holds this Drupal distribution.  In the example above that will be <span class='diff-changed'>/var/aegir/platforms/slavename-drupal-7.14</span> but the path will be reflected from the Aegir Master to the Aegir Slave and will be the same on both.  If you are using a Makefile you need to enter the full path and name of that Makefile here as well, but the creation and use of the Makefile is beyond the scope of this example.  Lastly choose the server that this platform will reside upon.  When you are finished, double check the screen and then click on Save.  The Verify step should execute flawlessly and when it does, your Aegir Remote Slave will be complete and ready to accept sites.</p>
+
+<p>(8) Lather, rinse and repeat for each Aegir Remote Slave.</p>
+
+<h2>Creating sites on the remote</h2>
+
+<p>The only difference you will notice when creating a new site under Aegir will be the choice of platform.  The Create Site screen is quite self explanatory, but the main thing is to select the Install Profile that you  require and then the list of Platforms that support that install profile will be populated.</p>
+
+<p>As usual, Aegir makes it all faster and easier than you expect.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-397.html?destination=node%2F446%23comment-form">Login</a> or <a href="../../../../../user/register/index-397.html?destination=node%2F446%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/446/revisions/3434/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:05:10 GMT -->
+</html>

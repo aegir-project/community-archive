@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/scrums/weekly-scrum-irc-log-2011-07-12?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../weekly-scrum-irc-log-2011-07-05/index.html" />
+<link rel="up" href="../../content/scrums/archive-2011/index.html" />
+<link rel="next" href="../weekly-scrum-irc-log-2011-07-19/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2011-07-12 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-749" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2011-07-12</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first"><a href="../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_7"><a href="../../taxonomy/term/7/index.html" rel="tag" title="">scrum</a></li>
+<li class="taxonomy_term_6 last"><a href="../../taxonomy/term/6/index.html" rel="tag" title="">weekly scrums</a></li>
+</ul></div><div id='diff-inline-749'><pre>
+(08:01:34 AM) anarcat: heey scrum time
+(08:01:39 AM) anarcat: mig5 / darthsteven : scrum!
+(08:01:45 AM) anarcat: omega8cc / sfyn / shrop : scrum time
+(08:01:52 AM) anarcat: am i the only one awake? :)
+(08:01:59 AM) omega8cc: hello!
+(08:02:01 AM) ergonlogic: anarcat: not the *only* one
+(08:02:14 AM) ergonlogic: hi all
+(08:02:35 AM) anarcat: hello ergonlogic !
+(08:02:50 AM) anarcat: so welcome to our weekly scrum
+(08:02:52 AM) anarcat: i don't have much to say
+(08:02:57 AM) anarcat: i've been away for a while
+(08:03:03 AM) anarcat: vacations, drush sprint, etc
+(08:03:12 AM) anarcat: i'll try to do a reportback of that great drush sprint soon
+(08:03:36 AM) anarcat: but basically, i worked on jenkins, debian packaging and cleaning up the drush bootstrap process to make real unit tests possible
+(08:03:49 AM) anarcat: so we can now test *functions* (instead of just commands) in the drush unit test framework
+(08:03:53 AM) anarcat: which will be useful for provision
+(08:03:54 AM) anarcat: now
+(08:04:01 AM) anarcat: how's 1.x doing?
+(08:04:14 AM) anarcat: i have on my tuesday todo (and had for a while) to release 1.2
+(08:04:27 AM) anarcat: so i'm thinking to test the 1.x debian packages all over the place then just release the damn thing
+(08:04:53 AM) anarcat: how does that sound?
+(08:04:55 AM) omega8cc: anarcat: there are patches waiting in the queue
+(08:05:02 AM) anarcat: ah darn :)
+(08:05:05 AM) anarcat: omega8cc: your patches? :)
+(08:05:07 AM) omega8cc: ;)
+(08:05:10 AM) omega8cc: yep
+(08:05:13 AM) anarcat: hehe ok
+(08:05:17 AM) anarcat: that shouldn't be a big issue
+(08:05:26 AM) omega8cc: simple stuff
+(08:05:59 AM) anarcat: ok, so i'll merge that in before release
+(08:06:09 AM) omega8cc: thanks
+(08:06:09 AM) anarcat: so one last thing for me
+(08:06:17 AM) anarcat: i'll be going on a looong holiday around drupalcon
+(08:06:33 AM) anarcat: i'm leaving on august 3rd for europe, then going to drupalcon, then i'm gone for september
+(08:06:54 AM) anarcat: so that could stall dev of 2.x for a little longer, but i'll be back in full force after that
+(08:07:22 AM) anarcat: ah and before i forget: darthsteven: our hosting-queue-runner daemon disappeared here for the first time ever, not sure why, i'll try to track it down today
+(08:07:29 AM) anarcat: okay, anyone else has something to add here?
+(08:07:45 AM) ergonlogic: For my part, I posted an Aegir extension module on d.o: Hosting Profile Roles
+(08:07:50 AM) ergonlogic: ... and I've begun hacking on a couple more
+(08:07:55 AM) ergonlogic: And worked on a couple small patches to Drush
+(08:08:09 AM) ergonlogic: I've been testing .deb installs on some client VPSs, which has been going smoothly
+(08:08:12 AM) omega8cc: not much from me this week, besides fixed support for open public and vudeola
+(08:08:33 AM) omega8cc: err, videola
+(08:08:52 AM) ergonlogic: ooh, lullabot's published it now?
+(08:08:56 AM) omega8cc: yep
+(08:09:04 AM) ergonlogic: I'll have to check it out
+(08:09:14 AM) omega8cc: and merged my fix already
+(08:09:44 AM) Aciid: oh no, videola. I hope it doesn't catch on at the company that we should start offerin sites with it..
+(08:09:56 AM) Aciid: videola's performance and seek capabilities are horrible
+(08:10:08 AM) Aciid: or maybe it's lullabot's CDN
+(08:11:28 AM) anarcat: alright, anyone else?
+(08:11:43 AM) ***anarcat notices our gsoc student missing
+(08:11:52 AM) anarcat: has he checked in at all while i was gone?
+(08:12:13 AM) omega8cc: I didn't notice
+(08:12:26 AM) anarcat: that's reallly too bad
+(08:12:32 AM) anarcat: i'll have to do an evaluation soon
+(08:12:57 AM) ergonlogic: oh, one other things (not to do with our GSoC student), Koumbit is now accepting donations in support of the Aegir Project
+(08:13:15 AM) ergonlogic: there's a link on the front page of community.aegirproject.org
+(08:14:29 AM) ergonlogic: if/when we receive any donations, we'll have to figure out how to disburse them
+(08:14:33 AM) anarcat: ergonlogic: yeah, mig5 wanted to talk about this, actually
+(08:14:55 AM) anarcat: ergonlogic: he was suggesting we (koumbit) get a rackspace cloud account and deal with the donations
+(08:14:59 AM) anarcat: where are the donations going now?
+(08:15:16 AM) ergonlogic: anarcat: Koumbit's PayPal acct
+(08:15:23 AM) anarcat: ok, good
+(08:15:46 AM) anarcat: alright
+(08:15:57 AM) anarcat: so if there's nobody else, that will be it for our weekly scrum!
+(08:16:13 AM) ergonlogic: I'll post to the community site
+(08:16:28 AM) omega8cc: thanks
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-113.html?destination=node%2F749%23comment-form">Login</a> or <a href="../../user/register/index-113.html?destination=node%2F749%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/scrums/weekly-scrum-irc-log-2011-07-12?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:58 GMT -->
+</html>

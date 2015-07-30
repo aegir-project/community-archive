@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/13170/revisions/16026/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:42:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../release-notes/index.html" />
+<link rel="up" href="../../../../../release-notes/index.html" />
+<link rel="next" href="../../../../../3/index-2.html" />
+<link rel="prev" href="../../../../../release-notes/index.html" />
+<link rel="up" href="../../../../../release-notes/index.html" />
+<link rel="next" href="../../../../../3/index-2.html" />
+<link rel="prev" href="../../../../../release-notes/index.html" />
+<link rel="up" href="../../../../../release-notes/index.html" />
+<link rel="next" href="../../../../../3/index-2.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of 3.0 release notes from Sun, 07/19/2015 - 20:27 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-13170" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../3/index.html">3.0 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_4 first"><a href="../../../../../taxonomy/term/4/index.html" rel="tag" title="This level is for users who have access to only their sites and not able to manage all Aegir features, accounts or the server/system.">Client</a></li>
+<li class="taxonomy_term_27"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_3"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-13170'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/helmo/index.html" class="username" title="View user profile.">helmo</a> on 07/19/2015 - 20:27</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p><span class='diff-deleted'></span><em><span class='diff-deleted'>DRAFT</span></em><span class='diff-deleted'></span></p><span class='diff-deleted'>
+
+</span><p>The Aegir team is very pleased to announce the official release of Aegir 3.0. This release ships with significant stability improvements, Drush 6 and 7 support, improved SSL, subdirectory multisite and nginx support and much, much more!</p>
+
+<p>This release marks the deprecation of the 2.x branch. We will continue to provide security releases through the end of 2015. All Aegir users are strongly encouraged to upgrade to the 3.0 release. The upgrade has been thoroughly tested and has worked reliably for us.</p>
+
+<p>Upgrading from Aegir 2.x moves Aegir from a Drupal 6 platform to a Drupal 7 one. The Debian package will migrate the front-end for you. While we have tested this with Aegir core, we strongly recommend disabling any contributed modules you may be running.</p>
+
+<p>We have a very dynamic community of contrib developers, and various projects built atop Aegir. So if you were waiting for Aegir 3 to be stable, easy to install and production-ready, now is the time. The 3.x branch will be well supported as a lot of shops are running it in production already.</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Major_changes"><span class="toc-number">1. </span>Major changes</a></li>
+	<li class="toc-level-1"><a href="#Major_API_changes"><span class="toc-number">2. </span>Major API changes</a></li>
+	<li class="toc-level-1"><a href="#Installing_and_upgrading"><span class="toc-number">3. </span>Installing and upgrading</a></li>
+	<li class="toc-level-1"><a href="#Need_help"><span class="toc-number">4. </span>Need help?</a></li>
+	<li class="toc-level-1"><a href="#Features_and_improvements"><span class="toc-number">5. </span>Features and improvements</a></li>
+	<li class="toc-level-1"><a href="#Known_issues"><span class="toc-number">6. </span>Known issues</a></li>
+</ol>
+</div>
+</div>
+
+<h2 id="Major_changes">1. Major changes</h2>
+
+<p>The front-end has been ported to Drupal 7. We've also raised the minimum Drush version to 6.x, and the Debian package now installs Drush via Composer. Drush 7 is also supported.</p>
+
+<p>We've added several "Golden contrib" modules to the distribution:</p>
+
+<ul>
+<li>Hosting Remote Import</li>
+<li>Hosting Site Backup Manager</li>
+<li>Hosting Git</li>
+<li>Hosting Tasks Extra</li>
+</ul>
+
+<p>We're planning to add additional well-supported contrib modules over the course of the Aegir 3.x lifecycle. Along similar lines, we've removed hosting_platform_pathauto, as it's built-in now.</p>
+
+<p>We've introduced initial Drupal 8 support, though this is still a work-in-progress. This mostly depends on Drupal 8 and Drush 8 stabilizing, before we'll be able to more fully manage Drupal 8 sites.</p>
+
+<p>Aegir 3 now supports SNI for SSL.</p>
+
+<p>A number of significant bug fixes and stability improvements have<span class='diff-added'> been incorporated. Among them, we've added locking in our task queue, and improved backup reliability significantly.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>For more information, please see the slidedeck from the presentation by ergonlogic and helmo at the Aegir Summit: </span><a href="../../../../../sites/community.aegirproject.org/files/aegir_core_and_contrib_-_nyc_summit_0/index.pdf" title="http://community.aegirproject.org/sites/community.aegirproject.org/files/aegir_core_and_contrib_-_nyc_summit_0.pdf"><span class='diff-added'>http://community.aegirproject.org/sites/community.aegirproject.org/files...</span></a><span class='diff-added'></span></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Major_API_changes">2. Major API changes</h2>
+
+<p><span class='diff-changed'>The API has not significantly changed, though there are a few additions. See the current API docs in the various repositories for additional details.</span></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Installing_and_upgrading">3. Installing and upgrading</h2>
+
+<p>The canonical source of installation documentation is</p>
+
+<p><a href="http://docs.aegirproject.org/en/latest/install.html" title="http://docs.aegirproject.org/en/latest/install.html">http://docs.aegirproject.org/en/latest/install.html</a></p>
+
+<p>We're in the process of converting our docs, the old version is on  <a href="../../../../../installing/index.html" title="http://community.aegirproject.org/installing">http://community.aegirproject.org/installing</a></p>
+
+<p>In a similar fashion, the upgrade documentation is:</p>
+
+<pre><code>http://community.aegirproject.org/upgrading
+</code></pre>
+
+<p>Within those sections you'll find step-by-step instructions for performing both <a href="../../../../../upgrading/manual/index.html">manual</a> and <a href="../../../../../upgrading/script/index.html">automatic</a> upgrade processes.</p>
+
+<p>Note that you should upgrade to the latest 2.x release (currently: <a href="../../../../../2/index.html">2.4</a>) before attempting the upgrade to 3.x..</p>
+
+<p>It is still imperative that you read the <a href="../../../../../upgrading/path/index.html">upgrade path and version-specific information</a> and follow all version-specific upgrade instructions before trying to run the upgrade script or manual upgrade.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Need_help">4. Need help?</h2>
+
+<p>If you struggle to install or upgrade your Aegir system, you have a number of options available to you for getting help.</p>
+
+<p>Consult this page for more information: <a href="../../../../../help/index.html" title="http://community.aegirproject.org/help">http://community.aegirproject.org/help</a></p>
+
+<p>Thanks to our awesome <a href="../../../../../index.html">community</a> for their help, support and encouragement as always! Enjoy the new release :)</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Features_and_improvements">5. Features and improvements</h2>
+
+<p>In addition to the "major changes" mentioned above, the following should also be noted.</p>
+
+<p>Changes since 7.x-3.0-rc1:</p>
+
+<ul>
+  <li><a href="../../../../2494121/index.html">#2494121</a>: Stop servers in clusters from sync'ing back to master.</li>
+  <li>Make the upgrade script slightly more verbose</li>
+  <li><a href="../../../../2377819/index.html">#2377819</a>: Gzipping backups suppresses file permissions errors</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Known_issues">6. Known issues</h2>
+
+<ul>
+<li>Drupal 8 support is (Chasing HEAD) not complete. You would need Drush 8 for that.</li>
+<li>Drush master has an issue on Debian Wheezy (<a href="https://www.drupal.org/node/2491941" title="https://www.drupal.org/node/2491941">https://www.drupal.org/node/2491941</a>)</li>
+</ul><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-15.html?destination=node%2F13170%23comment-form">Login</a> or <a href="../../../../../user/register/index-15.html?destination=node%2F13170%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-15.html?destination=node%2F13170%23comment-form">Login</a> or <a href="../../../../../user/register/index-15.html?destination=node%2F13170%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/13170/revisions/16026/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:42:06 GMT -->
+</html>

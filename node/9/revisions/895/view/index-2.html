@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/9/revisions/895/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:39:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../administrator/index.html" />
+<link rel="up" href="../../../../../administrator/index.html" />
+<link rel="next" href="../../../../../content/installing/system-requirements/index.html" />
+<link rel="prev" href="../../../../../administrator/index.html" />
+<link rel="up" href="../../../../../administrator/index.html" />
+<link rel="next" href="../../../../../content/installing/system-requirements/index.html" />
+<link rel="prev" href="../../../../../administrator/index.html" />
+<link rel="up" href="../../../../../administrator/index.html" />
+<link rel="next" href="../../../../../content/installing/system-requirements/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Installing Aegir from Sun, 02/27/2011 - 02:46 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-9" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../installing/index.html">Installing Aegir</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-9'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 02/27/2011 - 02:46</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Because Aegir is a powerful system that requires some low-level management or configuration of your server, there are a few steps to complete the installation that go beyond what you'd normally be required to do to install a standard Drupal site.</p>
+
+<p>For the same reason, Aegir doesn't support being run on a shared hosting environment where much of those low-level systems and tools are unavailable. Consult the <a href="../../../../17/index.html">System requirements</a> to ensure you meet the necessary requirements for installing Aegir.</p>
+
+<p><strong>Warning</strong>: <span class='diff-added'></span><em>this documentation is being re-written to bring all the documentation from the source code (INSTALL.txt and so on) directly into this manual, so those documents may change and fluctuate over time.<span class='diff-added'> See </span><a href="../../../../377/index.html"><span class='diff-added'>this post</span></a><span class='diff-added'> for progress reports.</span></em><span class='diff-added'></span></p>
+
+<h2>INSTALL.txt</h2>
+
+<p>Each release of Aegir contains an INSTALL.txt, which is the canonical source of installation instructions. It is kept in each release so that it may be versioned, as some installation steps may differ between releases.</p>
+
+<p>The INSTALL.txt is modified for every release. For this reason, the easiest way to fetch the INSTALL.txt is to read the release notes for that release. The <a href="../../../../../index.html">front page of this site</a> always contains a link to the latest release notes.</p>
+
+<p>Alternatively, you can find the release notes announced on our <a href="http://lists.aegirproject.org/pipermail/aegir-announce/">mailing-list</a>.</p>
+
+<p>The INSTALL.txt contains instructions tailored towards Debian or Debian-based systems such as Ubuntu. However, there are HINTS_(os).txt files located alongside the INSTALL.txt specific to various operating systems or Linux distributions that require diverging from the main instructions.</p>
+
+<p>It is recommended that you follow the INSTALL.txt, and refer to the relevant HINTS file if necessary.</p>
+
+<p>If you are running an operating system or Linux distribution that does not have a HINTS file, and diverges from the canonical INSTALL.txt, please submit a feature request to the <a href="http://drupal.org/node/add/project-issue/provision">Issue queue</a>, attach your HINTS.txt, and mark the ticket for review.</p>
+
+<p>The INSTALL.txt deals with satisfying system-level dependencies (such as LAMP/LEMP and other components) required for running Aegir, as well as setting up a system 'aegir' account on your server, which is tasked with performing much of Aegir's functions under the hood.</p>
+
+<p>It also prepares the relevant LAMP or LEMP components for including the necessary Aegir-managed configuration areas (such as where vhost files are stored, listening on the appropriate network interfaces, and so on).</p>
+
+<h2>Method 1 - run the install.sh script</h2>
+
+<p>Once you have configured the system requirements outlined in the INSTALL.txt, you can download the install.sh script, which is an automated platform-agnostic shell script that performs the installation and configuration of the actual Aegir components.</p>
+
+<p>At the completion of the script, a one-time login link is printed allowing you to login to your Aegir frontend for the first time. A welcome e-mail containing the same one-time login link is sent to the e-mail address of the main user account.</p>
+
+<h2>Method 2 - install the backend and invoke hostmaster-install</h2>
+
+<p>Experienced users are encouraged to download Drush and Provision manually and simply then run <code>drush hostmaster-install</code>. You will be prompted for various settings, unless you provide them on the command line with options to drush. These settings are:</p>
+
+<ul>
+<li>'aegir.example.com' (the domain to access your Aegir frontend via). This is a single argument, not a --switch</li>
+<li>--aegir_host=FQDN (the FQDN of your server. This should be something that remote web servers can resolve, in order to talk back to the database server running on your Aegir master server if required)</li>
+<li>--client_email=you@example.com (the e-mail address of the first user/client). It must be RFC compliant (cannot be someone@localhost), as Drupal 7 has such a restriction, and otherwise you would not be able to create Drupal 7 sites in Aegir.</li>
+</ul></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-9.html?destination=node%2F9%23comment-form">Login</a> or <a href="../../../../../user/register/index-9.html?destination=node%2F9%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-9.html?destination=node%2F9%23comment-form">Login</a> or <a href="../../../../../user/register/index-9.html?destination=node%2F9%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/9/revisions/895/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:39:41 GMT -->
+</html>

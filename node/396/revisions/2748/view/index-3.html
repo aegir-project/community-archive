@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/396/revisions/2748/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:05:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../30/index.html" />
+<link rel="up" href="../../../../30/index.html" />
+<link rel="next" href="../../../../446/index.html" />
+<link rel="prev" href="../../../../30/index.html" />
+<link rel="up" href="../../../../30/index.html" />
+<link rel="next" href="../../../../446/index.html" />
+<link rel="prev" href="../../../../30/index.html" />
+<link rel="up" href="../../../../30/index.html" />
+<link rel="next" href="../../../../446/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Remote webserver configuration from Fri, 02/03/2012 - 20:51 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-396" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Remote webserver configuration</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-396'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 02/03/2012 - 20:51</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Any number of remote web servers may be configured. They need an <a href="../../../../../installing/manual/index.html#Create_the_Aegir_user">aegir user</a> and webserver configuration, with the same user name and directory paths. SSH public/private keys should be set up so hostmaster's Aegir user can access remote web Aegir users with no passwords. The above Apache configuration needs to be performed too.</p>
+
+<p>They will also need a login shell, which can be modified using the <code>chsh</code> command.</p>
+
+<p>Shell commands as root::</p>
+
+<pre><code>adduser --system --group --home /var/aegir aegir
+adduser aegir www-data    #make aegir a user of group www-data
+chsh -s /bin/sh aegir
+apt-get install rsync apache2 php5 php5-cli php5-mysql
+mkdir /var/aegir/.ssh
+cat &gt; /var/aegir/.ssh/authorized_keys &lt;&lt;EOF
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC1mhCyKYAhzM2tmMwHZLzgut0kURj+30fJ8PBLiq3WT+8eh83Lgb0hvfW7q/dgYuWqsBOwPYGF8X+m6pGLUaFtXd0FHGpolOH4522FE79ImhZRFO/AxV3LA5LujFOoMa6S5+DJL2mknN4oE7Sgo7HccXciLNicITIXubJBKAz6Z/iQblij26Vq9kVO8LCyQFCLxUBKCxJed38z4RWD3YpfN2zgUvhc/Ns9F4tMR7DXGEufFF19Kep2bXsEzWGEuVUaqFeLPG+n9RPf76RvozauLda/L3o5dNvU1aMwJfrCVJ5fNMczH6IpOZM0bMushTw20amDnWEcWEw0SypV0qUF aegir@filer01
+EOF
+chown aegir:aegir /var/aegir/.ssh -R
+chmod 750 /var/aegir/.ssh
+chmod 640 /var/aegir/.ssh/authorized_keys
+a2enmod rewrite
+ln -s /var/aegir/config/apache.conf /etc/apache2/conf.d/aegir.conf
+cat &gt; /etc/sudoers.d/aegir &lt;&lt;EOF
+Defaults:aegir  !requiretty
+aegir ALL=NOPASSWD: <span class='diff-changed'>/usr/sbin/apache2ctl
+EOF
+chmod 440 /etc/sudoers.d/aegir
+</span></code></pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-57.html?destination=node%2F396%23comment-form">Login</a> or <a href="../../../../../user/register/index-57.html?destination=node%2F396%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-57.html?destination=node%2F396%23comment-form">Login</a> or <a href="../../../../../user/register/index-57.html?destination=node%2F396%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/396/revisions/2748/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:05:05 GMT -->
+</html>

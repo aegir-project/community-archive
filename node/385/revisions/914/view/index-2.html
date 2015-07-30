@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/385/revisions/914/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:19:18 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/branch-and-tagging-conventions/index.html" />
+<link rel="up" href="../../../../31/index.html" />
+<link rel="next" href="../../../../../developing/architecture/index.html" />
+<link rel="prev" href="../../../../../content/branch-and-tagging-conventions/index.html" />
+<link rel="up" href="../../../../31/index.html" />
+<link rel="next" href="../../../../../developing/architecture/index.html" />
+<link rel="prev" href="../../../../../content/branch-and-tagging-conventions/index.html" />
+<link rel="up" href="../../../../31/index.html" />
+<link rel="next" href="../../../../../developing/architecture/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of The great git.drupal.org migration from Sun, 02/27/2011 - 16:24 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-385" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">The great git.drupal.org migration</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-385'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a> on 02/27/2011 - 16:24</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>After <a href="../../../../369/index.html">thorough discussions</a> where we weighted the pros and cons of profiting from the <a href="http://drupal.org/project/great_git_migration">Great Git Migration</a>, I think it's pretty clear that we have a great opportunity to migrate our source repositories back to Drupal.org. We will get:</p>
+
+<ul>
+<li>more visibility - people will find us through drupal.org easily</li>
+<li>more consistency - versions in the issue queue matching the real releases</li>
+<li>even more consistency - people will find the source better from drupal.org</li>
+<li>and then more consistency - usage stats will work again!</li>
+</ul>
+
+<p>We will be able to:</p>
+
+<ul>
+<li>host our module and theme within the install profile - the major reason why we migrated away back then</li>
+<li>use whatever naming convention we want for tags and branches - although only some will be used for releases for now, see <a href="http://drupal.org/node/322626#comment-4116688">this issue</a> for followup</li>
+<li>keep our history - the <a href="http://groups.drupal.org/drupal-org-git-migration-team">git team</a> was nice enough to clone directly from our repositories (although see below, we're taking the opportunity of the migration to clean up our history)</li>
+</ul>
+
+<h1>What it means for you</h1>
+
+<p>This does have an impact on your existing repositories. Since we migrated to git.drupal.org, the repositories have changed location. The other thing is that the commit IDs have changed, and you will need to clone new checkouts before you can work with them effectively.</p>
+
+<p>So in short:</p>
+
+<ul>
+<li>repos will move to git.drupal.org</li>
+<li>you need to clone again</li>
+<li>make sure your identity is set correctly</li>
+</ul>
+
+<h1>URL changes</h1>
+
+<p>So the repositories have moved. Everyone has to fetch the source code from <a href="http://git.drupal.org/">git.drupal.org</a> now. At some point in the future, <a href="http://koumbit.org/">Koumbit</a> will close <a href="../git.aegirproject/index.html">git.aegirproject.org</a>. Concretely, Koumbit will keep the mirror running readonly for a while just to be on the safe side, but you shouldn't expect git.aegirproject.org to work and should switch URLs, as detailed below.</p>
+
+<p>This documentation is taken from the <a href="http://drupal.org/node/1054594">Drupal.org git workflows documentation</a>.</p>
+
+<h2>Readonly repositories URL change</h2>
+
+<p>The readonly access will change from:</p>
+
+<p><div class="codeblock"><code>git://git.aegirproject.org/provision.git<br />git://git.aegirproject.org/hostmaster.git</code></div></p>
+
+<p>to:</p>
+
+<p><div class="codeblock"><code>http://git.drupal.org/project/provision.git<br />http://git.drupal.org/project/hostmaster.git</code></div></p>
+
+<p>See also the <a href="http://drupal.org/node/1054616">git patch maitnainer guide</a>.</p>
+
+<h2>Core committers repositories URL change</h2>
+
+<p>The read/write access will change from:</p>
+
+<p><div class="codeblock"><code>ssh://gitosis@git.aegirproject.org/provision.git<br />ssh://gitosis@git.aegirproject.org/hostmaster.git</code></div></p>
+
+<p>to:</p>
+
+<p><div class="codeblock"><code>ssh://[username]@git.drupal.org/project/provision.git<br />ssh://[username]@git.drupal.org/project/hostmaster.git</code></div></p>
+
+<p>... notice how you will need to set your Drupal.org username in the URL. Drupal.org has good documentation on <a href="http://drupal.org/node/1027094">how  authentication works on git.drupal.org</a>. See also <a href="http://drupal.org/node/1059322">the project maintainer git guide</a>.</p>
+
+<h2>Sandboxes</h2>
+
+<p>The migration to Drupal.org also introduces sandboxes, something we didn't have before, and which allows you to host your own branches of our modules (even if you're not a core committer) or contrib/test modules, directly on Drupal.org. See the <a href="http://drupal.org/node/1053378">sandbox collaboration guide</a> for more information on that.</p>
+
+<h2>What if I pull/push from/to the wrong one?</h2>
+
+<p>It could happen before/during/after the migration that you pull or push from or to the wrong repository. git can rebase with the new repository, but unfortunately, the old commits will be mingled with the new ones.</p>
+
+<p>To be able to push to the new repositories, you will need to follow instructions below to cleanup your repositories.</p>
+
+<h1>Rewriting history</h1>
+
+<p>I have taken the liberty of rewriting our collective history. There were a lot of commits with inconsistent authors: some had invalid emails, some had no real names, some had multiple different email addresses for the same person. I narrowed the list down, through extensive detective work, to a complete list of 14 distinct authors.</p>
+
+<p>I have rewritten all commit authors that didn't seem right to follow a consistent pattern:</p>
+
+<p><div class="codeblock"><code>Firstname Lastname &lt;email&gt;</code></div></p>
+
+<p>The firstname/lastname is the combination you have used in certain commits. It's not the most popular way (ie. most commits had the nickname instead of first/last), but it seems the most logical one.</p>
+
+<p>The email was your most often used email or the one you have registered as such at drupal.org, if you didn't have an email address specified (in case you committed your code back in the days of CVS). (There are 6 commits from someone with a box at ovh.net that I could track, and that I can only guess are Miguel's, but I'm not sure so I have let those one fly. :)</p>
+
+<p>You <strong>should</strong> make sure you have your <a href="http://drupal.org/node/1022156">identity set straight in your git configuration</a>, especially your email address, if you want your contributions to be properly credited in the future on Drupal.org. In short, this means:</p>
+
+<p><div class="codeblock"><code>git config --global user.name &quot;User Name&quot;<br />git config --global user.email user@example.com</code></div></p>
+
+<p>Again, see <a href="http://drupal.org/node/1022156">the manual</a> for more information, especially how this maps to your Drupal.org account.</p>
+
+<h1>A fresh clone) is necessary!!!!</h1>
+
+<p>Note that, because we rewrote history, you will <strong>need</strong> to clone your repository from new remote. So yes, contrarily to what was documented here before, you will need to clone from scratch.</p>
+
+<p>We understand this may be annoying if you work on a bunch of branches or have local branches you want to keep. Unfortunately, our original tests didn't cover all use cases and were misleading in thinking we could just rebase existing repositories.</p>
+
+<h1>Other documentation</h1>
+
+<p>People unfamiliar with git or specifically git on Drupal.org should read the <a href="http://drupal.org/documentation/git">growing git handbook</a> on Drupal.org.</p>
+
+<p>People that <em>are</em> familiar with git should <em>contribute</em> to that manual. :)</p>
+
+<h1>Under the hood</h1>
+
+<p>The history rewrite was performed through git-fast-export and git-fast-import magic, with a fairly simple perl script of my own. I have cloned the current repo, filtered it and published a new version for git.drupal.org to pull. You can see the results here:</p>
+
+<p><div class="codeblock"><code>http://git.aegirproject.org/?p=export/provision.git<br />http://git.aegirproject.org/?p=export/hostmaster.git</code></div></p>
+
+<p>The exact calling sequence is this:</p>
+
+<pre>
+mkdir export orig
+cd export
+git init --bare hostmaster.git
+cd ../orig
+git clone --bare git://git.aegirproject.org/hostmaster
+cd hostmaster.git
+# look at the authors in the original repo
+git fast-export --all |  grep -a '^author [^&lt;]* &lt;[^&gt;]*&gt; [0-9][0-9]* [+-][0-9][0-9][0-9][0-9]$' | sed 's/[0-9][0-9]* [+-][0-9][0-9][0-9][0-9]$//' | sort | uniq -c
+git fast-export --all | perl /home/anarcat/bin/rewrite_authors.pl | ( cd ../../export/hostmaster.git ; git fast-import )
+cd ../../export/hostmaster.git
+# look at the authors in the new repo
+git fast-export --all |  grep -a '^author [^&lt;]* &lt;[^&gt;]*&gt; [0-9][0-9]* [+-][0-9][0-9][0-9][0-9]$' | sed 's/[0-9][0-9]* [+-][0-9][0-9][0-9][0-9]$//' | sort | uniq -c
+# rinse, repeat until the mapping is right
+# push repositories online
+git remote add origin ssh://gitosis@git.aegirproject.org/export/hostmaster.git
+git push --all
+git push --tags
+# repeat with provision
+</pre>
+
+<p>This is the script source, without all the mappings:</p>
+
+<pre>
+#! /usr/bin/perl -w
+
+%authors = ( 
+    'anarcat ' =&gt; 'Antoine Beaupré ',
+   # ... 
+);
+
+sub remap {
+    my $a = shift;
+    if ($authors{$a}) {
+        return $authors{$a};
+    } else {
+        return $a;
+    }
+}
+
+while (&lt;&gt;) {
+    s#^author ([^&lt;]+ &lt;[^&gt;]+&gt;) ([0-9]+ [+-][0-9][0-9][0-9][0-9])$#'author ' . remap($1) . ' ' . $2#e;
+    print;
+}
+</pre>
+
+<h2>Migration checklist</h2>
+
+<ol>
+<li>serve exported repositories to migration team <strong>done!</strong></li>
+<li>update the repositories with change authors <strong>done!</strong></li>
+<li><a href="http://drupal.org/project/great_git_migration">the great git migration</a> <strong>done!</strong> git.aegirproject.org is now readonly, commits are pushed to git.drupal.org and releases are performed on drupal.org</li>
+<li>update documentation in <a href="../../../../../handbook/index.html">handbook</a> <em>in progress!</em>
+
+<ul>
+<li><a href="../../../../31/index.html">repositories locations</a> <strong>done</strong></li>
+<li><a href="../../../../185/index.html">crash course</a> <strong>done</strong></li>
+<li><a href="../../../../186/index.html">basic workflow</a> <strong>done</strong></li>
+<li><a href="../../../../32/index.html">release process</a> <strong>needs review</strong> - updated for release nodes stuff, will check workflow during the next release</li>
+<li><a href="../../../../187/index.html">advanced workflow: branch naming conventions</a> <strong>in progress</strong> <span class='diff-changed'>- need</span> to <span class='diff-changed'>update to 6.x-1.x naming convention, unfortunately, as</span> <a href="http://drupal.org/node/322626">this issue<span class='diff-deleted'> </span><span class='diff-deleted'>on</span><span class='diff-deleted'> </span><span class='diff-deleted'>drupal.org</span></a><span class='diff-added'> is going to take weeks if not months to fix this, so we'll have to just go ahead with the new crappy convention</span></li>
+<li><a href="../../../../377/index.html">migration of the install docs into the handbook work</a> <strong>in progress</strong></li>
+</ul></li>
+<li>update the <a href="http://www.aegirproject.org/">home page links</a> <strong>done</strong> - I have changed the link in the body from git.aegirproject.org to drupal.org provision/hostmaster project pages, and pointed the "Get the source" link in the bottom to the install manual instead</li>
+<li>update makefiles and files in docs/* in provision to fetch from git.drupal.org <strong>done!</strong></li>
+<li>make at least one other release <strong>in progress</strong> - we're waiting to see if we can get away with our old tag naming convention, see <a href="http://drupal.org/node/322626">the above issue</a> <em><span class='diff-added'>update</span></em><span class='diff-added'>: we can't get away with it, let's just release</span></li>
+<li>turn off git.aegirproject.org</li>
+</ol></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-196.html?destination=node%2F385%23comment-form">Login</a> or <a href="../../../../../user/register/index-196.html?destination=node%2F385%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-196.html?destination=node%2F385%23comment-form">Login</a> or <a href="../../../../../user/register/index-196.html?destination=node%2F385%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/385/revisions/914/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:19:18 GMT -->
+</html>

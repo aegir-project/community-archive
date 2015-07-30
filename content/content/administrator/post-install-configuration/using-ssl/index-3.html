@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/content/content/administrator/post-install-configuration/using-ssl?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:24:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../node/341/index.html" />
+<link rel="up" href="../../../../administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../administrator/dns/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Using SSL | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-29" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Using SSL</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-29'><h3>Introduction</h3>
+
+<p>SSL support was significantly improved in Aegir 0.4 alpha9 and subsequent releases have further refined the SSL functionality. Here are the current steps to configure SSL support in Aegir and apply it to your web sites.</p>
+
+<h3>Prepare Your Server</h3>
+
+<p><OL>
+<LI>Make sure port 443 is open for SSL traffic.
+</li><LI>From the command line, install SSL software for your web server (e.g. on Debian/Ubuntu you can use <code>sudo apt-get install openssl</code>).</li>
+<LI>Enable SSL support (e.g. <code>sudo a2enmod ssl</code>).  You will need to restart Apache at this point.
+</li></ol></p>
+
+<h3>Enable SSL Support in Aegir</h3>
+
+<p><OL>
+<LI>You have to enable SSL support in Aegir as it is off by default.  Assuming the URL of your Aegir front end is aegir.example.com, browse to aegir.example.com/admin/hosting/features 
+<img src="../../../../../sites/community.aegirproject.org/files/features-page/index.png" alt="how to get to the Aegir features page" />
+</li><LI>Click on Experimental to reveal experimental features <img src="../../../../../sites/community.aegirproject.org/files/ssl-support/index.png" alt="experimental features of Aegir" />
+</li><LI>Check SSL support
+</li><LI>Click Save configuration
+</li></ol></p>
+
+<h3>Configure Your Aegir Server</h3>
+
+<p><OL>
+<LI>Click on the Servers tab
+</li><LI>Click on the server that you wish to enable SSL support
+</li><LI>Click Edit to change the server configuration
+</li><LI>Click apache_ssl (this will reveal an additional field: SSL port, which should be already populated with 443).<img src="../../../../../sites/community.aegirproject.org/files/enable-ssl-on-server/index.png" alt="enabling SSL on your Aegir server" />
+</li><LI>You may also have to add an IP address to the IP addresses field. The field is used as an "IP pool" for SSL certificates: IPs are assigned to SSL sites when they are created on a first come, first served basis. (Note that there are known issues with this process, see <a href="http://drupal.org/node/1126640">issue #1126640</a> for details.)
+</li><LI>Click Save - this will start various tasks beginning with a verify task on the server followed by verify tasks on all platforms that are associated with that server
+</li><LI>If all goes well you will see the following changes in your Aegir <a href="http://groups.drupal.org/node/93849">file system structure</a>:
+a new <code>/var/aegir/config/ssl.d</code> directory and a 
+new <code>/var/aegir/config/server_master/ssl.d</code> directory.
+</li></ol></p>
+
+<p>The <code>/var/aegir/config/ssl.d</code> directory is where you will be able to manipulate SSL keys and certificates, for example by importing commercial SSL certificates or generating a new key. Do <em>not</em> manually edit the <code>/var/aegir/config/server_master/ssl.d</code> directory as changes to that directory will be overwritten when the server or site are verified.</p>
+
+<h3>Configure Your Aegir Site</h3>
+
+<p><OL>
+<LI>You must enable SSL on your sites that are on those platforms associated with the server.  Browse to aegir.example.com/hosting/c/example.com
+</li><LI>Click Edit to change the site configuration
+</li><LI>Choose the type of Encryption required and the Encryption key (see the explanatory notes below each option). <img src="../../../../../sites/community.aegirproject.org/files/site-ssl-configuration_0/index.png" alt="configuring an Aegir site for SSL" /> <em>NOTE:,</em> Alternatively, you may specify a directory under /var/aegir/config/server_master/ssl.d where your own certificate and key is to be stored (see Apache notes below).
+</li><LI>Click Save.  Aegir will then generate a certificate and private key for your web site and insert these into a new VirtualHost directive in your vhost file.  (This file is typically at /config/server_master/apache/vhost.d/example.com).
+</li><LI>If all goes well the VirtualHost directive will now have these important elements:</li></ol></p>
+
+<p><div class="codeblock"><code>&lt;VirtualHost xx.xx.xx.xx:443&gt; # &lt;-- where xx.xx.xx.xx is an IP address dedicated for SSL access to your site and 443 is the port number<br />&nbsp;&nbsp;&nbsp; ....<br /><br />&nbsp;&nbsp;&nbsp; # Enable SSL handling.<br />&nbsp;&nbsp;&nbsp; SSLEngine on<br /><br />&nbsp;&nbsp;&nbsp; SSLCertificateFile /var/aegir/config/server_master/ssl.d/example.com/openssl.crt<br />&nbsp;&nbsp;&nbsp; SSLCertificateKeyFile /var/aegir/config/server_master/ssl.d/example.com/openssl.key</code></div></p>
+
+<p>Now, when you navigate to <a href="https://example.com/" title="https://example.com">https://example.com</a> you should see that your site is SSL enabled. It will, however, generate warnings in your browsers because it is a self-signed certificates. See below for how to use commercial certificates to remove this warning.
+</p>
+
+<h2>Notes for Apache users with Commercial Certificate File(s)</h2>
+
+<p>If you wish to use your own commercial certificate and key you will need to do the following:</p>
+
+<p><OL>
+<LI>Follow the directions above, using the "Generate new encryption key" option and using your site's domain name for the "New encryption key". This will create a site directory under <code>/var/aegir/config/ssl.d/example.com</code>. With this step, you have created a self-signed certificate, and your site is now configured to use it.
+</li><LI>This generated a 2048 bit RSA key for you along with a CSR (Certificate Signing Request). If you prefer to generate your own RSA key, replace the files (<code>openssl.key</code> and <code>openssl.csr</code>) in the <code>/var/aegir/config/ssl.d/example.com</code> directory with your RSA key and associated CSR.
+</li><LI>Copy and paste the <code>.csr</code> file into the form for the issuing Certificate 
+Authority (CA) to create your certificate.
+</li><LI>When your certificate has been generated, download the files from the issuing authority and place in your temporary folder on your PC. You may have more than one .crt files, in this case you have a "bundle" or what we call a "certificate chain" that you need to add in aegir (see below).
+</li><LI>Transfer all the files to /var/aegir/config/ssl.d/example.com. Rename the site .crt file to openssl.crt. If you have a certificate chain, install it in <code>openssl_chain.crt</code>. You should have at least three files in the directory (<code>openssl.crt</code>, <code>openssl.key</code>, <code>openssl.csr</code>, and optionnally <code>openssl_chain.crt</code>).
+</li></ol></p>
+
+<h3>Verify your site from aegir's frontend.</h3>
+
+<p>You should now be able to access your site via https:// using your commercial certificate.</p>
+
+<h2>Notes for Nginx users:</h2>
+
+<p>It is recommended to allow Aegir to create a default self-signed certificate and key first, and then replace the contents of both files (not the files itself) with your real key and certificate. Any chained certificates (bundles) should be included in the same file, directly below your own certificate - there is no need for extra files/lines like it is for Apache configuration.</p><div class="itu-attachments"><table class="itu-attachment-list withoutstats sticky-enabled" id="attachments">
+ <thead><tr><th class="preview">Preview</th><th class="file">Attachment</th><th class="size">Size</th> </tr></thead>
+<tbody>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../../../../sites/community.aegirproject.org/files/site-ssl-configuration_0_0/index.png" title="site-ssl-configuration_0.png"><img src="../../../../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/site-ssl-configuration_0_0/index.png" alt="site-ssl-configuration_0.png" title="site-ssl-configuration_0.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../../../../sites/community.aegirproject.org/files/site-ssl-configuration_0_0/index.png">site-ssl-configuration_0.png</a></td><td class="size">26.91 KB</td> </tr>
+</tbody>
+</table>
+</div></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../../../node/29/talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/content/content/administrator/post-install-configuration/using-ssl?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:24:37 GMT -->
+</html>

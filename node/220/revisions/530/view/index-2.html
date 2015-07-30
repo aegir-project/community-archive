@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/220/revisions/530/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:18:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../04-alpha-and-beta/index.html" />
+<link rel="up" href="../../../../../04-alpha-and-beta/index.html" />
+<link rel="next" href="../../../../../0/index-3.html" />
+<link rel="prev" href="../../../../../04-alpha-and-beta/index.html" />
+<link rel="up" href="../../../../../04-alpha-and-beta/index.html" />
+<link rel="next" href="../../../../../0/index-3.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of 0.4-beta2 release notes from Wed, 12/22/2010 - 04:56 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-220" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../0/index-2.html">0.4-beta2 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_10 first"><a href="../../../../../taxonomy/term/10/index.html" rel="tag" title="">0.4-beta2</a></li>
+<li class="taxonomy_term_11 last"><a href="../../../../../taxonomy/term/11/index.html" rel="tag" title="">release-notes</a></li>
+</ul></div><div id='diff-inline-220'><p>The Aegir team is proud to announce the second beta release of Aegir 0.4.</p>
+
+<p>This release primarily is a bugfix release.</p>
+
+<p>There have also been quite a few patches sitting in our issue queues for review for a very long time, and we have attempted to commit a whole bunch of those in this release. Things have been moving a bit slowly and we're sorry for that.</p>
+
+<h2>Key changes in 0.4-beta2</h2>
+
+<p>There are a few changes in this release that are new, such as the presence of an early 'bulk operations' feature. We do not expect this to be bug free, but hope that by committing some of this new code and making it present in a new release, we'll get some community users testing this stuff and reporting back / patching it to make it better. Otherwise this stuff just gets lost in the queue!</p>
+
+<p>After this release we will be looking strongly at a release candidate for 0.4.</p>
+
+<h2>Known Issues:</h2>
+
+<p>Some of our issues from beta1 are still actually present:</p>
+
+<ul>
+<li>DNS has no access control - anybody can create any zone (<a href="http://drupal.org/node/922252">#922252</a>)</li>
+<li>Inter-server migration may fail under some circumstances (<a href="http://drupal.org/node/976300">#976300</a>)</li>
+<li>The site form suffers from some performance issues when you have a lot of platforms (<a href="http://drupal.org/node/955854">#955854</a>)</li>
+</ul>
+
+<p>Also, an issue has been identified with remote web servers: in some cases, when the 'master' server syncs the site contents to a remote, it can delete the files/ of a site because it doesn't sync a site's files back to the master server except in the case of backups/migrations.</p>
+
+<p>We would like to warn users that are making use of Aegir's multiserver features to be aware of this issue: <a href="http://drupal.org/node/976300" title="http://drupal.org/node/976300">http://drupal.org/node/976300</a> .</p>
+
+<h2>The road to 0.4 and Aegir contributors</h2>
+
+<p>Our core dev team is small and various demands for our time have been slowing development to a degree. We have a decent-sized community with a wide range of skills, and would like to take this opportunity to encourage our users to attempt to contribute to the project where they see fit - whether this be code development (bug fixes, new features), documentation, or even promotion / talks at Drupal events.</p>
+
+<p>We will potentially be seeking new core developers to the project soon as well. If you'd like to chat with us about contributing to Aegir, don't hesitate to <a href="http://lists.aegirproject.org/">write on the mailing lists</a> or come and see us on IRC in #aegir at irc.freenode.net. Aegir's core developers are Adrian Rossouw (Vertice), Antoine Beaupré (anarcat) and Miguel Jacq (mig5).</p>
+
+<p>We know the barrier to entry can be a little high with hacking on Aegir, and will be refocusing our efforts to try and make that easier for new starters. An API site will be along soon!</p>
+
+<p>See <a href="http://drupal.org/project/issues/search?text=&amp;projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir)&amp;assigned=&amp;submitted=&amp;participant=&amp;status[]=Open&amp;issue_tags_op=or&amp;issue_tags=aegir-0.4">all the issues tagged as aegir-0.4</a> and <a href="http://drupal.org/project/issues?text=&amp;projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir)&amp;status=Open&amp;priorities=4&amp;categories=All">issues marked as 'major'</a> for our current outstanding issues.</p>
+
+<h2>Installing and upgrading:</h2>
+
+<p>The canonical source of installation documentation is as usual the excellent <a href="http://git.aegirproject.org/?p=provision.git;a=blob_plain;f=docs/INSTALL.txt;hb=provision-0.4-beta2">INSTALL.txt</a>.</p>
+
+<p>For users who have Rackspace Cloud accounts and want to install Aegir in the cloud, you are welcome to try mig5's <a href="http://github.com/mig5/frigg">Frigg script</a>, which automatically creates a new virtual server and installs Aegir, with one command!</p>
+
+<p>For users of 0.4-beta1 and earlier, we offer an <a href="http://git.aegirproject.org/?p=provision.git;a=blob_plain;f=upgrade.sh.txt;hb=provision-0.4-beta2">upgrade.sh script</a> in Provision, which tries to automate much of the steps outlined in the <a href="http://git.aegirproject.org/?p=provision.git;a=blob_plain;f=docs/UPGRADE.txt;hb=provision-0.4-beta2">UPGRADE.txt</a>.</p>
+
+<p>It is still imperative that you read the UPGRADE.txt and follow all version-specific upgrade instructions located at the end of the document before trying to run the upgrade script. This especially applies to users upgrading from before 0.4-alpha8, including 0.3.</p>
+
+<p>The upgrade.sh script attempts to backup the existing backend components, download new versions, and then run the hostmaster-migrate command. It assumes you are upgrading from the previous release (hostmaster-0.4-beta1). If you are not, you may have to edit the script to change the OLD_DRUPAL_DIR variable.</p>
+
+<h2>Bugs fixed</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/695244">#695244 : hosting-cron killed my server</a></li>
+<li><a href="http://drupal.org/node/983056">#983056 : install.sh does not properly escape the mysql root password</a></li>
+<li><a href="http://drupal.org/node/967528">#967528 : Custom modules can't specify own tasks</a></li>
+<li><a href="http://drupal.org/node/791262">#791262 : Color module &amp; theme logo/favicon paths not updated during site deployment</a></li>
+<li><a href="http://drupal.org/node/1000890">#1000890 : default_restart_cmd() doesn't return the correct restart command</a></li>
+<li><a href="http://drupal.org/node/767008">#767008 : New users aren't associated properly with their respective client nodes on site signup</a></li>
+<li><a href="http://drupal.org/node/908202">#908202 : Author not set on site node creation (and other hosting content types)</a></li>
+<li><a href="http://drupal.org/node/994212">#994212 : README.txt contains out of date link</a></li>
+<li><a href="http://drupal.org/node/988670">#988670 : Installation via drush fails on MariaDB</a></li>
+</ul>
+
+<h2>New features</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/956432">#956432 : ~aegir/platforms path should be created automagically</a></li>
+<li><a href="http://drupal.org/node/994146">#994146 : Add paths rewrite in the files table also for sites/community.aegirproject.org to make migration to Aegir easier</a></li>
+<li><a href="http://drupal.org/node/783642">#783642 : Code to use drush to enqueue Aegir tasks for enabled sites, just as if it had been done via the ui</a></li>
+</ul></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-190.html?destination=node%2F220%23comment-form">Login</a> or <a href="../../../../../user/register/index-190.html?destination=node%2F220%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-190.html?destination=node%2F220%23comment-form">Login</a> or <a href="../../../../../user/register/index-190.html?destination=node%2F220%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/220/revisions/530/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:18:29 GMT -->
+</html>

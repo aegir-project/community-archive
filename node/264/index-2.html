@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/264?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:19 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../250/index.html" />
+<link rel="up" href="../../content/scrums/archive-2011/index.html" />
+<link rel="next" href="../280/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2011-01-20 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-264" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2011-01-20</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first"><a href="../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+<li class="taxonomy_term_6 last"><a href="../../taxonomy/term/6/index.html" rel="tag" title="">weekly scrums</a></li>
+</ul></div><div id='diff-inline-264'><pre>
+(03:00:17 PM) anarcat: welcome to our weeeeekly scrum!
+(03:00:28 PM) anarcat: good morning, good evening, wherever you are!
+(03:00:39 PM) anarcat: those new to the scrum can read on them here; <a href="../../scrums/index.html" title="http://community.aegirproject.org/scrums">http://community.aegirproject.org/scrums</a>
+(03:00:43 PM) anarcat: otherwise i'll start
+(03:00:57 PM) anarcat: yesterday i upgraded our prod server from alpha14 to beta2, and it went well
+(03:01:00 PM) anarcat: mostly without an hitch
+(03:01:05 PM) anarcat: i was really surprised, actually
+(03:01:15 PM) anarcat: i expected to see the weird issues with aliases
+(03:01:27 PM) anarcat: <a href="http://drupal.org/node/1003700" title="http://drupal.org/node/1003700">http://drupal.org/node/1003700</a>
+(03:01:30 PM) anarcat: but i didn't
+(03:01:34 PM) mig5: pretty smooth upgrades from the later alphas
+(03:01:44 PM) anarcat: however, when upgrading a client from alpha6, i had issues with the upgrade path
+(03:01:56 PM) anarcat: <a href="http://drupal.org/node/973826" title="http://drupal.org/node/973826">http://drupal.org/node/973826</a>
+(03:02:08 PM) anarcat: the above contains a nice demonstration on how to fix the issues
+(03:02:22 PM) anarcat: i am not sure we should fix anything there, as it's really hairy to fix and affects very few people
+(03:02:25 PM) anarcat: not worth it, i think
+(03:02:32 PM) anarcat: i have filed a bunch of bug nevertheless
+(03:02:36 PM) anarcat: after our prod upgrade
+(03:02:40 PM) anarcat: had performance issues with the migrate page
+(03:02:51 PM) anarcat: which we fixed: <a href="http://drupal.org/node/1033072" title="http://drupal.org/node/1033072">http://drupal.org/node/1033072</a>
+(03:02:59 PM) anarcat: that needs testing, but maybe I can just merge it now
+(03:03:13 PM) anarcat: we also have numerous issues with the site form that remain
+(03:03:15 PM) anarcat: esp <a href="http://drupal.org/node/1033078" title="http://drupal.org/node/1033078">http://drupal.org/node/1033078</a>
+(03:03:23 PM) anarcat: ie. the ssl cert selection doesn't pop up
+(03:03:37 PM) anarcat: and that page is still slow as hell
+(03:03:41 PM) anarcat: which may be related to <a href="http://drupal.org/node/955854" title="http://drupal.org/node/955854">http://drupal.org/node/955854</a>
+(03:03:59 PM) anarcat: so that's it for last week
+(03:04:06 PM) mig5: wow! :)
+(03:04:09 PM) anarcat: next week i'll try to fix a shitload of bugs i have in the backlog
+(03:04:15 PM) anarcat: that other koumbit workers reported
+(03:04:24 PM) anarcat: mostly upgrade issues, sometimes contrib-modules (e.g. date) related
+(03:04:27 PM) ergonlogic: anarcat++
+(03:04:38 PM) anarcat: once i'm through this, i am thinking of looking again at a RC release
+(03:04:45 PM) mig5: anarcat has taken over skynet again
+(03:04:49 PM) anarcat: but i am curious what others think about this
+(03:04:58 PM) anarcat: mig5: i wish...
+(03:05:07 PM) anarcat: i still struggle to free some time for aegir here
+(03:05:12 PM) anarcat: but that may get better with time
+(03:05:17 PM) anarcat: my focus right now is stabilising our thing
+(03:05:24 PM) mode (+v grugnog_laptop) by ChanServ
+(03:05:30 PM) mig5: i am the opposite, i have the time but not the skills :)
+(03:05:33 PM) anarcat: targeting feb. for stabilisation, then working on security during feb.
+(03:05:39 PM) mig5: yes for RC, that's a good idea
+(03:05:49 PM) mig5: i even forgot we agreed to jump from 0.4 to 1.0
+(03:05:52 PM) mig5: in september
+(03:06:01 PM) anarcat: re. taht, we still have 2 RC bugs
+(03:06:04 PM) anarcat: <a href="http://drupal.org/node/1003908" title="http://drupal.org/node/1003908">http://drupal.org/node/1003908</a>
+(03:06:07 PM) anarcat: <a href="http://drupal.org/node/993944" title="http://drupal.org/node/993944">http://drupal.org/node/993944</a>
+(03:06:10 PM) anarcat: The bulk operations form for site listings shouldn't list install and import tasks
+(03:06:14 PM) anarcat: ssl rollback failure
+(03:06:25 PM) anarcat: we should consider the option of rolling back the bulk ops shit if it breaks stuff
+(03:06:32 PM) anarcat: but that seems like an easy thing to fix
+(03:06:36 PM) anarcat: the ssl rollback sounds more hairy
+(03:06:46 PM) anarcat: but i think we can ship an RC with it as a known issue
+(03:06:51 PM) mig5: yeah.. i opened a ticket here and there about bulk ops. not really major bugs, just little niggly things
+(03:06:53 PM) anarcat: that's it for me
+(03:06:55 PM) mig5: yeah
+(03:07:01 PM) mig5: ok
+(03:07:09 PM) anarcat: go mig5 !
+(03:07:13 PM) mig5: in classic mig5 style i have done nothing
+(03:07:15 PM) mig5: EXCEPT
+(03:07:18 PM) mig5: <a href="http://drupal.org/node/976300" title="http://drupal.org/node/976300">http://drupal.org/node/976300</a>
+(03:07:26 PM) mig5: i fixed our major and possibly only data-loss bug
+(03:07:39 PM) mig5: that was deleting stuff from a site's 'files'dir on a remote server on every verify
+(03:07:43 PM) mig5: and hence migrate, etc.
+(03:07:52 PM) anarcat: "just that"
+(03:07:56 PM) anarcat: dude that's awesome
+(03:08:00 PM) mig5: that was a major aegirwtf but it seems to be ok now
+(03:08:07 PM) omega8cc: that fix makes rc possible, imo
+(03:08:08 PM) anarcat: cool
+(03:08:32 PM) anarcat: right
+(03:08:36 PM) anarcat: mig5: what's up next week?
+(03:08:43 PM) mig5: i don't think i've done anything else :s i have given up on the idea of getting anywhere with the dns stuff, so i won't make promises there
+(03:08:44 PM) anarcat: dns? ;)
+(03:08:47 PM) mig5: haha
+(03:08:47 PM) anarcat: Vertice: you there?
+(03:08:51 PM) mig5: damn
+(03:08:52 PM) anarcat: hehe
+(03:08:55 PM) anarcat: it's okay
+(03:09:05 PM) anarcat: our discussion helped me rehash the roadmap, so it's all good
+(03:09:39 PM) anarcat: mig5: anything else?
+(03:09:53 PM) mig5: this is weird: <a href="http://drupal.org/node/1025972" title="http://drupal.org/node/1025972">http://drupal.org/node/1025972</a> and i think i've reproduced it, so i will probably take a look at that
+(03:10:06 PM) mig5: it's not *too* critical but it means remote servers need a manual apache restart or something, after the task completes
+(03:10:14 PM) anarcat: right
+(03:10:15 PM) anarcat: ok
+(03:10:15 PM) mig5: so this is just stability stuff
+(03:10:22 PM) mig5: that's it from me
+(03:10:28 PM) anarcat: i have seen weird ordering issues like this even in local, but i never found it to be a bug so far
+(03:10:31 PM) anarcat: okay
+(03:10:34 PM) anarcat: omega8cc / ergonlogic / others: any comments? what you did last week / will do next week?
+(03:10:37 PM) anarcat: Vertice: ?
+(03:11:10 PM) darthsteven: I didn't get chance to write up 'contexts' this week
+(03:11:19 PM) darthsteven: But hope to next week
+(03:11:23 PM) anarcat: awesome
+(03:11:27 PM) anarcat: otherwise i want to say that we (the aegir project) are always looking for new blood
+(03:11:34 PM) darthsteven: That's it from me
+(03:11:49 PM) mig5: nice darthsteven, i am looking forward to learning how this stuff works :)
+(03:11:55 PM) omega8cc: from me - I made a few important changes to nginx configuration and plan to submit all of them shortly, also next week I plan to submit nginx installer, promised long time ago
+(03:11:59 PM) ergonlogic: nothing really on my end, though I've noticed some odd behaviour since updating to beta2, so I'll be looking through open issues and filing some bugs possibly this week
+(03:12:12 PM) anarcat: we need testers (dl new release and report bugs, test existing issues), documentors (community.aegirproject.org/handbook!) and developpers (submit and review patches and we will love you and give you commit access)
+(03:12:35 PM) anarcat: ergonlogic: awesome!
+(03:12:44 PM) anarcat: omega8cc: patches to hostmaster-install? or bash scripting?
+(03:13:28 PM) anarcat: otherwise, anybody else has somethign to say?
+(03:13:35 PM) ergonlogic: oh, also DNS for api.aegirproject.org should shortly be working (thanks Anarcat!), so check out that resource
+(03:13:42 PM) omega8cc: anarcat: mostly nginx conf templates, installer script (very simple bash) and some UI improvements
+(03:13:58 PM) ergonlogic: It exposes some pretty spotty documentation in the code
+(03:14:15 PM) anarcat: oh right, we are in the processing of transfering the dns to a new registrar (yay gandi.net!) and hopefully that will go without an hitch
+(03:14:23 PM) anarcat: omega8cc: i'd love to see this factored into hostmaster-install
+(03:14:33 PM) anarcat: ergonlogic: those could be reported as bugs, maybe...
+(03:14:43 PM) mig5: sure
+(03:14:45 PM) anarcat: ergonlogic: Vertice expressed interest in working on those documentation issues
+(03:14:55 PM) anarcat: okay, so that's pretty much it, thanks for attending our daily scrum!
+(03:15:03 PM) mig5: cheers
+(03:15:05 PM) anarcat: have a nice day, wherever you are!
+(03:15:09 PM) ergonlogic: that's what I had in mind, with maybe some doc patches where I can grok the code
+(03:15:16 PM) anarcat: can somebody file this in the OA site?
+(03:15:19 PM) darthsteven: Bad docs are bugs for sure
+(03:15:21 PM) omega8cc: anarcat: that is simple installer and how-to for standalone nginx based installs,
+(03:15:23 PM) ergonlogic: I got it
+(03:15:29 PM) anarcat: ergonlogic: thanks
+(03:15:37 PM) anarcat: scrum over, see you again next week :)
+(03:15:38 PM) anarcat: ciao !
+(03:15:40 PM) darthsteven: Thanks everyone
+(03:15:43 PM) ergonlogic: Take care
+(03:15:47 PM) omega8cc: ciao
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-92.html?destination=node%2F264%23comment-form">Login</a> or <a href="../../user/register/index-92.html?destination=node%2F264%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/264?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:19 GMT -->
+</html>

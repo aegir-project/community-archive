@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/37/revisions/3385/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:05:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../446/index.html" />
+<link rel="up" href="../../../../30/index.html" />
+<link rel="next" href="../../../../388/index.html" />
+<link rel="prev" href="../../../../446/index.html" />
+<link rel="up" href="../../../../30/index.html" />
+<link rel="next" href="../../../../388/index.html" />
+<link rel="prev" href="../../../../446/index.html" />
+<link rel="up" href="../../../../30/index.html" />
+<link rel="next" href="../../../../388/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Web clusters from Thu, 05/10/2012 - 11:39 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-37" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/web-clusters/index.html">Web clusters</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-37'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 05/10/2012 - 11:39</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><h1>Cluster module</h1>
+
+<p>This module is now (as of Aegir 1.7) deprecated. It is replaced by the "pack" module. Support for the "cluster" module will be dropped in 2.0.</p>
+
+<h1>Pack module</h1>
+
+<p>A Pack consists of a single server node that is specified as "pack" and any number of server nodes specified as "apache" or "nginx".  The main difference between the Pack functionality and Web Cluster functionality is that Aegir rsync's configuration (Apache &amp; Nginx) to "all" nodes in the Pack and rysnc's the platform and site code to only the "master" node in the Pack.  All other "slave" nodes will see the platform and site code via NFS.</p>
+
+<p><strong>Configuring the Pack server node:</strong></p>
+
+<p>The "pack" server node will not be used by Aegir to physically deploy sites or platforms on, so consider it more of a 'virtual server group' for logistical purposes only.  When creating the pack node, you do not need to supply a valid Server hostname or IP address, so choose a naming convention that makes sense in your environment.</p>
+
+<p>Next, select the "pack" radio button option under the web configuration when creating or editing the server node, in order to designate this server node as the "pack" server.</p>
+
+<p>Now select the "Master" server from the list of Master servers.  The Master server will be the server node that Aegir rsync's the platform and site to. Typically, you would choose the Aegir server itself as the 'master'.</p>
+
+<p>Finally, select the "Slave" servers from the list of Slave servers.  The Slave servers will have the Apache or Nginx config rsync'd to them but not the platform or site code, since those will be available to all Slave servers via the NFS share.</p>
+
+<p><strong>Configuring the Web server nodes (Master and Slaves):</strong></p>
+
+<p>Configure all web server nodes using <a href="../../../../396/index.html">these instructions</a>. Take care to ensure the 'aegir' user and group on your <span class='diff-changed'>NFS client machines,</span> have the same UID/GID as<span class='diff-added'> that of</span> the <span class='diff-changed'>NFS</span> server, or else <span class='diff-changed'>you may</span> run into<span class='diff-added'> permissions</span> issues with NFS.</p>
+
+<p>Then mount the files on the remote server.</p>
+
+<p>On the NFS server:</p>
+
+<pre><code>apt-get install nfs-server
+echo "/var/aegir/platforms    10.0.0.0/24(rw,no_subtree_check)" &gt;&gt; /etc/exports
+</code></pre>
+
+<p>(Replace the subnet here or add specific /32 hosts as necessary for your environment)</p>
+
+<p>Then on the web servers (Master, if it wasn't also the NFS server, and the Slaves):</p>
+
+<pre><code>apt-get install nfs-client
+mount 10.0.0.1:/var/aegir/platforms /var/aegir/platforms
+</code></pre>
+
+<p>(Replace the NFS server's IP here with that of your master server/Aegir server)</p>
+
+<p>Add this to your fstab on the servers that mount the NFS share, so that the share is mounted on boot:</p>
+
+<pre><code>10.0.0.1:/var/aegir/platforms /var/aegir/platforms nfs rw 0 0
+</code></pre>
+
+<p><strong>Creating a Platform on a Pack:</strong></p>
+
+<p>When configuring a Platform to be deployed on a Pack, choose the "Pack" server node from the Web server radio group during the Platform node creation. Then you choose this Platform as usual when adding a site, and that site will be served from any servers within the Pack.</p>
+
+<p><strong>Caveats</strong></p>
+
+<p>Relying on an NFS share to serve your entire /var/aegir/platforms can be a single point of failure if the NFS share becomes unavailable. You may want to look into providing some sort of failover for NFS (google for things like DRBD and Heartbeat), or using some other form of redundancy for your NFS (Netapp filer clusters etc)</p>
+
+<p>There have also been reports of issues with MySQL GRANT statements not being provided to all webservers in the pack - especially where the master server is <em>not</em> the Aegir hostmaster server. This issue is ongoing - see the Talk page here or <a href="http://drupal.org/node/1555398">this ticket</a></p>
+
+<p>Also attached is an example diagram of a Pack cluster known to be functioning in production (with an optional MySQL-MMM cluster out of scope for this documentation), which may help you visualise the Pack and how it can be put together.</p><div class="itu-attachments"><table class="itu-attachment-list withoutstats sticky-enabled" id="attachments">
+ <thead><tr><th class="preview">Preview</th><th class="file">Attachment</th><th class="size">Size</th> </tr></thead>
+<tbody>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../../../../sites/community.aegirproject.org/files/aegir_pack/index.png" title="aegir_pack.png"><img src="../../../../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/aegir_pack/index.png" alt="aegir_pack.png" title="aegir_pack.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../../../../sites/community.aegirproject.org/files/aegir_pack/index.png">aegir_pack.png</a></td><td class="size">41.2 KB</td> </tr>
+</tbody>
+</table>
+</div></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-308.html?destination=node%2F37%23comment-form">Login</a> or <a href="../../../../../user/register/index-308.html?destination=node%2F37%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-1929"></a>
+
+
+<div  id="comment-1929" class="comment comment-published clear-block decay-10 decay-10">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/seismicmike/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="seismicmike&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/seismicmike/index.html" class="username" title="View user profile.">seismicmike</a></div><div class='date'>3:32pm Apr 25, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1929">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>I am interested in a deployment strategy for Aegir in the context of a web cluster that uses glusterfs to keep the two servers in sync. We have not yet implemented such a cluster, but have been considering it for quite some time. Gluster prevents the single point of failure that nfs creates.</p>
+
+<p>The question is, how can aegir be used to deploy platforms and sites to a gluster cluster?</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-308.html?destination=node%2F37%23comment-form">Login</a> or <a href="../../../../../user/register/index-308.html?destination=node%2F37%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-1991"></a>
+
+
+<div  id="comment-1991" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/kenwolfbusinesswirecom/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="ken.wolf@businesswire.com&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/kenwolfbusinesswirecom/index.html" class="username" title="View user profile.">ken.wolf@busine...</a></div><div class='date'>11:03pm Aug 8, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1991">#2</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>We are trying to move from deploying code via clustering (rsynch) to pack (writing to a shared NFS).  On our Red Hat, Drupal v6 seems to have problems using the NFS file caching. Possibly something about opening files in shared mode which is not compatible with NFS file cache.  Does that sound similar to a problem anyone else has experienced ?</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-308.html?destination=node%2F37%23comment-form">Login</a> or <a href="../../../../../user/register/index-308.html?destination=node%2F37%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/37/revisions/3385/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:05:26 GMT -->
+</html>

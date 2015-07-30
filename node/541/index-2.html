@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/541?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../513/index.html" />
+<link rel="up" href="../../content/scrums/archive-2011/index.html" />
+<link rel="next" href="../../scrums/weekly-scrum-irc-log-2011-04-12/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2011-04-05 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-541" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2011-04-05</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first"><a href="../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+<li class="taxonomy_term_6 last"><a href="../../taxonomy/term/6/index.html" rel="tag" title="">weekly scrums</a></li>
+</ul></div><div id='diff-inline-541'><pre>
+(06:02:27 PM) anarcat: mig5 / Vertice / darthsteven / EclipseGc / mvc / omega8cc / sfyn / skwashd / ergonlogic : scrum time!
+(06:02:35 PM) EclipseGc: anarcat: yay
+(06:02:43 PM) anarcat: joestewart: scrum!
+(06:02:48 PM) darthsteven: crouch...touch...engage
+(06:02:52 PM) anarcat: shrop / univate : scrum!
+(06:02:57 PM) anarcat: alright
+(06:03:31 PM) anarcat: so welcome everybody, sorry i'm little late :)
+(06:03:35 PM) anarcat: i got tons of stuff :)
+(06:03:39 PM) anarcat: first
+(06:03:41 PM) anarcat: master is dead
+(06:03:52 PM) anarcat: being an anarchist and all, no masters no god and everything ;)
+(06:04:00 PM) anarcat: more seriously - we're all on 6.x-1.x now
+(06:04:09 PM) anarcat: it was too much of a pain to sync that all the time
+(06:04:20 PM) EclipseGc: heh
+(06:04:32 PM) darthsteven: anarcat: has the master branch actually been removed now?
+(06:04:40 PM) anarcat: darthsteven: yes, it's dead.
+(06:04:49 PM) darthsteven: cool
+(06:04:51 PM) anarcat: also, i have cleaned up the docs regarding the branch naming conventions here: <a href="../187/index.html" title="http://community.aegirproject.org/node/187">http://community.aegirproject.org/node/187</a>
+(06:04:59 PM) ergonlogic: long live 6.x-1.x!
+(06:05:05 PM) anarcat: reviews of that from the docs team would be welcome
+(06:05:18 PM) anarcat: speaking of which, we talked about having maintainers for various sections of the project
+(06:05:28 PM) anarcat: the first of which is the docs team, spearheaded by darthsteven and ergonlogic
+(06:05:40 PM) anarcat: i don't remember the full list of teams, but i'll dig it out later
+(06:05:55 PM) anarcat: so congrats to the docs team for the awesome work so far, more on that from darthsteven ltr i guess
+(06:06:00 PM) anarcat: i did the roadmap for 2.0
+(06:06:07 PM) anarcat: <a href="../../roadmap/2/index.html" title="http://community.aegirproject.org/roadmap/2.0">http://community.aegirproject.org/roadmap/2.0</a>
+(06:06:16 PM) anarcat: everyone is strongly encouraged to review and augment
+(06:06:21 PM) anarcat: and especially take tasks
+(06:06:48 PM) anarcat: koumbit will *not* do everything in there, but we *will* make a 2.0 release to deploy our changes in production, so the stuff that's not being taken care of will be pushed to 3.0
+(06:07:12 PM) arianek is now known as arianekPHONE
+(06:07:13 PM) anarcat: i would love to get betas for 2.0 released by the end of summer, with rcs in automn (ie. koumbit runnin 2.x in production by the end of the summer)
+(06:07:21 PM) anarcat: we release rc3
+(06:07:24 PM) anarcat: i want to release rc4
+(06:07:26 PM) anarcat: tonight
+(06:07:32 PM) EclipseGc: yay
+(06:07:32 PM) anarcat: we have a bunch more changes
+(06:07:47 PM) anarcat: especially the symlink stuff  (now sites are symlinked into /var/aegir/clients  for easier access)
+(06:07:53 PM) anarcat: provisionacl has been updated to fix the perms there too
+(06:08:08 PM) anarcat: debian packages have been released and uploaded to debian.koumbit.net
+(06:08:11 PM) mig5: whoop, daylight savings screwed me. morning
+(06:08:23 PM) EclipseGc: morning mig5
+(06:08:26 PM) anarcat: morning mig5 ! :)
+(06:08:47 PM) anarcat: there's been a few bugs with the debian packages, mostly with the new installs (because i'm mostly testing upgrades from our existing installs)
+(06:08:56 PM) anarcat: upgrades work well, installs need testing but should work now
+(06:09:11 PM) anarcat: the docs have been updated so that the manual install doesn't use install.sh
+(06:09:16 PM) anarcat: which has been removed from the tree
+(06:09:23 PM) anarcat: completely
+(06:09:33 PM) anarcat: and the manual docs have been updated to use hostmaster-install instead
+(06:09:40 PM) anarcat: and favor the debian automatic installs through packages
+(06:10:01 PM) anarcat: koumbit will deploy the stable branch in staging tonight or tomorrow and rc4 in prod tomorrow
+(06:10:06 PM) anarcat: that's about it for me i think
+(06:10:17 PM) anarcat: oh and i'm in a retreat in the woods to code like crazy for a week or two
+(06:10:31 PM) omega8cc: haha
+(06:10:31 PM) anarcat: i'm trying to work on the d7 port, but if people want to join that effort, that would be welcome
+(06:10:43 PM) anarcat: i'll also focus on bootstrap security, as i see fun
+(06:10:49 PM) anarcat: prioritisation welcome
+(06:10:53 PM) anarcat: ok, next!
+(06:10:58 PM) mig5: i've done nothing, i'm sick and also have busted my back. also, i fly to europe end of next week, what great timing
+(06:11:06 PM) mig5: so i don't expect you'll get much out of me until end of may now
+(06:11:31 PM) mig5: that's it for my pep talk
+(06:11:35 PM) anarcat: yay! ;)
+(06:11:38 PM) omega8cc: mig5: welcome to eu!
+(06:11:41 PM) anarcat: well, rest and get well :)
+(06:11:45 PM) mig5: thanks
+(06:11:57 PM) EclipseGc: I also have done nothing, but anarcat if you're doing a 7.x upgrade I would love to be available in any capacity that you might find useful. Be that review, or just as someone to bounce ideas at
+(06:12:08 PM) anarcat: EclipseGc: gotcha
+(06:12:19 PM) anarcat: so let's welcome our new dev here - darthsteven , do you have something to share?
+(06:12:33 PM) darthsteven: sure
+(06:13:02 PM) darthsteven: So, prompted by ergonlogic's issue, I asked for commit access to aegir to work on the documentation
+(06:13:13 PM) mode (+o darthsteven) by anarcat
+(06:13:14 PM) darthsteven: and it was granted
+(06:13:23 PM) anarcat: great timing :)
+(06:13:30 PM) EclipseGc: woot, now he can kick us all
+(06:13:36 PM) darthsteven: hurrah!
+(06:13:46 PM) darthsteven: (no idea how to though)
+(06:13:49 PM) anarcat: congratulations! :)
+(06:13:55 PM) darthsteven: so yeah, just been working on some docs
+(06:13:57 PM) anarcat: darthsteven: /kick EclipseGc now now
+(06:13:58 PM) anarcat: ;)
+(06:13:59 PM) omega8cc: darthsteven: congrats!
+(06:14:05 PM) EclipseGc: :-(
+(06:14:10 PM) omega8cc: lol
+(06:14:12 PM) darthsteven: and wrote an article about passing data from the Aegir frontend to the backend
+(06:14:12 PM) anarcat: EclipseGc: just kidding :)
+(06:14:15 PM) EclipseGc: heh
+(06:14:23 PM) ***EclipseGc saw that
+(06:14:32 PM) mode (+v shrop) by anarcat
+(06:14:45 PM) EclipseGc: <a href="http://www.computerminds.co.uk/articles/storing-data-aegir" title="http://www.computerminds.co.uk/articles/storing-data-aegir">http://www.computerminds.co.uk/articles/storing-data-aegir</a>
+(06:14:58 PM) anarcat: darthsteven: that's nice!
+(06:15:04 PM) anarcat: darthsteven: we should copy that into the manual somewhere...
+(06:15:14 PM) darthsteven: from our work on the docs so far, I wonder if we wanted to clean up the API before the 1.0 final release?
+(06:15:23 PM) darthsteven: it's not hugely consistent
+(06:15:27 PM) EclipseGc: heh
+(06:15:38 PM) mode (+v ergonlogic) by anarcat
+(06:15:42 PM) darthsteven: but that would mean big changes I guess, so 2.0 stuff
+(06:15:54 PM) ergonlogic: I've been promoted
+(06:15:56 PM) anarcat: darthsteven: i would also think that api changes at this point would be a bit daring
+(06:16:14 PM) anarcat: darthsteven: i would rather tag those inconsistencies as issues for 2.x
+(06:16:17 PM) darthsteven: sure
+(06:16:19 PM) anarcat: darthsteven: but document, document
+(06:16:32 PM) anarcat: also, i think we should aim for a short 1.0 release cycle
+(06:16:35 PM) darthsteven: so, plans are to add lots more documentation over the next days/weeks
+(06:16:41 PM) anarcat: esp. because we're having api issues and so on
+(06:16:42 PM) darthsteven: that's it for me
+(06:16:46 PM) anarcat: alright
+(06:16:57 PM) anarcat: thanks darthsteven and welcome again in the crew
+(06:17:07 PM) anarcat: so a parenthesis on the statuses in this channel
+(06:17:13 PM) anarcat: +o is for developers
+(06:17:37 PM) anarcat: we're all equal there - if you need access to some resource on aegirproject.org or drupal.org, just ask and it will be granted
+(06:17:47 PM) anarcat: +v is for (currently) occasional contributors
+(06:17:53 PM) anarcat: it's the way to become a dev :)
+(06:18:09 PM) anarcat: end of parenthesis
+(06:18:19 PM) anarcat: so anyone else has something to add to our (late) scrum?
+(06:18:19 PM) anarcat: omega8cc: ?
+(06:18:53 PM) omega8cc: nothing from me this week, I'm sick, but hope to add something next week
+(06:18:57 PM) anarcat: i can speak quickly for sfyn, who made his first official release of uc_hosting (1.0-beta1), ubercart integration
+(06:19:06 PM) anarcat: which we're going to deploy soon
+(06:19:18 PM) anarcat: also, we'll need to figure out where the heck univate has gone :)
+(06:19:25 PM) anarcat: if anybody saw him, let me know ;)
+(06:19:49 PM) ergonlogic: So, for my part, I've actually been pretty busy... 
+(06:19:57 PM) ergonlogic: testing some of the aegir contrib modules
+(06:20:09 PM) ergonlogic: some functional updates to the community site (spread out over the past few weeks really)... and more to come
+(06:20:19 PM) ergonlogic: Some documentation, though I feel I need to better understand how to document hooks properly... 
+(06:20:28 PM) ergonlogic: I'll be trying to debug some issues on api.aegirproject.org
+(06:20:42 PM) ergonlogic: And I have a new Aegir contrib module (<a href="https://github.com/ergonlogic/hosting_saas" title="https://github.com/ergonlogic/hosting_saas">https://github.com/ergonlogic/hosting_saas</a>) that denies uid1 to clients creating sites, and assignes them a role of our choosing
+(06:20:52 PM) ergonlogic: which I'll release shortly on d.o, I think
+(06:21:05 PM) ergonlogic: that's it, I think
+(06:21:06 PM) anarcat: for hooks, we need to add sample code for it to make sense, e.g. hook_post_install()
+(06:21:26 PM) darthsteven: ergonlogic: Feel free to ask me about documentation!
+(06:21:30 PM) EclipseGc: ergonlogic: nice
+(06:21:31 PM) anarcat: ah - ergonlogic and darthsteven - do we want to refactor your code straight into 1.0 core? or maybe we should wait for 2.x?
+(06:21:33 PM) ergonlogic: I've some experience with a coule now, so I can try to put something together
+(06:21:43 PM) ergonlogic: s/coule/could
+(06:22:14 PM) darthsteven: anarcat: we're working in a branch of 1.0
+anarcat AntiNSA-AFK 
+(06:22:32 PM) anarcat: darthsteven: for docs, but i was talking about the scheduling, the dispatcher, and saas stuff
+(06:22:46 PM) darthsteven: anarcat: ah okay
+(06:22:48 PM) anarcat: darthsteven: i think we can merge that branch in rc4 - it's really all just docs
+(06:23:10 PM) anarcat: i also think we can merge documentation into 1.x releases after 1.0
+(06:23:23 PM) ergonlogic: I'd be happy for aegir core to appropriate hosting_saas
+(06:23:34 PM) anarcat: so anyways, i think that's it for our scrum
+(06:23:35 PM) ergonlogic: I think it might mean another promotion ;)
+(06:23:44 PM) anarcat: hopefully we'll have rc4 ready tonight or tomorrow
+(06:23:48 PM) EclipseGc: yay
+(06:23:53 PM) anarcat: and 1.0 ready by next week or something
+(06:23:54 PM) EclipseGc: mass migrate will come back :-D
+(06:24:00 PM) anarcat: EclipseGc: yeah, i fixed it
+(06:24:02 PM) darthsteven: cool
+(06:24:04 PM) EclipseGc: anarcat: yeah I saw
+(06:24:05 PM) ergonlogic: sounds good
+(06:24:10 PM) EclipseGc: anarcat: thx for that :-D
+(06:24:27 PM) anarcat: if someone wants to volunteer for the 1.x branch maintenance, i'd be happy to explain how that works and help with the work
+(06:24:42 PM) ergonlogic: 
+(06:24:45 PM) EclipseGc: lol
+(06:24:48 PM) anarcat: ergonlogic: :P
+(06:25:02 PM) anarcat: ergonlogic / darthsteven : i think i was too quick about the offer to merge the modules in core - let's do that merge in 2.x instead
+(06:25:13 PM) darthsteven: anarcat: agreed
+(06:25:29 PM) anarcat: okay, who wants the amazing and wonderful job of uploading the log in the site?
+(06:25:31 PM) ergonlogic: k
+(06:25:38 PM) ergonlogic: I'll do it
+(06:25:47 PM) anarcat: great!
+(06:26:04 PM) anarcat: thanks everyone for coming
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-101.html?destination=node%2F541%23comment-form">Login</a> or <a href="../../user/register/index-101.html?destination=node%2F541%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/541?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:42 GMT -->
+</html>

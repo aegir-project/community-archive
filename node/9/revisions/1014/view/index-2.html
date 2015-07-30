@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/9/revisions/1014/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:39:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../administrator/index.html" />
+<link rel="up" href="../../../../../administrator/index.html" />
+<link rel="next" href="../../../../../content/installing/system-requirements/index.html" />
+<link rel="prev" href="../../../../../administrator/index.html" />
+<link rel="up" href="../../../../../administrator/index.html" />
+<link rel="next" href="../../../../../content/installing/system-requirements/index.html" />
+<link rel="prev" href="../../../../../administrator/index.html" />
+<link rel="up" href="../../../../../administrator/index.html" />
+<link rel="next" href="../../../../../content/installing/system-requirements/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Installing Aegir from Wed, 03/09/2011 - 17:20 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-9" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../installing/index.html">Installing Aegir</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-9'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 03/09/2011 - 17:20</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Because Aegir is a powerful system that requires some low-level management or configuration of your server, there are a few steps to complete the installation that go beyond what you'd normally be required to do to install a standard Drupal site.</p>
+
+<p>For the same reason, Aegir doesn't support being run on a shared hosting environment where much of those low-level systems and tools are unavailable. Consult the <a href="../../../../17/index.html">System requirements</a> to ensure you meet the necessary requirements for installing Aegir.</p>
+
+<p><strong>Warning</strong>: <em>this <span class='diff-changed'>section of the manual</span> is being re-written to bring all the documentation from the source code (INSTALL.txt and so on) directly into this manual, so those documents may change and fluctuate over time. See <a href="../../../../377/index.html">this post</a> for progress reports.</em></p><span class='diff-deleted'>
+
+</span><h2><span class='diff-deleted'>INSTALL.txt</span></h2>
+
+<p><span class='diff-changed'>A good way to install a specific Aegir</span> release<span class='diff-deleted'> </span><span class='diff-deleted'>so</span><span class='diff-deleted'> </span><span class='diff-deleted'>that</span><span class='diff-deleted'> </span><span class='diff-deleted'>it</span><span class='diff-deleted'> </span><span class='diff-deleted'>may</span><span class='diff-deleted'> </span><span class='diff-deleted'>be</span><span class='diff-deleted'> </span><span class='diff-deleted'>versioned,</span><span class='diff-deleted'> </span><span class='diff-deleted'>as</span><span class='diff-deleted'> </span><span class='diff-deleted'>some</span><span class='diff-deleted'> </span><span class='diff-deleted'>installation</span><span class='diff-deleted'> </span><span class='diff-deleted'>steps</span><span class='diff-deleted'> </span><span class='diff-deleted'>may</span><span class='diff-deleted'> </span><span class='diff-deleted'>differ</span><span class='diff-deleted'> </span><span class='diff-deleted'>between</span><span class='diff-deleted'> </span><span class='diff-deleted'>releases.</span></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>The</span><span class='diff-deleted'> </span><span class='diff-deleted'>INSTALL.txt</span> is<span class='diff-deleted'> </span><span class='diff-deleted'>modified</span><span class='diff-deleted'> </span><span class='diff-deleted'>for</span><span class='diff-deleted'> </span><span class='diff-deleted'>every</span><span class='diff-deleted'> </span><span class='diff-deleted'>release.</span><span class='diff-deleted'> </span><span class='diff-deleted'>For</span><span class='diff-deleted'> </span><span class='diff-deleted'>this</span><span class='diff-deleted'> </span><span class='diff-deleted'>reason,</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>easiest</span><span class='diff-deleted'> </span><span class='diff-deleted'>way</span> to <span class='diff-changed'>follow</span> the release notes for that release. The <a href="../../../../../index.html">front page of this site</a> always contains a link to the latest release notes. Alternatively, you can find the release notes announced on our <a href="http://lists.aegirproject.org/pipermail/aegir-announce/">mailing-list</a>.</p>
+
+<p>The <span class='diff-changed'>install process can be done in one of two ways: manually and automatically. The </span><a href="../../../../399/index.html"><span class='diff-changed'>automatic install process</span></a><span class='diff-changed'> is designed for people not too familiar with the commandline</span> or <span class='diff-changed'>system administration.</span></p>
+
+<p><span class='diff-changed'></span><em><span class='diff-changed'>Note</span> that<span class='diff-deleted'> </span><span class='diff-deleted'>you</span><span class='diff-deleted'> </span><span class='diff-deleted'>follow</span> the <span class='diff-changed'>automated install process is not yet fully complete and</span> you <span class='diff-changed'>still need to do some shell commands before completing</span> the <span class='diff-changed'>install. We eventually want</span> to <span class='diff-changed'>have packages</span> for <span class='diff-changed'>common platforms (.deb</span> for <span class='diff-changed'>Debian) to automate that process,</span> or <span class='diff-changed'>scripts that run</span> as <span class='diff-changed'>root for uncommon platforms for which packaging</span> is <span class='diff-changed'>impossible or too complicated (e.g. OSX).</span></em><span class='diff-changed'></span></p>
+
+<p><span class='diff-changed'>The </span><a href="../../../../389/index.html"><span class='diff-changed'>manual install section</span></a><span class='diff-changed'> contains detailed instructions on how</span> to <span class='diff-changed'>install</span> Aegir<span class='diff-deleted'> </span><span class='diff-deleted'>frontend</span><span class='diff-deleted'> </span><span class='diff-deleted'>for</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>first</span><span class='diff-deleted'> </span><span class='diff-deleted'>time.</span><span class='diff-deleted'> </span><span class='diff-deleted'>A</span><span class='diff-deleted'> </span><span class='diff-deleted'>welcome</span><span class='diff-deleted'> </span><span class='diff-deleted'>e-mail</span><span class='diff-deleted'> </span><span class='diff-deleted'>containing</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>same</span><span class='diff-deleted'> </span><span class='diff-deleted'>one-time</span><span class='diff-deleted'> </span><span class='diff-deleted'>login</span><span class='diff-deleted'> </span><span class='diff-deleted'>link</span><span class='diff-deleted'> </span><span class='diff-deleted'>is</span><span class='diff-deleted'> </span><span class='diff-deleted'>sent</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>e-mail</span><span class='diff-deleted'> </span><span class='diff-deleted'>address</span><span class='diff-deleted'> </span><span class='diff-deleted'>of</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>main</span><span class='diff-deleted'> </span><span class='diff-deleted'>user</span><span class='diff-deleted'> </span><span class='diff-deleted'>account.</span></p><span class='diff-deleted'>
+
+</span><h2><span class='diff-deleted'>Method</span><span class='diff-deleted'> </span><span class='diff-deleted'>2</span><span class='diff-deleted'> </span><span class='diff-deleted'>-</span><span class='diff-deleted'> </span><span class='diff-deleted'>install</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>backend</span><span class='diff-deleted'> </span><span class='diff-deleted'>and</span><span class='diff-deleted'> </span><span class='diff-deleted'>invoke</span><span class='diff-deleted'> </span><span class='diff-deleted'>hostmaster-install</span></h2><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>Experienced</span><span class='diff-deleted'> </span><span class='diff-deleted'>users</span><span class='diff-deleted'> </span><span class='diff-deleted'>are</span><span class='diff-deleted'> </span><span class='diff-deleted'>encouraged</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>download</span><span class='diff-deleted'> </span><span class='diff-deleted'>Drush</span><span class='diff-deleted'> </span><span class='diff-deleted'>and</span><span class='diff-deleted'> </span><span class='diff-deleted'>Provision</span> manually <span class='diff-changed'>on Debian-based systems, but also specific commands</span> for <span class='diff-changed'>other systems. It</span> is <span class='diff-changed'>aimed at system administrators and porters</span> that <span class='diff-changed'>want</span> to <span class='diff-changed'>control every step</span> of the <span class='diff-changed'>install process.</span></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-9.html?destination=node%2F9%23comment-form">Login</a> or <a href="../../../../../user/register/index-9.html?destination=node%2F9%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-9.html?destination=node%2F9%23comment-form">Login</a> or <a href="../../../../../user/register/index-9.html?destination=node%2F9%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/9/revisions/1014/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:39:41 GMT -->
+</html>

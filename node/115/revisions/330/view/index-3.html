@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/115/revisions/330/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:04:27 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/importing-existing-aegir-backups/index.html" />
+<link rel="up" href="../../../../../content/content/administrator/post-install-configuration/importing-sites/index.html" />
+<link rel="next" href="../../../../../content/importing-complete-drupal-platform/index.html" />
+<link rel="prev" href="../../../../../content/importing-existing-aegir-backups/index.html" />
+<link rel="up" href="../../../../../content/content/administrator/post-install-configuration/importing-sites/index.html" />
+<link rel="next" href="../../../../../content/importing-complete-drupal-platform/index.html" />
+<link rel="prev" href="../../../../../content/importing-existing-aegir-backups/index.html" />
+<link rel="up" href="../../../../../content/content/administrator/post-install-configuration/importing-sites/index.html" />
+<link rel="next" href="../../../../../content/importing-complete-drupal-platform/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Import a website using the sites directory from Fri, 11/12/2010 - 00:50 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-115" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/importing-single-site-manually/index.html">Import a website using the sites directory</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_3 first"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-115'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/sime/index.html" class="username" title="View user profile.">sime</a> on 11/12/2010 - 00:50</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>If you already have a platform setup on Aegir with EXACTLY the same codebase as your existing site, then you don't need to transfer the entire old codebase - you can just transfer the sites/example.com directory. However, you also need to make sure any dependencies on contrib modules that your site has, are covered on the codebase or Platform that you're importing it into.</p>
+
+<p>In general it may be considered safer/less prone to confusing errors to transfer the entire old codebase into Aegir as a whole Platform, whereby the site will be imported automatically under that Platform. You can then migrate it in Aegir to one of your existing Platforms later. See Option B below for this method.</p>
+
+<p>However, if you really want to just import the site directory into an existing platform, here's how:</p>
+
+<h3>1. Transfer the files</h3>
+
+<p>Copy the 'sites/example.com' directory from your old server to the new Aegir server (if it was sites/community.aegirproject.org before it needs to be moved to sites/example.com. See section below).</p>
+
+<p>To do this, first create a tarball of the site on the old server. Within the sites/example.com directory type:
+<code>tar -zcvf example.com.tar.gz</code></p>
+
+<p>(If you are importing a site from a previous Aegir installation, you can save time here by generating a Backup task against your site, and transferring across the tarball that is made and placed into /var/aegir/backups/. It contains the database.sql dump as well).</p>
+
+<p>Then, on the Aegir server, you can create a directory for it in the codebase (platform) you want to put it under:</p>
+
+<p><div class="codeblock"><code>cd /var/aegir/myplatform/sites<br />mkdir example.com<br />cd example.com<br />wget <a href="http://example.com/example.com.tar.gz<br />tar" title="http://example.com/example.com.tar.gz<br />tar">http://example.com/example.com.tar.gz<br />tar</a> -zxvf example.com.tar.gz</code></div></p>
+
+<p>Instead of using wget you could of course use SCP or FTP to transfer the tarball onto the Aegir server.</p>
+
+<p>Once the file is unpacked, check the ownership and group of each file by using <code>ls -al</code>. It should be either 'aegir:aegir' or 'aegir:www-data'. Change it if necessary. We have to assume you have basic knowledge of Linux and POSIX permissions - we can't be responsible for teaching you sysadmin skills :)</p>
+
+<p>In particular, files that may have been uploaded on your site via modules like imagecache, upload, Profile pics etc, may need to have their ownership changed:
+<code>sudo chown -R aegir $platform/sites/*/files</code></p>
+
+<h3>2. Transfer the Database</h3>
+
+<p><strong>Note:  This step is not necessary if you are moving your site from one directory on your server (e.g., /var/www/html) to a newly created Aegir directory on the same server (e.g., /var/aegir).</strong></p>
+
+<p>Make a backup of the database on your old server (Backup and Migrate module is good for this, or you can use phpmyadmin or your favourite MySQL management tool. It's a good idea to truncate the cache, search and watchdog tables first to reduce the size of the database (Backup and Migrate does this for you).</p>
+
+<p>If you are importing a site from a previous Aegir installation somewhere, such as from a backup tarball, the database.sql will already be within the tarball you unpacked. You can use this to import into a new database on your new server.</p>
+
+<p>On your new server, manually create a new database and upload the .sql file from your backup.
+Then create the mysql user that your site accesses the database as, and grant it all permissions on that database except 'GRANT'.</p>
+
+<h3>3. Verify In Aegir</h3>
+
+<p>In the Aegir web interface click on the name of the platform you have added your site to. You can access the list of platforms via the 'Platforms' tab in the primary links menu.</p>
+
+<p>Execute a new Verify task on this platform via the 'Verify' button in the task list.</p>
+
+<p>Aegir will now re-verify the platform. In the process of this, it will discover your new site and spawn a new 'Import' task for the site.</p>
+
+<p>Once it's done this (it may take a couple of cron runs to dispatch these tasks in the queue) the tasks should turn green (if not, see 'Troubleshooting' below).</p>
+
+<p>At this point, presuming you have updated DNS or are overriding DNS via an entry in your /etc/hosts file to access the site via the new Aegir server, you can visit site in a browser and check around to see that it has worked. Pay particular attention to any links in node content that pointed to paths referencing <code>/sites/community.aegirproject.org</code> if your site was not part of a multisite setup. (Drupal has a habit of storing these paths in the database, or they may have been hard-coded into nodes by users).</p>
+
+<p>Aegir will not go through all your database and update all URLs, so some images or links may be broken. This will need to be done manually. Aegir does attempt to update paths stored in tables such as 'files' though.</p>
+
+<p>It's a good idea to clear the caches, and you may need to get imagecache to rebuild its thumbnails if you use it.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-54.html?destination=node%2F115%23comment-form">Login</a> or <a href="../../../../../user/register/index-54.html?destination=node%2F115%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-54.html?destination=node%2F115%23comment-form">Login</a> or <a href="../../../../../user/register/index-54.html?destination=node%2F115%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/115/revisions/330/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:04:27 GMT -->
+</html>

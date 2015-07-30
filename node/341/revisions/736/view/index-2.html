@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/341/revisions/736/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:05:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../427/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../content/content/administrator/post-install-configuration/using-ssl/index.html" />
+<link rel="prev" href="../../../../427/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../content/content/administrator/post-install-configuration/using-ssl/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Adding apache config files from Fri, 02/11/2011 - 01:36 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-341" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Adding apache config files</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-341'><p>If you connect to your Hostmaster server and look at
+~aegir/config/server_examplecom/apache.conf, you can see that this
+file includes files from pre.d and post.d directories.  The includes
+are done in the following order:</p>
+
+<ol>
+<li>pre.d</li>
+<li>vhost.d</li>
+<li>platform.d</li>
+<li>post.d</li>
+</ol>
+
+<p>The earlier files take precendence over the later files.</p>
+
+<p>If we wanted to add a phpini directive that can only be set on a <a href="http://us2.php.net/manual/en/configuration.changes.modes.php">PHP_INI_PERDIR</a>-for
+example, <a href="http://us2.php.net/manual/en/ini.core.php">post_max_size</a>-we
+could create a file called upload.conf and add it either to pre.d or
+post.d.</p>
+
+<p>Here's a possible upload.conf:
+<div class="codeblock"><code>####################################<br /># Custom Server-wide configuration #<br />####################################<br /># our php.ini sets memory limit to 96M<br /># <br /># post_max_size should also be less than memory_limit.<br /># <a href="http://us2.php.net/manual/en/ini.core.php#ini.post-max-size<br />#" title="http://us2.php.net/manual/en/ini.core.php#ini.post-max-size<br />#">http://us2.php.net/manual/en/ini.core.php#ini.post-max-size<br />#</a> <br />php_value post_max_size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 90M<br />php_value upload_max_filesize&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 85M</code></div>
+If we put upload.conf in pre.d, our setting would always take
+precedence, because it occurs higher up the chain of include files.</p>
+
+<p>If we put upload.conf in post.d, our setting would be applied only
+if the same setting is not defined higher up the chain by the
+aegir code. As Antoine <a href="http://drupal.org/node/936720#comment-3552466">states here</a>
+post.d is mainly useful when migrating in sites.  It would also be
+useful if you wanted to set a server-wide default which could be
+overridden on by a virtual host or platform config setting.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-403.html?destination=node%2F341%23comment-form">Login</a> or <a href="../../../../../user/register/index-403.html?destination=node%2F341%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/341/revisions/736/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:05:45 GMT -->
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/359/revisions/774/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:18:20 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../1/index-18.html" />
+<link rel="up" href="../../../../../10-release-candidate/index.html" />
+<link rel="next" href="../../../../../1/index-19.html" />
+<link rel="prev" href="../../../../../1/index-18.html" />
+<link rel="up" href="../../../../../10-release-candidate/index.html" />
+<link rel="next" href="../../../../../1/index-19.html" />
+<link rel="prev" href="../../../../../1/index-18.html" />
+<link rel="up" href="../../../../../10-release-candidate/index.html" />
+<link rel="next" href="../../../../../1/index-19.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of 0.4-rc1 release notes from Fri, 02/18/2011 - 03:27 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-359" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../0/index.html">0.4-rc1 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-359'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 02/18/2011 - 03:27</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>The Aegir team is very pleased to announce the first release candidate of Aegir 0.4!</p>
+
+<p>This is the first rc from which we will go into crazy bugfixing mode until we have no criticals and will then roll out the official 0.4.</p>
+
+<h2>Key changes in 0.4-rc1</h2>
+
+<p>There are a lot of bug fixes and features added into this release.</p>
+
+<p>Significantly, a major data-loss bug was fixed in Multiserver environments, that was causing a remote site's 'files' directory contents to be deleted if those files didn't already exist on the 'master' copy of the site on the hostmaster system.</p>
+
+<p>Also, we stopped hardcoding "$conf['cache'] = 1" in sites' settings.php, returning control over the caching function back to the user by way of:</p>
+
+<ul>
+<li>inserting the preferred setting into a file called 'local.settings.php' alongside the settings.php so it won't be clobbered by the template, or</li>
+<li>same as above but in /var/aegir/config/includes/global.inc to set it globally for all sites, or</li>
+<li>setting it in /admin/settings/performance on your site, and having that setting stick instead of being reset by the hardcode.</li>
+</ul>
+
+<h2>Known Issues</h2>
+
+<ul>
+<li>DNS has no access control - anybody can create any zone (<a href="http://drupal.org/node/922252">#922252</a>)</li>
+<li>The site form suffers from some performance issues when you have a lot of platforms (<a href="http://drupal.org/node/955854">#955854</a>)</li>
+<li>Cluster servers are probably broken right now (<a href="http://drupal.org/node/1016890">#1016890</a>)</li>
+<li>Aliases are not persisted across Migrate, (Rename), Clone (provision-deploy) (<a href="http://drupal.org/node/1004526">#1004526</a>)</li>
+</ul>
+
+<p>See <a href="http://drupal.org/project/issues/search?text=&amp;projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir)&amp;assigned=&amp;submitted=&amp;participant=&amp;status[]=Open&amp;issue_tags_op=or&amp;issue_tags=aegir-0.4">all the issues tagged as aegir-0.4</a> and <a href="http://drupal.org/project/issues?text=&amp;projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir)&amp;status=Open&amp;priorities=4&amp;categories=All">issues marked as 'major'</a> for our comprehensive list of outstanding issues.</p>
+
+<h2>Installing and upgrading</h2>
+
+<p>The canonical source of installation documentation is as usual the excellent <a href="http://git.aegirproject.org/?p=provision.git;a=blob_plain;f=docs/INSTALL.txt;hb=provision-0.4-rc1">INSTALL.txt</a>. The hostmaster and provision tarballs have the following checksums:</p>
+
+<ul>
+<li><code>provision-0.4-rc1.tgz: 6f4da4ba7dcfaa1bcc3c44f96beb3eda</code></li>
+<li><code>hostmaster-0.4-rc1.tgz: b2a42b151b817c1ea6cdf15462aa2e15</code></li>
+</ul>
+
+<p>For users who have Rackspace Cloud accounts and want to install Aegir in the cloud, you are welcome to try mig5's <a href="http://github.com/mig5/frigg">Frigg script</a>, which automatically creates a new virtual server and installs Aegir, with one command!</p>
+
+<p>For users of 0.4-beta2 and earlier, we offer an <a href="http://git.aegirproject.org/?p=provision.git;a=blob_plain;f=upgrade.sh.txt;hb=provision-0.4-rc1">upgrade.sh script</a> in Provision, which tries to automate much of the steps outlined in the <a href="http://git.aegirproject.org/?p=provision.git;a=blob_plain;f=docs/UPGRADE.txt;hb=provision-0.4-rc1">UPGRADE.txt</a>.</p>
+
+<p>It is still imperative that you read the UPGRADE.txt and follow all version-specific upgrade instructions located at the end of the document before trying to run the upgrade script. This especially applies to users upgrading from before 0.4-alpha8, including 0.3.</p>
+
+<p>For users coming from 0.4-beta1 or beta2, there are unlikely to be any version-specific manual steps required to upgrade to 0.4-rc1, but you should make a habit of reading them anyway just to make sure. No-one likes a nasty surprise!</p>
+
+<p>The upgrade.sh script attempts to backup the existing backend components, download new versions, and then run the hostmaster-migrate command. It assumes you are upgrading from the previous release (hostmaster-0.4-beta2). If you are not, you may have to edit the script to change the OLD_DRUPAL_DIR variable.</p>
+
+<h2>Bugs fixed</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/1057736">#1057736 : Cloning SSL sites will lead to a non SSL site .. but certificate is still copied</a></li>
+<li><a href="http://drupal.org/node/1057178">#1057178 : Call-time pass-by-reference has been deprecated task.hosting.inc</a></li>
+<li><a href="http://drupal.org/node/1059328">#1059328 : Restore and Backup_Delete tasks submit dialog even when no backups are available</a></li>
+<li><a href="http://drupal.org/node/1057280">#1057280 : Site batch api error</a></li>
+<li><a href="http://drupal.org/node/1058650">#1058650 : Web_group 'www' missing in $common_groups array</a></li>
+<li><a href="http://drupal.org/node/1047922">#1047922 : Drush 4.x and 5.0-dev/HEAD breaks Aegir in some (hidden) ways - paths in files not rewritten on clone/migrate/rename</a></li>
+<li><a href="http://drupal.org/node/931420">#931420 : Task list in hosting_summary block shows underscores</a></li>
+<li><a href="http://drupal.org/node/1052028">#1052028 : [DNS] Creating and deleting zone configuration on slaves doesn't work with PHP 5.3</a></li>
+<li><a href="http://drupal.org/node/1053834">#1053834 : [DNS] error adding a new record on existing zone</a></li>
+<li><a href="http://drupal.org/node/1033072">#1033072 : migrate interface takes forever (litterally) to load</a></li>
+<li><a href="http://drupal.org/node/976300">#976300 : web server migration results in content removal when site is verified</a></li>
+<li><a href="http://drupal.org/node/888194">#888194 : Trying to get property of non-object provision.inc:57</a></li>
+<li><a href="http://drupal.org/node/775850">#775850 : Openpublish 2.0 Installation profile is not seen by Aegir</a></li>
+<li><a href="http://drupal.org/node/996578">#996578 : Install Profiles disappear from profile list on load or refresh of site creation form</a></li>
+<li><a href="http://drupal.org/node/1003666">#1003666 : If site quota is at 100% editing site nodes is not possible</a></li>
+<li><a href="http://drupal.org/node/1039010">#1039010 : Enforce that platform names and paths must be unique, even across remote servers, because of the spoke model</a></li>
+<li><a href="http://drupal.org/node/959852">#959852 : Add new server confirmation text indicates wrong server type</a></li>
+<li><a href="http://drupal.org/node/1037222">#1037222 : upgrade.sh and upgrade.txt ambiguous about drush and drush make versions</a></li>
+<li><a href="http://drupal.org/node/985518">#985518 : Default client changes if Clients feature was ever enabled (0.4-beta1)</a></li>
+<li><a href="http://drupal.org/node/1014638">#1014638 : All Drush versions since 4.0-rc6 are breaking Aegir completely</a></li>
+<li><a href="http://drupal.org/node/1009386">#1009386 : /var/aegir/platforms logic syncs all platforms to the remote web server</a></li>
+<li><a href="http://drupal.org/node/1008954">#1008954 : Fatal error: Call to undefined function hosting_site_list</a></li>
+</ul>
+
+<h2>New features</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/994210">#994210 : 
+Add support for some common files/subdirs like css/js/ctools/imagecache</a></li>
+<li><a href="http://drupal.org/node/984396">#984396 : we stopped hardcoding page cache in settings.php</a></li>
+<li><a href="http://drupal.org/node/630336">#630336 : billing support</a></li>
+<li><a href="http://drupal.org/node/1005014">#1005014 : Bulk operations - doesn't display all available tasks</a></li>
+<li><a href="http://drupal.org/node/1044938">#1044938 : Allow local.settings.php to override global.inc to make it usable</a></li>
+<li><a href="http://drupal.org/node/1042758">#1042758 : Display filesize on Backups lists</a></li>
+<li><a href="http://drupal.org/node/860582">#860582 : Get site by alias as well as url</a></li>
+<li><a href="http://drupal.org/node/1039168">#1039168 : after creating platform, publish path should not be changeable</a></li>
+</ul><span class='diff-added'>
+
+</span><h2><span class='diff-added'>No Drush 4 or Drush Make 2.0?</span></h2><span class='diff-added'>
+
+</span><p><span class='diff-added'>Some people might be wondering why we haven't changed the install.sh
+or upgrade.sh scripts to fetch the latest Drush 4.2 release or Drush
+Make 2.0.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><em><span class='diff-added'>Drush</span></em><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Drush 4.2 has a bug which breaks rsync and possibly other stuff when
+using multiserver.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>It's been fixed in Drush, but we are awaiting a 4.3 release before we
+roll with it. If you see 4.3 come out, you can probably upgrade your
+Drush if you wish (we tested this morning and are in fact compatible
+with Drush HEAD at time of writing).</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>See this ticket for more: </span><a href="http://drupal.org/node/1041386" title="http://drupal.org/node/1041386"><span class='diff-added'>http://drupal.org/node/1041386</span></a><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><em><span class='diff-added'>Drush Make</span></em><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Drush Make 2.0 has a bug that prevents building platforms from
+distributions that didn't come from drupal.org.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>This has also been fixed in HEAD, but we are awaiting a 2.1 release
+before we roll with it. If you see 2.1 come out, you can probably
+upgrade your Drush Make if you wish.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>See this ticket for more: </span><a href="http://drupal.org/node/1059238" title="http://drupal.org/node/1059238"><span class='diff-added'>http://drupal.org/node/1059238</span></a><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>We are working with the developers of these projects to attempt to
+'sync' our releases in future, but we wanted to roll out rc1 to all
+you good folk sooner rather than later this time :)</span></p>
+
+<h2>Need help?</h2>
+
+<p>If you struggle to install or upgrade your Aegir system, you have a number of options available to you for getting help.</p>
+
+<p>Consult this page for more: <a href="../../../../../help/index.html" title="http://community.aegirproject.org/help">http://community.aegirproject.org/help</a></p>
+
+<p>Thanks to our awesome community for their help, support and encouragement as always!</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-187.html?destination=node%2F359%23comment-form">Login</a> or <a href="../../../../../user/register/index-187.html?destination=node%2F359%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-187.html?destination=node%2F359%23comment-form">Login</a> or <a href="../../../../../user/register/index-187.html?destination=node%2F359%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/359/revisions/774/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:18:20 GMT -->
+</html>

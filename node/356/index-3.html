@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/356?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../340/index.html" />
+<link rel="up" href="../../content/scrums/archive-2011/index.html" />
+<link rel="next" href="../383/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2011-02-17 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-356" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2011-02-17</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_7 first last"><a href="../../taxonomy/term/7/index.html" rel="tag" title="">scrum</a></li>
+</ul></div><div id='diff-inline-356'><pre>
+07:00 &lt;@anarcat&gt; so welcome to our weekly scrum
+07:01 -!- JoshBenner_ [~quassel@pool-173-59-14-26.phlapa.fios.verizon.net] has joined #aegir
+07:01 &lt;@anarcat&gt; so to start with - i had a major fuckup with the community site with a verify that went bad
+07:01 &lt;@anarcat&gt; because the alias didn't have the profile set in
+07:01 &lt;@anarcat&gt; i documented all this in here <a href="../355/index.html" title="http://community.aegirproject.org/node/355">http://community.aegirproject.org/node/355</a>
+07:01 &lt;@mig5&gt; reading that now. why did oyu need to manually run provision-deploy rather than standard migrate?
+07:02 &lt;@anarcat&gt; mig5: because the site wasn't in aegir at first
+07:02 &lt;@mig5&gt; gotcha
+07:02 &lt;@anarcat&gt; i was importing from devseed
+07:02 &lt;@mig5&gt; oh ofcourse *slaps forehead*
+07:02 &lt;@anarcat&gt; maybe i should clarify that.. but anyways
+07:02 &lt;@mig5&gt; no i'm just a dick and just woke up :)
+07:02 &lt;@anarcat&gt; other than that, this week i have struggled with the issue queue
+07:02 &lt;@mig5&gt; +1...
+07:03 &lt;@anarcat&gt; specificall with that eugene guy which apparently decided we were evil and decided to develop his own stuff privately and stop collaborating on the queue
+07:03 &lt;@anarcat&gt; i wrote a response in the issue queue, but i wanted to share here that it pissed me off real bad to hear somebody just go away like this because we're not being nice enough
+07:03 &lt;@anarcat&gt; when he's treating us with abuse and duplicate issues
+07:04 &lt;@anarcat&gt; hopefully he will not come back to the queue but share his work with others so that we don't reinvent the wheel
+07:04 &lt;@anarcat&gt; one of those duplicate issues is this: <a href="http://drupal.org/node/1058918" title="http://drupal.org/node/1058918">http://drupal.org/node/1058918</a>
+07:05 &lt;@mig5&gt; his hosting_folders feature was just wrong anyway
+07:05 &lt;@anarcat&gt; apparently eugene had a contrib module to fix this, but because i marked his issue as duplicate of mine, he got angry and removed his code from github
+07:05 &lt;@anarcat&gt; but anyways, we talked about this vhost customization thing, and people were suggesting that it should be in contrib, but i feel like i disagree - if it's safe, it could be in core couldn't it?
+07:05 &lt;@mig5&gt; the subfolder stuff?
+07:06 &lt;@anarcat&gt; no no
+07:06 &lt;@anarcat&gt; <a href="http://drupal.org/node/1058918" title="http://drupal.org/node/1058918">http://drupal.org/node/1058918</a>
+07:06 &lt;@anarcat&gt; the custom vhost stuff
+07:06 &lt;@mig5&gt; ah
+07:06 &lt;+omega8cc&gt; in core, imo
+07:06 &lt;@anarcat&gt; right
+07:06 &lt; eft_&gt; anarcat: that's moving vhost config  into front end?
+07:07 -!- Artusamak is now known as Artusamak_afk
+07:07 &lt;@anarcat&gt; so anyways, that's about it for me - i'll try to work more on the issue queue and make an RC during next week unless there are objections here
+07:07 &lt;@anarcat&gt; eft_: no
+07:07 &lt;@anarcat&gt; mig5: next!
+07:07 &lt; eft_&gt; anarcat: that's great that you migrated c.a.o. - do we still need the 1700 EST downtime in the header of this channel
+07:07 &lt;@anarcat&gt; eft_: no
+07:07 -!- anarcat changed the topic of #aegir to: Aegir hosting system 0.4-beta2 released! <a href="../../0/index-2.html" title="http://community.aegirproject.org/0.4-beta2">http://community.aegirproject.org/0.4-beta2</a> | Issue queue: <a href="http://is.gd/edalY" title="http://is.gd/edalY">http://is.gd/edalY</a> | read this before asking: <a href="../../bugs/index.html" title="http://community.aegirproject.org/bugs">http://community.aegirproject.org/bugs</a> | scrums on thursdays 2000UTC
+07:08 &lt;@mig5&gt; i've done nothing all week due to some hectic work and basically some of our users killing my love for the project.
+07:08 &lt;@mig5&gt; i fixed a minor bug here or there
+07:08 &lt;@mig5&gt; and will likewise attack the queue some more, i think we should rc soonor we'll just be forever trying to battle that
+07:08 &lt;@anarcat&gt; yeah
+07:08 &lt;@anarcat&gt; agreed
+07:09 &lt;@mig5&gt; that's it from me
+07:09 &lt;@anarcat&gt; seems like the only blocker is the ssl rollback, which we could roll into another rc
+07:09  * eft_ wishes he had more to offer than nitpicks about channel headers
+07:09 -!- Artusamak_afk is now known as Artusamak
+07:09 &lt;@anarcat&gt; let's just RC the fucking thing
+07:09 &lt;@anarcat&gt; mig5: if you feel like it - just do it, and ignore the issue queue ;)
+07:09 &lt; eft_&gt; mig5: any progress on your workflow diags?
+07:09 &lt;@anarcat&gt; eft_: you can fight with trolls in the issue queue and get them off our backs :)
+07:09 &lt;+omega8cc&gt; go with RC - to avoid "one more thing" syndrome == release 3 years later ;)
+07:09 &lt;@anarcat&gt; there's a lot of triage work that is needed in the queue, that mostly anyone could do
+07:09 &lt;@mig5&gt; eft_: that was just for a client proposal, it wasn't very good, <a href="http://greenbeedigital.com.au/files/aegir_workflow.jpg" title="http://greenbeedigital.com.au/files/aegir_workflow.jpg">http://greenbeedigital.com.au/files/aegir_workflow.jpg</a>
+07:10 &lt;@anarcat&gt; mig5: anything else?
+07:10 &lt;@mig5&gt; anarcat: nope, that's it, i might release today then if i get time
+07:10 &lt; eft_&gt; anarcat: bon cop, bad cop
+07:10 &lt;@anarcat&gt; eft_: ouaip :)
+07:10 &lt;@anarcat&gt; Vertice / adrinux / darthsteven / grugnog / mvc / omega8cc / sfyn / ergonlogic / univate_: anybody else got something to add to our scrum?
+07:10 &lt;@anarcat&gt; mig5: that would be just amazing :)
+07:10 &lt;+omega8cc&gt; not much from me this week, I only made barracuda/octopus compatible with Debian 6 and Ubuntu 10.10 plus some new fixes for Nginx config
+07:11 &lt;@anarcat&gt; okay, anyone else?
+07:11 &lt;+ergonlogic&gt; nothing from me
+07:11 &lt;+omega8cc&gt; hope to work on contrib module for solr cores automatic setup - integrated with skwashd work
+07:11 &lt;@anarcat&gt; univate_: thanks for those patches, btw, keep em coming!
+07:11 &lt;@anarcat&gt; omega8cc: that would be freakin awesome!
+07:12 &lt;@anarcat&gt; omega8cc: we got config for secure multi-core setups if you're interested... in our wiki
+07:12 &lt;+omega8cc&gt; yep
+07:12 &lt;@mig5&gt; anarcat: would love a review of <a href="http://drupal.org/node/1005014" title="http://drupal.org/node/1005014">http://drupal.org/node/1005014</a>
+07:12 &lt;@mig5&gt; (re:univate)
+07:12 &lt;@anarcat&gt; mig5: got it, maybe tomorrow
+07:12 &lt;@anarcat&gt; mig5: but don't wait for this to rc
+07:12 &lt;@mig5&gt; ok
+07:12 &lt;+omega8cc&gt; anarcat: I will check that, thanks!
+07:12 &lt;@anarcat&gt; okay, anyone else?
+07:13 &lt;+ergonlogic&gt; now that community.aegirproject.org is hosted at Koumbit, I could help if there's any issues with the site itself
+07:13 &lt;+ergonlogic&gt; just let me know
+07:13 &lt;@mig5&gt; eft_: wanted thesession_timeout something or other to be raised
+07:13 &lt;@mig5&gt; so that it remembers you're loged in
+07:13 &lt;@mig5&gt; logged* bah.
+07:13 &lt;@anarcat&gt; ergonlogic: yeah, i think mig5 had issues with some images you could help with
+07:13 &lt;@anarcat&gt; mig5: ^?
+07:14 &lt;@mig5&gt; which images?
+07:14 &lt;@anarcat&gt; mig5: i don't recall
+07:14 &lt;@anarcat&gt; istr there was some thumbnail problem... wasn't there?
+07:14 &lt;@mig5&gt; oh yes
+07:14 &lt; eft_&gt; yea
+07:14 &lt;@mig5&gt; possibly an atrium bug or something weird
+07:14 &lt;@anarcat&gt; yeah
+07:14 &lt;@mig5&gt; <a href="../76/index.html" title="http://community.aegirproject.org/node/76">http://community.aegirproject.org/node/76</a>
+07:14 &lt;@anarcat&gt; well now we have root, so let us know what we need to do :)
+07:14 &lt;@mig5&gt; the href to that is the full size image, but it *always* loads the thumbnail
+07:14 &lt;@anarcat&gt; ergonlogic can take care of it or i can help
+07:14 &lt;+ergonlogic&gt; ok, I'll take a look
+07:15 &lt;@anarcat&gt; okay, i gotta go
+07:15 &lt;@anarcat&gt; and the scrum is over, thanks for attending, people!
+07:15 &lt;@anarcat&gt; and have a nice day
+07:15 &lt;@mig5&gt; cheers
+07:15 &lt;+ergonlogic&gt; thanks all
+07:15 &lt; eft_&gt; ciao
+07:15 &lt;+omega8cc&gt; ciao
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-96.html?destination=node%2F356%23comment-form">Login</a> or <a href="../../user/register/index-96.html?destination=node%2F356%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/356?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:28 GMT -->
+</html>

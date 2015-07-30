@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/935/revisions/2472/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:21:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../contrib/customizing-platform-templates/index.html" />
+<link rel="up" href="../../../../../contrib/index.html" />
+<link rel="next" href="../../../../../content/developing/integrating-aegir/index.html" />
+<link rel="prev" href="../../../../../contrib/customizing-platform-templates/index.html" />
+<link rel="up" href="../../../../../contrib/index.html" />
+<link rel="next" href="../../../../../content/developing/integrating-aegir/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Passing values into the site drushrc.php file during migrations from Fri, 10/28/2011 - 12:00 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-935" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/contrib/passing-values-site-drushrcphp-file-during-migrations/index.html">Passing values into the site drushrc.php file during migrations</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-935'><p>It's possible rely to on manipulating the context for certain tasks and using hook_post_command to make use of that data. In this case, I wanted to save values to the site's drushrc.php file.</p>
+
+<p>Add the following code to hook_post_provision_verify:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">d</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">type </span><span style="color: #007700">== </span><span style="color: #DD0000">'site'</span><span style="color: #007700">) {<br />&nbsp; </span><span style="color: #0000BB">$val </span><span style="color: #007700">= </span><span style="color: #0000BB">drush_get_option</span><span style="color: #007700">(</span><span style="color: #DD0000">'my_custom_option'</span><span style="color: #007700">);<br />&nbsp; </span><span style="color: #0000BB">drush_set_option</span><span style="color: #007700">(</span><span style="color: #DD0000">'my_custom_option'</span><span style="color: #007700">, </span><span style="color: #0000BB">$val</span><span style="color: #007700">, </span><span style="color: #DD0000">'site'</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p>
+
+<p>This makes sure that my_custom_option perpetuates through these potentially destructive operations. Since it is provision-verify that writes the drushrc.php file for the site, options set in the site context during hook_post_provision_verify will be saved.</p>
+
+<p>The final step is to make sure the verify hook is run with the appropriate options at the end of my migrate task, so add this to <code>hook_post_provision_migrate</code>.</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">d</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">type </span><span style="color: #007700">== </span><span style="color: #DD0000">'site'</span><span style="color: #007700">) {<br />&nbsp; </span><span style="color: #0000BB">$options </span><span style="color: #007700">= array(</span><span style="color: #DD0000">'my_custom_option' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">drush_get_option</span><span style="color: #007700">(</span><span style="color: #DD0000">'my_custom_option'</span><span style="color: #007700">));<br />&nbsp; </span><span style="color: #0000BB">$target </span><span style="color: #007700">= </span><span style="color: #0000BB">drush_get_option</span><span style="color: #007700">(</span><span style="color: #DD0000">'target_name'</span><span style="color: #007700">);<br />&nbsp; </span><span style="color: #0000BB">provision_backend_invoke</span><span style="color: #007700">(</span><span style="color: #0000BB">$target</span><span style="color: #007700">, </span><span style="color: #DD0000">'provision-verify'</span><span style="color: #007700">, array(), </span><span style="color: #0000BB">$options</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p>
+
+<p>I got this idea from looking at the <code>drush_provision_drupal_provision_migrate function</code> in <code>platform/migrate.provision.inc</code>.</p>
+
+<p>I used this approach to create a <a href="http://drupal.org/node/1282200#comment-5173768">patch for provision_civicrm</a></p>
+
+<p>This was originally <a href="http://drupal.org/node/955018#comment-5171904">documented in the provision issue queue</a>.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-213.html?destination=node%2F935%23comment-form">Login</a> or <a href="../../../../../user/register/index-213.html?destination=node%2F935%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-213.html?destination=node%2F935%23comment-form">Login</a> or <a href="../../../../../user/register/index-213.html?destination=node%2F935%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/935/revisions/2472/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:21:08 GMT -->
+</html>

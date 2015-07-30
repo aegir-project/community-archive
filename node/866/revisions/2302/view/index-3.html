@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/866/revisions/2302/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:23:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../handbook/strategy/open-app-standard-draft/index.html" />
+<link rel="up" href="../../../../../handbook/strategy/index.html" />
+<link rel="next" href="../../../../../content/handbook/strategy/universities-using-aegir/index.html" />
+<link rel="prev" href="../../../../../handbook/strategy/open-app-standard-draft/index.html" />
+<link rel="up" href="../../../../../handbook/strategy/index.html" />
+<link rel="next" href="../../../../../content/handbook/strategy/universities-using-aegir/index.html" />
+<link rel="prev" href="../../../../../handbook/strategy/open-app-standard-draft/index.html" />
+<link rel="up" href="../../../../../handbook/strategy/index.html" />
+<link rel="next" href="../../../../../content/handbook/strategy/universities-using-aegir/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Software-as-a-Service Business Model Specification from Tue, 08/30/2011 - 19:21 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-866" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../handbook/strategy/saas-business-model-spec/index.html">Software-as-a-Service Business Model Specification</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-866'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 08/30/2011 - 19:21</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>The Software-as-a-Service (SaaS) model allows clients to purchase subscriptions to pre-built sites (whether pre-packaged profiles such as Open Atrium, or custom-built profiles), which are then provisioned for them by an Aegir system.</p>
+
+<p>I (Christopher Gervais a.k.a. ergonlogic) presented on the topic of <a href="http://london2011.drupal.org/conference/sessions/aegir-based-business-models">Aegir-based Business Models at DrupalCon London</a>, where I outlined a number of business models supported by Aegir, with a particular focus on SaaS.</p>
+
+<p>My intention with putting together this roadmap is to plan and then deploy a reference implementation at openatria.com. Basically, this comes down to "one-click" sites that, in it's simplest form (from a customer stand-point) bypasses Aegir all together.</p>
+
+<h2>Order Workflow</h2>
+
+<ol>
+<li>After perusing the service catalog, the client decides on an Open Atrium site and adds it to her cart;</li>
+<li>She then decides on some options, such as:
+
+<ol>
+<li>Extended features (e.g., the experimental OA Reader, in-house or 3rd party custom features, &amp;c.);</li>
+<li>Premium themes;</li>
+<li>A quota on the number of users (more users likely mean more resources and support requirements);</li>
+</ol></li>
+<li>She decides on a level of support (e.g., 8x5 vs. 24/7, phone vs. email vs. forum, &amp;c.);</li>
+<li>She pays;</li>
+<li>She then receives her welcome email from her new Open Atrium site, where a user account has already been created for her and assigned the role of "manager".</li>
+<li>Finally, based on her level of support (from step 3), she might be granted access to additional resources outside her site, such as the ability to submit support requests to the service providers issue-tracking system.</li>
+</ol>
+
+<h2>Details</h2>
+
+<ul>
+<li>The client never sees Aegir.</li>
+<li>She is not assigned UID 1.</li>
+<li>No doubt other options will also need to be made available such as:
+
+<ul>
+<li>Level of security, possibly w/ bundled SSL certificates;</li>
+<li>Use of a subdomain vs. new domain name registration.</li>
+</ul></li>
+<li>Service levels may not need to use uc_hosting or Aegir, per se. They could perhaps be handled by building product kits (i.e. Community/Business/Enterprise levels);</li>
+<li>As noted in step 6 above, access to additional resources (i.e., creating a user account and assigning a role on some other site) could be handled by some other mechanism. However, if this mechanism was implemented in or managed by uc_hosting/Aegir, it could allow for other interesting possibilities, such as a free/cheap/demo package that simply creates a group (in the context of OA) for the client, rather than a full site.</li>
+</ul>
+
+<h2>Modules</h2>
+
+<p>Several modules are already under development to support these features:</p>
+
+<ul>
+<li>Hosting Profile Roles</li>
+<li>User Limit</li><span class='diff-added'>
+</span><li><span class='diff-added'>Registrar API</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Hosting Queue Runner</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Hosting Backup Queue</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Hosting Backup Garbage Collection</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Hosting Services</span></li>
+</ul>
+
+<p>Additionally, some modules are currently in the planning <span class='diff-changed'>phase:</span></p><span class='diff-changed'>
+
+</span><ul><span class='diff-changed'>
+</span><li>Provision Profile <span class='diff-changed'>Roles</span></li><span class='diff-changed'>
+</span><li>Hosting User <span class='diff-changed'>Limit</span></li><span class='diff-changed'>
+</span><li>Provision User <span class='diff-changed'>Limit</span></li><span class='diff-changed'>
+</span><li>Hosting Expiry <span class='diff-changed'>Date</span></li><span class='diff-changed'>
+</span><li>Provision Expiry Date</li><span class='diff-changed'>
+</span></ul>
+
+<h2>Notes</h2>
+
+<p>This is based on an initial spec I wrote last year: <a href="http://groups.drupal.org/node/94959#comment-306609" title="http://groups.drupal.org/node/94959#comment-306609">http://groups.drupal.org/node/94959#comment-306609</a></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-263.html?destination=node%2F866%23comment-form">Login</a> or <a href="../../../../../user/register/index-263.html?destination=node%2F866%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-263.html?destination=node%2F866%23comment-form">Login</a> or <a href="../../../../../user/register/index-263.html?destination=node%2F866%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/866/revisions/2302/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:23:31 GMT -->
+</html>

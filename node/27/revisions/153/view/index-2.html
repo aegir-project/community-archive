@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/27/revisions/153/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:02:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../44/index.html" />
+<link rel="up" href="../../../../20/index.html" />
+<link rel="next" href="../../../../256/index.html" />
+<link rel="prev" href="../../../../44/index.html" />
+<link rel="up" href="../../../../20/index.html" />
+<link rel="next" href="../../../../256/index.html" />
+<link rel="prev" href="../../../../44/index.html" />
+<link rel="up" href="../../../../20/index.html" />
+<link rel="next" href="../../../../256/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Locking and Deleting platforms from Sun, 10/31/2010 - 05:37 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-27" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Locking and Deleting platforms</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-27'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 10/31/2010 - 05:37</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Platforms, like sites, have tasks that can be performed against them, however these tasks are smaller in number and generally more simple.</p>
+
+<p>Some tasks that are available to platforms out of the box are Lock/Unlock and Delete.</p>
+
+<h2>Lock</h2>
+
+<p>The lock task is simply a conceptual protection placed over a platform so that new sites can't be installed on that platform.</p>
+
+<p>It doesn't actually modify anything on the filesystem or on the platform itself, but merely changes the status of the platform in the Aegir database. Once a platform is considered 'locked', it no longer appears in the New Site form when adding a new site.</p>
+
+<p>You might choose to Lock a platform if there is something wrong with that platform and you want to prevent new sites from being added to it by one of your clients or users, or you want to 'hide' the platform for some other reason (perhaps awaiting a release date before allowing new sites).</p>
+
+<h2>Unlock</h2>
+
+<p>To unlock a platform that has been locked, simply click the Unlock button and the status of the platform will be switched back to an Enabled state.</p>
+
+<h2>Delete</h2>
+
+<p>The Delete task is similar to that of sites. The delete button allows you to completely remove a platform from your filesystem irreversibly.</p>
+
+<p>This can be handy if you engage in a build management methodology that involves making regular new platforms to upgrade your site to. It is easy to amass large numbers of platforms on the filesystem, so the Delete task was born to deal with that problem.</p>
+
+<p>A platform can only be deleted if there are no sites currently provisioned on it. The task will fail before deleting anything if it detects that there are sites in the 'sites' directory of that platform.</p>
+
+<p>You must migrate these sites off to a valid new platform before you can delete such a platform.</p>
+
+<p>Unlike site deletions, there is no backup made of a platform (because it's not bootstrappable by Drush), so be careful with this task: there is no going back!</p>
+
+<p>It is recommended to make regular filesystem backups outside of Aegir altogether, and to use the Lock task to temporarily 'disable' a platform from use if you are unsure whether you want to delete it, but don't want it shown on the Aegir frontend.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-390.html?destination=node%2F27%23comment-form">Login</a> or <a href="../../../../../user/register/index-390.html?destination=node%2F27%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/27/revisions/153/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:02:11 GMT -->
+</html>

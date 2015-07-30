@@ -1,0 +1,156 @@
+Task starts processing
+Trying to get property of non-object hosting_site.drush.inc:13
+Running: /usr/share/drush/drush.php --uri='helsekompetanse.no' provision-save '@helsekompetanse.no' --backend 2>&1
+Bootstrap to phase 0.
+Drush bootstrap phase : _drush_bootstrap_drush()
+Bootstrap to phase 0.
+Found command: provision-save (commandfile=provision)
+Initializing drush commandfile: drush_make
+Initializing drush commandfile: drush_make_d_o
+Initializing drush commandfile: provision
+Load alias @self
+Load alias @server_master
+Loading mysql driver for the db service
+Loading apache driver for the http service
+Initializing drush commandfile: user
+Load alias @helsekompetanse.no
+Load alias @platform_GammelHK
+Template loaded: /usr/share/drush/commands/provision/provision_drushrc_alias.tpl.php
+Changed permissions of /var/aegir/.drush/helsekompetanse.no.alias.drushrc.php to 640
+Generated config Drush configuration file
+Changed permissions of /var/aegir/.drush/helsekompetanse.no.alias.drushrc.php to 440
+Command dispatch complete
+Peak memory usage was 10.69 MB
+Running: /usr/share/drush/drush.php @helsekompetanse.no provision-import --backend 2>&1
+Bootstrap to phase 0.
+Drush bootstrap phase : _drush_bootstrap_drush()
+Load alias @helsekompetanse.no
+Bootstrap to phase 1.
+Drush bootstrap phase : _drush_bootstrap_drupal_root()
+Loading drushrc "/var/aegir/platforms/hk_old/drushrc.php" into "drupal" scope.
+Initialized Drupal 6.26 root directory at /var/aegir/platforms/hk_old
+Found command: provision-import (commandfile=provision)
+Initializing drush commandfile: drush_make
+Initializing drush commandfile: drush_make_d_o
+Initializing drush commandfile: provision
+Load alias @server_master
+Loading mysql driver for the db service
+Loading apache driver for the http service
+Load alias @platform_GammelHK
+Initializing drush commandfile: user
+Including /usr/share/drush/commands/provision/platform/import.provision.inc
+Drush bootstrap phase : _drush_bootstrap_drupal_site()
+Initialized Drupal site helsekompetanse.no at sites/helsekompetanse.no
+Drush bootstrap phase : _drush_bootstrap_drupal_configuration()
+Drush bootstrap phase : _drush_bootstrap_drupal_database()
+Successfully connected to the Drupal database.
+Drush bootstrap phase : _drush_bootstrap_drupal_full()
+Template loaded: /usr/share/drush/commands/provision/provision_drushrc_alias.tpl.php
+Changed permissions of /var/aegir/.drush/helsekompetanse.no.alias.drushrc.php to 640
+Generated config Drush configuration file
+Changed permissions of /var/aegir/.drush/helsekompetanse.no.alias.drushrc.php to 440
+Running: /usr/share/drush/drush.php @helsekompetanse.no provision-verify --backend 2>&1
+Bootstrap to phase 0.
+Drush bootstrap phase : _drush_bootstrap_drush()
+Load alias @helsekompetanse.no
+Bootstrap to phase 0.
+Found command: provision-verify (commandfile=provision)
+Initializing drush commandfile: drush_make
+Initializing drush commandfile: drush_make_d_o
+Initializing drush commandfile: provision
+Load alias @server_master
+Loading mysql driver for the db service
+Loading apache driver for the http service
+Load alias @platform_GammelHK
+Initializing drush commandfile: user
+Including /usr/share/drush/commands/provision/dns/verify.provision.inc
+Including /usr/share/drush/commands/provision/platform/backupmigrate/verify.provision.inc
+Including /usr/share/drush/commands/provision/platform/verify.provision.inc
+Drush bootstrap phase : _drush_bootstrap_drupal_root()
+Loading drushrc "/var/aegir/platforms/hk_old/drushrc.php" into "drupal" scope.
+Initialized Drupal 6.26 root directory at /var/aegir/platforms/hk_old
+Drush bootstrap phase : _drush_bootstrap_drupal_site()
+Initialized Drupal site helsekompetanse.no at sites/helsekompetanse.no
+Drush bootstrap phase : _drush_bootstrap_drupal_configuration()
+Drush bootstrap phase : _drush_bootstrap_drupal_database()
+Successfully connected to the Drupal database.
+Drush bootstrap phase : _drush_bootstrap_drupal_full()
+Found install profile default
+Found 437 modules
+Found 11 themes
+Changed permissions of sites/helsekompetanse.no to 755
+Created sites/helsekompetanse.no/themes
+Changed permissions of sites/helsekompetanse.no/themes to 2775
+Created sites/helsekompetanse.no/modules
+Changed permissions of sites/helsekompetanse.no/modules to 2775
+Created sites/helsekompetanse.no/libraries
+Changed permissions of sites/helsekompetanse.no/libraries to 2775
+Changed permissions of sites/helsekompetanse.no/files to 2770
+Created sites/helsekompetanse.no/files/tmp
+Changed permissions of sites/helsekompetanse.no/files/tmp to 2770
+Changed permissions of sites/helsekompetanse.no/files/images to 2770
+Changed permissions of sites/helsekompetanse.no/files/pictures to 2770
+Changed permissions of sites/helsekompetanse.no/files/css to 2770
+Changed permissions of sites/helsekompetanse.no/files/js to 2770
+Changed permissions of sites/helsekompetanse.no/files/ctools to 2770
+Changed permissions of sites/helsekompetanse.no/files/imagecache to 2770
+Created sites/helsekompetanse.no/files/locations
+Changed permissions of sites/helsekompetanse.no/files/locations to 2770
+Created sites/helsekompetanse.no/private
+Changed permissions of sites/helsekompetanse.no/private to 2770
+Created sites/helsekompetanse.no/private/files
+Changed permissions of sites/helsekompetanse.no/private/files to 2770
+Created sites/helsekompetanse.no/private/temp
+Changed permissions of sites/helsekompetanse.no/private/temp to 2770
+Changed group ownership of sites/helsekompetanse.no/files to www-data
+Changed group ownership of sites/helsekompetanse.no/files/tmp to www-data
+Changed group ownership of sites/helsekompetanse.no/files/images to www-data
+Changed group ownership of sites/helsekompetanse.no/files/pictures to www-data
+Changed group ownership of sites/helsekompetanse.no/files/css to www-data
+Changed group ownership of sites/helsekompetanse.no/files/js to www-data
+Changed group ownership of sites/helsekompetanse.no/files/ctools to www-data
+Changed group ownership of sites/helsekompetanse.no/files/imagecache to www-data
+Changed group ownership of sites/helsekompetanse.no/files/locations to www-data
+Changed group ownership of sites/helsekompetanse.no/private to www-data
+Changed group ownership of sites/helsekompetanse.no/private/files to www-data
+Changed group ownership of sites/helsekompetanse.no/private/temp to www-data
+Undefined index: db_type provision_drupal.drush.inc:154
+Undefined index: db_user provision_drupal.drush.inc:154
+Undefined index: db_passwd provision_drupal.drush.inc:154
+Undefined index: db_host provision_drupal.drush.inc:154
+Undefined index: db_name provision_drupal.drush.inc:154
+Undefined index: db_port provision_drupal.drush.inc:154
+Template loaded: /usr/share/drush/commands/provision/platform/provision_drupal_settings.tpl.php
+Changed permissions of /var/aegir/platforms/hk_old/sites/helsekompetanse.no/settings.php to 640
+Generated config Drupal settings.php file
+Changed permissions of /var/aegir/platforms/hk_old/sites/helsekompetanse.no/settings.php to 440
+Change group ownership of /var/aegir/platforms/hk_old/sites/helsekompetanse.no/settings.php to www-data
+Template loaded: /usr/share/drush/commands/provision/http/apache/vhost.tpl.php
+Generated config virtual host configuration file
+apache on helsekompetanse.no has been restarted
+Cleared all caches
+Rebuilt node type cache
+Rebuilt module cache
+Rebuilt theme cache
+Rebuilt menu cache
+Client home directory for admin path /var/aegir/clients/admin exists.
+Client home directory for admin ownership of /var/aegir/clients/admin has been changed to aegir.
+Client home directory for admin permissions of /var/aegir/clients/admin have been changed to 750.
+Client home directory for admin path /var/aegir/clients/admin is writable.
+Created symlink /var/aegir/clients/admin/helsekompetanse.no to /var/aegir/platforms/hk_old/sites/helsekompetanse.no
+Template loaded: /usr/share/drush/commands/provision/provision_drushrc_site.tpl.php
+Generated config Site Drush configuration file
+Changed permissions of /var/aegir/platforms/hk_old/sites/helsekompetanse.no/drushrc.php to 440
+Command dispatch complete
+Peak memory usage was 153.65 MB
+Reloading site drushrc.php from sites/helsekompetanse.no/drushrc.php
+Undefined index: db_type drushrc.php:13870
+Undefined index: db_port drushrc.php:13871
+Undefined index: db_host drushrc.php:13872
+Undefined index: db_user drushrc.php:13873
+Undefined index: db_passwd drushrc.php:13874
+Undefined index: db_name drushrc.php:13875
+Command dispatch complete
+Peak memory usage was 77.85 MB
+Command dispatch complete
+Peak memory usage was 36.33 MB

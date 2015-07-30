@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/23/revisions/37/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:00:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../42/index.html" />
+<link rel="up" href="../../../../43/index.html" />
+<link rel="next" href="../../../../../migration-tips/index.html" />
+<link rel="prev" href="../../../../42/index.html" />
+<link rel="up" href="../../../../43/index.html" />
+<link rel="next" href="../../../../../migration-tips/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="prev" href="../../../index.html" />
+<link rel="up" href="../../../index.html" />
+<link rel="next" href="../../../../../content/renaming-aegir-hostmaster-site-itself/index.html" />
+<link rel="prev" href="../../../../../migration-tips/index.html" />
+<link rel="up" href="../../../index.html" />
+<link rel="next" href="../../../../24/index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Migrate / Upgrade websites from Wed, 10/27/2010 - 02:26 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-23" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Migrate / Upgrade websites</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-23'><p>Migrate / Upgrade websites</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-298.html?destination=node%2F23%23comment-form">Login</a> or <a href="../../../../../user/register/index-298.html?destination=node%2F23%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+
+<div  id="node-658" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../migration-tips/index.html">Migration Tips</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>In the context of sites, migration is the task of moving a site from one platform to another.  Migration is the Aegir-preferred method for applying updates to modules and certainly to core.  In other words, to upgrade core or modules, create a new platform with the upgrades, then migrate sites to the new platform.</p>
+
+<p>Ideally, a migration requires nothing more than a mouse-click on the Migrate button on the Site node in your Aegir for the site you want to migrate.  If you've prepared your destination platform properly, a migration will be this simple.  Proper preparation, therefore, is vital.</p>
+
+<p>To prepare a new platform to be a destination for migration, consider at least the following:</p>
+
+<ul>
+<li>The directory structure for your modules and themes must be the same on the source and destination platforms.  For example, if the modules on the source platform are in
+
+<div class="codeblock"><code>../platform-abc/sites/all/modules/contrib</code></div>
+then the destination platform must have its modules also in this directory.
+</li><li>You may need to clear the Drupal cache on the source platform to avoid migration errors.  Upgrades to Aegir in the future may handle this automatically, so be aware of the version of Aegir you're running and whether it includes upgrades to address this issue.
+</li></ul>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-37.html?destination=node%2F658%23comment-form">Login</a> or <a href="../../../../../user/register/index-37.html?destination=node%2F658%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-37.html?destination=node%2F658%23comment-form">Login</a> or <a href="../../../../../user/register/index-37.html?destination=node%2F658%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-1766" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/renaming-aegir-hostmaster-site-itself/index.html">Renaming the Aegir hostmaster site itself</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>From <a href="../../../../363/index.html" title="http://community.aegirproject.org/node/363">http://community.aegirproject.org/node/363</a> :</p>
+
+<p>WARNING: Be sure to have a good backup (which you can restore) before attempting this.</p>
+
+<ol>
+<li>manually edit the crontab for aegir to stop the periodic execution of the command 'hosting-dispatch' (the drush command 'hostmaster-pause' did not exist on my system)
+</li><li>delete the hostmaster site (drush @hostmaster provision-delete)
+</li><li>change the alias (drush provision-save @hostmaster --uri=hostmaster2.example.com --aliases=hostmaster.example.com)
+</li><li>deploy the backup (drush @hostmaster provision-deploy /var/aegir/backup/hostmaster.example.com...tgz)
+</li><li>checked that all changes appeared correct - YES
+</li><li>Reneabled the hosting-dispatch task by editing the crontab again
+</li><li>ran a verify task against the new hostmaster site. Noticed that the site is listed on the site page with the old domain name. The verify failed.
+</li><li>Found that the verify task had created a new entry in the hostmaster-6.x-1.7/sites directory for the old domain name. I removed this created directory. I found and edited (using phpMyAdmin) the relevant entries in the node and node revision tables for the hostmaster site to update the domain name (change the title field). The hosting_site_alias table may also need to be updated if you have site aliases.
+</li><li>The verify task also seemed to have regressed the @hostmaster alias file (~/.drush/hostmaster.alias.drushrc.php) as it had the URI and aliases details from the old site back in it. I edited this file to return these items to their new values.
+</li><li>The verify task now completed successfully and all seems to be working correctly.
+</li></ol>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-388.html?destination=node%2F1766%23comment-form">Login</a> or <a href="../../../../../user/register/index-388.html?destination=node%2F1766%23comment-form">register</a> to post comments</span></li>
+<li class="talk_comments last"><a href="../../../../1766/talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+
+<div id="comments">
+  <a id="comment-1861"></a>
+
+
+<div  id="comment-1861" class="comment comment-published clear-block decay-10 decay-10">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/shumushin/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="shumushin&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/shumushin/index.html" class="username" title="View user profile.">shumushin</a></div><div class='date'>1:56pm Feb 26, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1861">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p><cite>Various bits and pieces are fixed up, such as paths to files in the 'files' table of the database.</cite></p>
+
+<p>Can you be more precise here please? Or just tell where in the code we should look for it. Thanks!</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-298.html?destination=node%2F23%23comment-form">Login</a> or <a href="../../../../../user/register/index-298.html?destination=node%2F23%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-1862"></a>
+
+
+<div  id="comment-1862" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/helmo/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="helmo&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/helmo/index.html" class="username" title="View user profile.">helmo</a></div><div class='date'>12:22pm Feb 27, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1862">#2</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>This is defined in provision, platform/drupal/deploy.inc</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-298.html?destination=node%2F23%23comment-form">Login</a> or <a href="../../../../../user/register/index-298.html?destination=node%2F23%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/23/revisions/37/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:00:16 GMT -->
+</html>

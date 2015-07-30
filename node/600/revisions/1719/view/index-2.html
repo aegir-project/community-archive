@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/600/revisions/1719/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:30:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Crazy Aegir Ideas 2: The Aegir Graph or Aegir Ecology Design &amp; Mapping from Tue, 04/19/2011 - 19:07 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-600" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/niccolo/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-440/index.jpg" alt="niccolo&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/niccolo/index.html" class="username" title="View user profile.">niccolo</a></div><div class='date'>7:03pm Apr 19, 2011</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="../../../../../discuss/crazy-aegir-ideas-2-aegir-graph-or-aegir-ecology-design-mapping/index.html">Crazy Aegir Ideas 2: The Aegir Graph or Aegir Ecology Design &amp; Mapping</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class="field field-type-nodereference field-field-referenced-book-page">
+    <div class="field-items">
+            <div class="field-item odd">
+                      <div class="field-label-inline-first">
+              Referenced Page:&nbsp;</div>
+                    <a href="../../../../../developing/index.html">Developer Manual</a>        </div>
+        </div>
+</div>
+<p>again, I preface this discussion with a "I am a crazy and annoying optimist".. I am the guy that goes at release 1.0, with a roadmap for release 2.0 starts talking about release 7.3..</p>
+
+<p>anyway, enough caveats</p>
+
+<h1>The Aegir Graph: Modelling &amp; Vizualizing the Aegir Ecosystem</h1>
+
+<h2>Mapping: Reading the Aegir Graph </h2>
+
+<p>the basic idea is to create an Aegir Graph. A graphing and modelling tool that would perhaps at first generate a nice visualisation of a host and clients site networks.</p>
+
+<p>Graphmind already allows reading of nodes (Drupal 6 only) and views, and it would be possible to connect into the many API's, RSS, XML, RDFa, taxonomies, users etc..</p>
+
+<p>Using the Graphmind module (a flex mind-mapper tool) would create a Hostmaster module which uses the Aegir API etc to map and create site networks</p>
+
+<p>it could provide a node/object/graph vizualization for mapping existing and also creating new Aegir content items</p>
+
+<p>you could imagine mapping all of the Aegir content types in a kind of tree, or hub and spoke model</p>
+
+<p>server at center, then client, platforms, sites, packages(themes/modules/libraries), nodes/entities</p>
+
+<p>drilling down from the host level (root) all the way to the tip of the branch i.e. the node/entity</p>
+
+<h2>Designing: Writing the Aegir Graph </h2>
+
+<p>a much more advanced implementation would be to write, or create elements of the Aegir Graph i.e. elements and connections</p>
+
+<p>obviously the Aegir API is providing a way for this, and as above there are other APIs, Service API, RSS, Sitemaps, RDFa etc etc..</p>
+
+<p>at the moment Graphmind can write AND read, its CRUD
+<a href="http://drupal.org/project/graphmind" title="http://drupal.org/project/graphmind">http://drupal.org/project/graphmind</a></p>
+
+<p>its really promising for developing a couple of generations of Aegir Graph prototypes</p>
+
+<p><img src="http://drupal.org/files/images/Picture 6_4.preview.png" /></p>
+
+<h2>HTML5, ProcessingJS, Canvas etc</h2>
+
+<p>my gut feeling is to move away from Flex and the Graphmind interface as is, and move to something HTML5ish.</p>
+
+<p>My wild spirits want me to look into ProcessingJS which is the Javascript port (almost feature complete) of the Java-based vizualization language Processing
+<a href="http://processingjs.org/" title="http://processingjs.org/">http://processingjs.org/</a>
+<a href="http://processing.org/" title="http://processing.org/">http://processing.org/</a></p>
+
+<p>Processing is used online for web vizualizations, and also via installations i.e. using sensors a person can walk into a physical space and interact. Mostly its gee-wizz stuff, but there is advanced research into alternative interaction metaphors. Tablets (ipad, android) and mobile devices (iphones, android) are stretching the user experience</p>
+
+<p>Processing has been used to create a visual programming environment to teach electronic circuits
+<a href="http://wiring.org.co/learning/basics/index.html" title="http://wiring.org.co/learning/basics/index.html">http://wiring.org.co/learning/basics/index.html</a>
+<a href="http://wiki.wiring.org.co/index.php?title=Main_Page" title="http://wiki.wiring.org.co/index.php?title=Main_Page">http://wiki.wiring.org.co/index.php?title=Main_Page</a></p>
+
+<p>together Wiring and Processing spawned the popular open-source hardware kits Arduino <a href="http://www.arduino.cc/" title="http://www.arduino.cc/">http://www.arduino.cc/</a> and also <a href="http://fritzing.org/" title="http://fritzing.org/">http://fritzing.org/</a> for prototyping</p>
+
+<p>I am hoping there are enough examples of Java-based Processing visual language design tools to transfer a modified subset across to ProcessingJS to make some nice vizualizations possible.</p>
+
+<p>Some useful models for design and some aesthetic visualizations for generating headers, banners, slideshows and various interactives</p>
+
+<p>one small example, imagine the ProcessingJS banner as a Drupal module, that generated the header visualization based on</p>
+
+<p>http://en.wikipedia.org/wiki/Processing_(programming_language)</p>
+
+<p>there is also the Eclipse modelling world, which is again Java-based, providing a wealth of design patterns</p>
+
+<p>next, my final Crazy Aegir Idea (for now): Aegir Ecology vs Drupal Gardens</p><div class="itu-attachments"><table class="itu-attachment-list withoutstats sticky-enabled" id="attachments">
+ <thead><tr><th class="preview">Preview</th><th class="file">Attachment</th><th class="size">Size</th> </tr></thead>
+<tbody>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../../../../sites/community.aegirproject.org/files/picture_6_4.preview/index.png" title="picture_6_4.preview.png"><img src="../../../../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/picture_6_4.preview/index.png" alt="picture_6_4.preview.png" title="picture_6_4.preview.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../../../../sites/community.aegirproject.org/files/picture_6_4.preview/index.png">picture_6_4.preview.png</a></td><td class="size">223.95 KB</td> </tr>
+</tbody>
+</table>
+</div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-287.html?destination=node%2F600%23comment-form">Login</a> or <a href="../../../../../user/register/index-287.html?destination=node%2F600%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/600/revisions/1719/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:30:13 GMT -->
+</html>

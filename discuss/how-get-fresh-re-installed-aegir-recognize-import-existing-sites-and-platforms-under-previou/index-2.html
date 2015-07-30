@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/how-get-fresh-re-installed-aegir-recognize-import-existing-sites-and-platforms-under-previou?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 20:58:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>How to get fresh re-installed Aegir to recognize (import?) existing sites and platforms under previous working aegir install | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1523" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/webmaster-eddie/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-832/index.jpg" alt="webmaster-eddie&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/webmaster-eddie/index.html" class="username" title="View user profile.">webmaster-eddie</a></div><div class='date'>6:04am May 28, 2012</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">How to get fresh re-installed Aegir to recognize (import?) existing sites and platforms under previous working aegir install</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_124 first"><a href="../../category/keywords/aegir-re-install/index.html" rel="tag" title="">aegir re-install</a></li>
+<li class="taxonomy_term_125"><a href="../../category/keywords/existing-sites/index.html" rel="tag" title="">existing sites</a></li>
+<li class="taxonomy_term_127"><a href="../../category/keywords/import/index.html" rel="tag" title="">import</a></li>
+<li class="taxonomy_term_129"><a href="../../category/keywords/pre-existing-platforms/index.html" rel="tag" title="">pre-existing platforms</a></li>
+<li class="taxonomy_term_128"><a href="../../category/keywords/pre-existing-sites/index.html" rel="tag" title="">pre-existing sites</a></li>
+<li class="taxonomy_term_126 last"><a href="../../category/keywords/recognize/index.html" rel="tag" title="">recognize</a></li>
+</ul></div><p>I had a working system of aegir 1.9 with existing verified sites and platforms. I had to completely re-install the aegir system, and I cannot seem to get it to import or recognize pre-existing platforms and sites. I staill have all the databases w&lt;ith their data and all the files and modules in place for all the pre-existing sites and platforms.</p>
+
+<p>I had a problem with memcached when first attempting this, so I purged memcached. Now the servers and newly created platforms and newly-created sites verify, but I cannot run drush up on the newly created sites successfully - that is, it will not update modules, stating that it cannot move a file, or a directory is not writable.  IS there a specific permission problem that needs to be taken care of when attempting this? Is this supported - the import so to speak of pre-existing platforms and sites on a fresh aegir re-install?</p>
+
+<p>What I've done to try to solve the problem:
+- I have chown aegir:aegir just about everything, in /var/aegir/ 
+- I have : 
+Defaults   envreset
+Defaults:aegir !requiretty</p>
+
+<p>root ALL=(ALL) ALL
+%sudo ALL=(ALL) ALL
+root ALL=(aegir) NOPASSWD: ALL
+aegir ALL=NOPASSWD: /usr/sbin/apache2ctl 
+in the /etc/sudoers file in that order (is that overkill? any problem there?)</p>
+
+<p>A possible error is when I run, as the aegir user "sudo /usr/sbin/apache2ctl graceful" , it appears as if apache2 is restarting, but there is no green OK afterwards (and there is when I restart apche2 as root user /etc/init.d/apache2 restart) and also, I have checked and seen that the PID of apache2 does not change when I run the "sudo /usr/sbin/apache2ctl graceful" command as the aegir user. (It does when I restart apache2 as root ) Does this mean that aegir is not actually restarting apache2? I receive no error messages at all.</p>
+
+<p>I am running debian squeeze and aegir 1.9. I also have PHP 5.4 installed (not sure if I can downgrade to PHP 5.3, and all this was working fine BEFORE i mistakenly upgraded drush to 5.) I have the proper drush 4.5 installed and no caching now. Drush command cc all, updb work fine on newly created sites, and all drush commands work on the hosmaste site. drush up and upc do not work on newly created verified sites - in which I used the same platform name as the pre-existing platform - thinking that I had to for aegir to recognize the pre-existing sites in the pre-existing platform. (Is this the correct way, or is this an error?)</p>
+
+<p>Lastly, when I tru to use drush make to install a new platform, it does not work, I receive an error at the very end (after it downloaded everything):
+PHP Fatal Error: Call to a member function (make) on a non object in /usr/share/drush/commands/drush.make/drush_make.drush.inc on line 223.
+I assume this is due to an incompatibility with PHP 5.4 (please correct me if I am wrong) - however this is NOT my major problem right now - I need to get aegir to recognize pre-existing platforms and sites, and for the drush upc and up command to work in newly created sites. (All this worked with PHP 5.4 before the aegir re-install.)</p>
+
+<p>I appreciate any advice here. Thank you.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-472.html?destination=node%2F1523%23comment-form">Login</a> or <a href="../../user/register/index-472.html?destination=node%2F1523%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/how-get-fresh-re-installed-aegir-recognize-import-existing-sites-and-platforms-under-previou?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 20:58:46 GMT -->
+</html>

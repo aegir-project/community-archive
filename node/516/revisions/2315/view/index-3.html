@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/516/revisions/2315/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:06:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/contrib-modules/provision-acl/index.html" />
+<link rel="up" href="../../../../../contrib-modules/index.html" />
+<link rel="next" href="../../../../../contrib-modules/provision-civicrm/index.html" />
+<link rel="prev" href="../../../../../content/contrib-modules/provision-acl/index.html" />
+<link rel="up" href="../../../../../contrib-modules/index.html" />
+<link rel="next" href="../../../../../contrib-modules/provision-civicrm/index.html" />
+<link rel="prev" href="../../../../../content/contrib-modules/provision-acl/index.html" />
+<link rel="up" href="../../../../../contrib-modules/index.html" />
+<link rel="next" href="../../../../../contrib-modules/provision-civicrm/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Ubercart Integration from Thu, 09/08/2011 - 03:39 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-516" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Ubercart Integration</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-516'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/sfyn/index.html" class="username" title="View user profile.">sfyn</a> on 09/08/2011 - 03:39</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>This module provides several features to ubercart products on an Aegir platform.</p>
+
+<h2>Requirements</h2>
+
+<ul>
+<li>Hostmaster 6.x-1.0 or higher</li>
+<li>Ubercart 6.x-2.4 or higher</li>
+<li>Patience</li>
+</ul>
+
+<h2>Installation</h2>
+
+<ol>
+<li>Download the module and its dependencies into sites/all/modules on your hostmaster platform (<code>drush @hostmaster dl uc_hosting ubercart</code> should work)</li>
+<li>Activate the clients feature for hostmaster (<code>admin/hosting/features</code>)</li>
+<li>Enable the module uc_hosting_products. This should enable all dependencies (<code>drush @hostmaster en uc_hosting_products</code>)</li>
+</ol>
+
+<h2>Creating your first site product</h2><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><strong><span class='diff-added'>N.B.</span></strong><span class='diff-added'> A video introduction covering configuration is available from the DrupalCon London session </span><a hre="http://london2011.drupal.org/conference/sessions/aegir-based-business-models"><span class='diff-added'>Aegir-based Business Models</span></a><span class='diff-added'> (starting at 26:30).</span></p>
+
+<ol>
+<li>Create a product. Make sure it is not shippable. (<code>node/add/product</code>)</li>
+<li>Edit the product. Go to the features tab.</li>
+<li>Choose the "Create a site and adjust quotas accordingly" feature. It should use the sku of your product automatically.</li>
+<li>Now all you need is a drupal platform that any user can create sites on and you are ready to go. (<code>node/add/platform</code>)</li>
+</ol>
+
+<h2>Creating more complex offerings using product kits</h2>
+
+<p>The method we recommend for creating complex offerings, including multiple site quotas and access to restricted platforms, is via Ubercart product kits.</p>
+
+<ol>
+<li>Enable uc_product_kit.</li>
+<li>Create one or more uc_hosting products.</li>
+<li>Create a product kit with these products in them in the appropriate quantities.</li>
+</ol>
+
+<h2>Support</h2>
+
+<p>You can report bugs, request support and propose patches <a href="http://drupal.org/project/issues/uc_hosting">via our issue queue on Drupal.org</a>.</p>
+
+<h2>Development</h2>
+
+<p>If you would like to use uc_hosting to develop your own Aegir dependant product features, be sure to <a href="../../../../../creating-product-features-using-uchosting-1x/index.html">read the relevant documentation</a>.</p>
+
+<p>Check out the <a href="../../../../108/index.html">roadmap</a>.</p>
+
+<h2>Other Resources</h2>
+
+<ul>
+<li><a href="../../../../../index.html">Aegir community site</a></li>
+<li><a href="http://www.ubercart.org/docs">Ubercart Documentation</a></li>
+<li>#aegir IRC channel on <a href="http://freenode.net/">freenode</a></li>
+</ul></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-69.html?destination=node%2F516%23comment-form">Login</a> or <a href="../../../../../user/register/index-69.html?destination=node%2F516%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-69.html?destination=node%2F516%23comment-form">Login</a> or <a href="../../../../../user/register/index-69.html?destination=node%2F516%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/516/revisions/2315/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:06:55 GMT -->
+</html>

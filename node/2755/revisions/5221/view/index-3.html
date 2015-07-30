@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/2755/revisions/5221/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:14:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../2/index-7.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-9.html" />
+<link rel="prev" href="../../../../../2/index-7.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-9.html" />
+<link rel="prev" href="../../../../../2/index-7.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-9.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of 2.0-rc3 release notes from Thu, 08/29/2013 - 15:50 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2755" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../2/index-8.html">2.0-rc3 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_4 first"><a href="../../../../../taxonomy/term/4/index.html" rel="tag" title="This level is for users who have access to only their sites and not able to manage all Aegir features, accounts or the server/system.">Client</a></li>
+<li class="taxonomy_term_27"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_3"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-2755'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 08/29/2013 - 15:50</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>The Aegir team is pleased to announce the third release candidate for the upcoming Aegir 2.0 release.</p>
+
+<p>This release mainly fixes a<span class='diff-added'> couple</span> critical <span class='diff-changed'>bugs</span> in 2.0-rc2 that <span class='diff-changed'>were</span> causing<span class='diff-added'> problems when sites were being cloned or renamed. We've added a couple small features, such as additional options during hostmaster-install, and allowing</span> the <span class='diff-changed'>redirect to the Welcome page</span> to be <span class='diff-changed'>turned off. Also, we've made</span> a <span class='diff-changed'>small addition to the API, in that there is now a hook available (</span><code><span class='diff-changed'>hook_provision_drupal_create_directories_alter()</span></code><span class='diff-changed'>) to allow altering the directories created when a site installed.</span> A number of pending issues require a new stable release of Drush (5.10), so we will work with the maintainers to help get a new release out.</p>
+
+<h1>Known issues</h1>
+
+<p>Our release process is still done by hand instead of being more automated because we can't use our aegir distribution as core (<a href="https://drupal.org/node/1991764">issue #1991764</a>).</p>
+
+<p><a href="https://drupal.org/node/1931000">Issue #1931000: Missing drush backend output in frontend log</a> has been fixed, but may require a <a href="https://drupal.org/node/2025527#comment-7566747">patch to Drush</a> for the use of hosting-queued.</p>
+
+<p>Subdirectory support is still very preliminary and needs a number of issues to be fixed before completion, see <a href="https://drupal.org/node/2046167">#2046167</a> for details. Note that this will not block a stable release, since this feature is 'experimental', and additional re-factoring can occur during the stable release cycle.</p>
+
+<h1>Detailed list of changes</h1>
+
+<h2>API CHANGES</h2>
+
+<ul><span class='diff-changed'>
+  </span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1283738"><span class='diff-changed'>#1283738</span></a><span class='diff-changed'> by halcyonCorsair, cweagans: Allow other commands to add or alter the directories to be created.</span></li><span class='diff-changed'>
+</span></ul>
+
+<h2>NEW FEATURES</h2>
+
+<ul><span class='diff-changed'>
+  </span><li><span class='diff-changed'></span><a href="http://drupal.org/node/2069387"><span class='diff-changed'>#2069387</span></a><span class='diff-changed'> by cweagans, mstenta: Support nonstandard ports on hostmaster-install command.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'></span><a href="http://drupal.org/node/2067617"><span class='diff-changed'>#2067617</span></a><span class='diff-changed'>: Allow hostmaster-install to accept '--working-copy' option.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'>Allow the redirect to the welcome page to be turned off.</span></li><span class='diff-changed'>
+</span></ul>
+
+<h2>BUG FIXES</h2>
+
+<ul><span class='diff-changed'>
+  </span><li><span class='diff-changed'>Add E_STRICT patch to test openatrium makefile so tests will pass on PHP 5.4.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'></span><a href="http://drupal.org/node/2067603"><span class='diff-changed'>#2067603</span></a><span class='diff-changed'>: Fix original and cloned site pointing to the same database.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'></span><a href="http://drupal.org/node/2048653"><span class='diff-changed'>#2048653</span></a><span class='diff-changed'>: Ensure mysql is secure before proceeding with hostmaster install.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'></span><a href="http://drupal.org/node/2060727"><span class='diff-changed'>#2060727</span></a><span class='diff-changed'>: Patch Drupal core to suppress E_STRICT warnings on PHP5.4.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'></span><a href="http://drupal.org/node/2038279"><span class='diff-changed'>#2038279</span></a><span class='diff-changed'>: Warn of invalid account email on site install.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'></span><a href="http://drupal.org/node/2055949"><span class='diff-changed'>#2055949</span></a><span class='diff-changed'>: Fix migrate drops wrong database when domain name changes.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'></span><a href="http://drupal.org/node/2074681"><span class='diff-changed'>#2074681</span></a><span class='diff-changed'> by cweagans, mstenta: Fixed ports are hardcoded in hostmaster.profile.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'>Use custom functions for block visibility.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'></span><a href="http://drupal.org/node/1940378"><span class='diff-changed'>#1940378</span></a><span class='diff-changed'>: Fix PHP 5.4 warning by initializing an object variable prior to assigning properties.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'></span><a href="http://drupal.org/node/2050881"><span class='diff-changed'>#2050881</span></a><span class='diff-changed'>: Call drush.php via php, since it isn't executable when installed via PEAR.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'>Enable platform site-list block, since it had to be renamed.</span></li><span class='diff-changed'>
+</span></ul></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-163.html?destination=node%2F2755%23comment-form">Login</a> or <a href="../../../../../user/register/index-163.html?destination=node%2F2755%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-163.html?destination=node%2F2755%23comment-form">Login</a> or <a href="../../../../../user/register/index-163.html?destination=node%2F2755%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/2755/revisions/5221/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:14:22 GMT -->
+</html>

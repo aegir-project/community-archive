@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/557/revisions/1497/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:20:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../324/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../494/index.html" />
+<link rel="prev" href="../../../../324/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../494/index.html" />
+<link rel="prev" href="../../../../324/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../494/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of UNIX group limitations from Fri, 04/08/2011 - 15:48 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-557" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../developing/architecture/unix-group-limitations/index.html">UNIX group limitations</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-557'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a> on 04/08/2011 - 15:48</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>While working on the security enhancements, I stumbled upon a few fundamental UNIX limitations with groups.</p>
+
+<h2>Group name length</h2>
+
+<ul>
+<li>NIS: 8 characters (<a href="http://unix.derkeiler.com/Newsgroups/comp.unix.solaris/2007-02/msg00818.html">source</a>)</li>
+<li>HPUX: 8 <span class='diff-changed'>characters, 16 starting from HPUX 10</span> (<a href="http://h30097.www3.hp.com/docs/base_doc/DOCUMENTATION/V51B_HTML/MAN/MAN8/0353____.HTM">source</a><span class='diff-changed'>, </span><a href="http://lists.alioth.debian.org/pipermail/pkg-shadow-devel/2009-March/007031.html"><span class='diff-changed'>source</span></a><span class='diff-changed'>)</span></li>
+<li>AIX: 8 characters, 255 for AIX 5.3 and above (<a href="http://publib.boulder.ibm.com/infocenter/pseries/v5r3/index.jsp?topic=/com.ibm.aix.security/doc/security/user_group_name_length.htm"><span class='diff-added'>source</span></a><span class='diff-added'>)</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Debian: 16 characters (</span><a href="http://lists.alioth.debian.org/pipermail/pkg-shadow-devel/2009-March/007031.html">source</a>)</li>
+<li>Redhat: 16 characters, 32 starting from 2005 (<a href="https://rhn.redhat.com/errata/RHBA-2005-164.html">source</a>, <a href="http://www.unixresources.net/linux/lf/5/archive/00/00/16/35/163570.html">source</a>, <a href="http://www.linuxquestions.org/questions/red-hat-31/max-group-length-in-red-hat-enterprise-linux-5-1-a-662171/">source</a>)</li>
+<li>Active Directory: 11 or 64 characters (<a href="http://msdn.microsoft.com/en-us/library/ee824527(v=cs.10).aspx">source unclear</a>)</li>
+</ul>
+
+<h2>Group membership limits</h2></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-206.html?destination=node%2F557%23comment-form">Login</a> or <a href="../../../../../user/register/index-206.html?destination=node%2F557%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-206.html?destination=node%2F557%23comment-form">Login</a> or <a href="../../../../../user/register/index-206.html?destination=node%2F557%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/557/revisions/1497/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:20:30 GMT -->
+</html>

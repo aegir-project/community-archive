@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/site-install-failing-installation-profile-requires-input?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 20:58:20 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Site Install Failing - Installation Profile Requires Input | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2594" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/littledynamo/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="littledynamo&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/littledynamo/index.html" class="username" title="View user profile.">littledynamo</a></div><div class='date'>9:10pm May 15, 2013</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Site Install Failing - Installation Profile Requires Input</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_387 first last"><a href="../../category/keywords/install-site/index.html" rel="tag" title="">install site</a></li>
+</ul></div><p>I'm attempting to install a site but am receiving the error - DRUPAL_INSTALL_FAILED.  Looking at the exceptions object, it seems that the install profile is expecting input.  Here is a snippet:</p>
+
+<p><code>Exception Object ( [message:protected] =&gt; Snapshot field is required. [string:Exception:private] =&gt; [code:protected] =&gt; 0 [file:protected] =&gt; /var/aegir/platforms/glossy/includes/install.core.inc [line:protected] =&gt; 417 [trace:Exception:private] =&gt; Array ( [0] =&gt; Array ( [file] =&gt; /var/aegir/platforms/glossy/includes/install.core.inc [line] =&gt; 342 [function] =&gt; install_run_task [args] =&gt; Array ( [0] =&gt; Array ( [display_name] =&gt; Choose snapshot [type] =&gt; form [run] =&gt; 3 [display] =&gt; 1 [function] =&gt; </code></p>
+
+<p>The installtion profile is for theme called 'glossy' (<a href="http://themeforest.net/item/glossy-modern-drupal-theme/1559039" title="http://themeforest.net/item/glossy-modern-drupal-theme/1559039">http://themeforest.net/item/glossy-modern-drupal-theme/1559039</a>).  I've been through the process manually and the profile requires user input (it asks which database snapshot you wish to restore).</p>
+
+<p>Is it possible to provide input midway through a site install in Aegir?</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-469.html?destination=node%2F2594%23comment-form">Login</a> or <a href="../../user/register/index-469.html?destination=node%2F2594%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-1944"></a>
+
+
+<div  id="comment-1944" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/littledynamo/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="littledynamo&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/littledynamo/index.html" class="username" title="View user profile.">littledynamo</a></div><div class='date'>8:07am May 20, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-1944" class="active">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>I managed to get around this by using the minimal installation profile and then manually overwriting the database.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-469.html?destination=node%2F2594%23comment-form">Login</a> or <a href="../../user/register/index-469.html?destination=node%2F2594%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/site-install-failing-installation-profile-requires-input?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 20:58:20 GMT -->
+</html>

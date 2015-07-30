@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/322/revisions/702/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:20:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../320/index.html" />
+<link rel="up" href="../../../../318/index.html" />
+<link rel="next" href="../../../../323/index.html" />
+<link rel="prev" href="../../../../320/index.html" />
+<link rel="up" href="../../../../318/index.html" />
+<link rel="next" href="../../../../323/index.html" />
+<link rel="prev" href="../../../../320/index.html" />
+<link rel="up" href="../../../../318/index.html" />
+<link rel="next" href="../../../../323/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Using contexts in your code from Mon, 02/07/2011 - 21:43 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-322" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Using contexts in your code</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-322'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/steven-jones/index.html" class="username" title="View user profile.">Steven Jones</a> on 02/07/2011 - 21:43</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Getting the current context is really easy, just call the <span class='diff-changed'>'</span><code><span class='diff-changed'>d</span></code><span class='diff-changed'>'</span> accessor:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><span class='diff-added'>$current_context </span></span><span class='diff-added'></span><span style="color: #007700"><span class='diff-added'>= </span></span><span class='diff-added'></span><span style="color: #0000BB">d</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div><span class='diff-changed'>
+What</span> the current context is will depend on the drush command that is running and the context that was passed into that drush command. For example if you ran a site verify task, then the caller would name a site context, and thus initially calls to <code>d()</code> would return the site context. The values of the context are accessible as simple properties of this object.</p><span class='diff-added'>
+
+</span><p><span class='diff-added'>So, suppose a verify task it started for the main Aegir frontend, which has a context that is always called '@hostmaster' the drush command invocation would look like this:</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'>drush @hostmaster provision-verify </span></code><span class='diff-added'></span></div><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Then the drush command for </span><code><span class='diff-added'>provision-verify</span></code><span class='diff-added'> could do this:</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'></span><span style="color: #000000"><span class='diff-added'></span><span style="color: #0000BB"><span class='diff-added'>&lt;?php</span><br /><span class='diff-added'></span></span><span class='diff-added'></span><span style="color: #007700"><span class='diff-added'>function </span></span><span class='diff-added'></span><span style="color: #0000BB"><span class='diff-added'>drush_provision_verify</span></span><span class='diff-added'></span><span style="color: #007700"><span class='diff-added'>() {</span><br /><span class='diff-added'>&nbsp; </span></span><span class='diff-added'></span><span style="color: #0000BB"><span class='diff-added'>$context </span></span><span class='diff-added'></span><span style="color: #007700"><span class='diff-added'>= </span></span><span class='diff-added'></span><span style="color: #0000BB"><span class='diff-added'>d</span></span><span class='diff-added'></span><span style="color: #007700"><span class='diff-added'>();</span><br /><span class='diff-added'>&nbsp; </span></span><span class='diff-added'></span><span style="color: #0000BB"><span class='diff-added'>drush_print</span></span><span class='diff-added'></span><span style="color: #007700"><span class='diff-added'>(</span></span><span class='diff-added'></span><span style="color: #DD0000"><span class='diff-added'>'Passed context of type: ' </span></span><span class='diff-added'></span><span style="color: #007700"><span class='diff-added'>. </span></span><span class='diff-added'></span><span style="color: #0000BB"><span class='diff-added'>d</span></span><span class='diff-added'></span><span style="color: #007700"><span class='diff-added'>()-&gt;</span></span><span class='diff-added'></span><span style="color: #0000BB"><span class='diff-added'>type</span></span><span class='diff-added'></span><span style="color: #007700"><span class='diff-added'>);</span><br /><span class='diff-added'>}</span><br /><span class='diff-added'></span></span><span class='diff-added'></span><span style="color: #0000BB"><span class='diff-added'>?&gt;</span></span><span class='diff-added'></span></span><span class='diff-added'></span></code><span class='diff-added'></span></div><span class='diff-added'>
+Which would print the type of the context passed to the verify command.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>The </span><code><span class='diff-added'>d</span></code><span class='diff-added'> accessor is not to be feared! It is used all over the place in Aegir and if you're not sure what context your going to get then you can always print </span><code><span class='diff-added'>d()-&gt;name</span></code><span class='diff-added'> and you'll get the name of the context that you're dealing with.</span></p><span class='diff-added'>
+
+</span><h3><span class='diff-added'>Loading a named context</span></h3><span class='diff-added'>
+
+</span><p><span class='diff-added'>You can pass an optional argument to the </span><code><span class='diff-added'>d</span></code><span class='diff-added'> accessor of the name of the context that you want. So, if you feel compelled to access a property about the main Aegir frontend site anywhere you can do this:</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'></span><span style="color: #000000"><span class='diff-added'></span><span style="color: #0000BB"><span class='diff-added'>&lt;?php</span><br /><span class='diff-added'>$hostmaster_context </span></span><span class='diff-added'></span><span style="color: #007700"><span class='diff-added'>= </span></span><span class='diff-added'></span><span style="color: #0000BB"><span class='diff-added'>d</span></span><span class='diff-added'></span><span style="color: #007700"><span class='diff-added'>(</span></span><span class='diff-added'></span><span style="color: #DD0000"><span class='diff-added'>'@hostmaster'</span></span><span class='diff-added'></span><span style="color: #007700"><span class='diff-added'>);</span><br /><span class='diff-added'></span></span><span class='diff-added'></span><span style="color: #0000BB"><span class='diff-added'>?&gt;</span></span><span class='diff-added'></span></span><span class='diff-added'></span></code><span class='diff-added'></span></div><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Though most of the time you'll be dealing with the current context, and contexts that it references.</span></p><span class='diff-added'>
+
+</span><h3><span class='diff-added'>'Subcontexts'</span></h3><span class='diff-added'>
+
+</span><p><span class='diff-added'>Here's an example context:</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'>&lt;?php</span><br /><span class='diff-added'>$aliases[&#039;hostmaster&#039;] = array (</span><br /><span class='diff-added'>&nbsp; &#039;context_type&#039; =&gt; &#039;site&#039;,</span><br /><span class='diff-added'>&nbsp; &#039;platform&#039; =&gt; &#039;@platform_hostmaster&#039;,</span><br /><span class='diff-added'>&nbsp; &#039;server&#039; =&gt; &#039;@server_master&#039;,</span><br /><span class='diff-added'>&nbsp; &#039;db_server&#039; =&gt; &#039;@server_localhost&#039;,</span><br /><span class='diff-added'>&nbsp; &#039;uri&#039; =&gt; &#039;aegir.example.com&#039;,</span><br /><span class='diff-added'>&nbsp; &#039;root&#039; =&gt; &#039;/var/aegir/hostmaster-0.4-beta2&#039;,</span><br /><span class='diff-added'>&nbsp; &#039;site_path&#039; =&gt; &#039;/var/aegir/hostmaster-0.4-beta2/sites/aegir.example.com&#039;,</span><br /><span class='diff-added'>&nbsp; &#039;site_enabled&#039; =&gt; true,</span><br /><span class='diff-added'>&nbsp; &#039;language&#039; =&gt; &#039;en&#039;,</span><br /><span class='diff-added'>&nbsp; &#039;client_email&#039; =&gt; &#039;aegir@example.com&#039;,</span><br /><span class='diff-added'>&nbsp; &#039;aliases&#039; =&gt;</span><br /><span class='diff-added'>&nbsp; array (</span><br /><span class='diff-added'>&nbsp; ),</span><br /><span class='diff-added'>&nbsp; &#039;redirection&#039; =&gt; false,</span><br /><span class='diff-added'>&nbsp; &#039;profile&#039; =&gt; &#039;hostmaster&#039;,</span><br /><span class='diff-added'>);</span></code><span class='diff-added'></span></div><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Notice that some of the properties are the name of contexts, such as 'db_server' which has a value of '@server_localhost'.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Suppose now that I have some code that wants to get a property of the db_server associated with the @hostmaster context, I can simply to this:</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'></span><span style="color: #000000"><span class='diff-added'></span><span style="color: #0000BB"><span class='diff-added'>&lt;?php</span><br /><span class='diff-added'>$hostmaster_context </span></span><span class='diff-added'></span><span style="color: #007700"><span class='diff-added'>= </span></span><span class='diff-added'></span><span style="color: #0000BB"><span class='diff-added'>d</span></span><span class='diff-added'></span><span style="color: #007700"><span class='diff-added'>(</span></span><span class='diff-added'></span><span style="color: #DD0000"><span class='diff-added'>'@hostmaster'</span></span><span class='diff-added'></span><span style="color: #007700"><span class='diff-added'>);</span><br /><span class='diff-added'></span></span><span class='diff-added'></span><span style="color: #0000BB"><span class='diff-added'>$db_server_context </span></span><span class='diff-added'></span><span style="color: #007700"><span class='diff-added'>= </span></span><span class='diff-added'></span><span style="color: #0000BB"><span class='diff-added'>$hostmaster_context</span></span><span class='diff-added'></span><span style="color: #007700"><span class='diff-added'>-&gt;</span></span><span class='diff-added'></span><span style="color: #0000BB"><span class='diff-added'>db_server</span></span><span class='diff-added'></span><span style="color: #007700"><span class='diff-added'>;</span><br /><span class='diff-added'></span></span><span class='diff-added'></span><span style="color: #FF8000"><span class='diff-added'>// $db_server_context is now a fully populated context object, not the string '@server_localhost'</span><br /><span class='diff-added'></span></span><span class='diff-added'></span><span style="color: #0000BB"><span class='diff-added'>drush_print</span></span><span class='diff-added'></span><span style="color: #007700"><span class='diff-added'>(</span></span><span class='diff-added'></span><span style="color: #DD0000"><span class='diff-added'>'DB server on port: . $db_server_context-&gt;db_port);</span><br /><span class='diff-added'>?&gt;</span></span><span class='diff-added'></span></span><span class='diff-added'></span></code><span class='diff-added'></span></div><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>The </span><code><span class='diff-added'>provisionContext</span></code><span class='diff-added'> object will return full context objects for properties that store the names of other contexts. The how and why of determining which to return as strings and which to return as a context object will be covered later. It is entirely possible to have the name of a context stored as a property in a context, that when accessed returns the string, rather than the context named in the string.</span></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-202.html?destination=node%2F322%23comment-form">Login</a> or <a href="../../../../../user/register/index-202.html?destination=node%2F322%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-202.html?destination=node%2F322%23comment-form">Login</a> or <a href="../../../../../user/register/index-202.html?destination=node%2F322%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/322/revisions/702/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:20:07 GMT -->
+</html>

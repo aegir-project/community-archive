@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/despamming-best-practices?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:23:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Despamming best practices? | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-12856" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/anarcat/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-78/index.jpg" alt="anarcat&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a></div><div class='date'>8:24pm Dec 29, 2014</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Despamming best practices?</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class="field field-type-nodereference field-field-referenced-book-page">
+    <div class="field-items">
+            <div class="field-item odd">
+                      <div class="field-label-inline-first">
+              Referenced Page:&nbsp;</div>
+                    <a href="../../content/developing/despamming-guide/index.html">Despamming guide</a>        </div>
+        </div>
+</div>
+<p>The Aegir community has always seen among the best Drupal experts in the community so let me be lazy and ask you people: what techniques would you use to keep a community website like this one free of spam?</p>
+
+<p>We are currently using the Honeypot and Mollom modules, but as you may have seen recently here (~7000 spam nodes created after christmas), this is not always enough. After reporting pages and pages of spam to Mollom, we (me and Helmo) have worked on a neat little view to massively (using the Batch API and VBO) remove spammy content from the website. The view is attached for your perusal.</p>
+
+<p>But that view only cleans up after the damage has been done: how do <em>you</em> keep spam from your public website with minimal pain from the user? Drupal.org seems to use <a href="https://www.drupal.org/project/httpbl">http:BL</a>, what else do they use?</p>
+
+<p>Exercise to the reader: make a view that will list and destroy users and their profiles at once. One way to go around it would be to list the user and its history (number of posts, latest posts, registration date and last activity). Also fix the node view so it deletes the user and its profiles once it's done removing the content.</p>
+
+<p>Comment here or expand our <a href="../../content/developing/despamming-guide/index.html">despamming guide</a> and thank you lazyweb!</p><div class="itu-attachments"><table class="itu-attachment-list withoutstats sticky-enabled" id="attachments">
+ <thead><tr><th class="preview">Preview</th><th class="file">Attachment</th><th class="size">Size</th> </tr></thead>
+<tbody>
+ <tr class="odd"><td class="mime mime-txt"></td><td class="file"><a href="../../sites/community.aegirproject.org/files/node-spam-view_0/index.txt">node-spam-view.txt</a></td><td class="size">12.37 KB</td> </tr>
+</tbody>
+</table>
+</div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-365.html?destination=node%2F12856%23comment-form">Login</a> or <a href="../../user/register/index-365.html?destination=node%2F12856%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-2371"></a>
+
+
+<div  id="comment-2371" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../user/3/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-3/index.png" alt="omega8cc&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../user/3/index.html" class="username" title="View user profile.">omega8cc</a></div><div class='date'>4:21pm Dec 31, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2371" class="active">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>To my best knowledge the only working protection these days is to just not allow to self-register active accounts. We host enough Drupal site to find out that only drastic default settings we use in BOA help: <a href="https://omega8.cc/how-to-change-account-registration-settings-273" title="https://omega8.cc/how-to-change-account-registration-settings-273">https://omega8.cc/how-to-change-account-registration-settings-273</a></p>
+
+<p>I would prefer to get tired reviewing new accounts registrations than watching for and fighting with removing the crap spammers may add very quickly.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-365.html?destination=node%2F12856%23comment-form">Login</a> or <a href="../../user/register/index-365.html?destination=node%2F12856%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/despamming-best-practices?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:23:09 GMT -->
+</html>

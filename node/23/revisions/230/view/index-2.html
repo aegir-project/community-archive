@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/23/revisions/230/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:00:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../42/index.html" />
+<link rel="up" href="../../../../43/index.html" />
+<link rel="next" href="../../../../../migration-tips/index.html" />
+<link rel="prev" href="../../../../42/index.html" />
+<link rel="up" href="../../../../43/index.html" />
+<link rel="next" href="../../../../../migration-tips/index.html" />
+<link rel="prev" href="../../../../42/index.html" />
+<link rel="up" href="../../../../43/index.html" />
+<link rel="next" href="../../../../../migration-tips/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Migrating/upgrading and renaming websites from Fri, 11/05/2010 - 20:06 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-23" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Migrating/upgrading and renaming websites</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_3 first"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-23'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 11/05/2010 - 20:06</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>One of the most powerful features of Aegir is the way it can help you to upgrade large numbers of websites safely.</p>
+
+<p>For example, you may have dozens of sites hosted on a drupal 6.18 codebase. But suddenly the 6.19 release comes out with vital security fixes. Previously you'd have to go to each site, back up the files and database, upload the new codebase, run update.php, check everything worked and then onto the next site.</p>
+
+<p>With Aegir you simply click a button in the frontend and it handles everything. This is called 'migrating' sites in Aegir terminology, because it might be used in more cases than simply upgrading the main codebase. For example you may have different 'platforms' with different mixes of contrib modules and themes and charge clients for tiers of 'basic', 'advanced' and 'gold' packages. When they choose to move from basic to advance, you simply migrate their site.</p>
+
+<p>Other examples of using Migrate include:</p>
+
+<ul>
+<li>moving a standard Drupal site to a Pressflow platform for performance enhancements</li>
+<li>renaming a site (giving it a new URL entirely)</li>
+<li>the Clone feature (discussed in later chapters) is a subsidiary of Migrate, except it doesn't move but copy the site.</li>
+</ul>
+
+<h1>How to migrate a site</h1>
+
+<h2>Enabling the feature</h2>
+
+<p>By default, Migrate is not enabled in Aegir after a fresh installation, as it is an optional feature. This means that the 'Migrate' button is not immediately present in the list of available tasks for a site.</p>
+
+<p>To enable the Migrate feature, simply go to <code>/admin/hosting/features</code> and check the Migrate feature. Submit the form and then return to the site node, and you'll see that the Migrate task is now available.</p>
+
+<h2>Migrating a site - the Migrate form</h2>
+
+<p>In the Aegir frontend, click on the website that you want to migrate. As per usual, in the 'Site view' you are present with some summary information about the site, as well as a list of available tasks. Click the the 'Run' button for the 'Migrate' task. A modalframe dialog will appear in your browser.</p>
+
+<div align="center"><img src="../../../../../sites/community.aegirproject.org/files/migrate/index.png" /></div>
+
+<p>The Migrate form has several options. These are:</p>
+
+<ul>
+<li><p>Domain name (this is already the domain of the existing site. If you are intending to simply rename the site (give it a new URL altogether), you can simply change this field and leave the target platform be the 'current platform'. This will make the site accessible under the new URL.</p></li>
+<li><p>Platform selection. A radio selection of available platforms on the Aegir system. Certain platforms will be un-selectable. This is because they contain 'Errors' - that is, they contain versions of packages (modules, libraries or themes) that are of an older version than that of the original platform. You cannot upgrade a site to older versions of the same package.</p></li>
+</ul>
+
+<h2>Upgrades, warnings, errors?</h2>
+
+<p>What's this about upgrades, warnings and errors on each potential platform to migrate the site to?</p>
+
+<p>Up until now you might be forgiven for thinking that Aegir is simply automating the install of sites and creating Apache vhosts and databases.</p>
+
+<p>The truth is, Aegir actually is a much more advanced tool than that. It keeps a running registry in its database of your Platforms and Sites and what modules, themes, libraries and install profiles are available on platforms and installed on sites.</p>
+
+<p>Not only does it keep track of what these packages are, but it also keeps track of what version of a package is installed (say, Views 6.x-2.11), and whether it is actually an enabled module or not.</p>
+
+<p>The Migrate task, despite its name, is the tool for upgrading your site, because the Migrate code actually invokes the command <code>drush updatedb</code> in the backend, automatically. <code>drush updatedb</code> is the equivalent of running '/update.php' in your browser against your site.</p>
+
+<p>In this way, when the time comes (and it always does) to Migrate your site, Aegir is able to intelligently analyse the available platforms on the system and make a sane judgement on where you can upgrade your site to. The logic is as follows:</p>
+
+<ol>
+<li>Current platform has module X, schema version 6002 and 6003</li>
+<li>Site module has module X, schema version 6003 installed</li>
+<li>Target platform A has module X, schema version 6002. Site cannot be upgraded to an older schema version. An error.</li>
+<li>Target platform B does not have module X at all. Theoretically this is still a possible upgrade, but module X will probably be disabled by Drupal's upgrade logic during the process. This is a warning.</li>
+<li>Target platform C has module X, schema version 6003. Site is upgradeable, there is no change.</li>
+<li>Target platform D has module X, schema version 6004. Site is upgradeable. There is a module update to be performed.</li>
+</ol>
+
+<p>In the logic laid out above, examples 4, 5 ,6, or platforms B, C and D would be listed as valid target platforms. Target platform D would actually upgrade the site's module to a newer version, which may involve database updates.</p>
+
+<p>To view the schema differences between current and target platforms in this way, click the 'Compare platforms' link against each target platform in the form.</p>
+
+<div align="center"><img src="../../../../../sites/community.aegirproject.org/files/compare/index.png" /></div>
+
+<p>If your intention is to upgrade your site between versions of any package (this can include core or contrib!), you need to make sure the relevant packages are present and up to date on the platform you want to migrate to. Aegir can only try and make this judgement call based on the information you feed into the system by adding and verifying platforms with the correct components.</p>
+
+<p>If you've had to download extra packages to the target platform to make them possible candidates for an upgrade, you may need to visit that platform node in the Aegir frontend, and run the Verify task against the site (this is a re-runnable task). This updates Aegir's registry of information about all the packages on the platform.</p>
+
+<h2>Migrating</h2>
+
+<p>Select the relevant target platform and click 'Migrate' to submit the form. The modalframe dialog will close and Aegir will spawn a new Migrate task into the Task queue, and process it on the next cron run.</p>
+
+<p>The process of Migration in the backend occurs automatically, like all Aegir tasks, and is as follows:</p>
+
+<ul>
+<li>The site is placed into maintenance or 'site offline mode' as a precaution. Safety first!</li>
+<li>A 'backup' task is implied silently. The site and its database are backed up into a tarball. Still safety first!</li>
+<li>Depending on the settings sent to the backend (are we migrating the site under its current name, or just renaming the site, or renaming the site and migrating as well), various metadata regarding the site is updated</li>
+<li>If we are moving to a new platform (upgrading, not just renaming), the backup tarball that was made earlier, is used in a silent 'provision-deploy' command, which essentially unpacks the tarball into the target platform and creates a new database and database user for the site, importing the database dump that was made in the backup</li>
+<li>The deploy task above, invokes <code>drush updatedb</code>, effectively upgrading the site by calling all hook_update() functions. </li>
+<li>Various bits and pieces are fixed up, such as paths to files in the 'files' table of the database.</li>
+<li>Caches are cleared</li>
+<li>A verify task is run, settings.php and apache vhost are updated to reflect the new path (new platform) and new database credentials, site gets brought back out of maintenance mode.</li>
+<li>If all went well and nothing has fatally errored here, we remove the old copy of the site from the previous platform (it wasn't touched til now, other than backing it up)</li>
+</ul>
+
+<h2>Potential errors?</h2>
+
+<p>If something goes wrong during all this work, the metadata reflecting where the site is located on the system (which platform it is on) and other information is reverted. The task will become 'red' in the task queue, indicating an error.</p>
+
+<p>Aegir will attempt to restore the site's vhost and settings.php to reflect the original platform and database credentials, and bring the site out of maintenance, in an effort to return the site to a state where it was prior to the Migrate.</p>
+
+<p>The user may be requried to manually recover from this error depending on what has occurred. Nonetheless, remember that a backup was made early on, and this can be used to restore the site easily.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-298.html?destination=node%2F23%23comment-form">Login</a> or <a href="../../../../../user/register/index-298.html?destination=node%2F23%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-1861"></a>
+
+
+<div  id="comment-1861" class="comment comment-published clear-block decay-10 decay-10">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/shumushin/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="shumushin&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/shumushin/index.html" class="username" title="View user profile.">shumushin</a></div><div class='date'>1:56pm Feb 26, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1861">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p><cite>Various bits and pieces are fixed up, such as paths to files in the 'files' table of the database.</cite></p>
+
+<p>Can you be more precise here please? Or just tell where in the code we should look for it. Thanks!</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-298.html?destination=node%2F23%23comment-form">Login</a> or <a href="../../../../../user/register/index-298.html?destination=node%2F23%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-1862"></a>
+
+
+<div  id="comment-1862" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/helmo/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="helmo&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/helmo/index.html" class="username" title="View user profile.">helmo</a></div><div class='date'>12:22pm Feb 27, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1862">#2</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>This is defined in provision, platform/drupal/deploy.inc</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-298.html?destination=node%2F23%23comment-form">Login</a> or <a href="../../../../../user/register/index-298.html?destination=node%2F23%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/23/revisions/230/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:00:13 GMT -->
+</html>

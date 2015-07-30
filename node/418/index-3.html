@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/418?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:51:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../518/index.html" />
+<link rel="up" href="../518/index.html" />
+<link rel="next" href="../246/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>HINTS_CentOS.txt | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-418" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">HINTS_CentOS.txt</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-418'><h1>Aegir -- CentOS installation instructions hints</h1>
+
+<p>This is a helper file to the canonical INSTALL.txt. It is aimed at
+helping you install Aegir on CentOS. It simply lists commands that
+diverge from the base INSTALL.txt in a concise document that will be
+easy to maintain in the long term.</p>
+
+<p>It is recommended that the INSTALL.txt document is consulted before
+going ahead with this install.</p>
+
+<p>We reuse the same process describe in that document:</p>
+
+<ol>
+<li>Install requirements</li>
+<li>Configure system requirements, which include:
+
+<ul>
+<li>create a Aegir user</li>
+<li>configure Apache, MySQL, DNS, etc</li>
+</ul></li>
+<li>Run the install script</li>
+</ol>
+
+<h1>1. Install software requirements</h1>
+
+<p>You should use the repos "utter ramblings" repos (which feature PHP
+5.2) at: <a href="http://www.jasonlitka.com/yum-repository/" title="http://www.jasonlitka.com/yum-repository/">http://www.jasonlitka.com/yum-repository/</a></p>
+
+<p>Shell commands::
+<div class="codeblock"><code> rpm --import <a href="http://www.jasonlitka.com/media/RPM-GPG-KEY-jlitka<br />" title="http://www.jasonlitka.com/media/RPM-GPG-KEY-jlitka<br />">http://www.jasonlitka.com/media/RPM-GPG-KEY-jlitka<br /></a> cat &gt;&gt; /etc/yum.repos.d/utterramblings.repo &lt;&lt;EOF<br />[utterramblings]<br />name=Jason&#039;s Utter Ramblings Repo<br />baseurl=http://www.jasonlitka.com/media/EL\$releasever/\$basearch/<br />enabled=1<br />gpgcheck=1<br />gpgkey=http://www.jasonlitka.com/media/RPM-GPG-KEY-jlitka<br />EOF<br /> yum install httpd postfix sudo unzip mysql-server php php-mysql</code></div></p>
+
+<h1>2. Configure system requirements</h1>
+
+<p>Shell commands::
+<div class="codeblock"><code> useradd --home-dir /var/aegir aegir<br /> gpasswd -a aegir apache<br /> chmod -R 755 /var/aegir<br /> # Include the Aegir configs<br /> ln -s /var/aegir/config/apache.conf /etc/httpd/conf.d/aegir.conf<br /> service mysqld start<br /> # Optional: set the mysql root password<br /> mysqladmin password $password<br /> mysql -uroot -p</code></div></p>
+
+<p>The last two lines can also be (better) accomplished using the
+mysql_secure_installation script.</p>
+
+<p>The aegir user needs to have sudo access. The wizard will explain how to
+do this, but you can already just add the relevant line to your sudoers
+file.</p>
+
+<p><div class="codeblock"><code>/etc/sudoers configuration::<br />&nbsp; aegir ALL=NOPASSWD: /usr/sbin/apachectl</code></div></p>
+
+<p>The default sudo configuration in CentOS requires sudo to run in a real
+TTY which will make verify and install tasks fail with the message:</p>
+
+<p>"Web server could not be restarted. Changes might not be available
+ until this has been done"</p>
+
+<p>For sudo to behave properly, you should also comment out the following line
+in your /etc/sudoers file:</p>
+
+<p><div class="codeblock"><code>Defaults&nbsp;&nbsp;&nbsp; requiretty</code></div></p>
+
+<h1>3. Run the install script</h1>
+
+<p>This section deals with the actual installation of Aegir.</p>
+
+<p>There is an install script that takes care of installing the right packages and
+preparing the backend and frontend install for you. That script needs to be run
+as the aegir user created above.  This file is available in Provision or can be
+downloaded through the web at:</p>
+
+<p><a href="http://git.aegirproject.org/?p=provision.git;a=blob_plain;f=install.sh.txt;hb=HEAD" title="http://git.aegirproject.org/?p=provision.git;a=blob_plain;f=install.sh.txt;hb=HEAD">http://git.aegirproject.org/?p=provision.git;a=blob_plain;f=install.sh.t...</a></p>
+
+<p>By default, the install script will install the "correct" version of Aegir
+(ie. if it was downloaded through git, it will install the version from the
+git master branch. If you downloaded an official release, it should install
+the official release.). You can modify which version to install by editing the
+AEGIR_VERSION variable in the script.</p>
+
+<p>Shell commands::</p>
+
+<p><div class="codeblock"><code> su -s /bin/sh aegir -c &quot;sh install.sh.txt aegir.example.com&quot;</code></div></p>
+
+<p>Note you must run this as root or prefix with sudo.</p>
+
+<p>Be sure to change 'aegir.example.com' to match the URI of your site.</p>
+
+<p>You can append '--client_email=you@example.com' if you wish to receive the
+traditional Drupal 'Welcome' e-mail upon completion of the installation.
+This e-mail address will also be used as the default e-mail address of the
+first user and client in Aegir, but can be changed later.</p>
+
+<h1>4. Common issues</h1>
+
+<p>There are various caveats on running Aegir on CentOS.</p>
+
+<p>You may need to adjust CentOS's firewall settings to allow HTTP
+traffic on port 80.  If you installed CentOS with a UI, enable
+"Firewall settings -- WWW (HTTP)".</p>
+
+<p>Alternatively, another solution may be to edit /etc/sysconfig/iptables 
+and add a rule accepting traffic on the relevant interface on port 80.</p>
+
+<p>Afterwards, you can restart the firewall with this command:</p>
+
+<p>Shell commands::
+<div class="codeblock"><code> service iptables restart</code></div></p>
+
+<p>Also, in some configurations, it seems necessary to restart crond for
+the user crontab changes to take effect (very bizarre). For that, use:</p>
+
+<p>Shell commands::
+<div class="codeblock"><code> service crond restart</code></div></p>
+
+<p>See <a href="http://drupal.org/node/632308" title="http://drupal.org/node/632308">http://drupal.org/node/632308</a> if you have more information about
+this issue.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/418?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:51:24 GMT -->
+</html>

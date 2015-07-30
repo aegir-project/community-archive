@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/797/revisions/2187/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:23:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../474/index.html" />
+<link rel="up" href="../../../../474/index.html" />
+<link rel="next" href="../../../../../handbook/strategy/index.html" />
+<link rel="prev" href="../../../../474/index.html" />
+<link rel="up" href="../../../../474/index.html" />
+<link rel="next" href="../../../../../handbook/strategy/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of DrupalCon Training - Aegir Hosting System: Deep Dive from Wed, 08/03/2011 - 17:10 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-797" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../drupalcon-training-aegir-hosting-system-deep-dive/index.html">DrupalCon Training - Aegir Hosting System: Deep Dive</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-797'><h1>Intro to Aegir</h1>
+
+<ol>
+<li>Community (aegirproject.org, #aegir)</li>
+<li>Terminology (site, platform, task)</li>
+<li>Architecture (Provision &amp; Hostmaster) </li>
+</ol>
+
+<h1>Installation</h1>
+
+<ol>
+<li>The easy way (using Debian packages)</li>
+<li>The hard way (manual installs)</li>
+<li>Other operating systems</li>
+<li>Remote database servers and clusters </li>
+</ol>
+
+<h1>Debugging</h1>
+
+<ol>
+<li>Checking your install</li>
+<li>Manipulating the task queue and reading the task log</li>
+<li>Checking crontab </li>
+</ol>
+
+<h1>The Aegir interface</h1>
+
+<ol>
+<li>Platforms &amp; sites</li>
+<li>Servers &amp; services</li>
+<li>Tasks &amp; queues </li>
+</ol>
+
+<h1>Creating Platforms</h1>
+
+<ol>
+<li>Creating a Drupal x platform from scratch</li>
+<li>Some handy drush commands and an explanation of node/add/platform</li>
+<li>Creating a platform using a drush makefile </li>
+</ol>
+
+<h1>Sites</h1>
+
+<ol>
+<li>Creating a site on our new platform</li>
+<li>Common Site tasks (install, clone, backup, restore, migrate)</li>
+<li>Cron configuration via Aegir</li>
+<li>Site aliases </li>
+</ol>
+
+<h1>Aegir vs. the Drupal 7 Upgrade Path</h1>
+
+<ol>
+<li>Create a 7.x platform from scratch</li>
+<li>Migrate our site from 6.x to 7.x </li>
+</ol>
+
+<h1>Importing sites</h1>
+
+<ol>
+<li>Single sites (provision-deploy)</li>
+<li>Complete platforms (provision-verify) </li>
+</ol>
+
+<h1>Drush Make Advanced</h1>
+
+<ol>
+<li>Patching and branching with git</li>
+<li>Creating cascading makefiles, using includes and overrides </li>
+</ol>
+
+<h1>Client management</h1>
+
+<ol>
+<li>Clients &amp; the quota api </li>
+</ol>
+
+<h1>Extending Aegir</h1>
+
+<ol>
+<li>Overview of Aegir contib modules</li>
+<li>Scheduled backups &amp; garbage collection</li>
+<li>E-commerce integration</li>
+<li>ACLs &amp; SFTP </li>
+</ol>
+
+<h1>Whiteboxing Aegir</h1>
+
+<ol>
+<li>Theming with Eldir</li>
+<li>Overriding the Aegir makefile</li>
+<li>Overriding settings.php and apache config files </li>
+</ol>
+
+<h1>Advanced Topics, Manual Uprades, and other Black Magic</h1>
+
+<ol>
+<li>Advanced Debugging (running tasks by hand, force-deleting, etc...)</li>
+<li>Manual upgrades</li>
+<li>Aliases &amp; contexts</li>
+<li>Performance &amp; security</li>
+<li>Extending Provision &amp; Hostmaster </li>
+</ol></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-260.html?destination=node%2F797%23comment-form">Login</a> or <a href="../../../../../user/register/index-260.html?destination=node%2F797%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-260.html?destination=node%2F797%23comment-form">Login</a> or <a href="../../../../../user/register/index-260.html?destination=node%2F797%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/797/revisions/2187/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:23:15 GMT -->
+</html>

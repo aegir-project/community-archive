@@ -1,0 +1,399 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/723/revisions/1981/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:18:27 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../1/index-19.html" />
+<link rel="up" href="../../../../../release-notes/index.html" />
+<link rel="next" href="../../../../../0/index-2.html" />
+<link rel="prev" href="../../../../../1/index-19.html" />
+<link rel="up" href="../../../../../release-notes/index.html" />
+<link rel="next" href="../../../../../0/index-2.html" />
+<link rel="canonical" href="index.html" />
+<link rel="prev" href="../../../../../04-alpha-and-beta/index.html" />
+<link rel="up" href="../../../../../04-alpha-and-beta/index.html" />
+<link rel="next" href="../../../../../0/index-3.html" />
+<link rel="prev" href="../../../../../0/index-2.html" />
+<link rel="up" href="../../../../../04-alpha-and-beta/index.html" />
+<link rel="next" href="../../../../../0/index-4.html" />
+<link rel="prev" href="../../../../../0/index-3.html" />
+<link rel="up" href="../../../../../04-alpha-and-beta/index.html" />
+<link rel="next" href="../../../../522/index.html" />
+<link rel="prev" href="../../../../../0/index-4.html" />
+<link rel="up" href="../../../../../04-alpha-and-beta/index.html" />
+<link rel="next" href="../../../../../developing/index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Alpha and Beta from Fri, 06/24/2011 - 17:55 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-723" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../04-alpha-and-beta/index.html">Alpha and Beta</a>
+    </h2>
+  
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-189.html?destination=node%2F723%23comment-form">Login</a> or <a href="../../../../../user/register/index-189.html?destination=node%2F723%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-189.html?destination=node%2F723%23comment-form">Login</a> or <a href="../../../../../user/register/index-189.html?destination=node%2F723%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+<div  id="node-220" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../0/index-2.html">0.4-beta2 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_10 first"><a href="../../../../../taxonomy/term/10/index.html" rel="tag" title="">0.4-beta2</a></li>
+<li class="taxonomy_term_11 last"><a href="../../../../../taxonomy/term/11/index.html" rel="tag" title="">release-notes</a></li>
+</ul></div><p>The Aegir team is proud to announce the second beta release of Aegir 0.4.</p>
+
+<p>This release primarily is a bugfix release.</p>
+
+<p>There have also been quite a few patches sitting in our issue queues for review for a very long time, and we have attempted to commit a whole bunch of those in this release. Things have been moving a bit slowly and we're sorry for that.</p>
+
+<h2>Key changes in 0.4-beta2</h2>
+
+<p>There are a few changes in this release that are new, such as the presence of an early 'bulk operations' feature. We do not expect this to be bug free, but hope that by committing some of this new code and making it present in a new release, we'll get some community users testing this stuff and reporting back / patching it to make it better. Otherwise this stuff just gets lost in the queue!</p>
+
+<p>After this release we will be looking strongly at a release candidate for 0.4.</p>
+
+<h2>Known Issues:</h2>
+
+<p>Some of our issues from beta1 are still actually present:</p>
+
+<ul>
+<li>DNS has no access control - anybody can create any zone (<a href="http://drupal.org/node/922252">#922252</a>)</li>
+<li>Inter-server migration may fail under some circumstances (<a href="http://drupal.org/node/976300">#976300</a>)</li>
+<li>The site form suffers from some performance issues when you have a lot of platforms (<a href="http://drupal.org/node/955854">#955854</a>)</li>
+</ul>
+
+<p>Also, an issue has been identified with remote web servers: in some cases, when the 'master' server syncs the site contents to a remote, it can delete the files/ of a site because it doesn't sync a site's files back to the master server except in the case of backups/migrations.</p>
+
+<p>We would like to warn users that are making use of Aegir's multiserver features to be aware of this issue: <a href="http://drupal.org/node/976300" title="http://drupal.org/node/976300">http://drupal.org/node/976300</a> .</p>
+
+<h2>The road to 0.4 and Aegir contributors</h2>
+
+<p>Our core dev team is small and various demands for our time have been slowing development to a degree. We have a decent-sized community with a wide range of skills, and would like to take this opportunity to encourage our users to attempt to contribute to the project where they see fit - whether this be code development (bug fixes, new features), documentation, or even promotion / talks at Drupal events.</p>
+
+<p>We will potentially be seeking new core developers to the project soon as well. If you'd like to chat with us about contributing to Aegir, don't hesitate to <a href="http://lists.aegirproject.org/">write on the mailing lists</a> or come and see us on IRC in #aegir at irc.freenode.net. Aegir's core developers are Adrian Rossouw (Vertice), Antoine Beaupré (anarcat) and Miguel Jacq (mig5).</p>
+
+<p>We know the barrier to entry can be a little high with hacking on Aegir, and will be refocusing our efforts to try and make that easier for new starters. An API site will be along soon!</p>
+
+<p>See <a href="http://drupal.org/project/issues/search?text=&amp;projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir)&amp;assigned=&amp;submitted=&amp;participant=&amp;status[]=Open&amp;issue_tags_op=or&amp;issue_tags=aegir-0.4">all the issues tagged as aegir-0.4</a> and <a href="http://drupal.org/project/issues?text=&amp;projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir)&amp;status=Open&amp;priorities=4&amp;categories=All">issues marked as 'major'</a> for our current outstanding issues.</p>
+
+<h2>Installing and upgrading:</h2>
+
+<p>The canonical source of installation documentation is as usual the excellent <a href="http://git.aegirproject.org/?p=provision.git;a=blob_plain;f=docs/INSTALL.txt;hb=provision-0.4-beta2">INSTALL.txt</a>.</p>
+
+<p>For users who have Rackspace Cloud accounts and want to install Aegir in the cloud, you are welcome to try mig5's <a href="http://github.com/mig5/frigg">Frigg script</a>, which automatically creates a new virtual server and installs Aegir, with one command!</p>
+
+<p>For users of 0.4-beta1 and earlier, we offer an <a href="http://git.aegirproject.org/?p=provision.git;a=blob_plain;f=upgrade.sh.txt;hb=provision-0.4-beta2">upgrade.sh script</a> in Provision, which tries to automate much of the steps outlined in the <a href="http://git.aegirproject.org/?p=provision.git;a=blob_plain;f=docs/UPGRADE.txt;hb=provision-0.4-beta2">UPGRADE.txt</a>.</p>
+
+<p>It is still imperative that you read the UPGRADE.txt and follow all version-specific upgrade instructions located at the end of the document before trying to run the upgrade script. This especially applies to users upgrading from before 0.4-alpha8, including 0.3.</p>
+
+<p>The upgrade.sh script attempts to backup the existing backend components, download new versions, and then run the hostmaster-migrate command. It assumes you are upgrading from the previous release (hostmaster-0.4-beta1). If you are not, you may have to edit the script to change the OLD_DRUPAL_DIR variable.</p>
+
+<h2>Bugs fixed</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/695244">#695244 : hosting-cron killed my server</a></li>
+<li><a href="http://drupal.org/node/983056">#983056 : install.sh does not properly escape the mysql root password</a></li>
+<li><a href="http://drupal.org/node/967528">#967528 : Custom modules can't specify own tasks</a></li>
+<li><a href="http://drupal.org/node/791262">#791262 : Color module &amp; theme logo/favicon paths not updated during site deployment</a></li>
+<li><a href="http://drupal.org/node/1000890">#1000890 : default_restart_cmd() doesn't return the correct restart command</a></li>
+<li><a href="http://drupal.org/node/767008">#767008 : New users aren't associated properly with their respective client nodes on site signup</a></li>
+<li><a href="http://drupal.org/node/908202">#908202 : Author not set on site node creation (and other hosting content types)</a></li>
+<li><a href="http://drupal.org/node/994212">#994212 : README.txt contains out of date link</a></li>
+<li><a href="http://drupal.org/node/988670">#988670 : Installation via drush fails on MariaDB</a></li>
+</ul>
+
+<h2>New features</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/956432">#956432 : ~aegir/platforms path should be created automagically</a></li>
+<li><a href="http://drupal.org/node/994146">#994146 : Add paths rewrite in the files table also for sites/community.aegirproject.org to make migration to Aegir easier</a></li>
+<li><a href="http://drupal.org/node/783642">#783642 : Code to use drush to enqueue Aegir tasks for enabled sites, just as if it had been done via the ui</a></li>
+</ul>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-190.html?destination=node%2F220%23comment-form">Login</a> or <a href="../../../../../user/register/index-190.html?destination=node%2F220%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-190.html?destination=node%2F220%23comment-form">Login</a> or <a href="../../../../../user/register/index-190.html?destination=node%2F220%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-163" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../0/index-3.html">0.4-beta1 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>After more than a year of (15!) alpha releases, we're finally out of the darkness and into the light! The Aegir project is pleased to announce the first beta of the 0.4 series. This release is primarily a bug fix release, but also new features that were the last targets for the 0.4 release goals.</p>
+
+<p>The beta marks the beginning of the final cycle in the release of the 0.4 branch. We consider this release to be mostly feature complete. It still has bugs and problems, but since we are using it in production, we feel it's more appropriate to call it a beta, to invite wider testing and stabilise the codebase.</p>
+
+<p>This is also an opportunity to test the upgrade path from pre alpha9 releases, which seem to be suffering from bitrot. You should be able to upgrade to this release from 0.3 and above.</p>
+
+<h2>Key changes in 0.4-beta1</h2>
+
+<ul>
+<li>Installer now support remote db servers (<a href="http://drupal.org/node/973910">#973910</a>)</li>
+<li>Some work was done to improve the usability of the hostmaster-install command, which should be usable out of the box once provision and drush are installed</li>
+<li>By default, we setup local MySQL server to use sockets, which creates a separate server but improves security significantly, as we do not force people to open their database server to the network (<a href="http://drupal.org/node/977024">#977024</a>)</li>
+<li>The upgrade path for pre-alpha9 releases has been fixed</li>
+</ul>
+
+<h2>Known Issues:</h2>
+
+<p>The following are known critical issues with the current release, for which there are tickets, but we didn't feel were critical enough to prevent the beta release.</p>
+
+<p>Some of the issues have been present since prior to alpha15, they aren't all new issues.</p>
+
+<ul>
+<li>DNS has no access control - anybody can create any zone (<a href="http://drupal.org/node/922252">#922252</a>)</li>
+<li>Inter-server migration may fail under some circumstances (<a href="http://drupal.org/node/976300">#976300</a>)</li>
+<li>The site form suffers from some performance issues when you have a lot of platforms (<a href="http://drupal.org/node/955854">#955854</a>))</li>
+</ul>
+
+<p>See also <a href="http://drupal.org/project/issues?text=&amp;projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir)&amp;status=Open&amp;priorities=1&amp;categories=All">the complete list of critical issues</a>.</p>
+
+<h2>The road to 0.4</h2>
+
+<p>We are not yet in a code freeze, as we still have critical issues opened (see below) and are aiming at a few more features to be really complete (see <a href="http://drupal.org/project/issues/search?text=&amp;projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir)&amp;assigned=&amp;submitted=&amp;participant=&amp;status[]=Open&amp;issue_tags_op=or&amp;issue_tags=aegir-0.4">all the issues tagged as aegir-0.4</a> and <a href="http://drupal.org/project/issues?text=&amp;projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir)&amp;status=Open&amp;priorities=4&amp;categories=All">issues marked as 'major'</a>).</p>
+
+<p>We also have still a lot of issues to review before our final 0.4 release. If people are interested in contributing, a good and painless way of doing so is to take issues in the <a href="http://drupal.org/project/issues?text=&amp;projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir)&amp;status=8&amp;priorities=All&amp;categories=All">needs review queue</a> and test the patches. Don't forget to change the status accordingly!</p>
+
+<h2>Installing and upgrading:</h2>
+
+<p>The canonical source of installation documentation is as usual the excellent <a href="http://git.aegirproject.org/?p=provision.git;a=blob_plain;f=docs/INSTALL.txt;hb=provision-0.4-beta1">INSTALL.txt</a>.</p>
+
+<p>For the first time, we offer an <a href="http://git.aegirproject.org/?p=provision.git;a=blob_plain;f=upgrade.sh.txt;hb=provision-0.4-beta1">upgrade.sh script</a> in Provision, which tries to automate much of the steps outlined in the <a href="http://git.aegirproject.org/?p=provision.git;a=blob_plain;f=docs/UPGRADE.txt;hb=provision-0.4-beta1">UPGRADE.txt</a>.</p>
+
+<p>It is still imperative that you read the UPGRADE.txt and follow all version-specific upgrade instructions located at the end of the document before trying to run the upgrade script. This especially applies to users upgrading from before 0.4-alpha8, including 0.3.</p>
+
+<p>The upgrade.sh script attempts to backup the existing backend components, download new versions, and then run the hostmaster-migrate command. It assumes you are upgrading from the previous release (hostmaster-0.4-alpha15). If you are not, you may have to edit the script to change the OLD_DRUPAL_DIR variable.</p>
+
+<p>The script is in its infancy and has not been tested except by the developer writing it. We urge caution (make backups!) but encourage feedback. If in doubt, just follow the UPGRADE.txt steps and perform all the manual commands as you usually would. Some users report problems using the script on servers with really old versions of drush_make: the script stalls after upgrading Provision. You can try to run the upgrade process manually to fix that issue, which should now be fixed in beta1.</p>
+
+<h2>Bugs fixed</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/978784">#978784: Using --aegir_db_host=localhost results with broken Aegir install</a></li>
+<li><a href="http://drupal.org/node/968270">#968270: @hostmaster provision-install freeze in grant_host function if database access is open</a></li>
+<li><a href="http://drupal.org/node/969326">#969326: Schema prevents install on MariaDB</a></li>
+<li><a href="http://drupal.org/node/973826">#973826: upgrade path woes from alpha6</a></li>
+<li><a href="http://drupal.org/node/898452">#898452: INSTALL.TXT and UPGRADE.TXT should mention umask</a></li>
+<li><a href="http://drupal.org/node/905386">#905386: 0.4-alpha12: provision-deploy fails with: Failed to extract the contents of /var/aegir/backups/xxxx.tar.gz to (The target</a></li>
+<li><a href="http://drupal.org/node/826840">#826840: Save settings.php with uncloaked credentials on backup (for using on non-aegir hosts)</a></li>
+<li><a href="http://drupal.org/node/966888">#966888: upgrade.sh.txt freezes for old drush make (from 0.4-alpha7)</a></li>
+<li><a href="http://drupal.org/node/965256">#965256: INSTALL.txt doesn't leave MySQL configured correctly</a></li>
+<li><a href="http://drupal.org/node/894024">#894024: we rely on a DNS misconfiguration</a></li>
+<li>fix upgrade path from pre-alpha8 releases (hopefully)</li>
+<li>fix the client ACL form in the user profile</li>
+</ul>
+
+<h2>New features</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/952144">#952144: support local socket connexions for mysql</a></li>
+<li><a href="http://drupal.org/node/973910">#973910: remote db servers installs and upgrades support</a></li>
+<li>allow clients to cancel their own tasks</li>
+<li><a href="http://drupal.org/node/678636">#678636: ability to delete tasks from the frontend</a></li>
+</ul>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-191.html?destination=node%2F163%23comment-form">Login</a> or <a href="../../../../../user/register/index-191.html?destination=node%2F163%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-191.html?destination=node%2F163%23comment-form">Login</a> or <a href="../../../../../user/register/index-191.html?destination=node%2F163%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-82" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../0/index-4.html">0.4-alpha15 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_1 first last"><a href="../../../../../taxonomy/term/1/index.html" rel="tag" title="">0.4-alpha15</a></li>
+</ul></div><h1>Aegir 0.4 Alpha15 released</h1>
+
+<p>The Aegir project is pleased to announce our 0.4 alpha 15 release. This release is primarily a bug fix release, which aims to tie off a huge amount of outstanding bugs and other tasks.</p>
+
+<p>We did aim to release beta1 but decided that there were a few critical bugs still lingering that we wouldn't want to overshadow in such a momentous release. Instead we've chosen to push out one last alpha before (finally) heading out into beta and RC stages of the 0.4 cycle.</p>
+
+<h2>community.aegirproject.org</h2>
+
+<p>In our biggest news, which we've chosen to announce in this release, we are very proud and excited to announce the launch of our new community site, <a href="../../../../../index.html" title="http://community.aegirproject.org">http://community.aegirproject.org</a> !</p>
+
+<p>Much preparation and planning has gone into building a clean, feature-rich community portal for our ever-growing Aegir users. We hope you'll agree that the documentation space, development information and community resources are long-awaited and desperately needed features to help users understand how Aegir works and how to use it.</p>
+
+<p>The community portal features:</p>
+
+<ul>
+<li>News area (blog, announcements)</li>
+<li>Almost all the Aegir documentation has been re-written and dramatically improved in a new Aegir handbook, covering all aspects of installing, using, understanding and developing Aegir.</li>
+<li>Screencasts and videos from sessions and tutorials (all the historical ones have been collated and added)</li>
+<li>Events calendar</li>
+<li>Shop resources (to be completed)</li>
+<li>Feed syndication of the Aegir universe (twitter, articles, git commits)</li>
+</ul>
+
+<p>The Documentation on groups.drupal.org is largely out of date and not in any sane order, and will be decommissioned in favour of the new documentation. Some of the still relevant and well-written documentation was dragged across and cleaned up where necessary.</p>
+
+<p>The documentation area on the new site is still a wiki so we would like to encourage users to continue to keep them up to date and add more to help improve the experience for other users.</p>
+
+<p>We'd like to thank all the contributors to the existing docs for their hard work and initiatives and hope you'll enjoy the new space and structure to keep helping make Aegir awesome.</p>
+
+<h2>Key changes in 0.4-alpha15</h2>
+
+<p>In our 0.4 alpha 15 release, these notable changes/improvements have occured:</p>
+
+<ul>
+<li>The DNS feature has been implemented and is available in /admin/hosting/features (Experimental)</li>
+<li>install.sh script has been changed considerably - most of the MySQL tests and user creation have been moved into provision to be handled by drush/php. There is no longer an 'aegir_root' user required for MySQL, we simply use your MySQL root user, which must have a password. You are required to supply a valid FQDN on installation, so that remote web servers can theoretically resolve the Aegir server if connecting to it for databases.</li>
+<li>upgrade.sh script added (see below, adventurous people please test)</li>
+<li>UPGRADE.txt updated to be a provide a little more clarity</li>
+<li>There's a new /admin/hosting/settings area with misc settings/customisations, including:
+
+<ul>
+<li>ability to run wget instead of drush cron</li>
+<li>delete sites without having to disable them first</li>
+<li>when selecting a core profile, hide platforms that incidentally have those core profiles but are intended as distributions (i.e OpenAtrium)</li>
+</ul></li>
+<li>backup task saves site's settings.php with uncloaked creds. Useful for exporting to non-aegir servers or for importing into new aegir servers</li>
+</ul>
+
+<h2>Installing and upgrading:</h2>
+
+<p>The canonical source of installation documentation is as usual the excellent <a href="http://git.aegirproject.org/?p=provision.git;a=blob_plain;f=docs/INSTALL.txt;hb=provision-0.4-alpha15">INSTALL.txt</a>.</p>
+
+<p>For the first time, we offer an <a href="http://git.aegirproject.org/?p=provision.git;a=blob_plain;f=upgrade.sh.txt;hb=provision-0.4-alpha15">upgrade.sh script</a> in Provision, which tries to automate much of the steps outlined in the <a href="http://git.aegirproject.org/?p=provision.git;a=blob_plain;f=docs/UPGRADE.txt;hb=provision-0.4-alpha15">UPGRADE.txt</a>.</p>
+
+<p>It is still imperative that you read the UPGRADE.txt and follow all version-specific upgrade instructions located at the end of the document before trying to run the upgrade script. This especially applies to users upgrading from before 0.4-alpha8, including 0.3.</p>
+
+<p>The upgrade.sh script attempts to backup the existing backend components, download new versions, and then run the hostmaster-migrate command. It assumes you are upgrading from the previous release (hostmaster-0.4-alpha14). If you are not, you may have to edit the script to change the OLD_DRUPAL_DIR variable.</p>
+
+<p>The script is in its infancy and has not been tested except by the developers while writing it. We urge caution (take backups!) but encourage feedback. If in doubt, just follow the UPGRADE.txt steps and perform all the manual commands as you usually would. <em>Edit:</em> some users report problems using the script on servers with really old versions of drush_make: the script stalls after upgrading Provision. Either run the upgrade process manually or <a href="http://git.aegirproject.org/?p=provision.git;a=commitdiff;h=ca5ed31c9b52167664cbed621051c10b11fb9d85">apply this fix</a> to your upgrade.sh.txt</p>
+
+<h2>Known Issues:</h2>
+
+<p>The following are known issues with the current release, for which there are tickets, but we didn't feel were critical enough to prevent another alpha release.
+Some of the issues have been present since prior to alpha14, they aren't all new issues.</p>
+
+<ul>
+<li>DNS - currently there is no access control</li>
+<li>Hostmaster install doesn't yet support remote db servers</li>
+<li>'Save' button on forms under some versions of Firefox/Iceweasel on Linux is greyed out</li>
+</ul>
+
+<h2>Bugs fixed:</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/868896">#868896</a> : INSTALL.TXT needs updates</li>
+<li><a href="http://drupal.org/node/880712">#880712</a> : install.sh.txt not prompting for the root MySQL password on Fedora 13</li>
+<li><a href="http://drupal.org/node/882970">#882970</a> : settings.php should not be updated before a vhost file is created and verified</li>
+<li><a href="http://drupal.org/node/888210">#888210</a> : Undefined variable: missing_requirement install_6.inc:214</li>
+<li><a href="http://drupal.org/node/894004">#894004</a> : install.sh lies about mysql listen AKA move the mysql creds handling to hostmaster-install</li>
+<li><a href="http://drupal.org/node/896492">#896492</a> : Anonymous users can't view the 'hosting/disabled/$site' disabled page</li>
+<li><a href="http://drupal.org/node/897326">#897326</a> : Typo in provision.config.inc</li>
+<li><a href="http://drupal.org/node/898732">#898732</a> : Deleted sites are counted against quotas</li>
+<li><a href="http://drupal.org/node/911392">#911392</a> : Cloned site shows wrong database in UI</li>
+<li><a href="http://drupal.org/node/913486">#913486</a> : Database server service stores port '0' in the hosting_service table</li>
+<li><a href="http://drupal.org/node/914040">#914040</a> : Server crashed because hosting_site_alias table was huge</li>
+<li><a href="http://drupal.org/node/919848">#919848</a> : verifying a server queues platform verification <em>before</em> the server verification</li>
+<li><a href="http://drupal.org/node/922716">#922716</a> : Expand link opens new window when used from modal frame.</li>
+<li><a href="http://drupal.org/node/928570">#928570</a> : Modal Frame font is inconsistent</li>
+<li><a href="http://drupal.org/node/931136">#931136</a> : You can't delete the D7 alpha7 and beta1 sites.</li>
+<li><a href="http://drupal.org/node/934830">#934830</a> : no width limit of 320px for div#navigation ul.links</li>
+<li><a href="http://drupal.org/node/937490">#937490</a> : Fix Platform access control to deal with profile &gt; platform paradigm</li>
+<li><a href="http://drupal.org/node/940816">#940816</a> : SSL Enabled Settings do not trigger insertion of Rewrite rules in vhost file unless domain aliases specified</li>
+<li><a href="http://drupal.org/node/942144">#942144</a> : Warnings when deleting a site</li>
+<li><a href="http://drupal.org/node/944450">#944450</a> : Saving a Package Node removes attached data</li>
+<li><a href="http://drupal.org/node/945894">#945894</a> : Enabling DNS service on server node gives MySQL errors</li>
+<li><a href="http://drupal.org/node/946422">#946422</a> : cannot sync platform to remote</li>
+<li><a href="http://drupal.org/node/947898">#947898</a> : Code in global.inc not picked up by settings.php</li>
+<li><a href="http://drupal.org/node/949044">#949044</a> : It is possible to create broken site or duplicate sites nodes because there is not enough strtolower(trim(domain)) used</li>
+<li><a href="http://drupal.org/node/950976">#950976</a> : Update hints for OS X</li>
+<li><a href="http://drupal.org/node/950980">#950980</a> : New OpenSSL breaks install script</li>
+<li><a href="http://drupal.org/node/951296">#951296</a> : @localhost no longer allowed in email addresses in Drupal 7</li>
+<li><a href="http://drupal.org/node/955184">#955184</a> : Backup task breaks any site by replacing settings.php with version working only with Apache</li>
+<li><a href="http://drupal.org/node/958094">#958094</a> : Disabling a site through Aegir front-end doesn't make it inaccessible</li>
+<li><a href="http://drupal.org/node/960106">#960106</a> : That the 'Publish path' for a new platform should be absolute is not obvious (usability)</li>
+</ul>
+
+<p>various others not reported in the queue</p>
+
+<h2>Feature requests fixed:</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/366420">#366420</a> : DNS slave server support</li>
+<li><a href="http://drupal.org/node/366814">#366814</a> : manage DNS records properly when creating/restoring/verifying/disabling/deleting sites</li>
+<li><a href="http://drupal.org/node/826840">#826840</a> : Save settings.php with uncloaked credentials on backup (for using on non-aegir hosts)</li>
+<li><a href="http://drupal.org/node/896914">#896914</a> : Migrate form displays current platform as a target</li>
+<li><a href="http://drupal.org/node/897982">#897982</a> : Limit choice of install profiles to those on available platforms</li>
+<li><a href="http://drupal.org/node/903884">#903884</a> : Delete task should be visible and inactive, not hidden.</li>
+<li><a href="http://drupal.org/node/922278">#922278</a> : configure the master server to allow slaves to do zone transfers</li>
+<li><a href="http://drupal.org/node/955550">#955550</a> : Improve Documentation to Reduce IRC Support Requests</li>
+</ul>
+
+<p>various others not reported in the queue.</p>
+
+<p>This was a mammoth and long-awaited release. Thanks to all our users for their continuing support, patience and contributions!</p>
+
+<p>-- The Aegir core devs</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-192.html?destination=node%2F82%23comment-form">Login</a> or <a href="../../../../../user/register/index-192.html?destination=node%2F82%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-192.html?destination=node%2F82%23comment-form">Login</a> or <a href="../../../../../user/register/index-192.html?destination=node%2F82%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-522" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../522/index.html">Previous release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>Release notes prior to Aegir 0.4-alpha15 were published on <a href="http://groups.drupal.org/taxonomy/term/6179">groups.drupal.org</a> and can be read there.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-193.html?destination=node%2F522%23comment-form">Login</a> or <a href="../../../../../user/register/index-193.html?destination=node%2F522%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-193.html?destination=node%2F522%23comment-form">Login</a> or <a href="../../../../../user/register/index-193.html?destination=node%2F522%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/723/revisions/1981/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:18:27 GMT -->
+</html>

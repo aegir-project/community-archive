@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/2799/revisions/5275/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:07:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/content/administrator/post-install-configuration/create-sudo-user-server-administration/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../handbook/administrator/post-install-configuration/using-proxy-cache-accelerate-platform-build/index.html" />
+<link rel="prev" href="../../../../../content/content/administrator/post-install-configuration/create-sudo-user-server-administration/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../handbook/administrator/post-install-configuration/using-proxy-cache-accelerate-platform-build/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Experimental: Aegir 2 on Ubuntu 12.04 with apache, php-fpm from Fri, 09/27/2013 - 09:58 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2799" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/content/administrator/post-install-configuration/experimental-aegir-2-ubuntu-1204-apache-php/index.html">Experimental: Aegir 2 on Ubuntu 12.04 with apache, php-fpm</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-2799'><p>These notes describes a possible way of installing Apache with fastcgi using php-fpm.
+This is just the first step to get it a try, the configuration is experimental.</p>
+
+<p>On a Ubuntu 12.04 box:
+enable multiverse repo in /etc/apt/sources.list</p>
+
+<p>add the Aegir package "Software Source" repository
+<div class="codeblock"><code>echo &quot;deb <a href="http://debian.aegirproject.org/" title="http://debian.aegirproject.org">http://debian.aegirproject.org</a> stable main&quot; | sudo tee -a /etc/apt/sources.list.d/aegir-stable.list<br />wget -q <a href="http://debian.aegirproject.org/key.asc" title="http://debian.aegirproject.org/key.asc">http://debian.aegirproject.org/key.asc</a> -O- | sudo apt-key add -</code></div></p>
+
+<p><div class="codeblock"><code>sudo apt-get update<br />sudo apt-get install mysql-server<br />sudo mysql_secure_installation<br />sudo apt-get install aegir2&nbsp; <br />sudo apt-get install php5-fpm libapache2-mod-fastcgi<br />sudo apt-get --purge remove libapache2-mod-php5</code></div></p>
+
+<p>Modify /etc/php5/fpm/pool.d/www.conf
+Make it listen on socket, instead of IP:
+<div class="codeblock"><code>;listen = 127.0.0.1:9000<br />listen = /var/run/php-fpm.sock</code></div></p>
+
+<p>create /etc/apache2/conf.d/php-fpm.conf
+<div class="codeblock"><code>&nbsp; ScriptAlias /php5.fastcgi /srv/www/fastcgi<br />&nbsp; FastCGIExternalServer /srv/www/fastcgi -socket /run/php-fpm.sock<br />&nbsp; AddHandler php-fastcgi .php<br />&nbsp; Action php-fastcgi /php5.fastcgi virtual<br /><br />&nbsp; Options FollowSymLinks ExecCGI<br /><br />&nbsp; &lt;Directory /srv/www/fastcgi&gt;<br />&nbsp;&nbsp;&nbsp; Options ExecCGI FollowSymLinks<br />&nbsp;&nbsp;&nbsp; SetHandler fastcgi-script<br />&nbsp;&nbsp;&nbsp; Order allow,deny<br />&nbsp;&nbsp;&nbsp; Allow from all<br />&nbsp; &lt;/Directory&gt;</code></div></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-71.html?destination=node%2F2799%23comment-form">Login</a> or <a href="../../../../../user/register/index-71.html?destination=node%2F2799%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-71.html?destination=node%2F2799%23comment-form">Login</a> or <a href="../../../../../user/register/index-71.html?destination=node%2F2799%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/2799/revisions/5275/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:07:13 GMT -->
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/389/revisions/1233/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:36:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/installing/debian/automatic-installation-ubuntu-1104-quickstart/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../417/index.html" />
+<link rel="prev" href="../../../../../content/installing/debian/automatic-installation-ubuntu-1104-quickstart/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../417/index.html" />
+<link rel="prev" href="../../../../../content/installing/debian/automatic-installation-ubuntu-1104-quickstart/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../417/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Manual Installation from Wed, 03/23/2011 - 13:55 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-389" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../installing/manual/index.html">Manual Installation</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-389'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 03/23/2011 - 13:55</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Aegir installation seems difficult at first, but once you get around it, it's fairly simple. It's 3 basic steps::</p>
+
+<ol>
+<li>Install the <a href="../../../../17/index.html">system requirements</a></li>
+<li><a href="../../../../390/index.html">Configure system requirements</a>, which include:
+
+<ul>
+<li>configure the <a href="../../../../390/index.html#Webserver_configuration">webserver</a>, <a href="../../../../390/index.html#Database_configuration">database</a>, <a href="../../../../390/index.html#DNS_configuration">DNS</a>, <a href="../../../../390/index.html#PHP_configuration">PHP</a>, etc</li>
+<li>create an <a href="../../../../390/index.html#Creation_of_the_Aegir_user">Aegir user</a>,</li>
+</ul></li>
+<li>Install the backend (<a href="http://drupal.org/project/drush">Drush</a> &amp; <a href="http://drupal.org/project/provision">Provision</a>) and the frontend (with <code>hostmaster-install</code>) <a href="../../../../397/index.html">with install.sh</a>.</li>
+</ol>
+
+<p>Note that these instructions setup a complete Aegir system. If you want to only setup a new remote web/db server, it should be sufficient to <a href="../../../../17/index.html">system requirements</a> (step 1),  <a href="../../../../390/index.html">configure them</a> (step 2) and follow the <a href="../../../../30/index.html">Remote server how-to</a>.</p>
+
+<p>These instructions provide example commands for a Debian-like distribution, but should be fairly easy to adapt to other environments. In fact, this document is meant as a canonical reference that should work on every platform and that can be used for people porting Aegir to new platforms or installing on alien platform for which Aegir is not yet packaged.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-292.html?destination=node%2F389%23comment-form">Login</a> or <a href="../../../../../user/register/index-292.html?destination=node%2F389%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-1915"></a>
+
+
+<div  id="comment-1915" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/mccrodp/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="mccrodp&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/mccrodp/index.html" class="username" title="View user profile.">mccrodp</a></div><div class='date'>1:29pm Apr 17, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1915">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>A few points just on installing drush with RedHat 6 that I seem to run in to every time.</p>
+
+<p>When I try to discover the pear channel as aegir user I get
+<code>could not create lock file: fopen(/usr/share/pear/.lock): failed to open stream: Permission denied</code></p>
+
+<p>I also get the following after I make the aegir user owner of the .lock file
+<div class="codeblock"><code>pear channel-discover pear.drush.org<br />Discovering channel pear.drush.org over http:// failed with message: channel-add: adding Channel &quot;pear.drush.org&quot; to registry failed<br />Trying to discover channel pear.drush.org over https:// instead<br />Discovery of channel &quot;pear.drush.org&quot; failed (channel-add: Cannot open &quot;https://pear.drush.org/channel.xml&quot; (Connection to `pear.drush.org:443&#039; failed: Connection refused))</code></div></p>
+
+<p>I can add it with root user but when installing drush I get <div class="codeblock"><code>pear install drush/drush-5.8.0<br />Cannot install, php_dir for channel &quot;pear.drush.org&quot; is not writeable by the current user</code></div></p>
+
+<p>I always have to install drush as root and then modify ownership/permissions to aegir user. Is the documentation wrong, or am I missing something?</p>
+
+<p>Also, for drush 5 it seems that 'http://download.pear.php.net/package/Console_Table-1.1.3.tgz' is a dependency!</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-292.html?destination=node%2F389%23comment-form">Login</a> or <a href="../../../../../user/register/index-292.html?destination=node%2F389%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/389/revisions/1233/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:36:51 GMT -->
+</html>

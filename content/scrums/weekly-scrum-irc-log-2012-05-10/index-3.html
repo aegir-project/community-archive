@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/content/scrums/weekly-scrum-irc-log-2012-05-10?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:36:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../weekly-scrum-irc-log-2012-04-30/index.html" />
+<link rel="up" href="../../../scrums/index.html" />
+<link rel="next" href="../weekly-scrum-irc-log-2012-05-28/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2012-05-10 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1452" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2012-05-10</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_7 first"><a href="../../../taxonomy/term/7/index.html" rel="tag" title="">scrum</a></li>
+<li class="taxonomy_term_6 last"><a href="../../../taxonomy/term/6/index.html" rel="tag" title="">weekly scrums</a></li>
+</ul></div><div id='diff-inline-1452'><pre>
+
+20:01 &lt;@mig5&gt; scrum time!
+20:02 &lt;@mig5&gt; darthsteven: anarcat: ergonlogic
+20:02 &lt;@darthsteven&gt; Hello!
+20:02 &lt; hefring&gt; salut
+20:03 &lt;@mig5&gt; i've recently started using the pack feature, as a very large client of mine will probably use it soon, so i decided to eat the dogfood and transitioned my own infrastructure onto a 5-server high-availability environment :)
+20:03 &lt;@mig5&gt; my main issue has been <a href="http://drupal.org/node/1555398" title="http://drupal.org/node/1555398">http://drupal.org/node/1555398</a>
+20:03 &lt; hefring&gt; <a href="http://drupal.org/node/1555398" title="http://drupal.org/node/1555398">http://drupal.org/node/1555398</a> =&gt; MySQL GRANTs aren't given for multiple servers in Web Pack =&gt; Hostmaster (Aegir), Code, normal, active, 18 comments, 1 IRC mention
+20:03 &lt;@mig5&gt; we have some funny corner cases with mysql grants
+20:03 &lt;@mig5&gt; not actually limited to pack module, but to a case where a webserver might have multiple ip addresses in the same LAN assigned to it
+20:03 &lt;@mig5&gt; and mysql might pick the wrong *source* IP to make the mysql connection attempt in order to fetch those to use for grants
+20:04 &lt;@mig5&gt; i've worked around it in my case there. but anyway that's basically all i'm thinking about at the moment
+20:07 &lt;@mig5&gt; darthsteven: can we catch up after the scrum?
+20:07 &lt;@mig5&gt; presuming the scrum isn't done already :)
+20:07 &lt;@darthsteven&gt; (we can)
+20:08 &lt;@darthsteven&gt; that's great
+20:08 &lt;@darthsteven&gt; I saw lots of comments on that issue :)
+20:08 &lt;@darthsteven&gt; shall I go next?
+20:08 &lt;@mig5&gt; yeah i got a bit carried away - but it was really hard to find *what* was the problem
+20:08 &lt;@mig5&gt; sure
+20:09 &lt;@darthsteven&gt; didn't really do too much this week
+20:09 &lt;@darthsteven&gt; got a fix for the Drush invoke issue in Drush 5 in: <a href="http://drupal.org/node/1554092" title="http://drupal.org/node/1554092">http://drupal.org/node/1554092</a>
+20:09 &lt; hefring&gt; <a href="http://drupal.org/node/1554092" title="http://drupal.org/node/1554092">http://drupal.org/node/1554092</a> =&gt; drush_invoke_process uses 100% CPU =&gt; Drush, Base system (internal API), critical, fixed, 13 comments, 3 IRC mentions
+20:10 &lt;@darthsteven&gt; and working with the Drush peeps to get <a href="http://drupal.org/node/1550574" title="http://drupal.org/node/1550574">http://drupal.org/node/1550574</a> sorted too
+20:10 &lt; hefring&gt; <a href="http://drupal.org/node/1550574" title="http://drupal.org/node/1550574">http://drupal.org/node/1550574</a> =&gt; drush_invoke_process doesn't pass through alias =&gt; Drush, Base system (internal API), normal, active, 4 comments, 1 IRC mention
+20:11 &lt;@darthsteven&gt; we should be able to support Drush 5 easily when that one is done
+20:11 &lt;@darthsteven&gt; at the moment the 6.x-2.x branch has a workaround
+20:11 &lt;@darthsteven&gt; but 6.x-2.x still works with Drush 5
+20:11 &lt;@darthsteven&gt; that's it from me!
+20:11 &lt;@darthsteven&gt; next?
+20:11 &lt;@mig5&gt; nice!
+20:12 &lt;@mig5&gt; i suspect that'll be it, it's only 6:12am in montreal
+20:12 &lt;@mig5&gt; i'll wait a few min
+20:20 &lt;@mig5&gt; ok i think that's it
+20:20 &lt;@mig5&gt; thanks
+20:22 &lt;@darthsteven&gt; thank you too
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../user/login/index-140.html?destination=node%2F1452%23comment-form">Login</a> or <a href="../../../user/register/index-140.html?destination=node%2F1452%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/content/scrums/weekly-scrum-irc-log-2012-05-10?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:36:45 GMT -->
+</html>

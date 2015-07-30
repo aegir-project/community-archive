@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/187/revisions/1419/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:19:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../186/index.html" />
+<link rel="up" href="../../../../31/index.html" />
+<link rel="next" href="../../../../385/index.html" />
+<link rel="prev" href="../../../../186/index.html" />
+<link rel="up" href="../../../../31/index.html" />
+<link rel="next" href="../../../../385/index.html" />
+<link rel="prev" href="../../../../186/index.html" />
+<link rel="up" href="../../../../31/index.html" />
+<link rel="next" href="../../../../385/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Branch and tagging conventions and release cycle from Wed, 04/06/2011 - 02:20 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-187" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/branch-and-tagging-conventions/index.html">Branch and tagging conventions and release cycle</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-187'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a> on 04/06/2011 - 02:20</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Aegir development makes a heavy use of branches to keep development stable. We use feature branches to do large development work and have release branches to keep stable releases maintained while development happen on the development branches.</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#The_release_cycle"><span class="toc-number">1. </span><span class='diff-added'>The release cycle</span></a><span class='diff-added'></span></li><span class='diff-added'>
+	</span><li class="toc-level-1"><span class='diff-added'></span><a href="#Branch_naming_conventions"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>2.</span> </span>Branch naming conventions</a>
+<ol>
+	<li class="toc-level-2"><a href="#Main_development_branch"><span class="toc-number"><span class='diff-changed'>2.1.</span> </span>Main development branch</a></li>
+	<li class="toc-level-2"><a href="#Stable_release_branches"><span class="toc-number"><span class='diff-changed'>2.2.</span> </span>Stable release branches</a></li>
+	<li class="toc-level-2"><a href="#Feature_branches"><span class="toc-number"><span class='diff-changed'>2.3.</span> </span>Feature branches</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Tag_naming_convention"><span class="toc-number"><span class='diff-changed'>3.</span> </span>Tag naming convention</a></li>
+	<li class="toc-level-1"><a href="#CVS_and_git_history"><span class="toc-number"><span class='diff-changed'>4.</span> </span>CVS and git history</a></li>
+</ol>
+</div>
+</div>
+
+<h1 id="The_release_cycle">1.<span class='diff-added'> The release cycle</span></h1><span class='diff-added'>
+
+</span><p><span class='diff-added'>In general, each major Aegir release comprises a simultaneous release of all the modules that are part of the project. We generally go through several testing releases (alphas, betas &amp; RCs) before doing the first stable release on a branch.</span></p><span class='diff-added'>
+
+</span><ul><span class='diff-added'>
+</span><li><span class='diff-added'>First an alpha is released to test new functionalities and to proceed accomplishing the goals decided in the </span><a href="../../../../35/index.html"><span class='diff-added'>Project Roadmap</span></a><span class='diff-added'> for that major version. Example: </span><code><span class='diff-added'>0.4-alpha1</span></code><span class='diff-added'>, </span><a href="../../../../../0/index-4.html"><span class='diff-added'></span><code><span class='diff-added'>0.4-alpha15</span></code><span class='diff-added'></span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'>When we have covered most of the functionalities outlined in the </span><a href="../../../../../roadmap/index.html"><span class='diff-added'>roadmap</span></a><span class='diff-added'>, we bump that to a beta. We push out beta releases until no more critical issues show up. Example: </span><a href="../../../../../0/index-3.html"><span class='diff-added'></span><code><span class='diff-added'>0.4-beta1</span></code><span class='diff-added'></span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Then we go into feature freeze and release a first release candidate (RC). Then a stable release branch is created, we enter a feature freeze on that branch and </span><code><span class='diff-added'>master</span></code><span class='diff-added'> is kept opened for development for the next stable release. Example: </span><a href="../../../../../0/index.html"><span class='diff-added'></span><code><span class='diff-added'>0.4-rc1</span></code><span class='diff-added'></span></a><span class='diff-added'>, </span><a href="../../../../360/index.html"><span class='diff-added'>freeze announcement</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'>If no critical bugs are found, a complete release is done. Otherwise critical bugs are fixed and a new RC is done. That cycle repeats until no critical bugs are found, and a stable release is officially published.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Once a stable release is out, hotfixes are committed to the stable branch, and a stable release is published (without alpha/beta/RC) directly on the stable branch.</span></li><span class='diff-added'>
+</span></ul><span class='diff-added'>
+
+</span><div class="toc-back-to-top"><span class='diff-added'></span><a href="#toc"><span class='diff-added'>Back to top</span></a><span class='diff-added'></span></div><span class='diff-added'></span><h1 id="Branch_naming_conventions"><span class='diff-added'>2.</span> Branch naming conventions</h1>
+
+<p>All branches are either development branches, stable branches or feature branches. Development and stable branches have the same naming convention:  <code>6.x-1.x</code> or <code>7.x-2.x</code>. The only different between the two is that a stable branch is the branch where stable releases are published from.</p>
+
+<p><em>Note</em>: since the <a href="../../../../385/index.html">great git.drupal.org migration</a>, we are back on Drupal.org and have been forced to change some of our naming convention, especially to include the core release number in the tag (so <code>6.x-1.x</code>), which is a source of confusion for our <code>provision</code> module which supports any Drupal core version.  See <a href="http://drupal.org/node/322626#comment-4116688">this issue on drupal.org</a> for followup.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Main_development_branch"><span class='diff-changed'>2.1.</span> Main development branch</h2>
+
+<p>The main development branch is created after a fully stable release is published. For example, the <code>7.x-2.x</code> branch will be created once the 1.0 release is published. It will be a development branch until it is considered feature-complete and goes through the alpha/beta/rc release cycle, at which point it will be declared a stable branch and a new development branch will be created (probably <code>8.x-3.x</code> at that point).</p>
+
+<p>Note that we have <a href="../../../../524/index.html">dropped the master branch</a> as it is not well supported on Drupal.org for releases.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Stable_release_branches"><span class='diff-changed'>2.2.</span> Stable release branches</h2>
+
+<p>Stable releases are performed from stable release branches. A branch is declared stable only after it went through the complete alpha/beta/rc release <span class='diff-changed'>cycle, as detailed above..</span></p>
+
+<p>Once the branch is declared stable, new releases are quickly done as "hotfixes", without intervening alpha/beta/rc releases. So for example, <code>6.x-1.0</code> will come after <code>6.x-1.0-alpha1</code>, <code>6.x-1.0-beta1</code>, <code>6.x-1.0-rc1</code> <em>at least</em>, and then be followed directly by <code>6.x-1.1</code>.</p>
+
+<p>Releases on the same stable branch are API-compatible with each other (so <code>1.1</code> is compatible with <code>1.0</code>). The upgrade path is supported between major stable releases (so you can upgrade from <code>1.0</code> to <code>1.1</code> or <code>2.0</code>).</p>
+
+<p><strong>Special case</strong>: during the 0.x release cycle, releases were not API-compatible with each other, ie. 0.4 was <em>not</em> compatible with 0.3, and you could barely upgrade from 0.3 to 0.4.</p>
+
+<p>Only one stable branch is maintained at a time.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Feature_branches"><span class='diff-changed'>2.3.</span> Feature branches</h2>
+
+<p>More complex development goes into development or "feature" branches, to avoid making <code>master</code> too unstable. Feature branches must be prefixed with "dev-" and use the issue number (if available or relevant) and a short name. So for example, there could be work on a <code>dev-12345-mybug</code> branch or <code>dev-dns</code> branch for a larger feature (DNS, in that case) which doesn't fit in a single issue.</p>
+
+<p>Feature branches should be based of a known stable baseline as much as possible. For example, you should branch off the last alpha release if you want to make merging with other dev branches and master easier. See <a href="http://developers.slashdot.org/story/10/11/30/1649231/Linus-On-Branching-Practices">this article</a> for a thorough discussion on this practice</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Tag_naming_convention"><span class='diff-changed'>3.</span> Tag naming convention</h1>
+
+<p>Every release is tagged with a <code>6.x-x.y</code> tag (e.g. <code>6.x-0.4</code>, <code>6.x-0.4-alpha15</code> or <code>6.x-1.0</code>). Those tags are usually laid on the stable branches, except for alpha/beta/rc releases which are laid on the development branch.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="CVS_and_git_history"><span class='diff-changed'>4.</span> CVS and git history</h1>
+
+<p>The CVS tags and branches are still accessible in git and will be kept there for posterity. They respect the traditional Drupal.org naming convention.</p>
+
+<p>They have also been converted to the new git.drupal.org conventions during the <a href="../../../../385/index.html">great git.drupal.org migration</a>.</p>
+
+<p>Since that migration (february 2011), history has been rewritten to clean up the authors in the history.</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-195.html?destination=node%2F187%23comment-form">Login</a> or <a href="../../../../../user/register/index-195.html?destination=node%2F187%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-195.html?destination=node%2F187%23comment-form">Login</a> or <a href="../../../../../user/register/index-195.html?destination=node%2F187%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/187/revisions/1419/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:19:10 GMT -->
+</html>

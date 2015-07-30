@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/38/revisions/2435/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:05:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/content/administrator/post-install-configuration/using-ssl/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../dnswildcard/index.html" />
+<link rel="prev" href="../../../../../content/content/administrator/post-install-configuration/using-ssl/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../dnswildcard/index.html" />
+<link rel="prev" href="../../../../../content/content/administrator/post-install-configuration/using-ssl/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../dnswildcard/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of DNS from Wed, 10/19/2011 - 15:52 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-38" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../administrator/dns/index.html">DNS</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-38'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 10/19/2011 - 15:52</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>There is preliminary support for DNS in Aegir's backend that allows it to manage zonefiles dynamically when sites are created. There are still a few major bits missing (described in <a href="http://drupal.org/node/922280">this meta-ticket</a>) so we generally recommend people use the <a href="../../../../../dnswildcard/index.html">wildcard approach</a> for now.</p><span class='diff-added'>
+
+</span><p><span class='diff-added'>That said, while perhaps not yet ready for production use, Aegir's DNS functionality can be quite useful for local development environments. If you run Aegir locally, you're probably in the habit of hacking </span><em><span class='diff-added'>/etc/hosts</span></em><span class='diff-added'> regularly, or if you're more adventurous, you've set up a local DNS forwarder, such as dnsmasq. With Aegir's DNS feature, you can avoid this hassle, and let Aegir handle it transparently.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>While Aegir supports both BIND and dnsmasq, this documentation will focus on the former. The first step is to install BIND. On Debian-based distros, this will look like:
+</span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'>apt-get install bind9</span></code><span class='diff-added'></span></div><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Next we need to allow the </span><em><span class='diff-added'>aegir</span></em><span class='diff-added'> user to run </span><strong><span class='diff-added'>rndc</span></strong><span class='diff-added'> (the name server control utility). On recent Debian systems, this will involve editing </span><em><span class='diff-added'>/etc/sudoers.d/aegir</span></em><span class='diff-added'>, whereas on older releases this would be </span><em><span class='diff-added'>/etc/sudoers</span></em><span class='diff-added'>. Modify the aegir line to read:
+</span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'>aegir ALL=NOPASSWD: /usr/sbin/apache2ctl, /usr/sbin/rndc</span></code><span class='diff-added'></span></div><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Then we need to make sure the </span><em><span class='diff-added'>bind</span></em><span class='diff-added'> user has access to read Aegir's files, so we'll add </span><em><span class='diff-added'>bind</span></em><span class='diff-added'> to the </span><em><span class='diff-added'>aegir</span></em><span class='diff-added'> group:
+</span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'>adduser bind aegir</span></code><span class='diff-added'></span></div><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>We're now ready to activate the feature in Aegir's frontend. Go to Hosting &gt;&gt; Features (</span><em><span class='diff-added'>admin/hosting/features</span></em><span class='diff-added'>) and select "DNS Support" under the "Experimental" fieldset, and save the configuration.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Finally, we need to activate DNS on the Aegir server. Visit the server node (</span><em><span class='diff-added'>hosting/c/server_master</span></em><span class='diff-added'>) and click the edit tab (which should bring you to </span><em><span class='diff-added'>node/2/edit</span></em><span class='diff-added'>). Then under "DNS Service", select "Bind" and then save.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>This should trigger a verify of the server (and then probably the platforms on it too), after which Aegir will be managing your local BIND server, and it's zonefile(s). This means that Aegir is now a full-fledged DNS server that you can use to resolve addresses locally. This can be accomplished on Debian-like systems by editing </span><em><span class='diff-added'>/etc/resolv.conf</span></em><span class='diff-added'> to include "nameserver 127.0.0.1". If you're running Aegir in a VM, you can just point this to the address of the virtual machine.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Additional documentation can be found in the Provision DNS module: </span><a href="http://drupalcode.org/project/provision.git/blob/HEAD:/dns/NOTES" title="http://drupalcode.org/project/provision.git/blob/HEAD:/dns/NOTES"><span class='diff-added'>http://drupalcode.org/project/provision.git/blob/HEAD:/dns/NOTES</span></a><span class='diff-added'>.</span></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-404.html?destination=node%2F38%23comment-form">Login</a> or <a href="../../../../../user/register/index-404.html?destination=node%2F38%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/38/revisions/2435/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:05:49 GMT -->
+</html>

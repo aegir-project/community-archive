@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/400/revisions/1371/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:41:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/installing/system-requirements/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../content/installing/debian/automatic-installation-ubuntu-1104-quickstart/index.html" />
+<link rel="prev" href="../../../../../content/installing/system-requirements/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../content/installing/debian/automatic-installation-ubuntu-1104-quickstart/index.html" />
+<link rel="prev" href="../../../../../content/installing/system-requirements/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../content/installing/debian/automatic-installation-ubuntu-1104-quickstart/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Automatic install on Debian from Fri, 04/01/2011 - 17:26 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-400" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../installing/debian/index.html">Automatic install on Debian</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-400'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 04/01/2011 - 17:26</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Debian packages have been uploaded to <a href="http://debian.koumbit.net/" title="http://debian.koumbit.net/">http://debian.koumbit.net/</a>, currently in the "unstable" distribution during the test period. We eventually want to upload those packages to the official archives, but this will take some adaptation and time to sponsor the packages in.</p>
+
+<p>Those are the installation instructions that are recommended on Debian.</p>
+
+<h2>Adding the Koumbit repositories</h2>
+
+<p>Add the following line to /etc/apt/sources.list.d/koumbit-unstable.list:</p>
+
+<p><div class="codeblock"><code>deb <a href="http://debian.koumbit.net/debian" title="http://debian.koumbit.net/debian">http://debian.koumbit.net/debian</a> unstable main</code></div></p>
+
+<p>.. then run apt-get update.</p>
+
+<h2>Adding backports</h2>
+
+<p>You should also configure <a href="http://backports.debian.org/">backports</a> repositories, for Drush. 4.4 is now in <a href="http://packages.debian.org/sid/drush">unstable</a> and 3.3 is in <a href="http://packages.debian.org/squeeze/drush">squeeze</a> and <a href="http://packages.debian.org/lenny-backports/drush">lenny-backports</a>.</p>
+
+<h2>Adding the archive key to your keyring</h2>
+
+<p>This archive self-signs packages uploaded to it (and packages uploaded are verified against a whitelist of trusted uploaders) using OpenPGP (GnuPG, to be more precise).</p>
+
+<p>The key of the archive is in the key.asc file. You should add the key using something like this:</p>
+
+<p><span class='diff-added'></span><div class="codeblock"><span class='diff-added'></span><code>wget <a href="http://debian.koumbit.net/debian/key.asc<br /><span class='diff-changed'>apt-key" title="http://debian.koumbit.net/debian/key.asc</span><br /><span class='diff-changed'>apt-key">http://debian.koumbit.net/debian/key.asc</span><br /><span class='diff-changed'>apt-key</span></a></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>apt-key</span> add key.asc<br />apt-get update</code><span class='diff-added'></span></div><span class='diff-added'></span></p>
+
+<h2>Installing Aegir</h2>
+
+<p>To install aegir, frontend and backend, use the following command:</p>
+
+<p><div class="codeblock"><code>apt-get install aegir</code></div></p>
+
+<p>This will prompt you for the required information and go ahead with the install.</p>
+
+<h2>Manual sudo configuration</h2>
+
+<p>If you are running sudo versions previous to squeeze, you will need to manually modify your /etc/sudoers file to add the following line:</p>
+
+<p><div class="codeblock"><code>aegir ALL=NOPASSWD: /usr/sbin/apache2ctl</code></div></p>
+
+<h2>Troubleshooting the install</h2>
+
+<p>To make the install smoother, the install command is run without much debugging information, which can make diagnostics pretty hard. For this there's a special environment variable you can set that will trigger debugging output. Install aegir with this:</p>
+
+<p><div class="codeblock"><code>env DEBUG=yes apt-get install aegir</code></div></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-296.html?destination=node%2F400%23comment-form">Login</a> or <a href="../../../../../user/register/index-296.html?destination=node%2F400%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-1857"></a>
+
+
+<div  id="comment-1857" class="comment comment-published clear-block decay-10 decay-10">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/mccrodp/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="mccrodp&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/mccrodp/index.html" class="username" title="View user profile.">mccrodp</a></div><div class='date'>4:26pm Feb 21, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1857">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>On Squeeze, I tried to install aegir2, but have some dependency errors, firstly stating I need hostmaster2 and provision2, then stating I need drush5.5 or greater. I have installed drush5.8 using php-pear package, but apt-get mustn't know about this.</p>
+
+<ul>
+<li>What is the 2.x procedure for the automatic installation? </li>
+<li>Is there a method to add a higher version of drush than 4.5 to squeeze-backports so that apt-get knows the correct drush version? </li>
+</ul>
+
+<p>I thought that running 'apt-get install aegir2' would have picked up the correct hostmaster and provision (aegir-provision2 and aegir-hostmaster2), as I think it does for 'apt-get install aegir'.</p>
+
+<p><div class="codeblock"><code>root@aegir2:~# apt-get install aegir2<br />Reading package lists... Done<br />Building dependency tree&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />Reading state information... Done<br />Some packages could not be installed. This may mean that you have<br />requested an impossible situation or if you are using the unstable<br />distribution that some required packages have not yet been created<br />or been moved out of Incoming.<br />The following information may help to resolve the situation:<br /><br />The following packages have unmet dependencies:<br /> aegir2 : Depends: aegir-provision2 (&gt;= 2.0~alpha1) but it is not going to be installed<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Depends: aegir-hostmaster2 (&gt;= 2.0~alpha1) but it is not going to be installed<br />E: Broken packages<br />root@aegir2:~# apt-get install aegir-provision2 aegir-hostmaster2<br />Reading package lists... Done<br />Building dependency tree&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />Reading state information... Done<br />Some packages could not be installed. This may mean that you have<br />requested an impossible situation or if you are using the unstable<br />distribution that some required packages have not yet been created<br />or been moved out of Incoming.<br />The following information may help to resolve the situation:<br /><br />The following packages have unmet dependencies:<br /> aegir-hostmaster2 : Depends: drush (&gt;= 5.5) but 4.5-2~bpo60+1 is to be installed<br /> aegir-provision2 : Depends: drush (&gt;= 5.5) but 4.5-2~bpo60+1 is to be installed<br />E: Broken packages</code></div></p>
+
+<p>Thanks in advance for any help with this.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-296.html?destination=node%2F400%23comment-form">Login</a> or <a href="../../../../../user/register/index-296.html?destination=node%2F400%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-1859"></a>
+
+
+<div  id="comment-1859" class="comment comment-published clear-block decay-9 decay-9">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/helmo/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="helmo&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/helmo/index.html" class="username" title="View user profile.">helmo</a></div><div class='date'>8:50am Feb 22, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1859">#2</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>@mccrodp: I had a similar experiance, and opend this issue: <a href="http://drupal.org/node/1920152" title="http://drupal.org/node/1920152">http://drupal.org/node/1920152</a></p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-296.html?destination=node%2F400%23comment-form">Login</a> or <a href="../../../../../user/register/index-296.html?destination=node%2F400%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-1936"></a>
+
+
+<div  id="comment-1936" class="comment comment-published clear-block decay-7 decay-7">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/jonpugh/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="jonpugh&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/jonpugh/index.html" class="username" title="View user profile.">jonpugh</a></div><div class='date'>12:03am May 16, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1936">#3</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Would it be possible to add "profile" as an option, just like "makefile"?</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-296.html?destination=node%2F400%23comment-form">Login</a> or <a href="../../../../../user/register/index-296.html?destination=node%2F400%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<div class="indented"><a id="comment-1939"></a>
+
+
+<div  id="comment-1939" class="comment comment-published clear-block decay-7 decay-7">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/helmo/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="helmo&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/helmo/index.html" class="username" title="View user profile.">helmo</a></div><div class='date'>7:21am May 17, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1939">#4</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Sure. It would have to be added to the drush hostmaster-install and possibly hostmaster-migrate commands. Feel free to open an issue. Patches welcome ;)</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-296.html?destination=node%2F400%23comment-form">Login</a> or <a href="../../../../../user/register/index-296.html?destination=node%2F400%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div><a id="comment-1947"></a>
+
+
+<div  id="comment-1947" class="comment comment-published clear-block decay-7 decay-7">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/willmoy/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="willmoy&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/willmoy/index.html" class="username" title="View user profile.">willmoy</a></div><div class='date'>10:28pm May 21, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1947">#5</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Thanks to jonpugh @ #32 and #33 for helping me get aegir 1.9 going with a fresh install of Debian Wheezy. The default wheezy version of drush is now too new (v5.x) for aegir 1.x. You need version 4.x, available in squeeze-backports. If you've already tried to install and run into "The drush command '@hostmaster status' could not be found." you must purge aegir and drush before attempting to reinstall with the correct drush version pinned.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-296.html?destination=node%2F400%23comment-form">Login</a> or <a href="../../../../../user/register/index-296.html?destination=node%2F400%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2229"></a>
+
+
+<div  id="comment-2229" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/ygerasimov/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="ygerasimov&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/ygerasimov/index.html" class="username" title="View user profile.">ygerasimov</a></div><div class='date'>7:39am Jan 21, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-2229">#6</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>I had problem installing aegir2 on debian 7. Warning was</p>
+
+<p>ERROR: Module ssl does not exist!</p>
+
+<p>This can be solved with enabling mod_ssl on your apache2. For my case I needed to create /etc/apache2/mods-available/ssl.load with content</p>
+
+<p>LoadModule ssl_module /usr/lib/apache2/modules/mod_ssl.so</p>
+
+<p>After creating that file and restarting apache enable module sudo a2enmod ssl.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-296.html?destination=node%2F400%23comment-form">Login</a> or <a href="../../../../../user/register/index-296.html?destination=node%2F400%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/400/revisions/1371/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:41:08 GMT -->
+</html>

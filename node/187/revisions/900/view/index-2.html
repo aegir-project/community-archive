@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/187/revisions/900/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:19:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../186/index.html" />
+<link rel="up" href="../../../../31/index.html" />
+<link rel="next" href="../../../../385/index.html" />
+<link rel="prev" href="../../../../186/index.html" />
+<link rel="up" href="../../../../31/index.html" />
+<link rel="next" href="../../../../385/index.html" />
+<link rel="prev" href="../../../../186/index.html" />
+<link rel="up" href="../../../../31/index.html" />
+<link rel="next" href="../../../../385/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Advanced git workflow: branches and releases from Sun, 02/27/2011 - 14:23 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-187" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/branch-and-tagging-conventions/index.html">Advanced git workflow: branches and releases</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-187'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a> on 02/27/2011 - 14:23</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Aegir development makes a heavy use of git branches to keep the main branch stable. We use feature branches to do most development work and have release branches to keep stable releases maintained while development happen on the main (and dev) branches.</p>
+
+<h1>Branch naming conventions</h1>
+
+<ul>
+<li><code>master</code> is always the main development branch. Think of it as CVS <code>HEAD</code>. When you commit there, you make everyone suffer, so unless you are confident your change needs to be in the mainline, you are likely to want to use feature branches (below).</li>
+<li><code><span class='diff-changed'>aegir-x.y</span></code> are stable branch releases, where <code>aegir</code> is the subproject name (e.g. <code><span class='diff-changed'>hostmaster-1.0</span></code><span class='diff-changed'>),</span> the<span class='diff-deleted'> </span><span class='diff-deleted'>0.:</span> branch is <code>aegir-1.x</code> and tags are <code>aegir-1.0</code>. Commits to those branches should be first tested on the master branch (if possible) and then carefully tested there through alpha/beta/rc stages before a new tag is laid.<span class='diff-added'> Releases within the same branch are API-compatible (ie. 1.1 is API-compatible with 1.0). </span><em><span class='diff-added'>Special case</span></em><span class='diff-added'>: during the 0.x branch cycle, we had compatibility only within the 0.x.y branch, ie. 0.4 was </span><em><span class='diff-added'>not</span></em><span class='diff-added'> compatible with 0.3. However, this may change after the 0.4 release.</span></li>
+<li>development or "feature" branches must be prefixed with "dev-" and use the issue number (if available or relevant) and a short name. So for example, there could be work on a <code>dev-12345-mybug</code> branch or <code>dev-dns</code> branch for a larger feature (DNS, in that case) which doesn't fit in a single issue.</li>
+</ul>
+
+<p>Development branches should be based of a known stable baseline as much as possible. For example, you can branch off the last alpha release if you want to be certain you have a sane environment (see <a href="http://developers.slashdot.org/story/10/11/30/1649231/Linus-On-Branching-Practices">this article</a> for a thorough discussion on this practice). Since the master branch is usually fairly stable, you can usually keep that as a baseline, but keep in mind it will make merging with other dev branches more difficult as you will start from different baselines and therefore merge unrelated commits.</p>
+
+<h1>Tag naming convention</h1>
+
+<p>Every release is tagged with a aegir-x.y tag (e.g. <span class='diff-changed'>aegir-0.4</span> or aegir-0.4-alpha15).</p>
+
+<p>It is important that this naming convention be followed, particularly for release tags, as the tags are used to generate the tarballs published on <a href="http://files.aegirproject.org/" title="http://files.aegirproject.org/">http://files.aegirproject.org/</a>. (See <a href="http://git.koumbit.net/?p=tools/git-hooks/.git;a=blob;f=archive-tag">this script</a> for details on how this works.) So if a tag named <code>provision-0.4.0</code> is pushed, the <code><span class='diff-changed'>provision-0.4.tgz</span></code> file will be generated.</p>
+
+<h1>CVS and history</h1>
+
+<p>Deprecated and/or merged branches will be moved to an eventual "attic", a clone of the main repository that will keep all dead branches. We will cleanup every major release.</p>
+
+<p>The CVS tags and branches are still accessible in git and will be kept there for posterity. They respect the traditional Drupal.org naming convention.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-195.html?destination=node%2F187%23comment-form">Login</a> or <a href="../../../../../user/register/index-195.html?destination=node%2F187%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-195.html?destination=node%2F187%23comment-form">Login</a> or <a href="../../../../../user/register/index-195.html?destination=node%2F187%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/187/revisions/900/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:19:12 GMT -->
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/content/scrums/weekly-scrum-irc-log-2012-01-09?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:36:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../weekly-scrum-irc-log-2011-12-12/index.html" />
+<link rel="up" href="../../../scrums/index.html" />
+<link rel="next" href="../weekly-scrum-irc-log-2012-02-06/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2012-01-09 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-999" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2012-01-09</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-999'><pre>
+14:56       mig5@&gt; shall we do a scrum darthsteven anarcat ergonlogic omega8cc
+15:02    anarcat@&gt; oh yes!
+15:02    anarcat@&gt; scrum time!
+15:03   omega8cc+&gt; hi!
+15:03    hefring &gt; privet
+15:03    anarcat@&gt; alright
+15:04    anarcat@&gt; well, for myself i am just back from vacation
+15:04    anarcat@&gt; still swamped with a lot of non-aegir related work
+15:04    anarcat@&gt; but hopefully i will get to fix some pesky issues that have been bothering our clients and workers here
+15:05    anarcat@&gt; one low hanging fruit we have is to deploy those module automatically on new sites: <a href="http://drupal.org/node/1157114" title="http://drupal.org/node/1157114">http://drupal.org/node/1157114</a>
+15:05    hefring &gt; <a href="http://drupal.org/node/1157114" title="http://drupal.org/node/1157114">http://drupal.org/node/1157114</a> =&gt; DB Login =&gt; 0 comments, 1 IRC mention
+15:06 (*)  anarcat looking for the second one
+15:06    anarcat@&gt; <a href="http://drupal.org/project/environment_indicator" title="http://drupal.org/project/environment_indicator">http://drupal.org/project/environment_indicator</a>
+15:06    anarcat@&gt; there
+15:06    anarcat@&gt; the other things are: exportable backups and the pesky files directory
+15:06    anarcat@&gt; i am looking for ways to optimise the migrations
+15:06    anarcat@&gt; because right now we end up tarring and untarring a lot of the same crap every week
+15:07    anarcat@&gt; and i'm looking for ways to optimise that
+15:07    anarcat@&gt; so suggestions welcome there
+15:07    anarcat@&gt; the exportable backups is just to have a way to hardlink the backup in the @hostmaster/files directory with a hard-to-guess filename so that only the user can download it
+15:11       mig5@&gt; interesting
+15:11       mig5@&gt; sorry, dealing with a nagios alert here at the same time
+15:11    anarcat@&gt; fun :)
+15:11    anarcat@&gt; i think that's pretty much it for me
+15:12       mig5@&gt; not much from me this week.. need to find some more time to look at <a href="http://drupal.org/node/1388906" title="http://drupal.org/node/1388906">http://drupal.org/node/1388906</a> again. would be nice to test the nginx stuff more, not that we don't trust omega8cc of course :)
+15:12    hefring &gt; <a href="http://drupal.org/node/1388906" title="http://drupal.org/node/1388906">http://drupal.org/node/1388906</a> =&gt; It is possible to break Nginx based install with upload progress by enabling nginx_ssl feature =&gt; Provision, Code, critical, needs review, 5 comments, 1 IRC mention
+15:12       mig5@&gt; i'm otherwise just swamped with work, it's insane
+15:12    anarcat@&gt; i know how you feel
+15:12    anarcat@&gt; my return from vacation is insane
+15:12       mig5@&gt; i give my aegir talk at Druapl DownUnder on saturday, should be good
+15:12       mig5@&gt; how was NYC ?
+15:12    anarcat@&gt; we had a compromised ftp account that sent out 30k spams on my first day :P
+15:12       mig5@&gt; ugh!
+15:12    anarcat@&gt; it was good
+15:12    anarcat@&gt; it was only one day!
+15:12    anarcat@&gt; but i did a aegir pres with ergonlogic
+15:12    anarcat@&gt; and i think we got a few people in
+15:13    anarcat@&gt; i met with the pantheon guys, and they have a *great* product
+15:13    anarcat@&gt; not open source of course :P
+15:13       mig5@&gt; yeah. it's nice and simple
+15:13    anarcat@&gt; but they really got somethign going with their dev/staging/prod thingy
+15:13       mig5@&gt; yes and non-free :(
+15:13 ergonlogic &gt; hi
+15:13    anarcat@&gt; well, i got invite codes
+15:13    anarcat@&gt; i promised josh_k_ i would try to crack their thing
+15:13       mig5@&gt; haha
+15:13    anarcat@&gt; so far didn't find the time
+15:13    anarcat@&gt; but they really have good security tools
+15:14    anarcat@&gt; they are using cgroups, fcgi (or similar)
+15:14       mig5@&gt; David Strauss knows his stuff
+15:14    anarcat@&gt; so basically, you are renting out process groups
+15:14       mig5@&gt; and that valhalla filesystem he's using for clustering and HA, sounds interesting
+15:14    anarcat@&gt; as opposed to whole vservers, which was the old way
+15:14    anarcat@&gt; yeah that's nice too
+15:14       mig5@&gt; what are they using underneath: debian?
+15:14       mig5@&gt; or redhat?
+15:14    anarcat@&gt; i didn't troll, so i don't know ;)
+15:14       mig5@&gt; i seem to recall a redhat feature that rented processes
+15:15    anarcat@&gt; well, cgroups allow for fine-grained process isolation
+15:15    anarcat@&gt; cgroups is the kernel option that allows vservers (or linux containers as the call them now) to work
+15:15       mig5@&gt; yeh
+15:15    anarcat@&gt; they also use selinux
+15:15    anarcat@&gt; they seem really into it
+15:15    anarcat@&gt; pretty cool
+15:15    anarcat@&gt; anyways
+15:15       mig5@&gt; i'm surprised they don't just build a machine per client or something.. it's not that expensive these days
+15:15    anarcat@&gt; enough with pantheon :P
+15:15       mig5@&gt; yeah :)
+15:15    anarcat@&gt; mig5: that's what they were doing before
+15:16    anarcat@&gt; i think it was *more* expensive than clustering in a single box
+15:16    anarcat@&gt; you got to get some edge in some place
+15:16    anarcat@&gt; so anyways
+15:16    anarcat@&gt; ergonlogic hi!
+15:16    anarcat@&gt; ergonlogic: something to add to our first scrum of the year?
+15:16    anarcat@&gt; (or is it?)
+15:16    anarcat@&gt; :)
+15:16 ergonlogic &gt; well, I'm just back from vacation too
+15:16    anarcat@&gt; welcome back :)
+15:17 ergonlogic &gt; so trying to get back into the swing of things
+15:17 ergonlogic &gt; I'm working out the kinks to start doing to Aegir 101 screencasts
+15:17 ergonlogic &gt; s/to/some/g
+15:17 ergonlogic &gt; and fighting with vimeo... they don;t like .ogv apparently
+15:18    anarcat@&gt; them basterds :)
+15:18 ergonlogic &gt; but anyway, just "how to create a site with Aegir" kinda stuff
+15:18 ergonlogic &gt; introductory for new clients, at this point
+15:19 ergonlogic &gt; other than that, just before the holidays, anarcat and I published a couple puppet modules
+15:19 ergonlogic &gt; one for drush and another for aegir
+15:19 ergonlogic &gt; on d.o
+15:19    anarcat@&gt; oh yeah we did!
+15:19    anarcat@&gt; actually *you* did :)
+15:19 ergonlogic &gt; well, I published them, sure...
+15:19    anarcat@&gt; but yeah, we polished a aegir module
+15:19 ergonlogic &gt; but *we* worked on getting them publishable
+15:19    anarcat@&gt; unfortunately it still relies on debian
+15:19    anarcat@&gt; ie. it doesn't do the manual install if you're *not* on debian
+15:19       mig5@&gt; oh, exciting! where are the modules?
+15:19    anarcat@&gt; which would have been awesome
+15:20 ergonlogic &gt; I posted a dozen or so issues on them for cleanup 
+15:20    anarcat@&gt; well, it *should* be on <a href="../../../contrib-modules/index.html" title="http://community.aegirproject.org/contrib-modules">http://community.aegirproject.org/contrib-modules</a>
+15:20    anarcat@&gt; but it isn't :P
+15:20       mig5@&gt; i'll work this into a new aegir newsletter :)
+15:20 ergonlogic &gt; I'll get the urls
+15:20    anarcat@&gt; and i'll add them to the page
+15:20 ergonlogic &gt; <a href="http://drupal.org/project/puppet-aegir" title="http://drupal.org/project/puppet-aegir">http://drupal.org/project/puppet-aegir</a>
+15:20 ergonlogic &gt; <a href="http://drupal.org/project/puppet-drush" title="http://drupal.org/project/puppet-drush">http://drupal.org/project/puppet-drush</a>
+15:21       mig5@&gt; i love this: server goes down, hosting company's support system and all their nameservers go down as well. excellent
+15:21       mig5@&gt; if it wasn't for DNS cache they'd be uncontactable to tell them about it
+15:21 (*)  anarcat notices the twitter block on c.a.o is still broken
+15:21 ergonlogic &gt; they depend on a couple other puppet modules, one from Koumbit, and another from RiseUp, which is documented on the project pages
+15:21    anarcat@&gt; mig5: dns -&gt; ouch
+15:21 ergonlogic &gt; sigh...
+15:21       mig5@&gt; great stuff re: puppet
+15:22       mig5@&gt; looking forward to trying that
+15:22 ergonlogic &gt; anyway, I also updated Aegir Up to use the new puppet modules
+15:22 ergonlogic &gt; <a href="http://drupal.org/project/aegir-up" title="http://drupal.org/project/aegir-up">http://drupal.org/project/aegir-up</a>
+15:22 ergonlogic &gt; using git subtrees
+15:22    anarcat@&gt; mig5: another thing for your newsletter: arch linux support! <a href="../../../node/389/revisions/view/2683/2684/index.html" title="http://community.aegirproject.org/node/389/revisions/view/2683/2684">http://community.aegirproject.org/node/389/revisions/view/2683/2684</a>
+15:23       mig5@&gt; yes! saw that
+15:23 ergonlogic &gt; so I now have about a dozen branches to wrangle
+15:23       mig5@&gt; and did you see darthsteven's crazy article where he mass-migrated sites between two aegirs
+15:23 ergonlogic &gt; but seems more maintainable than sub-modules
+15:23 ergonlogic &gt; indeed yes!
+15:23 ergonlogic &gt; I want to try it out this week or next
+15:24 ergonlogic &gt; the mass migration stuff looks very cool
+15:24 ergonlogic &gt; it's also the initial reason I started aegir-up, to test that sort of thing
+15:25    anarcat@&gt; <a href="../../../contrib-modules/index.html#Puppet_modules" title="http://community.aegirproject.org/contrib-modules#Puppet_modules">http://community.aegirproject.org/contrib-modules#Puppet_modules</a>
+15:25 ergonlogic &gt; anarcat: thanks!
+15:26 ergonlogic &gt; I think that's it from me...
+15:26    anarcat@&gt; ok, i think we're done then
+15:27   omega8cc+&gt; I'm also back at work and plan to port some never submitted patches to 1.x, as we (boa) are using already 2.x code so it was a bit out of sync between boa and official Nginx support in Aegir 1.x
+15:27 ergonlogic &gt; I'd really appreciate some feedback on Aegir-up, btw
+15:27    anarcat@&gt; unless darthsteven magically flys in
+15:27    anarcat@&gt; with his cape
+15:27    anarcat@&gt; oh, omega8cc ! hi! :)
+15:27   omega8cc+&gt; plus, I promised to submit standalone Aegir on Nginx how-to (step by step). We also tested and helped to fix a few distros so they work with Aegir and this list grows nicely :)
+15:27   omega8cc+&gt; hi anarcat! and all
+15:27    anarcat@&gt; nice!
+15:27    anarcat@&gt; omega8cc: any work on a debian package for nginx? :)
+15:28   omega8cc+&gt; anarcat: there is chance it will be soon! on the table already
+15:28   omega8cc+&gt; as we are moving with everything to things like deb, puppet etc
+15:28 darthsteve@&gt; Sorry I missed the scrum!
+15:28    anarcat@&gt; nice!
+15:28 darthsteve@&gt; In another meeting
+15:28    anarcat@&gt; i am really happy to hear that!
+15:29    anarcat@&gt; omega8cc: if you need help with the package, i already have ideas on how to do it
+15:29 darthsteve@&gt; Nothing really to add though
+15:29 ergonlogic &gt; omega8cc: I'd be happy to integrate nginx patches to the puppet-aegir module :)
+15:29 ergonlogic &gt; hi steve
+15:29    anarcat@&gt; omega8cc: basically, i think that it can be done without creating a new package - just add "| nginx" as a dependency and make a debconf dialog (or autodetection) to figure out which to setup
+15:29 ergonlogic &gt; steven
+15:29   omega8cc+&gt; anarcat: I will ask for your assistance for sure, thanks!
+15:29 darthsteve@&gt; Hoping to get back to working on Aegir within the next few weeks.
+15:29 darthsteve@&gt; Sorry for interrupting!
+15:30   omega8cc+&gt; anarcat: exactly, it shouldn't be a separate package
+15:30 ergonlogic &gt; darthsteven: thanks for the mass migration write-up
+15:30    anarcat@&gt; cool
+15:30 ergonlogic &gt; darthsteven: I'll be trying it out soon
+15:30   omega8cc+&gt; ergonlogic: sure, I will let you know
+15:31 darthsteve@&gt; ergonlogic: Yeah, no doubt I removed a vital part of it while writing it up. Pester me of that's the case
+15:31 ergonlogic &gt; darthsteven: you can bet on it ;)
+15:32 darthsteve@&gt; Some of it will be in Aegir core at some point, so I'd rather find the bugs now :)
+15:33   omega8cc+&gt; darthsteven: hi, in the meantime we (boa) are testing the 2.x code in production :)
+15:34   omega8cc+&gt; so far, absolutely no issues
+15:34 darthsteve@&gt; omega8cc: Hehe, just you wait...
+15:35   omega8cc+&gt; ;)
+15:35 darthsteve@&gt; omega8cc: Though hopefully we can get some more tests written
+15:40 ergonlogic &gt; ok then... so, I'll assume that's the end of the scrum and post the log to c.a.o
+15:40       mig5@&gt; thanks ergonlogic
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../user/login/index-126.html?destination=node%2F999%23comment-form">Login</a> or <a href="../../../user/register/index-126.html?destination=node%2F999%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/content/scrums/weekly-scrum-irc-log-2012-01-09?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:36:26 GMT -->
+</html>

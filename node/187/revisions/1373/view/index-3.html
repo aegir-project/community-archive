@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/187/revisions/1373/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:19:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../186/index.html" />
+<link rel="up" href="../../../../31/index.html" />
+<link rel="next" href="../../../../385/index.html" />
+<link rel="prev" href="../../../../186/index.html" />
+<link rel="up" href="../../../../31/index.html" />
+<link rel="next" href="../../../../385/index.html" />
+<link rel="prev" href="../../../../186/index.html" />
+<link rel="up" href="../../../../31/index.html" />
+<link rel="next" href="../../../../385/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Advanced git workflow: branches and releases from Fri, 04/01/2011 - 18:01 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-187" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/branch-and-tagging-conventions/index.html">Advanced git workflow: branches and releases</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-187'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a> on 04/01/2011 - 18:01</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Aegir development makes a heavy use of git branches to keep the main branch stable. We use feature branches to do most development work and have release branches to keep stable releases maintained while development happen on the main (and dev) branches.</p>
+
+<h1>Branch naming conventions</h1>
+
+<p><strong>Warning</strong>: this documentation was written before the <a href="../../../../385/index.html">great git.drupal.org migration</a>. Since we are back on Drupal.org, we may be forced to change some of those, as the standard to create release nodes now includes the supported core version (so <code>6.x-1.x</code>), which is a problem for our <code>provision</code> module which supports any Drupal core version...  See <a href="http://drupal.org/node/322626#comment-4116688">this issue on drupal.org</a> for followup.</p>
+
+<h2>Main development branch</h2>
+
+<p><code>master</code> is the main development branch. Think of it as CVS <code>HEAD</code>. Most commits should go through that branch before hitting a stable development branch. When you commit there, you make everyone suffer, so unless you are confident your change needs to be in the mainline, you are likely to want to use feature branches (below).</p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Note: </span><a href="../../../../524/index.html" title="http://community.aegirproject.org/node/524"><span class='diff-added'>http://community.aegirproject.org/node/524</span></a><span class='diff-added'></span></p>
+
+<h2>Stable release branches</h2>
+
+<p>Stable releases are performed from stable release branches, which are named <code>provision-1.x</code> or <code>hostmaster-1.x</code>. Commits to those branches should first be done on the master branch (if possible) for testing and them merged (<code>git cherry-pick</code>) into the stable branch.</p>
+
+<p>Those branches are created from the <code>master</code> branch after a thorough alpha/beta/rc release cycle (see <a href="../../../../32/index.html">release process</a> for more information). Once the branch is declared stable, new releases are quickly done as "hotfixes", without intervening alpha/beta/rc releases. So for example, <code>provision-1.0</code> will come after <code>provision-1.0-alpha1</code>, <code>provision-1.0-beta1</code>, <code>provision-1.0-rc1</code> <em>at least</em>, and then be followed directly by <code>provision-1.1</code>.</p>
+
+<p>Releases on the same stable branch are API-compatible with each other (so <code>1.1</code> is compatible with <code>1.0</code>). The upgrade path is supported between major stable releases (so you can upgrade from <code>1.0</code> to <code>1.1</code> or <code>2.0</code>).</p>
+
+<p><strong>Special case</strong>: during the 0.x release cycle, releases were not API-compatible with each other, ie. 0.4 was <em>not</em> compatible with 0.3, and you could barely upgrade from 0.3 to 0.4. However, this may change after the 0.4 release, and we'll consider the 0.x API stable as we focus on the 1.0 release, and further releases will be hotfixes on top of 0.4 (so 0.5 will immediately follow 0.4).</p>
+
+<h2>Feature branches</h2>
+
+<p>More complex development goes into development or "feature" branches, to avoid making <code>master</code> too unstable. Feature branches must be prefixed with "dev-" and use the issue number (if available or relevant) and a short name. So for example, there could be work on a <code>dev-12345-mybug</code> branch or <code>dev-dns</code> branch for a larger feature (DNS, in that case) which doesn't fit in a single issue.</p>
+
+<p>Development branches should be based of a known stable baseline as much as possible. For example, you can branch off the last alpha release if you want to be certain you have a sane environment (see <a href="http://developers.slashdot.org/story/10/11/30/1649231/Linus-On-Branching-Practices">this article</a> for a thorough discussion on this practice). Since the master branch is usually fairly stable, you can usually keep that as a baseline, but keep in mind it will make merging with other dev branches more difficult as you will start from different baselines and therefore merge unrelated commits.</p>
+
+<h1>Tag naming convention</h1>
+
+<p>Every release is tagged with a <code>aegir-x.y</code> tag (e.g. <code>provision-0.4</code>, <code>hostmaster-0.4-alpha15</code> or <code>provision-1.0</code>). Those tags are usually laid on the stable branches, except for alpha/beta/rc releases which are laid on the <code>master</code> branch.</p>
+
+<h1>CVS and git history</h1>
+
+<p>The CVS tags and branches are still accessible in git and will be kept there for posterity. They respect the traditional Drupal.org naming convention.</p>
+
+<p>They have also been converted to the new git.drupal.org conventions during the <a href="../../../../385/index.html">great git.drupal.org migration</a>.</p>
+
+<p>Since that migration (february 2011), history has been rewritten to clean up the authors in the history.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-195.html?destination=node%2F187%23comment-form">Login</a> or <a href="../../../../../user/register/index-195.html?destination=node%2F187%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-195.html?destination=node%2F187%23comment-form">Login</a> or <a href="../../../../../user/register/index-195.html?destination=node%2F187%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/187/revisions/1373/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:19:11 GMT -->
+</html>

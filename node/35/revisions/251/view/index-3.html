@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/35/revisions/251/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:09:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../debian/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../roadmap/2/index.html" />
+<link rel="prev" href="../../../../../debian/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../roadmap/2/index.html" />
+<link rel="prev" href="../../../../../debian/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../roadmap/2/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Project roadmap from Fri, 11/05/2010 - 20:13 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-35" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../roadmap/1/index.html">Project roadmap</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-35'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 11/05/2010 - 20:13</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>This is a brief outline of development plans for Aegir.</p>
+
+<p>Note that all formal Aegir releases (ie. not those marked, "alpha", "beta" or "release candidates" or "RC") are production-ready. We strive hard to maintain good code quality and Q/A by frequent releases and <a href="../../../../32/index.html">alpha/beta/RC stages before those formal releases</a> so even if the releases are marked 0.x, it's not because they are not stable or ready, it's simply because the <em>API</em> is not stable (see below).</p>
+
+<h2>0.1 - "Sites" - Single platform support</h2>
+
+<p>Solid release for Drupal 5 platform.
+Will not be able to upgrade.
+Production ready.</p>
+
+<h2>0.2 - "Upgrades" - Multiple platforms support</h2>
+
+<p>Support for more than one Drupal release.
+Support for migration between Drupal releases. Experimental support for remote SQL servers.
+Frontend still in Drupal 5.</p>
+
+<h2>0.3 - "d6" - Drupal 6 frontend support</h2>
+
+<p>In the backend: bugfix release of 0.2.
+In the frontend: port to Drupal 6.</p>
+
+<h2>0.4 - "Cloud" - Multiple servers support</h2>
+
+<p>Support ssh as communication channel between multiple servers (see <a href="http://drupal.org/node/366418">this issue</a>)
+Move sites between servers, and support for multiple db servers and moving between them.</p>
+
+<p><a href="http://groups.drupal.org/node/25841">Release goals for 0.4</a></p>
+
+<h2>0.5 - "apt-get" - proper deployment procedures</h2>
+
+<p>proper deployment procedures (features? proper project management? etc)</p>
+
+<h2>0.6 - "UX" - User interface improvements</h2>
+
+<p>Clean up and make the user interface friendlier.</p>
+
+<h2>1.0 - "API" -  API freeze</h2>
+
+<p>A <a href="http://drupal.org/node/270263">stable</a>, <a href="http://drupal.org/node/270261">published API</a> for Hostmaster modules that will be frozen during the whole lifetime of the 1.0 branch to ease long term support for third party extensions.</p>
+
+<h1>From there on...</h1>
+
+<h2>Extension modules</h2>
+
+<p>There is also a host (pun intended) of provisioning tasks that it would be nice to see created:</p>
+
+<ul>
+<li>LDAP (open LDAP)</li>
+<li>Solr Search (Tomcat)</li>
+<li>Jabber (ejabberd)</li>
+<li>DNS (Bind, DNSmasq etc - Actually already implemented in the 0.4 line)</li>
+<li>Pound (load balancer)</li>
+<li>Email (Zimbra)</li>
+<li>An RDF triple store (needs more research)</li>
+<li>Asterisk (voicemail, proxy)</li>
+</ul>
+
+<h2>Mass site operation modules</h2>
+
+<ul>
+<li>Search (could be related to Solr)</li>
+<li>Statistics (info on nodes/comments/users etc. across all / many sites)</li>
+<li>Logging (centralized logging overview, might just be web interface for syslog)</li>
+<li>Spam / Comment moderation (we had some discussion about writing a Mollom module that works across sites)</li>
+</ul>
+
+<p>Feel free to <a href="../../../../18/index.html">contact the developers</a> if you are interested in pitching in to work on one or more aspects of Aegir.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-82.html?destination=node%2F35%23comment-form">Login</a> or <a href="../../../../../user/register/index-82.html?destination=node%2F35%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-82.html?destination=node%2F35%23comment-form">Login</a> or <a href="../../../../../user/register/index-82.html?destination=node%2F35%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/35/revisions/251/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:09:17 GMT -->
+</html>

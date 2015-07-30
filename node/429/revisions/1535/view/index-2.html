@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/429/revisions/1535/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:07:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../upgrading/index.html" />
+<link rel="up" href="../../../../../upgrading/index.html" />
+<link rel="next" href="../../../../../upgrading/debian/index.html" />
+<link rel="prev" href="../../../../../upgrading/index.html" />
+<link rel="up" href="../../../../../upgrading/index.html" />
+<link rel="next" href="../../../../../upgrading/debian/index.html" />
+<link rel="prev" href="../../../../../upgrading/index.html" />
+<link rel="up" href="../../../../../upgrading/index.html" />
+<link rel="next" href="../../../../../upgrading/debian/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Manual Upgrade from Fri, 04/08/2011 - 20:32 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-429" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../upgrading/manual/index.html">Manual Upgrade</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_21 first"><a href="../../../../../taxonomy/term/21/index.html" rel="tag" title="">manual</a></li>
+<li class="taxonomy_term_2"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+<li class="taxonomy_term_22 last"><a href="../../../../../taxonomy/term/22/index.html" rel="tag" title="">upgrade</a></li>
+</ul></div><div id='diff-inline-429'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 04/08/2011 - 20:32</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>This section outlines the requirements for doing a manual upgrade of Aegir to a new release. Before going ahead with this, you probably want to read the <a href="../../../../../upgrading/path/index.html">upgrade path and version-specific notes</a>.</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Conventions_and_Tips"><span class="toc-number">1. </span>Conventions &amp; Tips</a></li>
+	<li class="toc-level-1"><a href="#Upgrading_drush_and_drush_make"><span class="toc-number">2. </span>Upgrading drush and drush make</a></li>
+	<li class="toc-level-1"><a href="#Upgrading_the_backend"><span class="toc-number">3. </span>Upgrading the backend</a></li>
+	<li class="toc-level-1"><a href="#Upgrading_the_frontend"><span class="toc-number">4. </span>Upgrading the frontend</a><span class='diff-added'>
+</span><ol><span class='diff-added'>
+	</span><li class="toc-level-2"><a href="#Caveats"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>4.1. </span></span><span class='diff-added'>Caveats</span></a><span class='diff-added'></span></li><span class='diff-added'>
+	</span><li class="toc-level-2"><span class='diff-added'></span><a href="#What_hostmaster-migrate_does"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>4.2. </span></span><span class='diff-added'>What hostmaster-migrate does</span></a><span class='diff-added'></span></li><span class='diff-added'>
+	</span><li class="toc-level-2"><span class='diff-added'></span><a href="#Special_configurations_and_troubleshooting"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>4.3. </span></span><span class='diff-added'>Special configurations and troubleshooting</span></a><span class='diff-added'></span></li><span class='diff-added'>
+</span></ol><span class='diff-added'>
+</span></li>
+</ol>
+</div>
+</div>
+
+<h1 id="Conventions_and_Tips">1. Conventions &amp; Tips</h1>
+
+<p>All instructions and in general all commands must be run as aegir user, so all
+permissions are always set correctly.</p>
+
+<p>To become aegir user you can issue this command::</p>
+
+<pre><code>su -s /bin/sh aegir
+</code></pre>
+
+<p>(Note you must run this as root or prefix with sudo).</p>
+
+<p>Note that /bin/sh is an example. You may wish to instead use the shell of your
+choice, i.e /bin/bash</p>
+
+<p>A standard umask of 022 is assumed. This is the default on most systems.</p>
+
+<p>We assume that drush is in your path, if it is installed in <code>/var/aegir/drush/drush.php</code>, replace all occurences of <code>drush</code> by <code>/var/aegir/drush/drush.php</code> in the following steps, or add the following alias:</p>
+
+<pre><code>alias drush=/var/aegir/drush/drush.php
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Upgrading_drush_and_drush_make">2. Upgrading drush and drush make</h1>
+
+<p>As part of your Aegir upgrade, you usually also upgrade Drush to the latest stable version. Since drush is capable of upgrading itself, you can just run:</p>
+
+<pre><code>drush dl drush
+</code></pre>
+
+<p>If you are using Debian packages, the package should be upgraded through apt-get.</p>
+
+<p>Provision 0.4 has added a new dependency on drush_make, which will also need to be installed to upgrade the front end if you are upgrading from a pre-0.4 release.</p>
+
+<p>If you are upgrading from an earlier 0.4 release, replace your copy of drush_make with the latest recommended release.</p>
+
+<p>Shell commands::</p>
+
+<pre><code>drush dl drush_make-6.x-2.2 --destination="$HOME/.drush"
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Upgrading_the_backend">3. Upgrading the backend</h1>
+
+<p>After your environment  variables are exported, you must then proceed to upgrade the backend. The reason for upgrading the backend first before the frontend, is that the frontend upgrade process is instigated by the backend using Drush Make. Thus you need to be running the new backend first in order to successfully produce a new frontend.</p>
+
+<p>In general, we try to keep the backend and the frontend compatible with each other during release cycles. That is: provision 0.3 and hosting 0.3 will always be able to talk to each other. hosting 0.2 was able to talk to provision 0.3 too, but the API is not well enough defined so that can be counted upon.</p>
+
+<p>Therefore, you want to keep the frontend and the backend in sync. When you do a major upgrade (e.g. 0.3 -&gt; 0.4) of the backend, you <em>must</em> upgrade the frontend soon after.</p>
+
+<p>Bottomline: first you upgrade the backend, then the frontend.</p>
+
+<p>Upgrading the backend is as simple as replacing your copy of Drush, Provision, and if necessary, Drush Make, with the new versions if available. Keep a copy of the old Provision and Drush in case something goes wrong in the frontend.</p>
+
+<pre><code>drush dl provision-6.x --destination=$HOME/.drush
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Upgrading_the_frontend">4. Upgrading the frontend</h1>
+
+<p>Once your backend is upgraded, you can upgrade your frontend. Think of this as the backend fetching a new copy of Drupal core and the Hostmaster frontend application onto your server, and then moving the Aegir site's settings.php and other bits and pieces over to the new codebase.</p>
+
+<p><span class='diff-changed'>To upgrade</span> your <span class='diff-changed'>frontend, run the following commands, replacing the variables as described below:</span></p>
+
+<pre><code>cd $OLD_AEGIR_DIR
+drush hostmaster-migrate aegir.example.com $HOME/hostmaster-$AEGIR_VERSION
+</code></pre>
+
+<p>In the above you <strong>must</strong> replace the arguments to "cd" and "drush" to match your configuration. This means replacing <code>aegir.example.com</code> by the URL of your Aegir install, <code>$AEGIR_VERSION</code> with the version number of the Aegir you are trying to install (e.g. <code>6.x-1.0-rc6</code>), and also <code>$OLD_AEGIR_DIR</code> with the path to the previous directory where Aegir was installed (e.g. <code>hostmaster-6.x-1.0-rc5</code>).</p><span class='diff-added'>
+
+</span><div class="toc-back-to-top"><span class='diff-added'></span><a href="#toc"><span class='diff-added'>Back to top</span></a><span class='diff-added'></span></div><span class='diff-added'></span><h2 id="Caveats"><span class='diff-added'>4.1. Caveats</span></h2>
+
+<p>Since 0.4, the hostmaster platform is prepended with 'hostmaster'
+so as not to clash with any other Drupal platforms. If you are upgrading from Aegir version 0.3, your hostmaster platform may be called 'drupal-6.14'.</p>
+
+<p>The directory <span class='diff-changed'>passed to </span><code><span class='diff-changed'>hostmaster-migrate</span></code><span class='diff-changed'></span> must be an absolute path to where you want the new release to be stored.</p><span class='diff-added'>
+
+</span><div class="toc-back-to-top"><span class='diff-added'></span><a href="#toc"><span class='diff-added'>Back to top</span></a><span class='diff-added'></span></div><span class='diff-added'></span><h2 id="What_hostmaster-migrate_does"><span class='diff-added'>4.2. What hostmaster-migrate does</span></h2><span class='diff-added'>
+
+</span><p><span class='diff-added'>The command will make sure the target directory is a valid Aegir install.</span> If the directory does not exist, provision will use drush_make to fetch and assemble the correct version of the front end for the specific release of the backend you are running.</p>
+
+<p><span class='diff-changed'></span><code><span class='diff-changed'>hostmaster-migrate</span></code><span class='diff-changed'></span> will<span class='diff-added'> also</span> completely replace the crontab entry for the aegir <span class='diff-changed'>user.</span></p>
+
+<p>The command above will fetch the latest stable Drupal release, so it can simply be run again when a new security release of Drupal is made available.</p><span class='diff-added'>
+
+</span><div class="toc-back-to-top"><span class='diff-added'></span><a href="#toc"><span class='diff-added'>Back to top</span></a><span class='diff-added'></span></div><span class='diff-added'></span><h2 id="Special_configurations_and_troubleshooting"><span class='diff-added'>4.3. Special configurations and troubleshooting</span></h2>
+
+<p>If you have customized your Aegir installation and are maintaining your own makefile, you can use the --makefile flag so the platform is created with another makefile than the default. Be warned that this may create problems if the makefile doesn't include the right Aegir modules.</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-73.html?destination=node%2F429%23comment-form">Login</a> or <a href="../../../../../user/register/index-73.html?destination=node%2F429%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-73.html?destination=node%2F429%23comment-form">Login</a> or <a href="../../../../../user/register/index-73.html?destination=node%2F429%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/429/revisions/1535/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:07:33 GMT -->
+</html>

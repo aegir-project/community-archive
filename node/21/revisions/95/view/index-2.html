@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/21/revisions/95/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:04:04 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../content/importing-existing-aegir-backups/index.html" />
+<link rel="prev" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../content/importing-existing-aegir-backups/index.html" />
+<link rel="prev" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../content/importing-existing-aegir-backups/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Importing an existing website from Fri, 10/29/2010 - 01:01 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-21" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/content/administrator/post-install-configuration/importing-sites/index.html">Importing an existing website</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-21'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 10/29/2010 - 01:01</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p><span class='diff-added'>It is possible to import an existing site into the Aegir hosting system, so that it can be managed by Aegir.</span></p><span class='diff-added'>
+</span><p><span class='diff-added'>Some of these steps assume you've set up a shiny new server with Aegir on it, and are wanting to import sites from a completely different old server. However, it is equally possible to import a Drupal site residing elsewhere on the same server, into /var/aegir in your Aegir system (and is faster, since often the database is already present on the same server and won't need to be dumped, transferred and imported.</span></p><span class='diff-added'>
+</span><h2><span class='diff-added'>Option A. Importing just the sites directory</span></h2><span class='diff-added'>
+</span><p><span class='diff-added'>If you already have a platform setup on Aegir with EXACTLY the same codebase as your existing site, then you don't need to transfer the entire old codebase - you can just transfer the sites/example.com directory. However, you also need to make sure any dependencies on contrib modules that your site has, are covered on the codebase or Platform that you're importing it into. </span></p><span class='diff-added'>
+</span><p><span class='diff-added'>In general it may be considered safer/less prone to confusing errors to transfer the entire old codebase into Aegir as a whole Platform, whereby the site will be imported automatically under that Platform. You can then migrate it in Aegir to one of your existing Platforms later. See Option B below for this method.</span></p><span class='diff-added'>
+</span><p><span class='diff-added'>However, if you really want to just import the site directory into an existing platform, here's how:</span></p><span class='diff-added'>
+</span><h3><span class='diff-added'>1. Transfer the files</span></h3><span class='diff-added'>
+</span><p><span class='diff-added'>Copy the 'sites/example.com' directory from your old server to the new Aegir server (if it was sites/community.aegirproject.org before it needs to be moved to sites/example.com. See section below).</span></p><span class='diff-added'>
+</span><p><span class='diff-added'>To do this, first create a tarball of the site on the old server. Within the sites/example.com directory type:</span><br /><span class='diff-added'>
+</span><code><span class='diff-added'>tar -zcvf example.com.tar.gz</span></code><span class='diff-added'></span></p><span class='diff-added'>
+</span><p><span class='diff-added'>(If you are importing a site from a previous Aegir installation, you can save time here by generating a Backup task against your site, and transferring across the tarball that is made and placed into /var/aegir/backups/. It contains the database.sql dump as well).</span></p><span class='diff-added'>
+</span><p><span class='diff-added'>Then, on the Aegir server, you can create a directory for it in the codebase (platform) you want to put it under:</span></p><span class='diff-added'>
+</span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'>cd /var/aegir/myplatform/sites</span><br /><span class='diff-added'>mkdir example.com</span><br /><span class='diff-added'>cd example.com</span><br /><span class='diff-added'>wget </span><a href="http://example.com/example.com.tar.gz" title="http://example.com/example.com.tar.gz"><span class='diff-added'>http://example.com/example.com.tar.gz</span></a><span class='diff-added'></span><br /><span class='diff-added'>tar -zxvf example.com.tar.gz</span></code><span class='diff-added'></span></div><span class='diff-added'>
+</span><p><span class='diff-added'>Instead of using wget you could of course use SCP or FTP to transfer the tarball onto the Aegir server.</span></p><span class='diff-added'>
+</span><p><span class='diff-added'>Once the file is unpacked, check the ownership and group of each file by using </span><code><span class='diff-added'>ls -al</span></code><span class='diff-added'>. It should be either 'aegir:aegir' or 'aegir:www-data'. Change it if necessary. We have to assume you have basic knowledge of Linux and POSIX permissions - we can't be responsible for teaching you sysadmin skills :)</span></p><span class='diff-added'>
+</span><p><span class='diff-added'>In particular, files that may have been uploaded on your site via modules like imagecache, upload, Profile pics etc, may need to have their ownership changed:</span><br /><span class='diff-added'>
+</span><code><span class='diff-added'>sudo chown -R aegir $platform/sites/*/files</span></code><span class='diff-added'></span></p><span class='diff-added'>
+</span><h3><span class='diff-added'>2. Transfer the Database</span></h3><span class='diff-added'>
+</span><p><span class='diff-added'></span><strong><span class='diff-added'>Note:  This step is not necessary if you are moving your site from one directory on your server (e.g., /var/www/html) to a newly created Aegir directory on the same server (e.g., /var/aegir).</span></strong><span class='diff-added'></span></p><span class='diff-added'>
+</span><p><span class='diff-added'>Make a backup of the database on your old server (Backup and Migrate module is good for this, or you can use phpmyadmin or your favourite MySQL management tool. It's a good idea to truncate the cache, search and watchdog tables first to reduce the size of the database (Backup and Migrate does this for you).</span></p><span class='diff-added'>
+</span><p><span class='diff-added'>If you are importing a site from a previous Aegir installation somewhere, such as from a backup tarball, the database.sql will already be within the tarball you unpacked. You can use this to import into a new database on your new server.</span></p><span class='diff-added'>
+</span><p><span class='diff-added'>On your new server, manually create a new database and upload the .sql file from your backup.</span><br /><span class='diff-added'>
+Then create the mysql user that your site accesses the database as, and grant it all permissions on that database except 'GRANT'.</span></p><span class='diff-added'>
+</span><h3><span class='diff-added'>3. Verify In Aegir</span></h3><span class='diff-added'>
+</span><p><span class='diff-added'>In the Aegir web interface click on the name of the platform you have added your site to. You can access the list of platforms via the 'Platforms' tab in the primary links menu. </span></p><span class='diff-added'>
+</span><p><span class='diff-added'>Execute a new Verify task on this platform via the 'Verify' button in the task list.</span></p><span class='diff-added'>
+</span><p><span class='diff-added'>Aegir will now re-verify the platform. In the process of this, it will discover your new site and spawn a new 'Import' task for the site.</span></p><span class='diff-added'>
+</span><p><span class='diff-added'>Once it's done this (it may take a couple of cron runs to dispatch these tasks in the queue) the tasks should turn green (if not, see 'Troubleshooting' below). </span></p><span class='diff-added'>
+</span><p><span class='diff-added'>At this point, presuming you have updated DNS or are overriding DNS via an entry in your /etc/hosts file to access the site via the new Aegir server, you can visit site in a browser and check around to see that it has worked. Pay particular attention to any links in node content that pointed to paths referencing </span><code><span class='diff-added'>/sites/community.aegirproject.org</span></code><span class='diff-added'> if your site was not part of a multisite setup. (Drupal has a habit of storing these paths in the database, or they may have been hard-coded into nodes by users). </span></p><span class='diff-added'>
+</span><p><span class='diff-added'>Aegir will not go through all your database and update all URLs, so some images or links may be broken. This will need to be done manually. Aegir does attempt to update paths stored in tables such as 'files' though.</span></p><span class='diff-added'>
+</span><p><span class='diff-added'>It's a good idea to clear the caches, and you may need to get imagecache to rebuild its thumbnails if you use it.</span></p><span class='diff-added'>
+</span><h2><span class='diff-added'>Option B. Importing the entire codebase</span></h2><span class='diff-added'>
+</span><p><span class='diff-added'>This way of importing sites is often considered the safest whereby you transfer across an entire codebase containing Drupal core, and define it as a Platform first. This makes sure you bring any dependencies, contrib modules etc, in exactly the same version and configuration that is referenced in the database for the site.</span></p><span class='diff-added'>
+</span><h3><span class='diff-added'>1. Transfer the codebase</span></h3><span class='diff-added'>
+</span><p><span class='diff-added'>Create a tarball of the codebase on the old server. Within the drupal root directory type:</span><br /><span class='diff-added'>
+</span><code><span class='diff-added'>tar -zcvf example.com.tar.gz * .htaccess</span></code><span class='diff-added'></span></p><span class='diff-added'>
+</span><p><span class='diff-added'>Note that we have to specify including the .htaccess because it isn't picked up by the * wildcard due to being prefixed with a full stop. </span><strong><span class='diff-added'>It is important to bring along the .htaccess for a platform so that Aegir can consider these settings when it generates Apache configuration for this platform.</span></strong><span class='diff-added'></span></p><span class='diff-added'>
+</span><p><span class='diff-added'>Then, on the new server you can create a directory for it in the codebase you want to put it under:</span></p><span class='diff-added'>
+</span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'>cd /var/aegir</span><br /><span class='diff-added'>mkdir your-new-platform</span><br /><span class='diff-added'>cd your-new-platform</span><br /><span class='diff-added'>wget </span><a href="http://example.com/example.com.tar.gz" title="http://example.com/example.com.tar.gz"><span class='diff-added'>http://example.com/example.com.tar.gz</span></a><span class='diff-added'></span><br /><span class='diff-added'>tar -zxvf example.com.tar.gz</span></code><span class='diff-added'></span></div><span class='diff-added'>
+</span><p><span class='diff-added'>Instead of using wget you could of course use SCP or FTP to transfer the tarball onto the Aegir server.</span></p><span class='diff-added'>
+</span><p><span class='diff-added'>Once the file is unpacked, check the ownership and group of each file by using </span><code><span class='diff-added'>ls -al</span></code><span class='diff-added'>. It should be either 'aegir:aegir' or 'aegir:www-data'. Change it if necessary. We have to assume you have basic knowledge of Linux and POSIX permissions - we can't be responsible for teaching you sysadmin skills :)</span></p><span class='diff-added'>
+</span><p><span class='diff-added'>In particular, files that may have been uploaded on your site via modules like imagecache, upload, Profile pics etc, may need to have their ownership changed:</span><br /><span class='diff-added'>
+</span><code><span class='diff-added'>sudo chown -R aegir $platform/sites/*/files</span></code><span class='diff-added'></span></p><span class='diff-added'>
+</span><p><span class='diff-added'>If your site previously resided in sites/community.aegirproject.org you need to move it because Aegir ignores the default directory (it has no way of understanding what URL this would be accessed by, so it is impossible to 'manage' it). Each site needs its own directory with the correct domain in typical Drupal multisite design:</span></p><span class='diff-added'>
+</span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'>mv sites/community.aegirproject.org sites/example.com</span></code><span class='diff-added'></span></div><span class='diff-added'>
+</span><p><span class='diff-added'>If you do this, you may need to also update your filepath's stored in the files table by running the following query on your database</span><br /><span class='diff-added'>
+</span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'>update files db table &quot;UPDATE files SET filepath = REPLACE(filepath, &#039;sites/community.aegirproject.org&#039;, &#039;sites/example.com&#039;);</span></code><span class='diff-added'></span></div><span class='diff-added'>
+</span><h3><span class='diff-added'>2. Transfer the Database</span></h3><span class='diff-added'>
+</span></p><span class='diff-added'></span><p><span class='diff-added'></span><strong><span class='diff-added'>Note:  This step is not necessary if you are moving your site from one directory on your server (e.g., /var/www/html) to a newly created Aegir directory on the same server (e.g., /var/aegir).</span></strong><span class='diff-added'></span></p><span class='diff-added'>
+</span><p><span class='diff-added'>Make a backup of the database on your old server (Backup and Migrate module is good for this, or you can use phpmyadmin or your favourite MySQL management tool. It's a good idea to truncate the cache, search and watchdog tables first to reduce the size of the database (Backup and Migrate does this for you).</span></p><span class='diff-added'>
+</span><p><span class='diff-added'>On your new server, manually create a new database and upload the .sql file from your backup.</span><br /><span class='diff-added'>
+Then create the mysql user that your site accesses the database as, and grant it all permissions on that database except 'GRANT'.</span></p><span class='diff-added'>
+</span><h3><span class='diff-added'>3. Setup Platform in Aegir</span></h3><span class='diff-added'>
+</span><p><span class='diff-added'>In the Aegir web interface click on 'Create Content' and 'Platform'. This step is often easiest when using the admin-menu on the top of your screen. </span></p><span class='diff-added'>
+</span><p><span class='diff-added'>Enter the name you want to use for the platform (eg 'My Platform import'), and the path to the platform on the server (eg '/var/aegir/your-new-platform')</span></p><span class='diff-added'>
+</span><p><span class='diff-added'>Click Save to submit the form, and Aegir will spawn a Verify task for this platform into the queue.</span></p><span class='diff-added'>
+</span><p><span class='diff-added'>Once the task is complete this the task should turn green (click through to the homepage to refesh and check. If not, see 'Troubleshooting' below). </span></p><span class='diff-added'>
+</span><h3><span class='diff-added'>4. </span>Import<span class='diff-added'> and Verify Sites In Aegir</span></h3><span class='diff-added'>
+</span><p><span class='diff-added'>Upon completion of the above Platform verification task, Aegir will discover your new site and spawn a new 'Import' task for the site.</span></p><span class='diff-added'>
+</span><p><span class='diff-added'>Once it's done this (it may take a couple of cron runs to dispatch these tasks in the queue) the tasks should turn green (if not, see 'Troubleshooting' below). </span></p><span class='diff-added'>
+</span><p><span class='diff-added'>At this point, presuming you have updated DNS or are overriding DNS via</span> an <span class='diff-changed'>entry in your /etc/hosts file to access the site via the new Aegir server, you can visit site in a browser and check around to see that it has worked. Pay particular attention to any links in node content that pointed to paths referencing </span><code><span class='diff-changed'>/sites/community.aegirproject.org</span></code><span class='diff-changed'> if your site was not part of a multisite setup. (Drupal has a habit of storing these paths in the database, or they may have been hard-coded into nodes by users).</span></p><span class='diff-added'>
+</span><p><span class='diff-added'>It's a good idea to clear the caches, and you may need to get imagecache to rebuild its thumbnails if you use it.</span></p><span class='diff-added'>
+</span><h3><span class='diff-added'>5. Migrate To Another Platform</span></h3><span class='diff-added'>
+</span><p><span class='diff-added'>Now that you have your sites under Aegir's control you can take advantage of its power, and easily migrate them to another platform. In the event that your sites were on old versions of Drupal core and a new one is available and present as another Platform on your Aegir server, you can use the Migrate process to upgrade those sites onto the new core.</span></p><span class='diff-added'>
+</span><p><span class='diff-added'>For details on how to Migrate sites, consult the ,a href="/node/23">Migrate documentation.</span></p><span class='diff-added'>
+</span><h2><span class='diff-added'>Troubleshooting</span></h2><span class='diff-added'>
+</span><p><span class='diff-added'>For those who are migrating existing sites that live with their files in the sites/community.aegirproject.org folder, things can get tricky. However, you can </span><a href="http://palma-seo.com/content/moving-single-drupal-install-default-directory-multi-site-drupal-installation"><span class='diff-added'>follow this tutorial</span></a><span class='diff-added'> and successfully get things moved over rather easily.</span></p><span class='diff-added'>
+</span></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-53.html?destination=node%2F21%23comment-form">Login</a> or <a href="../../../../../user/register/index-53.html?destination=node%2F21%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-53.html?destination=node%2F21%23comment-form">Login</a> or <a href="../../../../../user/register/index-53.html?destination=node%2F21%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/21/revisions/95/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:04:04 GMT -->
+</html>

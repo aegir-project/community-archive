@@ -1,0 +1,375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/284/revisions/641/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:19:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../41/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../318/index.html" />
+<link rel="prev" href="../../../../41/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../318/index.html" />
+<link rel="prev" href="../../../../41/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../318/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Messaging systems evaluation from Sat, 01/29/2011 - 16:17 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-284" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Messaging systems evaluation</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-284'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a> on 01/29/2011 - 16:17</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>So we've been talking seemingly forever about possible queuing system instead of our crappy "PHP/Vixie Cron based" one, but we have yet to document pro/cons of possible alternatives. Here are the goods (or the beginning of em).</p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Note that this document was written before (in </span><a href="http://groups.drupal.org/node/36428"><span class='diff-added'>november 2009</span></a><span class='diff-added'>) the current multiserver implementation was designed and completed.</span></p>
+
+<h2>Current design</h2>
+
+<p>Tasks are basically serialized in a MySQL database and polled at regular interval by a cron job, running <code>drush hosting dispatch</code>, which bootstraps Drupal, fetches the object, and fires up provision commands.</p>
+
+<p>The possibility here is to have another dispatcher that would always run, and maybe not even talk to the mysql database, to fire up the provision commands.</p>
+
+<p>Another requirement is that the queuing system may be network-aware. We want multi-server support and that is a critical issue for the next release (0.4 at the time of writing). One thing to consider is how we pass files around...</p>
+
+<h2>Roll our own</h2>
+
+<p>Pro:</p>
+
+<ul>
+<li>full control over the API, functionality and whatnot (ie. function of manpower invested)</li>
+</ul>
+
+<p>Con:</p>
+
+<ul>
+<li>rolling our own is <em>hard</em>! let's go shopping!</li>
+</ul>
+
+<h2>Meta: AMQP vs JMS</h2>
+
+<p>So yeah, there's a standard in development for all this stuff: <a href="http://www.amqp.org/" title="http://www.AMQP.org/">http://www.AMQP.org/</a></p>
+
+<p>JMS on the other hand is the "Java Messenging Service", that creates a language- (as opposed to network-) based API.</p>
+
+<p>Maybe we should just not care about which messaging system you use in the backend and allow our frontend to talk to any backend, with the stupid cronjob mysql poller as a default...</p>
+
+<h2>Gearman</h2>
+
+<p>Pros (mostly out of the <a href="http://gearman.org/">home page</a>):</p>
+
+<ul>
+<li>supports PHP in frontend and backend</li>
+<li>Multi-language - There are interfaces for a number of languages, and this list is growing. You also have the option to write heterogeneous applications with clients submitting work in one language and workers performing that work in another.</li>
+<li>Flexible - You are not tied to any specific design pattern. You can quickly put together distributed applications using any model you choose, one of those options being Map/Reduce.</li>
+<li>Fast - Gearman has a simple protocol and interface with a new optimized server in C to minimize your application overhead.</li>
+<li>Embeddable - Since Gearman is fast and lightweight, it is great for applications of all sizes. It is also easy to introduce into existing applications with minimal overhead.</li>
+<li>No single point of failure - Gearman can not only help scale systems, but can do it in a fault tolerant way.</li>
+<li>Production ready - ran on digg, yahoo, livejournal, ...</li>
+<li>Gearman uses an efficient binary protocol and no XML. There's an a line-based text protocol for admin so you can use telnet and hook into Nagios plugins.</li>
+<li><a href="http://gearman.org/index.php?id=manual:job_server#persistent_queues">Persistent queues are available using mysql, memcached or sqlite</a></li>
+<li>There's pretty good <a href="http://us3.php.net/gearman">PHP support</a> and it's easy to get up and running quickly.</li>
+</ul>
+
+<p>Cons:</p>
+
+<ul>
+<li>"somewhat higher latency, signal-and-pull architecture"</li>
+<li>The system makes no guarantees. If there's a failure the client is told about the failure and the client is responsible for retries.</li>
+<li>gearman-specific binary/network protocol</li>
+<li>Notice how sixapart.com maintains both gearman and the shwartz, below</li>
+</ul>
+
+<p>OHLOH:</p>
+
+<ul>
+<li>Mostly written in Perl</li>
+<li>Increasing year-over-year development activity</li>
+<li>Established codebase</li>
+<li>Few source code comments</li>
+</ul>
+
+<h2>Resque</h2>
+
+<p>Pro:</p>
+
+<ul>
+<li><a href="http://code.google.com/p/redis/">redis-based</a> (therefore somehow language agnostic deep in there, but certainly network-centric)</li>
+<li>github's (aka: it's got to work at least somewhere in production)</li>
+</ul>
+
+<p>Con:</p>
+
+<ul>
+<li>ruby-centric</li>
+<li>I haven't actually <em>looked</em> at the thing or tested it</li>
+</ul>
+
+<h2>Active MQ</h2>
+
+<p>Apache <a href="http://activemq.apache.org/">ActiveMQ</a>:</p>
+
+<p>Pros:</p>
+
+<ul>
+<li>Supports a variety of Cross Language Clients and Protocols from Java, C, C++, C#, Ruby, Perl, Python, PHP  </li>
+<li>Supports many advanced features such as Message Groups, Virtual Destinations, Wildcards and Composite  Destinations</li>
+<li>Supports pluggable transport protocols such as in-VM, TCP, SSL, NIO, UDP, multicast, JGroups and JXTA transports</li>
+<li>REST API to provide technology agnostic and language neutral web based API to messaging</li>
+<li>Persistent</li>
+</ul>
+
+<p>Cons:</p>
+
+<ul>
+<li>uses too many acronyms on the frontpage (really.)</li>
+<li>uses a lot of Java jargon</li>
+<li>production-ready?</li>
+</ul>
+
+<p>OHLOH:</p>
+
+<ul>
+<li>Mostly written in Java</li>
+<li>Large, active development team</li>
+</ul>
+
+<h2>RabbitMQ</h2>
+
+<p><a href="http://www.rabbitmq.com/">RabbitMQ</a></p>
+
+<p>Pros:</p>
+
+<ul>
+<li>"high reliability, availability and scalability along with good throughput and latency performance that is predictable and consistent"</li>
+<li>"based on the emerging AMQP standard"</li>
+<li><a href="http://packages.debian.org/rabbitmq-server">in debian</a></li>
+</ul>
+
+<p>Cons:</p>
+
+<ul>
+<li><a href="http://www.ohloh.net/p/rabbitmq/analyses/latest">erlang</a>? do <em>you</em> know <a href="http://ftp.sunet.se/pub/lang/erlang/">erlang</a>?</li>
+</ul>
+
+<p><a href="http://www.ohloh.net/p/rabbitmq">OHLOH</a></p>
+
+<ul>
+<li>Mostly written in Erlang</li>
+<li>Large, active development team</li>
+<li>Well-commented source code</li>
+</ul>
+
+<h2>Open Messenging Queue</h2>
+
+<p><a href="https://mq.dev.java.net/overview.html" title="https://mq.dev.java.net/overview.html">https://mq.dev.java.net/overview.html</a></p>
+
+<p>Pros:</p>
+
+<ul>
+<li>SOAP/HTTP interface</li>
+<li>Scalable</li>
+</ul>
+
+<p>Con:</p>
+
+<ul>
+<li>Java/C specific</li>
+</ul>
+
+<h2>The Schwartz</h2>
+
+<p><a href="http://search.cpan.org/~bradfitz/TheSchwartz-1.07/lib/TheSchwartz.pm">The Schwartz</a></p>
+
+<p>Pros:</p>
+
+<ul>
+<li>Perl (come on, perl is everywhere... isn't it?)</li>
+<li>"reliable job queue"</li>
+<li>has retry</li>
+<li>"lightweight"</li>
+</ul>
+
+<p>Cons:</p>
+
+<ul>
+<li>Perl (aka write only)</li>
+<li>"library, so some assembly required"</li>
+<li>"light on documentation"</li>
+<li>Notice how sixapart.com maintains both the shwartz and gearman, above</li>
+</ul>
+
+<h2>Open AMQ</h2>
+
+<p><a href="http://www.openamq.org/">Open AMQ</a></p>
+
+<p>Pros:</p>
+
+<ul>
+<li>Multi-language (but not PHP)</li>
+<li>"learn in a day or so" then "another day or two for wireAPI", development will take "some weeks"...</li>
+<li>"remote admin tools, one-line failover, instant federation, protection against slow clients, detailed logging"</li>
+<li><a href="http://www.amqp.org/">AMQP standard</a> </li>
+<li>"Linux, AIX, Solaris, Mac OS/X, other UNIX"</li>
+</ul>
+
+<p>Cons:</p>
+
+<ul>
+<li>"for C/C++ and JMS"</li>
+</ul>
+
+<p><a href="http://www.ohloh.net/p/rabbitmq">OHLOH</a></p>
+
+<ul>
+<li>Mostly written in C</li>
+<li>Well-commented source code</li>
+<li>Short source control history</li>
+<li>Only a single active developer</li>
+<li>Apache Software License may conflict with GPL</li>
+<li>Apache License 2.0 may conflict with GPL</li>
+</ul>
+
+<h2 id="beanstalkd">Beanstalkd</h2>
+
+<p><a href="http://kr.github.com/beanstalkd/" title="http://kr.github.com/beanstalkd/">http://kr.github.com/beanstalkd/</a></p>
+
+<p>Drupal Module for Drupal 6 and 7 is at <a href="http://drupal.org/project/beanstalkd" title="http://drupal.org/project/beanstalkd">http://drupal.org/project/beanstalkd</a></p>
+
+<p>Pros:
+ * used in production ("causes" application in facebook)</p>
+
+<p>Cons:</p>
+
+<ul>
+<li>C</li>
+</ul>
+
+<p><a href="http://www.ohloh.net/p/beanstalkd" title="http://www.ohloh.net/p/beanstalkd">http://www.ohloh.net/p/beanstalkd</a></p>
+
+<ul>
+<li>Mostly written in C</li>
+<li>Large, active development team</li>
+<li>Few source code comments</li>
+</ul>
+
+<h2>SimpleMQ</h2>
+
+<p><a href="http://code.google.com/p/simple-mq/" title="http://code.google.com/p/simple-mq/">http://code.google.com/p/simple-mq/</a></p>
+
+<p>Pros:</p>
+
+<ul>
+<li>persistent or in-memory</li>
+</ul>
+
+<p>Cons:</p>
+
+<ul>
+<li>java-only.</li>
+</ul>
+
+<h2>Zero MQ</h2>
+
+<p><a href="http://www.zeromq.org/" title="http://www.zeromq.org/">http://www.zeromq.org/</a></p>
+
+<p>Pros:</p>
+
+<ul>
+<li>fast</li>
+<li>lightweight messaging implementation.</li>
+<li>supports different messaging models.</li>
+<li>already very fast. We're getting 13.4 microseconds end-to-end latencies and up to 4,100,000 messages a second today.</li>
+<li>very thin. Requires just a couple of pages in resident memory. </li>
+<li>provides C, C++, Java, Python, .NET/Mono, Ruby, Fortran, COBOL, Tcl, Lua and Delphi language APIs.</li>
+<li>supports different wire-level protocols: TCP, PGM, AMQP, SCTP.</li>
+<li>runs on AIX, FreeBSD, HP-UX, Linux, Mac OS X, OpenBSD, OpenVMS, QNX Neutrino, Solaris and Windows.</li>
+<li>supports i386, x86-64, Sparc, Itanium, Alpha and ARM microarchitectures.</li>
+<li>fully distributed: no central servers to crash, millions of WAN and LAN nodes.</li>
+</ul>
+
+<p>Cons:</p>
+
+<ul>
+<li>no PHP whatsoever</li>
+<li>production?</li>
+</ul>
+
+<p>OHLOH:</p>
+
+<ul>
+<li>Mostly written in C++</li>
+</ul>
+
+<h2>Others to evaluate?</h2>
+
+<ul><li><a href="http://aws.amazon.com/sqs/">Amazon's SQS</a>. The latencies for this service tend to be high and variable so it may not be appropriate for all tasks.</li>
+<li><a href="http://search.cpan.org/~jmay/Spread-Queue-0.4/">Spread Queue</a> ([[http://search.cpan.org/~jmay/Spread-Queue-0.4/Queue.pod|alpha software]]</li>
+<li><a href="http://rubyforge.org/projects/starling/">Starling</a></li> (apparently, <a href="http://www.rubyinside.com/rabbitmq-a-fast-reliable-queuing-option-for-rubyists-1681.html">twitter ditched starling</a> for <a href="http://www.scala-lang.org/">scala</a>)
+</ul>
+
+<p>Others mentionned <a href="http://highscalability.com/blog/2009/11/6/product-resque-githubs-distrubuted-job-queue.html">here</a>: ActiveMessaging, BackgroundJob, DelayedJob, and Kestrel.</p>
+
+<h2>Requirements</h2>
+
+<p>All the above must have:</p>
+
+<ul>
+<li>Open Source - It's free as in beer and speech</li>
+</ul></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-360.html?destination=node%2F284%23comment-form">Login</a> or <a href="../../../../../user/register/index-360.html?destination=node%2F284%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-2304"></a>
+
+
+<div  id="comment-2304" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/toddejohnson/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="toddejohnson&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/toddejohnson/index.html" class="username" title="View user profile.">toddejohnson</a></div><div class='date'>10:22pm Jun 7, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-2304">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>zeromq now has php bindings <a href="http://zeromq.org/bindings:php" title="http://zeromq.org/bindings:php">http://zeromq.org/bindings:php</a>  and is used by production products like <a href="http://saltstack.org/" title="http://saltstack.org">http://saltstack.org</a>.  It is also super simple to administer as it isn't a separate system that the sys admin would have to stand up.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-360.html?destination=node%2F284%23comment-form">Login</a> or <a href="../../../../../user/register/index-360.html?destination=node%2F284%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/284/revisions/641/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:19:57 GMT -->
+</html>

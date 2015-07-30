@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/content/allow-non-root-users-restart-aegir-queue-daemon-0?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:36:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Allow non-root users to restart the Aegir queue daemon | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-3099" class="node node-feed_item clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../user/54/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-54/index.png" alt="ergonlogic&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a></div><div class='date'>9:17pm Sep 4, 2013</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Allow non-root users to restart the Aegir queue daemon</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class="field field-name-field-content-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><img typeof="Image" src="http://praxis.coop/sites/praxis.coop/files/styles/medium_large/public/logo-aegir_1.jpg?itok=BDT-cZYz" width="280" height="280" /></div></div></div>
+
+<div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="encoded"><p>I can no longer imagine using Aegir regularly without the Hosting Queue Daemon. For those who aren&#39;t aware, this was a contrib module (hosting_queue_runner) for the 1.x version of Aegir, but improves the user experience <strong>so much</strong>&nbsp;that we&#39;ve moved it into core for the 2.x series.</p>
+<p>It&#39;s installed by default with the 2.x Debian packages, and the accompanying <a href="http://drupalcode.org/project/hosting.git/blob/refs/heads/6.x-2.x:/queued/README.txt">README</a>&nbsp;does a good job explaining how to install it,. It certainly deserves a handbook page too, though I haven&#39;t been able to track one down...</p>
+<p>One challenge with it, though, is that it&#39;s prone to crashing. There are a number of work-arounds for this, including using Supervisord, Puppet or cron to ensure the daemon is running or restarted regularly. We&#39;ve also made lots of progress recently in improving its resilience, but it can still be crashed by introducing PHP errors into Drush, for example.</p>
+<p>So, I had a need recently to allow non-root users to restart the queue daemon. These users have access to operate as the &#39;aegir&#39; user, and so I added an entry in the sudoers file to allow aegir to restart the daemon:</p>
+<p><div class="codeblock"><code># cat /etc/sudoers.d/queued-aegir&lt;br /&gt;<br />aegir ALL=NOPASSWD: /etc/init.d/hosting-queued</code></div></p>
+<p>However, when trying to run the command as the aegir user, we get the following error:</p>
+<p><div class="codeblock"><code>$ /etc/init.d/hosting-queued restart&lt;br /&gt;<br />Restarting Aegir queue daemon... /etc/init.d/hosting-queued: 57: kill: Operation not permitted&lt;br /&gt;<br />rm: cannot remove `/var/run/hosting-queued.pid&amp;#39;: Permission denied&lt;br /&gt;<br />/etc/init.d/hosting-queued: 47: /etc/init.d/hosting-queued: cannot create /var/run/hosting-queued.pid: Permission denied&lt;br /&gt;<br />su: must be run from a terminal</code></div></p>
+<p>The problem is just that the aegir user doesn&#39;t have write access to /var/run. This stumped me for a while, as the PID file is created and destroyed from this script, but broadening write access to /var/run is a bad idea. The trick is to create a directory under /var/run that aegir will have write access to:</p>
+<p><div class="codeblock"><code># mkdir /var/run/aegir&lt;br /&gt;<br />chown aegir:aegir /var/run/aegir&lt;br /&gt;<br />chmod 755 /var/run/aegir</code></div></p>
+<p>Then we need to have the init script use the new directory. This is simply a matter of editing <em>/etc/init.d/hosting-queued</em>:</p>
+<p><div class="codeblock"><code>...&lt;br /&gt;<br />DAEMON_ARGS=&quot;--quiet @hostmaster $NAME&quot; # Arguments to run the daemon with&lt;br /&gt;<br />USER=&quot;aegir&quot;&lt;br /&gt;<br />#PIDFILE=/var/run/$NAME.pid&lt;br /&gt;<br />PIDFILE=/var/run/aegir/$NAME.pid&lt;br /&gt;<br />SCRIPTNAME=/etc/init.d/$NAME&lt;br /&gt;<br />NICE=10&lt;br /&gt;<br />...</code></div></p>
+<p>Now aegir should be able to restart the queue daemon properly:</p>
+<p><div class="codeblock"><code>$ /etc/init.d/hosting-queued restart&lt;br /&gt;<br />Restarting Aegir queue daemon: hosting-queued.</code></div></p>
+</div></div></div>
+
+<div class="field field-name-field-tags field-type-taxonomy-term-reference field-label-inline clearfix"><div class="field-label">Tags:&nbsp;</div><div class="field-items"><div class="field-item even"><a href="../../en/taxonomy/term/7/index.html" typeof="Concept" property="prefLabel" datatype="">Aegir Planet</a></div><div class="field-item odd"><a href="../../en/taxonomy/term/6/index.html" typeof="Concept" property="prefLabel" datatype="">Aegir</a></div></div></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-369.html?destination=comment%2Freply%2F3099%23comment-form">Login</a> or <a href="../../user/register/index-369.html?destination=comment%2Freply%2F3099%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/content/allow-non-root-users-restart-aegir-queue-daemon-0?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:36:39 GMT -->
+</html>

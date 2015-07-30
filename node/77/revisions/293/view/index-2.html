@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/77/revisions/293/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:00:04 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../architecture/aegir-architecture/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../41/index.html" />
+<link rel="prev" href="../../../../../architecture/aegir-architecture/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../41/index.html" />
+<link rel="prev" href="../../../../../architecture/aegir-architecture/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../41/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Aegir file system structure from Mon, 11/08/2010 - 06:51 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-77" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Aegir file system structure</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-77'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 11/08/2010 - 06:51</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>This page documents the typical file system structure on an Aegir installation. It is intended to complement a related wiki page on <a href="../../../../76/index.html">Aegir Architecture</a>. The following paths are based on an Aegir 0.4-x installation and assume that all directories are within the /var/aegir folder.</p><span class='diff-changed'>
+
+</span><h3>Scripts and Configuration Files</h3><span class='diff-changed'>
+
+</span><table>
+<tr><span class='diff-changed'></span><th>Path</th><span class='diff-changed'></span><th>Notes</th><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/backups</td><span class='diff-changed'></span><td>site-specific tar balls containing a database dump and folders under path/to/platform/sites/example.com</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/config</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/config/server_master</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/config/server_master/apache</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/config/server_master/apache/conf.d</td><span class='diff-changed'></span><td>non-aegir or non-drupal virtual hosts files</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/config/server_master/apache/platform.d</td><span class='diff-changed'></span><td>contains .htaccess information for each aegir platform</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/config/server_master/apache/vhost.d</td><span class='diff-changed'></span><td>apache virtual host files for aegir platforms</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/config/server_master/apache/vhost.d/aegir.example.com</td><span class='diff-changed'></span><td>virtual host file for aegir web site - specifies path to platform directory and site database settings (so that database credentials are not exposed directly in site settings.php file) </td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/config/server_master/apache/vhost.d/site-1.com</td><span class='diff-changed'></span><td>virtual host file for deployed web site</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/config/server_master/apache/vhost.d/site-2.com</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/config/server_master/apache/vhost.d/site-3.com</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/<a href="http://drupal.org/project/drush" title="link to drush project on drupal.org">drush</a></td><span class='diff-changed'></span><td>drush folder</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/drush/drush.php </td><span class='diff-changed'></span><td>drush script</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/.drush</td><span class='diff-changed'></span><td>drush extensions and server, platform and site aliases</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/.drush/<a href="http://drupal.org/project/drush_make" title="link to drush_make project on drupal.org">drush_make</a></td><span class='diff-changed'></span><td>drush_make project folder - used for building web sites from .make files</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/.drush/<a href="http://drupal.org/project/provision" title="link to provision project on drupal.org">provision<a /></a></a></td><span class='diff-changed'></span><td>provision folder</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/.drush/server_master.alias.drushrc.php</td><span class='diff-changed'></span><td>settings for the master server where the main aegir database, hosting platform and aegir site reside</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/.drush/platform_hostmaster.alias.drushrc.php</td><span class='diff-changed'></span><td>settings for the hostmaster platform on which the aegir site is based</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/.drush/hostmaster.alias.drushrc.php</td><span class='diff-changed'></span><td>settings for the aegir site</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/.drush/platform_platform1.alias.drushrc.php</td><span class='diff-changed'></span><td>settings for platform1 on which site-1.com is based</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/.drush/site-1.com.alias.drushrc.php</td><span class='diff-changed'></span><td>settings for site-1.com</td><span class='diff-changed'></span></tr>
+</table><span class='diff-changed'>
+
+</span><table>
+<h3>Hostmaster Platform and Aegir (front-end) Site</h3>
+<tr><span class='diff-changed'></span><th>Path</th><span class='diff-changed'></span><th>Notes</th><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/hostmaster-0.x</td><span class='diff-changed'></span><td>hostmaster platform</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/hostmaster-0.x/profiles</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/hostmaster-0.x/profiles/default</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/hostmaster-0.x/profiles/<a href="http://drupal.org/project/hostmaster" title="link to hostmaster distribution on drupal.org">hostmaster</a></td><span class='diff-changed'></span><td>hostmaster profile</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/hostmaster-0.x/profiles/hostmaster/modules</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/hostmaster-0.x/profiles/hostmaster/modules/admin_menu</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/hostmaster-0.x/profiles/hostmaster/modules/<a href="http://drupal.org/project/hosting" title="link to hostmaster project on drupal.org">hosting</a></td><span class='diff-changed'></span><td>hosting module</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/hostmaster-0.x/profiles/hostmaster/modules/install_profile_api</td><span class='diff-changed'></span><td>install_profile_api – facilitates provisioning of sites based on a non-default profile</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/hostmaster-0.x/profiles/hostmaster/modules/jquery_ui</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/hostmaster-0.x/profiles/hostmaster/modules/modalframe</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/hostmaster-0.x/profiles/hostmaster/themes</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/hostmaster-0.x/profiles/hostmaster/themes/<a href="http://drupal.org/project/hostmaster" title="link to eldir theme on drupal.org">eldir</a></td><span class='diff-changed'></span><td>eldir theme – provides Aegir front end look and feel</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/hostmaster-0.x/profiles/hostmaster/hostmaster.profile</td><span class='diff-changed'></span><td>profile file – used in site provisioning to configure a drupal database</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/hostmaster-0.x/profiles/hostmaster/hostmaster.make</td><span class='diff-changed'></span><td>make file – used to include modules, themes, libraries etc. from various sources</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/hostmaster-0.x/modules</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/hostmaster-0.x/themes</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/hostmaster-0.x/sites</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/hostmaster-0.x/sites/aegir.example.com</td><span class='diff-changed'></span><td>aegir web site folders</td><span class='diff-changed'></span></tr>
+</table><span class='diff-changed'>
+
+</span><h3>Deployed Platforms</h3><span class='diff-changed'>
+
+</span><p>Note: the directory /platforms is optional but can be useful to separate deployed platforms from directories for scripts, config files and hostmaster platform.</p><span class='diff-changed'>
+
+</span><table>
+<tr><span class='diff-changed'></span><th>Path</th><span class='diff-changed'></span><th>Notes</th><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-1</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-1/profiles</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-1/profiles/default</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-1/profiles/custom-profile</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-1/profiles/custom-profile/modules</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-1/profiles/custom-profile/themes</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-1/profiles/custom-profile/custom.profile</td><span class='diff-changed'></span><td>profile file – used in site provisioning to configure a drupal database</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-1/profiles/custom-profile/custom.make</td><span class='diff-changed'></span><td>make file – used to include modules, themes, libraries etc. from various sources</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-1/modules</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-1/themes</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-1/sites</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-1/sites/site-1.com</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-1/sites/site-1.com/modules</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-1/sites/site-1.com/themes</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-1/sites/site-1.com/files</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-1/sites/site-1.com/settings.php</td><span class='diff-changed'></span><td>site-specific drupal configuration file</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-1/sites/site-1.com/drushrc.php </td><span class='diff-changed'></span><td>site-specific aegir-specific configuration file</td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-1/sites/site-2.com</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-1/sites/site-3.com</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-1/sites/site-n.com</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-2</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-3</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+<tr><span class='diff-changed'></span><td>/platforms/platform-n</td><span class='diff-changed'></span><td></td><span class='diff-changed'></span></tr>
+</table><span class='diff-changed'></span></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-297.html?destination=node%2F77%23comment-form">Login</a> or <a href="../../../../../user/register/index-297.html?destination=node%2F77%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-1884"></a>
+
+
+<div  id="comment-1884" class="comment comment-published clear-block decay-10 decay-10">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/dman/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="dman&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/dman/index.html" class="username" title="View user profile.">dman</a></div><div class='date'>10:51am Apr 1, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1884">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Based on suggestions I've seen elsewhere, and the development workflow we need to follow (multiple developers using the same server, and I don't want them all to masquerade as aegir all the time just to get anything done)</p>
+
+<p>I think that - seeing as the group is :aegir anyway, and the prevailing wisdom is to "join the aegir group" then <strong>we should have group write permissions on by default</strong>.</p>
+
+<ul><li>
+<strong>mig5</strong> documents it as "Aegir permissions best practices" here <a href="http://groups.drupal.org/node/43910#comment-117388" title="http://groups.drupal.org/node/43910#comment-117388">http://groups.drupal.org/node/43910#comment-117388</a>
+</li><li>
+<strong>anarcat</strong> endorses it here <a href="http://drupal.org/node/1615580" title="http://drupal.org/node/1615580">http://drupal.org/node/1615580</a> where there is a proposed patch to _provision_drupal_create_directories()
+</li><li>
+I've *had* to do it this way in order to allow my dev team to do stuff ( sudo chmod -R g+w * ) on any new built platform.
+</li></ul>
+
+<p>All cases of</p>
+
+<pre>
+drwxr-xr-x  aegir:aegir
+-rw-r--r--  aegir:aegir
+</pre>
+
+<p>should be changed to</p>
+
+<pre>
+drwxrwxr-x  aegir:aegir
+-rw-rw-r--  aegir:aegir
+</pre>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-297.html?destination=node%2F77%23comment-form">Login</a> or <a href="../../../../../user/register/index-297.html?destination=node%2F77%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-1886"></a>
+
+
+<div  id="comment-1886" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/larryjames/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="larry_james&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/larryjames/index.html" class="username" title="View user profile.">larry_james</a></div><div class='date'>11:39am Apr 2, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1886">#2</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>The problem of setting up a non drupal vhost file is a very common issue that involves many later consequences. Just like you mentioned that you were not able to pick up in directory it also involves many similar issues.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-297.html?destination=node%2F77%23comment-form">Login</a> or <a href="../../../../../user/register/index-297.html?destination=node%2F77%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-1887"></a>
+
+
+<div  id="comment-1887" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/larryjames/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="larry_james&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/larryjames/index.html" class="username" title="View user profile.">larry_james</a></div><div class='date'>11:40am Apr 2, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1887">#3</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>The problem of setting up a non drupal vhost file is a very common issue that involves many later consequences. Just like you mentioned that you were not able to pick up in directory it also involves many similar issues.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-297.html?destination=node%2F77%23comment-form">Login</a> or <a href="../../../../../user/register/index-297.html?destination=node%2F77%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/77/revisions/293/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:00:04 GMT -->
+</html>

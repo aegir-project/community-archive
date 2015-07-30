@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/scrums/weekly-scrum-irc-log-2011-06-21?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../weekly-scrum-irc-log-2011-06-07/index.html" />
+<link rel="up" href="../../content/scrums/archive-2011/index.html" />
+<link rel="next" href="../weekly-scrum-irc-log-2011-06-28/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2011-06-21 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-718" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2011-06-21</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_7 first"><a href="../../taxonomy/term/7/index.html" rel="tag" title="">scrum</a></li>
+<li class="taxonomy_term_6 last"><a href="../../taxonomy/term/6/index.html" rel="tag" title="">weekly scrums</a></li>
+</ul></div><div id='diff-inline-718'><pre>
+21:59 &lt;@anarcat&gt; hey
+21:59 &lt;@anarcat&gt; gooood morning vietnam!
+22:00 &lt;@mig5&gt; HELO
+22:00 &lt;@anarcat&gt; alright
+22:00  * anarcat SCRUM TIME!
+22:00 &lt;@anarcat&gt; gosh this is early
+22:00 &lt;@anarcat&gt; so welcome everyone
+22:00 &lt;@darthsteven&gt; heh
+22:01 &lt;@anarcat&gt; i'm your sleepy host, unless another timezone feels less jetlagged :)
+22:01 &lt;@mig5&gt; getting sleepy :)
+22:01 &lt;@darthsteven&gt; I'm your less sleepy host then
+22:01 &lt;@anarcat&gt; yay! :)
+22:01 &lt;@darthsteven&gt; Welcome to the scrum for 21 Jun 2011
+22:01 &lt;@darthsteven&gt; Who wants to speak first?
+22:01 &lt;@darthsteven&gt; anarcat?
+22:01 &lt;@anarcat&gt; i can try! :)
+22:02 &lt;@anarcat&gt; so i haven't published 1.2, but this time i have a good excuse
+22:02 &lt;@anarcat&gt; we're really almost there - i want to test the debian packages first
+22:02 &lt;@anarcat&gt; i was able to make an autobuilder in jenkins
+22:02 &lt;@anarcat&gt; so jenkins now has a pgp key and can build packages. both from the debian branch and from the 1.x branch
+22:02 &lt;@anarcat&gt; <a href="https://drupal.org/node/1183926" title="https://drupal.org/node/1183926">https://drupal.org/node/1183926</a>
+22:02 &lt;@darthsteven&gt; cool
+22:03 &lt;@anarcat&gt; there are a good few questions in there that i'd like feedback about
+22:03 &lt;@anarcat&gt; esp. from mig5
+22:03 &lt;@mig5&gt; awesome, you are now our CI ninja :)
+22:03 &lt;@anarcat&gt; crap :)
+22:03 &lt;@darthsteven&gt; anything else anarcat?
+22:03 &lt;@anarcat&gt; well, there's this daemon thing :)
+22:04 &lt;@anarcat&gt; i played with darthsteven's queue runner, and it's awesom
+22:04 &lt;@anarcat&gt; we're running it in production, working very well, got people impressed
+22:04 &lt;@anarcat&gt; i want to merge it in 2.x
+22:04 &lt;@anarcat&gt; and port our dispatcher to the d7 queue system
+22:04 &lt;@anarcat&gt; i think we should make queue-runner 1.1
+22:04 &lt;@anarcat&gt; i think that's about it for me!
+22:05 &lt;@darthsteven&gt; mig5?
+22:05 &lt;@darthsteven&gt; (thanks anarcat)
+22:05 &lt;@anarcat&gt; welcome!
+22:05 &lt;@mig5&gt; nothing from me this week, i need to catch up on the jenkins changes
+22:05 &lt;@darthsteven&gt; okay, cool
+22:05 &lt;@darthsteven&gt; I'll go next...
+22:06 &lt;@darthsteven&gt; I looked at the daemon for running tasks with anarcat
+22:06 &lt;@darthsteven&gt; resulting in a 1.1 release, which anarcat hasn't noticed :)
+22:06 &lt;@anarcat&gt; haha cool
+22:06 &lt;@darthsteven&gt; We also got the api site sorted last week, though mostly not down to me
+22:06 &lt;@darthsteven&gt; which is ace!
+22:07 &lt;@mig5&gt; nice
+22:07 &lt;@darthsteven&gt; I added a new hook to enable friendly names for servers in lists of servers
+22:07 &lt;@darthsteven&gt; and released a module that uses the hook
+22:07 &lt;@darthsteven&gt; <a href="http://drupal.org/project/hosting_server_titles" title="http://drupal.org/project/hosting_server_titles">http://drupal.org/project/hosting_server_titles</a>
+22:08 &lt;@darthsteven&gt; I think I added a ton of documentation the week before too
+22:08 &lt;@darthsteven&gt; which was nice
+22:08 &lt; chouchou&gt; Hello,
+22:08 &lt;@anarcat&gt; cool
+22:08 &lt;@darthsteven&gt; but that's it from me
+22:08 &lt; chouchou&gt; pls i have an issue,
+22:08 &lt;@anarcat&gt; note that i documented the 2.x api changes here <a href="../../upgrading/path/index.html" title="http://community.aegirproject.org/upgrading/path">http://community.aegirproject.org/upgrading/path</a>
+22:08 &lt; chouchou&gt; first, i wouuld like to know how do I change the drush gid download source ?
+22:08 &lt;@darthsteven&gt; chouchou: We're in the middle of a scrum, please hold for the end, then you can ask
+22:08 &lt;@anarcat&gt; i think we should keep that page in mind when we change the API
+22:08 &lt;@darthsteven&gt; anyone else have anything for the scrum?
+22:09 &lt;+omega8cc&gt; I finally started publishing some nginx related docs on <a href="http://www.omega8.cc/" title="www.omega8.cc">www.omega8.cc</a> and will extract from there to re-post on c.a.o handbook, also some new nginx patches are in testing and should be sumitted for review shortly, we are sponsoring also Aegir session at <a href="http://drupaldesigncamp.net/" title="http://drupaldesigncamp.net">http://drupaldesigncamp.net</a> next week!
+22:09 &lt;@darthsteven&gt; awesome
+22:09 &lt;@mig5&gt; props to shrop who has done great work on the community site sorting some stuff out
+22:09 &lt;@darthsteven&gt; omega8cc: anything else?
+22:09 &lt;@anarcat&gt; all good
+22:09 &lt;+omega8cc&gt; that is it from me, i think
+22:10 &lt;@anarcat&gt; ah, note that i'll be at the drush test sprint next week, so i will probably miss the scrum
+22:10 &lt;@anarcat&gt; if you guys have specifics of things i should work on with drush, let me know!
+22:11 &lt;@darthsteven&gt; anyone else have anything to add?
+22:11 &lt;@darthsteven&gt; I'll give it a minute...
+22:11 &lt;@anarcat&gt; well, i'd like to chat quickly with mig5 about the jenkins stuff
+22:11 &lt;@anarcat&gt; mig5: did you read up on the issue?
+22:11 &lt;@mig5&gt; this one? <a href="https://drupal.org/node/1183926" title="https://drupal.org/node/1183926">https://drupal.org/node/1183926</a>
+22:12 &lt;@anarcat&gt; mig5: upy
+22:12 &lt;@anarcat&gt; yup*
+22:12 &lt;@anarcat&gt; basically, we need to decide this:
+22:12 &lt;@anarcat&gt; 1. do we install/remove/update/whatnot on the jenkins server? (be scared)
+22:12 &lt;@anarcat&gt; 2. do we install using dpkg -i or do we upload to debian.koumbit.net's unstable repository and use apt-get? (the latter has the disadvantage of having 
+                 to wait a undetermined delay for repo to catchup, but has the upside of broadening the test capabilities)
+22:12 &lt;@anarcat&gt; i am thinking more and more of this as a build bot, with packges uploaded to debian.koumbit.net/unstable
+22:13 &lt;@anarcat&gt; and then everyone can test them, including jenkins or "the cloud", from jenkins
+22:13 &lt;@mig5&gt; 1. is fine with me but i was already scared :) but as far as I can tell, it's the only way to sanely chain tasks.. (as opposed to an isolated 
+              cloud-generated VPS)
+22:14 &lt;@mig5&gt; the fundamental thing i want to do with theses tests, is pretend like we are a user
+22:14 &lt;@anarcat&gt; well that's the thing, if we upload to debian.k.n, then we can run install/upgrade/whatever independently...
+22:14 &lt;@mig5&gt; except with preseeding :)
+22:14 &lt;@mig5&gt; so i think the apt-get is good
+22:14 -!- bgm_ is now known as bgm
+22:14 &lt;@anarcat&gt; ok
+22:14 &lt;@anarcat&gt; mig5: do you know about jenkins's "tasks"?
+22:14 -!- bgm [~bgm@2607:f748:1200:105::5] has quit [Changing host]
+22:14 -!- bgm [~bgm@pdpc/supporter/active/bgm] has joined #aegir
+22:14 &lt;@mig5&gt; no
+22:14 &lt;@anarcat&gt; ok
+22:14 &lt;@mig5&gt; i've only done build steps
+22:15 &lt;@anarcat&gt; i tried to play with that, but i don't feel it's what we need, basically...
+22:15 &lt;@anarcat&gt; it's a weird thing
+22:15 &lt;@anarcat&gt; so okay, that's cool
+22:15 -!- mode/#aegir [+v shrop] by ChanServ
+22:15 &lt;@anarcat&gt; i think i'll try to setup fabric stuff to deploy debian packages remotely
+22:15 &lt;@anarcat&gt; and of course upload to debian.k.n
+22:15 &lt;@mig5&gt; deploy as in send to koumbit.d.n ?
+22:15 &lt;@mig5&gt; er
+22:15 &lt;@mig5&gt; ah
+22:15 &lt;@anarcat&gt; and fix the preseed
+22:16 &lt;@mig5&gt; so by deploy debian packages remotely you mean, build on fresh VPS?
+22:16 &lt;@mig5&gt; as i am not against the former
+22:16 &lt;@anarcat&gt; deploy as in ssh cloud.vps.foo 'apt-get install aegir; drush provision-tests ; apt-get remove aegir'
+22:16 &lt;@mig5&gt; so long as we can clean up our mess on the jenkins server
+22:17 &lt;@anarcat&gt; well, i'm worried about not being able to do that
+22:17 &lt; chouchou&gt; are you free now?
+22:17 &lt;@mig5&gt; my main worry about cloud.vps.foo is we may lose the ability to chain builds
+22:17 &lt;@anarcat&gt; *and* about interop problems with jenkins itself
+22:17 &lt;@darthsteven&gt; Anyone else have anything for the scrum? Otherwise we'll wrap it up there, and leave mig5 and anarcat to it...
+22:17 &lt;@anarcat&gt; darthsteven: yup, ok
+22:17 &lt;@darthsteven&gt; 
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-110.html?destination=node%2F718%23comment-form">Login</a> or <a href="../../user/register/index-110.html?destination=node%2F718%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/scrums/weekly-scrum-irc-log-2011-06-21?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:54 GMT -->
+</html>

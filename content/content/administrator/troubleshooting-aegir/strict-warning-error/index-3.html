@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/content/content/administrator/troubleshooting-aegir/strict-warning-error?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:33:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../debugging/index.html" />
+<link rel="up" href="../../../../administrator/troubleshooting-aegir/index.html" />
+<link rel="next" href="../../../../../node/546/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>&quot;strict warning&quot; error | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-3065" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">&quot;strict warning&quot; error</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_567 first"><a href="../../../../../category/keywords/non-static/index.html" rel="tag" title="">non-static</a></li>
+<li class="taxonomy_term_566"><a href="../../../../../category/keywords/strict/index.html" rel="tag" title="">strict</a></li>
+<li class="taxonomy_term_565"><a href="../../../../../category/keywords/strict-warning/index.html" rel="tag" title="">strict warning</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-3065'><p><strong>Aegir 2.x returns the following error message</strong></p>
+
+<p>strict warning: Non-static method view::load() should not be called statically in /var/aegir/hostmaster-6.x-2.1/profiles/hostmaster/modules/views/views.module on line 1113.</p>
+
+
+
+<p><strong>Cause</strong></p>
+
+<p>It's due to a conflict between Views 3.x and PHP 5.4. For example, your server uses PHP 5.4 or more recent. And you updated Drupal core for Aegir to Drupal 6.34 or more recent and this error message is showing on all Aegir pages.</p>
+
+
+
+<p><strong>Solutions</strong></p>
+
+<p>Option 1: Install "<a href="http://drupal.org/project/disable_messages">disable_messages</a>" module. And disable all messages related to:</p>
+
+<blockquote>
+<code>strict .*.</code>
+</blockquote>
+
+<p><a href="http://www.howtoeverything.net/linux/drupal/selectively-hide-strict-warning-errors-php-5.4-drupal-6.x-views">Read more here</a>, under <em>"How to hide only specific error messages to specific users"</em> section.</p>
+
+<p>Option 2: Patch Views 3.x. Read more at <a href="https://www.drupal.org/node/780156" title="https://www.drupal.org/node/780156">https://www.drupal.org/node/780156</a> or <a href="https://www.drupal.org/node/893128#comment-4760978" title="https://www.drupal.org/node/893128#comment-4760978">https://www.drupal.org/node/893128#comment-4760978</a></p>
+
+<p>Option 3: Turn off Strict warnings in your "php.ini" file. Read more at <a href="https://www.drupal.org/node/1833170#comment-6994142" title="https://www.drupal.org/node/1833170#comment-6994142">https://www.drupal.org/node/1833170#comment-6994142</a> or <a href="https://www.drupal.org/node/465332#comment-6533810" title="https://www.drupal.org/node/465332#comment-6533810">https://www.drupal.org/node/465332#comment-6533810</a></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-79.html?destination=node%2F3065%23comment-form">Login</a> or <a href="../../../../../user/register/index-79.html?destination=node%2F3065%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/content/content/administrator/troubleshooting-aegir/strict-warning-error?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:33:33 GMT -->
+</html>

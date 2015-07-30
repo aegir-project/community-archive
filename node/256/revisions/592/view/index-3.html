@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/256/revisions/592/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:02:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../27/index.html" />
+<link rel="up" href="../../../../20/index.html" />
+<link rel="next" href="../../../../28/index.html" />
+<link rel="prev" href="../../../../27/index.html" />
+<link rel="up" href="../../../../20/index.html" />
+<link rel="next" href="../../../../28/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Using drush_make to optimize workflow from Mon, 01/17/2011 - 18:06 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-256" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Using drush_make to optimize workflow</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-256'><h2>Introduction</h2>
+
+<p>Once you understand <a href="../../../../217/index.html">why Aegir is a great tool</a> for developing and managing Drupal web sites you inevitably start looking for ways to optimize workflow.  mig5's article on <a href="http://mig5.net/content/drupal-deployments-workflows-version-control-drushmake-and-aegir">Drupal deployments and workflows</a> provides great insight on managing platforms, profiles and sites using Aegir, version control and the <a href="http://drupal.org/project/drush_make">drush_make</a> project.</p>
+
+<h2>The challenge of managing platforms and profiles</h2>
+
+<p>Whether you are using Drupal to developing bespoke web sites or vertical web applications with hundreds of instances (sites), it is not uncommon to be managing a mix of platforms and profiles.  These comprise <a href="http://drupal.org/download">community-contributed projects</a> that, in many cases, are frequently updated.  To protect the integrity of their platforms developers like to explicitly control which version of which project they use and when.  It can be time consuming to keep everything up to date.  Many contributed projects are available in versions compatible with multiple Drupal versions so this mix of platforms and profiles can be complex.</p>
+
+<h2>Using drush_make to manage common and disparate code bases</h2>
+
+<p>One of the really powerful features of drush_make is that it can operate <em>recursively</em>.  You invoke the <code>drush make</code> command on a local make file but if drush_make fetches a profile or project that includes another make file then this is parsed and additional packages are fetched.</p>
+
+<p>A typical way that developers leverage this feature is when they want to have some projects available to the entire platform and some that are specific to one or more custom profiles that are part of the platform.  They achieve this by including a different make file with each profile repository.</p>
+
+<p>Using make files with profiles works well when you want to manage distinct code bases that are specific to a site running under that profile. Only sites using profile 'foo' can see modules, themes or libraries located in subdirectories of the foo profile's directory.  However, using the <code>includes</code> option you can also reference a make file directly using a local path or a URL. The advantage of this is that you can maintain a make file that references the projects you use on every profile on every platform (e.g. views, cck, path etc.).</p>
+
+<p>This is illustrated schematically below:</p>
+
+<p><img src="../../../../../files/drush-make-architecture-2011-01-14/index.html" /></p>
+
+<h2>Example make files</h2>
+
+<p>Here are some example make files that illustrate the concepts described above:</p>
+
+<h3>&lt;namespace&gt;_&lt;platform<sub>1</sub>&gt;.make</h3>
+
+<div class="code-block">
+<div class="codeblock"><code>core = 6.x<br />api = 2<br /><br />; drupal core<br />projects[drupal][version] = 6.20<br /><br />; platform projects<br />projects[webform][vesion] = 3.2<br />projects[workflow][version] = 1.4<br />projects[job_scheduler][version] = 1.0-beta3<br />projects[feeds][version] = 1.0-beta10<br /><br />; platform theme<br />projects[acme_theme][type] = &quot;theme&quot;<br />projects[acme_theme][download][type] = &quot;git&quot;<br />projects[acme_theme][download][url] = &quot;git@git.example.com:drupal/themes/acme_theme.git&quot;<br />projects[acme_theme][download][branch] = &quot;master&quot;<br /><br />; profile 1<br />projects[acme_profile1][type] = &quot;profile&quot;<br />projects[acme_profile1][download][type] = &quot;git&quot;<br />projects[acme_profile1][download][url] = &quot;git@git.example.com:drupal/profiles/acme_profile1.git&quot;<br />projects[acme_profile1][download][branch] = &quot;master&quot;<br /><br />; profile 2<br />projects[acme_profile2][type] = &quot;profile&quot;<br />projects[acme_profile2][download][type] = &quot;git&quot;<br />projects[acme_profile2][download][url] = &quot;git@git.example.com:drupal/profiles/acme_profile2.git&quot;<br />projects[acme_profile2][download][branch] = &quot;master&quot;<br /><br />; base make file<br />includes[acme_base] = &quot;http://example.com/acme_base.make&quot;<br /><br />; patches<br />projects[superfish][patch][] = &quot;http://example.com/superfish-add-acme-style.patch&quot;</code></div>
+</div>
+
+<h3>&lt;namespace&gt;_&lt;profile<sub>1</sub>&gt;.make </h3>
+
+<div class="code-block">
+<div class="codeblock"><code>core = 6.x<br />api = 2<br /><br />; ecommerce<br />projects[ubercart][version] = 2.4</code></div>
+</div>
+
+<h3>&lt;namespace&gt;_&lt;profile<sub>2</sub>&gt;.make </h3>
+
+<div class="code-block">
+<div class="codeblock"><code>core = 6.x<br />api = 2<br /><br />projects[openlayers][version] = 2.x-dev<br />projects[ldap_integration][version] = 1.0-beta2</code></div>
+</div>
+
+<h3>&lt;namespace&gt;_base.make </h3>
+
+<div class="code-block">
+<div class="codeblock"><code>core = 6.x<br />api = 2<br /><br />; utilities<br />projects[ctools][version] = 1.8<br />projects[jquery_ui][version] = 1.4<br />projects[jquery_update][version] = 2.x-dev<br />projects[modalframe][version] = 1.7<br />projects[advanced_help][version] = 1.2<br />projects[transliteration][version] = 3.0<br />projects[token][version] = 1.15<br /><br />; content management<br />projects[imageapi][version] = 1.9<br />projects[imagecache][version] = 2.x-dev<br />projects[cck][version] = 2.9<br />projects[filefield][version] = 3.9<br />projects[imagefield][version] = 3.9<br />projects[diff][version] = 2.1<br />projects[date][version] = 2.7<br />projects[calendar][version] = 2.4<br />projects[views][version] = 3.x-dev<br />projects[views_slideshow][version] = 2.3<br />projects[content_profile][version] = 1.0<br />projects[og][version] = 2.1<br />projects[node_clone][version] = 1.2<br />projects[node_export][version] = 2.21<br />projects[node_import][version] = 1.x-dev<br />projects[nodequeue][version] = 2.9<br />projects[noderelationships][version] = 1.6<br />projects[reverse_node_reference][version] = 1.0<br />projects[nodereference_views][version] = 1.3<br />projects[page_title][version] = 2.3<br />projects[pathauto][version] = 1.5<br />projects[realname][version] = 1.3<br /><br />; ui<br />projects[wysiwyg][version] = 2.2<br />projects[imce][version] = 2.1<br />projects[imce_wysiwyg][version] = 1.1<br /><br />; site administration<br />projects[admin_menu][version] = 1.6<br />projects[devel][version] = 1.x-dev<br />projects[devel_themer][version] = 1.x-dev<br />projects[globalredirect][version] = 1.x-dev<br />projects[google_analytics][version] = 2.3<br />projects[xmlsitemap][version] = 2.0-beta1<br /><br />; site building<br />projects[rules][version] = 1.4<br />projects[features][version] = 1.0<br />projects[context][version] = 3.0<br />projects[strongarm][version] = 2.0<br />projects[purl][version] = 1.0-beta13<br />projects[spaces][version] = 3.0<br /><br />; site theming<br />projects[skinr][version] = 1.6<br />projects[superfish][version] = 1.6<br />projects[adaptivetheme][version] = 3.0-rc2<br /><br />; libraries<br /><br />; CKEditor<br />libraries[ckeditor][download][type] = &quot;get&quot;<br />libraries[ckeditor][download][url] = &quot;http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.4/ckeditor_3.4.tar.gz&quot;<br />libraries[ckeditor][directory_name] = &quot;ckeditor&quot;<br />libraries[ckeditor][destination] = &quot;libraries&quot;<br /><br />; jquery ui library<br />libraries[jquery_ui][download][type] = &quot;get&quot;<br />libraries[jquery_ui][destination] = &quot;modules/jquery_ui&quot;<br />libraries[jquery_ui][download][url] = &quot;http://jquery-ui.googlecode.com/files/jquery-ui-1.7.3.zip&quot;<br />libraries[jquery_ui][directory_name] = &quot;jquery.ui&quot;</code></div>
+</div><div class="itu-attachments"><table class="itu-attachment-list withoutstats sticky-enabled" id="attachments">
+ <thead><tr><th class="preview">Preview</th><th class="file">Attachment</th><th class="size">Size</th> </tr></thead>
+<tbody>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../../../../sites/community.aegirproject.org/files/drush-make-architecture-2011-01-14_0/index.png" title="drush-make-architecture-2011-01-14.png"><img src="../../../../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/drush-make-architecture-2011-01-14_0/index.png" alt="drush-make-architecture-2011-01-14.png" title="drush-make-architecture-2011-01-14.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../../../../sites/community.aegirproject.org/files/drush-make-architecture-2011-01-14_0/index.png">drush-make-architecture-2011-01-14.png</a></td><td class="size">20.11 KB</td> </tr>
+</tbody>
+</table>
+</div></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-42.html?destination=node%2F256%23comment-form">Login</a> or <a href="../../../../../user/register/index-42.html?destination=node%2F256%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-42.html?destination=node%2F256%23comment-form">Login</a> or <a href="../../../../../user/register/index-42.html?destination=node%2F256%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/256/revisions/592/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:02:15 GMT -->
+</html>

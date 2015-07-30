@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/71/revisions/718/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:06:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/overriding-site-specific-php-values/index.html" />
+<link rel="up" href="../../../../39/index.html" />
+<link rel="next" href="../../../../../content/injecting-drushrcphp/index.html" />
+<link rel="prev" href="../../../../../content/overriding-site-specific-php-values/index.html" />
+<link rel="up" href="../../../../39/index.html" />
+<link rel="next" href="../../../../../content/injecting-drushrcphp/index.html" />
+<link rel="prev" href="../../../../../content/overriding-site-specific-php-values/index.html" />
+<link rel="up" href="../../../../39/index.html" />
+<link rel="next" href="../../../../../content/injecting-drushrcphp/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Injecting into settings.php from Tue, 02/08/2011 - 12:04 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-71" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Injecting into settings.php</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-71'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 02/08/2011 - 12:04</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><h3>Introduction</h3>
+
+<p>Every web site in an Aegir environment has a Drupal configuration file <code>settings.php</code> in /sites/example.com directory.  Web administrators often need to make changes to this file; however, the Aegir system also manages this file and any manual customizations will be lost when a site is verified.</p>
+
+<p>Fortunately, there are two mechanisms to ensure that your customizations can be preserved.  If you look in the bottom of an Aegir <code>settings.php</code> file you will see references to two files <code>local.settings.php</code> and <code>global.inc</code>.</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />&nbsp; </span><span style="color: #FF8000"># Additional <span class='diff-changed'>host wide configuration settings. Useful for safely specifying</span> configuration settings.<br />&nbsp; </span><span style="color: #007700">if (</span><span style="color: #0000BB">file_exists</span><span style="color: #007700">(</span><span style="color: #DD0000"><span class='diff-changed'>'/var/aegir/config/includes/global.inc'</span></span><span style="color: #007700">)) {<br />&nbsp;&nbsp;&nbsp; include_once(</span><span style="color: #DD0000"><span class='diff-changed'>'/var/aegir/config/includes/global.inc'</span></span><span style="color: #007700">);<br />&nbsp; }<br /><br />&nbsp; </span><span style="color: #FF8000"># Additional <span class='diff-changed'>site</span> configuration settings. <span class='diff-changed'>Allows to override global</span> settings.<br />&nbsp; </span><span style="color: #007700">if (</span><span style="color: #0000BB">file_exists</span><span style="color: #007700">(</span><span style="color: #DD0000"><span class='diff-changed'>'/var/aegir/example-platform/sites/example.com/local.settings.php'</span></span><span style="color: #007700">)) {<br />&nbsp;&nbsp;&nbsp; include_once(</span><span style="color: #DD0000"><span class='diff-changed'>'/var/aegir/example-platform/sites/example.com/local.settings.php'</span></span><span style="color: #007700">);<br />&nbsp; }<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p>
+
+<p>If these files exist they are loaded at run time by Drupal.  As you can probably surmise from the paths to these files, <code>local.settings.php</code> is for site-specific customizations and <code>global.inc</code> is for Aegir-wide customization.</p>
+
+<p>Let's look at these files in more detail.  We'll use customization of user session cookies as an example.  If you look at the <code>settings.php</code> file generated by Aegir you see that it sets more conservative php settings for cookies (<code>@ini_set(&#039;session.cookie_lifetime&#039;,&nbsp; 0);</code> i.e. cookies expire immediately) than are in the <code>default.settings.php</code> packaged with Drupal (<code>@ini_set(&#039;session.cookie_lifetime&#039;,&nbsp; 2000000);</code> i.e. 2 million seconds, which is just over 23 days).</p>
+
+<h3>Site-specific Customization</h3>
+
+<p>The <code>local.settings.php</code> file by default does not exist in a new Aegir site installation so you have to create it.  Continuing with our example of user session cookies, let's override the Aegir default.</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /> </span><span style="color: #FF8000"># site-specific Drupal customization<br /><br /># override Aegir-generated cookie policy for sites - set cookies to expire after a week (604,800 seconds)<br /></span><span style="color: #007700">@</span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'session.cookie_lifetime'</span><span style="color: #007700">, </span><span style="color: #0000BB">604800</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p>
+
+<p>Note that because <code>local.settings.php</code> is included after the variables are set in the main <code>settings.php</code> it's customizations takes precedence.</p>
+
+<p>Now, whenever you clone a site or migrate it between platforms, Aegir moves a copy of <code>local.settings.php</code> as well.</p>
+
+<h3>Aegir-wide Customization</h3>
+
+<p>In some situations you may want to implement the same configuration settings on all your Aegir sites.  This is where <code>global.inc</code> comes in.  Note that <code>global.inc</code> is<span class='diff-added'> now</span> included in <code>settings.php</code> <strong><span class='diff-changed'>before</span></strong> <code>local.settings.php</code>, so that Aegir system administrators<span class='diff-added'> no longer</span> retain the ability to override configuration changes in <code>local.settings.php</code><span class='diff-changed'>, but instead it is possible to override global settings per site (read why this has been changed: </span><a href="http://drupal.org/node/1044938" title="http://drupal.org/node/1044938"><span class='diff-changed'>http://drupal.org/node/1044938</span></a><span class='diff-changed'> - note: this change affects only HEAD installs newer than 0.4-beta2).</span></p>
+
+<p>For example, say the system administrator wanted to limit users' session lifetimes to a maximum of one day they could create a <code>global.inc</code> as follows:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /> </span><span style="color: #FF8000"># Aegir-wide Drupal customization<br /><br /># override Aegir-generated<span class='diff-deleted'> </span><span class='diff-deleted'>and</span><span class='diff-deleted'> </span><span class='diff-deleted'>any</span><span class='diff-deleted'> </span><span class='diff-deleted'>site-specific</span> cookie policy for all sites - set cookies to expire after a day (86,400 seconds)<br /></span><span style="color: #007700">@</span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'session.cookie_lifetime'</span><span style="color: #007700">, </span><span style="color: #0000BB">86400</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p>
+
+<p>You can even set more granular policy within <code>global.inc</code> (however it makes more sense to keep site-specific overrides in the local.settings.php):</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /> </span><span style="color: #FF8000"># Aegir-wide Drupal customization<br /><br /># override Aegir-generated<span class='diff-deleted'> </span><span class='diff-deleted'>and</span><span class='diff-deleted'> </span><span class='diff-deleted'>any</span><span class='diff-deleted'> </span><span class='diff-deleted'>site-specific</span> cookie policy for all sites - set cookies to expire after a day (86,400 seconds)<br /></span><span style="color: #007700">@</span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'session.cookie_lifetime'</span><span style="color: #007700">, </span><span style="color: #0000BB">86400</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000"># Make the aegir front-end server more secure by expiring cookies immediately<br /><span class='diff-deleted'></span></span><span class='diff-deleted'></span><span style="color: #0000BB"><span class='diff-deleted'>$thishost</span><span class='diff-deleted'> </span></span><span style="color: #007700"><span class='diff-changed'>if (</span></span><span style="color: #0000BB"><span class='diff-changed'>preg_match</span></span><span style="color: #007700"><span class='diff-changed'>(</span></span><span style="color: #DD0000"><span class='diff-changed'>"/hostmaster/"</span></span><span style="color: #007700"><span class='diff-changed'>, </span></span><span style="color: #0000BB"><span class='diff-changed'>$conf</span></span><span style="color: #007700"><span class='diff-changed'>[</span></span><span style="color: #DD0000"><span class='diff-changed'>'install_profile'</span></span><span style="color: #007700"><span class='diff-changed'>]))</span> {<br />&nbsp; </span><span style="color: #FF8000"># set cookies to expire immediately on hostmaster<br />&nbsp; </span><span style="color: #007700">@</span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'session.cookie_lifetime'</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>Don't</span><span class='diff-deleted'> </span><span class='diff-deleted'>forget</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>replace</span><span class='diff-deleted'> </span><span class='diff-deleted'>aegir.example.com</span><span class='diff-deleted'> </span><span class='diff-deleted'>with</span><span class='diff-deleted'> </span><span class='diff-deleted'>your</span><span class='diff-deleted'> </span><span class='diff-deleted'>own</span><span class='diff-deleted'> </span><span class='diff-deleted'>Aegir</span><span class='diff-deleted'> </span><span class='diff-deleted'>domain.</span></p>
+
+<p>If you are using Aegir to manage multiple remote webservers, you will need to run the Verify task on the webserver in order to push global.inc to the remote machine.</p>
+
+<p>Note: on some Aegir installations (e.g. alpha14) the permissions on <code>/var/aegir/config</code> are insufficent for Apache to properly include the <code>global.inc</code> file.  If you find that the configuration settings in <code>global.inc</code> are being ignored, change the permissions with <code>chmod a+x /var/aegir/config</code>.  This only has to be applied to the config directory as the sub directory and file permissions should be correct.</p>
+
+<p>If you have other configuration examples, create a wiki and reference it here.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-63.html?destination=node%2F71%23comment-form">Login</a> or <a href="../../../../../user/register/index-63.html?destination=node%2F71%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-63.html?destination=node%2F71%23comment-form">Login</a> or <a href="../../../../../user/register/index-63.html?destination=node%2F71%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/71/revisions/718/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:06:26 GMT -->
+</html>

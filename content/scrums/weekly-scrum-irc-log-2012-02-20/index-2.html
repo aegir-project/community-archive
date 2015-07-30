@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/content/scrums/weekly-scrum-irc-log-2012-02-20?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:36:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../weekly-scrum-irc-log-2012-02-13/index.html" />
+<link rel="up" href="../../../scrums/index.html" />
+<link rel="next" href="../weekly-scrum-irc-log-2012-02-27/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2012-02-20 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1087" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2012-02-20</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first last"><a href="../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+</ul></div><div id='diff-inline-1087'><p><div class="codeblock"><code>[07:03:14]&nbsp;&nbsp;&nbsp; &lt;mig5&gt;&nbsp;&nbsp;&nbsp; scrum time anarcat darthsteven ergonlogic omega8cc<br />[07:03:58]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; hi<br />[07:03:58]&nbsp;&nbsp; &lt;hefring&gt; hi<br />[07:04:10]&nbsp;&nbsp; &lt;mig5&gt;&nbsp;&nbsp;&nbsp; i&#039;ve not done much other than commit a patch here or there from others<br />[07:04:21]&nbsp; &lt;mig5&gt;&nbsp;&nbsp;&nbsp; we have a few RTBC that we should probably look at before the next release http://drupal.org/project/issues?text=&amp;projects=hosting%2C+provision%2C+...<br />[07:04:36]&nbsp;&nbsp; &lt;mig5&gt;&nbsp;&nbsp;&nbsp; and a fair few for review http://drupal.org/project/issues?text=&amp;projects=hosting%2C+provision%2C+...<br />[07:04:46]&nbsp;&nbsp;&nbsp; &lt;darthsteven&gt; I&#039;m not able to make the scrum, sorry.<br />[07:05:15]&nbsp; &lt;mig5&gt;&nbsp;&nbsp;&nbsp; i suggest we also switch the aegir.make in the 6.x-1.x branch to start building drupal 6.23 or whatever, so we can be sure it works..<br />[07:05:25]&nbsp;&nbsp;&nbsp; &lt;mig5&gt;&nbsp;&nbsp;&nbsp; np thanks darthsteven<br />[07:05:57]&nbsp;&nbsp;&nbsp; &lt;mig5&gt;&nbsp;&nbsp;&nbsp; oh, we probably already build drupal 6.24 in the makefile. meh<br />[07:06:00]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; that makes sense<br />[07:06:11] &lt;mig5&gt;&nbsp;&nbsp;&nbsp; anyway, not much else from me<br />[07:06:33]&nbsp;&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; for my part, I&#039;ve been working on the puppet module<br />[07:06:39] &lt;ergonlogic&gt;&nbsp; and aegir-up<br />[07:06:58] &lt;ergonlogic&gt;&nbsp; so, we can now pass preseed info to the .deb<br />[07:07:15] &lt;mig5&gt;&nbsp;&nbsp;&nbsp; cool!<br />[07:07:20]&nbsp;&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; and a number of othr parameters if we go with a &#039;manual&#039; install<br />[07:08:03]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; and there&#039;s even a $aegir_dev_build variable that will build everything from the git repos, and preserver the .git repos<br />[07:08:35]&nbsp;&nbsp;&nbsp; &lt;mig5&gt;&nbsp;&nbsp;&nbsp; oh nice. i&#039;m looking forward to using that :)<br />[07:08:39]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; :)<br />[07:09:08]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; I&#039;ll be going over most of that with anarcat this week, and whatever passes muster will go into the master branch<br />[07:09:28]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; that&#039;s most of what I&#039;ve been up to<br />[07:09:42]&nbsp;&nbsp;&nbsp; &lt;mig5&gt;&nbsp;&nbsp;&nbsp; thanks ergonlogic<br />[07:09:57]&nbsp;&nbsp;&nbsp; &lt;mig5&gt;&nbsp;&nbsp;&nbsp; have we got anarcat here, or is he M.I.A this week<br />[07:10:12]&nbsp;&nbsp; &lt;mig5&gt;&nbsp;&nbsp;&nbsp; i&#039;ll keep it open for 5 or so min, in case omega8cc also arrives<br />[07:10:19]&nbsp;&nbsp;&nbsp; &lt;omega8cc&gt;&nbsp;&nbsp;&nbsp; hi<br />[07:10:26]&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; I think he was pretty swamped today<br />[07:10:37]&nbsp; &lt;omega8cc&gt;&nbsp;&nbsp;&nbsp; I started new clean repos for both Provision and Hostmaster changes we have made in our BOA fork (it went too far out of sync in the meantime) and started submitting patches upstream, but it is just a start in a right direction.<br />[07:10:54] &lt;mig5&gt;&nbsp;&nbsp;&nbsp; great!<br />[07:10:56]&nbsp;&nbsp; &lt;omega8cc&gt;&nbsp;&nbsp;&nbsp; I plan to work more on that, this week. That is pretty much everything I have to report today.<br />[07:11:24]&nbsp;&nbsp; &lt;mig5&gt;&nbsp;&nbsp;&nbsp; omega8cc: see those RTBC tickets i linked above<br />[07:11:26]&nbsp; &lt;mig5&gt;&nbsp;&nbsp;&nbsp; a couple are nginx ones<br />[07:11:38]&nbsp; &lt;mig5&gt;&nbsp;&nbsp;&nbsp; should they be ignored in lieu of your new clean repos?<br />[07:11:42]&nbsp; &lt;omega8cc&gt;&nbsp;&nbsp;&nbsp; mig5: I will check all of them<br />[07:11:49]&nbsp;&nbsp; &lt;mig5&gt;&nbsp;&nbsp;&nbsp; thanks<br />[07:11:56]&nbsp;&nbsp; &lt;mig5&gt;&nbsp;&nbsp;&nbsp; they seem to be ssl specific<br />[07:11:59] &lt;omega8cc&gt;&nbsp;&nbsp;&nbsp; if they apply cleanly, no problem<br />[07:15:08]&nbsp;&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; btw, undocumented aegir treasure of the week: passing &#039;--working-copy&#039; to hostmaster install will propagate down to &#039;drush make aegir.make&#039;<br />[07:15:26]&nbsp; &lt;ergonlogic&gt;&nbsp; that is &#039;drush hostmaster-install&#039;<br />[07:15:30] &lt;anarcat&gt; oh scrum<br />[07:15:35] &lt;anarcat&gt; missed that sry<br />[07:16:01]&nbsp; &lt;ergonlogic&gt;&nbsp; anarcat: go ahead<br />[07:18:11]&nbsp;&nbsp;&nbsp; &lt;anarcat&gt; hi<br />[07:18:11]&nbsp;&nbsp; &lt;hefring&gt; bonjour<br />[07:18:15]&nbsp; &lt;anarcat&gt; i want to release 1.7<br />[07:18:33]&nbsp;&nbsp;&nbsp; &lt;mig5&gt;&nbsp;&nbsp;&nbsp; \o/<br />[07:18:34]&nbsp; &lt;anarcat&gt; i will try to at least fixup the debian branches on wednesday, but i would also like to release 1.7<br />[07:19:06]&nbsp; * anarcat reading the backlog<br />[07:19:39]&nbsp;&nbsp;&nbsp; &lt;anarcat&gt; alright uh<br />[07:19:47]&nbsp;&nbsp; &lt;anarcat&gt; so yeah, i got ahead pretty good on that<br />[07:19:59] &lt;anarcat&gt; but the debian and release script cleanup will really take hold when we do that release<br />[07:20:06]&nbsp; &lt;anarcat&gt; so i&#039;d like to do that, and improve the docs, in one swoop<br />[07:20:49]&nbsp; &lt;anarcat&gt; alright, i think that&#039;s it for me<br />[07:20:57]&nbsp;&nbsp; &lt;anarcat&gt; cheers everyone<br />[07:21:02]&nbsp; &lt;ergonlogic&gt;&nbsp; k, thanks<br />[07:21:08]&nbsp;&nbsp;&nbsp; &lt;ergonlogic&gt;&nbsp; anyone else?<br />[07:21:25] &lt;ergonlogic&gt;&nbsp; if not, I&#039;ll post the log to c.a.o</code></div></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../user/login/index-129.html?destination=node%2F1087%23comment-form">Login</a> or <a href="../../../user/register/index-129.html?destination=node%2F1087%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/content/scrums/weekly-scrum-irc-log-2012-02-20?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:36:32 GMT -->
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/931/revisions/2462/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/apache-mysql-php-aegir/index.html" />
+<link rel="up" href="../../../../417/index.html" />
+<link rel="next" href="../../../../../content/installing/manual/centos-6x-aegir-install-guide/index.html" />
+<link rel="prev" href="../../../../../content/apache-mysql-php-aegir/index.html" />
+<link rel="up" href="../../../../417/index.html" />
+<link rel="next" href="../../../../../content/installing/manual/centos-6x-aegir-install-guide/index.html" />
+<link rel="prev" href="../../../../../content/apache-mysql-php-aegir/index.html" />
+<link rel="up" href="../../../../417/index.html" />
+<link rel="next" href="../../../../../content/installing/manual/centos-6x-aegir-install-guide/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of nginx / MariaDB / PHP / Aegir (MEMPÆ) from Tue, 10/25/2011 - 22:40 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-931" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/nginx-mariadb-php-aegir-memp%c3%a6/index.html">nginx / MariaDB / PHP / Aegir (MEMPÆ)</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-931'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/realityloop/index.html" class="username" title="View user profile.">realityloop</a> on 10/25/2011 - 22:40</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>You can watch a video of this process at <a href="http://www.youtube.com/watch?v=-b81t4bX_gE" title="http://www.youtube.com/watch?v=-b81t4bX_gE">http://www.youtube.com/watch?v=-b81t4bX_gE</a></p>
+
+<p><strong>Step 1: Install the requirements for this process; Xcode and Homebrew</strong><br /></p>
+
+<p><a href="../itunes.apple.com/au/app/xcode/id448457090/index.html?mt=12" target="_blank">XCode</a> is required for <a href="http://mxcl.github.com/homebrew/" target="_blank">Homebrew</a> to compile nginx, mariadb and php.</p>
+
+<ul>
+<li>Download and install Xcode using the Mac App Store with the link above<br />
+(it's free, but will take a while to download if your Internet connection is slow)</li>
+<li>Once the download has finished run the newly downloaded ‘Install Xcode’ app which will appear in Launchpad and follow the prompts.</li>
+<li>Now go back to your terminal window and type the following to install Homebrew<br />
+<div class="codeblock"><code>$ ruby -e &quot;$(curl -fsSL <a href="https://raw.github.com/gist/323731" title="https://raw.github.com/gist/323731">https://raw.github.com/gist/323731</a>)&quot;</code></div></li>
+<li>Download homebrew-alt so we can rebuild php with the required components<br />
+<div class="codeblock"><code>$ git clone <a href="https://github.com/adamv/homebrew-alt.git" title="https://github.com/adamv/homebrew-alt.git">https://github.com/adamv/homebrew-alt.git</a> /usr/local/LibraryAlt</code></div></li>
+<li>Add /usr/local/sbin to you path<br />
+<div class="codeblock"><code>$ nano ~/.bash_profile</code></div></li>
+<li>Paste the following into editor then Ctrl+X and Y to save<br />
+<div class="codeblock"><code>PATH=$PATH:/usr/local/sbin; export PATH</code></div></li>
+</ul>
+
+<p><strong>Step 2: Setting up bind</strong><br /></p>
+
+<p>BIND or named is the most widely used DNS software on the Internet, we will be configuring this for wildcard DNS of our development TLD (Top Level Domain) and using Google DNS as secondary DNS lookup for all other requests.</p>
+
+<p>Open the terminal application and enter the following:</p>
+
+<ul>
+<li>become root<br />
+<div class="codeblock"><code>$ sudo -i</code></div></li>
+<li>Backup the default configuration<br />
+<div class="codeblock"><code>$ cp /etc/named.conf /etc/named.conf.bck</code></div></li>
+<li>Create the keyfile that is read by both rndc and named on startup<br />
+<div class="codeblock"><code>$ rndc-confgen -a</code></div></li>
+<li>Edit the named.conf file<br />
+<div class="codeblock"><code>$ nano /etc/named.conf</code></div></li>
+<li>Inside the “options {“ block add the following before the last }<br />
+<div class="codeblock"><code>forwarders {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8.8.8.8;&nbsp; //Google DNS<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8.8.4.4;&nbsp; //Google DNS<br />};</code></div></li>
+<li>Add the following just before zone "0.0.127.in-addr.arpa" IN {<br />
+<div class="codeblock"><code>zone &quot;ld&quot; IN {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; type master;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file &quot;db.ld&quot;;<br />};</code></div></li>
+<li>Save your changes by hitting Ctrl+X then Y</li>
+<li> Create db.ld file, <em>we chose <strong>.ld</strong> for our TLD as it equated to local development in our minds</em><br />
+<div class="codeblock"><code>$ nano /var/named/db.ld</code></div></li>
+<li>Paste the following<br />
+<div class="codeblock"><code>ld. 7200&nbsp;&nbsp;&nbsp; IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SOA&nbsp;&nbsp;&nbsp;&nbsp; dev. root.ld. (<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2008031801 ;&nbsp;&nbsp;&nbsp; Serial<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; Refresh every 15 minutes<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3600&nbsp;&nbsp;&nbsp; ; Retry every hour<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3000000 ; Expire after a month+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 86400 ) ; Minimum ttl of 1 day<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ld.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10 ld.<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 127.0.0.1<br />*.ld.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 127.0.0.1</code></div></li>
+<li>Save your changes by hitting Ctrl+X then Y</li>
+<li>Run the following commands to ensure configuration is ok<br />
+<div class="codeblock"><code>$ named-checkconf /etc/named.conf&nbsp; <br />$ named-checkzone ld /var/named/db.ld</code></div></li>
+<li>Set your computers network settings to use 127.0.0.1 as DNS server in System Preferences -&gt; Network for both Wireless and Ethernet connections by clicking Advanced and selecting the DNS tab<br />
+<img src="http://realityloop.com/sites/realityloop.com/files/uploads/DNS-prefs.jpg" /></li>
+<li>Set Bind to load on startup, and load it right now<br />
+<div class="codeblock"><code>$ launchctl load -w /System/Library/LaunchDaemons/org.isc.named.plist</code></div></li>
+<li>Check setup with dig, were looking for NOERROR in the returned text<br />
+<div class="codeblock"><code>$ dig test.ld</code></div></li>
+<li>We can also test ping which should return something like the following (if not try a restart or dscacheutil -flushcache), hit Ctrl+C to cancel ping task<br />
+<div class="codeblock"><code>$ ping test.ld<br />PING test.ld (127.0.0.1): 56 data bytes<br />64 bytes from 127.0.0.1: icmp_seq=0 ttl=64 time=0.033 ms<br />64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.061 ms<br />64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.060 ms</code></div></li>
+<li>Set hostname as it's required for sane default in aegir setup, <em>we chose <strong>rl.ld</strong> for Realityloop Local Development you can use something else instead of <strong>rl</strong> but it needs to end in <strong>.ld</strong></em><br />
+<div class="codeblock"><code>$ scutil --set HostName rl.ld</code></div></li>
+<li>Revert back to your default user instead of root<br />
+<div class="codeblock"><code>$ exit</code></div></li>
+</ul>
+
+<p><strong>Step 3: Install nginx</strong><br /></p>
+
+<p>nginx (pronounced “engine-x”) is a Web server and a reverse proxy server for HTTP, SMTP, POP3 and IMAP protocols, with a strong focus on high concurrency, performance and low memory usage.</p>
+
+<ul>
+<li>Unless this is a fresh install of OS X you need to ensure Apache doesn't load on startup<br />
+<div class="codeblock"><code>$ sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist</code></div></li>
+<li>Optional: Edit nginx.rb homebrew installer to add --with-debug flag<br />
+<div class="codeblock"><code>$ sudo nano /usr/local/Library/Formula/nginx.rb</code></div></li>
+<li>Add the following line in the <strong>args = ["--prefix=#{prefix}",</strong> section after <strong>"--with-pcre",</strong> followed by Ctrl+X then Y to save.<br />
+<div class="codeblock"><code>&quot;--with-debug&quot;,</code></div></li>
+<li>Still in the ‘Terminal app’, type the following command<br />
+<div class="codeblock"><code>$ brew install nginx</code></div></li>
+<li>Once nginx is compiled, backup the default nginx config<br />
+<div class="codeblock"><code>$ mv /usr/local/etc/nginx/nginx.conf /usr/local/etc/nginx/nginx.conf.bak</code></div></li>
+<li>Download our config as follows<br />
+<div class="codeblock"><code>$ curl <a href="http://realityloop.com/sites/realityloop.com/files/uploads/nginx.conf_.txt" title="http://realityloop.com/sites/realityloop.com/files/uploads/nginx.conf_.txt">http://realityloop.com/sites/realityloop.com/files/uploads/nginx.conf_.txt</a> &gt; /usr/local/etc/nginx/nginx.conf</code></div></li>
+<li>Edit the config to set your username, replace [username] on the third line with your own username, hit Ctrl+X and Y to save<br />
+<div class="codeblock"><code>$ nano /usr/local/etc/nginx/nginx.conf</code></div></li>
+<li>Make nginx log files visible in Console app<br />
+<div class="codeblock"><code>$ sudo mkdir /var/log/nginx</code></div></li>
+<li>Create the following directorty to stop “"/var/lib/nginx/speed" failed (2: No such file or directory)” error<br />
+<div class="codeblock"><code>$ sudo mkdir /var/lib/nginx</code></div></li>
+</ul>
+
+<p><strong>Step 4: MariaDB</strong><br /></p>
+
+<p>MariaDB is a community-developed branch of the MySQL database, the impetus being the community maintenance of its free status under GPL, as opposed to any uncertainty of MySQL license status under its current ownership by Oracle.</p>
+
+<p>The intent also being to maintain high fidelity with MySQL, ensuring a "drop-in" replacement capability with library binary equivalency and exacting matching with MySQL APIs and commands. It includes the XtraDB storage engine as a replacement for InnoDB.</p>
+
+<ul>
+<li>Still in the ‘Terminal app’, type the following command<br />
+<div class="codeblock"><code>$ brew install mariadb</code></div></li>
+<li>Once compilation has finished unset TMPDIR<br />
+<div class="codeblock"><code>unset TMPDIR</code></div></li>
+<li>Then mysql_install_db<br />
+<div class="codeblock"><code>$ mysql_install_db</code></div></li>
+<li><strong>but don't follow any more of the prompts just now or you will run into problems, we'll do the rest later.</strong></li>
+</ul>
+
+<p><strong>Step 5: Update php</strong><br /></p>
+
+<ul>
+<li>Backup your original version of PHP, in the case you ever want to revert to a vanilla state. <strong>Note:</strong> You may need to repeat this step anytime you use combo updater to install OS X updates<br />
+<div class="codeblock"><code>$ sudo mv /usr/bin/php /usr/bin/php-apple</code></div></li>
+<li>Execute the brew install process using hombrew-alt php brew file<br />
+<div class="codeblock"><code>$ brew install /usr/local/LibraryAlt/duplicates/php.rb --with-mysql --with-fpm</code></div></li>
+<li>Once compilation is complete create your php-fpm config file<br />
+<div class="codeblock"><code>$ cp /usr/local/Cellar/php/5.3.8/etc/php-fpm.conf.default /usr/local/Cellar/php/5.3.8/etc/php-fpm.conf</code></div></li>
+<li>Create symbolic link for it in /usr/local/etc/<br />
+<div class="codeblock"><code>$ sudo ln -s /usr/local/Cellar/php/5.3.8/etc/php-fpm.conf /usr/local/etc/php-fpm.conf</code></div></li>
+<li>Edit the conf file<br />
+<div class="codeblock"><code>$ nano /usr/local/etc/php-fpm.conf</code></div></li>
+<li>Add the following line below <strong>;pid = run/php-fpm.pid</strong><br />
+<div class="codeblock"><code>pid = /usr/local/var/run/php-fpm.pid</code></div></li>
+<li>Update the user and group section as follows<br />
+<div class="codeblock"><code>user = _www<br />group = _www</code></div></li>
+Remove the ; from the start of the following lines then save using Ctrl+X then Y<br />
+<div class="codeblock"><code>pm.start_servers = 20<br />pm.min_spare_servers = 5<br />pm.max_spare_servers = 35<br />pm.max_requests = 500</code></div>
+<li>Create directory and file for php-fpm log<br />
+<div class="codeblock"><code>$ mkdir /usr/local/Cellar/php/5.3.8/var/log/<br />$ touch /usr/local/Cellar/php/5.3.8/var/log/php-fpm.log</code></div></li>
+<li>Make our log file visible in Console app<br />
+<div class="codeblock"><code>$ sudo ln -s /usr/local/Cellar/php/5.3.8/var/log/php-fpm.log /var/log/nginx/php-fpm.log</code></div></li>
+<li>Set your timezone in php.ini <a href="http://www.php.net/manual/en/timezones.php" target="_blank">http://www.php.net/manual/en/timezones.php</a><br />
+<div class="codeblock"><code>$ nano /usr/local/etc/php.ini</code></div></li>
+<li>I added the follwing under the <strong>;date.timezone =</strong> line<br />
+<div class="codeblock"><code>date.timezone = Australia/Melbourne</code></div></li>
+<li>And updated the Memory limit as follows, then saved with Ctrl+X then Y<br />
+<div class="codeblock"><code>memory_limit = 256M</code></div></li>
+</ul>
+
+<p><strong>Step 6: Service Launch Daemons</strong><br /></p>
+
+<p>This is so everything runs automatically on startup</p>
+
+<ul>
+<li>Type the following into you open Terminal window<br />
+<div class="codeblock"><code>$ sudo -i</code></div></li>
+<li>Download the LaunchDaemon to load nginx on boot<br />
+<div class="codeblock"><code>$ curl <a href="http://realityloop.com/sites/realityloop.com/files/uploads/nginx.plist_.txt" title="http://realityloop.com/sites/realityloop.com/files/uploads/nginx.plist_.txt">http://realityloop.com/sites/realityloop.com/files/uploads/nginx.plist_.txt</a> &gt; /System/Library/LaunchDaemons/org.homebrew.nginx.plist</code></div></li>
+<li>Download LaunchDaemon for php-fpm<br />
+<div class="codeblock"><code>$ curl <a href="http://realityloop.com/sites/realityloop.com/files/uploads/php-fpm.plist_.txt" title="http://realityloop.com/sites/realityloop.com/files/uploads/php-fpm.plist_.txt">http://realityloop.com/sites/realityloop.com/files/uploads/php-fpm.plist...</a> &gt; /System/Library/LaunchDaemons/org.homebrew.php-fpm.plist</code></div></li>
+<li>Copy the LaunchDaemon to load mariadb on boot into place<br />
+<div class="codeblock"><code>$ cp /usr/local/Cellar/mariadb/5.2.8/com.mysql.mysqld.plist /System/Library/LaunchDaemons/com.mysql.mysqld.plist</code></div></li>
+<li>Restart your computer to enable the services <strong>Yes you really need to do this now, or the next step will not work</strong></li>
+<li>Open terminal again and type the following<br />
+<div class="codeblock"><code>$ sudo /usr/local/Cellar/mariadb/5.2.8/bin/mysql_secure_installation</code></div></li>
+<li>Answer the prompts as follows, replace [password] with a password of your own chosing<br />
+<div class="codeblock"><code>Enter current password for root (enter for none): [Enter]<br />Set root password? [Y/n] y<br />New password: [password]<br />Re-enter new password: [password]<br />Remove anonymous users? [Y/n] y<br />Disallow root login remotely? [Y/n] y<br />Remove test database and access to it? [Y/n] y<br />Reload privilege tables now? [Y/n] y</code></div></li>
+</ul>
+
+<p><strong>Step 7: Drush and Aegir</strong><br /></p>
+
+<p>Your in the home stretch now!</p>
+
+<ul>
+<li>Make a few small changes required for this to work properly<br />
+<div class="codeblock"><code>$ sudo mkdir /var/aegir<br />$ sudo chown `whoami` /var/aegir<br />$ sudo chgrp staff /var/aegir<br />$ sudo dscl . append /Groups/_www GroupMembership `whoami`</code></div></li>
+<li>Allow your user to restart nginx, <strong> be sure to replace [username] with your own username</strong>.<br />
+<div class="codeblock"><code>$ sudo -i<br />$ echo &quot;[username] ALL=NOPASSWD: /usr/local/sbin/nginx&quot; &gt;&gt; /etc/sudoers<br />$ exit</code></div></li>
+<li>Manually Install Drush and Aegir components<br />
+<div class="codeblock"><code>$ export DRUSH_VERSION=7.x-4.5<br />$ curl -O http://ftp.drupal.org/files/projects/drush-$DRUSH_VERSION.tar.gz<br />$ gunzip -c drush-$DRUSH_VERSION.tar.gz | tar -xf -<br />$ rm drush-$DRUSH_VERSION.tar.gz</code></div></li>
+<li>Make Drush accesible via your path<br />
+<div class="codeblock"><code>$ sudo ln -s ~/drush/drush /usr/local/bin/drush</code></div></li>
+<li>Download drush_make and provision<br />
+<div class="codeblock"><code>$ drush dl drush_make-6.x --destination=&quot;/users/`whoami`/.drush&quot;<br />$ drush dl provision-6.x --destination=&quot;/users/`whoami`/.drush&quot;</code></div></li>
+<li>Apply the following patch to provision until version 6.x-1.5 of aegir comes out<br />
+<a href="http://drupalcode.org/sandbox/omega8cc/1111100.git/commit/a208ed4" target="_blank">http://drupalcode.org/sandbox/omega8cc/1111100.git/commit/a208ed4</a></li>
+<li>Create symbolic link for aegir vhosts<br />
+<div class="codeblock"><code>$ sudo ln -s /var/aegir/config/nginx.conf /usr/local/etc/nginx/aegir.conf</code></div></li>
+<li>Install Hostmaster!<br />
+<div class="codeblock"><code>$ drush hostmaster-install --aegir_root=&#039;/var/aegir&#039; --root=&#039;/var/aegir/hostmaster-6.x-1.4&#039; --http_service_type=nginx</code></div></li>
+<li>Remove the default platforms dir and create a symlink for so you can put your Platforms in ~/Sites/ directory<br />
+<div class="codeblock"><code>$ mkdir /Users/`whoami`/Sites<br />$ rmdir /var/aegir/platforms<br />$ ln -s /Users/`whoami`/Sites /var/aegir/platforms</code></div></li>
+<li>Open your web browser and start creating platforms and sites!<br />
+<a href="http://aegir.ld/">http://aegir.ld</a></li>
+</ul></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-47.html?destination=node%2F931%23comment-form">Login</a> or <a href="../../../../../user/register/index-47.html?destination=node%2F931%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-47.html?destination=node%2F931%23comment-form">Login</a> or <a href="../../../../../user/register/index-47.html?destination=node%2F931%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/931/revisions/2462/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:26 GMT -->
+</html>

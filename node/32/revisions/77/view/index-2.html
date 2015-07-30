@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/32/revisions/77/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:33:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../546/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../debian/index.html" />
+<link rel="prev" href="../../../../546/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../debian/index.html" />
+<link rel="prev" href="../../../../546/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../debian/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Release process from Wed, 10/27/2010 - 08:39 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-32" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/release-process/index.html">Release process</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-32'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 10/27/2010 - 08:39</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p><span class='diff-added'>This page aims to document our release process.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>In general, each major Hostmaster release comprises of a simultaneous release of all the modules part of the project. We generally go through a few releases before doing the first release.</span></p><span class='diff-added'>
+
+</span><ul><span class='diff-added'>
+</span><li><span class='diff-added'></span><p><span class='diff-added'>First an alpha is released to test new functionalities and to proceed accomplishing the goals decided in the </span><a href="../../../../35/index.html"><span class='diff-added'>Project Roadmap</span></a><span class='diff-added'> for that major version.</span></p><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><p><span class='diff-added'>When we feel we're getting close to a production-ready release, we bump that to a beta.</span></p><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><p><span class='diff-added'>Then we go into feature freeze and release a first release candidate (RC).</span></p><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><p><span class='diff-added'>If no critical bug is found, a complete release is done, otherwise critical bugs are fixed and a new RC is done. That cycle repeats until no critical bugs are found.</span></p><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><p><span class='diff-added'>Each time we make a new release, we run a script called 'release.sh' in </span><a href="http://git.aegirproject.org/?p=provision.git;a=summary"><span class='diff-added'>provision</span></a><span class='diff-added'></span></p><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><p><span class='diff-added'>This script should only be used by the core dev team when doing an official release. If you are not one of those people, you probably shouldn't be running this.</span></p><span class='diff-added'></span></li><span class='diff-added'>
+</span><li><span class='diff-added'></span><p><span class='diff-added'>This script does all the 'hard' work in that it doesn't forget all the very many places to edit version numbers etc of relevant documentation and other scripts. This includes INSTALL.txt, UPGRADE.txt, install.sh.txt and upgrade.sh.txt.</span></p><span class='diff-added'></span></li><span class='diff-added'>
+</span></ul><span class='diff-added'>
+
+</span><p><span class='diff-added'>Paraphrasing from the script itself:</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'>The following operations will be done:</span><br /><span class='diff-added'> 1. change the makefile to download tarball</span><br /><span class='diff-added'> 2. change the INSTALL.txt to point to tagged install.sh</span><br /><span class='diff-added'> 3. change the UPGRADE.txt to point to release tags</span><br /><span class='diff-added'> 4. change the install.sh.txt version</span><br /><span class='diff-added'> 5. change the upgrade.sh.txt version</span><br /><span class='diff-added'> 6. display the resulting diff</span><br /><span class='diff-added'> 7. commit those changes to git</span><br /><span class='diff-added'> 8. lay down the tag (prompting you for a changelog)</span><br /><span class='diff-added'> 9. revert the commit</span><br /><span class='diff-added'> 10. (optionally) push those changes</span><br /><span class='diff-added'></span><br /><span class='diff-added'>The operation can be aborted before step 6 and 9. Don&#039;t forget that as long as changes are not pushed upstream, this can all be reverted (see git-reset(1) and git-revert(1) ).</span></code><span class='diff-added'></span></div><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><ul><span class='diff-added'>
+</span><li><span class='diff-added'>Tarballs are automatically created on </span><a href="http://files.aegirproject.org/" title="http://files.aegirproject.org"><span class='diff-added'>http://files.aegirproject.org</span></a><span class='diff-added'> with associated md5sums once the tag is pushed. The install/upgrade documentation scripts in that release were automatically modified so that the URLs to those tarballs reflects the correct release.</span></li><span class='diff-added'>
+</span></ul><span class='diff-added'>
+
+</span><p><span class='diff-added'>The list of bugs, features and other issues resolved are collated together, usually in a shared piratepad somewhere.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>The developers then proceed to format/edit the list of fixes as well as list other significant information/changes for this release. These notes end up becoming the </span>Release <span class='diff-changed'>Notes for the release.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>The release notes are published on:</span></p><span class='diff-added'>
+
+</span><ul><span class='diff-added'>
+</span><li><span class='diff-added'>News on community.aegirproject.org</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>GDO</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>The aegir-announce mailing list</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Twitter as @aegirproject</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>Optionally, blog posts on developmentseed.org and elsewhere may go into further detail about significant changes, screencasts etc.</span></li><span class='diff-added'>
+</span></ul></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-18.html?destination=node%2F32%23comment-form">Login</a> or <a href="../../../../../user/register/index-18.html?destination=node%2F32%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-18.html?destination=node%2F32%23comment-form">Login</a> or <a href="../../../../../user/register/index-18.html?destination=node%2F32%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/32/revisions/77/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:33:40 GMT -->
+</html>

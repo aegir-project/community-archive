@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/515/revisions/4359/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:40:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/injecting-drushrcphp/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../contrib-modules/aegir-services/index.html" />
+<link rel="prev" href="../../../../../content/injecting-drushrcphp/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../contrib-modules/aegir-services/index.html" />
+<link rel="prev" href="../../../../../content/injecting-drushrcphp/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../contrib-modules/aegir-services/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Contributed Modules from Fri, 12/28/2012 - 18:02 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-515" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../contrib-modules/index.html">Contributed Modules</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-515'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/sfyn/index.html" class="username" title="View user profile.">sfyn</a> on 12/28/2012 - 18:02</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Extensions_to_Hostmaster_frontend"><span class="toc-number">1. </span>Extensions to Hostmaster (frontend)</a></li>
+	<li class="toc-level-1"><a href="#Extensions_to_Provision_backend"><span class="toc-number">2. </span>Extensions to Provision (backend)</a></li>
+	<li class="toc-level-1"><a href="#Themes"><span class="toc-number">3. </span>Themes</a></li>
+	<li class="toc-level-1"><a href="#Puppet_modules"><span class="toc-number">4. </span>Puppet modules</a></li>
+	<li class="toc-level-1"><a href="#Others"><span class="toc-number">5. </span>Others</a></li>
+	<li class="toc-level-1"><a href="#Your_module_here"><span class="toc-number">6. </span>Your module here?</a></li>
+</ol>
+</div>
+</div>
+
+<h2 id="Extensions_to_Hostmaster_frontend">1. Extensions to Hostmaster (frontend)</h2>
+
+<dl>
+<dt><a href="http://drupal.org/project/uc_hosting">Aegir Ubercart Integration</a></dt>
+<dd>This module allows you to sell an Ægir client, with quotas and access to specific platforms, through Ubercart . It automates a number of set-up tasks from the moment the order ...</dd>
+
+<dt><a href="https://github.com/computerminds/aegir_http_basic">Aegir HTTP basic authentication</a></dt>
+<dd>This module allows you to protect sites with passwords.</dd>
+
+<dt><a href="https://github.com/poetaster/aegir_http_basic_ldap">Aegir HTTP basic LDAP authentication</a></dt>
+<dd>A fork of the above to allow you to specify an LDAP server and Require (ldap filter) string for authentication of 'sites'.</dd>
+
+<dt><a href="http://drupal.org/project/aegir_feeds">Aegir feeds</a></dt>
+<dd>This is a very basic module that provides feeds integration with Aegir . Features Provides mapping targets for Aegir site nodes, allowing you to create new sites from a feed or file upload.</dd>
+
+<dt><a href="http://drupal.org/project/aegir_rules">Aegir Rules</a></dt>
+<dd>Aegir Rules provides Rules integration for the Aegir.</dd>
+
+<dt><a href="https://github.com/computerminds/aegir_make_working_copy">Aegir Drush Make Platform working-copy</a></dt>
+<dd>This feature allows you to specify 'working-copy' when adding a platform using a Drush makefile. Working-copy means your .git subdirectories are preserved in the platform, which may be useful for development purposes.</dd>
+
+<dt><a href="http://mig5.net/content/aegir-subfolder-support">Aegir Subfolders</a></dt>
+<dd>Support for 'example.com/subsite1' style sites in Aegir (experimental as of July 2012)</dd>
+
+<dt><a href="http://drupal.org/project/hosting_platform_pathauto">Hosting Platform Pathauto</a></dt>
+<dd>This is an add-on module for the Aegir hosting system: <a href="http://aegirproject.org/" title="http://aegirproject.org/">http://aegirproject.org/</a> This module simply makes a little time-saving tweak when creating a new platform: ...</dd>
+
+<dt><a href="http://drupal.org/project/hosting_queue_runner">Hosting queue runner</a></dt>
+<dd>This module allows the Hosting tasks queue for the Aegir project to be 'daemonized' so that tasks are run as soon as possible instead of waiting for a cron run. This makes Aegir appear much more responsive. This module was inspired by the Waiting queue project. Requirements You will need ...</dd>
+
+<dt><a href="http://drupal.org/project/hosting_reinstall">Hosting Reinstall</a></dt>
+<dd>The Hosting Reinstall module provides a frontend for the <a href="http://drupal.org/project/provision_reinstall">Provision Reinstall</a> module so that you can reinstall any sites via Hostmaster (Aegir).</dd>
+
+<dt><a href="http://drupal.org/project/hosting_backup_gc">Hosting backup garbage collection</a></dt>
+<dd>This is an add-on module for the Aegir hosting system: <a href="http://aegirproject.org/" title="http://aegirproject.org">http://aegirproject.org</a> Introduction This module allows you to specify how long Aegir should retain backups for. You can specify, ...</dd>
+
+<dt><a href="http://drupal.org/project/hosting_backup_queue">Hosting backup queue</a></dt>
+<dd>This is a simple module for the Aegir project that allows scheduling of backups. E.g. backup sites every hour, day or month. The module allows for the general settings to be applied to all sites, ...</dd>
+
+<dt><a href="http://drupal.org/project/hosting_site_backup_manager">Hosting site Backup Manager</a></dt>
+<dd>Add a backups tab to a site node. It extends the default backup functionality with the ability to download a backup over HTTP.</dd>
+
+<dt><a href="http://drupal.org/project/hosting_site_git">Hosting site Git</a></dt>
+<dd>This is a simple module for the Aegir project that adds a 'Git pull', 'Git checkout' and 'Git clone' task for sites.</dd>
+
+<dt><a href="http://drupal.org/project/hosting_upload">Hosting upload</a></dt>
+<dd>This module allows administrators to add platforms to aegir and extend platforms and sites with modules, themes, libraries without the need of ssh access.</dd>
+
+<dt><a href="http://drupal.org/project/hosting_profile_roles">Hosting Profile Roles</a></dt>
+<dd>Hosting Profile Roles extends Aegir to enable more control over what role(s) a client is assigned during site install. Since, by default, Aegir client's are given UID1 during site installs, this module also allows UID1 to be assigned to another user.</dd>
+
+<dt><a href="http://drupal.org/project/hosting_server_titles">Hosting server titles</a></dt>
+<dd>This is a really simple module that allows you to change the names of servers that are displayed in lists in the Hosting frontend when choosing what server to use for something.</dd>
+
+<dt><a href="../../../../311/index.html">Services API Support</a></dt>
+<dd>Integrates the Services API framework into the Hostmaster suite of tools. It allows Aegir managers the ability to build Services API connections over any of the available servers for Services API.</dd>
+
+<dt><a href="http://drupal.org/project/hosting_advanced_cron">Hosting Advanced Cron</a></dt>
+<dd>This module allows an administrator to set the default cron interval globally and to override that interval for individual sites.</dd>
+
+<dt><a href="http://drupal.org/project/hosting_features">Hosting Features</a></dt>
+<dd>This module provides a Task to Hostmaster that provides integration with a site's Features. (In beta as of June 1,2012)</dd>
+
+<dt><a href="http://drupal.org/project/hosting_notifications">Hosting Notifications</a></dt>
+<dd>This is a module that integrates with the Notifications framework. This allows you to receive notifications about task execution in various formats.</dd>
+
+<dt><a href="http://drupal.org/project/hosting_task_gc">Hosting Task Garbage Collection</a></dt>
+<dd>This module will delete rows in the {hosting_task} and {hosting_task_log} tables. (In alpha as of June 1,2012)</dd>
+
+<dt><a href="http://drupal.org/project/hosting_remote_import">Hosting Remote Import</a></dt>
+<dd>This Drupal module provides a UI for fetching sites from remote Aegir servers. (In development as of June 1, 2012)</dd>
+
+<dt><a href="http://drupal.org/project/hosting_varnish">Hosting Varnish</a></dt>
+<dd>Allows the Varnish cache for Aegir-managed sites to be purged via the user interface. (In alpha as of June 1,2012)</dd>
+
+<dt><a href="http://drupal.org/project/hosting_civicrm_cron">Hosting CivicCRM Cron</a></dt>
+<dd>This module provides the ability to trigger CiviCRM cron jobs on sites hosted on the Aegir Hosting System.</dd>
+
+<dt><a href="http://drupal.org/project/hosting_tasks_extra">Hosting tasks extra</a></dt>
+<dd>This module extends Aegir hostmaster (and drush/provision) with some additional tasks. Such as: cache-clear and registry-rebuild.</dd>
+
+<dt><a href="http://drupal.org/project/hosting_filemanager">Hosting Filemanager</a></dt>
+<dd>This module provides a web file browser for viewing files under sites and platforms. (In beta as of August 29,2012)</dd>
+
+<dt><a href="http://drupal.org/sandbox/mccrodp/1819860">Hosting Signup Settings</a></dt>
+<dd>This module is dependent on hosting_signup module in the hosting package of Aegir. It allows the Signup form at /hosting/signup to be configured. (Sandbox project, October 22, 2012)</dd><span class='diff-added'>
+
+</span><dt><span class='diff-added'></span><a href="https://github.com/doka/uc_hosting_client"><span class='diff-added'>Hosting Client Roles</span></a><span class='diff-added'></span></dt><span class='diff-added'>
+</span><dd><span class='diff-added'>Client Roles module integrates Aegir user roles into hosting_products as product
+feature. With this module you can assign Aegir user roles to Ubercart products, and sell
+them as hosting products. This module is part of the "Hosting &amp; Ubercart Integration" package, and depends on uc_hosting and uc_hosting_products modules</span></dd>
+</dl>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Extensions_to_Provision_backend">2. Extensions to Provision (backend)</h2>
+
+<dl>
+<dt><a href="http://drupal.org/project/provision_boost">Provision boost support</a></dt>
+<dd>the Aegir project and therefore depends on the provision backend and expects the Aegir environment to be functional. Quickstart Download the provision_boost code into your /var/aegir/.drush/ Download ...</dd>
+
+<dt><a href="http://drupal.org/project/provisionacl">Provision ACL support</a></dt>
+<dd>This drush command aims to provide preliminary ACL support for the Aegir backend . The objective here is to allow administrators to set more granular access policies on files managed by Aegir and resolve more hairy access permissions requirements than what is usually allowed by the Aegir core. ...</dd>
+
+<dt><a href="http://drupal.org/project/project_status">Project Status</a></dt>
+<dd>Project status is an extension for drush which takes a list of drupal platforms as arguments and returns a list of modules which are not in use by any site within these platforms. It is also optionally able to list modules which are use, by platform and site.</dd>
+
+<dt><a href="http://drupal.org/project/provision_civicrm">Provision CiviCRM</a></dt>
+<dd>A Drush module to automatically setup Drupal instances with the CiviCRM Constituent Relationship Management solution. It is specifically aimed towards the Aegir project.</dd>
+
+<dt><a href="http://drupal.org/sandbox/helmo/1283656">Provision Backup Platform</a></dt>
+<dd>This hooks into deleting a platform and creates a simple tar backup.</dd>
+
+<dt><a href="http://drupal.org/project/kplatforms">kPlatforms</a></dt>
+<dd>Koumbit's "standard Drupal platforms", a set of makefiles to build and maintain development and production platforms easily.</dd>
+
+<dt><a href="http://drupal.org/project/provision_git">Provision Git</a></dt>
+<dd>Provision Git is a backend Drush module. It provides 4 drush commands. (In alpha as of June 1,2012)</dd>
+
+<dt><a href="http://drupal.org/project/provision-mergelog">Provision Merge Log</a></dt>
+<dd>This Aegir extension allows you to automate fetching and merging logs from multiple servers part of the same cluster in a single logfile for later analysis with various analysis tools</dd>
+
+<dt><a href="http://drupal.org/project/provision_cdn">Provision CDN</a></dt>
+<dd>This is a simple module and drush script for that allows you to enable CDN support per site in Aegir. (In development as of June 1,2012)</dd>
+
+<dt><a href="http://drupal.org/project/provision_profile_settings">Provision profile settings</a></dt>
+<dd>Incredibly simple extension for provision that allows install profiles to easily inject settings into settings.php for provisioned sites.</dd>
+
+<dt><a href="http://drupal.org/project/provision_newrelic">Provision New Relic</a></dt>
+<dd>This is a simple extension that exposes all sites in New Relic, so you can monitor each sites performance.</dd>
+</dl>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Themes">3. Themes</h2>
+
+<ul>
+<li>Koumbit has provided it's <a href="http://drupal.org/project/eldir_kt">custom Aegir theme</a> as a sample subtheme of <a href="http://drupal.org/project/eldir">Eldir</a>.</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Puppet_modules">4. Puppet modules</h2>
+
+<p>Those projects allow you to manage Aegir instance(s) through Puppet. Chef recipes also welcome, we don't discriminate.</p>
+
+<ul>
+<li><a href="http://drupal.org/project/puppet-aegir">Aegir Puppet module</a></li>
+<li><a href="http://drupal.org/project/puppet-drush">Drush Puppet module</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Others">5. Others</h2>
+
+<dl>
+<dt><a href="http://drupal.org/project/aegir-up">Aegir up</a></dt>
+<dd>Aegir-up is a Drush extension that deploys a local instance of the Aegir Hosting System atop Vagrant and Virtualbox, for development and testing purposes.</dd>
+</dl>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Your_module_here">6. Your module here?</h2>
+
+<p><em>Developers:</em> Please add your contributed module here, and feel free to put install instructions or other documentation in a child page. If you are looking for ways of extending Aegir or have already done so and want to document the <em>internals</em> of your module, head over to the <a href="../../../../../contrib/index.html">extending Aegir</a> page.</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-12.html?destination=node%2F515%23comment-form">Login</a> or <a href="../../../../../user/register/index-12.html?destination=node%2F515%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-12.html?destination=node%2F515%23comment-form">Login</a> or <a href="../../../../../user/register/index-12.html?destination=node%2F515%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/515/revisions/4359/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:40:54 GMT -->
+</html>

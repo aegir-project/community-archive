@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/931/revisions/3646/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/apache-mysql-php-aegir/index.html" />
+<link rel="up" href="../../../../417/index.html" />
+<link rel="next" href="../../../../../content/installing/manual/centos-6x-aegir-install-guide/index.html" />
+<link rel="prev" href="../../../../../content/apache-mysql-php-aegir/index.html" />
+<link rel="up" href="../../../../417/index.html" />
+<link rel="next" href="../../../../../content/installing/manual/centos-6x-aegir-install-guide/index.html" />
+<link rel="prev" href="../../../../../content/apache-mysql-php-aegir/index.html" />
+<link rel="up" href="../../../../417/index.html" />
+<link rel="next" href="../../../../../content/installing/manual/centos-6x-aegir-install-guide/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of nginx / MariaDB / PHP / Aegir (MEMPÆ) from Fri, 07/13/2012 - 05:49 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-931" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/nginx-mariadb-php-aegir-memp%c3%a6/index.html">nginx / MariaDB / PHP / Aegir (MEMPÆ)</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-931'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/realityloop/index.html" class="username" title="View user profile.">realityloop</a> on 07/13/2012 - 05:49</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p><strong>Step 1: Xcode and Homebrew</strong></p>
+<p><a href="http://itunes.apple.com/au/app/xcode/id497799835?mt=12" target="_blank">XCode</a> is required for <a href="http://mxcl.github.com/homebrew/" target="_blank">Homebrew</a> to compile dnsmasq, nginx, mariadb and php.</p>
+<ul>
+<li>Download and install Xcode using the Mac App Store with the link above<br />
+(it's free, but will take a while to download if your Internet connection is slow)</li>
+<li>Once the download has finished launch Xcode and open it's preferences, goto Downloads tab and click Install on Command Line Tools.</li>
+<li>Follow the <a href="https://github.com/mxcl/homebrew/wiki/installation" target="_blank">installation instructions for Homebrew</a></li>
+</ul>
+<p><strong>Mountain Lion Fixes for Homebrew</strong></p>
+<ul>
+<li>Let everyone know where Xcode is<br /><br />
+<div class="codeblock"><code>$ sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer</code></div>
+</li>
+<li>Install X11: Visit <a href="http://xquartz.macosforge.org/trac/wiki" target="_blank">http://xquartz.macosforge.org/trac/wiki</a> and download and install version 2.7.2+.</li>
+<li>You will need to fix the symlink it makes<br /><br />
+<div class="codeblock"><code>$ sudo ln -s /opt/X11 /usr/X11</code></div>
+</li>
+<li>Reinstall your brews<br /><br />
+<div class="codeblock"><code>$ brew list</code></div>
+</li>
+</ul>
+<p><strong>Add directories to your path</strong></p>
+<ul>
+<li>Ensure /usr/local/bin occurs before /usr/bin and add /usr/local/sbin is added to your path, If you are using zsh, update .zshrc instead<br /><br />
+<div class="codeblock"><code>$ nano ~/.bash_profile&nbsp;&nbsp; <br />or<br />$ nano ~/.zshrc</code></div>
+</li>
+<li>Paste the following into editor then Ctrl+X and Y to save<br />
+<div class="codeblock"><code>export PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/git/bin:/opt/local/bin</code></div>
+</li>
+</ul>
+<p><strong>Set up email sending</strong></p>
+<ul><span class='diff-added'>
+</span><li><span class='diff-added'>First test if you are able to email yourself</span><br /><span class='diff-added'>
+</span><div class="codeblock"><span class='diff-added'></span><code><span class='diff-added'>$ date | mail -s test you@youremail.com</span></code><span class='diff-added'></span></div><span class='diff-added'>
+</span></li>
+<li>If you are on Mountain Lion you need to create and set the permissions for these directories first (for DP4 at least)<br /><br />
+<div class="codeblock"><code>$ sudo mkdir /Library/Server /Library/Server/Mail /Library/Server/Mail/Data /Library/Server/Mail/Data/spool /Library/Server/Mail/Data/spool/maildrop<br />$ sudo chown _postfix:_postdrop /Library/Server/Mail/Data/spool/maildrop</code></div>
+</li>
+<li>I chose to set up gmail as my email relay (this may not be required for you though)<br /><span class='diff-deleted'></span><br />
+<a href="http://realityloop.com/blog/2011/06/05/os-x-ditching-mamp-pro-part-2-gmail-email-relay">http://realityloop.com/blog/2011/06/05/os-x-ditching-mamp-pro-part-2-gmail-email-relay</a></li>
+<li>Mountain Lion appears to have a few bugs around this at the moment, I have to launch postfix on reboot<br /><br />
+<div class="codeblock"><code>$ sudo postfix start</code></div>
+</li>
+</ul>
+<p><strong>Step 2: Setting up dnsmasq for local wildcard DNS</strong></p>
+<ul>
+<li>Install dnsmasq via homebrew<br /><br />
+<div class="codeblock"><code>$ brew install dnsmasq</code></div>
+</li>
+<li>Copy and edit the default conf example<br /><br />
+<div class="codeblock"><code>$ mkdir /usr/local/etc<br />$ cp /usr/local/Cellar/dnsmasq/2.61/dnsmasq.conf.example /usr/local/etc/dnsmasq.conf<br />$ nano /usr/local/etc/dnsmasq.conf</code></div>
+</li>
+<li>Update the following values as shown<br /><br />
+<div class="codeblock"><code>resolv-file=/etc/resolv.dnsmasq.conf<br />address=/.ld/127.0.0.1<br />listen-address=127.0.0.1</code></div>
+</li>
+<li>Set up downstream DNS resolver<br /><br />
+<div class="codeblock"><code>$ sudo nano /etc/resolv.dnsmasq.conf</code></div>
+</li>
+<li>Paste the following and save using CTRL + X then Y<br /><br />
+<div class="codeblock"><code># OpenDNS IPv6:<br />nameserver 2620:0:ccd::2<br />nameserver 2620:0:ccc::2<br /># Google IPv6:<br />nameserver 2001:4860:4860::8888<br />nameserver 2001:4860:4860::8844<br /># OpenDNS:<br />nameserver 208.67.222.222<br />nameserver 208.67.220.220<br /># Google:<br />nameserver 8.8.8.8<br />nameserver 8.8.4.4</code></div>
+</li>
+<li>Copy the launch daemon so dnsmasq runs on startup, and launch it now<br /><br />
+<div class="codeblock"><code>$ sudo cp /usr/local/Cellar/dnsmasq/2.61/homebrew.mxcl.dnsmasq.plist /Library/LaunchDaemons<br />$ sudo launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist</code></div>
+</li>
+<li>Set hostname as it's required for sane default in aegir setup, we chose rl.ld for Realityloop Local Development you can use something else instead of rl but it needs to end in .ld<br /><br />
+<div class="codeblock"><code>$ sudo scutil --set HostName rl.ld</code></div>
+</li>
+<li>Open your System Preferences, then click on Network, then for each of your interfaces (Wi-Fi &amp; Ethernet), click on Advanced, click on DNS and finally click on the + symbol at the bottom of the left hand-side panel and set 127.0.0.1 as your only DNS Server</li>
+</ul>
+<p><strong>Step 3: Install nginx</strong></p>
+<p>nginx (pronounced “engine-x”) is a Web server and a reverse proxy server for HTTP, SMTP, POP3 and IMAP protocols, with a strong focus on high concurrency, performance and low memory usage.</p>
+<ul>
+<li>Unless this is a fresh install of OS X you need to ensure Apache doesn't load on startup<br />
+<div class="codeblock"><code>$ sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist</code></div>
+</li>
+<li>We can add some 3rd party extensions here as well (this list item is optional, if you don't want these extensions just skip to the next list item)<br />
+<div class="codeblock"><code>$ curl -s -L -o /tmp/nginx-upload-progress.tar.gz <a href="https://github.com/masterzen/nginx-upload-progress-module/tarball/v0.9.0" title="https://github.com/masterzen/nginx-upload-progress-module/tarball/v0.9.0">https://github.com/masterzen/nginx-upload-progress-module/tarball/v0.9.0</a> &amp;&amp; mkdir /tmp/nginx-upload-progress &amp;&amp; tar zxpf /tmp/nginx-upload-progress.tar.gz --strip-components 1 -C /tmp/nginx-upload-progress &amp;&amp; rm /tmp/nginx-upload-progress.tar.gz<br />$ curl -s -L -o /tmp/nginx-fair.tar.gz <a href="http://github.com/gnosek/nginx-upstream-fair/tarball/master" title="http://github.com/gnosek/nginx-upstream-fair/tarball/master">http://github.com/gnosek/nginx-upstream-fair/tarball/master</a> &amp;&amp; mkdir /tmp/nginx-fair &amp;&amp; tar zxpf /tmp/nginx-fair.tar.gz --strip-components 1 -C /tmp/nginx-fair &amp;&amp; rm /tmp/nginx-fair.tar.gz </code></div>
+<p>Now one giant line of sed regex that will edit the Homebrew formula for nginx to add the additional compile options that we need. Make sure it all gets entered as one line.</p>
+<div class="codeblock"><code>$ sed -i &#039;-default&#039; &#039;s/\([[:space:]]*\[&#039;\&#039;&#039;--\)\(with-webdav\)\(&#039;\&#039;&#039;,[[:space:]]*&quot;\)\(Compile with support for WebDAV module\)\(&quot;\]\)/\1\2\3\4\5,%\1with-realip\3Compile with support for RealIP module\5,%\1with-gzip_static\3Compile with support for Gzip Static module\5,%\1with-uploadprogress\3Compile with support for Upload Progress module\5,%\1with-fair\3Compile with support for Fair module\5,%\1with-mp4\3Compile with support for MP4 module\5,%\1with-flv\3Compile with support for FLV module\5,%\1with-stub_status\3Compile with support for Stub Status module\5/; s/\([[:space:]]* args &lt;&lt; &quot;--\)\(with-http_dav_module\)\(&quot; if ARGV.include? &#039;\&#039;&#039;--with-\)\(webdav\)\(&#039;\&#039;&#039;.*\)/\1\2\3\4\5%\1with-http_realip_module\3realip\5%\1with-http_gzip_static_module\3gzip_static\5%\1add-module=\/tmp\/nginx-upload-progress\3uploadprogress\5%\1add-module=\/tmp\/nginx-fair\3fair\5%\1with-http_mp4_module\3mp4\5%\1with-http_flv_module\3flv\5%\1with-http_stub_status_module\3stub_status\5/; y/%/\n/&#039; $(brew --prefix)/Library/Formula/nginx.rb</code></div>
+<p>Now we'll install Nginx with our new build options and extensions and start it.<br /></p>
+<div class="codeblock"><code>$ brew install nginx --with-realip --with-gzip_static --with-mp4 --with-flv --with-stub_status --with-uploadprogress --with-fair<br />$ [ $? -eq 0 ] &amp;&amp; rm -rf /tmp/nginx-upload-progress /tmp/nginx-fair<br />$ mkdir -vp $(brew --prefix nginx)/var/{microcache,log,run}</code></div>
+</li>
+<li>If you didn't use the above to install extra nginx extensions run this, otherwise skip this command<br />
+<div class="codeblock"><code>$ brew install nginx</code></div>
+</li>
+<li>Once nginx is compiled, backup the default nginx config<br />
+<div class="codeblock"><code>$ mv /usr/local/etc/nginx/nginx.conf /usr/local/etc/nginx/nginx.conf.bak</code></div>
+</li>
+<li>Download our config as follows<br />
+<div class="codeblock"><code>$ curl <a href="http://realityloop.com/sites/realityloop.com/files/uploads/nginx.conf_.txt" title="http://realityloop.com/sites/realityloop.com/files/uploads/nginx.conf_.txt">http://realityloop.com/sites/realityloop.com/files/uploads/nginx.conf_.txt</a> &gt; /usr/local/etc/nginx/nginx.conf</code></div>
+</li>
+<li>Edit the config to set your username, replace [username] on the third line with your own username, hit Ctrl+X and Y to save<br />
+<div class="codeblock"><code>$ nano /usr/local/etc/nginx/nginx.conf</code></div>
+</li>
+<li>Make nginx log files visible in Console app<br />
+<div class="codeblock"><code>$ sudo mkdir /var/log/nginx</code></div>
+</li>
+<li>Create the following directorty to stop “"/var/lib/nginx/speed" failed (2: No such file or directory)” error<br />
+<div class="codeblock"><code>$ sudo mkdir /var/lib/nginx</code></div>
+</li>
+</ul>
+<p><strong>Step 4: MariaDB</strong></p>
+<p>MariaDB is a community-developed branch of the MySQL database, the impetus being the community maintenance of its free status under GPL, as opposed to any uncertainty of MySQL license status under its current ownership by Oracle.</p>
+<p>The intent also being to maintain high fidelity with MySQL, ensuring a "drop-in" replacement capability with library binary equivalency and exacting matching with MySQL APIs and commands. It includes the XtraDB storage engine as a replacement for InnoDB.</p>
+<ul>
+<li>Still in the ‘Terminal app’, type the following command<br />
+<div class="codeblock"><code>$ brew install gnu-sed (to address Mountain Lion DP4 bug)<br />$ brew install mariadb --use-llvm</code></div>
+</li>
+<li>Once compilation has finished unset TMPDIR<br />
+<div class="codeblock"><code>unset TMPDIR</code></div>
+</li>
+<li>Then mysql_install_db<br />
+<div class="codeblock"><code>$ mysql_install_db</code></div>
+</li>
+<li><strong>but don't follow any more of the prompts just now or you will run into problems, we'll do the rest later.</strong></li>
+</ul>
+<p><strong>Step 5: Install the homebrew version of php</strong></p>
+<ul>
+<li>Execute the brew install process using hombrew-alt php brew file<br />
+<div class="codeblock"><code>$ brew tap josegonzalez/homebrew-php<br />$ brew install php53 --with-mysql --with-fpm<br />$ brew install php53-xhprof<br />$ brew install php53-xdebug<br />$ brew install php53-uploadprogress</code></div>
+</li>
+<li>Edit the php.ini<br />
+<div class="codeblock"><code>$ nano /usr/local/etc/php/5.3/php.ini</code></div>
+<p>Search for the extenstions section by using CTRL + W and typing: extension=php_zip.dll</p>
+<div class="codeblock"><code>extension=&quot;/usr/local/Cellar/php53-xhprof/0.9.2/xhprof.so&quot;<br />extension=&quot;/usr/local/Cellar/php53-uploadprogress/1.0.3.1/uploadprogress.so&quot;<br />zend_extension=&quot;/usr/local/Cellar/php53-xdebug/2.2.0/xdebug.so&quot;</code></div>
+</li>
+<li>Edit the php-fpm.conf file<br />
+<div class="codeblock"><code>$ nano /usr/local/etc/php/5.3/php-fpm.conf</code></div>
+</li>
+<li>Add the following line below <strong>;pid = run/php-fpm.pid</strong><br />
+<div class="codeblock"><code>pid = /usr/local/var/run/php-fpm.pid</code></div>
+</li>
+<li>Update the user and group section as follows<br />
+<div class="codeblock"><code>user = _www<br />group = _www</code></div>
+</li>
+
+<p>Remove the ; from the start of the following lines then save using Ctrl+X then Y</p>
+<div class="codeblock"><code>pm.start_servers = 3<br />pm.min_spare_servers = 3<br />pm.max_spare_servers = 5<br />pm.max_requests = 500</code></div>
+
+<li>Make our log file visible in Console app<br />
+<div class="codeblock"><code>$ sudo ln -s&nbsp; /usr/local/Cellar/php53/5.3.13/var/log/php-fpm.log /var/log/nginx/php-fpm.log</code></div>
+</li>
+<li>Set your timezone in php.ini <a href="http://www.php.net/manual/en/timezones.php" target="_blank">http://www.php.net/manual/en/timezones.php</a><br />
+<div class="codeblock"><code>$ nano /usr/local/etc/php/5.3/php.ini</code></div>
+</li>
+<li>I added the follwing under the <strong>;date.timezone =</strong> line<br />
+<div class="codeblock"><code>date.timezone = Australia/Melbourne</code></div>
+</li>
+<li>And updated the Memory limit as follows, then saved with Ctrl+X then Y<br />
+<div class="codeblock"><code>memory_limit = 256M</code></div>
+</li>
+</ul>
+<p><strong>Step 6: Service Launch Daemons</strong></p>
+<p>This is so everything runs automatically on startup</p>
+<ul>
+<li>Nginx needs to run as root for port 80 so do the following<br /><br />
+<div class="codeblock"><code>$ sudo cp /usr/local/Cellar/nginx/1.2.2/homebrew.mxcl.nginx.plist /Library/LaunchDaemons/<br />$ sudo chown root:wheel /Library/LaunchDaemons/homebrew.mxcl.nginx.plist</code></div>
+</li>
+<li>Edit the plist<br /><br />
+<div class="codeblock"><code>$ sudo nano /Library/LaunchDaemons/homebrew.mxcl.nginx.plist</code></div>
+<p><br /><br />
+Remove the following 2 groups of text and save your changes using Ctrl+X then Y<br /></p>
+<div class="codeblock"><code>&lt;key&gt;KeepAlive&lt;/key&gt;<br />&lt;true/&gt;
+<p>&lt;key&gt;UserName&lt;/key&gt;<br /> &lt;string&gt;yourusername&lt;/string&gt;</p></code></div>
+<p><br /><br />
+Start nginx<br /></p>
+<div class="codeblock"><code>$ launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.nginx.plist</code></div>
+</li>
+<li>Make a directory for the rest of our launch daemons<br /><br />
+<div class="codeblock"><code>$ mkdir -p ~/Library/LaunchAgents</code></div>
+</li>
+<li>Copy the LaunchDaemon to load mariadb on boot into place and start it now<br />
+<div class="codeblock"><code>$ cp /usr/local/Cellar/mariadb/5.3.5/homebrew.mxcl.mariadb.plist ~/Library/LaunchAgents/<br />$ launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mariadb.plist</code></div>
+</li>
+<li>Copy php launch daemon and start it<br /><br />
+<div class="codeblock"><code>$ cp /usr/local/Cellar/php53/5.3.13/homebrew-php.josegonzalez.php53.plist ~/Library/LaunchAgents/<br />$ launchctl load -w ~/Library/LaunchAgents/homebrew-php.josegonzalez.php53.plist</code></div>
+</li>
+<li>Complete the mariaDB setup<br />
+<div class="codeblock"><code>$ sudo /usr/local/Cellar/mariadb/5.3.5/bin/mysql_secure_installation</code></div>
+</li>
+<li>Answer the prompts as follows, replace [password] with a password of your own chosing<br />
+<div class="codeblock"><code>Enter current password for root (enter for none): [Enter]<br />Set root password? [Y/n] y<br />New password: [password]<br />Re-enter new password: [password]<br />Remove anonymous users? [Y/n] y<br />Disallow root login remotely? [Y/n] y<br />Remove test database and access to it? [Y/n] y<br />Reload privilege tables now? [Y/n] y</code></div>
+</li>
+</ul>
+<p><strong>Step 7: Drush and Aegir</strong></p>
+<p>Your in the home stretch now!</p>
+<ul>
+<li>Install wget so Drush will work properly (need to do this on Mountain Lion)<br /><br />
+<div class="codeblock"><code>$ brew install wget</code></div>
+</li>
+<li>Make a few small changes required for this to work properly<br />
+<div class="codeblock"><code>$ sudo mkdir /var/aegir<br />$ sudo chown `whoami` /var/aegir<br />$ sudo chgrp staff /var/aegir<br />$ sudo dscl . append /Groups/_www GroupMembership `whoami`</code></div>
+</li>
+<li>Allow your user to restart nginx, <strong> be sure to replace [username] with your own username</strong>.<br />
+<div class="codeblock"><code>$ sudo -i<br />$ echo &quot;[username] ALL=NOPASSWD: /usr/local/sbin/nginx&quot; &gt;&gt; /etc/sudoers<br />$ exit</code></div>
+</li>
+<li>Create a symbolic link to aegir configuration<br /><br />
+<div class="codeblock"><code>$ sudo ln -s /var/aegir/config/nginx.conf /usr/local/etc/nginx/aegir.conf</code></div>
+</li>
+<li>Manually Install Drush and Aegir components<br /><br /><br />
+If you want to use drush 4.6 (we recommend Drush 5 though)
+<div class="codeblock"><code>$ brew tap BrianGilbert/homebrew-drush</code></div>
+<p><br /><br />
+<strong>To install aegir with Drush 4</strong> remember to replace client_email in the last command with your own email address<br /></p>
+<div class="codeblock"><code>$ brew install drush46<br />$ drush dl --destination=/users/`whoami`/.drush drush_make-6.x<br />$ drush dl --destination=/users/`whoami`/.drush provision-6.x<br />$ drush hostmaster-install --aegir_root=&#039;/var/aegir&#039; --root=&#039;/var/aegir/hostmaster-6.x-1.9&#039; --http_service_type=nginx --client_email=email@domain.com</code></div>
+<p><strong>To install aegir with Drush 5</strong> remember to replace client_email in the last command with your own email address<br /></p>
+<div class="codeblock"><code>$ brew install drush<br />$ drush dl --destination=/users/`whoami`/.drush provision-6.x-2.x<br />$ drush hostmaster-install --aegir_root=&#039;/var/aegir&#039; --root=&#039;/var/aegir/hostmaster-6.x-2.x-dev&#039; --http_service_type=nginx --aegir_host=aegir.ld&nbsp; --client_email=email@domain.com</code></div>
+<p>Remember to copy the one time login link and set your aegir admin password.</p></li>
+<li>Remove the default platforms dir and create a symlink for so you can put your Platforms in ~/Sites/ directory<br />
+<div class="codeblock"><code>$ mkdir /Users/`whoami`/Sites<br />$ rmdir /var/aegir/platforms<br />$ ln -s /Users/`whoami`/Sites /var/aegir/platforms</code></div>
+</li>
+<li>Disable the forced caching in aegir (this is for local dev after all!)<br />
+<div class="codeblock"><code>$ nano /var/aegir/config/includes/global.inc</code></div>
+<p>Paste the following text at the bottom of the document and save with CTRL +X then Y and return<br /></p>
+<div class="codeblock"><code>unset($conf[&#039;cache&#039;]);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // disable hardcoded caching<br />unset($conf[&#039;preprocess_css&#039;]); // disable hardcoded css aggregation<br />unset($conf[&#039;preprocess_js&#039;]);&nbsp; // disable hardcoded js aggregation</code></div>
+</li>
+<li>Open your web browser and start creating platforms and sites!<br />
+<a href="http://aegir.ld/">http://aegir.ld</a></li>
+</ul>
+<p>This document was compiled by <a href="http://about.me/BrianGilbert">Brian Gilbert</a> of <a href="http://realityloop.com/">Realityloop</a>, if you had any issues or would like to say thanks post it in the comments of the original blog <a href="http://realityloop.com/blog/2012/07/03/nginx-mariadb-php-aegir-mac-os-x-optional-drush-5-works-mountain-lion">nginx / MariaDB / PHP / Aegir on Mac OS X with optional Drush 5 (works on Mountain Lion!)</a></p>
+</div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-47.html?destination=node%2F931%23comment-form">Login</a> or <a href="../../../../../user/register/index-47.html?destination=node%2F931%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-47.html?destination=node%2F931%23comment-form">Login</a> or <a href="../../../../../user/register/index-47.html?destination=node%2F931%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/931/revisions/3646/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:14 GMT -->
+</html>

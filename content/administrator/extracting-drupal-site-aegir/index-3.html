@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/content/administrator/extracting-drupal-site-aegir?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:33:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../uninstalling/index.html" />
+<link rel="up" href="../../../administrator/index.html" />
+<link rel="next" href="../troubleshooting-aegir/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Extracting a Drupal site from Aegir | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2753" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Extracting a Drupal site from Aegir</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-2753'><p>You may occasionally want to take a Drupal site hosted on a server managed with Aegir and put it somewhere else. This is pretty easy, but not quite as simple as moving a normal Drupal site not managed by Aegir from one machine to another. In brief, you have to copy the site, delete the drushrc.php file, and replace settings.php with a copy of the default configuration file. More specifically:</p>
+
+<ul>
+<li>download the same copy of drupal core to the new server (and re-apply core patches, if any)</li>
+<li>copy sites/all/ to the new server</li>
+<li>copy the Aegir backup of your site to the new server and unzip in sites/yoursite.com/</li>
+<li>create a database on the new server &amp; import the database backup</li>
+<li>copy sites/community.aegirproject.org/default.settings.php to sites/yoursite.com/settings.php</li>
+<li>D7: copy custom site aliases in sites/sites.php (if any) to the new server</li>
+<li>D6: replicate site alias symlinks in sites/ (if any) on the new server</li>
+<li>copy custom configuration in local.settings.php (if any) to settings.php</li>
+<li>edit settings.php to add the database authentication details for the new server</li>
+</ul>
+
+<p>That's it!</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../user/login/index-75.html?destination=node%2F2753%23comment-form">Login</a> or <a href="../../../user/register/index-75.html?destination=node%2F2753%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/content/administrator/extracting-drupal-site-aegir?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:33:22 GMT -->
+</html>

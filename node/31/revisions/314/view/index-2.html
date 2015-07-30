@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/31/revisions/314/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:18:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../developing/index.html" />
+<link rel="up" href="../../../../../developing/index.html" />
+<link rel="next" href="../../../../185/index.html" />
+<link rel="prev" href="../../../../../developing/index.html" />
+<link rel="up" href="../../../../../developing/index.html" />
+<link rel="next" href="../../../../185/index.html" />
+<link rel="prev" href="../../../../../developing/index.html" />
+<link rel="up" href="../../../../../developing/index.html" />
+<link rel="next" href="../../../../185/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Git access to the code from Wed, 11/10/2010 - 13:29 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-31" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Git access to the code</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-31'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 11/10/2010 - 13:29</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>The Aegir project uses Git as a version control system for managing the project code.</p>
+
+<p>Aegir is also made up of several separate components designed to work together.</p>
+
+<h1>Repositories locations</h1>
+
+<p>Once upon a time, these components were stored on drupal.org and managed using Drupal's CVS system. Remnants of those projects are still located on drupal.org and for historical purposes, we maintain the Issue queues in their original locations there.</p>
+
+<p>The git repositories are stored on <a href="http://koumbit.org/">Koumbit's</a> servers.</p>
+
+<p>There is a web interface for your perusal at <a href="http://git.aegirproject.org/" title="http://git.aegirproject.org">http://git.aegirproject.org</a></p>
+
+<p>There are the URLs you can use to pull the repositories:</p>
+
+<ul>
+<li>Provision - <code>git clone git://git.aegirproject.org/provision</code></li>
+<li><p>Hostmaster - <code><span class='diff-added'>git clone </span>git://git.aegirproject.org/hostmaster</code></p></li>
+<li><p>Drush is also available through an unofficial repo: <code>git clone git://git.koumbit.net/drupal/modules/drush</code>. This repository is synced with CVS every thirty minutes.</p></li>
+</ul>
+
+<p>Developers with push access to the repositories should pull via SSH.</p>
+
+<h1>Branch naming convention</h1>
+
+<ul>
+<li><code>master</code> is always the main development branch. Think of it as CVS <code>HEAD</code>. When you commit there, you make everyone suffer, so unless you are confident your change needs to be in the mainline, you are likely to want to use feature branches (below).</li>
+<li><code>aegir-0.x</code> are stable branch releases, where <code>aegir</code> is the subproject name (e.g. <code>provision-0.4-alpha3</code>, <code>hostmaster-0.4</code>). We don't have that in CVS: they allow us to roll point releases on our production releases. This branch will have tags like <code>aegir-0.x.1, aegir-0.x.2, aegir-0.x.y</code>. Once we hit 1.0, it's exactly the same thing without the 0.: branch is <code>aegir-1</code> and tags are <code>aegir-1.x</code>. Commits to those branches should be first tested on the master branch (if possible) and then carefully tested there through alpha/beta/rc stages before a new tag is laid.</li>
+<li>development or "feature" branches must be prefixed with "dev-" and use the issue number (if available or relevant) and a short name. So for example, there could be work on a <code>dev-12345-mybug</code> branch or <code>dev-dns</code> branch for a larger feature (DNS, in that case) which doesn't fit in a single issue.</li>
+</ul>
+
+<p>It is important that this naming convention be followed, particularly for release tags, as the tags are used to generate the tarballs published on <a href="http://files.aegirproject.org/" title="http://files.aegirproject.org/">http://files.aegirproject.org/</a>. (See <a href="http://git.koumbit.net/?p=tools/git-hooks/.git;a=blob;f=archive-tag">this script</a> for details on how this works.) So if a tag named <code>provision-0.4</code> is pushed, the <code>provision-0.4.tgz</code> file will be generated.</p>
+
+<p>Deprecated and/or merged branches will be moved to an eventual "attic", a clone of the main repository that will keep all dead branches. We will cleanup every major release.</p>
+
+<p>The CVS tags and branches are still accessible in git and will be kept there for posterity. They respect the traditional Drupal.org naming convention.</p>
+
+<h1>A crash course in Git</h1>
+
+<h2>Clone a repo</h2>
+
+<p>Let's take provision:</p>
+
+<p><div class="codeblock"><code>git clone git://git.aegirproject.org/provision</code></div></p>
+
+<p>If successful, you will have a provision directory at the last state of development ('HEAD' in CVS speak, 'master' branch in git speak).</p>
+
+<h2>Check the status of the local git repository:</h2>
+
+<p><div class="codeblock"><code>git status</code></div></p>
+
+<h2>See the commit messages:</h2>
+
+<p><div class="codeblock"><code>git log</code></div></p>
+
+<h2>Check all 'releases'</h2>
+
+<p><div class="codeblock"><code>git tag</code></div></p>
+
+<h2>Create a new branch for your local development:</h2>
+
+<p><div class="codeblock"><code>git checkout -b &lt;new_branch_name&gt;</code></div></p>
+
+<h2>Create a new branch for development, based on an existing remote branch</h2>
+
+<p><div class="codeblock"><code>git checkout -b &lt;new_branch_name&gt; origin/&lt;branch_name&gt;</code></div></p>
+
+<h1>Developing the Aegir project with git</h1>
+
+<p>So say you have some work you want to do on the provision module. You first need to clone the repository:</p>
+
+<p><div class="codeblock"><code>git clone git://git.aegirproject.org/provision</code></div></p>
+
+<p>That will create a 'provision' directory with the whole history of the project, and a checkout of the "master" branch (which is the equivalent of CVS's "HEAD" in git).</p>
+
+<p>You make some modifications to the code to fix a bug, and then, you make a commit. That commit will only be local for now, that's the way git works:</p>
+
+<p><div class="codeblock"><code>vi provision.inc<br />git commit -m &quot;#12345 fix that pesky bug in provision.inc&quot; provision.inc</code></div></p>
+
+<p>Note that contrarily to subversion or CVS, you need to explicitly mention which file(s) you want to commit. You can also use the -a flag to commit all changes.</p>
+
+<p>If you have write access to the repository, you can now push your changes straight into git. However, the git:// url above is readonly, so you will want to use SSH to push your changes. For that, we will have had to add your SSH public key to our repositories. You may also want to add a special "remote" repository to push your changes. You will need to do this only once (per repository):</p>
+
+<p><div class="codeblock"><code>git remote add aegirproject ssh://gitosis@git.aegirproject.org/provision</code></div></p>
+
+<p>You can now push your changes to that repository.</p>
+
+<p><div class="codeblock"><code>git push aegirproject</code></div></p>
+
+<p>If you do <em>not</em> have write access to the repository, you can send the Aegir developers patches by submitting them for review in the <a href="http://drupal.org/project/issues?text=&amp;projects=hosting,+provision,+eldir,+Hostmaster+(Aegir)&amp;status=Open&amp;priorities=All&amp;categories=All">Issue queues</a> or by email (use the <a href="http://lists.aegirproject.org/">mailing lists</a>), using <code>git-send-email</code> or <code>git-format-patches</code>.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-419.html?destination=node%2F31%23comment-form">Login</a> or <a href="../../../../../user/register/index-419.html?destination=node%2F31%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/31/revisions/314/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:18:56 GMT -->
+</html>

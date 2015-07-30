@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/45/revisions/118/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:01:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../25/index.html" />
+<link rel="up" href="../../../../43/index.html" />
+<link rel="next" href="../../../../26/index.html" />
+<link rel="prev" href="../../../../25/index.html" />
+<link rel="up" href="../../../../43/index.html" />
+<link rel="next" href="../../../../26/index.html" />
+<link rel="prev" href="../../../../25/index.html" />
+<link rel="up" href="../../../../43/index.html" />
+<link rel="next" href="../../../../26/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Backup and Restore from Sun, 10/31/2010 - 03:05 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-45" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Backup and Restore</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-45'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 10/31/2010 - 03:05</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>The Aegir system provides a convenient method of backing up sites, and restoring sites from those backups.</p>
+
+<p>Like most other Aegir functionality, the Backup feature comes in the form of a task, aptly named 'Backup'. It is one of the core features of Aegir and thus is always available for a site, out of the box.</p>
+
+<p>Backing up a site in Aegir is twofold: the site folder (containing the settings.php, files dir and so on) is added to a tarball along with a database dump of the site and stored in <code>/var/aegir/backups</code> on the master Aegir server.</p>
+
+<p>In the event that the website or database is a remote server, those relevant components are synced down to the master Aegir server to be tarballed up. Only the master Aegir server stores backups of a site. (This is known as a 'spoke' model, as opposed to a 'mesh' or distributed model, and suits the Aegir system at this time).</p>
+
+<p>The tarball generated for a site can be used for a number of things: restoring a site from that backup via the 'Restore' task, or from the command line using the <code>provision-deploy</code> command for advanced users as a method of quickly importing a site onto a system.</p>
+
+<p>Other cases whereby a backup task is generated and its tarball used are when a site is being Migrated (upgraded) or being Cloned as a new site, but that is outside the scope of this chapter.</p>
+
+<h2>Backing up</h2>
+
+<p>When viewing the site node of a site in the Aegir frontend, click the 'Backup' button in the list of available tasks for this site.</p>
+
+<p>A modalframe dialog appears, prompting for confirmation, as well as providing an editable Description field which you may fill out. This field is optional, designed only to aid you in future if you seek a reason for why a backup was made.</p>
+
+<div align="center"><img src="../../../../../sites/community.aegirproject.org/files/backup/index.png" /></div>
+
+<p>Once the form is submitted, a Backup task is spawned and added to the Task queue for dispatching by the backend.</p>
+
+<p>The full output of a Backup task is viewable in the task log. Extra security precautions are built into Aegir so that the 'mysqldump' command uses file descriptors to hide exposing the database user's password in the running process and output of the task.</p>
+
+<h2>Restoring from a backup</h2>
+
+<p>Restoring a site from a backup is simple and follows the same pattern as backing up. Simply click the 'Restore' button from the list of available tasks for a site. A modalframe dialog will load, and the form offers a list of radio items. These are the backups that have been made for a site, in the format of 'Date/time - Reason'.</p>
+
+<p>Where no custom reason was given for a backup, the message 'Generated on request' is shown instead.</p>
+
+<div align="center"><img src="../../../../../sites/community.aegirproject.org/files/restore/index.png" /></div>
+
+<p>Choose a backup to restore from and submit the form. A 'Restore' task will be spawned and added to the Task queue for dispatching by the backend.</p>
+
+<h2>What happens during a Restore task</h2>
+
+<p>The restore process</p>
+
+<ul>
+<li>puts the site under 'maintenance mode' temporarily (safety first!)</li>
+<li>generates a new backup of the site before restoring to it (still safety first!). This new backup will be available in the list of backups if you ever re-run the Restore task, and will carry the description 'Generated before being restored to a previous version'.</li>
+<li>uses the implied <code>provision-deploy</code> command in the backend to unpack the tarball, </li>
+<li>create a new database and import the database dump into it, </li>
+<li>create a new database user, </li>
+<li>spawn a verify task silently, which will
+
+<ul>
+<li>re-write the settings.php,</li>
+<li>sync the data if necessary to a remote platform, </li>
+<li>re-generate the web server's vhost configuration file for this site,</li>
+<li>finally reload the web server</li>
+</ul></li>
+</ul><span class='diff-added'>
+
+</span><h2><span class='diff-added'>Automatic backups and purge?</span></h2><span class='diff-added'>
+
+</span><p><span class='diff-added'>There is currently no way to automate or schedule backups from the Aegir frontend, nor a way to automatically purge old backups to conserve disk space. However, these are features that are being developed and will be present in future releases.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>However, it is easy to set up a cronjob to automatically run backup tasks (that can still be used to restore from) for all your sites. To do this, download and set up mig5's </span><a href="http://www.migueljacq.com/content/aegir-bulk-backup-script-updated"><span class='diff-added'>bulk backup script</span></a><span class='diff-added'>.</span></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-39.html?destination=node%2F45%23comment-form">Login</a> or <a href="../../../../../user/register/index-39.html?destination=node%2F45%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-39.html?destination=node%2F45%23comment-form">Login</a> or <a href="../../../../../user/register/index-39.html?destination=node%2F45%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/45/revisions/118/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:01:52 GMT -->
+</html>

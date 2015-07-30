@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/2917/revisions/5609/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:02:27 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../installing/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../installing/debian/index.html" />
+<link rel="prev" href="../../../../../installing/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../installing/debian/index.html" />
+<link rel="prev" href="../../../../../installing/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../installing/debian/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of System Requirements from Fri, 06/27/2014 - 02:47 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2917" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/installing/system-requirements/index.html">System Requirements</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-2917'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/francewhoa/index.html" class="username" title="View user profile.">Francewhoa</a> on 06/27/2014 - 02:47</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Note that the following System Requirements are the same for Aegir automatic or manual install</p>
+
+<dl>
+<dt><strong>A system capable of running Drupal</strong></dt>
+<dd>The Aegir system is entirely Drupal based, and has the same base requirements that Drupal does (with the exception that it won't run on Windows). See more notes on Unix and LAMP/LEMP requirements below.</dd>
+
+<dt><strong>Your own server</strong></dt>
+<dd>The low level of access required to be able to configure and run this system is very far beyond what is commonly available to users with shared hosting. A VPS from any popular provider such as Linode, Rackspace, Slicehost, Amazon EC, etc. will do fine. You will need root access to the server and the server needs to be dedicated to Aegir.</dd>
+
+<dt><strong>A Unix-based operating system</strong></dt>
+<dd>Aegir must run on some flavour of UNIX, because the majority of functionality in this system occurs in the back-end, through command line scripting. There are also several features (such as symlinks), that are not available to users on Windows. There are no plans currently to add Windows support. See the <a href="../../../../../handbook/operating-system-support/index.html">operating system support page</a> for more information.</dd>
+
+<dt><strong>Web server</strong></dt>
+<dd>You will need at least one dedicated web server, running Apache. We generally work with <strong>Apache 2</strong> but we should be compatible with the 1.x series. Aegir also supports the <strong>Nginx</strong> web server, but requires at least version 0.7.66 or newer. Since Nginx doesn't provide php-cgi or php-fpm (recommended) modules, you will need to install and run php-fpm server separately. You can find useful examples and tips in the third party Barracuda installer available at <a href="http://drupal.org/project/barracuda">the barracuda project page</a>.</dd>
+
+<dd>
+<p><strong>N.B.:</strong> This third party installer is not supported by the core Aegir developers, but you can find helpful community support at <a href="http://groups.drupal.org/boa">the boa group</a>.</p>
+</dd>
+
+<dt><strong>PHP 5.2 and 5.3</strong></dt>
+<dd>Aegir depends on <a href="http://drupal.org/project/drush">Drush 4.x</a>, which requires PHP 5.2 or higher. Aegir 2.x depends on a minimun of <a href="http://drupal.org/project/drush">Drush 5.10</a> (though Drush 6 is recommended), which requires PHP 5.3 or higher. You also need to have the command-line version of PHP to run Drush properly, and the MySQL extensions for PHP.</dd>
+
+<dd>
+<p>Given that <a href="http://www.php.net/archive/2010.php#id2010-07-22-1">PHP 5.2 has been deprecated since July 2010</a>, we suggest using PHP 5.3 if possible. Note that while Drupal 6.x and above support PHP 5.3, some contributed third-party modules may still have problems with this version. Most often these cause warnings that can be safely ignored. Aegir and Drush themselves have no known outstanding PHP 5.3 compatibility issues, although you could have a lot of warnings in Drupal 6 due to <a href="http://drupal.org/node/883038">ereg deprecation</a>, see <a href="http://drupal.org/node/883038">this issue</a> for details. If you need to host Drupal 5.x sites, note that Drupal 5.x is not compatible with PHP 5.3 and above, and most likely never will be. See <a href="http://drupal.org/node/360605" title="http://drupal.org/node/360605">http://drupal.org/node/360605</a> (amongst other issues) for details. As such, Aegir has dropped support for Drupal 5 in versions 2.0+.</p>
+</dd>
+
+<dt><strong>Database server</strong></dt>
+<dd>You will require a database server, obviously. Aegir currently only supports MySQL and MariaDB. It is preferable to use a dedicated (not shared-hosting) server since Aegir will create database users and will require the use of a MySQL <code>root</code> user.</dd>
+
+<dt><strong>Mail transfer agent</strong></dt>
+<dd>Aegir requires an MTA (Mail Transfer Agent) installed on your webserver in order to be able to install new sites to your new platform. If you don't have an MTA, the site installation will fail with message like "could not send email". Additional messages will show that site has been removed because of this problem. To remedy the situation simply install an MTA like sendmail, postfix, or exim and do the minimal configuration.</dd>
+
+<dt><strong>Other utilities: sudo, rsync, git and unzip</strong></dt>
+<dd>Aegir installs itself via a <a href="http://drupal.org/project/drush_make">Drush Make</a> makefile that downloads via git if you want the bleeding edge code, or via wget if you want the latest official release. If you want the latest development version, and don't have the <strong>git</strong> program you will need to install it on the server.</dd>
+
+<dd>
+<p>The <strong>jQueryUI</strong> library is used in the Aegir UI, <strong>unzip</strong> is required to extract it. <strong>Sudo</strong> is required to allow the aegir user the limited privilege to restart the webserver when required.  <strong>Rsync</strong> is used to sync files to remote servers.</p>
+</dd>
+
+<dt><strong>No conflicting Control Panels</strong></dt>
+<dd>Other popular control panels such as Plesk, cPanel etc, are designed to manage all aspects of Apache configuration and other areas that Aegir also is intended to be used for.</dd>
+
+<dd>
+<p>Running Aegir alongside such control panels is not supported and very likely may cause you problems or difficulties installing or running Aegir. Filing bug reports that are caused by interference by another control panel will likely be closed unless the problem can be fixed without causing problems for other Aegir users. Proceed at your own risk!</p>
+</dd>
+
+<dt><strong>System requirements of popular Drupal distributions</strong></dt>
+<dd>Some Drupal distributions, such as OpenAtrium, are specialized products that may contain unique prerequisites for optimal performance. Such examples may include raising the php-cli program's memory_limit to something higher than 64M.</dd>
+
+<dd>
+<p>Please note that this is not a requirement of Aegir but of the distribution you are trying to install a site on. Thus the Aegir documentation may not officially 'require' such performance settings, but be aware that Aegir may report errors if the system was under-resourced to complete such a task.</p>
+</dd>
+</dl></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-45.html?destination=node%2F2917%23comment-form">Login</a> or <a href="../../../../../user/register/index-45.html?destination=node%2F2917%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-45.html?destination=node%2F2917%23comment-form">Login</a> or <a href="../../../../../user/register/index-45.html?destination=node%2F2917%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/2917/revisions/5609/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:02:27 GMT -->
+</html>

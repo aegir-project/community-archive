@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/322?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:45:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../320/index.html" />
+<link rel="up" href="../318/index.html" />
+<link rel="next" href="../323/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Using contexts in your code | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-322" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Using contexts in your code</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-322'><p>Getting the current context is really easy, just call the '<code>d</code>' accessor:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$current_context </span><span style="color: #007700">= </span><span style="color: #0000BB">d</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+What the current context is will depend on the drush command that is running and the context that was passed into that drush command. For example if you ran a site verify task, then the caller would name a site context, and thus initially calls to <code>d()</code> would return the site context. The values of the context are accessible as simple properties of this object.</p>
+
+<p>So, suppose a verify task is started for the main Aegir frontend, which has a context that is always called '@hostmaster', the drush command invocation would look like this:</p>
+
+<p><div class="codeblock"><code>drush @hostmaster provision-verify </code></div></p>
+
+<p>Then the drush command for <code>provision-verify</code> could do this:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">drush_provision_verify</span><span style="color: #007700">() {<br />&nbsp; </span><span style="color: #0000BB">$context </span><span style="color: #007700">= </span><span style="color: #0000BB">d</span><span style="color: #007700">();<br />&nbsp; </span><span style="color: #0000BB">drush_print</span><span style="color: #007700">(</span><span style="color: #DD0000">'Passed context of type: ' </span><span style="color: #007700">. </span><span style="color: #0000BB">d</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">type</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+Which would print the type of the context passed to the verify command, in this case 'site'.</p>
+
+<p>The <code>d</code> accessor is not to be feared! It is used all over the place in Aegir and if you're not sure what context you're going to get then you can always print <code>d()-&gt;name</code> and you'll get the name of the context that you're dealing with.</p>
+
+<h3>Loading a named context</h3>
+
+<p>You can pass an optional argument to the <code>d</code> accessor of the name of the context that you want. So, if you feel compelled to access a property about the main Aegir frontend site anywhere you can do this:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$hostmaster_context </span><span style="color: #007700">= </span><span style="color: #0000BB">d</span><span style="color: #007700">(</span><span style="color: #DD0000">'@hostmaster'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p>
+
+<p>though most of the time you'll be dealing with the current context, and contexts that it references.</p>
+
+<h3>'Subcontexts'</h3>
+
+<p>Here's an example context:</p>
+
+<p><div class="codeblock"><code>&lt;?php<br />$aliases[&#039;hostmaster&#039;] = array (<br />&nbsp; &#039;context_type&#039; =&gt; &#039;site&#039;,<br />&nbsp; &#039;platform&#039; =&gt; &#039;@platform_hostmaster&#039;,<br />&nbsp; &#039;server&#039; =&gt; &#039;@server_master&#039;,<br />&nbsp; &#039;db_server&#039; =&gt; &#039;@server_localhost&#039;,<br />&nbsp; &#039;uri&#039; =&gt; &#039;aegir.example.com&#039;,<br />&nbsp; &#039;root&#039; =&gt; &#039;/var/aegir/hostmaster-0.4-beta2&#039;,<br />&nbsp; &#039;site_path&#039; =&gt; &#039;/var/aegir/hostmaster-0.4-beta2/sites/aegir.example.com&#039;,<br />&nbsp; &#039;site_enabled&#039; =&gt; true,<br />&nbsp; &#039;language&#039; =&gt; &#039;en&#039;,<br />&nbsp; &#039;client_email&#039; =&gt; &#039;aegir@example.com&#039;,<br />&nbsp; &#039;aliases&#039; =&gt;<br />&nbsp; array (<br />&nbsp; ),<br />&nbsp; &#039;redirection&#039; =&gt; false,<br />&nbsp; &#039;profile&#039; =&gt; &#039;hostmaster&#039;,<br />);</code></div></p>
+
+<p>Notice that some of the properties are the name of contexts, such as 'db_server' which has a value of '@server_localhost'.</p>
+
+<p>Suppose now that I have some code that wants to get a property of the db_server associated with the @hostmaster context, I can simply do this:</p>
+
+<p><div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$db_server_context </span><span style="color: #007700">= </span><span style="color: #0000BB">d</span><span style="color: #007700">(</span><span style="color: #DD0000">'@hostmaster'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">db_server</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">// $db_server_context is now a fully populated context object, not the string '@server_localhost'<br /></span><span style="color: #0000BB">drush_print</span><span style="color: #007700">(</span><span style="color: #DD0000">'DB server on port: . $db_server_context-&gt;db_port);<br />?&gt;</span></span></code></div></p>
+
+<p>The <code>provisionContext</code> object will return full context objects for properties that store the names of other contexts. The how and why of determining which to return as strings and which to return as a context object will be covered later. It is entirely possible to have the name of a context stored as a property in a context, that when accessed returns the string, rather than the context named in the string.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-202.html?destination=node%2F322%23comment-form">Login</a> or <a href="../../user/register/index-202.html?destination=node%2F322%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/322?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:45:32 GMT -->
+</html>

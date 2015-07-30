@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/267/revisions/610/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:51:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Provision Context argument clash with provision-save. from Mon, 01/24/2011 - 10:18 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-267" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../user/347/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="unconed&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../user/347/index.html" class="username" title="View user profile.">unconed</a></div><div class='date'>10:18am Jan 24, 2011</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Provision Context argument clash with provision-save.</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>In trying to use the cluster feature, I'm running into weird errors during provision-save. I can get it to recurse infinitely, by adding @server_master to a cluster. Debugging shows it isn't a problem due to the cluster feature specifically, but rather something to do with how arguments are parsed when contexts are created in provision.context.inc.</p>
+
+<p>My provision-save command looks like this (beta 2):</p>
+
+<p>/usr/bin/php /var/aegir/drush/drush.php --php=/usr/bin/php --context_type='server' --master_url='http://aegir.vm/' --remote_host='cluster.dev' --ip_addresses='0.0.0.0' --db_service_type='0' --http_service_type='cluster' --cluster_web_servers='@server_master' provision-save '@server_clusterdev' --backend --debug</p>
+
+<p>When executed, it recurses infinitely across calls to d(). First, d('@self') is invoked. Then, d('@server_master') is called in provisionContext_server() to look up properties from. Both contexts should be loaded correctly, but the second call recurses.</p>
+
+<p>The second context is corrupt, because provision.context.inc is programmed to override settings with arguments from the command line:</p>
+
+<p><div class="codeblock"><code>&nbsp; function __get($name) {<br />&nbsp;&nbsp;&nbsp; if ($name == &#039;options&#039;) {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return array_merge(provision_sitealias_get_record($this-&gt;name), array_filter(drush_get_context(&#039;stdin&#039;)), array_filter(drush_get_context(&#039;options&#039;)));<br />&nbsp;&nbsp;&nbsp; }</code></div></p>
+
+<p>In this case, the command-line options should apply only to @self/@server_clusterdev, not to @server_master. The code above applies to all. Now, @server_master has become a cluster type webserver with itself as its child, and infinite recursion happens.</p>
+
+<p>If I change the above code so it only weaves in command-line options when $name == '@self', the problem goes away. I'm not sure if this is correct, as conceptually it seems altering contexts from the command-line should be reserved only for provisions-save commands rather than a generic mechanism.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-317.html?destination=node%2F267%23comment-form">Login</a> or <a href="../../../../../user/register/index-317.html?destination=node%2F267%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/267/revisions/610/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:51:15 GMT -->
+</html>

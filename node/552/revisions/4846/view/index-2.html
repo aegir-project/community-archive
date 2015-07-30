@@ -1,0 +1,375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/552/revisions/4846/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:08:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../upgrading/script/index.html" />
+<link rel="up" href="../../../../../upgrading/index.html" />
+<link rel="next" href="../../../../../uninstalling/index.html" />
+<link rel="prev" href="../../../../../upgrading/script/index.html" />
+<link rel="up" href="../../../../../upgrading/index.html" />
+<link rel="next" href="../../../../../uninstalling/index.html" />
+<link rel="prev" href="../../../../../upgrading/script/index.html" />
+<link rel="up" href="../../../../../upgrading/index.html" />
+<link rel="next" href="../../../../../uninstalling/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of  Version-specific &amp; upgrade path information from Wed, 05/08/2013 - 19:34 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-552" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../upgrading/path/index.html"> Version-specific &amp; upgrade path information</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-552'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a> on 05/08/2013 - 19:34</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#General_upgrade_path_recommendations"><span class="toc-number">1. </span>General upgrade path recommendations</a></li>
+	<li class="toc-level-1"><a href="#Changes_in_the_2.0_release"><span class="toc-number">2. </span>Changes in the 2.0 release</a>
+<ol>
+	<li class="toc-level-2"><a href="#hosting-queue-runner_renamed_hosting-queued"><span class="toc-number">2.1. </span>hosting-queue-runner renamed hosting-queued</a></li>
+	<li class="toc-level-2"><a href="#queue_daemon_enabled_by_default"><span class="toc-number">2.2. </span>queue daemon enabled by default</a></li>
+	<li class="toc-level-2"><a href="#hosting_platform_pathauto_module_bundled_with_Aegir"><span class="toc-number">2.3. </span>hosting_platform_pathauto module bundled with Aegir</a></li>
+	<li class="toc-level-2"><a href="#hosting-task_--force"><span class="toc-number">2.4. </span>hosting-task --force</a></li>
+	<li class="toc-level-2"><a href="#Deprecated_functions_removed"><span class="toc-number">2.5. </span>Deprecated functions removed</a></li>
+	<li class="toc-level-2"><a href="#Client_node_type_changes"><span class="toc-number">2.6. </span>Client node type changes</a></li>
+	<li class="toc-level-2"><a href="#SSL_and_IP_allocation_refactoring_changes"><span class="toc-number">2.7. </span>SSL and IP allocation refactoring changes</a>
+<ol>
+	<li class="toc-level-3"><a href="#Backend"><span class="toc-number">2.7.1. </span>Backend</a></li>
+	<li class="toc-level-3"><a href="#Frontend"><span class="toc-number">2.7.2. </span>Frontend</a></li>
+</ol>
+</li>
+	<li class="toc-level-2"><a href="#Debian_package_name_changed"><span class="toc-number">2.8. </span>Debian package name changed</a><span class='diff-added'></span></li><span class='diff-added'>
+	</span><li class="toc-level-2"><span class='diff-added'></span><a href="#Platform_drushrc.php_moved"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>2.9. </span></span><span class='diff-added'>Platform drushrc.php moved</span></a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Changes_in_the_1.0_release"><span class="toc-number">3. </span>Changes in the 1.0 release</a>
+<ol>
+	<li class="toc-level-2"><a href="#Git_dependency"><span class="toc-number">3.1. </span>Git dependency</a></li>
+	<li class="toc-level-2"><a href="#DNS_Configuration"><span class="toc-number">3.2. </span>DNS Configuration</a></li>
+	<li class="toc-level-2"><a href="#Unzip_dependency"><span class="toc-number">3.3. </span>Unzip dependency</a></li>
+	<li class="toc-level-2"><a href="#Database_configuration"><span class="toc-number">3.4. </span>Database configuration</a></li>
+	<li class="toc-level-2"><a href="#Apache_configuration"><span class="toc-number">3.5. </span>Apache configuration</a></li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+
+<h1 id="General_upgrade_path_recommendations">1. General upgrade path recommendations</h1>
+
+<p>In general, you shouldn't skip major releases. That is, if you are running 0.3, you should upgrade to 1.0 or 1.1, not 2.0. Upgrades within a stable branch (1.0 to 1.1, 2.0 to 2.1) are fully supported, and you can skip minor versions (1.0 to 1.2 should work fine), but you should always upgrade to the latest stable release if you are coming from a different release branch.</p>
+
+<p>The rest of this page documents what version-specific changes happened that you need to make manual modifications to. If you are running the Debian packages, you probably don't need to configure anything here.</p>
+
+<p>The <a href="../../../../../upgrading/index.html">upgrade process</a> should make this clear, but keep in mind that you need to upgrade the backend (drush, provision) before the frontend (drupal, hostmaster profile, etc).</p>
+
+<p>Provision/drush <strong>contrib</strong> modules might require additional attention. As there is no version checking, the safest method is probably to move the module out of your .drush folder and later add the version compatible with the new Aegir version.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Changes_in_the_2.0_release">2. Changes in the 2.0 release</h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="hosting-queue-runner_renamed_hosting-queued">2.1. hosting-queue-runner renamed hosting-queued</h2>
+
+<p>The popular module <code>hosting-queue-runner</code> has been merged in the 2.0 release. In the process, it has been renamed to the more appropriate <code>hosting-queued</code>. The init script is also now installed directly with the Debian package, and started on install or upgrade.</p>
+
+<p>You will, however, need to manually enable to module for the daemon to work (still):</p>
+
+<pre><code>drush @hostmaster en hosting-queued
+</code></pre>
+
+<p>Also, if you are migrating from an install using <code>hosting-queue-runner</code>, you will need to remove the old module and startup script. Enabling <code>hosting-queued</code> will already have disabled and uninstalled the module from Drupal, but you need to cleanup your filesystem:</p>
+
+<pre><code>rm /etc/init.d/hosting-queue-runner
+rm -r /var/aegir/platforms/hostmaster-6.x-1.*/sites/all/modules/hosting_queue_runner
+</code></pre>
+
+<p>The location of the <code>hosting_queue_runner</code> package may vary, according to your local policies. You can find the module path with this drush call:</p>
+
+<pre><code>drush @hostmaster sqlq 'SELECT filename FROM system WHERE name = "hosting_queue_runner";'
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="queue_daemon_enabled_by_default">2.2. queue daemon enabled by default</h2>
+
+<p>The above queue daemon is now enabled by default by the Debian package, and is properly restarted on upgrades. It can be disabled after install if necessary using the following comamnds:</p>
+
+<pre><code>service hosting-queued stop
+su aegir -c "drush @hostmaster pm-disable hosting_queued"
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="hosting_platform_pathauto_module_bundled_with_Aegir">2.3. hosting_platform_pathauto module bundled with Aegir</h2>
+
+<p>The popular module <code>hosting_platform_pathauto</code> has been bundled in the 2.0 release. 
+If you installed it module manually then now is probably the time to remove your copy.
+Aegir 2.0-alpha1 comes bundled with hosting_platform_pathauto-2.0-beta1.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="hosting-task_--force">2.4. hosting-task --force</h2>
+
+<p>You used to be able to run <code>hosting-task &lt;nid&gt;</code> to re-run a task by its node ID. Because hosting-task now checks if the task is really queued, this can't be used to retry existing tasks directly, unless you use the <code>--force</code> argument. So this:</p>
+
+<p><div class="codeblock"><code>drush @hostmaster hosting-task 1234</code></div></p>
+
+<p>becomes:</p>
+
+<p><div class="codeblock"><code>drush @hostmaster hosting-task --force 1234</code></div></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Deprecated_functions_removed">2.5. Deprecated functions removed</h2>
+
+<p>If you are using any of those functions in your custom code, lookup in the 1.x documentation to see the replacement functions, as they have been removed from 2.x:</p>
+
+<ul>
+<li>hosting_alias_count_sites() (same as !hosting_alias_allow_domain())</li>
+<li>hosting_site_exists() (same as !hosting_alias_allow_domain())</li>
+<li>hosting_get_client_by_email() (use hosting_get_client() instead)</li>
+<li>hosting_import_client() dropped the second argument (organization)</li>
+<li>hosting_task_list_embedded() (use hosting_task_list() or hosting_task_list_table())</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Client_node_type_changes">2.6. Client node type changes</h2>
+
+<ul>
+<li>the email field was removed from the client, now you need a user associated with the client. this was already the case in 1.x but the existing field wasn't touched.</li>
+<li>the client_email field was removed from the site object</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="SSL_and_IP_allocation_refactoring_changes">2.7. SSL and IP allocation refactoring changes</h2>
+
+<p>The <a href="https://drupal.org/node/1126640">SSL IP allocation refactoring</a> has changed a good few things in the API and the way SSL certificates are managed.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Backend">2.7.1. Backend</h3>
+
+<p>The following functions are gone from the backend:</p>
+
+<ul>
+<li><a href="http://api.aegirproject.org/api/Provision/http--http.ssl.inc/function/provisionService_http_ssl%3A%3Aassign_certificate_ip/6.x-1.x">provisionService_http_ssl::assign_certificate_ip</a></li>
+<li><a href="http://api.aegirproject.org/api/Provision/http--http.ssl.inc/function/provisionService_http_ssl%3A%3Aget_ip_certificate/6.x-1.x">Provision_Service_http_ssl::get_ip_certificate</a> .</li>
+<li><a href="http://api.aegirproject.org/api/Provision/http--http.ssl.inc/function/provisionService_http_ssl%3A%3Afree_certificate_ip/6.x-1.x">Provision_Service_http_ssl::free_certificate_ip</a></li>
+<li>Provision_Service_http_ssl::clear_certs()</li>
+</ul>
+
+<p>Certificates are not tracked from the backend anymore, other than to make sure that we delete a certificate when it's not used anymore. So we still use *.receipt files, but just to mark a site to SSL certificate association, not the IP allocation. The SSL directory in <code>~/config/server_foo/ssl.d/uri/</code> is removed when no site use that directory anymore.</p>
+
+<p>The backend now expects the frontend to send an <code>ip_address</code> field and stopped sending a <code>site_ip_addresses</code> to the frontend.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Frontend">2.7.2. Frontend</h3>
+
+<p>The <code>hosting_ip_addresses</code> table changes. A unique key has been added and it is now only for servers. It is used by the new hosting_ssl_cert_ips table to map those server IP addresses to certificates.</p>
+
+<p>A new field for the IP (ip_address) is sent from the frontend during site install/verify tasks. The field is not present in non-ssl sites. It is the non-resolved IP address of the server assigned to the SSL certificate and must be used by the backend to write the vhost.</p>
+
+<p>SSL certificates are removed from the frontend when sites using it are deleted.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Debian_package_name_changed">2.8. Debian package name changed</h2>
+
+<p>To allow both packages to coexist in the same Debian archive, the name of the packages of the 2.x series have changed.</p>
+
+<ul>
+<li><code>aegir -&gt; aegir2</code></li>
+<li><code>aegir-provision -&gt; aegir-provision2</code></li>
+<li><code>aegir-hostmaster -&gt; aegir-hostmaster2</code></li>
+<li><code>aegir-cluster-slave -&gt; aegir-cluster-slave2</code></li>
+</ul><span class='diff-added'>
+
+</span><div class="toc-back-to-top"><span class='diff-added'></span><a href="#toc"><span class='diff-added'>Back to top</span></a><span class='diff-added'></span></div><span class='diff-added'></span><h2 id="Platform_drushrc.php_moved"><span class='diff-added'>2.9. Platform drushrc.php moved</span></h2><span class='diff-added'>
+
+</span><p><span class='diff-added'>From Drush 5 documentation:</span></p><span class='diff-added'>
+
+</span><pre><span class='diff-added'></span><code><span class='diff-added'>Drush 5 no longer looks for aliases, configs or command files in the Drupal
+root folder, so if you previously used drushrc.php files in the Drupal root
+you will need to move the file to sites/all/drush/drushrc.php.
+</span></code><span class='diff-added'></span></pre><span class='diff-added'>
+
+</span><p><span class='diff-added'>Since Aegir 2 requires Drush 5, Provision now follows this standard, and places a platform's drushrc.php in sites/all/drush/drushrc.php.</span></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Changes_in_the_1.0_release">3. Changes in the 1.0 release</h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Git_dependency">3.1. Git dependency</h2>
+
+<p>If you intend on upgrading your system to the bleeding edge version of the code from our git repositories, you will need the git program installed.  On Debian, this means:</p>
+
+<pre><code>apt-get install git-core
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="DNS_Configuration">3.2. DNS Configuration</h2>
+
+<p>Aegir requires that the hostname returned by the <code>hostname</code> and <code>uname -n</code>
+shell commands, resolves to the IP address for this server.</p>
+
+<p>Shell commands as root:</p>
+
+<pre><code>AEGIR_HOST=`uname -n`
+resolveip $AEGIR_HOST
+</code></pre>
+
+<p>If the command returns your IP address, you are all set. If it returns
+an error you will need to edit your <code>/etc/hosts</code> file.</p>
+
+<p>(Mac OSX  notes: if you are running on OS X you will not likely have a resolveip  binary.  Just substitute 
+  <code>ping $AEGIR_HOST</code>
+).</p>
+
+<p>First line of this file looks like:</p>
+
+<p>127.0.0.1  localhost</p>
+
+<p>Simply add all domains you want to this line. e.g:</p>
+
+<p>127.0.0.1  localhost $AEGIR_HOST $AEGIR_DOMAIN other1 other2</p>
+
+<p>To be clear you cannot put $AEGIR_HOST $AEGIR_DOMAIN  in your  hosts file.  Put in whatever  uname -n  returns  for $AEGIR_HOST and what ever  domain you want to use  f or  $AEGIR_DOMAIN  (real  domain or faked in hosts file).   In OS X     uname -n will return whatever you put in  System  Preferences -&gt; Sharing -&gt; Computer Name.  I added that value  (iMac 27  for me) to /etc/hosts and my faked aegir  domain  as follows:</p>
+
+<p><code>127.0.0.1&nbsp; localhost&nbsp; iMac27&nbsp; aegir.local </code></p>
+
+<p>If you only intend to use Aegir on a single server, it is acceptable for
+the resolved IP address to be the '127.0.0.1' loopback address.</p>
+
+<p>If you intend to manage multiple servers using Aegir, you will need to
+make sure that the IP address is the public IP of this server.</p>
+
+<p>Finally, set an $AEGIR_IP environment variable for use in the Database
+configuration step below.</p>
+
+<p>Shell commands as root::
+    AEGIR_IP=<code>resolveip $AEGIR_HOST | awk {'print $6'}</code></p>
+
+<p>(If running  OS X  or are otherwise missing  resolveip   and you just want to use Aegir on your computer use  you can do this:
+AEGIR_IP=127.0.0.1</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Unzip_dependency">3.3. Unzip dependency</h2>
+
+<p>As of the 0.4-alpha3 release, 'unzip' is a required dependency on your server
+in order to successfully extract the jquery.ui library that is part of some UI
+improvements. On Debian, this means:</p>
+
+<p>Shell commands::</p>
+
+<p>apt-get install unzip</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Database_configuration">3.4. Database configuration</h2>
+
+<p>To make sure that the Aegir backend, and all the possible web servers can
+reach your database server, you need to configure mysql to listen on all
+the public IP addresses available to it.</p>
+
+<p>/etc/mysql/my.cnf configuration line to comment out::
+    bind-address    = 127.0.0.1</p>
+
+<p>Now you need to restart mysql, to clear any caches.</p>
+
+<p>Shell command as root::
+    /etc/init.d/mysql restart</p>
+
+<p>Because you have already installed Aegir when it was using the generic grants,
+you will need to create new grants using the public IP address and hostname
+of this server.</p>
+
+<p>Shell command ::
+    mysql -uroot -p mysql</p>
+
+<p>You need to generate the following grants using the hostname returned by the
+<code>uname -n</code> command, and the IP address that the <code>resolveip</code> command returns
+for that hostname.</p>
+
+<p>You need to re-use the pasword you had for the account before.</p>
+
+<p>Shell commands::</p>
+
+<pre><code>mysql -u root -p -e "GRANT ALL ON *.* to 'aegir_root'@'$AEGIR_HOST' IDENTIFIED BY 'xxxx' WITH GRANT OPTION;"
+mysql -u root -p -e "GRANT ALL ON *.* to 'aegir_root'@'$AEGIR_IP' IDENTIFIED BY 'xxxx' WITH GRANT OPTION;"
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Apache_configuration">3.5. Apache configuration</h2>
+
+<p>This release introduces multi-server support and required reorganizing
+the Apache configuration files in ~aegir/config. Instead of having all
+files in config/vhost.d, they are now split between vhost.d, platform.d
+and a single apache.conf. The vhost.d directory is for virtual hosts,
+platform.d is for platform-specific configuration and apache.conf is the
+server-wide configuration file.</p>
+
+<p>You will need to change the line you added to either the httpd.conf file 
+or /etc/apache2/conf.d/aegir file during installation.</p>
+
+<p>Open your httpd.conf file and modify::</p>
+
+<pre><code>Include /var/aegir/config/vhost.d
+</code></pre>
+
+<p>To read ::</p>
+
+<pre><code>Include /var/aegir/config/apache.conf
+</code></pre>
+
+<p>If you are upgrading from 0.4 releases between alpha8 and (including) alpha14,
+you will need to rename your conf.d directory to post.d in Apache and pre.d in
+Nginx. Example, in Apache::</p>
+
+<p>mv /var/aegir/config/server_master/apache/{conf.d,post.d}</p>
+
+<p>Now log into Aegir, and verify the hostmaster platform. This will generate
+the correct apache.conf file and restart Apache.</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-312.html?destination=node%2F552%23comment-form">Login</a> or <a href="../../../../../user/register/index-312.html?destination=node%2F552%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-2203"></a>
+
+
+<div  id="comment-2203" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/tgroff/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-755/index.png" alt="tgroff&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/tgroff/index.html" class="username" title="View user profile.">tgroff</a></div><div class='date'>11:17pm Jan 14, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-2203">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Hi, I'm running the Aegir packages on Ubuntu 12.04.4 LTS. Aegir 1.11 has been working just fine, but the upgrade to 2.x fails with errors. First some database errors, then later dpkg errors, how can I further diagnose and resolve this installation failure?</p>
+
+<p>I just did a simple apt upgrade and apt offered to uninstall the old aegir package and install the new aegir2 package just fine:</p>
+
+<p><div class="codeblock"><code>root@development ~ # apt-get install aegir2<br />Reading package lists... Done<br />Building dependency tree<br />Reading state information... Done<br />The following extra packages will be installed:<br />&nbsp; aegir2-hostmaster aegir2-provision drush<br />Suggested packages:<br />&nbsp; drupal7<br />The following packages will be REMOVED:<br />&nbsp; aegir aegir-hostmaster aegir-provision drush-make<br />The following NEW packages will be installed:<br />&nbsp; aegir2 aegir2-hostmaster aegir2-provision<br />The following packages will be upgraded:<br />&nbsp; drush<br />1 upgraded, 3 newly installed, 4 to remove and 0 not upgraded.<br />Need to get 426 kB of archives.<br />After this operation, 29.7 kB of additional disk space will be used.<br />Do you want to continue [Y/n]?</code></div></p>
+
+<p>First some IP address database updates show errors:
+<div class="codeblock"><code>UPDATE {hosting_ip_addresses} SET id=177 WHERE nid=3006 AND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]<br />ip_address=&amp;#039;192.168.2.31&amp;#039;<br />UPDATE {hosting_ip_addresses} SET id=178 WHERE nid=2 AND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]<br />ip_address=&amp;#039;192.168.2.31&amp;#039;<br />UPDATE {hosting_ip_addresses} SET id=179 WHERE nid=3012 AND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]<br />ip_address=&amp;#039;192.168.2.31&amp;#039;<br />UPDATE {hosting_ip_addresses} SET id=180 WHERE nid=3014 AND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]<br />ip_address=&amp;#039;192.168.2.31&amp;#039;<br />UPDATE {hosting_ip_addresses} SET id=181 WHERE nid=3017 AND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]<br />ip_address=&amp;#039;192.168.2.31&amp;#039;<br />UPDATE {hosting_ip_addresses} SET id=182 WHERE nid=3021 AND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]<br />ip_address=&amp;#039;192.168.2.31&amp;#039;<br />UPDATE {hosting_ip_addresses} SET id=183 WHERE nid=3030 AND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]<br />ip_address=&amp;#039;15.185.167.45&amp;#039;<br />UPDATE {hosting_ip_addresses} SET id=184 WHERE nid=3034 AND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]<br />ip_address=&amp;#039;162.243.42.5&amp;#039;<br />UPDATE {hosting_ip_addresses} SET id=185 WHERE nid=3085 AND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]</code></div>
+Then dkpg fails:</p>
+
+<p><div class="codeblock"><code>Changed permissions of /var/aegir/.drush/hostmaster.alias.drushrc.php[success]<br />to 640<br />Generated config Drush configuration file&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [success]<br />Changed permissions of /var/aegir/.drush/hostmaster.alias.drushrc.php[success]<br />to 440<br />Changed permissions of&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [success]<br />/var/aegir/hostmaster-6.x-1.10/sites/aegir.groffweb.dev/settings.php<br />to 640<br />Generated config Drupal settings.php file&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [success]<br />Changed permissions of&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [success]<br />/var/aegir/hostmaster-6.x-1.10/sites/aegir.groffweb.dev/settings.php<br />to 440<br />Change group ownership of&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [success]<br />/var/aegir/hostmaster-6.x-1.10/sites/aegir.groffweb.dev/settings.php<br />to www-data<br />Platforms path /var/aegir/platforms exists.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [success]<br />Platforms ownership of /var/aegir/platforms has been changed to&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [success]<br />aegir.<br />Platforms permissions of /var/aegir/platforms have been changed to&nbsp;&nbsp; [success]<br />755.<br />Platforms path /var/aegir/platforms is writable.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [success]<br />Removed unused migration site package&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [success]<br />Generated config encrypted virtual host configuration&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [success]<br />Generated config encrypted virtual host configuration&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [success]<br />dpkg: error processing aegir2-hostmaster (--configure):<br /> subprocess installed post-installation script returned error exit status 1<br />E: Sub-process /usr/bin/dpkg returned an error code (1)</code></div></p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-312.html?destination=node%2F552%23comment-form">Login</a> or <a href="../../../../../user/register/index-312.html?destination=node%2F552%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/552/revisions/4846/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:08:14 GMT -->
+</html>

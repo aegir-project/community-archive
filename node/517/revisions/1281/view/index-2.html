@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/517/revisions/1281/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:04:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/importing-complete-drupal-platform/index.html" />
+<link rel="up" href="../../../../../content/content/administrator/post-install-configuration/importing-sites/index.html" />
+<link rel="next" href="../../../../426/index.html" />
+<link rel="prev" href="../../../../../content/importing-complete-drupal-platform/index.html" />
+<link rel="up" href="../../../../../content/content/administrator/post-install-configuration/importing-sites/index.html" />
+<link rel="next" href="../../../../426/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Setting up a test Aegir site from an existing one from Wed, 03/30/2011 - 18:18 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-517" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Setting up a test Aegir site from an existing one</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-517'><p>We have <a href="../../../../316/index.html">already seen</a> how to import sites in an Aegir install, but what if we want to test the "hostmaster" site itself, ie. setup a development or staging environment of an Aegir install itself?</p>
+
+<p>This page explains how. The basic steps are:</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Installing_aegir"><span class="toc-number">1. </span>Installing aegir</a></li>
+	<li class="toc-level-1"><a href="#Backup_the_production_site"><span class="toc-number">2. </span>Backup the production site</a></li>
+	<li class="toc-level-1"><a href="#Deploy_the_production_site_in_staging"><span class="toc-number">3. </span>Deploy the production site in staging</a></li>
+	<li class="toc-level-1"><a href="#Tweaking_the_install_for_the_staging_server"><span class="toc-number">4. </span>Tweaking the install for the staging server</a></li>
+	<li class="toc-level-1"><a href="#Troubleshooting"><span class="toc-number">5. </span>Troubleshooting</a></li>
+</ol>
+</div>
+</div>
+
+<h1 id="Installing_aegir">1. Installing aegir</h1>
+
+<p>The first step should be fairly simple and intuitive if you got that far: you have to <a href="../../../../../installing/index.html">install aegir itself</a> on the staging server. You should install the specific version that is currently in production.</p>
+
+<p>Maybe that also involves <a href="../../../../../uninstalling/index.html">uninstalling the existing install</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Backup_the_production_site">2. Backup the production site</h1>
+
+<p>Run a backup on the production site, on the production server. This can be done in the frontend or in the backend using:</p>
+
+<p><div class="codeblock"><code>drush @hostmaster provision-backup</code></div></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Deploy_the_production_site_in_staging">3. Deploy the production site in staging</h1>
+
+<p>Copy the resulting backup to the staging server. Then you should be able to deploy it with the following command:</p>
+
+<p><div class="codeblock"><code>drush @hostmaster provision-deploy --old_uri=aegir.koumbit.net /home/anarcat/aegir.koumbit.net-20110326.161420.tar.gz --debug</code></div></p>
+
+<p>In this case, we use deploy to also rename the site (<code>--old_uri=aegir.koumbit.net</code>).</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Tweaking_the_install_for_the_staging_server">4. Tweaking the install for the staging server</h1>
+
+<p>The environment on the staging server could be <em>very</em> different from the production server. The server name will be different, maybe there will not be a dedicated mysql server, platforms will not exist, etc.</p>
+
+<p>It is recommended to review the "Servers" page to change the domain names to the staging environment. In Koumbit's case, this means:</p>
+
+<ol>
+<li>editing the master server to change the hostname and IPs</li>
+<li>renaming the DB server to "localhost" and changing the database credentials</li>
+</ol>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Troubleshooting">5. Troubleshooting</h1>
+
+<p>I had weird issues with failing to run updatedb on the hostmaster site (while deploying to another alias would work). My workaround was to suspend the process right before it would run drush updatedb, then run updatedb manually, twice:</p>
+
+<p><div class="codeblock"><code>drush @hostmaster updatedb<br />drush @hostmaster cc all<br />drush @hostmaster updatedb</code></div></p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-55.html?destination=node%2F517%23comment-form">Login</a> or <a href="../../../../../user/register/index-55.html?destination=node%2F517%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-55.html?destination=node%2F517%23comment-form">Login</a> or <a href="../../../../../user/register/index-55.html?destination=node%2F517%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/517/revisions/1281/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:04:43 GMT -->
+</html>

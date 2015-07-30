@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/uninstalling?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:33:21 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../upgrading/path/index.html" />
+<link rel="up" href="../administrator/index.html" />
+<link rel="next" href="../content/administrator/extracting-drupal-site-aegir/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Uninstalling Aegir | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-12" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Uninstalling Aegir</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-12'><p>There is no formal method for uninstalling Aegir, but there is also no real mystery either since the system tries to keep itself together in one location, typically /var/aegir.</p>
+
+<p>Below are the steps to completely remove all traces of Aegir from your server. We also include to leave Aegir intact, but destroy its data, attempting to reset to a almost post-install setup.</p>
+
+<p>Ideally, you would delete all sites and all platforms from the system first. That would take care of deleting all databases and users. But this can take some time and is annoying, so we provide instructions on how to destroy everything.</p>
+
+<h1>WARNING</h1>
+
+<p>Obviously if you have any sites and platforms currently managed by Aegir, you would want to move them out of the /var/aegir area before you delete it! Ensure you have set up your sites and platforms elsewhere, with Apache vhost files etc in their typical locations, or at least out of harm's way before attempting this.</p>
+
+<p><strong>WARNING: Performing these steps will remove Aegir from your server and may result in loss of data. Use with caution.</strong></p>
+
+<p>Run these commands as a privileged user (such as root). We assume your Aegir installation resides in /var/aegir.</p>
+
+<h1>Backup</h1>
+
+<p>You probably want to backup everything before trashing it.</p>
+
+<p>Backup all you need to keep from the /var/aegir/ directory.</p>
+
+<p>Backup your database server, we'll be also destroying that.</p>
+
+<h1>Uninstall script</h1>
+
+<p>Aegir 2.x comes with a <code>hostmaster-uninstall</code> script that allows you to automate good chunks of the steps below.</p>
+
+<h1>Destroying the data</h1>
+
+<p>Aegir manages three types of data:</p>
+
+<ul>
+<li>configuration files - yes, we consider those as data</li>
+<li>site and platform files</li>
+<li>site databases</li>
+</ul>
+
+<h2>Trashing configuration files</h2>
+
+<p>This step is optional if you are going to remove everything anyways.</p>
+
+<pre>
+rm /var/aegir/.drush/*alias.drushrc.php
+rm -r /var/aegir/config/*
+</pre>
+
+<h2>Trashing site and platform files</h2>
+
+<p>At this point, you could still probably recover by verifying the platforms, which would recreate config files. At this point we start really destroying data.</p>
+
+<pre>
+rm -r /var/aegir/platforms/*
+rm -r /var/aegir/hostmaster-*
+</pre>
+
+<h2>Drop the databases and db users</h2>
+
+<p>There are no generic instructions for this, since every system differs. Essentially you can perform this within a MySQL shell</p>
+
+<p><code>mysql -u root -p</code></p>
+
+<p>Use the <code>DROP DATABASE $databasename;</code> syntax to drop databases. and <code>DROP USER $user;</code> to delete users, example:</p>
+
+<pre><code>DROP DATABASE aegirexamplecom;
+DROP USER aegirexamplecom@localhost;
+</code></pre>
+
+<p>This removes the Aegir user, assuming you have not created any site. If you did, you may want to cleanup those sites if you are going to delete them anyways. To see a list of GRANTs that Aegir has made for your database users, you can use a command like the following:</p>
+
+<p><div class="codeblock"><code>USE mysql;<br />SELECT User,Host FROM user WHERE Host=&#039;localhost&#039; AND User &lt;&gt; &#039;root&#039; AND User &lt;&gt; &#039;debian-sys-maint&#039;;<br />SELECT Host,Db,User FROM db WHERE User &lt;&gt; &#039;&#039;;</code></div></p>
+
+<p>In Debian, the following will remove all non-system users (which may include non-aegir users!!!).</p>
+
+<p><strong>WARNING: DO NOT RUN THIS BEFORE CHECKING WHAT WILL BE DELETE BY RUNNING THE SELECT ABOVE!! THIS WILL DELETE ALL USERS FROM YOUR MYSQL DATABASE!!!</strong></p>
+
+<p><div class="codeblock"><code>DELETE FROM db WHERE User &lt;&gt; &#039;&#039;;<br />DELETE FROM user WHERE Host=&#039;localhost&#039; AND User &lt;&gt; &#039;root&#039; AND User &lt;&gt; &#039;debian-sys-maint&#039;;<br />FLUSH PRIVILEGES;</code></div></p>
+
+<p>Then you will need to <code>DROP DATABASE</code> for every database.</p>
+
+<p>Consult the <a href="http://dev.mysql.com/doc/refman/5.1/en/grant.html">GRANT</a> and <a href="http://dev.mysql.com/doc/refman/5.1/en/drop-user.html">DROP</a> documentation from MySQL for more information.</p>
+
+<h2>Remove the aegir user's crontab</h2>
+
+<p><code>crontab -r -u aegir</code></p>
+
+<h1>Removing everything</h1>
+
+<p>At this point, we have removed all data that Aegir manages and we would be ready to reinstall the frontend. If we want to remove all traces, however, there's more work to do.</p>
+
+<h2>Remove /var/aegir</h2>
+
+<p><code>rm -rf /var/aegir</code></p>
+
+<h2>Delete the aegir user</h2>
+
+<p><code>userdel aegir</code></p>
+
+<p>This will also remove the user from the www-data group.</p>
+
+<h2>Remove the user from sudoers</h2>
+
+<p><code>visudo</code></p>
+
+<p>Remove the line that looks something like</p>
+
+<p><code>aegir ALL=NOPASSWD: /usr/sbin/apache2ctl</code></p>
+
+<p>Save and exit the file.</p>
+
+<h2>Delete the symlink/include from Apache</h2>
+
+<p>Depending on your installation and OS this may vary.</p>
+
+<p>Generally:</p>
+
+<pre><code>rm /etc/apache2/conf.d/aegir.conf
+</code></pre>
+
+<p>If your Include statements were contained in a global system <code>httpd.conf</code> file or similar, you will need to remove these lines manually.</p>
+
+<p>Restart Apache when you have completed this.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../user/login/index-74.html?destination=node%2F12%23comment-form">Login</a> or <a href="../user/register/index-74.html?destination=node%2F12%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/uninstalling?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:33:21 GMT -->
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/3100/revisions/15809/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:13:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../2/index-4.html" />
+<link rel="up" href="../../../../../content/release-notes/older-2x-releases/index.html" />
+<link rel="next" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="prev" href="../../../../../2/index-4.html" />
+<link rel="up" href="../../../../../content/release-notes/older-2x-releases/index.html" />
+<link rel="next" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="prev" href="../../../../../2/index-4.html" />
+<link rel="up" href="../../../../../content/release-notes/older-2x-releases/index.html" />
+<link rel="next" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of 2.3 release notes from Wed, 03/25/2015 - 19:57 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-3100" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../2/index-5.html">2.3 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_4 first"><a href="../../../../../taxonomy/term/4/index.html" rel="tag" title="This level is for users who have access to only their sites and not able to manage all Aegir features, accounts or the server/system.">Client</a></li>
+<li class="taxonomy_term_27"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_3"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-3100'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/helmo/index.html" class="username" title="View user profile.">helmo</a> on 03/25/2015 - 19:57</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>The Aegir team is proud to announce the third release in the stable 2.x release branch!</p>
+
+<p>This maintenance release ships with a huge number of bug fixes since our last stable release, almost a whole year ago.<span class='diff-added'> There are also some security improvements for nginx users.</span> See below for the full list of bug fixes. Everyone is encouraged to upgrade.</p>
+
+<p>Also, worth noting is the simultaneous release of our <a href="../../../../../3/index-6.html">first beta for Aegir 3</a>. Debian packages are now being provided for Aegir 3, so trying it out is easier than ever!</p>
+
+<p><strong>N.B.</strong> The 2.2 release was invalid, as the contrib modules included in the drupal-org.make had not been updated.</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Security_improvements_for_nginx"><span class="toc-number">1. </span><span class='diff-added'>Security improvements for nginx</span></a><span class='diff-added'></span></li><span class='diff-added'>
+	</span><li class="toc-level-1"><span class='diff-added'></span><a href="#Installing_and_upgrading"><span class='diff-added'></span><span class="toc-number"><span class='diff-added'>2.</span> </span>Installing and upgrading</a></li>
+	<li class="toc-level-1"><a href="#Need_help"><span class="toc-number"><span class='diff-changed'>3.</span> </span>Need help?</a></li>
+	<li class="toc-level-1"><a href="#Known_issues"><span class="toc-number"><span class='diff-changed'>4.</span> </span>Known issues</a></li>
+	<li class="toc-level-1"><a href="#Features"><span class="toc-number"><span class='diff-changed'>5.</span> </span>Features</a></li>
+	<li class="toc-level-1"><a href="#Bug_fixes"><span class="toc-number"><span class='diff-changed'>6.</span> </span>Bug fixes</a></li>
+</ol>
+</div>
+</div>
+
+<h2 id="Security_improvements_for_nginx">1.<span class='diff-added'> Security improvements for nginx</span></h2><span class='diff-added'>
+
+</span><p><span class='diff-added'>Previously, Aegir stored SSL cipher and protocol settings per site in Nginx virtualhost configuration files. This included the enabling of SSLv3, which is vulnerable to POODLE attacks [1].</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Because these settings were stored via templates, permanently removing SSLv3 support on Aegir-based Nginx SSL environments was not possible. These settings have now been removed from the templates that generate Nginx virtualhost files under Aegir. If you wish to either re-enable SSLv3, or otherwise alter SSL cipher and protocol settings in Nginx, we recommend you do so in the http {} context (e.g, in /etc/nginx/nginx.conf), which are applied globally and are never manipulated by Aegir.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Sites that were running on Nginx and had SSL enabled, should be re-verified to remove those settings.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Apache users (including those using SSL) were not affected.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>[1] </span><a href="http://en.wikipedia.org/wiki/POODLE" title="http://en.wikipedia.org/wiki/POODLE"><span class='diff-added'>http://en.wikipedia.org/wiki/POODLE</span></a><span class='diff-added'></span></p><span class='diff-added'>
+
+</span><div class="toc-back-to-top"><span class='diff-added'></span><a href="#toc"><span class='diff-added'>Back to top</span></a><span class='diff-added'></span></div><span class='diff-added'></span><h2 id="Installing_and_upgrading"><span class='diff-added'>2.</span> Installing and upgrading</h2>
+
+<p>The canonical source of installation documentation is on the community site at:</p>
+
+<pre><code>http://community.aegirproject.org/installing
+</code></pre>
+
+<p>In a similar fashion, the upgrade documentation is at:</p>
+
+<pre><code>http://community.aegirproject.org/upgrading
+</code></pre>
+
+<p>Within those sections, you'll find step-by-step instructions for performing both <a href="../../../../../upgrading/manual/index.html">manual</a> and <a href="../../../../../upgrading/script/index.html">automatic</a> upgrade processes.</p>
+
+<p>It is still imperative that you read the the <a href="../../../../../upgrading/path/index.html">upgrade path and version-specific information</a> and follow all version-specific upgrade instructions before trying to run the upgrade script or manual upgrade.</p>
+
+<p><strong>N.B.</strong> <a href="https://www.drupal.org/node/2146977">Issue #2146977: Broken backward compatibility with IP based vhosts</a> may affect those upgrading from 1.x. It appears that running 'verify' tasks on all sites should resolve the issue.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Need_help"><span class='diff-changed'>3.</span> Need help?</h2>
+
+<p>If you struggle to install or upgrade your Aegir system, you have a number of options available to you for getting help.</p>
+
+<p>Consult this page for more information: <a href="../../../../../help/index.html" title="http://community.aegirproject.org/help">http://community.aegirproject.org/help</a></p>
+
+<p>Thanks to our awesome <a href="../../../../../index.html">community</a> for their help, support and encouragement as always! Enjoy the new release :)</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Known_issues"><span class='diff-changed'>4.</span> Known issues</h2>
+
+<p>Being really open about our project, we have never hidden the fact that some things, sometimes, do not work in Aegir. Our <a href="http://drupal.org/project/issues?text=&amp;projects=provision%2C%20hosting%2C%20hostslave%2C%20eldir%2C%20Hostmaster%20%28Aegir%29&amp;status=Open&amp;priorities=All&amp;categories=All">issue trackers</a> are public, and we've made it a point of honor not only to document clearly what is wrong in our releases as soon as we find out about it, but also to reroll new releases when we fix it.</p>
+
+<p>That being said, 2.2 still has a number of issues and design flaws. This is the list of <a href="https://drupal.org/project/issues?projects=provision%2C+hosting%2C+hostslave%2C+eldir%2C+Hostmaster+%28Aegir%29&amp;priorities=300">all issues marked "major" in the queue right now</a>. Most issues are now likely to be fixed in the 3.x development branch, and unlikely to be backported unless considered critical.</p>
+
+<p>As mentioned in the previous section, <a href="https://www.drupal.org/node/2146977">Issue #2146977: Broken backward compatibility with IP based vhosts</a> is still listed as a 'critical' issue against the 2.x branch. However, it should only affect those upgrading from 1.x, and has a fairly simple work-around. If you come across this behaviour during your upgrade, please post a comment to the issue, so we can confirm that it still exists.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Features"><span class='diff-changed'>5.</span> Features</h2>
+
+<p><a href="https://www.drupal.org/node/2267057">#2267057</a>: Pre-upgrade add ctools to 6.x-2.x</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Bug_fixes"><span class='diff-changed'>6.</span> Bug fixes</h2>
+
+<p>Changes to hosting since 6.x-2.1:</p>
+
+<ul>
+  <li>Make it clear that subdomain (foo) and subdirectory name (foo) must be identical.</li>
+  <li><a href="../../../../2333911/index.html">#2333911</a> - Restore the pre-views order of tasks in the queue blocks/lists.</li>
+  <li><a href="../../../../2313327/index.html">#2313327</a> by <a href="../../../../../u/helmo-_-tvl/index.html">helmo | tvl</a>: Fixed Unknown options for provision-verify.</li>
+  <li><a href="../../../../2163525/index.html">#2163525</a> by <a href="../../../../../u/helmo-_-daften/index.html">helmo | daften</a>: Fixed Aegir doesn't delete old alias on migration of site.</li>
+</ul>
+
+<p>Changes to provision since 6.x-2.1:</p>
+
+<ul>
+  <li><a href="../../../../2457359/index.html">#2457359</a>: Stop overriding Nginx SSL settings</li>
+  <li>Nginx: Stop the POST flood to /autodiscover/autodiscover.xml generated by MS Office/Outlook</li>
+  <li>Nginx: Use dummy db fastcgi_param placeholders if any of them is empty</li>
+  <li><a href="../../../../2350695/index.html">#2350695</a> by <a href="../../../../../u/omega8cc/index.html">omega8cc</a>, <a href="../../../../../u/helmo/index.html">helmo</a>: Profile is registered twice, also as a module, which causes warning</li>
+  <li>Nginx: Remove webform keyword from regex locations - fixes <a href="../../../../599/index.html">#599</a></li>
+  <li>Nginx: Sync configuration improvements.</li>
+  <li>Fix for custom cpuinfo logic.</li>
+  <li><a href="../../../../2421543/index.html">#2421543</a> by <a href="../../../../../u/notzach/index.html">notzach</a>: Changing how Apache ServerAliases are defined</li>
+  <li>Nginx: Use safe fallback for mysteriously empty $db_port</li>
+  <li>Nginx: Use reliable source for db_port to write in the vhost</li>
+  <li><a href="../../../../2276557/index.html">#2276557</a> by <a href="../../../../../u/zxaos/index.html">zxaos</a>, <a href="../../../../../u/bgm/index.html">bgm</a>: allow aegir2-provision package to accept mariadb or mysql</li>
+  <li>Nginx: Fix for D8-specific /cron/ location caching (extended mode only).</li>
+  <li>Nginx: Fix for D8-specific /cron/ location regex.</li>
+  <li>Nginx: Drupal 8 with clean urls enabled should use /cron/ URI.</li>
+  <li>Nginx: Sync config templates.</li>
+  <li>Detect if the platform stays the same only when site name changes.</li>
+  <li>Standardize inline comments.</li>
+  <li><a href="../../../../2372653/index.html">#2372653</a> by <a href="../../../../../u/helmo/index.html">helmo</a>: Add --no-autocommit when dumping MySQL tables</li>
+  <li>Use $new_name instead of $new_uri to avoid confusion.</li>
+  <li>Compare $new_uri with d()-&gt;name and not d()-&gt;uri in the Site Rename Check.</li>
+  <li>Nginx: Helper locations to avoid 404 on legacy images paths (subdir only)</li>
+  <li>Nginx: Fix spacing</li>
+  <li>Nginx: Add missing variables in subdirectory config template.</li>
+  <li>don't allow d() to run before drush is fully initialized</li>
+  <li>Nginx: Add the fix for known problem with files/imagecache in legacy D6 sites (again).</li>
+  <li>Nginx: Fail early if any required db credentials are empty, to never create broken vhost.</li>
+  <li>Nginx: Block semalt botnet (extended boa mode only)</li>
+  <li><a href="../../../../2358977/index.html">#2358977</a> by mrP - [nginx] Aegir redirection to non-install url leads to sites/$server_name/files 404 errors (sub-dir config sync)</li>
+  <li><a href="../../../../2373923/index.html">#2373923</a> by griz - https redirect problem with Nginx (fix tested)</li>
+  <li>Nginx: Avoid redirect loops (really fixed).</li>
+  <li>Nginx: Avoid redirect loops (fixed).</li>
+  <li>Nginx: Avoid redirect loops.</li>
+  <li><a href="../../../../2358977/index.html">#2358977</a> by mrP - [nginx] Aegir redirection to non-install url leads to sites/$server_name/files 404 errors.</li>
+  <li>Nginx: Simplify imagecache/styles support.</li>
+  <li>Nginx: Remember real site name in $main_site_name and MAIN_SITE_NAME.</li>
+  <li>Sync new lines.</li>
+  <li>Nginx: proper sync with Apache redirects.</li>
+  <li>Revert "Issue <a href="../../../../2373923/index.html">#2373923</a> by griz - https redirect problem with Nginx"</li>
+  <li><a href="../../../../2373923/index.html">#2373923</a> by griz - https redirect problem with Nginx</li>
+  <li>Merge remote-tracking branch 'origin/6.x-2.x-backports' into 6.x-2.x</li>
+  <li><a href="../../../../2163979/index.html">#2163979</a> - Check if field_info_field_map() is available to not break support for old D7 versions.</li>
+  <li>Make sure that db_port is never empty and defaults to 3306.</li>
+  <li><a href="../../../../2266997/index.html">#2266997</a> by <a href="../../../../../u/helmo/index.html">helmo</a>, <a href="../../../../../u/cweagans/index.html">cweagans</a>: Added Do not automatically enable update module when installing a site.</li>
+  <li>Nginx: Update vhosts templates to match BOA improvements #unforkboa</li>
+  <li>Nginx: Sanitize aliases in vhost_disabled.tpl.php to avoid: 'nginx: [warn] server name "foo.com/bar" has suspicious symbols'</li>
+  <li>Fix spacing in config lines.</li>
+  <li>Nginx: Update config includes to match optional BOA features improvements #unforkboa</li>
+  <li>Manage extra GRANTS to allow SQL remote access via SSH tunneling which depends on '127.0.0.1' and will not work with GRANTS for 'localhost'.</li>
+  <li>Add support for file generated from /proc/cpuinfo on system with no access to /proc #unforkboa</li>
+  <li>Ignore paths from OS X</li>
+  <li>Backport provision_hosting_feature_enabled (2)</li>
+  <li>Backport provision_hosting_feature_enabled()</li>
+  <li>Fix typo.</li>
+  <li>Shorten and simplify the subdirs checks code.</li>
+  <li>Remove legacy subdir code and update checks.</li>
+  <li>Remove whitespace.</li>
+  <li>Use is_readable() instead of file_exists() when checking alias existence.</li>
+  <li>Use is_dir() instead of file_exists() when checking directory existence.</li>
+  <li>Use is_readable() check instead of insufficient file_exists() for config includes.</li>
+  <li>Remove redundant file_exists() if is_readable() is also used.</li>
+  <li>Add little debugging markers.</li>
+  <li>Use strict checks: is_file() and/or is_link() instead of file_exists() before attempting unlink()</li>
+  <li>Fix for mysterious warning "Could not create directory ." on Hostmaster site Verify.</li>
+  <li>Nginx: Fix typo in vhosts templates.</li>
+  <li><a href="../../../../2330781/index.html">#2330781</a> - Use Drush native dt() wrapper instead of not always available t()</li>
+  <li><a href="../../../../2329131/index.html">#2329131</a> by <a href="../../../../../u/dagomar/index.html">dagomar</a>: Fixed Uninstalled block module causes errors.</li>
+  <li>Allow usage with Drush7, now that *.drush.load.inc's aren't being included.</li>
+  <li><a href="../../../../2177315/index.html">#2177315</a> by <a href="../../../../../u/pwatzeels/index.html">pwatzeels</a>: Fixed Group permissions on private/temp folder not correct on remote server.</li>
+  <li><a href="../../../../2296089/index.html">#2296089</a> by <a href="../../../../../u/ergonlogic/index.html">ergonlogic</a>, <a href="../../../../../u/cosmicdreams/index.html">cosmicdreams</a>: Fixed Installer can detect incorrect default web group.</li>
+  <li><a href="../../../../2169287/index.html">#2169287</a> by <a href="../../../../../u/cableman0408/index.html">cableman0408</a>: Fixed Setting user name twice (fails non-default installation profile).</li>
+  <li><a href="../../../../2275467/index.html">#2275467</a> by <a href="../../../../../u/kristofferwiklund/index.html">kristofferwiklund</a>: Fixed incorrect variable in Debian postinstall script for Apache 2.4</li>
+  <li>Stop false-positive warnings when SSL uses a wildcard.</li>
+  <li><a href="../../../../2259461/index.html">#2259461</a> by Liam McDermott - Remove too aggressive limit_conn directive in the Nginx config templates.</li>
+  <li>Revert "change version information for release 2.1"</li>
+  <li><a href="../../../../1168758/index.html">#1168758</a> by <a href="../../../../../u/helmo-_-acrollet/index.html">helmo | acrollet</a>: Optionally add --include-vcs argument when using drush rsync to sync remote platform.</li>
+  <li>Extend provision_drupal_fetch_site with a parameter to specify site to fetch.</li>
+</ul><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-328.html?destination=node%2F3100%23comment-form">Login</a> or <a href="../../../../../user/register/index-328.html?destination=node%2F3100%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-2389"></a>
+
+
+<div  id="comment-2389" class="comment comment-published clear-block decay-10 decay-10">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/gboudrias/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="gboudrias&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/gboudrias/index.html" class="username" title="View user profile.">gboudrias</a></div><div class='date'>6:21pm Mar 24, 2015</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-2389">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>The Provision part seems pretty complete, although it would be good to double-check it.</p>
+
+<p>For the Hosting part, the 2.1 release was in April 2014, so anything fixed more recently than 12 months ago could be included if I understand correctly: <a href="https://www.drupal.org/project/issues/hosting?text=&amp;status=7&amp;priorities=All&amp;categories=All&amp;version=6.x-2.x-dev&amp;component=All" title="https://www.drupal.org/project/issues/hosting?text=&amp;status=7&amp;priorities=All&amp;categories=All&amp;version=6.x-2.x-dev&amp;component=All">https://www.drupal.org/project/issues/hosting?text=&amp;status=7&amp;priorities=...</a></p>
+
+<p>By definition, we should at least include Major and Critical issues, so I'll get started on those.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-328.html?destination=node%2F3100%23comment-form">Login</a> or <a href="../../../../../user/register/index-328.html?destination=node%2F3100%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2390"></a>
+
+
+<div  id="comment-2390" class="comment comment-published clear-block decay-2 decay-2">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/gboudrias/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="gboudrias&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/gboudrias/index.html" class="username" title="View user profile.">gboudrias</a></div><div class='date'>3:55am Mar 25, 2015</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-2390">#2</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Oops, seems like most of the issues had been closed long before that, the updated time only refers to a batch of automatic change to the issues based on comit history.</p>
+
+<p>However a lot of issues have been bumped to 7.x-3.x, so this makes finding the relevant issues a bit harder.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-328.html?destination=node%2F3100%23comment-form">Login</a> or <a href="../../../../../user/register/index-328.html?destination=node%2F3100%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2391"></a>
+
+
+<div  id="comment-2391" class="comment comment-published clear-block decay-2 decay-2">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/gboudrias/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="gboudrias&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/gboudrias/index.html" class="username" title="View user profile.">gboudrias</a></div><div class='date'>3:57am Mar 25, 2015</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-2391">#3</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Oh also only bug reports are supposed to be listed, so my initial count was even more wrong than I thought!</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-328.html?destination=node%2F3100%23comment-form">Login</a> or <a href="../../../../../user/register/index-328.html?destination=node%2F3100%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2392"></a>
+
+
+<div  id="comment-2392" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/helmo/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="helmo&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/helmo/index.html" class="username" title="View user profile.">helmo</a></div><div class='date'>7:29am Mar 25, 2015</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-2392">#4</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>I take Git commits to create these lists, see <a href="../../../../../content/release-process/index.html#Generating_the_release_notes" title="http://community.aegirproject.org/content/release-process#Generating_the_release_notes">http://community.aegirproject.org/content/release-process#Generating_the...</a></p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-328.html?destination=node%2F3100%23comment-form">Login</a> or <a href="../../../../../user/register/index-328.html?destination=node%2F3100%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/3100/revisions/15809/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:13:58 GMT -->
+</html>

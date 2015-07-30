@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/519/revisions/1292/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:18:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../1/index-16.html" />
+<link rel="up" href="../../../../../10-release-candidate/index.html" />
+<link rel="next" href="../../../../../1/index-18.html" />
+<link rel="prev" href="../../../../../1/index-16.html" />
+<link rel="up" href="../../../../../10-release-candidate/index.html" />
+<link rel="next" href="../../../../../1/index-18.html" />
+<link rel="prev" href="../../../../../1/index-16.html" />
+<link rel="up" href="../../../../../10-release-candidate/index.html" />
+<link rel="next" href="../../../../../1/index-18.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of 1.0-rc3 release notes from Thu, 03/31/2011 - 02:38 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-519" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../1/index-17.html">1.0-rc3 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_11 first last"><a href="../../../../../taxonomy/term/11/index.html" rel="tag" title="">release-notes</a></li>
+</ul></div><div id='diff-inline-519'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 03/31/2011 - 02:38</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Aegir 1.0-rc3 release notes</p>
+
+<p>The Aegir team is very pleased to announce the third release candidate of Aegir 1.0!</p>
+
+<p>This is the third Release Candidate from which we will test fixes to critical bugs from rc2, as well as fix any additional critical bugs found since, until we have no criticals and will then roll out the official 1.0.</p>
+
+<p>This release also includes a fix for a security vulnerability (see below). We recommend you upgrade your Aegir instance to apply this fix.</p>
+
+<h2>Key changes in 1.0-rc3</h2>
+
+<ul>
+<li><p>A security vulnerability was fixed that prevents arbitrary configuration from being injected into Apache vhosts by way of the Site Aliases form. See <a href="http://drupal.org/node/1098304"><span class='diff-changed'>#1098304</span></a></p></li>
+<li><p>The 'Client' feature / node type has been significantly refactored and simplified, with the ultimate aim of hooking it into future LDAP support and better Aegir-managed site/user security. This involved an exception to our considered 'API freeze' for the sake of getting this important refactoration in. See <a href="http://drupal.org/node/962330"><span class='diff-changed'>#962330</span></a> and also the <span class='diff-added'></span><a href="../../../../496/index.html">discussion <span class='diff-changed'>that allowed this freeze exception</span></a></p></li>
+<li><p>We've upgraded to use Drush 4.4 and Drush Make 2.2 on fresh installs and upgrades. These have been tested and should work without any problems.</p></li>
+</ul>
+
+<h2>Known Issues</h2>
+
+<ul>
+<li>DNS has no access control - anybody can create any zone <span class='diff-changed'>(</span><a href="http://drupal.org/node/922252"><span class='diff-changed'>#922252</span></a><span class='diff-changed'>)</span></li>
+<li>The site form suffers from some performance issues when you have a lot of platforms <span class='diff-changed'>(</span><a href="http://drupal.org/node/955854"><span class='diff-changed'>#955854</span></a><span class='diff-changed'>)</span></li>
+<li>Cluster servers are probably broken right now <span class='diff-changed'>(</span><a href="http://drupal.org/node/1016890"><span class='diff-changed'>#1016890</span></a><span class='diff-changed'>)</span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'>Aliases</span> are not persisted across Migrate, (Rename), Clone (provision-deploy) <span class='diff-changed'>(</span><a href="http://drupal.org/node/1004526"><span class='diff-changed'>#1004526</span></a><span class='diff-changed'>)</span></li>
+<li>See all the issues tagged as <span class='diff-added'></span><a href="https://drupal.org/project/issues/search?text=&amp;projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir)&amp;assigned=&amp;submitted=&amp;participant=&amp;issue_tags_op=or&amp;issue_tags=aegir-1.0">aegir-1.0</a><span class='diff-added'></span> and <span class='diff-added'></span><a href="https://drupal.org/project/issues?text=&amp;projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir)&amp;status=Open&amp;priorities=4&amp;categories=All">issues marked as 'major'</a><span class='diff-added'></span> for our comprehensive list of outstanding issues.</li>
+</ul>
+
+<h2>Installing and upgrading</h2>
+
+<p>The canonical source of installation documentation has moved from the usual INSTALL.txt to the community site at:</p>
+
+<pre><code>http://community.aegirproject.org/installing
+</code></pre>
+
+<p>In a similar fashion, the upgrade documentation has now been moved to the community site at</p>
+
+<pre><code>http://community.aegirproject.org/upgrading
+</code></pre>
+
+<p>Within those sections you'll find step-by-step instructions for performing both manual and automatic upgrade processes. You can download the upgrade.sh.txt script from <a href="../../../../431/index.html" title="http://community.aegirproject.org/node/431">http://community.aegirproject.org/node/431</a>.</p>
+
+<p>It is still imperative that you read the the Upgrade Guide (<a href="../../../../../upgrading/index.html" title="http://community.aegirproject.org/upgrading">http://community.aegirproject.org/upgrading</a>) and follow all version-specific upgrade instructions located at the end of the document before trying to run the upgrade script. This especially applies to users upgrading from before 0.4-alpha8, including 0.3.</p>
+
+<p>For users coming from the 0.4 betas or rc1/2, there are unlikely to be any version-specific manual steps required to upgrade to 1.0-rc3, but you should make a habit of reading them anyway just to make sure. No-one likes a nasty surprise!</p>
+
+<p>The upgrade.sh script attempts to backup the existing backend components, download new versions, and then run the hostmaster-migrate command. It assumes you are upgrading from the previous release (hostmaster-6.x-1.0-rc2). If you are not, you may have to edit the script to change the OLD_DRUPAL_DIR variable.</p>
+
+<p>Bugs fixed</p>
+
+<ul>
+<li><a href="http://drupal.org/node/1050730">#1050730 : BIND needs write access on slave zones directory</a></li>
+<li><a href="http://drupal.org/node/1102650">#1102650 : Check db connection before can_create_database()</a></li>
+<li><a href="http://drupal.org/node/1100196">#1100196 : API docs example have service and service type mixed up</a></li>
+<li><a href="http://drupal.org/node/1097612">#1097612 : PHP warnings thrown when a server has no available services.</a></li>
+<li><a href="http://drupal.org/node/1106768">#1106768 : Client name of first client (created on installation) is empty</a></li>
+<li><a href="http://drupal.org/node/1098304">#1098304 : Domain aliases are not sanitized and it is possible to inject arbitrary vhost configuration via aliases textarea</a></li>
+<li><a href="http://drupal.org/node/730424">#730424 : Putting credentials in Apache VHost environment is insecure</a></li>
+<li><a href="http://drupal.org/node/1067030">#1067030: Using human readable name instead of machine name</a></li>
+<li><a href="http://drupal.org/node/1066676">#1066676: Picture upload doesn't work using a site alias with D7</a> </li>
+</ul>
+
+<h2>New features</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/1096498">#1096498 : Managers should have access to all sites, tasks and clients</a></li>
+<li><a href="http://drupal.org/node/962330">#962330 : refactor and clarify the fields in the client content type</a></li>
+<li><a href="http://drupal.org/node/334416">#334416 : security between sites (settings.php protection)</a></li>
+</ul>
+
+<h2>Need help?</h2>
+
+<p>If you struggle to install or upgrade your Aegir system, you have a number of options available to you for getting help.</p>
+
+<p>Consult this page for more: <a href="../../../../../help/index.html" title="http://community.aegirproject.org/help">http://community.aegirproject.org/help</a></p>
+
+<p>Thanks to our awesome community for their help, support and encouragement as always! Enjoy the new release :)</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-185.html?destination=node%2F519%23comment-form">Login</a> or <a href="../../../../../user/register/index-185.html?destination=node%2F519%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-185.html?destination=node%2F519%23comment-form">Login</a> or <a href="../../../../../user/register/index-185.html?destination=node%2F519%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/519/revisions/1292/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:18:05 GMT -->
+</html>

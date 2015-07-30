@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/svn-or-any-version-control-friend-aegir?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:45:20 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>SVN (or any version-control) friend with Aegir | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-594" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../user/392/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="wayaslij&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../user/392/index.html" class="username" title="View user profile.">wayaslij</a></div><div class='date'>3:28pm Apr 16, 2011</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">SVN (or any version-control) friend with Aegir</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>Hi Everyone,</p>
+
+<p>I’m about to build a module that would make Ægir friendly with SVN or any version-control system. It would set up all configurations automatically when creating or migrating a site on Ægir.</p>
+
+<p>I’ve been digging around for a while now to find a way to easily make Ægir work with SVN (Or whatever version control system) and having an easy dev/staging/live workflow. I had to change my workflow process but now all is working pretty much just like I wanted. Only issue, it requires some manual configurations when migrating websites from one platform to another one. That’s why I’m about to build a module that would do it all automatically. But before that, I’d like to see if someone has some advices, sees a potential issue or did something similar already.</p>
+
+<p>I’m aware of these interesting posts (<a href="http://groups.drupal.org/node/99314">You, Drupal and Version Control</a>, <a href="http://greenbeedigital.com.au/content/drupal-deployments-workflows-version-control-drushmake-and-aegir">Drupal deployments &amp; workflows with version control, drush_make, and Aegir</a>, <a href="http://www.opc.com.au/web-development/drupal-release-management-drush-and-git">Drupal Release Management with Drush and Git</a>, and etc etc.) but I must say I disagree a bit with mig5 on the workflow he’s proposing. (may be I got it wrong). This is how I make my workflow work:</p>
+
+<p>The dev/staging/live sites can only be standard (multi)sites for Ægir, and in the meanwhile they should all be in the same version-control repository to ease the merging, tag branch etc processes. I think it’s also cleaner to have all project related sites or files into one same repository.</p>
+
+<p>This is how the repo looks like:<br />
+Repo<br />
+- live.site.com<br />
+- staging.site.com<br />
+- dev.site.com<br />
+- branchx.site.com<br /></p>
+
+<p>But here is how it should look on Aegir:<br />
+Aegir<br />
+- platform: live<br />
+ -- live.site.com<br />
+ -- staging.site.com<br />
+- platform: dev<br />
+ -- dev.site.com<br />
+- platform: external dev server<br />
+ -- branchx.site.com<br /></p>
+
+<p>This last tree makes impossible to do a standard full checkout of the repo as almost each site uses a different path. But this is easily solved; by making each Aegir site a partial checkout of the repo<br />
+ie: $ svn checkout <a href="http://svn.site.com/our-repo/dev.site.com" title="http://svn.site.com/our-repo/dev.site.com">http://svn.site.com/our-repo/dev.site.com</a> ~/platforms/dev/sites/dev.site.com</p>
+
+<p>This combined to an auto-checkout script launched on post-commit event, works just great.
+The only issue is for each site’s auto-checkout path, as they need to be defined in the script. This means that every time I want to migrate an Aegir site to another platform, I need to manually update the repo auto-checkout paths, which means a non shell user cannot migrate sites. This is why I want to develop this module, that would update the auto-checkout paths, but also let them configure all the repo users and repo configurations directly through the UI, allowing a non shell user to customise the version-control configurations.</p>
+
+<p>An advantage of the methods described above (and it’s mostly shared by mig5’s post) is that we no longer track the drupal core code, neither the contributed modules; only the site’s related files (excluding setting.php, drushrc.php and files/). To update a site, we update its platform’s code. To do so and be able to reverse to the old code, we just create a new platform (really easy with a makefile) and we then migrate the site to the updaded platform. We can this way migrate back to the old platform if needed.</p>
+
+<p>To sum up what the module would do:<br />
+- Set allowed users to a repo on the version-control configurations <br />
+- Set the http dav access for the repo url<br />
+- Create Repository nodes which would create a real repository<br />
+- Create a repository node, but associating it to an existent real Repository<br />
+- Create a repository node and a Repository when creating a new site<br />
+- Associate a site to an existent Repo when creating the site<br />
+- Add/commit to an existent repository the site’s code when creating/associating a site<br />
+- Replace the Aegir site’s code by a partial checkout of the repository<br />
+- Exclude files modifiable by Aegir (setting.php, drushrc.php and files/)<br />
+- Set the auto-checkout path for each versioned site.<br />
+- Update the auto-checkout path on migration and deletion.<br />
+- etc<br /></p>
+
+<p>From this, would someone have comments or advices? More features in mind?<br />
+Thanks,</p>
+
+<p>Regards<br />
+Adrien</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-382.html?destination=node%2F594%23comment-form">Login</a> or <a href="../../user/register/index-382.html?destination=node%2F594%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-2307"></a>
+
+
+<div  id="comment-2307" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/francewhoa/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-2062/index.png" alt="Francewhoa&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/francewhoa/index.html" class="username" title="View user profile.">Francewhoa</a></div><div class='date'>1:46am Jun 9, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2307" class="active">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Thanks for sharing Adrien :) Here is a related post you might be interested in <a href="../our-zero-touch-build-setup-continuous-integration-lite/index.html" title="http://community.aegirproject.org/discuss/our-zero-touch-build-setup-continuous-integration-lite">http://community.aegirproject.org/discuss/our-zero-touch-build-setup-con...</a></p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-382.html?destination=node%2F594%23comment-form">Login</a> or <a href="../../user/register/index-382.html?destination=node%2F594%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/svn-or-any-version-control-friend-aegir?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:45:20 GMT -->
+</html>

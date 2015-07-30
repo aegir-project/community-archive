@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/2714/revisions/5037/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:14:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../2/index-11.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-13.html" />
+<link rel="prev" href="../../../../../2/index-11.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-13.html" />
+<link rel="prev" href="../../../../../2/index-11.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-13.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of 2.0-beta1 release notes from Fri, 06/14/2013 - 21:37 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2714" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../2/index-12.html">2.0-beta1 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_4 first"><a href="../../../../../taxonomy/term/4/index.html" rel="tag" title="This level is for users who have access to only their sites and not able to manage all Aegir features, accounts or the server/system.">Client</a></li>
+<li class="taxonomy_term_27"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_3"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-2714'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 06/14/2013 - 21:37</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>The Aegir team is pleased to announce the first stabilization (beta) release of the Aegir 2.x branch, after nearly 3 weeks of development since our second alpha release. While we had expected an additional alpha release prior to the beta cycle, development on outstanding features went smoother than foreseen. We've added some significant features, and fixed a couple bugs and (again) made some important improvements to our API.</p>
+
+<p>This release introduces support for installing sites in subdirectories (example.com/foo, example.com/bar, etc.) into Aegir core as an experimental feature. This has been our number one feature request from higher education institutions, and so we hope that this will enable greater adoption within that sector.</p>
+
+<p>Drush 5.9 in debian repo
+Aegir 2 migrated to Testing repo</p>
+
+<p>We expect at least one more alpha release before we call a feature-freeze, and begin out stabilizing and cleanup (beta) release cycle.</p>
+
+<p>no more critical bugs</p>
+
+<p>{{{
+ * feature freeze, exceptions may be granted on a case by case basis
+ * will run in production at Koumbit soon
+ * next step: tackle RC bugs</p>
+
+<p>debian/changelog says:</p>
+
+<p><div class="codeblock"><code>&nbsp; * Feature freeze begins, only critical and major bug fixes will be<br />&nbsp;&nbsp;&nbsp; committed.<br />&nbsp; * A few bugfixes, especially to the Debian package, the new views code<br />&nbsp;&nbsp;&nbsp; and nginx support.<br />&nbsp; * This release adds subdirectory support, a nice homepage and fixes SSL<br />&nbsp;&nbsp;&nbsp; support and IP allocation on clusters. We also ship with a wider<br />&nbsp;&nbsp;&nbsp; variety of roles.</code></div></p>
+
+<p>}}}</p>
+
+<h1>Release overview</h1>
+
+<p>This release features improvements to the IP management mechanisms that were broken in the last alpha1 release. We now manage IP addresses individually, and check if an IP is in use before allowing it to be deleted.</p>
+
+<p>We also finally leave the files alone on spokes in the multi-server model, a long-standing bug in the 1.x series that led to data loss. A lot of work was done to standardize the Nginx configuration to allow for simpler, yet optional, configurations that leave the admin in charge of choosing the optimisation methods.</p>
+
+<p>Also, we've moved Hosting and Eldir back to their own projects, and are now included via our makefiles. This simplifies building custom install profiles, though it complicates our release process somewhat. We've also added a drupal-org.make that will eventually allow proper distribution bundling of Aegir.</p>
+
+<p>Finally, we've moved to using Views and View Bulk Operations for our lists of sites, platforms and packages. While there remain some rough edges, this will allow much easier customization of our principal UIs. It has also significantly reduced the custom code we have to maintain, in favour of exported Views, which simplifies maintenance.</p>
+
+<h1>Known issues</h1>
+
+<ul>
+<li>the debian package shows a lot of garbage when installing from scratch, which is almost harmless except that we don't see the login URL, use <code>drush @hostmaster uli</code> to get a new one, fixed in <a href="http://drupal.org/node/2002076">#2002076</a></li>
+</ul>
+
+<p>These are related to drush:</p>
+
+<ul>
+<li><span class="messages error"> Node <em>1931000</em> not found.</span>  / <span class="messages error"> Node <em>1982502</em> not found.</span> </li>
+<li><span class="messages error"> Node <em>1991764</em> not found.</span> </li>
+</ul>
+
+<p>These are follow-up issues for subdirs:</p>
+
+<ul>
+  <li><span class="messages error"> Node <em>2020091</em> not found.</span> </li>
+  <li><span class="messages error"> Node <em>2020089</em> not found.</span> </li>
+  <li><span class="messages error"> Node <em>2020079</em> not found.</span> </li>
+  <li><span class="messages error"> Node <em>2020075</em> not found.</span> </li>
+</ul>
+
+<h1>API changes</h1>
+
+<h1>New features</h1>
+
+<h3>New features</h3>
+
+<ul>
+  <li>Support for installing in subdirectories (<span class="messages error"> Node <em>705026</em> not found.</span> )</li>
+  <li>proper homepage on startup so non-logged-in users don't see an error page, and new users have basic instructions (<span class="messages error"> Node <em>1793740</em> not found.</span> )</li>
+  <li>SSL support for clusters should now work properly (<span class="messages error"> Node <em>2000964</em> not found.</span> )</li>
+  <li>New roles added: 'aegir platform manager', 'aegir administrator' (<span class="messages error"> Node <em>1403208</em> not found.</span> )</li>
+</ul>
+
+<h1>Bugfixes</h1>
+
+<ul>
+<li>the Debian package support for nginx is severely broken <a href="http://drupal.org/node/2001142">#2001142</a></li>
+<li>the views bulk operations version shipped with alpha2 has security issues, see <a href="http://drupal.org/node/2001964">#2001964</a></li>
+<li>an update hook was incorrectly named, and has since been fixed. This may cause the hook to be run again, if the site is upgraded to a newer version. The updates should not be destructive, but may output errors.</li>
+<li>Placement of a number of our new Views-based blocks was omitted from the install profile, and so won't appear on a fresh install. These can be manually placed on the blocks page.</li>
+</ul>
+
+<ul>
+  <li><span class="messages error"> Node <em>2005698</em> not found.</span> </li>
+  <li><span class="messages error"> Node <em>1972286</em> not found.</span> </li>
+  <li><span class="messages error"> Node <em>2013683</em> not found.</span> </li>
+  <li><span class="messages error"> Node <em>1997088</em> not found.</span> </li>
+  <li><span class="messages error"> Node <em>1876350</em> not found.</span> </li>
+  <li>multiple files can be managed in a single context now (see <span class="messages error"> Node <em>2000038</em> not found.</span> , <span class="messages error"> Node <em>1784108</em> not found.</span> )</li>
+  <li>nginx cloaks database credentials properly now</li>
+  <li><span class="messages error"> Node <em>1635622</em> not found.</span> </li>
+  <li>lots of fixes for the Debian package, including<ul>
+  <li><span class="messages error"> Node <em>2002076</em> not found.</span> </li>
+  <li><span class="messages error"> Node <em>2001142</em> not found.</span> </li>
+  <li><span class="messages error"> Node <em>2003712</em> not found.</span> </li>
+  </ul></li>
+</ul>
+
+<h1>Other</h1>
+
+<p>/////////////////////////////////</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-167.html?destination=node%2F2714%23comment-form">Login</a> or <a href="../../../../../user/register/index-167.html?destination=node%2F2714%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-167.html?destination=node%2F2714%23comment-form">Login</a> or <a href="../../../../../user/register/index-167.html?destination=node%2F2714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/2714/revisions/5037/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:14:54 GMT -->
+</html>

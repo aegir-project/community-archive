@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/2996/revisions/5715/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 19:09:02 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Backup and deploy on a new server &quot;Creating default object from empty value&quot; warning, can&#039;t verify. from Wed, 08/20/2014 - 00:27 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2996" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/adrinux/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-58/index.png" alt="adrinux&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/adrinux/index.html" class="username" title="View user profile.">adrinux</a></div><div class='date'>9:22pm Aug 19, 2014</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="../../../../../discuss/backup-and-deploy-new-server-creating-default-object-empty-value-warning-cant-verify/index.html">Backup and deploy on a new server &quot;Creating default object from empty value&quot; warning, can&#039;t verify.</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>I'm moving my sites to a new server.
+- I have a fresh Aegir 2.1 (with nginx)
+- I've moved old d7 platform (without sites) from an Aegir 1.9 setup to the 2.1, verified the it and can create new sites on it.
+- I've created a backup in aegir on the old server and transferred it across, and I'm using provision deploy to restore the backup to the moved platform. You know the drill.
+- Provision save and deploy on a site appear to work without a hitch. Verifying the platform causes the site import to appear in the front end and whilst this apparently completes successfully it does have an 'undefined index' warning:
+<div class="codeblock"><code>Calling hook drush_provision_drupal_pre_provision_verify<br />Found install profile minimal<br />Found install profile standard<br />Undefined index: default provision_drupal.drush.inc:611<br />Creating default object from empty value provision_drupal.drush.inc:612<br />Found 171 modules<br />Found 19 themes</code></div></p>
+
+<p>If I then try to verify the site the same error occurs. I also can't clone or migrate this site, on a clone (to the same platform) I get this error:
+<div class="codeblock"><code>Use of undefined constant NODE_PUBLISHED - assumed &#039;NODE_PUBLISHED&#039; comment.inc:26<br />Use of undefined constant NODE_PUBLISHED - assumed &#039;NODE_PUBLISHED&#039; node.inc:22<br />Drush command terminated abnormally due to an unrecoverable error. Error: Call to undefined function node_types_rebuild() in /var/aegir/platforms/d7-old/includes/common.inc, line 7475</code></div></p>
+
+<p>The web site itself appears to operate normally (the site name after import changed to the domain name repeated several times...odd but the only apparent problem).</p>
+
+<p>I know I'm pushing my luck by trying to make the jump from Aegir 1.9 to 2.1 whilst migrating the site, but does anyone have any suggestion on debugging what is actually going wrong?</p>
+
+<p>The old server is IIRC too ancient to run a more recent version of Aegir. I think my best option if I can't resolve this will be an entirely manual recreation of the site on the new server. Tedious but possible...</p>
+
+<p>Fixed by adding --profile=standard when using provision-save to create the site alias.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/2996/revisions/5715/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 19:09:02 GMT -->
+</html>

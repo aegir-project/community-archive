@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/416/revisions/1352/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:24:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../244/index.html" />
+<link rel="up" href="../../../../518/index.html" />
+<link rel="next" href="../../../../414/index.html" />
+<link rel="prev" href="../../../../244/index.html" />
+<link rel="up" href="../../../../518/index.html" />
+<link rel="next" href="../../../../414/index.html" />
+<link rel="prev" href="../../../../244/index.html" />
+<link rel="up" href="../../../../518/index.html" />
+<link rel="next" href="../../../../414/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Solaris installation instructions hints from Fri, 04/01/2011 - 05:15 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-416" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Solaris installation instructions hints</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-416'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 04/01/2011 - 05:15</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><h1>Special software requirements</h1>
+
+<p>TODO: Show how to install:</p>
+
+<ul>
+<li>Apache2</li>
+<li>git</li>
+<li>sudo</li>
+<li>mysql</li>
+<li>PHP 5.2</li>
+<li>wget</li>
+</ul>
+
+<p>unzip and sendmail should be part of the base Solaris install. Other
+applications should be available on the companion CDs or:</p>
+
+<p><a href="http://www.sunfreeware.com/" title="http://www.sunfreeware.com/">http://www.sunfreeware.com/</a></p>
+
+<p>In particular, git can be compiled easily by exporting the following
+environment::
+ export CFLAGS="-I/usr/sfw/include -I/opt/sfw/include"
+ export LD_LIBRARY_PATH="/usr/sfw/lib:/opt/sfw/lib:$LD_LIBRARY_PATH"</p>
+
+<p>Then the compile instructions bundled with git should just be followed
+plainly.</p>
+
+<p>XXX: I had trouble installing the binaries, as git expects ginstall to be
+available in the path. I ended up adding the source directory in the path,
+which works fine for most uses.</p><span class='diff-deleted'>
+
+</span><h1><span class='diff-deleted'>Common</span><span class='diff-deleted'> </span><span class='diff-deleted'>issues</span></h1><span class='diff-deleted'>
+
+</span><h2><span class='diff-deleted'>Drush</span><span class='diff-deleted'> </span><span class='diff-deleted'>issue</span></h2><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>Solaris</span><span class='diff-deleted'> </span><span class='diff-deleted'>suffers</span><span class='diff-deleted'> </span><span class='diff-deleted'>from</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>dreaded</span><span class='diff-deleted'> </span><span class='diff-deleted'>execution</span><span class='diff-deleted'> </span><span class='diff-deleted'>issues</span><span class='diff-deleted'> </span><span class='diff-deleted'>of</span><span class='diff-deleted'> </span><span class='diff-deleted'>drush:</span></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'></span><a href="http://drupal.org/node/637574" title="http://drupal.org/node/637574"><span class='diff-deleted'>http://drupal.org/node/637574</span></a><span class='diff-deleted'>
+</span><a href="http://drupal.org/node/586466" title="http://drupal.org/node/586466"><span class='diff-deleted'>http://drupal.org/node/586466</span></a><span class='diff-deleted'></span></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>Those</span><span class='diff-deleted'> </span><span class='diff-deleted'>can</span><span class='diff-deleted'> </span><span class='diff-deleted'>be</span><span class='diff-deleted'> </span><span class='diff-deleted'>worked</span><span class='diff-deleted'> </span><span class='diff-deleted'>around</span><span class='diff-deleted'> </span><span class='diff-deleted'>by</span><span class='diff-deleted'> </span><span class='diff-deleted'>hardcoding</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>--php</span><span class='diff-deleted'> </span><span class='diff-deleted'>executable</span><span class='diff-deleted'> </span><span class='diff-deleted'>on</span><span class='diff-deleted'> </span><span class='diff-deleted'>the
+commandline</span><span class='diff-deleted'> </span><span class='diff-deleted'>path.</span><span class='diff-deleted'> </span><span class='diff-deleted'>Adding</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>proper</span><span class='diff-deleted'> </span><span class='diff-deleted'>shebang</span><span class='diff-deleted'> </span><span class='diff-deleted'>header</span><span class='diff-deleted'> </span><span class='diff-deleted'>and</span><span class='diff-deleted'> </span><span class='diff-deleted'>using</span><span class='diff-deleted'> </span><span class='diff-deleted'>a</span><span class='diff-deleted'> </span><span class='diff-deleted'>proper</span><span class='diff-deleted'> </span><span class='diff-deleted'>PATH
+that</span><span class='diff-deleted'> </span><span class='diff-deleted'>includes</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>PHP</span><span class='diff-deleted'> </span><span class='diff-deleted'>executable</span><span class='diff-deleted'> </span><span class='diff-deleted'>also</span><span class='diff-deleted'> </span><span class='diff-deleted'>helps.</span></p><span class='diff-deleted'>
+
+</span><h2><span class='diff-deleted'>Cron</span><span class='diff-deleted'> </span><span class='diff-deleted'>issues</span></h2><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>I</span><span class='diff-deleted'> </span><span class='diff-deleted'>had</span><span class='diff-deleted'> </span><span class='diff-deleted'>numerous</span><span class='diff-deleted'> </span><span class='diff-deleted'>problems</span><span class='diff-deleted'> </span><span class='diff-deleted'>setting</span><span class='diff-deleted'> </span><span class='diff-deleted'>up</span><span class='diff-deleted'> </span><span class='diff-deleted'>a</span><span class='diff-deleted'> </span><span class='diff-deleted'>proper</span><span class='diff-deleted'> </span><span class='diff-deleted'>cron</span><span class='diff-deleted'> </span><span class='diff-deleted'>job,</span><span class='diff-deleted'> </span><span class='diff-deleted'>as</span><span class='diff-deleted'> </span><span class='diff-deleted'>Solaris'</span><span class='diff-deleted'> </span><span class='diff-deleted'>crond</span><span class='diff-deleted'> </span><span class='diff-deleted'>seems
+pretty</span><span class='diff-deleted'> </span><span class='diff-deleted'>anal</span><span class='diff-deleted'> </span><span class='diff-deleted'>about</span><span class='diff-deleted'> </span><span class='diff-deleted'>what</span><span class='diff-deleted'> </span><span class='diff-deleted'>it</span><span class='diff-deleted'> </span><span class='diff-deleted'>accepts.</span><span class='diff-deleted'> </span><span class='diff-deleted'>The</span><span class='diff-deleted'> </span><span class='diff-deleted'>only</span><span class='diff-deleted'> </span><span class='diff-deleted'>way</span><span class='diff-deleted'> </span><span class='diff-deleted'>I</span><span class='diff-deleted'> </span><span class='diff-deleted'>could</span><span class='diff-deleted'> </span><span class='diff-deleted'>get</span><span class='diff-deleted'> </span><span class='diff-deleted'>it</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>work</span><span class='diff-deleted'> </span><span class='diff-deleted'>was</span><span class='diff-deleted'> </span><span class='diff-deleted'>to
+create</span><span class='diff-deleted'> </span><span class='diff-deleted'>a</span><span class='diff-deleted'> </span><span class='diff-deleted'>wrapper</span><span class='diff-deleted'> </span><span class='diff-deleted'>shell</span><span class='diff-deleted'> </span><span class='diff-deleted'>script</span><span class='diff-deleted'> </span><span class='diff-deleted'>that</span><span class='diff-deleted'> </span><span class='diff-deleted'>would</span><span class='diff-deleted'> </span><span class='diff-deleted'>be</span><span class='diff-deleted'> </span><span class='diff-deleted'>called</span><span class='diff-deleted'> </span><span class='diff-deleted'>using</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>simplest</span><span class='diff-deleted'> </span><span class='diff-deleted'>cron
+tab.</span></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>Crontab</span><span class='diff-deleted'> </span><span class='diff-deleted'>entry::</span></p><span class='diff-deleted'>
+
+</span><ul><span class='diff-deleted'>
+</span><li><span class='diff-deleted'>
+</span><ul><span class='diff-deleted'>
+</span><li><span class='diff-deleted'>
+</span><ul><span class='diff-deleted'>
+</span><li><span class='diff-deleted'>
+</span><ul><span class='diff-deleted'>
+</span><li><span class='diff-deleted'>
+</span><ul><span class='diff-deleted'>
+</span><li><span class='diff-deleted'>/var/aegir/dispatch.sh</span></li><span class='diff-deleted'>
+</span></ul><span class='diff-deleted'></span></li><span class='diff-deleted'>
+</span></ul><span class='diff-deleted'></span></li><span class='diff-deleted'>
+</span></ul><span class='diff-deleted'></span></li><span class='diff-deleted'>
+</span></ul><span class='diff-deleted'></span></li><span class='diff-deleted'>
+</span></ul><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>Content</span><span class='diff-deleted'> </span><span class='diff-deleted'>of</span><span class='diff-deleted'> </span><span class='diff-deleted'>dispatch.sh::
+</span><span class='diff-deleted'> </span><span class='diff-deleted'>#!/usr/bin/bash</span></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>HOME=/var/aegir
+</span><span class='diff-deleted'> </span><span class='diff-deleted'>LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/usr/lib/sparcv9:/opt/mysql/mysql/lib:/usr/sfw/lib:/usr/sfw/lib/gcc:/opt/sfw/lib
+</span><span class='diff-deleted'> </span><span class='diff-deleted'>PATH=/usr/bin:/opt/mysql/mysql/bin:/usr/sfw/bin:/opt/sfw/bin:/opt/SUNWspro/bin:/usr/local/bin:/opt/csw/bin</span></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>export</span><span class='diff-deleted'> </span><span class='diff-deleted'>HOME
+</span><span class='diff-deleted'> </span><span class='diff-deleted'>export</span><span class='diff-deleted'> </span><span class='diff-deleted'>LD_LIBRARY_PATH
+</span><span class='diff-deleted'> </span><span class='diff-deleted'>export</span><span class='diff-deleted'> </span><span class='diff-deleted'>PATH</span></p><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>php</span><span class='diff-deleted'> </span><span class='diff-deleted'>'/var/aegir/drush/drush.php'</span><span class='diff-deleted'> </span><span class='diff-deleted'>--php=/usr/local/bin/php</span><span class='diff-deleted'> </span><span class='diff-deleted'>'@hostmaster'</span><span class='diff-deleted'> </span><span class='diff-deleted'>hosting-dispatch</span></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-267.html?destination=node%2F416%23comment-form">Login</a> or <a href="../../../../../user/register/index-267.html?destination=node%2F416%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-267.html?destination=node%2F416%23comment-form">Login</a> or <a href="../../../../../user/register/index-267.html?destination=node%2F416%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/416/revisions/1352/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:24:10 GMT -->
+</html>

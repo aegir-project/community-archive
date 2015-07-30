@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/1075/revisions/2833/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../installing/manual/manual-install-web-cluster-aegir-using-nginx/index.html" />
+<link rel="up" href="../../../../../installing/manual/index.html" />
+<link rel="next" href="../../../../462/index.html" />
+<link rel="prev" href="../../../../../installing/manual/manual-install-web-cluster-aegir-using-nginx/index.html" />
+<link rel="up" href="../../../../../installing/manual/index.html" />
+<link rel="next" href="../../../../462/index.html" />
+<link rel="prev" href="../../../../../installing/manual/manual-install-web-cluster-aegir-using-nginx/index.html" />
+<link rel="up" href="../../../../../installing/manual/index.html" />
+<link rel="next" href="../../../../462/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of nginx / MariaDB / PHP-FPM Single Server Installation from Wed, 02/15/2012 - 08:08 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1075" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/installing/manual/nginx-mariadb-php-fpm-single-server-installation/index.html">nginx / MariaDB / PHP-FPM Single Server Installation</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-1075'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/cweagans/index.html" class="username" title="View user profile.">cweagans</a> on 02/15/2012 - 08:08</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Housekeeping"><span class="toc-number">1. </span>Housekeeping</a></li>
+	<li class="toc-level-1"><a href="#Install_MariaDB"><span class="toc-number">2. </span>Install MariaDB</a></li>
+	<li class="toc-level-1"><a href="#Install_Nginx"><span class="toc-number">3. </span>Install Nginx</a></li>
+	<li class="toc-level-1"><a href="#Install_all_the_other_stuff"><span class="toc-number">4. </span>Install all the other stuff</a></li>
+	<li class="toc-level-1"><a href="#Create_the_Aegir_user"><span class="toc-number">5. </span>Create the Aegir user</a></li>
+	<li class="toc-level-1"><a href="#Misc_Configuration"><span class="toc-number">6. </span>Misc Configuration</a></li>
+	<li class="toc-level-1"><a href="#Install_Aegir"><span class="toc-number">7. </span>Install Aegir</a></li>
+	<li class="toc-level-1"><a href="#Optional_Improvements"><span class="toc-number">8. </span>Optional Improvements</a></li>
+</ol>
+</div>
+</div>
+
+<p>Note: This installation process assumes that you're using a fresh install of Ubuntu 11.10 (Oneiric). I realize that this is not the version of Ubuntu that most people would choose to use, but it's what I use. If you use a lower version of Ubuntu, you may have trouble with this guide.</p>
+
+<p>On most VPS providers, you'll be logged in as root initially. The installation process below assumes that you are logged in as root. Obviously, this is not a secure long-term solution, so once you're done with this guide, I suggest setting up public key authentication, turning off root login over SSH, and creating yourself a new unprivileged user. That's out of scope for this doc page, so you're probably <a href="http://google.com/">on your own</a> for that.</p>
+
+<p>Finally, this document assumes that you're going to be installing aegir at aegir.example.com. Any time you see example.com, replace it with your domain.</p>
+
+<h2 id="Housekeeping">1. Housekeeping</h2>
+
+<p>Make sure you're up to date:</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+</code></pre>
+
+<p>And that you have the the python-software-properties package (we'll need it later):</p>
+
+<pre><code>apt-get install python-software-properties
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Install_MariaDB">2. Install MariaDB</h2>
+
+<p>From mariadb.org:</p>
+
+<pre><code>MariaDB is a database server that offers drop-in replacement functionality for MySQL. 
+MariaDB is built by some of the original authors of MySQL, with assistance from the
+broader community of Free and open source software developers. In addition to the core
+functionality of MySQL, MariaDB offers a rich set of feature enhancements including
+alternate storage engines, server optimizations, and patches.
+</code></pre>
+
+<p>To get started, add the following to <code>/etc/apt/sources.list.d</code>:</p>
+
+<pre><code># MariaDB repository list - created 2012-02-15 07:42 UTC
+# <a href="http://downloads.askmonty.org/mariadb/repositories/" title="http://downloads.askmonty.org/mariadb/repositories/">http://downloads.askmonty.org/mariadb/repositories/</a>
+deb <a href="http://ftp.osuosl.org/pub/mariadb/repo/5.3/ubuntu" title="http://ftp.osuosl.org/pub/mariadb/repo/5.3/ubuntu">http://ftp.osuosl.org/pub/mariadb/repo/5.3/ubuntu</a> oneiric main
+deb-src <a href="http://ftp.osuosl.org/pub/mariadb/repo/5.3/ubuntu" title="http://ftp.osuosl.org/pub/mariadb/repo/5.3/ubuntu">http://ftp.osuosl.org/pub/mariadb/repo/5.3/ubuntu</a> oneiric main
+</code></pre>
+
+<p>You'll also need to download the signing key:</p>
+
+<pre><code>apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xcbcb082a1bb943db
+</code></pre>
+
+<p>Next, update the apt cache and install MariaDB:</p>
+
+<pre><code>apt-get update
+apt-get install mariadb-server
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Install_Nginx">3. Install Nginx</h2>
+
+<p>Add the Nginx repository to your sources by running:</p>
+
+<pre><code>apt-add-repository ppa:brianmercer/nginx
+apt-get update
+</code></pre>
+
+<p>Next, install Nginx and PHP-FPM:</p>
+
+<pre><code>apt-get install nginx-custom php5-cli php5-mysql php5-fpm php5-gd
+</code></pre>
+
+<p>Create the default docroot for Nginx as well:</p>
+
+<pre><code>mkdir -p /var/www/nginx-default
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Install_all_the_other_stuff">4. Install all the other stuff</h2>
+
+<pre><code>apt-get install git-core git-doc vim drush postfix rsync unzip bzr patch curl
+</code></pre>
+
+<p>When prompted for Postfix configuration, select "Internet Site", then use "example.com" for the System mail name.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Create_the_Aegir_user">5. Create the Aegir user</h2>
+
+<p>Easy:</p>
+
+<pre><code>adduser --system --group --home /var/aegir aegir
+adduser aegir www-data
+chsh -s /bin/bash aegir
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Misc_Configuration">6. Misc Configuration</h2>
+
+<p>Make sure the Aegir user is allowed to restart Nginx:</p>
+
+<pre><code>echo "aegir ALL=NOPASSWD: /etc/init.d/nginx" &gt;&gt; /etc/sudoers
+</code></pre>
+
+<p>Symlink Aegir's nginx configuration into place:</p>
+
+<pre><code>ln -s /var/aegir/config/nginx.conf /etc/nginx/conf.d/aegir.conf
+</code></pre>
+
+<p>Disable duplicated directives in <code>/etc/nginx/nginx.conf</code> (the Aegir config specifies these values as well - if you do not disable them in the main nginx.conf, nginx will fail to restart). You can just remove (or comment them out with a "#") the lines that start with the following</p>
+
+<pre><code>types_hash_max_size
+tcp_nopush
+error_log
+</code></pre>
+
+<p>Then, restart Nginx:</p>
+
+<pre><code>service nginx restart
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Install_Aegir">7. Install Aegir</h2>
+
+<p><strong>IMPORTANT</strong> Switch to the Aegir user now: <strong>IMPORTANT</strong></p>
+
+<pre><code>su aegir
+cd ~/
+</code></pre>
+
+<p>Download the latest Provision release:</p>
+
+<pre><code>mkdir ~/.drush
+cd ~/.drush
+wget -c <a href="http://ftp.drupal.org/files/projects/provision-6.x-1.6.tar.gz" title="http://ftp.drupal.org/files/projects/provision-6.x-1.6.tar.gz">http://ftp.drupal.org/files/projects/provision-6.x-1.6.tar.gz</a>
+tar -zxf provision-6.x-1.6.tar.gz
+rm provision-6.x-1.6.tar.gz
+</code></pre>
+
+<p>Start the Aegir install process:</p>
+
+<pre><code>cd ~/
+drush hostmaster-install aegir.example.com \
+--aegir_host="aegir.example.com"<span class='diff-added'> \
+--http_service_type="nginx"</span> \
+--aegir_db_user="root" \
+--aegir_db_pass="[YOUR ROOT DATABASE PASSWORD]"<span class='diff-deleted'> </span><span class='diff-deleted'>\
+--http_service_type="nginx"</span> \
+--db_service_type="mysql" \
+--db_port=3306 \
+--aegir_db_host="localhost" \
+--client_email="[YOUR EMAIL ADDRESS] \
+--script_user="aegir" \
+--web_group="www-data" \
+--profile=hostmaster
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Optional_Improvements">8. Optional Improvements</h2>
+
+<p><span class='diff-changed'>drupal.org/project/hosting_queue_runner</span></p><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>drupal.org/project/provision_boost</span></p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-50.html?destination=node%2F1075%23comment-form">Login</a> or <a href="../../../../../user/register/index-50.html?destination=node%2F1075%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-50.html?destination=node%2F1075%23comment-form">Login</a> or <a href="../../../../../user/register/index-50.html?destination=node%2F1075%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/1075/revisions/2833/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:45 GMT -->
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  
+<!-- Mirrored from community.aegirproject.org/discuss/site-migrate-task-fails-cannot-connect-new-db by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 20:11:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+    <link type="text/css" rel="stylesheet" media="all" href="../../profiles/openatrium/modules/contrib/codefilter/codefilter/index.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_b8ca3ff360daa12eff502993554e60d0/index.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../../sites/community.aegirproject.org/files/css/css_c151a4313ed94e62ccee94ea27ad58ed/index.css" />
+<link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<style type='text/css'>
+.atrium-welcome-links a:hover,
+.dropdown-blocks .block-toggle li a:hover,
+.dropdown-blocks .block-toggle li a:focus,
+.dropdown-blocks .block-toggle ul.links li a:hover,
+.dropdown-blocks .block-toggle ul.links li a:focus,
+.dropdown-blocks .block-toggle .item-list li a:hover,
+.dropdown-blocks .block-toggle .item-list li a:focus,
+.pager li.pager-current,
+.more-link a:hover,
+#global,
+#navigation { background-color:#143352; }
+
+body #space-tools .block-title { background-color:#0e2339; }
+
+body #header .block-widget .block-content,
+body #header .block .block-title { background-color:#112b45; }
+
+body .page-region .block .block-title {
+  background-color:#c2c8ce;
+  border-color:#b4bbc1;
+  border-bottom-color:#a7adb3;
+  }
+
+.drilldown .trail a {
+  border-top-color:#f3f4f6;
+  border-bottom-color:#d2d4d6;
+  background-color:#e3e4e6;
+  }
+
+.decay-10 .comment-title { border-color:#eeeeee; }
+.decay-9 .comment-title { border-color:#d8dbde; }
+.decay-8 .comment-title { border-color:#c2c8ce; }
+.decay-7 .comment-title { border-color:#acb5bf; }
+.decay-6 .comment-title { border-color:#96a3af; }
+.decay-5 .comment-title { border-color:#8190a0; }
+.decay-4 .comment-title { border-color:#6b7d90; }
+.decay-3 .comment-title { border-color:#556b80; }
+.decay-2 .comment-title { border-color:#3f5871; }
+.decay-1 .comment-title { border-color:#294561; }
+.decay-0 .comment-title { border-color:#143352; }
+</style>
+    <script type="text/javascript" src="../../sites/community.aegirproject.org/files/js/js_dddbfcfef882b2074d904e22eb494d08/index.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/"});
+//--><!]]>
+</script>
+    <!--[if lte IE 8]><style type='text/css' media='screen'>@import '/profiles/openatrium/themes/ginkgo/ie.css';</style><![endif]-->    <title>Site migrate task fails: cannot connect to new db? | community.aegirproject.org</title>
+  </head>
+  <body  class="not-front not-logged-in page-node node-type-discussion one-sidebar sidebar-right designkit tao rubik admin-static page">
+
+  <a id='skipnav' href='#content'>Skip navigation</a>
+  <div id='global'><div class='limiter clear-block'>
+          <div id='header' class='dropdown-blocks toggle-blocks clear-block'>
+          
+
+<div  id="block-atrium-account" class="block block-atrium block-widget block-notitle">
+  
+  
+      <div class='block-content clear-block '>
+      <a href="../../user/login/index.html">Log in</a>    </div>
+  
+  </div>
+
+
+  
+
+<div  id="block-boxes-search_issues" class="block block-boxes block-toggle">
+      <div class='block-title'>
+            <a href="index.html#block-boxes-search_issues" class="toggle element-invisible active">Toggle</a>LOOKING FOR HELP?    </div>
+  
+  
+      <div class='block-content clear-block '>
+      <div id='boxes-box-search_issues' class='boxes-box'><div class="boxes-box-content"><table class="prose">
+<tr>
+<td width="50%">
+<span style="font-size:16px;width:100%">Type some keywords below and hit "enter":</span><br />
+<input type="text" class="drupal-issue-redirect" style="width:100%;min-width:200px;background-color:#DDEEFF; font-size:30px;border-style:dotted;border-width:1px" />
+<p>This will search the drupal.org issue queues across the various projects that make up the Aegir system. If there are no relevant results, please submit an issue there.</p></td>
+<td style="padding:10px">Other support resources:
+<ul>
+<li><a href="irc://irc.freenode.net/aegir">#aegir on IRC</a></li>
+<li><a href="../../faq/index.html">FAQ</a></li>
+<li><a href="../../handbook/index.html">Aegir Handbook</a></li>
+<li><a href="../../service-providers/index.html">Aegir service providers</a></li>
+<li><a href="https://drupal.org/project/issues?text=&amp;projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir),Hosting+Platform+Pathauto&amp;status=Open&amp;priorities=All&amp;categories=All">All Aegir issues</a></li>
+<li><a href="http://drupal.stackexchange.com/questions/tagged/aegir">Aegir tag on Drupal Stackexchange</a></li>
+</ul>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+$("input.drupal-issue-redirect").change(function() {
+  searchURL= "http://drupal.org/project/issues?text="+$(this).val()+"&projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir),Hosting+Platform+Pathauto&status=Open&priorities=All&categories=All";
+  window.location = searchURL;
+});
+</script></div></div>    </div>
+  
+  </div>
+
+
+      </div>
+        <div class='breadcrumb'><span class='link link-0'><a href="../../index.html">Home</a></span></div>    <a href="../../index.html" class="logo" style="background-position:100% 50%; background-image:url(../%27http_/community.aegirproject.org/sites/community.aegirproject.org/files/imagecache/designkit-image-logo/logo/index.html)"></a>  </div></div>
+
+    <div id='navigation'><div class='limiter clear-block'>
+    <ul id="features-menu" class="links primary-links"><li class="menu-617 first"><a href="../../dashboard/index.html" class=" icon-dashboard"><span class='icon'></span><span class='label'>Dashboard</span></a></li>
+<li class="menu-618"><a href="../../handbook/index.html" class=" icon-handbook"><span class='icon'></span><span class='label'>Documentation</span></a></li>
+<li class="menu-2427 active"><a href="../../discussion/index.html" class="active icon-discussion"><span class='icon'></span><span class='label'>Discussion</span></a></li>
+<li class="menu-2426"><a href="../../calendar/index.html" class="spaces-menu-editable icon-calendar"><span class='icon'></span><span class='label'>Calendar</span></a></li>
+<li class="menu-823"><a href="../../reader/index.html" class=" icon-reader"><span class='icon'></span><span class='label'>Feed reader</span></a></li>
+<li class="menu-2429 last"><a href="../../members/index.html" class=" icon-members"><span class='icon'></span><span class='label'>Members</span></a></li>
+</ul>          <div id='space-tools'><div class='dropdown-blocks toggle-blocks clear-block'>  
+
+<div  id="block-atrium-search" class="block block-atrium block-toggle">
+      <div class='block-title'>
+            <a href="index.html#block-atrium-search" class="toggle element-invisible active">Toggle</a><span class='icon'></span> Search    </div>
+  
+  
+      <div class='block-content clear-block '>
+      <form action="http://community.aegirproject.org/discuss/site-migrate-task-fails-cannot-connect-new-db"  accept-charset="UTF-8" method="post" id="atrium-search-form">
+<div><div  class="form-item form-item-labeled" id="edit-search-wrapper">
+      <label  for="edit-search">Search: <span class='form-required' title='This field is required.'>*</span></label>
+    <input type="text" maxlength="128" name="search" id="edit-search" value="" class="form-text required fluid" />  </div>
+<input type="submit" name="op" id="edit-submit" value="Search"  class="form-submit" />
+<input type="hidden" name="form_build_id" id="form-xPOqM1vK3WBMnRtM2vp6TkiNFBrqo0WmtP9bDQKC4cE" value="form-xPOqM1vK3WBMnRtM2vp6TkiNFBrqo0WmtP9bDQKC4cE"  />
+<input type="hidden" name="form_id" id="edit-atrium-search-form" value="atrium_search_form"  />
+
+</div></form>
+    </div>
+  
+  </div>
+
+
+</div></div>
+      </div></div>
+  
+  <div id='page-tools'><div class='limiter clear-block'>
+    <h1  class="page-title page-title-hidden">Site migrate task fails: cannot connect to new db?</h1>    <div class='tabs clear-block'><ul class='links primary-tabs'><li class="active" ><a href="index.html" class="active">View</a></li>
+<li ><a href="../../node/1478/revisions/index.html">Revisions</a></li>
+</ul></div>    <a href="index.html#block-atrium-help" id="help-toggler" class="palette-toggle active">Help</a>          </div></div>
+
+  
+  
+  <div id='page'><div class='limiter clear-block'>
+    
+<div id='content'><div class='page-region'>
+      <div class='page-content content-wrapper clear-block'>
+
+<div  id="node-1478" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/remco75/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-209/index.jpg" alt="remco75&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/remco75/index.html" class="username" title="View user profile.">remco75</a></div><div class='date'>3:17pm May 16, 2012</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Site migrate task fails: cannot connect to new db?</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_116 first last"><a href="../../category/keywords/clone-migrate-fail-drushphp/index.html" rel="tag" title="">clone migrate fail drush.php</a></li>
+</ul></div><p>I also posted this issue in the issue que for provision, but maybe this is a better place.</p>
+
+<p>This is a site that I've been managing with aegir for a long time (since aegir 1.0 at least)</p>
+
+<p>Migrating and cloning never was a problem.</p>
+
+<p>Since (I think 1.6) only this site I cannot clone or migrate anymore; not to the same server and not to the master server (the site is running on a remote server).All other sites do not seem to be affected, and I can't seem to reproduce it with other sites.</p>
+
+<p>The main failure reason is:
+Drush command terminated abnormally due to an unrecoverable error. Error: Call to undefined function user_load() in /var/aegir/drush/drush.php, line 235</p>
+
+<p>Drush was not able to start (bootstrap) Drupal. Hint: This error can only occur once the database connection has already been successfully initiated, t</p>
+
+<p>below the output of the failed migrate task:</p>
+
+<p><div class="codeblock"><code>Log message<br />Task starts processing<br />Undefined variable: site hosting_clone.drush.inc:23<br />Trying to get property of non-object hosting_clone.drush.inc:23<br />Undefined index: aliases hosting_clone.drush.inc:28<br />Undefined index: redirection hosting_clone.drush.inc:29<br />Running: /usr/bin/php /var/aegir/drush/drush.php --php=&#039;/usr/bin/php&#039; @groeneprikkel.nl provision-clone &#039;@test.groeneprikkel.nl&#039; &#039;@platform_gpLive27022012v3&#039; --backend 2&gt;&amp;1<br />Bootstrap to phase 0.<br />Drush bootstrap phase : _drush_bootstrap_drush()<br />Load alias @groeneprikkel.nl<br />Loading drushrc &quot;/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/groeneprikkel.nl/drushrc.php&quot; into &quot;site&quot; scope.<br />Bootstrap to phase 1.<br />Drush bootstrap phase : _drush_bootstrap_drupal_root()<br />Loading drushrc &quot;/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/drushrc.php&quot; into &quot;drupal&quot; scope.<br />Initialized Drupal 6.24 root directory at /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3<br />Found command: provision-clone (commandfile=provision)<br />Initializing drush commandfile: drush_make<br />Initializing drush commandfile: drush_make_d_o<br />Initializing drush commandfile: provision<br />Load alias @server_vps557greenhostnl<br />Load alias @server_master<br />Loading mysql driver for the db service<br />Loading apache_ssl driver for the http service<br />Loading mysql driver for the db service<br />Load alias @platform_gpLive27022012v3<br />Load alias @server_vps556greenhostnl<br />Loading apache_ssl driver for the http service<br />Initializing drush commandfile: user<br />Including /var/aegir/.drush/provision/db/clone.provision.inc<br />Including /var/aegir/.drush/provision/platform/clone.provision.inc<br />Drush bootstrap phase : _drush_bootstrap_drupal_site()<br />Initialized Drupal site groeneprikkel.nl at sites/groeneprikkel.nl<br />Loading drushrc &quot;/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/groeneprikkel.nl/drushrc.php&quot; into &quot;site&quot; scope.<br />Including /var/aegir/.drush/provision/db/backup.provision.inc<br />Including /var/aegir/.drush/provision/platform/backup.provision.inc<br />Drush bootstrap phase : _drush_bootstrap_drupal_configuration()<br />Adding sites directory to /var/aegir/backups/groeneprikkel.nl-20120516.161103.tar.gz<br />/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/groeneprikkel.nl/files/ has been fetched from remote server vps556.greenhost.nl.<br />/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/groeneprikkel.nl/private/ has been fetched from remote server vps556.greenhost.nl.<br />/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/groeneprikkel.nl/modules/ has been fetched from remote server vps556.greenhost.nl.<br />/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/groeneprikkel.nl/themes/ has been fetched from remote server vps556.greenhost.nl.<br />/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/groeneprikkel.nl/libraries/ has been fetched from remote server vps556.greenhost.nl.<br />/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/groeneprikkel.nl/local.settings.php has been fetched from remote server vps556.greenhost.nl.<br />Temporarily uncloaking database credentials for backup<br />Template loaded: /var/aegir/.drush/provision/platform/provision_drupal_settings.tpl.php<br />Changed permissions of /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/groeneprikkel.nl/settings.php to 640<br />Generated config Drupal settings.php file<br />Changed permissions of /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/groeneprikkel.nl/settings.php to 440<br />Change group ownership of /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/groeneprikkel.nl/settings.php to www-data<br />/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3 has been synced to remote server vps556.greenhost.nl.<br />/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/groeneprikkel.nl has been synced to remote server vps556.greenhost.nl.<br />Re-cloaking database credentials after backup<br />Template loaded: /var/aegir/.drush/provision/platform/provision_drupal_settings.tpl.php<br />Changed permissions of /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/groeneprikkel.nl/settings.php to 640<br />Generated config Drupal settings.php file<br />Changed permissions of /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/groeneprikkel.nl/settings.php to 440<br />Change group ownership of /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/groeneprikkel.nl/settings.php to www-data<br />/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3 has been synced to remote server vps556.greenhost.nl.<br />/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/groeneprikkel.nl has been synced to remote server vps556.greenhost.nl.<br />Deleted mysql dump from sites directory<br />Backed up site up to /var/aegir/backups/groeneprikkel.nl-20120516.161103.tar.gz.<br />Client backup directory for rcvliermangmailcom path /var/aegir/clients/rcvliermangmailcom/backups exists.<br />Client backup directory for rcvliermangmailcom ownership of /var/aegir/clients/rcvliermangmailcom/backups has been changed to aegir.<br />Client backup directory for rcvliermangmailcom permissions of /var/aegir/clients/rcvliermangmailcom/backups have been changed to 750.<br />Client backup directory for rcvliermangmailcom path /var/aegir/clients/rcvliermangmailcom/backups is writable.<br />Created symlink /var/aegir/clients/rcvliermangmailcom/backups/groeneprikkel.nl-20120516.161103.tar.gz to /var/aegir/backups/groeneprikkel.nl-20120516.161103.tar.gz<br />Running: /usr/bin/php /var/aegir/drush/drush.php --php=&#039;/usr/bin/php&#039; --co... (Expand)<br />Bootstrap to phase 0.<br />Drush bootstrap phase : _drush_bootstrap_drush()<br />Bootstrap to phase 0.<br />Found command: provision-save (commandfile=provision)<br />Initializing drush commandfile: drush_make<br />Initializing drush commandfile: drush_make_d_o<br />Initializing drush commandfile: provision<br />Load alias @self<br />Load alias @server_vps557greenhostnl<br />Load alias @server_master<br />Loading mysql driver for the db service<br />Loading apache_ssl driver for the http service<br />Loading mysql driver for the db service<br />Load alias @platform_gpLive27022012v3<br />Load alias @server_vps556greenhostnl<br />Loading apache_ssl driver for the http service<br />Initializing drush commandfile: user<br />Load alias @test.groeneprikkel.nl<br />Template loaded: /var/aegir/.drush/provision/provision_drushrc_alias.tpl.php<br />Generated config Drush configuration file<br />Changed permissions of /var/aegir/.drush/test.groeneprikkel.nl.alias.drushrc.php to 440<br />Command dispatch complete<br />Peak memory usage was 13.21 MB<br />Running: /usr/bin/php /var/aegir/drush/drush.php --php=&#039;/usr/bin/php&#039; --old_uri=&#039;groeneprikkel.nl&#039; @test.groeneprikkel.nl provision-deploy &#039;/var/aegir/backups/groeneprikkel.nl-20120516.161103.tar.gz&#039; --backend 2&gt;&amp;1<br />Bootstrap to phase 0.<br />Drush bootstrap phase : _drush_bootstrap_drush()<br />Load alias @test.groeneprikkel.nl<br />Bootstrap to phase 1.<br />Drush bootstrap phase : _drush_bootstrap_drupal_root()<br />Loading drushrc &quot;/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/drushrc.php&quot; into &quot;drupal&quot; scope.<br />Initialized Drupal 6.24 root directory at /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3<br />Found command: provision-deploy (commandfile=provision)<br />Initializing drush commandfile: drush_make<br />Initializing drush commandfile: drush_make_d_o<br />Initializing drush commandfile: provision<br />Load alias @server_vps557greenhostnl<br />Load alias @server_master<br />Loading mysql driver for the db service<br />Loading apache_ssl driver for the http service<br />Loading mysql driver for the db service<br />Load alias @platform_gpLive27022012v3<br />Load alias @server_vps556greenhostnl<br />Loading apache_ssl driver for the http service<br />Initializing drush commandfile: user<br />Including /var/aegir/.drush/provision/db/deploy.provision.inc<br />Including /var/aegir/.drush/provision/http/deploy.provision.inc<br />Including /var/aegir/.drush/provision/platform/deploy.provision.inc<br />Deploying site from /var/aegir/backups/groeneprikkel.nl-20120516.161103.tar.gz<br />Granting privileges to <a href="mailto:testgroeneprikke@vps556.greenhost.nl">testgroeneprikke@vps556.greenhost.nl</a> on testgroeneprikke<br />Granting privileges to <a href="mailto:testgroeneprikke@206-51-223.ftth.xms.internl.net">testgroeneprikke@206-51-223.ftth.xms.internl.net</a> on testgroeneprikke<br />Created testgroeneprikke database<br />Running: gunzip -c /var/aegir/backups/groeneprikkel.nl-20120516.161103.tar.gz | tar pxf - in /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl<br />Successfully extracted the contents of /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl<br />Changed group ownership of files in /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files to www-data<br />Template loaded: /var/aegir/.drush/provision/provision_drushrc_site.tpl.php<br />Changed permissions of /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/drushrc.php to 640<br />Generated config Site Drush configuration file<br />Changed permissions of /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/drushrc.php to 440<br />/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3 has been synced to remote server vps556.greenhost.nl.<br />/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl has been synced to remote server vps556.greenhost.nl.<br />Drush bootstrap phase : _drush_bootstrap_drupal_site()<br />Initialized Drupal site test.groeneprikkel.nl at sites/test.groeneprikkel.nl<br />Loading drushrc &quot;/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/drushrc.php&quot; into &quot;site&quot; scope.<br />Template loaded: /var/aegir/.drush/provision/platform/provision_drupal_settings.tpl.php<br />Changed permissions of /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/settings.php to 640<br />Generated config Drupal settings.php file<br />Changed permissions of /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/settings.php to 440<br />Change group ownership of /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/settings.php to www-data<br />/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3 has been synced to remote server vps556.greenhost.nl.<br />/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl has been synced to remote server vps556.greenhost.nl.<br />Found database dump at /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/database.sql.<br />Database dump at /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/database.sql is readable<br />Importing database using command: mysql --defaults-file=/dev/fd/3 testgroeneprikke<br />Changed permissions of sites/test.groeneprikkel.nl to 755<br />Changed permissions of sites/test.groeneprikkel.nl/themes to 2775<br />Changed permissions of sites/test.groeneprikkel.nl/modules to 2775<br />Changed permissions of sites/test.groeneprikkel.nl/libraries to 2775<br />Changed permissions of sites/test.groeneprikkel.nl/files to 2770<br />Changed permissions of sites/test.groeneprikkel.nl/files/tmp to 2770<br />Changed permissions of sites/test.groeneprikkel.nl/files/images to 2770<br />Changed permissions of sites/test.groeneprikkel.nl/files/pictures to 2770<br />Changed permissions of sites/test.groeneprikkel.nl/files/css to 2770<br />Changed permissions of sites/test.groeneprikkel.nl/files/js to 2770<br />Changed permissions of sites/test.groeneprikkel.nl/files/ctools to 2770<br />Changed permissions of sites/test.groeneprikkel.nl/files/imagecache to 2770<br />Changed permissions of sites/test.groeneprikkel.nl/files/locations to 2770<br />Changed permissions of sites/test.groeneprikkel.nl/private to 2770<br />Changed permissions of sites/test.groeneprikkel.nl/private/files to 2770<br />Changed permissions of sites/test.groeneprikkel.nl/private/temp to 2770<br />Changed group ownership of sites/test.groeneprikkel.nl/files to www-data<br />Changed group ownership of sites/test.groeneprikkel.nl/files/tmp to www-data<br />Changed group ownership of sites/test.groeneprikkel.nl/files/images to www-data<br />Changed group ownership of sites/test.groeneprikkel.nl/files/pictures to www-data<br />Changed group ownership of sites/test.groeneprikkel.nl/files/css to www-data<br />Changed group ownership of sites/test.groeneprikkel.nl/files/js to www-data<br />Changed group ownership of sites/test.groeneprikkel.nl/files/ctools to www-data<br />Changed group ownership of sites/test.groeneprikkel.nl/files/imagecache to www-data<br />Changed group ownership of sites/test.groeneprikkel.nl/files/locations to www-data<br />Changed group ownership of sites/test.groeneprikkel.nl/private to www-data<br />Changed group ownership of sites/test.groeneprikkel.nl/private/files to www-data<br />Changed group ownership of sites/test.groeneprikkel.nl/private/temp to www-data<br />Removed dump file /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/database.sql after restoring from it<br />Template loaded: /var/aegir/.drush/provision/http/apache_ssl/vhost_ssl.tpl.php<br />Generated config encrypted virtual host configuration<br />/var/aegir/config/server_vps556greenhostnl/apache/vhost.d/test.groeneprikkel.nl has been synced to remote server vps556.greenhost.nl.<br />apache on vps556.greenhost.nl has been restarted<br />Running: /usr/bin/php /var/aegir/drush/drush.php --php=&#039;/usr/bin/php&#039; @test.groeneprikkel.nl updatedb --backend 2&gt;&amp;1<br />The external command could not be executed due to an application error.<br />Bootstrap to phase 0.<br />Drush bootstrap phase : _drush_bootstrap_drush()<br />Load alias @test.groeneprikkel.nl<br />Loading drushrc &quot;/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/drushrc.php&quot; into &quot;site&quot; scope.<br />Bootstrap to phase 2.<br />Drush bootstrap phase : _drush_bootstrap_drupal_root()<br />Loading drushrc &quot;/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/drushrc.php&quot; into &quot;drupal&quot; scope.<br />Initialized Drupal 6.24 root directory at /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3<br />Drush bootstrap phase : _drush_bootstrap_drupal_site()<br />Initialized Drupal site test.groeneprikkel.nl at sites/test.groeneprikkel.nl<br />Loading drushrc &quot;/var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/drushrc.php&quot; into &quot;site&quot; scope.<br />Found command: updatedb (commandfile=core)<br />Initializing drush commandfile: drush_make<br />Initializing drush commandfile: drush_make_d_o<br />Initializing drush commandfile: provision<br />Load alias @server_vps557greenhostnl<br />Load alias @server_master<br />Loading mysql driver for the db service<br />Loading apache_ssl driver for the http service<br />Loading mysql driver for the db service<br />Load alias @platform_gpLive27022012v3<br />Load alias @server_vps556greenhostnl<br />Loading apache_ssl driver for the http service<br />Initializing drush commandfile: user<br />Drush bootstrap phase : _drush_bootstrap_drupal_configuration()<br />Drush bootstrap phase : _drush_bootstrap_drupal_database()<br />Successfully connected to the Drupal database.<br />Drush bootstrap phase : _drush_bootstrap_drupal_full()<br />Drush bootstrap phase : _drush_bootstrap_drupal_login()<br />Drush command terminated abnormally due to an unrecoverable error. Error: Call to undefined function user_load() in /var/aegir/drush/drush.php, line 235<br />Drush was not able to start (bootstrap) Drupal. Hint: This error can only o... (Expand)<br />Drush was not able to start (bootstrap) the Drupal database. Hint: This err... (Expand)<br />could not bootstrap drupal after updatedb<br />Template loaded: /var/aegir/.drush/provision/http/apache_ssl/vhost_ssl.tpl.php<br />Generated config encrypted virtual host configuration<br />/var/aegir/config/server_vps556greenhostnl/apache/vhost.d/test.groeneprikkel.nl has been synced to remote server vps556.greenhost.nl.<br />apache on vps556.greenhost.nl has been restarted<br />Changes made in drush_http_post_provision_deploy have been rolled back.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/themes directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/libraries directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/ctools/css directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/ctools directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/imagefield_thumbs directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/tmp directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/js directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/languages directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/category_pictures directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/pictures directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/locations directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/css directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/imagecache/assortiment_vierkant/category_pictures directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/imagecache/assortiment_vierkant directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/imagecache/verhaal_size directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/imagecache/slideshow_sidebar directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/imagecache/thumb directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/imagecache/partner_page directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/imagecache/extra_product_foto directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/imagecache/fotoboek_thumb directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/imagecache/product directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/imagecache/image_home_page directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/imagecache/prduct_page directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/imagecache/slide_side_landscape directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/imagecache/lightbox-product directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/imagecache/slideshow_home directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/imagecache directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files/images directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/files directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/modules/contemplate/translations directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/modules/contemplate/po directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/modules/contemplate/.cache directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/modules/contemplate directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/modules/views_attachments_fpo directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/modules/views_rss/views directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/modules/views_rss directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/modules directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/private/temp directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/private/files directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl/private directory successful.<br />Deleting /var/aegir/SERVER_gpweb_vps566/gpLive27-02-2012v3/sites/test.groeneprikkel.nl directory successful.<br />Changes made in drush_provision_drupal_pre_provision_deploy have been rolled back.<br />Dropping database testgroeneprikke<br />Revoking privileges of <a href="mailto:testgroeneprikke@vps556.greenhost.nl">testgroeneprikke@vps556.greenhost.nl</a> from testgroeneprikke<br />Revoking privileges of <a href="mailto:testgroeneprikke@206-51-223.ftth.xms.internl.net">testgroeneprikke@206-51-223.ftth.xms.internl.net</a> from testgroeneprikke<br />Changes made in drush_db_pre_provision_deploy have been rolled back.<br />Command dispatch complete<br />Peak memory usage was 17.99 MB<br />Removed unused clone site package<br />Changes made in drush_provision_drupal_pre_provision_clone have been rolled back.<br />Command dispatch complete<br />Peak memory usage was 20.96 MB<br />Command dispatch complete<br />Peak memory usage was 38.32 MB</code></div></p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-477.html?destination=node%2F1478%23comment-form">Login</a> or <a href="../../user/register/index-477.html?destination=node%2F1478%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-1874"></a>
+
+
+<div  id="comment-1874" class="comment comment-published clear-block decay-10 decay-10">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/ontoligent/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-886/index.png" alt="ontoligent&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/ontoligent/index.html" class="username" title="View user profile.">ontoligent</a></div><div class='date'>10:09pm Mar 16, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-1874" class="active">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Can you tell me which table was corrupted? And I assume you mean one of Aegir's tables?</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-477.html?destination=node%2F1478%23comment-form">Login</a> or <a href="../../user/register/index-477.html?destination=node%2F1478%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2062"></a>
+
+
+<div  id="comment-2062" class="comment comment-published clear-block decay-5 decay-5">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/developerweeks/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="developerweeks&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/developerweeks/index.html" class="username" title="View user profile.">developerweeks</a></div><div class='date'>7:59pm Oct 28, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2062" class="active">#2</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>A little outdated thread... but if you are looking at aegir migration errors and find this page, my experience is that any function which grep can find in /platform/yours/modules but drupal cannot find is an issue with the System table being corrupted.</p>
+
+<p>Good hunting.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-477.html?destination=node%2F1478%23comment-form">Login</a> or <a href="../../user/register/index-477.html?destination=node%2F1478%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2063"></a>
+
+
+<div  id="comment-2063" class="comment comment-published clear-block decay-5 decay-5">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/ontoligent/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-886/index.png" alt="ontoligent&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/ontoligent/index.html" class="username" title="View user profile.">ontoligent</a></div><div class='date'>8:04pm Oct 28, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2063" class="active">#3</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>In this case, it seems that Rebuild Registry (<a href="https://drupal.org/project/registry_rebuild" title="https://drupal.org/project/registry_rebuild">https://drupal.org/project/registry_rebuild</a>) may be useful.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-477.html?destination=node%2F1478%23comment-form">Login</a> or <a href="../../user/register/index-477.html?destination=node%2F1478%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2325"></a>
+
+
+<div  id="comment-2325" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/fuzzy76/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-1572/index.jpg" alt="fuzzy76&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/fuzzy76/index.html" class="username" title="View user profile.">fuzzy76</a></div><div class='date'>12:35pm Aug 28, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-2325" class="active">#4</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Could have been this issue.... <a href="https://www.drupal.org/node/1324466" title="https://www.drupal.org/node/1324466">https://www.drupal.org/node/1324466</a></p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-477.html?destination=node%2F1478%23comment-form">Login</a> or <a href="../../user/register/index-477.html?destination=node%2F1478%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+</div>
+    </div></div>
+<div id='right'><div class='page-region'>
+    
+
+<div  id="block-boxes-search_issues" class="block block-boxes">
+      <div class='block-title'>
+            LOOKING FOR HELP?    </div>
+  
+  
+      <div class='block-content clear-block '>
+      <div id='boxes-box-search_issues' class='boxes-box'><div class="boxes-box-content"><table class="prose">
+<tr>
+<td width="50%">
+<span style="font-size:16px;width:100%">Type some keywords below and hit "enter":</span><br />
+<input type="text" class="drupal-issue-redirect" style="width:100%;min-width:200px;background-color:#DDEEFF; font-size:30px;border-style:dotted;border-width:1px" />
+<p>This will search the drupal.org issue queues across the various projects that make up the Aegir system. If there are no relevant results, please submit an issue there.</p></td>
+<td style="padding:10px">Other support resources:
+<ul>
+<li><a href="irc://irc.freenode.net/aegir">#aegir on IRC</a></li>
+<li><a href="../../faq/index.html">FAQ</a></li>
+<li><a href="../../handbook/index.html">Aegir Handbook</a></li>
+<li><a href="../../service-providers/index.html">Aegir service providers</a></li>
+<li><a href="https://drupal.org/project/issues?text=&amp;projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir),Hosting+Platform+Pathauto&amp;status=Open&amp;priorities=All&amp;categories=All">All Aegir issues</a></li>
+<li><a href="http://drupal.stackexchange.com/questions/tagged/aegir">Aegir tag on Drupal Stackexchange</a></li>
+</ul>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+$("input.drupal-issue-redirect").change(function() {
+  searchURL= "http://drupal.org/project/issues?text="+$(this).val()+"&projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir),Hosting+Platform+Pathauto&status=Open&priorities=All&categories=All";
+  window.location = searchURL;
+});
+</script></div></div>    </div>
+  
+  </div>
+
+
+  
+
+<div  id="block-views-discussion_comments-block_1" class="block block-views">
+      <div class='block-title'>
+            Recent comments    </div>
+  
+  
+      <div class='block-content clear-block '>
+      <div class="view view-discussion-comments view-id-discussion_comments view-display-id-block_1 view-dom-id-1">
+    
+  
+  
+      <div class="view-empty">
+      <p>No recent comments found.</p>    </div>
+  
+  
+  
+  
+  
+  
+</div>     </div>
+  
+  </div>
+
+
+</div></div>
+
+  </div></div>
+
+    <div id="footer"><div class='limiter clear-block'>
+        <ul class="links"><li class="atrium first last"><a href="http://www.openatrium.com/" target="_blank">OpenAtrium.com</a></li>
+</ul>  </div></div>
+  
+  <div id='palette'>  
+
+<div  id="block-atrium-help" class="block block-atrium">
+      <div class='block-title'>
+            <span class='close'></span>Need help?    </div>
+  
+  
+      <div class='block-content clear-block '>
+      
+
+<div  id="help-text" class="path-admin-help clear-block toggleable">
+  
+    
+  
+  
+  
+      <div class='help-content clear-block prose'>
+      <span class='icon'></span><h3>Discussion</h3><p>The discussion area lets your team communicate by posting updates and discussing issues. It is a great place for sharing progress, discussing challenges, and exploring ideas.</p>
+    </div>
+  
+  </div>
+
+
+    </div>
+  
+  </div>
+
+
+</div>
+  
+  </body>
+
+<!-- Mirrored from community.aegirproject.org/discuss/site-migrate-task-fails-cannot-connect-new-db by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 20:11:21 GMT -->
+</html>

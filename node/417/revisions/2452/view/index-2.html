@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/417/revisions/2452/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../installing/manual/index.html" />
+<link rel="up" href="../../../../../installing/manual/index.html" />
+<link rel="next" href="../../../../../content/apache-mysql-php-aegir/index.html" />
+<link rel="prev" href="../../../../../installing/manual/index.html" />
+<link rel="up" href="../../../../../installing/manual/index.html" />
+<link rel="next" href="../../../../../content/apache-mysql-php-aegir/index.html" />
+<link rel="prev" href="../../../../../installing/manual/index.html" />
+<link rel="up" href="../../../../../installing/manual/index.html" />
+<link rel="next" href="../../../../../content/apache-mysql-php-aegir/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Mac OS X installation instructions hints from Tue, 10/25/2011 - 22:20 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-417" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Mac OS X installation instructions hints</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-417'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 10/25/2011 - 22:20</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>If you would like to set aegir up using nginx instead of Apache, <span class='diff-added'>The team at </span><a href="http://realityloop.com/">Realityloop</a><span class='diff-added'></span> have created a great video and text <span class='diff-changed'>tutorialdoc umenting the entire process</span> at <a href="http://rl.cm/mempae" title="http://rl.cm/mempae">http://rl.cm/mempae</a> otherwise continue below.</p>
+
+<p>This is a helper file to the canonical [/installing/manual](manual install process). It is aimed at
+helping you install Aegir on Mac OS X. Since PHP and MySQL support on OS X is fairly limited and complicated, a separate documentation page was created for that part of the documentation. You should follow this page all the way through and then proceed with the regular install, <a href="../../../../389/index.html#Stop_Now_become_the_Aegir_user">step 4: becoming the aegir user</a>.</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Special_software_requirements"><span class="toc-number">1. </span>Special software requirements</a></li>
+	<li class="toc-level-1"><a href="#Configure_system_requirements"><span class="toc-number">2. </span>Configure system requirements</a></li>
+</ol>
+</div>
+</div>
+
+<h1 id="Special_software_requirements">1. Special software requirements</h1>
+
+<p>While Mac OS X comes with Apache &amp; PHP (and even MySQL on the Server
+version), the version of PHP shipped with 10.6 Snow Leopard is 5.3.x
+and thus may not work with Aegir (as of the 0.4alpha-era) and various
+other software. If you're running 10.5 Leopard, it may work out of the
+box, but I haven't tested it.</p>
+
+<p>There are several different ways to get Apache, PHP 5.2, and MySQL 5
+onto a Mac OS X machine. I give detailed instructions for MacPorts
+below, but if that's a bit more than you're ready to bite off right
+now, feel free to use an alternative approach.</p>
+
+<p>One such alternative is MAMP. There is a good but outdated HOWTO for
+installing Aegir on Mac OS X 10.6 (Snow Leopard) using MAMP located
+here: <a href="http://groups.drupal.org/node/30270" title="http://groups.drupal.org/node/30270">http://groups.drupal.org/node/30270</a></p>
+
+<p>MAMP stands for Mac, Apache, MySQL, and PHP and is the Mac equivalent
+of "LAMP". It is a self-contained package of all of these programs
+with a nice graphical installer and control panel.  You can find it
+here: <a href="http://www.mamp.info/" title="http://www.mamp.info/">http://www.mamp.info/</a></p>
+
+<p>MAMP is pretty straightforward, but it's also not very flexible
+(IMHO).  While certainly not without its own headaches, MacPorts is a
+decently powerful way to sanely manage a healthy stack of open source
+UNIX software on your Mac. Since this is what I use, I'm going to
+assume MacPorts is in use for the rest of this HINTS file. I have also
+only tested this on Mac OS X 10.6 Snow Leopard.</p>
+
+<p>If you don't yet have MacPorts installed, go here to get it:
+<a href="http://www.macports.org/install.php" title="http://www.macports.org/install.php">http://www.macports.org/install.php</a></p>
+
+<p>Once it's installed, quit and re-launch your Terminal before
+continuing.  Otherwise MacPorts won't yet be in your PATH.</p>
+
+<p>The first two commands below are optional but recommended.</p>
+
+<p><div class="codeblock"><code>&nbsp; sudo port selfupdate<br />&nbsp; sudo port upgrade outdated<br />&nbsp; sudo port install apache2 mysql5-server git-core unzip php52 php5-posix php5-gd php5-apc +mysql5</code></div></p>
+
+<p>php5-apc is optional, but highly recommended as it will significantly increase
+PHP performance.</p>
+
+<p>Watch the output of the last port command carefully, as there are
+usually some boring tasks for you to perform once the install is
+done. You'll be wishing you were running Ubuntu/Debian and apt-get by
+the time you're done.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Configure_system_requirements">2. Configure system requirements</h1>
+
+<p>Next we'll create the aegir user and add it to the _www group. This
+part is very different on Mac OS X than Linux or most other
+Unices. Must be a NeXTism. The command we will use he is "dscl", which
+is a short for Directory Service Command Line. In OSX 10.3 and
+earlier, that command is "nicl" (short for Net Info Command Line). It is also
+possible to create the user using the "Workgroup Manager" utility included with
+OS X Server. To obtain Workgroup Manager for the OS X Client, download the
+"Server Admin Tools" from Apple. For example, for Mac OS X 10.6, the admin tools
+can be found at:</p>
+
+<p><a href="http://support.apple.com/downloads/Server_Admin_Tools_10_6" title="http://support.apple.com/downloads/Server_Admin_Tools_10_6">http://support.apple.com/downloads/Server_Admin_Tools_10_6</a></p>
+
+<p><div class="codeblock"><code>&nbsp; sudo dscl . -create /Users/aegir NFSHomeDirectory /var/aegir</code></div></p>
+
+<p>Now you need to find the next spare UID to assign the user.</p>
+
+<p>Here's how you find out on your system:</p>
+
+<p><div class="codeblock"><code>&nbsp;&nbsp; sudo dsexport users.out /Local/Default dsRecTypeStandard:Users</code></div></p>
+
+<p>Then open the file users.out in a text editor, search for the highest
+5xx user ID and add 1 to it (in your brain, not in the file). So if
+you find 506 but no 507, use 507. When you're done, delete users.out
+to be safe.</p>
+
+<p><div class="codeblock"><code>&nbsp;&nbsp; sudo rm users.out</code></div></p>
+
+<p>Now assign this UID to the aegir user, replacing "5xx" with the UID.</p>
+
+<p><div class="codeblock"><code>&nbsp;&nbsp; sudo dscl . -create /Users/aegir UniqueID 5xx</code></div></p>
+
+<p>Set a secure password for the aegir user, as it needs shell access.</p>
+
+<p><div class="codeblock"><code>sudo passwd aegir</code></div></p>
+
+<p>Create the aegir home directory and set its permissions.</p>
+
+<p><div class="codeblock"><code>sudo mkdir /var/aegir<br />sudo chown aegir /var/aegir<br />sudo chgrp _www /var/aegir</code></div></p>
+
+<p>Add the aegir user to the _www group. This is the group Apache runs as.</p>
+
+<p><div class="codeblock"><code>sudo dscl . -append /Groups/_www GroupMembership aegir</code></div></p>
+
+<p>Give the aegir user the ability to restart Apache.</p>
+
+<p><div class="codeblock"><code>&nbsp;&nbsp; sudo mv /usr/sbin/apachectl /usr/sbin/apachectl-apple<br />&nbsp;&nbsp; sudo ln -s /opt/local/apache2/bin/apachectl /usr/sbin/apachectl<br />&nbsp;&nbsp; sudo visudo</code></div></p>
+
+<p>Go to the last line of the file and add the following.</p>
+
+<p><div class="codeblock"><code>&nbsp;&nbsp; aegir ALL=NOPASSWD: /usr/sbin/apachectl</code></div></p>
+
+<p>Save the file and exit your text editor.</p>
+
+<p>Next configure Apache to include the Aegir config.</p>
+
+<p><div class="codeblock"><code>&nbsp;&nbsp; echo &quot;Include /var/aegir/config/apache.conf&quot; &gt;&gt; /opt/local/apache2/conf/httpd.conf</code></div></p>
+
+<p>Configuring your MySQL database and user accounts is the same as in
+the INSTALL.txt file. But you probably want to add the path to its
+executables to your user's PATH and the aegir user's PATH.</p>
+
+<p><div class="codeblock"><code>&nbsp;&nbsp; echo &#039;export PATH=/opt/local/lib/mysql5/bin:$PATH&#039; &gt;&gt; ~/.profile<br />&nbsp;&nbsp; su - aegir<br />&nbsp;&nbsp; Password: (the password you setup earlier)<br />&nbsp;&nbsp; echo &#039;export PATH=/opt/local/lib/mysql5/bin:$PATH&#039; &gt;&gt; ~/.profile<br />&nbsp;&nbsp; exit</code></div></p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-46.html?destination=node%2F417%23comment-form">Login</a> or <a href="../../../../../user/register/index-46.html?destination=node%2F417%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-46.html?destination=node%2F417%23comment-form">Login</a> or <a href="../../../../../user/register/index-46.html?destination=node%2F417%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/417/revisions/2452/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:01 GMT -->
+</html>

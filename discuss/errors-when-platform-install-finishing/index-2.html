@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/errors-when-platform-install-finishing?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 19:08:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Errors when platform install is finishing | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2221" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/busla/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="busla&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/busla/index.html" class="username" title="View user profile.">busla</a></div><div class='date'>1:49am Jan 2, 2013</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Errors when platform install is finishing</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_49 first last"><a href="../../category/keywords/drush/index.html" rel="tag" title="">Drush</a></li>
+</ul></div><p>I´ve been using Aegir for a while now with no problems whatsoever (not counting ssh confusion on my part) and have replicated mig5´s dev-production workflow which I am very found of.</p>
+
+<p>All of the sudden I got this error when installing a platform (using a .build file that fetches git repos recursively). I tried to install a build from a branch in my repo that I used earlier today and that platform is running fine with a site on it.</p>
+
+<p>It downloads/clones all contribs from the .make file with out problems.</p>
+
+<p>I´ve increased the memory limit in php and apache just in case but that didn´t help. I got permission problems when trying to save the files as the aegir user so I did it as root. Now the issue queue isn´t working.</p>
+
+<p>Well, here is the error. It´s right at the end of the log. Does anyone have a clue what´s going on?</p>
+
+<p>require_once(tkd20130101_07/includes/bootstrap.inc): failed to open stream: No such file or directory environment.inc:736</p>
+
+<p>Drush command terminated abnormally due to an unrecoverable error. Error: require_once(): Failed opening required 'tkd20130101_07/includes/bootstrap.inc' (include_path='.:/usr/share/php:/usr/share/pear') in /usr/share/drush/includes/environment.inc, line 736</p>
+
+<p>Output from failed command : Fatal error: require_once(): Failed opening required 'tkd20130101_07/includes/bootstrap.inc' (include_path='.:/usr/share/php:/usr/share/pear') in /usr/share/drush/includes/environment.inc on line 736</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-451.html?destination=node%2F2221%23comment-form">Login</a> or <a href="../../user/register/index-451.html?destination=node%2F2221%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/errors-when-platform-install-finishing?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 19:08:29 GMT -->
+</html>

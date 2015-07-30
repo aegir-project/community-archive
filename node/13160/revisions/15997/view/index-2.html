@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/13160/revisions/15997/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:07:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../contrib-modules/provision-civicrm/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../content/content/administrator/post-install-configuration/experimental-aegir-2-ubuntu-1204-apache-php/index.html" />
+<link rel="prev" href="../../../../../contrib-modules/provision-civicrm/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../content/content/administrator/post-install-configuration/experimental-aegir-2-ubuntu-1204-apache-php/index.html" />
+<link rel="prev" href="../../../../../contrib-modules/provision-civicrm/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../content/content/administrator/post-install-configuration/experimental-aegir-2-ubuntu-1204-apache-php/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Create a SUDO user for server administration from Fri, 05/29/2015 - 14:12 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-13160" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/content/administrator/post-install-configuration/create-sudo-user-server-administration/index.html">Create a SUDO user for server administration</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_602 first"><a href="../../../../../category/keywords/sudo/index.html" rel="tag" title="">sudo</a></li>
+<li class="taxonomy_term_2"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+<li class="taxonomy_term_603 last"><a href="../../../../../category/keywords/users/index.html" rel="tag" title="">users</a></li>
+</ul></div><div id='diff-inline-13160'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/jonpugh/index.html" class="username" title="View user profile.">jonpugh</a> on 05/29/2015 - 14:12</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Sometimes you will need to administer your server beyond what you can do as the Aegir user.</p>
+
+<p>Examples include installing additional software or editing PHP configuration.</p>
+
+<p>It's not recommended to use the <code>root</code> user for administering things as it can be easy to make mistakes that could break your system.</p>
+
+<p>Instead of running as root, it is recommended to create a user for yourself that has sudo privileges.</p>
+
+<h2>Create a user with SUDO privileges</h2>
+
+<p>In ubuntu/debian systems, creating a user and giving them the ability to run commands with <code>sudo</code> is easy with the <code>adduser</code> command.</p>
+
+<p>Think of a username and password for yourself, then run the following commands as root:</p>
+
+<pre><span class='diff-changed'>
+root@aegir:~#</span> adduser bob
+Adding user `bob' ...
+Adding new group `bob' (1001) ...
+Adding new user `bob' (1001) with group `bob' ...
+Creating home directory `/home/bob' ...
+Copying files from `/etc/skel' ...
+Enter new UNIX password: 
+Retype new UNIX password: 
+passwd: password updated successfully
+Changing the user information for bob
+Enter the new value, or press ENTER for the default
+    Full Name []: Bob
+    Room Number []: 
+    Work Phone []: 
+    Home Phone []: 
+    Other []: 
+Is the information correct? [Y/n] <span class='diff-changed'>y
+root@aegir:~#
+</span></pre>
+
+<p>Then add them to the "sudo" user group:</p>
+
+<pre><span class='diff-changed'>
+root@aegir:~#</span> adduser bob sudo
+Adding user `bob' to group `sudo' ...
+Adding user bob to group sudo
+Done.
+root@aegir:~#<span class='diff-changed'> 
+</span></pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-70.html?destination=node%2F13160%23comment-form">Login</a> or <a href="../../../../../user/register/index-70.html?destination=node%2F13160%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-70.html?destination=node%2F13160%23comment-form">Login</a> or <a href="../../../../../user/register/index-70.html?destination=node%2F13160%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/13160/revisions/15997/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:07:07 GMT -->
+</html>

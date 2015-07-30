@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/429/revisions/1451/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:07:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../upgrading/index.html" />
+<link rel="up" href="../../../../../upgrading/index.html" />
+<link rel="next" href="../../../../../upgrading/debian/index.html" />
+<link rel="prev" href="../../../../../upgrading/index.html" />
+<link rel="up" href="../../../../../upgrading/index.html" />
+<link rel="next" href="../../../../../upgrading/debian/index.html" />
+<link rel="prev" href="../../../../../upgrading/index.html" />
+<link rel="up" href="../../../../../upgrading/index.html" />
+<link rel="next" href="../../../../../upgrading/debian/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Manual Upgrade from Thu, 04/07/2011 - 01:22 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-429" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../upgrading/manual/index.html">Manual Upgrade</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_21 first"><a href="../../../../../taxonomy/term/21/index.html" rel="tag" title="">manual</a></li>
+<li class="taxonomy_term_2"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+<li class="taxonomy_term_22 last"><a href="../../../../../taxonomy/term/22/index.html" rel="tag" title="">upgrade</a></li>
+</ul></div><div id='diff-inline-429'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 04/07/2011 - 01:22</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>This section outlines the requirements for doing a manual upgrade of Aegir to a new release.</p>
+
+<h1>Conventions &amp; Tips</h1>
+
+<p>All instructions and in general all commands must be run as aegir user, so all
+permissions are always set correctly.</p>
+
+<p>To become aegir user you can issue this command::</p>
+
+<pre><code>su -s /bin/sh aegir
+</code></pre>
+
+<p>(Note you must run this as root or prefix with sudo).</p>
+
+<p>Note that /bin/sh is an example. You may wish to instead use the shell of your
+choice, i.e /bin/bash</p>
+
+<p>A standard umask of 022 is assumed. This is the default on most systems.</p>
+
+<h1>Setting Environment Variables</h1>
+
+<p>To make following instructions generic and not dependant on a
+concrete Drupal or Aegir version, we will use shell environment
+variables. Since 0.4, the hostmaster platform is prepended with 'hostmaster'
+so as not to clash with any other Drupal platforms. If you are upgrading from
+Aegir version 0.3, your hostmaster platform may be called 'drupal-6.14'.</p>
+
+<p>You should replace the following variables for current versions at the time
+you are reading this document.</p>
+
+<p>Shell commands::</p>
+
+<pre><code>export AEGIR_VERSION="6.x-1.0-rc3"
+export AEGIR_HOME="$HOME"
+export DRUPAL_DIR=$AEGIR_HOME/hostmaster-$AEGIR_VERSION
+export DRUSH_VERSION=7.x-4.4
+export DRUSH_MAKE_VERSION=6.x-2.2
+export AEGIR_DOMAIN=aegir.example.com
+export OLD_DRUPAL_DIR=$AEGIR_HOME/hostmaster-6.x-1.0-rc2
+</code></pre>
+
+<p>This document also assumes drush is installed properly and we use an
+environment variable to simplify the documentation again.</p>
+
+<p>Shell commands::</p>
+
+<pre><code>export DRUSH="php $AEGIR_HOME/drush/drush.php"
+</code></pre>
+
+<h1>Upgrading the backend</h1>
+
+<p>In general, we try to keep the backend and the frontend compatible with each
+other during release cycles. That is: provision 0.3 and hosting 0.3 will
+always be able to talk to each other. hosting 0.2 was able to talk to
+provision 0.3 too, but the API is not well enough defined so that can be
+counted upon.</p>
+
+<p>Therefore, you want to keep the frontend and the backend in sync. When you do
+a major upgrade (e.g. 0.3 -&gt; 0.4) of the backend, you <em>must</em> upgrade the
+frontend soon after.</p>
+
+<p>Bottomline: first you upgrade the backend, then the frontend.</p>
+
+<p>Upgrading the backend is as simple as installing a new version of Drush and
+Provision over the old ones.</p>
+
+<p>Keep a copy of the old Provision and Drush in case something goes wrong in the
+frontend.</p>
+
+<p>Shell commands::</p>
+
+<pre><code>cd $AEGIR_HOME
+mv drush drush.bak
+wget http://ftp.drupal.org/files/projects/drush-$DRUSH_VERSION.tar.gz 
+gunzip -c drush-$DRUSH_VERSION.tar.gz | tar -xf -
+rm drush-$DRUSH_VERSION.tar.gz
+cd $HOME/.drush
+mv provision ../provision.bak
+wget http://ftp.drupal.org/files/projects/provision-6.x-$AEGIR_VERSION.tar.gz
+gunzip -c provision-6.x-$AEGIR_VERSION.tar.gz | tar -xf -
+rm provision-6.x-$AEGIR_VERSION.tar.gz
+</code></pre>
+
+<p>Provision 0.4 has added a new dependency on drush_make, which will also need
+to be installed to upgrade the front end if you are upgrading from a pre-0.4
+release.</p>
+
+<p>If you are upgrading from an earlier 0.4 release, replace your copy of
+drush_make with the latest recommended release.</p>
+
+<p>Shell commands::</p>
+
+<pre><code>$DRUSH dl drush_make-$DRUSH_MAKE_VERSION --destination="$HOME/.drush"
+</code></pre>
+
+<h1>Upgrading the frontend</h1>
+
+<p>These are generic instructions to upgrade your hosting, hostmaster, eldir or
+Drupal core installation to new versions. As of 0.4 this process has largely
+been automated, and will be able to upgrade 0.3 and any of the 0.4 development
+releases to the latest applicable versions.</p>
+
+<p>Once you have upgraded the backend, and you have installed drush_make you will
+need to run the hostmaster migrate command.</p>
+
+<p>Shell commands::</p>
+
+<pre><code>cd $OLD_DRUPAL_DIR
+$DRUSH hostmaster-migrate $AEGIR_DOMAIN $DRUPAL_DIR
+</code></pre>
+
+<p>The directory specified must be an absolute path to where you want the new
+release to be stored. If the directory does not exist, provision will use
+drush_make to fetch and assemble the correct version of the front end for the
+specific release of the backend you are running.</p>
+
+<p>This command will completely replace the crontab entry for the aegir user, and
+asks for confirmation before it does so. If you do not confirm, the process
+will be halted as it is necessary for the task queue to be processed.</p>
+
+<p>The command above will fetch the latest stable Drupal release, so it can
+simply be run again when a new security release of Drupal is made available.</p>
+
+<p>If you have customized your Aegir installation and are maintaining your own
+makefile, you can use the --makefile flag so the platform is created with
+another makefile than the default. Be warned that this may create problems if
+the makefile doesn't include the right Aegir modules.</p>
+
+<h1>Version-specific upgrade notes</h1>
+
+<h2>Bleeding-edge HEAD dependency</h2>
+
+<p>If you intend on upgrading your system to the bleeding edge version of the
+code from our git repositories, you will need the git program installed.  On
+Debian, this means:</p>
+
+<p>Shell commands:</p>
+
+<pre><code>apt-get install git-core
+</code></pre>
+
+<h2>0.4 - DNS Configuration</h2>
+
+<p>Aegir requires that the hostname returned by the <code>hostname</code> and <code>uname -n</code>
+shell commands, resolves to the IP address for this server.</p>
+
+<p>Shell commands as root:</p>
+
+<pre><code>AEGIR_HOST=`uname -n`
+resolveip $AEGIR_HOST
+</code></pre>
+
+<p>If the command returns your IP address, you are all set. If it returns
+an error you will need to edit your <code>/etc/hosts</code> file.</p>
+
+<p>(Mac OSX  notes: if you are running on OS X you will not likely have a resolveip  binary.  Just substitute 
+  <code>ping $AEGIR_HOST</code>
+).</p>
+
+<p>First line of this file looks like:</p>
+
+<p>127.0.0.1  localhost</p>
+
+<p>Simply add all domains you want to this line. e.g:</p>
+
+<p>127.0.0.1  localhost $AEGIR_HOST $AEGIR_DOMAIN other1 other2</p>
+
+<p>To be clear you cannot put $AEGIR_HOST $AEGIR_DOMAIN  in your  hosts file.  Put in whatever  uname -n  returns  for $AEGIR_HOST and what ever  domain you want to use  f or  $AEGIR_DOMAIN  (real  domaion or faked in hosts file).   In OS X     uname -n will return whatever you put in  System  Preferences -&gt; Shareing -&gt; Computer Name.  I added that value  (iMac 27  for me) to /etc/hosts and my faked aegir  domain  as follows:</p>
+
+<p><code>127.0.0.1&nbsp; localhost&nbsp; iMac27&nbsp; aegir.local </code></p>
+
+<p>If you only intend to use Aegir on a single server, it is acceptable for
+the resolved IP address to be the '127.0.0.1' loopback address.</p>
+
+<p>If you intend to manage multiple servers using Aegir, you will need to
+make sure that the IP address is the public IP of this server.</p>
+
+<p>Finally, set an $AEGIR_IP environment variable for use in the Database
+configuration step below.</p>
+
+<p>Shell commands as root::
+    AEGIR_IP=<code>resolveip $AEGIR_HOST | awk {'print $6'}</code></p>
+
+<p>(If running  OS X  or are otherwise missing  resolveip   and you just want to use Aegir on your computer use  you can do this:
+AEGIR_IP=127.0.0.1</p>
+
+<h2>0.4 - unzip dependency</h2>
+
+<p>As of the 0.4-alpha3 release, 'unzip' is a required dependency on your server
+in order to successfully extract the jquery.ui library that is part of some UI
+improvements. On Debian, this means:</p>
+
+<p>Shell commands::</p>
+
+<p>apt-get install unzip</p>
+
+<h2>0.4 - Database configuration</h2>
+
+<p>To make sure that the Aegir backend, and all the possible web servers can
+reach your database server, you need to configure mysql to listen on all
+the public IP addresses available to it.</p>
+
+<p>/etc/mysql/my.cnf configuration line to comment out::
+    bind-address    = 127.0.0.1</p>
+
+<p>Now you need to restart mysql, to clear any caches.</p>
+
+<p>Shell command as root::
+    /etc/init.d/mysql restart</p>
+
+<p>Because you have already installed Aegir when it was using the generic grants,
+you will need to create new grants using the public IP address and hostname
+of this server.</p>
+
+<p>Shell command ::
+    mysql -uroot -p mysql</p>
+
+<p>You need to generate the following grants using the hostname returned by the
+<code>uname -n</code> command, and the IP address that the <code>resolveip</code> command returns
+for that hostname.</p>
+
+<p>You need to re-use the pasword you had for the account before.</p>
+
+<p>Shell commands::</p>
+
+<pre><code>mysql -u root -p -e "GRANT ALL ON *.* to 'aegir_root'@'$AEGIR_HOST' IDENTIFIED BY 'xxxx' WITH GRANT OPTION;"
+mysql -u root -p -e "GRANT ALL ON *.* to 'aegir_root'@'$AEGIR_IP' IDENTIFIED BY 'xxxx' WITH GRANT OPTION;"
+</code></pre>
+
+<h2>0.4 - Apache configuration</h2>
+
+<p>This release introduces multi-server support and required reorganizing
+the Apache configuration files in ~aegir/config. Instead of having all
+files in config/vhost.d, they are now split between vhost.d, platform.d
+and a single apache.conf. The vhost.d directory is for virtual hosts,
+platform.d is for platform-specific configuration and apache.conf is the
+server-wide configuration file.</p>
+
+<p>You will need to change the line you added to either the httpd.conf file 
+or /etc/apache2/conf.d/aegir file during installation.</p>
+
+<p>Open your httpd.conf file and modify::</p>
+
+<pre><code>Include /var/aegir/config/vhost.d
+</code></pre>
+
+<p>To read ::</p>
+
+<pre><code>Include /var/aegir/config/apache.conf
+</code></pre>
+
+<p>If you are upgrading from 0.4 releases between alpha8 and (including) alpha14,
+you will need to rename your conf.d directory to post.d in Apache and pre.d in
+Nginx. Example, in Apache::</p>
+
+<p>mv /var/aegir/config/server_master/apache/{conf.d,post.d}</p>
+
+<p>Now log into Aegir, and verify the hostmaster platform. This will generate
+the correct apache.conf file and restart Apache.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-73.html?destination=node%2F429%23comment-form">Login</a> or <a href="../../../../../user/register/index-73.html?destination=node%2F429%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-73.html?destination=node%2F429%23comment-form">Login</a> or <a href="../../../../../user/register/index-73.html?destination=node%2F429%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/429/revisions/1451/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:07:38 GMT -->
+</html>

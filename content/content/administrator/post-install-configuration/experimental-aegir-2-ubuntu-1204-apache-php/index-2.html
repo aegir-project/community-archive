@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/content/content/administrator/post-install-configuration/experimental-aegir-2-ubuntu-1204-apache-php?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:31:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../create-sudo-user-server-administration/index.html" />
+<link rel="up" href="../../../../administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../handbook/administrator/post-install-configuration/using-proxy-cache-accelerate-platform-build/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Experimental: Aegir 2 on Ubuntu 12.04 with apache, php-fpm | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2799" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Experimental: Aegir 2 on Ubuntu 12.04 with apache, php-fpm</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-2799'><p>These notes describe a possible way of installing Apache with fastcgi using php5-fpm.
+The below configuration works but is experimental.</p>
+
+<p>On a Ubuntu 12.04 box:</p>
+
+<h2>Install Aegir2 from Debian packages</h2>
+
+<p>Follow <a href="../../../../../installing/debian/index.html" title="http://community.aegirproject.org/installing/debian">http://community.aegirproject.org/installing/debian</a>. Below is a shortened form.</p>
+
+<p>Add the Aegir package "Software Source" repository:
+<div class="codeblock"><code>echo &quot;deb <a href="http://debian.aegirproject.org/" title="http://debian.aegirproject.org">http://debian.aegirproject.org</a> stable main&quot; | sudo tee -a /etc/apt/sources.list.d/aegir-stable.list<br />wget -q <a href="http://debian.aegirproject.org/key.asc" title="http://debian.aegirproject.org/key.asc">http://debian.aegirproject.org/key.asc</a> -O- | sudo apt-key add -</code></div></p>
+
+<p>Install aegir2:
+<div class="codeblock"><code>sudo apt-get update<br />sudo apt-get install mysql-server<br />sudo mysql_secure_installation<br />sudo apt-get install aegir2</code></div></p>
+
+<p>If the installation fails, it might be that your FQDN is not set or your postfix is not configured.</p>
+
+<h2>Verify your aegir site is working</h2>
+
+<p>Navigate your browser to the FQDN of your aegir server. You need to see the "Welcome to Aegir" page.</p>
+
+<h2>Modify the configuration to use fastcgi / php5-fpm</h2>
+
+<p>Edit <code>/etc/apt/sources.list</code> and enable the multiverse repository (it's needed for the libapache2-mod-fastcgi package).</p>
+
+<p>Then install php5-fpm and make apache use it:
+<div class="codeblock"><code>sudo apt-get update<br />sudo apt-get install php5-fpm libapache2-mod-fastcgi<br />sudo apt-get --purge remove libapache2-mod-php5</code></div></p>
+
+<p>Modify <code>/etc/php5/fpm/pool.d/www.conf</code>
+Make it listen on socket, instead of IP:
+<div class="codeblock"><code>;listen = 127.0.0.1:9000<br />listen = /var/run/php-fpm.sock</code></div></p>
+
+<p>Create <code>/etc/apache2/conf.d/php-fpm.conf</code> with this content:
+<div class="codeblock"><code>ScriptAlias /php5.fastcgi /var/www/fastcgi<br />FastCGIExternalServer /var/www/fastcgi -socket /run/php-fpm.sock<br />AddHandler php-fastcgi .php<br />Action php-fastcgi /php5.fastcgi virtual<br /><br />Options FollowSymLinks ExecCGI<br /><br />&lt;Directory /var/www/fastcgi&gt;<br />&nbsp; Options ExecCGI FollowSymLinks<br />&nbsp; SetHandler fastcgi-script<br />&nbsp; Order allow,deny<br />&nbsp; Allow from all<br />&lt;/Directory&gt;</code></div></p>
+
+<p>Enable apache modules:
+<div class="codeblock"><code>sudo a2enmod actions alias fastcgi</code></div></p>
+
+<p>Restart php5-fpm and apache to load the new configs: 
+<div class="codeblock"><code>sudo service php5-fpm restart<br />sudo service apache2 restart</code></div></p>
+
+<h2>Verify that you can still reach your Aegir site</h2>
+
+<p>Navigate your browser to the FQDN of your aegir server. This time, you are using php5-fpm. Verify e.g. via phpinfo().</p>
+
+<p>--<br />
+Page author: Marji Cermak <a href="mailto:marji@morpht.com">&#109;&#97;&#x72;&#x6a;&#x69;&#x40;&#x6d;&#x6f;&#x72;ph&#116;&#46;&#99;&#111;&#109;</a>, <a href="http://morpht.com/" title="http://morpht.com">http://morpht.com</a></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-71.html?destination=node%2F2799%23comment-form">Login</a> or <a href="../../../../../user/register/index-71.html?destination=node%2F2799%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/content/content/administrator/post-install-configuration/experimental-aegir-2-ubuntu-1204-apache-php?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:31:39 GMT -->
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/494/revisions/1180/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:20:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../developing/architecture/unix-group-limitations/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../../contrib/index.html" />
+<link rel="prev" href="../../../../../developing/architecture/unix-group-limitations/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../../contrib/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Running drush on Aeegir sites as a regular user from Wed, 03/16/2011 - 18:05 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-494" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Running drush on Aeegir sites as a regular user</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-494'><p><strong>Warning</strong>: <em>this part of the manual is in experimental mode, that is, this hasn't been tested and you shouldn't be running this in production. Consider this cutting edge research material notes.</em></p>
+
+<h2>What's the problem here?</h2>
+
+<p>As things stand, you cannot run tasks as a regular UNIX user on your Aegir Drupal sites:</p>
+
+<p><div class="codeblock"><code>anarcat@marcos:~$ drush @hostmaster cc all<br />A Drupal installation directory could not be found&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]<br />The drush command &#039;@hostmaster cc all&#039; could not be found.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]</code></div></p>
+
+<p>The reason the site is not found is because the alias cannot be loaded. If we change our home directory to find the alaises, we then get permission problems:</p>
+
+<p><div class="codeblock"><code>anarcat@marcos:~$ env HOME=/var/aegir drush @hostmaster cc all<br />include(/var/aegir/.drush/platform_hostmaster.alias.drushrc.php): failed to open stream:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />Permission denied sitealias.inc:433<br />include(): Failed opening &#039;/var/aegir/.drush/platform_hostmaster.alias.drushrc.php&#039; for&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />inclusion (include_path=&#039;.:/usr/share/php:/usr/share/pear&#039;) sitealias.inc:433<br />include(/var/aegir/.drush/hostmaster.alias.drushrc.php): failed to open stream: Permission&nbsp;&nbsp;&nbsp; [warning]<br />denied sitealias.inc:433<br />include(): Failed opening &#039;/var/aegir/.drush/hostmaster.alias.drushrc.php&#039; for inclusion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />(include_path=&#039;.:/usr/share/php:/usr/share/pear&#039;) sitealias.inc:433<br />A Drupal installation directory could not be found&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]<br />The drush command &#039;@hostmaster cc all&#039; could not be found.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]</code></div></p>
+
+<p>... so that doesn't seem to be a good approach, although one could just fix the permissions on the alias files for the site  (which don't contain the DB password, oddly enough) and platforms (which have been safe since the "server" seperation):</p>
+
+<p><div class="codeblock"><code>cd /var/aegir/.drush<br />chmod a+r <code>ls *alias* | grep -v &amp;#039;server&amp;#039;</code></code></div></p>
+
+<p>Then we end up with another problem:</p>
+
+<p><div class="codeblock"><code>Cannot open drushrc &quot;/var/aegir/hostmaster-HEAD/sites/aegir.anarcat.ath.cx/drushrc.php&quot;,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />ignoring.<br />Cannot open drushrc &quot;/var/aegir/hostmaster-HEAD/drushrc.php&quot;, ignoring.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />Cannot open drushrc &quot;/var/aegir/hostmaster-HEAD/sites/aegir.anarcat.ath.cx/drushrc.php&quot;,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />ignoring.<br />include_once(/var/aegir/hostmaster-HEAD/sites/aegir.anarcat.ath.cx/settings.php): failed to&nbsp;&nbsp; [warning]<br />open stream: Permission denied bootstrap.inc:400<br />include_once(): Failed opening &#039;./sites/aegir.anarcat.ath.cx/settings.php&#039; for inclusion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />(include_path=&#039;.:/usr/share/php:/usr/share/pear&#039;) bootstrap.inc:400<br />Cannot modify header information - headers already sent by (output started at&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />/usr/share/drush/includes/drush.inc:820) install.inc:618<br />Cannot modify header information - headers already sent by (output started at&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [warning]<br />/usr/share/drush/includes/drush.inc:820) install.inc:619<br />Drush command could not be completed.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [error]</code></div></p>
+
+<p>... and this is really the core of the issue here: we need to allow more than one user to access those files, and aegir must be able to fix those permissions when the site is created/verified.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-207.html?destination=node%2F494%23comment-form">Login</a> or <a href="../../../../../user/register/index-207.html?destination=node%2F494%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-207.html?destination=node%2F494%23comment-form">Login</a> or <a href="../../../../../user/register/index-207.html?destination=node%2F494%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/494/revisions/1180/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:20:39 GMT -->
+</html>

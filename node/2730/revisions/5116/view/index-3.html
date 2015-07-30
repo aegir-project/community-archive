@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/2730/revisions/5116/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:14:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../2/index-9.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-11.html" />
+<link rel="prev" href="../../../../../2/index-9.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-11.html" />
+<link rel="prev" href="../../../../../2/index-9.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-11.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of DRAFT: 2.0-rc1 release notes from Fri, 07/19/2013 - 19:59 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2730" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../2/index-10.html">DRAFT: 2.0-rc1 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_4 first"><a href="../../../../../taxonomy/term/4/index.html" rel="tag" title="This level is for users who have access to only their sites and not able to manage all Aegir features, accounts or the server/system.">Client</a></li>
+<li class="taxonomy_term_27"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_3"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-2730'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 07/19/2013 - 19:59</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>The Aegir team is pleased to announce the <span class='diff-changed'>first</span> release <span class='diff-changed'>candidate for</span> the<span class='diff-added'> upcoming</span> Aegir <span class='diff-changed'>2.0 release.</span></p>
+
+<p>This release mainly targets a few critical bugs that were found in the <span class='diff-changed'>second</span> beta, <span class='diff-changed'>mostly related to ongoing Views</span> and <span class='diff-changed'>Drush integration</span> and <span class='diff-changed'>access control.</span> We also introduce a <span class='diff-changed'>number of</span> new features and finally drop support for provisionning Drupal 5 sites <span class='diff-changed'>completely (for real this time!).</span></p>
+
+<p>While we are in feature freeze, we have continued to add some UI improvements, since they don't affect the API. We've added some long-standing UI enhancements, and fixed a number of bugs in the views integration and other usability <span class='diff-changed'>problems, as well as overhauling our access control.</span></p>
+
+<p><span class='diff-changed'>Or only remaining critical bugs</span> are <span class='diff-changed'>basically waiting on a new release of Drush, upgrade testing on Nginx and some contrib upgrade guidance documentation.</span> If no other critical bugs are discovered during the time it takes us to fix <span class='diff-changed'>these,</span> we should move on to <span class='diff-changed'>a full</span> release <span class='diff-changed'>of Aegir 2.0!</span></p>
+
+<h1>Known issues</h1>
+
+<p>Our release process is still done by hand instead of automated because we can't use our aegir distribution as core (<a href="https://drupal.org/node/1991764">issue #1991764</a><span class='diff-changed'>).</span></p>
+
+<p><a href="https://drupal.org/node/1931000">Issue #1931000: Missing drush backend output in frontend log</a> has been fixed, but may require a <a href="https://drupal.org/node/2025527#comment-7566747">patch to Drush</a> for the use of hosting-queued.</p>
+
+<p>Subdirectory support is still very preliminary and needs those issues to be fixed before completion:</p>
+
+<ul>
+<li>Nginx support missing (<a href="https://drupal.org/node/2020091">issue #2020091</a>)</li>
+<li>If <code>example.com/foo</code> is created, the <code>example.com</code> virtual will be overwritten and the site inaccessible under that domain (<a href="https://drupal.org/node/2020089">issue #2020089</a>)</li>
+<li>Multi-server support is untested (<a href="https://drupal.org/node/2020079">issue #2020079</a>)</li>
+<li>Code needs to be refactored to the new 2.x API (<a href="https://drupal.org/node/2020075">issue #2020075</a>)</li>
+</ul><span class='diff-added'>
+
+</span><h1><span class='diff-added'>Bugfixes and features</span></h1><span class='diff-added'>
+
+</span><h2><span class='diff-added'>Provision</span></h2>
+
+<p><span class='diff-changed'>Changes since 6.x-2.0-beta2:</span></p><span class='diff-changed'>
+
+</span><ul><span class='diff-changed'>
+  </span><li><span class='diff-changed'></span><a href="https://drupal.org/node/1647830"><span class='diff-changed'>#1647830</span></a><span class='diff-changed'> by sambonner: Fix Incorrect ownership of directories under sites/example.com/private/files/.</span></li>
+<span class='diff-added'>  </span><li><a href="https://drupal.org/node/2038279"><span class='diff-changed'>#2038279</span></a><span class='diff-changed'> by ergonlogic, Jon Pugh: Validate email during site install.</span></li><span class='diff-changed'>
+ </span><span class='diff-deleted'>broken</span></a> <li><span class='diff-added'>Add missing unicode include for UID1 name validation.</span></li>
+<span class='diff-added'>  </span><li><a href="https://drupal.org/node/1201174"><span class='diff-changed'>#1201174</span></a><span class='diff-changed'>: Make UID1 username configurable.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'></span><a href="https://drupal.org/node/905326"><span class='diff-changed'>#905326</span></a><span class='diff-added'> by ergonlogic, crea: Improve file path changes.</span></li>
+</ul><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>Fixing</span> <a href="https://drupal.org/node/2027269"><span class='diff-deleted'>#2027269:</span><span class='diff-deleted'> </span><span class='diff-changed'></span><li><span class='diff-changed'></span><a href="https://drupal.org/node/2038891"><span class='diff-changed'>#2038891</span></a><span class='diff-changed'>: Add 'client_email' option to 'provision-install-backend'.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'></span><a href="https://drupal.org/node/1830220"><span class='diff-changed'>#1830220</span></a><span class='diff-changed'>: Drop support</span> for <span class='diff-changed'>Drupal 5.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'>debian: properly detect webserver, again (</span><a href="https://drupal.org/node/2040285"><span class='diff-changed'>#2040285</span></a><span class='diff-added'>)</span></li><span class='diff-added'>
+ </span> <span class='diff-changed'></span><li><span class='diff-changed'></span><a href="https://drupal.org/node/2037045"><span class='diff-changed'>#2037045</span></a><span class='diff-changed'> by helmo, ergonlogic: Change some log statuses to better match Drush's log styling.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'></span><span class="messages error"><span class='diff-changed'> Node </span><em><span class='diff-changed'>2036793</span></em><span class='diff-changed'> not found.</span></span><span class='diff-changed'> (</span><a href="http://drupal.org/node/2036793" title="http://drupal.org/node/2036793"><span class='diff-changed'>http://drupal.org/node/2036793</span></a><span class='diff-changed'>) Ignore hidden modules</span> and <span class='diff-changed'>profiles.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'></span><span class="messages error"><span class='diff-changed'> Node</span> <em><span class='diff-changed'>2036283</span></em> <span class='diff-changed'>not found.</span></span><span class='diff-changed'> (</span><a href="http://drupal.org/node/2036283" title="http://drupal.org/node/2036283"><span class='diff-changed'>http://drupal.org/node/2036283</span></a><span class='diff-changed'>) Flag site-specific modules and themes rather than ignore them.</span></li><span class='diff-changed'>
+* [#2044251: drush command '@none provision-save' could not be found](</span><a href="http://drupal.org/node/2044251" title="http://drupal.org/node/2044251"><span class='diff-changed'>http://drupal.org/node/2044251</span></a><span class='diff-changed'>)
+</span></ul>
+
+<h2><span class='diff-changed'>Hosting</span></h2><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>Changes since 6.x-2.0-beta2:</span></p>
+
+<ul><span class='diff-changed'>
+* [#2035873: Show package 'popularity' on platform package view](</span><a href="http://drupal.org/node/2035873" title="http://drupal.org/node/2035873"><span class='diff-changed'>http://drupal.org/node/2035873</span></a><span class='diff-changed'>)
+ * [#2025355: view platform' permission broken](</span><a href="https://drupal.org/node/2025355" title="https://drupal.org/node/2025355"><span class='diff-changed'>https://drupal.org/node/2025355</span></a><span class='diff-added'>)
+
+  </span></li><span class='diff-deleted'>
+</span><li><a href="https://drupal.org/node/2045907"><span class='diff-changed'>#2045907</span></a><span class='diff-changed'>: Remove extra tabs from deleted platforms.</span></li><span class='diff-changed'>
+ </span><span class='diff-deleted'>packages</span></a> <li><span class='diff-added'>Fix php 5.4 issue</span></li>
+ <a href="http://drupal.org/node/585830"><span class='diff-deleted'>#585830:</span><span class='diff-deleted'> </span><span class='diff-changed'></span><li><span class='diff-changed'>Fix Views block placement and visibility.</span></li><span class='diff-changed'>
+  ^^^ [#2031747: Properly control Views access](</span><a href="http://drupal.org/node/2031747" title="http://drupal.org/node/2031747"><span class='diff-changed'>http://drupal.org/node/2031747</span></a><span class='diff-added'>)
+
+ </span> <li><span class='diff-added'>Fix update hook name.</span></li>
+<span class='diff-added'>  </span><li><a href="https://drupal.org/node/2031491"><span class='diff-changed'>#2031491</span></a><span class='diff-changed'>: Fix roles.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'></span><a href="https://drupal.org/node/2031491"><span class='diff-changed'>#2031491</span></a><span class='diff-changed'>: Rename SSL permission to be more descritive.</span></li>
+<span class='diff-added'>  </span><li><a href="https://drupal.org/node/1034520"><span class='diff-changed'>#1034520</span></a><span class='diff-changed'>: Cleanup package instances when deleting sites and platforms.</span></li>
+<span class='diff-added'>  </span><li><a href="https://drupal.org/node/1345118"><span class='diff-changed'>#1345118</span></a><span class='diff-changed'>: Make platform access control an autocomplete form.</span></li>
+<span class='diff-added'>  </span><li><a href="https://drupal.org/node/1263264"><span class='diff-changed'>#1263264</span></a><span class='diff-changed'> by ergonlogic, recidive, anarcat: Specify a type when getting a package, to avoid collisions.</span></li>
+<span class='diff-added'>  </span><li><a href="https://drupal.org/node/1861898"><span class='diff-changed'>#1861898</span></a><span class='diff-changed'> by ergonlogic, Jon Pugh: Don't hardcode the types of entities to which we can attach tasks.</span></li>
+</ul><span class='diff-deleted'>
+
+</span><h1><span class='diff-deleted'>Bug</span><span class='diff-deleted'> </span> <li><span class='diff-changed'>Add missing translation.</span></li>
+<span class='diff-added'>  </span><li><a href="https://drupal.org/node/2038891"><span class='diff-changed'>#2038891</span></a><span class='diff-changed'>: Switch from '--invoke' to '--strict=0' for backend calls.</span></li>
+ <a href="http://drupal.org/node/1761932"><span class='diff-deleted'>#1761932:</span><span class='diff-deleted'> </span><span class='diff-changed'></span><li><span class='diff-changed'>Display all validation errors when adding a client, and limit</span> to <span class='diff-changed'>20 suggestions.</span></li><span class='diff-changed'>
+ </span> <li><span class='diff-added'>Flag rollbacks as warnings in our task logs.</span></li>
+<span class='diff-added'>  </span><li><a href="https://drupal.org/node/2037965"><span class='diff-changed'>#2037965</span></a><span class='diff-changed'>: Clean up hosting-pause.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'></span><a href="https://drupal.org/node/1975086"><span class='diff-changed'>#1975086</span></a><span class='diff-changed'> by helmo | anarcat: Fixed updating a task when</span> there <span class='diff-changed'>is none.</span></li><span class='diff-changed'>
+  </span><span class='diff-deleted'>available</span></a><li><span class='diff-added'></span><a href="https://drupal.org/node/1238618"><span class='diff-added'>#1238618</span></a><span class='diff-added'>: Fix client form validation.</span></li>
+<span class='diff-added'>  </span><li><a href="https://drupal.org/node/2037045"><span class='diff-changed'>#2037045</span></a><span class='diff-changed'> by helmo, ergonlogic: Match Drush's log styling.</span></li><span class='diff-changed'>
+  </span><span class='diff-deleted'>platforms</span></a></li><span class='diff-deleted'>
+</span><li><a href="https://drupal.org/node/2035873"><span class='diff-changed'>#2035873</span></a><span class='diff-changed'>: Show count of</span> sites <span class='diff-changed'>using packages.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'>Save</span> the <span class='diff-changed'>platform field when creating a package instance record.</span></li>
+ <a href="http://drupal.org/node/1994000"><span class='diff-deleted'>#1994000:</span><span class='diff-deleted'> </span><span class='diff-changed'></span><li><span class='diff-changed'>Pass the entity type when we're sync'ing package instances.</span></li>
+ <a href="http://drupal.org/node/2023621"><span class='diff-deleted'>#2023621:</span><span class='diff-deleted'> </span><span class='diff-changed'></span><li><span class='diff-changed'>#: Make Aegir aware of site-specific packages.</span></li><span class='diff-changed'>
+  </span><span class='diff-deleted'>SSL.</span></a></li><span class='diff-deleted'>
+</span><li><a href="https://drupal.org/node/2025787"><span class='diff-changed'>#2025787</span></a><span class='diff-changed'> by omega8cc, ergonlogic, anarcat: Open site goto link in</span> a <span class='diff-changed'>new window/tab.</span></li>
+ <a href="http://drupal.org/node/2014589"><span class='diff-deleted'>#2014589:</span><span class='diff-deleted'> </span><span class='diff-changed'></span><li><span class='diff-changed'>Handle</span> package <span class='diff-changed'>page views separately for sites and platforms.</span></li>
+ <a href="https://drupal.org/node/2005246"><span class='diff-deleted'>#2005246:</span><span class='diff-deleted'> </span><span class='diff-changed'></span><li><span class='diff-changed'>Update default hosting_site views</span> to <span class='diff-changed'>use new access plugin for blocks, and add a couple more displays for non admin listings.</span></li>
+ <a href="http://drupal.org/node/2025533"><span class='diff-deleted'>#2025533:</span><span class='diff-deleted'> </span><span class='diff-changed'></span><li><span class='diff-changed'>Add Views access plugin for hosting_site</span> and <span class='diff-changed'>hosting_package.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'>Only register shutdown function to update task status in the context of a front-end task.</span></li>
+</ul><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>Other</span><span class='diff-deleted'> </span> <li><span class='diff-changed'></span><a href="https://drupal.org/node/1975086"><span class='diff-changed'>#1975086</span></a><span class='diff-changed'>: Add 'update status' button to tasks.</span></li>
+<span class='diff-added'>  </span><li><a href="https://drupal.org/node/1975086"><span class='diff-changed'>#1975086</span></a><span class='diff-changed'>: Move log parsing and status updates to seperate functions and call them from a shutdown function.</span></li>
+<span class='diff-added'>  </span><li><a href="https://drupal.org/node/2031765"><span class='diff-changed'>#2031765</span></a><span class='diff-changed'>: Clean up VBO operations with Action Permissions.</span></li>
+ <a href="http://drupal.org/node/2036793"><span class='diff-deleted'>#2036793:</span><span class='diff-deleted'> </span><span class='diff-changed'></span><li><span class='diff-changed'>Move to individual operation callbacks for VBO tasks.</span></li>
+ <a href="http://drupal.org/node/2036283"><span class='diff-deleted'>#2036283:</span><span class='diff-deleted'> </span><span class='diff-changed'></span><li><span class='diff-changed'>Add more granular permissions to site views.</span></li>
+ <a href="http://drupal.org/node/2031747"><span class='diff-deleted'>#2031747:</span><span class='diff-deleted'> </span><span class='diff-changed'></span><li><span class='diff-changed'>Don't display package block on profiles.</span></li>
+<span class='diff-added'>  </span><li><a href="https://drupal.org/node/2026417"><span class='diff-changed'>#2026417</span></a><span class='diff-changed'>: Disambiguate site operations.</span></li><span class='diff-changed'>
+  </span><span class='diff-deleted'>intended</span><span class='diff-deleted'> </span><span class='diff-deleted'>functionality</span></a></li><span class='diff-deleted'>
+</span><li><a href="https://drupal.org/node/2005310"><span class='diff-changed'>#2005310</span></a><span class='diff-changed'>: Add VBO operations to platforms view.</span></li><span class='diff-changed'>
+  </span><span class='diff-deleted'>found</span></a></li><span class='diff-deleted'>
+</span><li><a href="https://drupal.org/node/2022849"><span class='diff-changed'>#2022849</span></a><span class='diff-changed'>: Record disable and delete backups in the database.</span></li>
+<span class='diff-added'>  </span><li><a href="https://drupal.org/node/2022813"><span class='diff-changed'>#2022813</span></a><span class='diff-changed'> by Deciphered: Expose backups</span> to <span class='diff-changed'>Views.</span></li><span class='diff-changed'>
+  </span><span class='diff-deleted'>queues</span></a></li><span class='diff-deleted'>
+</span><li><a href="https://drupal.org/node/2006074"><span class='diff-changed'>#2006074</span></a><span class='diff-changed'> by Deciphered: Enable backups via VBO.</span></li>
+ <a href="http://drupal.org/node/1345118"><span class='diff-deleted'>#1345118:</span><span class='diff-deleted'> </span><span class='diff-changed'></span><li><span class='diff-changed'>Add views handler to filter packages by status.</span></li>
+<span class='diff-added'>  </span><li><a href="https://drupal.org/node/1515416"><span class='diff-changed'>#1515416</span></a><span class='diff-changed'> by ergonlogic, helmo, Deciphered: Replace listing of sites and platforms using a package with a view.</span></li>
+ <a href="http://drupal.org/node/2022813"><span class='diff-deleted'>#2022813:</span><span class='diff-deleted'> </span><span class='diff-changed'></span><li><span class='diff-changed'>Update empty text in site views.</span></li>
+<span class='diff-added'>  </span><li><a href="https://drupal.org/node/2031491"><span class='diff-changed'>#2031491</span></a><span class='diff-changed'>: Review and update permissions for all roles.</span></li>
+ <a href="http://drupal.org/node/1861898"><span class='diff-deleted'>#1861898:</span><span class='diff-deleted'> </span><span class='diff-changed'></span><li><span class='diff-changed'>Allow clients with access to platforms to view them.</span></li>
+ <a href="http://drupal.org/node/2037965"><span class='diff-deleted'>#2037965:</span><span class='diff-deleted'> </span><span class='diff-added'></span><li>Clean up <span class='diff-changed'>hosting_node_grants().</span></li>
+ <a href="http://drupal.org/node/2038891"><span class='diff-deleted'>#2038891:</span><span class='diff-deleted'> </span><span class='diff-changed'></span><li><span class='diff-changed'>Add 'administer' permissions for platforms and servers, and allow platforms to be viewed.</span></li>
+ <a href="http://drupal.org/node/2031765"><span class='diff-deleted'>#2031765:</span><span class='diff-deleted'> </span><span class='diff-changed'></span><li><span class='diff-changed'>Override hook_access functions for node_grants when hosting_client is enabled.</span></li>
+ <a href="http://drupal.org/node/2037045"><span class='diff-deleted'>#2037045:</span><span class='diff-deleted'> </span><span class='diff-changed'></span><li><span class='diff-changed'>Register node type in hosting_task's Hosting feature.</span></li>
+ <a href="http://drupal.org/node/2025787"><span class='diff-deleted'>#2025787:</span><span class='diff-deleted'> </span><span class='diff-changed'></span><li><span class='diff-changed'>Only show link</span> to <span class='diff-changed'>add clients on site form to those with proper permissions.</span></li><span class='diff-changed'>
+  </span><span class='diff-deleted'>default</span></a></li><span class='diff-deleted'>
+</span><li><a href="https://drupal.org/node/2027269"><span class='diff-changed'>#2027269</span></a><span class='diff-changed'>: Update a task's status after all Drush operations are complete.</span></li>
+</ul><span class='diff-changed'>
+
+</span><h2><span class='diff-changed'>Eldir</span></h2><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>Changes since 6.x-2.0-beta1:</span></p><span class='diff-changed'>
+
+</span><ul><span class='diff-changed'>
+ </span><a href="http://drupal.org/node/2027269"><span class='diff-deleted'>#2027269:</span><span class='diff-deleted'> </span><span class='diff-changed'></span><li><span class='diff-changed'>Clean up Views exposed forms.</span></li><span class='diff-changed'>
+</span></ul><span class='diff-changed'>
+
+</span><h2><span class='diff-changed'>Hostmaster</span></h2><span class='diff-changed'>
+
+</span><p><span class='diff-changed'>Changes since 6.x-2.0-beta2:</span></p><span class='diff-changed'>
+
+</span><ul><span class='diff-changed'>
+  </span><li><span class='diff-changed'>Fix Views block placement and visibility.</span></li><span class='diff-changed'>
+ </span><span class='diff-deleted'>status</span></a> <li><span class='diff-added'></span><a href="https://drupal.org/node/2031491"><span class='diff-added'>#2031491</span></a><span class='diff-added'>: Fix roles.</span></li>
+<span class='diff-added'>  </span><li><a href="https://drupal.org/node/2031491"><span class='diff-changed'>#2031491</span></a><span class='diff-changed'>: Rename SSL permission to be more descriptive.</span></li>
+<span class='diff-added'>  </span><li><a href="https://drupal.org/node/1975086"><span class='diff-changed'>#1975086</span></a><span class='diff-changed'>: Add 'update status' button to tasks.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'></span><a href="https://drupal.org/node/2031765"><span class='diff-changed'>#2031765</span></a><span class='diff-changed'>: Clean up VBO operations with Action Permissions.</span></li>
+ <a href="http://drupal.org/node/2040285"><span class='diff-deleted'>#2040285:</span><span class='diff-deleted'> </span><span class='diff-changed'></span><li><span class='diff-changed'>Don't display</span> package <span class='diff-changed'>block on profiles.</span></li><span class='diff-changed'>
+  </span><span class='diff-deleted'>properly</span></a></li><span class='diff-deleted'>
+</span><li><a href="https://drupal.org/node/1515416"><span class='diff-changed'>#1515416</span></a><span class='diff-changed'> by ergonlogic, helmo, Deciphered: Replace listing</span> of <span class='diff-changed'>sites and platforms using</span> a <span class='diff-changed'>package with a view.</span></li><span class='diff-changed'>
+  </span><li><span class='diff-changed'>Update 'aegir platform manager' role.</span></li><span class='diff-changed'>
+ </span><span class='diff-deleted'>installed</span></a> <li><span class='diff-added'>Only display client sites block on the 'view' tab.</span></li>
+</ul></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-165.html?destination=node%2F2730%23comment-form">Login</a> or <a href="../../../../../user/register/index-165.html?destination=node%2F2730%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-165.html?destination=node%2F2730%23comment-form">Login</a> or <a href="../../../../../user/register/index-165.html?destination=node%2F2730%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/2730/revisions/5116/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:14:33 GMT -->
+</html>

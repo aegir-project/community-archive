@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/handbook/administrator/post-install-configuration/using-proxy-cache-accelerate-platform-build?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:31:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../content/content/administrator/post-install-configuration/experimental-aegir-2-ubuntu-1204-apache-php/index.html" />
+<link rel="up" href="../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../upgrading/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Using a proxy cache to accelerate platform builds | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1226" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Using a proxy cache to accelerate platform builds</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-1226'><p>While building (and re-building) platforms using makefiles and the Aegir front-end (node/add/platform) is great, it has a number of minor annoyances. They're slow, and consume lots of bandwidth, but worse still, even a small hiccup in drupal.org (or other) infrastructure can break a platform build, which requires starting from scratch each time.</p>
+
+<p>When you maintain platforms with upwards of 300 modules, themes and libraries, such as with <a href="http://drupal.org/project/kplatforms">kPlatforms</a>, and you start to deploy these to multiple clients' <a href="http://www.koumbit.org/en/services/AegirVPS">Aegir servers</a>, those minor annoyances can become significant challenges.</p>
+
+<p>There is good documentation on setting this up for use with Drush Make already, such as this <a href="http://reluctanthacker.rollett.org/using-squid-caching-server-drush-module-downloads">blog post</a>. However, there are some gotchas when doing so in Aegir. Most of the suggested solutions involve something like setting environment variables in ~/.bashrc, which works fine if you're running 'drush make' yourself in a login shell. However, since the Aegir is running in a non-interactive shell, there isn't a opportunity to set environment variables.</p>
+
+<p>Thankfully, Drush Make supports curl, and opts for it automatically if it's installed. Careful reading of curl's manpage indicates that:</p>
+
+<pre><code>[curl] always [...] checks for a default config file and uses it if found.
+</code></pre>
+
+<p>So, in the end, all that's required is a /var/aegir/.curlrc file containing:</p>
+
+<pre><code>proxy = "http://&lt;proxy_host&gt;[:port]"
+</code></pre>
+
+<p>Thus a basic configuration on Debian would involve installing a proxy, such as Squid:</p>
+
+<pre><code># apt-get install squid3
+</code></pre>
+
+<p>Then add an acl in /etc/squid3/squid.conf allowing access from your local network, e.g.:</p>
+
+<pre><code>acl localnet src 192.168.0.0/16
+http_access allow localnet
+</code></pre>
+
+<p>Restart Squid and you're good to go:</p>
+
+<pre><code># /etc/init.d/squid3 restart
+</code></pre>
+
+<p>Testing that Aegir is actually using your new proxy cache, and that Squid is actually caching the makefile projects involves taking a quick look at the logs of the Squid server:</p>
+
+<pre><code># tail -f /var/log/squid3
+</code></pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../../node/1226/talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/handbook/administrator/post-install-configuration/using-proxy-cache-accelerate-platform-build?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:31:40 GMT -->
+</html>

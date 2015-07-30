@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/scrums/weekly-scrum-irc-log-2011-05-10?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../weekly-scrum-irc-log-2011-05-03/index.html" />
+<link rel="up" href="../../content/scrums/archive-2011/index.html" />
+<link rel="next" href="../weekly-scrum-irc-log-2011-05-24/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2011-05-10 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-639" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2011-05-10</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first last"><a href="../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+</ul></div><div id='diff-inline-639'><p><div class="codeblock"><code>[12:14am] anarcat: darthsteven mig5 bgm ergonlogic mvc joestewart omega8cc sfyn shrop skwashd univate_ : scrum time!<br />[12:14am] anarcat: alright<br />[12:14am] anarcat: so for my part i haven&#039;t done much aegir work in the last week<br />[12:14am] anarcat: i was swamped with sysadmin duties and other koumbit stuff<br />[12:15am] anarcat: i am trying to fix that damn d7 segfault problem we&#039;re having and i&#039;m stuck<br />[12:15am] anarcat: i will try to find sometime this week to finally setup the new jenkins server and start to work on provision unit tests<br />[12:15am] anarcat: sfyn something else to add to our scrum? <br />[12:15am] anarcat: omega8cc ?<br />[12:15am] omega8cc: I&#039;m still busy writing some Nginx related updated docs for c.a.o when I have some rare free minutes, and in the meantime Barracuda and Octopus have been finally moved to d.o, yay!<br />[12:15am] omega8cc: See <a href="http://drupal.org/project/barracuda" title="http://drupal.org/project/barracuda">http://drupal.org/project/barracuda</a> and <a href="http://drupal.org/project/octopus" title="http://drupal.org/project/octopus">http://drupal.org/project/octopus</a>, so we can co-operate better now.<br />[12:15am] anarcat: yay!<br />[12:16am] anarcat: awesome<br />[12:16am] omega8cc: Next week I plan to publish the docs I collected so far. That is it for me.<br />[12:16am] sfyn: Since last I came I started rolling out releases for uc_hosting<br />[12:16am] sfyn: I am working on the next one this week and then I am porting the puppy to D7<br />[12:17am] sfyn: And implementing remote storefronts, which means I am going to start working on services<br />[12:17am] anarcat: awesome<br />[12:17am] Pathin left the chat room. (Ping timeout: 252 seconds)<br />[12:17am] sfyn: cmcintosh has convinced me, along with 8 of his friends, to go with servicesapi<br />[12:17am] sfyn: also<br />[12:17am] anarcat: it seems our gsoc student is missing, but he&#039;s going to work on the d7 port of hostmaster, so you may want to coordinate with him on that<br />[12:18am] sfyn: quota api, and particularly the sites implementation of it could use some love, and i&#039;ve noticed that platforms being locked prevent you from changing anything on a site at all<br />[12:18am] sfyn: anarcat: what is his nick on irc?<br />[12:18am] anarcat: sfyn: he&#039;s sethvincent<br />[12:18am] Pathin joined the chat room.<br />[12:18am] sfyn: anarcat: and maybe you could fire over his email<br />[12:18am] anarcat: about platforms being locked - yeah, another user reported something like this recently<br />[12:18am] anarcat: sfyn: not sure i have his email, lemme check<br />[12:19am] sfyn: thanks<br />[12:19am] sfyn: one last thing<br />[12:19am] anarcat: done<br />[12:19am] sfyn: this discussion: http://community.aegirproject.org/discuss/aegir-and-phpmyadmin<br />[12:20am] sfyn: has a question about deploying phpmyadmin on slave servers, would be cool if someone could chip in with experience with those<br />[12:20am] anarcat: note that i haven&#039;t followed the issue queue or the community site in about a week, so i&#039;m a bit lagging <br />[12:20am] Pasqualle left the chat room. (Ping timeout: 240 seconds)<br />[12:20am] sfyn: anarcat: received and thanks<br />[12:20am] anarcat: i see<br />[12:21am] Artusamak is now known as Artusamak_afk.<br />[12:21am] anarcat: not sure i have time for this right now, but i would just set it up as a separate vhost<br />[12:21am] anarcat: and no need to set it up on all servers...<br />[12:21am] anarcat: anyways, we need some integration there so that mysql servers get configured in PMA<br />[12:21am] anarcat: i think therE&#039;s an issue for that<br />[12:21am] anarcat: anyone else for the scrum?<br />[12:23am] • sfyn chirps like a cricket<br />[12:24am] mvc: did i mention my pet drush module here lately?<br />[12:24am] mvc: http://drupal.org/sandbox/mvc/1142496<br />[12:24am] anarcat: mvc: i don&#039;t think you did!<br />[12:24am] anarcat: sweet<br />[12:24am] mvc: it reports which projects (as in groups of modules) are in use by different sites in one or more platforms<br />[12:25am] anarcat: good work<br />[12:25am] mvc: as soon as i get around to testing it with d5 and d7 i&#039;ll move it out of the sandbox<br />[12:25am] anarcat: isn&#039;t status-report a bit confusing as a command name? i would expect that command to give me similar results than the status report page in the drupal site...<br />[12:26am] anarcat: otherwise, cool<br />[12:26am] omega8cc: there is some promising contrib to review, if you can help<br />[12:26am] Pathin left the chat room. (Quit: Lost terminal)<br />[12:27am] obrienmd: mvc: really intersted in testing that, will do so ASAP... agree w/ anarcat on the command name though<br />[12:27am] omega8cc: see http://drupal.org/node/1144968<br />[12:27am] FatGuyLaughing left the chat room. (Quit: FatGuyLaughing)<br />[12:29am] anarcat: alright<br />[12:29am] anarcat: oh<br />[12:29am] anarcat: another thing<br />[12:29am] anarcat: koumbit is going to make a presentation at drupalcon this year<br />[12:29am] anarcat: i would have loved to talk with darthsteven about this, i guess we can catch up later this week<br />[12:29am] anarcat: but basically, we&#039;re going to send the proposal soon, the deadline is the 15th, iirc<br />[12:30am] anarcat: so there we go<br />[12:30am] anarcat: i think that covers it for our scrum<br />[12:30am] anarcat: thanks everybody for attending<br />[12:30am] anarcat: and see you next week!<br />[12:30am] • anarcat scrum over!<br />[12:30am] omega8cc: ciao<br />[12:30am] sfyn: salut<br />[12:30am] szczym: see you</code></div></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-106.html?destination=node%2F639%23comment-form">Login</a> or <a href="../../user/register/index-106.html?destination=node%2F639%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/scrums/weekly-scrum-irc-log-2011-05-10?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:49 GMT -->
+</html>

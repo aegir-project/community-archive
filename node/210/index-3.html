@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/210?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../196/index.html" />
+<link rel="up" href="../../content/scrums/archive-2010/index.html" />
+<link rel="next" href="../225/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2010-12-16 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-210" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2010-12-16</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_7 first"><a href="../../taxonomy/term/7/index.html" rel="tag" title="">scrum</a></li>
+<li class="taxonomy_term_2 last"><a href="../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-210'><pre>
+
+07:00 &lt;@mig5> scrum time
+07:00 &lt;@anarcat> hi
+07:00 &lt;@mig5> morning
+07:01 &lt;@anarcat> good morning!
+07:01 &lt;@anarcat> not much to report on my side again, other than i forgot to book a session for drupalcon :/
+07:01 &lt;@mig5> hehe
+07:01 &lt;@anarcat> we're working on LDAP support and we'll focus on intersite security after christmas
+07:01 &lt;@mig5> i did make a tweet after i saw there are three aegir related proposals
+07:01 &lt;@mig5> oh sweet! LDAP++
+07:01 &lt;@anarcat> add a way for aegir to run tasks as a real user instead of itself, so that site A can't see site B's stuff
+07:03 &lt;@mig5> cool - that's it from you?
+07:04 &lt;@anarcat> yes, sorry
+07:04 &lt;@mig5> no worries
+07:04 &lt;@mig5> ok, so (again) i haven't done much
+07:05 &lt;@mig5> i tried to address some of the for review tickets in the queue, committing two of hadsie's work which i tested
+07:05 &lt;@anarcat> that's much :)
+07:05 &lt;@mig5> i didn't get to test your debian packages against another squeeze install but i did comment on the ticket about what i think the issue is there
+07:05 &lt;@anarcat> yeah, you're right about the issues, feel free to fix if you have time
+07:06 &lt;@mig5> but mainly i have been just staring at the queue and feeling out of steam (again), I wonder whether it is time to look at adding more people to the project
+07:06 &lt;@anarcat> i agree
+07:06 &lt;@mig5> as i feel i'm getting less and less useful, and vertice is taking a break etc,
+07:06 &lt;@mig5> and you are tied up a lot with internal stuff (which is fine)
+07:06 &lt;@anarcat> i don't feel you're less and less useful though :P
+07:07 &lt;@mig5> well that's ok :) i think it speaks for itself
+07:07 &lt;@mig5> and things have slowed down so lets get some more hands on deck basically.
+07:07 &lt;@mig5> also, i have a client at the moment who is interested in seeing two things happen:
+07:07 &lt;@mig5> a dns frontend and scheduled tasks
+07:07 &lt;@mig5> Steven Jones has been doing great work with scheduled tasks and created a contrib project hosting_backup_queue
+07:08 &lt;@mig5> i was going to ask whether Koumbit were already working on a dns frontend
+07:08 &lt;@mig5> we can discuss that later if you like
+07:08 &lt;@mig5> and that's about it from me
+07:09 &lt;@anarcat> ok, anybody else?
+07:09 &lt;@mig5> maybe it would be nice to summarise these scrum sessions as a 'weekly aegir news' email to the mailing list, making people aware of stuff like Steven Jones' contrib project etc
+07:09 &lt;@anarcat> mig5: i have ideas on the frontend: 1) there should be code we can resurrect from older git repos and 2) i have a workflow for the blacklisting algorithm (can't let anyone host any zone can't we...)
+07:09 &lt;@anarcat> yep
+07:10 &lt;@mig5> i am happy to do so
+07:11 &lt;@mig5> (re: news)
+07:11 &lt;@mig5> ok -we are 11 minutes in anyone else have anything to add?
+07:12 &lt; erutan> re: news to save time you could always just dump the relevant irc log onto the open atrium site
+07:12 &lt;@mig5> we do that already, yep
+07:12 &lt;@mig5> maybe that's enough.
+07:12 &lt;@anarcat> yeah...
+07:13 &lt;@anarcat> alright, thanks for coming everyone!
+07:13 &lt;@mig5> cheers
+07:13 &lt;@mig5> cheers
+07:14 &lt;@mig5> adding the irc log now
+07:15 &lt; noecc> mig5: anarcat: vertice: and others  You have done great things with aegir.  Don't let your steamlessness get you down.
+07:15 &lt;@anarcat> :)
+07:15 &lt;@anarcat> thanks :)
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-87.html?destination=node%2F210%23comment-form">Login</a> or <a href="../../user/register/index-87.html?destination=node%2F210%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/210?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:13 GMT -->
+</html>

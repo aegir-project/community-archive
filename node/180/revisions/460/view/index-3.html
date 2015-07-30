@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/180/revisions/460/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:09:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/scrums/archive-2010/index.html" />
+<link rel="up" href="../../../../../content/scrums/archive-2010/index.html" />
+<link rel="next" href="../../../../196/index.html" />
+<link rel="prev" href="../../../../../content/scrums/archive-2010/index.html" />
+<link rel="up" href="../../../../../content/scrums/archive-2010/index.html" />
+<link rel="next" href="../../../../196/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Weekly Scrum IRC Log: 2010-12-02 from Thu, 12/02/2010 - 21:18 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-180" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Weekly Scrum IRC Log: 2010-12-02</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+<li class="taxonomy_term_6 last"><a href="../../../../../taxonomy/term/6/index.html" rel="tag" title="">weekly scrums</a></li>
+</ul></div><div id='diff-inline-180'><pre>
+(03:00:54 PM) anarcat: hi.
+(03:01:08 PM) anarcat: so now is the time for our newly established weekly scrums :)
+(03:01:24 PM) anarcat: of course, mig5 is not there and vertice either, but i'll still do my part,
+ just to kickstart this
+(03:01:32 PM) hadsie: hey anarcat
+(03:01:54 PM) anarcat: hey hadsie
+(03:03:30 PM) anarcat: so basically, i haven't done much wrt to aegir this week, i'm busy
+ with other koumbit work
+(03:03:39 PM) anarcat: you're going to hear this often from me, unfortunately :)
+(03:04:03 PM) anarcat: my latest thing though is the creation of a debian package for provision
+ that can install and upgrade aegir automagically, it's pretty neat and needs testing
+(03:05:42 PM) anarcat: i have contacted other debian developpers to get their feedback about
+ the possibility of uploading that package straight into debian
+(03:07:24 PM) anarcat: the followup for the debian package happens here: 
+<a href="http://drupal.org/node/490004" title="http://drupal.org/node/490004">http://drupal.org/node/490004</a> and here: <a href="http://bugs.debian.org/532923" title="http://bugs.debian.org/532923">http://bugs.debian.org/532923</a>
+(03:07:36 PM) sfyn: hey folks
+(03:07:36 PM) anarcat: in other news i started looking at STS here: 
+<a href="http://drupal.org/node/986312" title="http://drupal.org/node/986312">http://drupal.org/node/986312</a>
+(03:08:04 PM) anarcat: so that's it for my past work, in the next week i'll try to:
+(03:08:22 PM) anarcat: figure out proper permissions for multi-(shell)user setups in aegir
+(03:08:49 PM) anarcat: right now a lot of our devs use sudo -u aegir to do stuff and that's quite 
+messy, we're going to try to figure out the minimum set of perms for that to work, maybe with 
+ACLs
+(03:09:03 PM) anarcat: we also need to figure out how we maintain site-specific packages in 
+remote servers
+(03:09:26 PM) anarcat: and i want to start fixing DNS in the frontend, but we are slowly pushing
+ back our objective of having DNS in production to after christmast
+(03:09:30 PM) anarcat: so that's it for me
+(03:09:42 PM) anarcat: hi sfyn :)
+(03:09:43 PM) anarcat: sfyn / ergonlogic / mvc : anything to add?
+(03:11:24 PM) simesy: hey i actually made the scrum, (but only because I had to get up for a
+ job and now I have to go :P)
+(03:11:35 PM) anarcat: :)
+(03:11:35 PM) anarcat: i see
+(03:11:39 PM) anarcat: well, congratulations :)
+(03:11:42 PM) sfyn: I have been sick all week and trying to catch up on my rpod stuff
+(03:11:51 PM) sfyn: So very little progress to report
+(03:11:59 PM) sfyn: I have a guy who is interested in writing tests for us
+(03:12:13 PM) sfyn: Luigi - are you here?
+(03:12:38 PM) sfyn: A guy in montreal, but he is a little new to the fabulous world of drupal,
+ and FLOSS in general, I get the impression
+(03:12:46 PM) sfyn: But he has done unit testing work before
+(03:13:00 PM) sfyn: Maybe we should get him to come into the office so we can orient him
+(03:13:18 PM) sfyn: hadsie: hey man
+(03:14:07 PM) anarcat: thank you sfyn
+(03:14:16 PM) anarcat: so our little scrum is almost over, anybody got anything to add before
+ we move on?
+(03:16:26 PM) anarcat: thank you for your attention, and see you next week!
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-85.html?destination=node%2F180%23comment-form">Login</a> or <a href="../../../../../user/register/index-85.html?destination=node%2F180%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-85.html?destination=node%2F180%23comment-form">Login</a> or <a href="../../../../../user/register/index-85.html?destination=node%2F180%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/180/revisions/460/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:09:51 GMT -->
+</html>

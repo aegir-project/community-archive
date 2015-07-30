@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/29/revisions/2156/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:00:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../341/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../administrator/dns/index.html" />
+<link rel="prev" href="../../../../341/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../administrator/dns/index.html" />
+<link rel="prev" href="../../../../341/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../administrator/dns/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Using SSL from Mon, 08/01/2011 - 00:54 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-29" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/content/administrator/post-install-configuration/using-ssl/index.html">Using SSL</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-29'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 08/01/2011 - 00:54</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><h3>Introduction</h3>
+
+<p>SSL support was significantly improved in Aegir 0.4 alpha9 and subsequent releases have further refined the SSL functionality. Here are the current steps to configure SSL support in Aegir and apply it to your web sites.</p>
+
+<h3>Prepare Your Server</h3>
+
+<p><OL>
+<LI>Make sure port 443 is open for SSL traffic.
+</li><LI>From the command line, install SSL software for your web server (e.g. on Debian/Ubuntu you can use <code>sudo apt-get install openssl</code>).</li>
+<LI>Enable SSL support (e.g. <code>sudo a2enmod ssl</code>).  You will need to restart Apache at this point.
+</li></ol></p>
+
+<h3>Enable SSL Support in Aegir</h3>
+
+<p><OL>
+<LI>You have to enable SSL support in Aegir as it is off by default.  Assuming the URL of your Aegir front end is aegir.example.com, browse to aegir.example.com/admin/hosting/features 
+<img src="../../../../../sites/community.aegirproject.org/files/features-page/index.png" alt="how to get to the Aegir features page" />
+</li><LI>Click on Experimental to reveal experimental features <img src="../../../../../sites/community.aegirproject.org/files/ssl-support/index.png" alt="experimental features of Aegir" />
+</li><LI>Check SSL support
+</li><LI>Click Save configuration
+</li></ol></p>
+
+<h3>Configure Your Aegir Server</h3>
+
+<p><OL>
+<LI>Click on the Servers tab
+</li><LI>Click on the server that you wish to enable SSL support
+</li><LI>Click Edit to change the server configuration
+</li><LI>Click apache_ssl (this will reveal an additional field: SSL port, which should be already populated with 443).  Note: you may also have to add an IP address to the IP addresses field.  <img src="../../../../../sites/community.aegirproject.org/files/enable-ssl-on-server/index.png" alt="enabling SSL on your Aegir server" />
+</li><LI>Click Save - this will start various tasks beginning with a verify task on the server followed by verify tasks on all platforms that are associated with that server
+</li><LI>If all goes well you will see the following changes in your Aegir <a href="http://groups.drupal.org/node/93849">file system structure</a>:
+a) under /var/aegir/config you will see a new directory ssl.d
+b) under /var/aegir/config/server_master you will see a similar new directory ssl.d
+</li></ol></p>
+
+<h3>Configure Your Aegir Site</h3>
+
+<p><OL>
+<LI>You must enable SSL on your sites that are on those platforms associated with the server.  Browse to aegir.example.com/hosting/c/site-1.com
+</li><LI>Click Edit to change the site configuration
+</li><LI>Choose the type of Encryption required and the Encryption key (see the explanatory notes below each option). <img src="../../../../../sites/community.aegirproject.org/files/site-ssl-configuration_0/index.png" alt="configuring an Aegir site for SSL" /> <em>NOTE:,</em> Alternatively, you may specify a directory under /var/aegir/config/server_master/ssl.d where your own certificate and key is to be stored (see Apache notes below).
+</li><LI>Click Save.  Aegir will then generate a certificate and private key for your web site and insert these into a new VirtualHost directive in your vhost file.  (This file is typically at /config/server_master/apache/vhost.d/site-1.com).
+</li><LI>If all goes well the VirtualHost directive will now have these important elements:</li></ol></p>
+
+<p><div class="codeblock"><code>&lt;VirtualHost xx.xx.xx.xx:443&gt;&nbsp; &lt;-- where xx.xx.xx.xx is an IP address dedicated for SSL access to your site and 443 is the port number<br />&nbsp;&nbsp;&nbsp; ....<br /><br />&nbsp;&nbsp;&nbsp; # Enable SSL handling.<br />&nbsp;&nbsp;&nbsp; SSLEngine on<br /><br />&nbsp;&nbsp;&nbsp; SSLCertificateFile /var/aegir/config/server_master/ssl.d/site-1.com/openssl.crt<br />&nbsp;&nbsp;&nbsp; SSLCertificateKeyFile /var/aegir/config/server_master/ssl.d/site-1.com/openssl.key</code></div></p>
+
+<p>Now, when you navigate to <a href="https://site-1.com/" title="https://site-1.com">https://site-1.com</a> you should see that your site is SSL enabled.
+</p>
+
+<h3>Notes for Apache users with Commercial Certificate File(s)</h3>
+
+<p>If you wish to use your own commercial certificate and key you will need to do the following:</p>
+
+<p><OL>
+<LI>Follow the directions above, using the "Generate new encryption key" option and using your site's domain name for the "New encryption key". This will create a site directory under both /var/aegir/config/ssl.d and /var/aegir/config/server_master/ssl.d. With this step, you have created a self-signed certificate, and your site is now configured to use it. To use a commercial certificate, however, you need to delete all files created (including any _receipt files) while leaving the directory structure intact.
+</li><LI>Create Certificate Signing Request (.csr file). Using a tool like <a href="https://www.digicert.com/easy-csr/openssl.htm" title="https://www.digicert.com/easy-csr/openssl.htm">https://www.digicert.com/easy-csr/openssl.htm</a>, create the following code:
+<div class="codeblock"><span class='diff-added'></span><code>openssl req -new -newkey rsa:2048 -nodes -out site-1_com.csr -keyout site-1_com.key -subj &quot;/C=us/ST=Your State/L=Your City/O=Your Organization Inc./CN=site-1.com&quot;</code><span class='diff-added'></span></div>
+Paste this code (modify it if not using tool) into your /var/aegir/config/server_master/ssl.d/site-1.com directory. It will generate a .csr and a .key file; transfer the generated files via FTP client to a temporary folder on your PC. Copy and paste the .csr file into the form for the issuing authority (GoDaddy to create Starfield Technologies certificates, for example) to create your certificate.
+</li><LI>When your certificate has been generated, download the files from the issuing authority and place in your temporary folder on your PC. In total, you will have four files: one .csr file, one .key file, and the two .crt files. One of the .crt files will be an sf_bundle file which will need special consideration (see below).
+</li><LI>Transfer all the files to /var/aegir/config/ssl.d/site-1.com and /var/aegir/config/server_master/ssl.d/site-1.com (overwriting what's there). Rename the site .crt and .key files to openssl.crt and openssl.key in both directories; you need not rename the sf_bundle.crt file. 
+</li></ol></p>
+
+<p><em>NOTE: Do not verify your site until you complete the next step!</em> Whenever you reverify your site, your vhost file is automatically regenerated by Aegir and any non-Aegir generated certificate information will be replaced in the vhost file.</p>
+
+<h4>Create file to insert additional configuration in your vhost file for this site.</h4>
+
+<p>Create a file in /var/aegir/.drush and call it sitename.drush.inc and include the following:
+<div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />&nbsp; </span><span style="color: #007700">function </span><span style="color: #0000BB">sitename_provision_apache_vhost_config</span><span style="color: #007700">(</span><span style="color: #0000BB">$uri</span><span style="color: #007700">, </span><span style="color: #0000BB">$data</span><span style="color: #007700">) {<br />&nbsp;&nbsp;&nbsp; return </span><span style="color: #DD0000">"SSLCertificateChainFile /var/aegir/config/server_master/ssl.d/" </span><span style="color: #007700">. </span><span style="color: #0000BB">$uri </span><span style="color: #007700">. </span><span style="color: #DD0000">"/sf_bundle.crt"</span><span style="color: #007700">;<br />&nbsp; }<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></p>
+
+<p>Now, when aegir verifies your site, you changes to the vhost file will remain intact, and the correct SSLCertificateChainFile will be inserted.</p>
+
+<p>For more information on this technique, see <a href="../../../../70/index.html" title="http://community.aegirproject.org/node/70">http://community.aegirproject.org/node/70</a></p>
+
+<h4>Verify you site from aegir's frontend.</h4>
+
+<p>You should now be able to access your site via https:// using your commercial certificate.</p>
+
+<h3>Notes for Nginx users:</h3>
+
+<p>It is recommended to allow Aegir to create a default self-signed certificate and key first, and then replace the contents of both files (not the files itself) with your real key and certificate. Any chained certificates (bundles) should be included in the same file, directly below your own certificate - there is no need for extra files/lines like it is for Apache configuration.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-299.html?destination=node%2F29%23comment-form">Login</a> or <a href="../../../../../user/register/index-299.html?destination=node%2F29%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-1877"></a>
+
+
+<div  id="comment-1877" class="comment comment-published clear-block decay-10 decay-10">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/ramanonos/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="Ramanonos&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/ramanonos/index.html" class="username" title="View user profile.">Ramanonos</a></div><div class='date'>10:40pm Mar 20, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1877">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Documentation on initial SSL setup is pretty good, but what about a renewal? I really dont want to fix anything that doesnt need fixing. Aegir can be unforgiving when missing the small stuff:-) I cant exactly test this out on a staging site. Do I need to generate a new rsa key for a renewal? I'm using a wildcard cert on a single Linode server running CentOS/Apache, that hosts rabout a dozen Atrium sites through Aegir under individual subdomains under a single domain name.<br />
+If I need to upload something new, what folders do I put it in? And do I need to manually update all the virtual hosts of my existing Atrium sites, or will this happen automatically???  Here's where I'm at (with deer-n-headlights look).</p>
+
+<p>I paid for the new SSL with godaddy, and downloaded 2 files
+1. gd_bundle.crt
+2. mydomain.crt</p>
+
+<p>Inside  var/aegir/config/ssl.d/godaddy   I have the following files:</p>
+
+<ol>
+<li>gd_bundle.crt (this one has 3 chained certs, but the one I downloaded from godaddy only has 2.  Just leave the new one as is and upload it? Thoughts?)</li>
+<li>openssl.crt  (what I was planning to do is replace the contents of this file with what I have in mydomain.crt -copy/paste and upload it.  Yes?)</li>
+<li>openssl.csr (I alerted godaddy to use my existing csr during activation, so I'll do nothing here. Yes?)</li>
+<li>openssl.key (I suppose this is the key generated the first time. Do I need to regenerate on a renewed SSL? Would rather not...)</li>
+<li>info.txt  (this file appears to be a public cert. I don't recall how it was generated, what should I do about this mystery? It starts like so:</li>
+</ol>
+
+<p>Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            2x:67:z3:
+        Signature Algorithm: sha1WithRSAEncryption
+        Issuer: C=US, ST=Arizona, L=Scottsdale, O=GoDaddy.com, Inc., OU=http://certificates.godaddy.com/repository, CN=Go Daddy Secure Certification Authority/serialNumber=123456
+        Validity
+            Not Before: Apr 16 22:18:16 2012 GMT
+            Not After : May  3 17:00:47 2013 GMT
+        Subject: O=<em>.example.com, OU=Domain Control Validated, CN=</em>.example.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+            RSA Public Key: (2048 bit)
+                Modulus (2048 bit):
+                    00:c0:1d:5a:07:98:42:b1:be:de:b7:20:b5:79:d2:
+                    ae:3e:99:06:e3:4b:a8:fc:59:18:f1:3a:05:aa:50:
+                    94:1f:64:71:9f:ea:90:eb:06:e9:1d:a0:89:00:a8:</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-299.html?destination=node%2F29%23comment-form">Login</a> or <a href="../../../../../user/register/index-299.html?destination=node%2F29%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-1883"></a>
+
+
+<div  id="comment-1883" class="comment comment-published clear-block decay-9 decay-9">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/ramanonos/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="Ramanonos&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/ramanonos/index.html" class="username" title="View user profile.">Ramanonos</a></div><div class='date'>11:02pm Mar 28, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1883">#2</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>No sweat. Here it is: Upload/overwrite existing gd_bundle.crt into the active ssl folder.  Copy/paste the contents of domain.crt into the openssl.crt file. Make sure to put both files in ssl.d and servermaster/ssl.d.  Restart apache &amp; enjoy.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-299.html?destination=node%2F29%23comment-form">Login</a> or <a href="../../../../../user/register/index-299.html?destination=node%2F29%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-1885"></a>
+
+
+<div  id="comment-1885" class="comment comment-published clear-block decay-9 decay-9">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/mccrodp/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="mccrodp&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/mccrodp/index.html" class="username" title="View user profile.">mccrodp</a></div><div class='date'>9:50am Apr 2, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1885">#3</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>I'm quite confused how SSL works now in Aegir2 with IP's being allocated in the front-end. I posted a question about this at the end of <a href="http://drupal.org/node/1126640#comment-7209602">move the SSL IP allocation to the frontend</a>, but I'm guessing as this is a closed issue, it might slip below the radar. Any info on this or a pointer in the right direction is much appreciated.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-299.html?destination=node%2F29%23comment-form">Login</a> or <a href="../../../../../user/register/index-299.html?destination=node%2F29%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-1890"></a>
+
+
+<div  id="comment-1890" class="comment comment-published clear-block decay-9 decay-9">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/john-carbone/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="John Carbone&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/john-carbone/index.html" class="username" title="View user profile.">John Carbone</a></div><div class='date'>3:53pm Apr 3, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1890">#4</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Seems to be a bug (omission?) in Provision that ignores ssl chain files. I found that the vhost file wouldn't get updated with the SSLCertificateChainFile entry even when following the documentation. Perhaps I was doing something incorrectly but if I was, I never found it. In the end I ended up applying a couple patches, reverifying my platform and all was right with the world. I did have to remove some whitespace in between the two diffs in the patch but other than that it applied to provision 6.x-1.9 (bit of patch fuzz but otherwise ok)</p>
+
+<p>See <a href="http://nicksantamaria.net/article/getting-ca-chain-certificates-work-using-aegir-13" title="http://nicksantamaria.net/article/getting-ca-chain-certificates-work-using-aegir-13">http://nicksantamaria.net/article/getting-ca-chain-certificates-work-usi...</a> and <a href="http://nicksantamaria.net/sites/nicksantamaria.net/files/article_attachments/provision-1.2-chain_crt.patch" title="http://nicksantamaria.net/sites/nicksantamaria.net/files/article_attachments/provision-1.2-chain_crt.patch">http://nicksantamaria.net/sites/nicksantamaria.net/files/article_attachm...</a> if you have the same problem. :)</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-299.html?destination=node%2F29%23comment-form">Login</a> or <a href="../../../../../user/register/index-299.html?destination=node%2F29%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-1966"></a>
+
+
+<div  id="comment-1966" class="comment comment-published clear-block decay-6 decay-6">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/freshjewbagel/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="freshjewbagel&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/freshjewbagel/index.html" class="username" title="View user profile.">freshjewbagel</a></div><div class='date'>7:47pm Jun 26, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1966">#5</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>If I select 'Encryption: Required', the server will not redirect traffic from the http port to the https port as described</p>
+
+<p>I am using 5080 and 5443, so it redirects <a href="http://server:5080/" title="http://server:5080">http://server:5080</a> to <a href="https://server:5080/" title="https://server:5080">https://server:5080</a>, which of course does not work.</p>
+
+<p>lynx attempt:<br />
+Looking up stage.web:5080<br />
+Making HTTP connection to stage.web:5080<br />
+Sending HTTP request.<br />
+HTTP request sent; waiting for response.<br />
+HTTP/1.1 301 Moved Permanently<br />
+Data transfer complete<br />
+HTTP/1.1 301 Moved Permanently<br />
+Using <a href="https://stage.web:5080/" title="https://stage.web:5080/">https://stage.web:5080/</a><br />
+Looking up stage.web:5080<br />
+Making HTTPS connection to stage.web:5080<br />
+Retrying connection without TLS.<br />
+Looking up stage.web:5080<br />
+Making HTTPS connection to stage.web:5080<br />
+Alert!: Unable to make secure connection to remote host.</p>
+
+<p>Accessing <a href="https://stage.web:5443/" title="https://stage.web:5443">https://stage.web:5443</a> works however</p>
+
+<p>What gives?</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-299.html?destination=node%2F29%23comment-form">Login</a> or <a href="../../../../../user/register/index-299.html?destination=node%2F29%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2109"></a>
+
+
+<div  id="comment-2109" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/smys123/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="smys123&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/smys123/index.html" class="username" title="View user profile.">smys123</a></div><div class='date'>2:41pm Dec 11, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-2109">#6</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Any Update on this?</p>
+
+<p>We would like to utilize SNI since we have a multi-site setup under one drupal core. Is there anyway to override the process where verify replaces the edit *:443 back to xxx.xx.xxxx:443 ?</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-299.html?destination=node%2F29%23comment-form">Login</a> or <a href="../../../../../user/register/index-299.html?destination=node%2F29%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/29/revisions/2156/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:00:32 GMT -->
+</html>

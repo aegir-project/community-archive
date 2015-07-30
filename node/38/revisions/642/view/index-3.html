@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/38/revisions/642/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:05:50 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/content/administrator/post-install-configuration/using-ssl/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../dnswildcard/index.html" />
+<link rel="prev" href="../../../../../content/content/administrator/post-install-configuration/using-ssl/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../dnswildcard/index.html" />
+<link rel="prev" href="../../../../../content/content/administrator/post-install-configuration/using-ssl/index.html" />
+<link rel="up" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="next" href="../../../../../dnswildcard/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="prev" href="../../../../../administrator/dns/index.html" />
+<link rel="up" href="../../../../../administrator/dns/index.html" />
+<link rel="next" href="../../../../39/index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of DNS from Sat, 01/29/2011 - 16:23 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-38" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../administrator/dns/index.html">DNS</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-38'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/mig5/index.html" class="username" title="View user profile.">mig5</a> on 01/29/2011 - 16:23</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><span class='diff-added'></span><p><span class='diff-added'>There is preliminary support for DNS in Aegir's backend that allows it to manage zonefiles dynamically when sites are created. There are still a few major bits missing (described in </span><a href="http://drupal.org/node/922280"><span class='diff-added'>this meta-ticket&lt;/a) so we generally recommend people use the wildcard approach for now.</span></a><span class='diff-added'></span></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-404.html?destination=node%2F38%23comment-form">Login</a> or <a href="../../../../../user/register/index-404.html?destination=node%2F38%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+
+<div  id="node-285" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../dnswildcard/index.html">DNS Wildcard Configuration</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <h4>Why run a wildcard DNS server?</h4>
+
+<p>A wildcard DNS setup lets you automatically have subdomains for a given domain. For example, say you own the domain widgets.com and you want to setup an unlimited number of subdomains like dev.widgets.com, test.widgets.com, customers.widgets.com, etc.... Typically you would have to set these all up individually. A wildcard DNS can let you bypass a lot of configuration.  In a development environment it can let you setup any number of test/development sites very quickly and easily.  Drupal developers in particular can leverage Drupal's multisite installation feature to setup lots of sites for development or production very quickly.</p>
+
+<h4>Creating a DNS wildcard with hosted DNS</h4>
+
+<p>Many of the popular domain registration companies allow you to manage your DNS records through a web interface. If you have access to such a facility, adding a DNS wildcard is easy: you just create an A record called '*', pointing to your server's IP address.</p>
+
+<p>For convenience, here are instructions for some popular hosting providers: <a href="http://community.godaddy.com/groups/domains-management-and-services/forum/topic/dns-wildcards/">GoDaddy</a>, <a href="http://www.hosting.com/support/cpanel/dns/wildcard">hosting.com</a> (which uses the popular cPanel system) and <a href="http://www.123-support.co.uk/support/answers/how-do-i-change-my-dns-settings-279/">123-reg.co.uk</a>. It is likely that your host will have a similar system to one of these.</p>
+
+<h4>How to configure DNS wildcards on your own server</h4>
+
+<h4><a href="#debian">  Ubuntu/Debian  </a></h4>
+
+<h4><a href="#osx"> OS X Snow Leopard </a></h4>
+
+<h3 id="debian">Setting up a Wildcard DNS configuration on Ubuntu/Debian</h3>
+
+<h4>Overview of Steps on Ubuntu/Debian</h4>
+
+<p>I. Install Bind 9
+II. Add a zone to /etc/bind/named.conf.local. Check the syntax  of named.conf.local with named-checkconf
+III. Add a zone file &amp; Check the syntax  of  your zone files for errors with named-checkzone
+IV.  Edit /etc/resolv.conf
+V. Start up Bind 
+VI.  Check setup with dig 
+VII. Troubleshoot if needed</p>
+
+<h4>I. Install Bind 9</h4>
+
+<p><div class="codeblock"><code>$ sudo apt-get install bind9</code></div></p>
+
+<h4>II. Edit /etc/bind/named.conf.local to add a zone.</h4>
+
+<p> We need to add a zone to /etc/bind/named.conf.local. A zone is a record for a domain. In this case we'll use a fake domain for development purposes. Our domain can be called  anything. Let's call it mydev. (I was really tempted to call the domain bullshit - would have been great for screencasts). So at a shell prompt do:</p>
+
+<p><div class="codeblock"><code>$ sudo nano /etc/bind/named.conf.local</code></div></p>
+
+<p> Add this to the end of the file:</p>
+
+<p><div class="codeblock"><code>zone &quot;mydev&quot; {<br /> type master;<br />&nbsp;&nbsp; file &quot;/etc/bind/db.mydev&quot;;<br />};</code></div></p>
+
+<p> Save the file with Control - O  and enter.  Exit from nano with Control X.</p>
+
+<p>Check the syntax of the file as follows: </p>
+
+<p><div class="codeblock"><code>$ named-checkconf /etc/bind/named.conf.local </code></div></p>
+
+<p> If the file is syntactically correct the shell prompt will return nothing. If there is an error - make sure you did not miss a quote or semicolon and recheck the file.</p>
+
+<h4>III. Add a zone file  &amp;  Check the syntax  of  your zone files for errors with named-checkzone </h4>
+
+<p><div class="codeblock"><code>$ sudo nano /etc/bind/db.mydev</code></div></p>
+
+<p>Add this to the file replacing 10.0.2.15 with your IP address</p>
+
+<p><div class="codeblock"><code>mydev. 86400 IN SOA mydev. hostmaster.mydev. (<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 20091028 ; serial yyyy-mm-dd<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10800; refresh every 15 min<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3600; retry every hour<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3600000; expire after 1 month +<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 86400 ); min ttl of 1 day<br />&nbsp; IN NS mydev. <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IN MX 10 mydev.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IN A 10.0.2.15<br />*.mydev. IN A 10.0.2.15</code></div></p>
+
+<p> Save the file with Control - O  and enter.  Exit from nano with Control X. Check the syntax with the following:</p>
+
+<p><div class="codeblock"><code>$ named-checkzone mydev /etc/bind/db.mydev </code></div></p>
+
+<p> If the syntax of the file is correct you should see something like: </p>
+
+<p><div class="codeblock"><code>zone mydev/IN: loaded serial 20091028<br />OK</code></div></p>
+
+<p> If not review the file for errors. In particular whenever referring to a domain, it must end in a  .  , thus  mydev.  </p>
+
+<h4>IV.  Edit /etc/resolv.conf</h4>
+
+<p>resolv.conf tells applications like browsers where to look for DNS info. By default it may have your ISPs info. We need to tell it to check our local DNS server first then the ISP. </p>
+
+<p><div class="codeblock"><code>$ sudo nano /etc/resolv.conf</code></div></p>
+
+<p>Add/change the following</p>
+
+<p><div class="codeblock"><code>domain mydev<br />search mydev<br />nameserver 127.0.0.1<br />nameserver (your isp nameserver or open dns)</code></div></p>
+
+<p>If you are receiving an IP address via DHCP then you need to edit /etc/dhcp3/dhclient.conf too. </p>
+
+<p><div class="codeblock"><code>$ sudo nano&nbsp; /etc/dhcp3/dhclient.conf</code></div></p>
+
+<p>Look for the lines send host-name,  supersede domain-name,  and prepend domain-name-servers  and set them as follows (and make sure they are uncommented ) :</p>
+
+<p><div class="codeblock"><code>send host-name &quot;mydev&quot;;<br />supersede domain-name &quot;mydev&quot;;<br />prepend domain-name-servers 127.0.0.1;</code></div>
+<div class="codeblock"><code>sudo dhclient</code></div></p>
+
+<p>Whew! Almost there.</p>
+
+<h4>V. Start up Bind (or Restart) </h4>
+
+<p><div class="codeblock"><code>$ sudo /etc/init.d/bind9 restart </code></div></p>
+
+<h4> VI.  Check setup with ping and dig </h4>
+
+<p><div class="codeblock"><code>$&nbsp; ping testing.mydev<br />PING testing.mydev (10.0.2.15) 56(84) bytes of data.<br />64 bytes from ubuntu.local (10.0.2.15): icmp_seq=1 ttl=64 time=0.041 ms<br />64 bytes from ubuntu.local (10.0.2.15): icmp_seq=2 ttl=64 time=0.039 ms<br />64 bytes from ubuntu.local (10.0.2.15): icmp_seq=3 ttl=64 time=0.0</code></div></p>
+
+<p> If ping works then you should be good to go.  If not try dig and part V. To stop the ping action press [Ctrl]+[c].</p>
+
+<h4>VII. Troubleshoot  </h4>
+
+<p>I found the section on Troubleshooting Bind in O'Reilly's  "Linux System Administration" helpful. Fortunately, this part of the book is viewable on Google books as of this writing (10/29/2009): <a href="http://books.google.com/books?id=-jYe2k1p5tIC&amp;lpg=PP1&amp;dq=Linux%20System%20Administration&amp;pg=PA66#v=onepage&amp;q=&amp;f=false" title="http://books.google.com/books?id=-jYe2k1p5tIC&amp;lpg=PP1&amp;dq=Linux%20System%20Administration&amp;pg=PA66#v=onepage&amp;q=&amp;f=false">http://books.google.com/books?id=-jYe2k1p5tIC&amp;lpg=PP1&amp;dq=Linux%20System%...</a> .  See page 66 </p>
+
+<h3 id="osx">Getting a Wildcard DNS running on OSX Snow Leopard</h3>
+
+<p>Note: it took me several tries to get this working. If you are new to DNS be patient with yourself - you'll get it, but may take a few tries. </p>
+
+<p>In this example I will concentrate on setting a development environment with OSX using wildcard DNS</p>
+
+<h3>Overview of Steps</h3>
+
+<p>I. Edit /etc/named.conf to add a zone.<br />
+II. Add a zone file at /var/named/
+III. Check the syntax  of named.conf and your zone files for errors
+IV.  Edit /etc/resolv.conf
+V. Set your computers network settings to use 127.0.0.1 as a name server
+VI. Start up Bind 
+VII.  Check setup with dig 
+VIII. Reboot if needed</p>
+
+<h4>Before we start a few more notes.  </h4>
+
+<p>I tend to use the nano text editor to edit Unix configuration files you could use Emacs, VI, Textmate, BBEdit or the editor of your choice.  </p>
+
+<p>Backup all these files we are editing so you can start over if you mess up. I didn't do this and it added more time to the project.
+For example to backup /etc/named.conf  do:</p>
+
+<p><div class="codeblock"><code>$ sudo cp /etc/named.conf /etc/named.conf.bck </code></div></p>
+
+<p>Last, most of the files we need to edit are owned by root so you will need to use sudo to edit these files. If you get tired of typing sudo you can become root by doing this:</p>
+
+<p><div class="codeblock"><code>$ sudo -s </code></div></p>
+
+<p>Be careful when working as root or using sudo. You can mess up your system so make sure to backup. All example here are run as root.  </p>
+
+<h4>I. Edit /etc/named.conf to add a zone</h4>
+
+<p>We need to edit named.conf to add our zone.</p>
+
+<p><div class="codeblock"><code>$ nano /etc/named.conf</code></div></p>
+
+<p>I called my zone vmdev so I added this to named.conf </p>
+
+<p><div class="codeblock"><code>zone &quot;vmdev&quot; IN {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; type master;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file &quot;db.vmdev&quot;;<br />};</code></div></p>
+
+<p>I added this right before the zone  0.0.127.inaddr.apra  and saved the file. So we told Bind to look in /var/named/db.vmdev for this zone.</p>
+
+<h4>II. Add a zone file at /var/named/</h4>
+
+<p><div class="codeblock"><code>$ nano /var/named/db.vmdev<br />vmdev. 7200&nbsp;&nbsp;&nbsp; IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SOA&nbsp;&nbsp;&nbsp;&nbsp; vmdev. root.vmdev. (<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2008031801 ;&nbsp;&nbsp;&nbsp; Serial<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; Refresh every 15 minutes<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3600&nbsp;&nbsp;&nbsp; ; Retry every hour<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3000000 ; Expire after a month+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 86400 ) ; Minimum ttl of 1 day<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vmdev.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10 vmdev.<br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 192.168.0.199<br />*.vmdev.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 192.168.0.199</code></div></p>
+
+<p>You can just copy this but be sure to change 192.168.0.199 to you Mac's IP address </p>
+
+<h4>III. Check the syntax  of named.conf and your zone files for errors</h4>
+
+<p>Run this to check your named.conf file:</p>
+
+<p><div class="codeblock"><code>$ named-checkconf /etc/named.conf&nbsp; </code></div></p>
+
+<p>If it returns nothing, your named.conf file is at least syntactically correct. If there is an error, then well you have to diagnose and fix the error.</p>
+
+<p>Now run this to check your zone file:</p>
+
+<p><div class="codeblock"><code>$ named-checkzone vmdev /var/named/db.vmdev </code></div></p>
+
+<p>It should return something like this:</p>
+
+<p><div class="codeblock"><code>zone vmdev/IN: loaded serial 2008031801<br />OK</code></div></p>
+
+<p>If there are errors then diagnose and fix them.</p>
+
+<h4>IV.  Edit /etc/resolv.conf</h4>
+
+<p><div class="codeblock"><code>$ nano /etc/resolv.conf<br />#<br /># Mac OS X Notice<br />#<br /># This file is not used by the host name and address resolution<br /># or the DNS query routing mechanisms used by most processes on<br /># this Mac OS X system.<br />#<br /># This file is automatically generated.<br />#<br />domain vmdev.<br />nameserver 127.0.0.1<br />nameserver 192.168.0.1</code></div></p>
+
+<h4>V. Set your computers network settings to use 127.0.0.1 as a name server  </h4>
+
+<p>Do this at System Preferences -&gt; Network.
+You may want to use your ISPs Name server as the second name server
+</p>
+
+<h4>VI. Start up Bind </h4>
+
+<p><div class="codeblock"><code>$ launchctl load -w /System/Library/LaunchDaemons/org.isc.named.plist</code></div></p>
+
+<p>The -w option tells OSX to enable Bind at startup</p>
+
+<h4>VII.  Check setup with dig  </h4>
+
+<p><div class="codeblock"><code>$ dig faker.vmdev&nbsp; </code></div></p>
+
+<p>Should return something like this:</p>
+
+<p><div class="codeblock"><code>; &lt;&lt;&gt;&gt; DiG 9.6.0-APPLE-P2 &lt;&lt;&gt;&gt; faker.vmdev<br />;; global options: +cmd<br />;; Got answer:<br />;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 45640<br />;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1<br /><br />;; QUESTION SECTION:<br />;faker.vmdev.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A<br /><br />;; ANSWER SECTION:<br />faker.vmdev.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7200&nbsp;&nbsp;&nbsp; IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 192.168.0.199<br /><br />;; AUTHORITY SECTION:<br />vmdev.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7200&nbsp;&nbsp;&nbsp; IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vmdev.<br /><br />;; ADDITIONAL SECTION:<br />vmdev.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7200&nbsp;&nbsp;&nbsp; IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 192.168.0.199<br /><br />;; Query time: 0 msec<br />;; SERVER: 127.0.0.1#53(127.0.0.1)<br />;; WHEN: Wed Oct 14 19:28:56 2009<br />;; MSG SIZE&nbsp; rcvd: 75 </code></div></p>
+
+<p>The key here is  status NOERROR; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 45640
+If you get an error then check previous steps.</p>
+
+<p>Now try:</p>
+
+<p><div class="codeblock"><code>$ ping faker.vmdev</code></div></p>
+
+<p>should return: </p>
+
+<p><div class="codeblock"><code>PING test.vmdev (192.168.0.199): 56 data bytes<br />64 bytes from 192.168.0.199: icmp_seq=0 ttl=64 time=0.059 ms<br />64 bytes from 192.168.0.199: icmp_seq=1 ttl=64 time=0.087 ms</code></div></p>
+
+<p>but if it does not got to VIII.</p>
+
+<h4>VIII. Reboot if needed.</h4>
+
+<p>I needed to reboot to get everything to take. Whoila! Have a cookie or something.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-58.html?destination=node%2F285%23comment-form">Login</a> or <a href="../../../../../user/register/index-58.html?destination=node%2F285%23comment-form">register</a> to post comments</span></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-58.html?destination=node%2F285%23comment-form">Login</a> or <a href="../../../../../user/register/index-58.html?destination=node%2F285%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/38/revisions/642/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:05:50 GMT -->
+</html>

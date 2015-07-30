@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/another-stab-short-and-long-term-roadmap-aegir-2x-and-3x?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 16:53:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Another stab at the short and long term roadmap for Aegir 2.x and 3.x | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1829" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/anarcat/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-78/index.jpg" alt="anarcat&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a></div><div class='date'>8:12pm Sep 18, 2012</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Another stab at the short and long term roadmap for Aegir 2.x and 3.x</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>The Aegir core team has taken some time to reflect upon the progress of the upcoming 2.x release, along with the longer roadmap for what we are starting to call 3.x. This is a product of discussions about the 2.x release schedule prior to Munich and an <a href="http://hefring.mig5.net/bot/log/aegir/2012-09-10#T267855">informal chat on september 10th</a> after DC Munich. You may also have seen this transpired through <a href="http://munich2012.drupal.org/program/sessions/fearless-development-drush-vagrant-and-aegir">one of</a> <a href="http://munich2012.drupal.org/content/configuring-and-using-aegir-hosting-system">the three</a> <a href="http://munich2012.drupal.org/program/sessions/aegir-based-business-models">Aegir sessions</a> at <a href="http://munich2012.drupal.org/">Drupalcon Munich</a>.</p>
+
+<p>Here I will try to summarize those discussions in a comprehensible whole.</p>
+
+<h2>Some general thoughts</h2>
+
+<ul>
+<li>we wish to make major releases more often - 1.x is getting old, and we are being forced to merge down new cool functionality from the 2.x branch down into 1.x as we go along</li>
+<li>we are still postponing the Drupal 7 port of the frontend to after 2.x</li>
+<li>we have discussed moving roadmap planning to Koumbit's Redmine (or another Redmine instance), but discarded the idea because of the barrier of entry (you need to register and be approved so that spam is controled). Instead, we'll make clever use of tags and the handbook.</li>
+<li>there was the idea of alternating backend and frontend freezes between releases, this is still being discussed</li>
+</ul>
+
+<h2>2.x release schedule</h2>
+
+<p>We have announced a release schedule at Munich. We have also settled on a smaller feature set to make sure we meet that schedule.</p>
+
+<p>Prior art:</p>
+
+<ul>
+<li><a href="../../roadmap/2/index.html" title="http://community.aegirproject.org/roadmap/2.0">http://community.aegirproject.org/roadmap/2.0</a></li>
+<li><a href="../2x-redesign-notes/index.html" title="http://community.aegirproject.org/discuss/2x-redesign-notes">http://community.aegirproject.org/discuss/2x-redesign-notes</a></li>
+<li><a href="../first-quarterly-report-aegir-funding-work/index.html#Upcoming_work" title="http://community.aegirproject.org/discuss/first-quarterly-report-aegir-funding-work#Upcoming_work">http://community.aegirproject.org/discuss/first-quarterly-report-aegir-f...</a></li>
+</ul>
+
+<p>We have set the following priorities:</p>
+
+<ol>
+<li>subsite support (<a href="https://drupal.org/node/705026">#705026</a>) - now that mig5 did most of the work ;)</li>
+<li>nginx cleanup (<a href="https://drupal.org/node/1635596">#1635596</a>, <a href="https://drupal.org/node/1635622">#1635622</a>, <a href="https://drupal.org/node/1622846">#1622846</a>, <a href="https://drupal.org/node/1635586">#1635586</a>, <a href="https://drupal.org/node/1608910">#1608910</a>) and Nginx Debian package (<a href="https://drupal.org/node/1348560">#1348560</a>)</li>
+<li>files/ sync settled (<a href="https://drupal.org/node/1083366">#1083366</a>)</li>
+<li>SSL code cleanup (<a href="http://drupal.org/node/941870">#941870</a>, <a href="../first-quarterly-report-aegir-funding-work/index.html#SSL_and_IP_allocation_work">see also this report</a>)</li>
+</ol>
+
+<p>We would like to get those in 2.x, but we are not fooling ourselves: if nobody finds the time, they will be postponed to 3.x.</p>
+
+<ol>
+<li>standard archive support (<a href="https://drupal.org/node/1138882">#1138882</a>, <a href="../../roadmap/2/index.html#Standard_archive_support">original roadmap description</a>)</li>
+<li>intersite security (the infamous <a href="https://drupal.org/node/762138">#762138</a>)</li>
+<li>more intelligence in spokes (<a href="../../roadmap/2/index.html#From_a_hub-spoke_to_a_mesh_model">original roadmap description</a>)</li>
+</ol>
+
+<p>We are aiming for the following schedule:</p>
+
+<ul>
+<li>alpha/beta release by end of september</li>
+<li>rcs by october</li>
+<li>release planned on october 31th</li>
+</ul>
+
+<h2>3.x release goals and schedule</h2>
+
+<p>We're looking at releasing 3.x in 2013, before D8 is stable and D6 support is dropped. Of course, we will keep on supporting installing D6, D7 and D8 sites throughout this time.</p>
+
+<p>Those are the broad release objectives we have fixed:</p>
+
+<ul>
+<li>full rewrite in D7</li>
+<li>make more use of 'standard' Drupal contrib modules:
+
+<ul>
+<li>drop custom listings in favor of real views, VBO</li>
+<li>drop clients in favor of OG</li>
+</ul></li>
+<li>move stuff to contrib (DNS, etc)</li>
+</ul>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-314.html?destination=node%2F1829%23comment-form">Login</a> or <a href="../../user/register/index-314.html?destination=node%2F1829%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/another-stab-short-and-long-term-roadmap-aegir-2x-and-3x?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 16:53:23 GMT -->
+</html>

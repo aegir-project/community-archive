@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/content/so-what-it-you-exactly-do-part-one-continuous-deployment?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:55:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>&#039;So, what is it you exactly do?&#039; - Part one, continuous deployment | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-13011" class="node node-feed_item clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/mig5/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-5/index.png" alt="mig5&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/mig5/index.html" class="username" title="View user profile.">mig5</a></div><div class='date'>2:11am Apr 17, 2015</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">&#039;So, what is it you exactly do?&#039; - Part one, continuous deployment</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="encoded"><p>I hear this question a lot - both from non-technical folk, as well as agencies who know they are 'missing something' in their approach to deploying, securing and scaling applications, but aren't sure if a sysadmin will solve it. 'What is it that you (a sysadmin) actually does (e.g the day-to-day, or in general)?'</p>
+<p>Sysadmin work is, in my opinion, an unusual role because it traverses a huge range of technologies, problems, risks, and there are often many solutions to the one task. In addition, the role can be both innovative as well as reactive. Things need to be built, and those things break. The sysadmin usually deals with both.</p>
+<p>Despite years of working with agencies and their developers to help design tools that developers want to use, the sysadmin often has to work wonders and is frequently a 'lone ranger' with a complex peer group that is sometimes reached out to by simply 'Googling it'.</p>
+<p>I thought I'd describe some of the things I've been doing, especially in the last couple of years. There seems no better place to start than with a whopper, and what allowed me to take the leap to full-time consulting: continuous deployment.</p>
+<h2>Anxiety sucks</h2>
+<p>As many in the Drupal community know, around 2009/2010 I helped pioneer solutions to <a href="https://mig5.net/content/drupal-deployments-workflows-version-control-drushmake-and-aegir">the famous 'dev/stage/live' workflow problem</a> when deploying Drupal apps across such chained environments - particularly with a focus on Aegir, but the paradigm was more general than that - more general, even, than Drupal. My interest has always been in automating the procedure of delivering change (that's how I found Aegir). This began because I'm simply lazy. It ended up being more altruistic, after seeing firsthand that once that process is easier or automatic, the 'change' becomes not only easier, but enjoyable.</p>
+<p>Change is risky - not just technical change. Things might go wrong. No-one likes to break things that weren't meant to be broken. People are scared of getting in trouble or causing problems. We often would rather go out of our way to avoid upsetting the 'norm' or what we think could wind up being a worse experience than we expected it to be. The inevitable side-effect of this is that necessary changes get put off, procrastinated, and build up in a queue. It's ironic that sometimes things break only <em>because</em> of the sheer amount of 'change' that's built up in this procrastination - that the very accumulation itself sometimes introduces new ways to fail that weren't apparent as those little bits and pieces were made one at a time. Ever put off going to the dentist?</p>
+<p>The crucial aim of automating change through effective change management, is to reduce risk. But looking beyond trying to stop things 'going wrong', the aim should also be to make dealing with things going wrong, an easier process. Things will always go wrong. What happens next is what matters.</p>
+<p>Much of my work building (usually bespoke these days, not Aegir*) deployment solutions is automating the deployment, but also handling rollback, notification and management of the situation gone wrong. A simple example: a bad hook_update() can break your site, and reverting your git commit isn't going to change your database. What then? Build systems based on a sensible methodology: back up first, attempt upgrade, rollback if it fails, alert people. Try to be quiet about success, so that it becomes 'the norm'. As you can see, this goes beyond 'what my awesome shell script can do'. This is about changing attitudes, and trying to make people feel less ill about what they have to do. Deployment anxiety (or any anxiety, for that matter) sucks, and it doesn't have to exist.</p>
+<p>A fascinating phenomenon that I've observed in agencies is that once developers recognise the convenience of the deployment process ('what? I just push to Git and that's it?'), they seem to become naturally compelled to practice the famous mantra of 'commit early, commit often'. A pain point of development (deploying) is suddenly gone, so it actually becomes enjoyable to practice it - and you practice it by pushing your bite-size chunks of change more frequently. Developers are smart - they figure this out for themselves. No need for a training session on 'how often we're gonna deploy now' - just show them the new deployment system and they will do this themselves.</p>
+<p>As a result, the changes start to become simpler and more frequent. This has a multitude of effects: the first is that quality improves, because it's harder to make big mistakes in small amounts. The 'bank-up queue' of change is gone, so many unexpected side-effects simply don't exist. Another effect is that developers become more confident in the process. Morale improves. On-boarding of new developers, or re-arranging of roles, becomes easier (because git history becomes easier to understand). And when the occasional mistake is made and the system detects and backs it out or alerts about it, much time and frustration is saved that would normally be consumed trying to find out exactly what's gone wrong.</p>
+<p>Multiply these effects N times if you use a deployment methodology (not just tool!) that is abstracted and consistent across all N projects.</p>
+<h2>To summarise</h2>
+<p>The work of 'sysadmin' is not just a reactive <em>or</em> innovative role for solving <em>technical</em> problems. The sysadmin doesn't have to live in a basement and hate everybody. Designing and implementing automated deployment systems also can have a sizeable effect on the culture of an organisation. It can help people enjoy coming to work. It can result in higher quality of work. And that can result in a better reputation for a company, in the eyes of its customers. And that can result in more customers - and therefore, more money. All from the desire to make a pain point less painful.</p>
+<p>What other benefits has automating continuous deployment offered your business? I am also happy to answer questions (or <a href="../../contact/index.html">offer engagement</a>) if you are trying to work out a way to do what I've described. Why not hire a consultant who's in the business of helping make that happen?</p>
+<h2>Coming up...</h2>
+<p><a href="../so-what-it-you-exactly-do-part-two-config-management/index.html">In Part Two</a> of what I do as a sysadmin, I'll talk some more about automation and enforcing state as part of change management (think: Puppet). </p>
+<p><a href="../so-what-it-you-exactly-do-part-three-security/index.html">Part Three</a> will talk about security,<br /><a href="../so-what-it-you-exactly-do-part-four-monitoring/index.html">Part Four: monitoring</a>,<br /><a href="../so-what-it-you-exactly-do-part-five-troubleshooting/index.html">Part Five: troubleshooting or 'ghosts in the machine',</a><br /><a href="../so-what-it-you-exactly-do-part-six-high-availability/index.html">Part Six: high availability and disasters (sometimes the same thing :) ),</a><br /><a href="../so-what-it-you-exactly-do-part-seven-communication/index.html">Part Seven: communication</a>.</p>
+<p>* Lots of people are often surprised to discover I don't do a lot of Aegir work now. Most of my customers now have more bespoke needs (such as Drupal/Magento hybrids, 'unusual' Drupal deployments, complex integrations/inter-communications, high-availability clusters etc - stuff that Aegir can be a bit inflexible about). Inevitably I am in business, and it is often more viable time-wise (and therefore commercially) to build bespoke tools to solve such problems. Fabric-driven Jenkins deployment is my main solution these days. Feel free to <a href="../../contact/index.html">get in touch</a> if you think it would be something you might need).</p>
+</div></div></div>
+
+<p><span class="vocabulary field field-name-field-tags field-type-taxonomy-term-reference field-label-above"></span></p>
+
+<h2 class="field-label">Tags:&nbsp;</h2>
+
+<ul class="vocabulary-list"><li class="vocabulary-links field-item even" rel="subject"><a href="../../tags/sysadmin/index.html" typeof="Concept" property="prefLabel" datatype="">sysadmin</a></li><li class="vocabulary-links field-item odd" rel="subject"><a href="../../tags/continuous-integration/index.html" typeof="Concept" property="prefLabel" datatype="">continuous integration</a></li><li class="vocabulary-links field-item even" rel="subject"><a href="../../tags/version-control/index.html" typeof="Concept" property="prefLabel" datatype="">version control</a></li><li class="vocabulary-links field-item odd" rel="subject"><a href="../../tags/deployment/index.html" typeof="Concept" property="prefLabel" datatype="">deployment</a></li><li class="vocabulary-links field-item even" rel="subject"><a href="../../tags/automation/index.html" typeof="Concept" property="prefLabel" datatype="">automation</a></li><li class="vocabulary-links field-item odd" rel="subject"><a href="../../tags/aegir/index.html" typeof="Concept" property="prefLabel" datatype="">aegir</a></li><li class="vocabulary-links field-item even" rel="subject"><a href="../../tags/drupal/index.html" typeof="Concept" property="prefLabel" datatype="">drupal</a></li><li class="vocabulary-links field-item odd" rel="subject"><a href="../../tags/devops/index.html" typeof="Concept" property="prefLabel" datatype="">devops</a></li><li class="vocabulary-links field-item even" rel="subject"><a href="../../tags/change/index.html" typeof="Concept" property="prefLabel" datatype="">change</a></li><li class="vocabulary-links field-item odd" rel="subject"><a href="../../tags/risk/index.html" typeof="Concept" property="prefLabel" datatype="">risk</a></li><li class="vocabulary-links field-item even" rel="subject"><a href="../../tags/quality/index.html" typeof="Concept" property="prefLabel" datatype="">quality</a></li><li class="vocabulary-links field-item odd" rel="subject"><a href="../../tags/culture/index.html" typeof="Concept" property="prefLabel" datatype="">culture</a></li><li class="vocabulary-links field-item even" rel="subject"><a href="../../tags/tech/index.html" typeof="Concept" property="prefLabel" datatype="">tech</a></li></ul>
+
+<p></p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-383.html?destination=comment%2Freply%2F13011%23comment-form">Login</a> or <a href="../../user/register/index-383.html?destination=comment%2Freply%2F13011%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/content/so-what-it-you-exactly-do-part-one-continuous-deployment?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:55:28 GMT -->
+</html>

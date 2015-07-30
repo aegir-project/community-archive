@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/scrums/weekly-scrum-irc-log-2011-08-02?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:36:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../weekly-scrum-irc-log-2011-07-26/index.html" />
+<link rel="up" href="../../content/scrums/archive-2011/index.html" />
+<link rel="next" href="../weekly-scrum-irc-log-2011-09-13/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2011-08-02 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-795" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2011-08-02</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_7 first"><a href="../../taxonomy/term/7/index.html" rel="tag" title="">scrum</a></li>
+<li class="taxonomy_term_6 last"><a href="../../taxonomy/term/6/index.html" rel="tag" title="">weekly scrums</a></li>
+</ul></div><div id='diff-inline-795'><pre>
+20:00 &lt;@mig5> ok, scrum time
+20:00 &lt;@mig5> as usual, no news from me this week :P
+20:00 &lt;@mig5> anarcat is away as we know
+20:00 &lt;@mig5> I have not heard from the GSOC student, so I will follow that up
+20:01 &lt;@mig5> there are currently no criticals in the queue which is nice, although I have vaguely heard about some issues with the cron queue, someone let me know if that's still an issue
+20:01 &lt;@mig5> aaaand I can't think of anything else significant, other than thanks to omega8cc for donating to hefring :)
+20:02 &lt;+omega8cc> haha
+20:02 &lt;@mig5> go for it darthsteven, omega8cc
+20:02 &lt;@darthsteven> I've done a little bit of work on the Aegir session for Drupalcon
+20:02 &lt;@darthsteven> hope to have that completed by the end of the week
+20:02 &lt;@mig5> oh nice
+20:03 &lt;@darthsteven> And then I hope to start writing docs again, but am away on holiday a lot over the next little while
+20:03 &lt;@darthsteven> but that's it from me
+20:03 -!- aegir-jenkins [~PircBot@173-203-101-207.static.cloud-ips.com] has quit [Ping timeout: 252 seconds]
+20:03 &lt;@darthsteven> omega8cc?
+20:04 &lt;+omega8cc> I didn't submit any new patches, but I promise I will - related to the UI, soon
+20:04 &lt;+omega8cc> also, I released 1.0-boa-T-8.9, and it is using Aegir head
+20:04 &lt;+omega8cc> so good for receiving more feedback
+20:05 &lt;+omega8cc> and I noticed the sites cron is still an issue on some servers, when web based method is used
+20:05 &lt;+omega8cc> I will debug this and post more details soon
+20:05 &lt;@mig5> i am tired of this one in the queue: <a href="http://drupal.org/node/1111572" title="http://drupal.org/node/1111572">http://drupal.org/node/1111572</a> - I have been planning on removing a chunk of code from provision for that for a while, so I might do that in the 7.x branch and see how it goes
+20:05 &lt; hefring> <a href="http://drupal.org/node/1111572" title="http://drupal.org/node/1111572">http://drupal.org/node/1111572</a> => Undefined index: profiles deploy.provision.inc:84 => Provision, Code, normal, needs work, 14 comments, 2 IRC mentions
+20:06 &lt;@mig5> it is harmless but people keep carrying on about it
+20:06 &lt;@mig5> we have a fresh bug from ergonlogic too <a href="http://drupal.org/node/1236490" title="http://drupal.org/node/1236490">http://drupal.org/node/1236490</a>
+20:06 &lt; hefring> <a href="http://drupal.org/node/1236490" title="http://drupal.org/node/1236490">http://drupal.org/node/1236490</a> => "View client" permission broken => Hostmaster (Aegir), Code, normal, active, 0 comments, 1 IRC mention
+20:06 -!- aegir-jenkins [~PircBot@173-203-101-207.static.cloud-ips.com] has joined #aegir
+20:07 &lt;@mig5> aegir-jenkins returns.. that was weird
+20:07 &lt;@mig5> it's been up for over 100 days now, \o/
+20:07 &lt;@darthsteven> mig5: 1111572, can we set up a test case that invokes that code, remove it and then see if anything breaks/changes
+20:07 &lt;+omega8cc> aegir-jenkins: welcome back :)
+20:07 -aegir-jenkins:#aegir- omega8cc did you mean me? Unknown command 'welcome'
+20:07 -aegir-jenkins:#aegir- Use '!78jujdd7yujufyyshhayuuufhhysjjhyew9i2 help' to get help!
+20:07 &lt;@mig5> hah
+20:07 &lt;+omega8cc> haha
+20:08 &lt;@mig5> oops, and there goes anarcat's clever idea to 'hide' the jenkins command...
+20:08 &lt;@darthsteven> hehe
+20:08 &lt;@darthsteven> that's genius!
+20:08 &lt;@darthsteven> anyone else have anything for the scrum?
+20:09 &lt;@mig5> darthsteven: that's the thing re: test case: we don't scan packages in the site-specific dir, which means those values are always null. anyway i promise to look at it
+20:09 &lt;@darthsteven> ok
+20:09 &lt; Aciid> I have something , never setup a VM with Amazon AWS
+20:09 &lt;@mig5> ok, scrum done, unless ergonlogic has anything to add
+20:09 &lt; Aciid> <a href="http://pastebin.com/pRt4UNeg" title="http://pastebin.com/pRt4UNeg">http://pastebin.com/pRt4UNeg</a> - mail sent by Amazon
+20:10 &lt;+omega8cc> so, thanks for attending!
+20:10 &lt;@mig5> cheers
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-116.html?destination=node%2F795%23comment-form">Login</a> or <a href="../../user/register/index-116.html?destination=node%2F795%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/scrums/weekly-scrum-irc-log-2011-08-02?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:36:10 GMT -->
+</html>

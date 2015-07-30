@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/246/revisions/788/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:23:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../418/index.html" />
+<link rel="up" href="../../../../518/index.html" />
+<link rel="next" href="../../../../79/index.html" />
+<link rel="prev" href="../../../../418/index.html" />
+<link rel="up" href="../../../../518/index.html" />
+<link rel="next" href="../../../../79/index.html" />
+<link rel="prev" href="../../../../418/index.html" />
+<link rel="up" href="../../../../518/index.html" />
+<link rel="next" href="../../../../79/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Install script for Ubuntu 10.4 LTS from Sun, 02/20/2011 - 13:22 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-246" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Install script for Ubuntu 10.4 LTS</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_3 first"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_12 last"><a href="../../../../../taxonomy/term/12/index.html" rel="tag" title="">Ubuntu 10.4 install script</a></li>
+</ul></div><div id='diff-inline-246'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/doka/index.html" class="username" title="View user profile.">doka</a> on 02/20/2011 - 13:22</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>The <a href="https://github.com/doka/install-aegir-on-ubuntu">install-aegir-on-ubuntu.sh</a> script installs Aegir <span class='diff-changed'>0.4</span> with all prerequisites on a bare Ubuntu 10.4 LTS server, on a local network, without any security hardening. It is a scripted version of the cannonical install.sh, adapted for Ubuntu.</p>
+
+<p>This script helps Aegir users to quick start with an Aegir installation on Ubuntu headless server for development and testing purposes, but is not ready for production environments. It uses PHP 5.3, not PHP 5.2 as recommened by Aegir documentation.</p>
+
+<p>It installs all the software requirements (Apache, MySQL, PHP), as well as other packages needed by Aegir, like rsync, gzip or git-core. It helps to configure the system parameters (set the Aegir user, PHP memory limits, database configs, and symlinks). And of course, downloads and runs the Aegir install script.</p>
+
+<ul>Getting started
+<li>install a bare Ubuntu 10.4 LTS server, optionally with OpenSSH</li>
+<li>login and switch to root ('sudo su')</li>
+<li>set a fix IP address to the server</li>
+<li>download this script</li>
+<li>adjust the parameters in the script, like IP of the host</li>
+<li>change access and execution rights: chmod 775 install-aegir-on-ubuntu.sh</li>
+<li>execute the script</li>
+<li>follow the instruction on the terminal, answer few questions during install</li>
+</ul>
+
+<ul>  
+Restrictions
+<li>Do not use on production environments, it has no security hardening</li>
+<li>It <span class='diff-changed'>uses</span> PHP <span class='diff-changed'>5.3. Drupal core is running smoothly on that, but</span> some contributed <span class='diff-changed'>modules may generate issues and warnings.</span></li>
+</ul>
+
+<p>Maintainers:  <a href="mailto:doka@wepoca.net">doka@wepoca.net</a>, <a href="http://www.wepoca.net/">www.wepoca.net</a></p>
+
+<p>The script is available via GitHub: <a href="https://github.com/doka/install-aegir-on-ubuntu" title="https://github.com/doka/install-aegir-on-ubuntu">https://github.com/doka/install-aegir-on-ubuntu</a></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Select the appropiate tag on GitHub for the proper Aegir version: 0.4-beta2 or 0.4-rc1.</span></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-265.html?destination=node%2F246%23comment-form">Login</a> or <a href="../../../../../user/register/index-265.html?destination=node%2F246%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-265.html?destination=node%2F246%23comment-form">Login</a> or <a href="../../../../../user/register/index-265.html?destination=node%2F246%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/246/revisions/788/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:23:57 GMT -->
+</html>

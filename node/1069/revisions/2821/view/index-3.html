@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/1069/revisions/2821/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:12:02 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/scrums/weekly-scrum-irc-log-2012-02-06/index.html" />
+<link rel="up" href="../../../../../scrums/index.html" />
+<link rel="next" href="../../../../../content/scrums/weekly-scrum-irc-log-2012-02-20/index.html" />
+<link rel="prev" href="../../../../../content/scrums/weekly-scrum-irc-log-2012-02-06/index.html" />
+<link rel="up" href="../../../../../scrums/index.html" />
+<link rel="next" href="../../../../../content/scrums/weekly-scrum-irc-log-2012-02-20/index.html" />
+<link rel="prev" href="../../../../../content/scrums/weekly-scrum-irc-log-2012-02-06/index.html" />
+<link rel="up" href="../../../../../scrums/index.html" />
+<link rel="next" href="../../../../../content/scrums/weekly-scrum-irc-log-2012-02-20/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Weekly Scrum IRC Log: 2012-02-13 from Mon, 02/13/2012 - 20:25 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-1069" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../content/scrums/weekly-scrum-irc-log-2012-02-13/index.html">Weekly Scrum IRC Log: 2012-02-13</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_27 first last"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+</ul></div><div id='diff-inline-1069'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 02/13/2012 - 20:25</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><pre><span class='diff-changed'>
+[06:59:17]</span>     scrum?
+[06:59:17]     Every Monday at 20h00 UTC: 12h00 San Francisco, USA (PDT), 15h00 Montreal, Canada (EDT), 20h00 London, UK (GMT), 07h00 (Tuesday) Melbourne, Australia (EST)
+[07:00:10]      hi all
+[07:00:46]     hi all!
+[07:00:54]     hi
+[07:00:54]     what's up
+[07:01:22]     so i can start i guess
+[07:01:30]     i have worked a bit more on aegir in the last week
+[07:01:40]     i have merged the pack branch into 1.x and 2.x
+[07:01:47]     assuming that it was okay to ship 1.7 with it
+[07:01:59]     i am working on the import documentation today
+[07:02:11]     what else
+[07:02:19]     oh, i want to merge the debian branch into 1.x and 2.x
+[07:02:23]     so that we can start building 2.x packages
+[07:02:38]     we need to figure out <span class='diff-changed'>*where*</span> they would be uploaded, because that would override the 1.x packages
+[07:02:46]     but maybe we can just make another reprepro archive or something
+[07:03:06]     what else what else
+[07:03:22]     oh
+[07:03:31]     i would really like to see us switch to vagrant for jenkins
+[07:03:35]     but i have no time to take care of it
+[07:03:45]     i am tired of false positives and i'd like to be able to test aegir with vagrant
+[07:03:58]     vagrant should hit debian testing this week, so i'll install it at hme and may start playing with it
+[07:04:09]     other than that, don't count on me for vagrant stuff too much :)
+[07:04:12]     alright, that's it for me
+[07:04:36]      k, thanks anarcat
+[07:04:43]      I'll go next
+[07:04:54]     <a href="../../../../../content/content/administrator/post-ins/index.html" title="http://community.aegirproject.org/content/content/administrator/post-ins">http://community.aegirproject.org/content/content/administrator/post-ins</a>...
+[07:04:58]     go!
+[07:05:10]      I've updated aegir-up to run on the latest vagrant (0.9.8)
+[07:05:28]      and I've been using it to improve the puppet-aegir module
+[07:06:00]      so, I have plenty of experience with aegir running on vagrant, but none w/ Jenkins
+[07:06:40]      I've been poking around a bit
+[07:07:17]     cool beans
+[07:07:24]      but I'd prefer to help someone with more jenkins experience, rather than try to do it myself
+[07:07:50]      anyway, we can now specify all the hostmaster variables in the puppet module
+[07:08:00]      and I'm currently working on supporting manual installs
+[07:08:18]      and I'm stuck at 'hostmaster-install' but I think I see a light at the end of the tunnel
+[07:08:29]      that's pretty much it for me
+[07:09:11]     me next
+[07:09:19]     I've had some time to fix some bugs!
+[07:09:21]     yey!
+[07:09:37]     yay!
+[07:09:41]     so 1.7 will have many fewer notices in the logs
+[07:09:57]     and the site form now works in Internet Explorer
+[07:09:58]     :)
+[07:10:01]     wow
+[07:10:04]      nice
+[07:10:04]     incredible
+[07:10:07]     IE6? :P
+[07:10:12]     fixing some more simple bugs tonight
+[07:10:17]     hah!
+[07:10:19]     not likely
+[07:10:21]     sorry for the swearing ;)
+[07:10:29]     should we look at releasing 1.7 soon?
+[07:10:30]     that's it from me
+[07:11:17]     it seems that omega8cc has a few patches sitting in the queue, i think mig5 looked at a few of those, but we should probably factor them in
+[07:11:37]     also, it seems to me that we should punish omega8cc with commit access, for too long they have been submitting good patches for nginx ;)
+[07:11:37]      if we do a 1.7 soon, I'd suggest we stick with Drupal 6.23, as 6.24 seems to have a couple bugs
+[07:11:46]     crap
+[07:12:11]    heh, I'm still in the 'port hundreds of Nginx config changes from BOA fork to Aegir 1.x and 2.x' phase.
+[07:12:14]    I didn't realize how far it got, but we will get it back in sync with our dear upstream again :)
+[07:12:26]     i am happy to hear that! :)
+[07:12:30]    We are almost there, anyway.
+[07:12:42]     i am especially curious to see that "no create content stupid submenu" patch :)
+[07:12:48]    6.24 is fine with two patches
+[07:12:52]     that would be a great improvement
+[07:13:03]    yeah
+[07:13:05]     we could ship with patches to the makefile...
+[07:13:45]     alright, anyone else?
+[07:13:50]      If we're going forward with a 1.7, I'll post an issue to track it
+[07:14:16]      omega8cc: if you could comment there with the patches, that would be great
+[07:14:30]     ergonlogic: let's
+[07:14:37]      I'm on it
+[07:15:06]     alright, anyone else has something to add to our scrum?
+[07:15:16]     otherwise i think we're done, thanks everyone for your attention
+[07:15:57]    ergonlogic: basically: <a href="https://github.com/omega8cc/pressflow6/commit/97b8df2795e9565ffff5dcaa00" title="https://github.com/omega8cc/pressflow6/commit/97b8df2795e9565ffff5dcaa00">https://github.com/omega8cc/pressflow6/commit/97b8df2795e9565ffff5dcaa00</a>... and <a href="https://github.com/omega8cc/pressflow6/commit/4b05a210c4234714104149c3ef" title="https://github.com/omega8cc/pressflow6/commit/4b05a210c4234714104149c3ef">https://github.com/omega8cc/pressflow6/commit/4b05a210c4234714104149c3ef</a>...
+[07:16:40]    there are two major issues only, both listed at <a href="http://drupal.org/drupal-7.12" title="http://drupal.org/drupal-7.12">http://drupal.org/drupal-7.12</a>
+[07:16:41]     omega8cc: are those patches upstream?
+[07:16:48]      <a href="http://drupal.org/node/1439120" title="http://drupal.org/node/1439120">http://drupal.org/node/1439120</a>
+[07:16:48]     <a href="http://drupal.org/node/1439120" title="http://drupal.org/node/1439120">http://drupal.org/node/1439120</a> =&gt; Release 1.7 =&gt; Hostmaster (Aegir), Code, normal, active, 0 comments, 1 IRC mention
+[07:17:35]      I'll post the scrum log to <span class='diff-changed'>c.a.o
+</span></pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-128.html?destination=node%2F1069%23comment-form">Login</a> or <a href="../../../../../user/register/index-128.html?destination=node%2F1069%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-128.html?destination=node%2F1069%23comment-form">Login</a> or <a href="../../../../../user/register/index-128.html?destination=node%2F1069%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/1069/revisions/2821/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:12:02 GMT -->
+</html>

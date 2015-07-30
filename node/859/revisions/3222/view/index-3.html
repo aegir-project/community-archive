@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/859/revisions/3222/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:16:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../1/index-8.html" />
+<link rel="up" href="../../../../../content/release-notes/older-1x-releases/index.html" />
+<link rel="next" href="../../../../../1/index-10.html" />
+<link rel="prev" href="../../../../../1/index-8.html" />
+<link rel="up" href="../../../../../content/release-notes/older-1x-releases/index.html" />
+<link rel="next" href="../../../../../1/index-10.html" />
+<link rel="prev" href="../../../../../1/index-8.html" />
+<link rel="up" href="../../../../../content/release-notes/older-1x-releases/index.html" />
+<link rel="next" href="../../../../../1/index-10.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of 1.3 release notes from Wed, 04/18/2012 - 09:50 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-859" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../1/index-9.html">1.3 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_4 first"><a href="../../../../../taxonomy/term/4/index.html" rel="tag" title="This level is for users who have access to only their sites and not able to manage all Aegir features, accounts or the server/system.">Client</a></li>
+<li class="taxonomy_term_27"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_3"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-859'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 04/18/2012 - 09:50</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>The Aegir team is happy to release the fourth stable release in the 1.x branch. We have found only one critical bug (Drush 4.5 support) but have also fixed so many little bugs that we figured it was about time to make a new release. Also, it's becoming a bit of a tradition at DrupalCons :)</p>
+
+<p>The major changes from 1.2 are a bunch of bug fixes for clients functionality, and a fix for the wget cron method.</p>
+
+<p>Thank you to those who donated to the project since the previous release: harley, lol, rink &amp; arielqgold. We continue to accept donations in order to cover various project costs. As an open source project, we need the support of the community to ensure ongoing development and support. Koumbit is pleased to provide administrative support for this, and you can find the donation page on their site: <a href="http://membres.koumbit.org/en/civicrm/contribute/transact?reset=1&amp;id=5" title="http://membres.koumbit.org/en/civicrm/contribute/transact?reset=1&amp;id=5">http://membres.koumbit.org/en/civicrm/contribute/transact?reset=1&amp;id=5</a>, which is also linked to directly from the front page of the community site.</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Installing_and_upgrading"><span class="toc-number">1. </span>Installing and upgrading</a></li>
+	<li class="toc-level-1"><a href="#Need_help"><span class="toc-number">2. </span>Need help?</a></li>
+	<li class="toc-level-1"><a href="#New_features"><span class="toc-number">3. </span>New features</a></li>
+	<li class="toc-level-1"><a href="#Bugfixes"><span class="toc-number">4. </span>Bugfixes</a></li>
+	<li class="toc-level-1"><a href="#Known_issues"><span class="toc-number">5. </span>Known issues</a></li>
+</ol>
+</div>
+</div>
+
+<h2 id="Installing_and_upgrading">1. Installing and upgrading</h2>
+
+<p>The canonical source of installation documentation is on the community site at:</p>
+
+<pre><code>http://community.aegirproject.org/installing
+</code></pre>
+
+<p>In a similar fashion, the upgrade documentation is:</p>
+
+<pre><code>http://community.aegirproject.org/upgrading
+</code></pre>
+
+<p>Within those sections you'll find step-by-step instructions for performing both <a href="../../../../../upgrading/manual/index.html">manual</a> and <a href="../../../../../upgrading/script/index.html">automatic</a> upgrade processes.</p>
+
+<p>It is still imperative that you read the the <a href="../../../../../upgrading/path/index.html">upgrade path and version-specific information</a> and follow all version-specific upgrade instructions before trying to run the upgrade script or manual upgrade. This especially applies to users upgrading from releases prior to 0.4-alpha8, including 0.3.</p>
+
+<p>For users coming from the 0.4 betas or recent rc releases, there are unlikely to be any version-specific manual steps required to upgrade, but you should make a habit of reading them anyway just to make sure. No-one likes a nasty surprise!</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Need_help">2. Need help?</h2>
+
+<p>If you struggle to install or upgrade your Aegir system, you have a number of options available to you for getting help.</p>
+
+<p>Consult this page for more information: <a href="../../../../../help/index.html" title="http://community.aegirproject.org/help">http://community.aegirproject.org/help</a></p>
+
+<p>Thanks to our awesome <a href="../../../../../index.html">community</a> for their help, support and encouragement as always! Enjoy the new release :)</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="New_features">3. New features</h2>
+
+<p>As per our maintenance policy, we have not added any new features in this release.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Bugfixes">4. Bugfixes</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/1250068">#1250068: Drush 4.5 breaks Aegir completely</a></li>
+<li><a href="http://drupal.org/node/1256372">#1256372: Drupal 7.7 site install fails with Drush 4.5</a></li>
+<li><a href="http://drupal.org/node/1238588">#1238588: Problem with client internal name prefixes</a></li>
+<li><a href="http://drupal.org/node/1237178">#1237178: hosting_client_validate_suggest() appears broken</a></li>
+<li><a href="http://drupal.org/node/1236490">#1236490: "View client" permission broken</a></li>
+<li><a href="http://drupal.org/node/1222208">#1222208: Wget method is extremely unstable and easily locks cron task completely</a></li>
+<li><a href="http://drupal.org/node/1108810">#1108810: Files in sites/example.org/private are accessible.</a></li>
+<li><a href="http://drupal.org/node/1223506">#1223506: cloning a site looses client site ownership</a></li>
+<li><a href="http://drupal.org/node/1200066">#1200066: hosting_get_client uses client title instead of the (unique) internal name</a></li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Known_issues">5. Known issues</h2>
+
+<ul>
+<li><a href="http://drupal.org/node/1266484">#1266484: Cannot verify Drupal 7.8 with PHP 5.2</a></li>
+</ul>
+
+<p>See: <a href="../../../../../1/index-12.html#Known_issues" title="http://community.aegirproject.org/1.0#Known_issues">http://community.aegirproject.org/1.0#Known_issues</a></p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-176.html?destination=node%2F859%23comment-form">Login</a> or <a href="../../../../../user/register/index-176.html?destination=node%2F859%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-176.html?destination=node%2F859%23comment-form">Login</a> or <a href="../../../../../user/register/index-176.html?destination=node%2F859%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/859/revisions/3222/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:16:46 GMT -->
+</html>

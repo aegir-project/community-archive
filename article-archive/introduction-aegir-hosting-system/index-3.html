@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/article-archive/introduction-aegir-hosting-system?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:48:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../aegir-drupalcon-san-francisco/index.html" />
+<link rel="up" href="../../presentation/article-archive/index.html" />
+<link rel="next" href="../drupal-deployments-workflows-version-control-drushmake-and-aegir/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>An introduction to the Aegir Hosting system | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-729" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">An introduction to the Aegir Hosting system</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-729'><p>This article first appeared on mig5's blog on 13th October, 2009</p>
+<p>Tonight at 18:30pm GMT+11 I'll be giving a talk/presentation on 'An Introduction to the Aegir Hosting system' at the <a href="http://groups.drupal.org/node/28560">regular monthly Melbourne Drupal meet @ the Emspace offices</a>.</p>
+<p>My notes during the last week kind of took on a life of their own, and so in anticipation of the talk, I thought I'd publish them here, despite the somewhat casual tone, for those who can't make it and want a somewhat (perhaps overly, for an Introduction!) detailed overview of the Aegir system and what it does.</p>
+<p>I believe the session will also be recorded, so we should see the video pop up on blip.tv or somewhere in days to come. <strong>Update 20/10/09: The video is available here http://blip.tv/file/2741212</strong></p>
+<p>A variation of these notes may end up being part of the documentation on <a href="http://groups.drupal.org/aegir">g.d.o</a> too.</p>
+<p><strong>Update</strong>: Here's a PDF of these notes <a href="http://ln-s.net/4Nbk" title="http://ln-s.net/4Nbk">http://ln-s.net/4Nbk</a></p>
+<p>---------------------------------------------------------------------------</p>
+<h1>An introduction to the Aegir Hosting system</h1>
+<h1>Contents</h1>
+<ol>
+<li><a href="#whatisaegir">What is Ægir?</a></li>
+<li><a href="#briefhistory">Brief history of Ægir</a></li>
+<li><a href="#anatomy">Dissecting gods: the anatomy of Ægir</a><br />
+<ul type="disc">
+<li><a href="#frontend">Frontend</a></li>
+<li><a href="#backend">Backend</a></li>
+<li><a href="#glue">How Hosting and Provision work together</a></li>
+</ul>
+</li>
+<li><a href="#features">Features and terminology</a>
+<ul>
+<li><a href="#node">Everything is a node</a></li>
+<li><a href="#platforms&amp;sites">Platforms &amp; Sites</a></li>
+<li><a href="#tasks">Task queue</a></li>
+<li><a href="#drush">Drush, hooks, rollback</a></li>
+<li><a href="#install">Installing sites</a></li>
+<li><a href="#aliases">Site Aliases</a></li>
+<li><a href="#import">Importing sites</a></li>
+<li><a href="#verify">Verify, Packages (schemas)</a></li>
+<li><a href="#disable">Site Disable/Enable</a></li>
+<li><a href="#delete">Delete</a></li>
+<li><a href="#migrate">Migrate</a></li>
+<li><a href="#backup">Backup</a></li>
+<li><a href="#restore">Restore</a></li>
+<li><a href="#deploy">Deploy</a></li>
+<li><a href="#clone">Clone</a></li>
+<li><a href="#batch">Batch Migrate</a></li>
+<li><a href="#cron">Cron Queue</a></li>
+<li><a href="#clients">Clients, roles, permissions</a></li>
+<li><a href="#ports">Ports &amp; SSL</a></li>
+</ul>
+</li>
+<li><a href="#whatitisnt">What Aegir doesn't do</a></li>
+<li><a href="#roadmap">Roadmap - where are we going</a></li>
+<li><a href="#questions">Questions</a></li>
+<li><a href="#links">Links</a></li>
+</ol>
+<h2><a name="whatisaegir">What is Ægir?</a></h2>
+<p><img src="../../sites/community.aegirproject.org/files/aegir/index.png" style="float: right; padding:1px" />Ægir is a set of Drupal components that when used together, help you manage other Drupal sites.<br />
+It does this by providing you with a simple Drupal based hosting frontend or control panel that allows you to perform actions against your network of Drupal sites. Some of these actions or 'tasks' include Installing new sites, Verifying the integrity of sites, backing up and restore, management of 'Platforms' (which are copies of Core or distributions such as OpenAtrium), and migration of your sites between these platforms. We'll cover the relationship between sites and platforms in a moment.</p>
+<p>To Ægir, a site is just a node like any other node in a Drupal site. Depending on the node type, be it Site or Platform etc, determines what tasks like these can be performed.</p>
+<p>Taken from the page on groups.drupal.org: In Norse mythology, Ægir was the god of the oceans and if Drupal is a drop of water, Ægir is the deity of large bodies of water.</p>
+<h2><a name="briefhistory">Brief history of Ægir</a></h2>
+<p>Ægir used to be called Hostmaster, or Hostmaster2, and was authored by Adrian Rossouw who remains the lead developer of the project, back when he worked at Bryght. I believe Bryght pioneered the idea of a system like this to manage large deployments of sites for their clients, and Hostmaster was the result of that work and was subject to much growth and enhancements over a period of 4 years before it ever became 'Aegir' as it is now. Adrian's also known for other Drupal accomplishments such as the Forms API, the PHPTemplate theme engine, and the install profile system. </p>
+<p>Since then, Bryght got acquired by Raincity Studios, and Adrian's now working for Development Seed.. thus a large influence on the development/direction of Ægir is naturally coming from that camp as they provide Adrian with the time and the means to work on improving the product.</p>
+<p>Joining Ægir as part of the core development team is Antoine Beaupré, aka 'anarcat', who's from the Koumbit worker's collective in Montreal and been working on this for a long time too, and myself.</p>
+<p>For this introductory talk, I'm going to focus on the anatomy of Ægir and how the components fit together and with Drupal. Then I'll provide a brief overview of the main features of Ægir and what you'd use it for. </p>
+<p>After the talk, to avoid taking up too much time, I'll be happy to run through some more in depth, under-the-hood areas of Ægir such as the Provision backend, the database schema etc, and answer any of the more technical questions you might have.</p>
+<h2><a name="anatomy">Dissecting gods: the anatomy of Ægir</a></h2>
+<p>Ægir is not a 'module' nor yet a 'distribution' for Drupal, but currently a collection of 'components' as I like to call them, that work together to do the whole job.</p>
+<p>In order to best understand how it all works, we can define Ægir as made up of two parts: the frontend, and the backend. </p>
+<h3><a name="frontend">Frontend</a></h3>
+<p>The frontend is actually a Drupal site that makes use of a module called 'Hosting', which does all the job of the frontend: basically it provides the mechanisms to add / remove nodes like any other Drupal site, allowing you to point and click on tasks like Install, Backup and so forth. It also provides a nice UI to manage your sites in general, and to review tasks that have completed, or in progress, or failed for whatever reason. Most screenshots you've probably seen of Ægir, are using the Eldir theme developed by Young Hahn at Development Seed, which is made specifically for Ægir, though it is optional and Ægir will function without it.</p>
+<div align="center"><img src="../../files/front/index.png" /></div>
+<h3><a name="backend">Backend</a></h3>
+<p>The backend is made up of a 'drush module' or extension called Provision, which does pretty much its namesake: it works with Drush very heavily to handle all of the tasks such as installing new drupal sites, importing existing ones, installing platforms, verifying everything, instigating backups and restores, and so on. So it's actually doing the heavy lifting here, actually executing the tasks you assign to the system.</p>
+<p>Provision is invoked through the use of drush commands, and thus these commands can also generally be executed from the command line to perform the functions that make Ægir so important. In fact it's very much by design that all the magic happens in the backend, because it allows us to have one Ægir frontend that can manage multiple backends, or in otherwords, multiple webservers and database servers. Though these are experimental features at the moment.</p>
+<h3><a name="glue">How Hosting and Provision work together</a></h3>
+<p>The glue that binds what Hosting lets you kick off tasks for, and how Provision learns of those tasks and executes them, is by way of adding the tasks to a Task queue in the database, which is viewable in the frontend.</p>
+<p>On your server, we then have a dedicated 'aegir' user, whose crontab has an entry to regularly look and 'dispatch' any queues containing tasks that are pending, which are then forked off into drush provision commands in the background.</p>
+<div align="center"><img src="../../files/crontab/index.png" /></div>
+<p>So the idea is that all this happens behind the scenes for you as the manager of the aegir system: the frontend exists for you to queue up all these sorts of actions, and let Ægir worry about actually doing them in the backend.</p>
+<p>Along with Provision, Hosting, and Eldir, there is also another component which is an Install Profile called 'Hostmaster'. The Hostmaster Install profile is, like all install profiles, really only executed once, when you are setting up Ægir for the first time. And it does the work of getting information from you, or telling you to set things up on a system level (like directories, permissions etc), asking what Features you'd like to enable, and kicking off the initial verification of the system, setting up the crontab entry etc.</p>
+<p>The home directory of Aegir</p>
+<div align="center"><img src="../../files/fs1/index.png" /></div>
+<p>The backend Provision module</p>
+<div align="center"><img src="../../files/fs3/index.png" /></div>
+<p>The Hostmaster profile and the Hosting frontend module contained therein</p>
+<div align="center"><img src="../../files/fs4/index.png" /></div>
+<h2><a name="features">The Features and terminology of Ægir</a></h2>
+<p>So before I start running a few examples of what Ægir can do, I thought I'd bore you some more with the terminology and features that Ægir has, as there's often some confusion over what some of the terms mean.</p>
+<p>Some features in Ægir are enabled by default, some cannot be turned off, some are optional and can be enabled at any time, and some are experimental and may have unexpected results in production environments.</p>
+<div align="center"><img src="../../files/features/index.png" /></div>
+<p><strong><a name="node">Everything is a node</a></strong></p>
+<p>In keeping with strong Drupal tradition, and out of pure sense, everything is a node in Ægir. This includes Ægir's information on your web server, database server, platforms, sites, right down to tasks, and information about modules, themes, and install profiles.</p>
+<div align="center"><img src="../../files/create_content/index.png" /></div>
+<p><strong><a name="platforms&amp;sites">Platforms and Sites</a></strong></p>
+<p>First of all, Ægir's very much designed to work within Drupal's multisite structure. Often one of the biggest hurdles users experience when trying to learn Ægir, can be traced back to the fact that few of them are actually making use of <a href="http://drupal.org/getting-started/6/install/multi-site">Drupal's multisite design</a>, and instead tend to use one core per site. While Ægir will work that way just fine, its designed to make use of the proper multisite logic introduced way back in I think Drupal 4.5 or maybe d5 - in fact, it's what makes it so powerful and useful - it handles multisite for you, and it handles it properly.</p>
+<p>For whatever reason, multisite is often not used, and so users are often confused about what constitutes a 'Platform' in Ægir, so we'll cover that now.</p>
+<p>Basically the first thing you do after installing Ægir, is go and set up what we call a 'Platform', which is the code base within which you'll create a Site to sit on.</p>
+<p>'Platform' translates directly to a copy of Drupal core, like Drupal 6.14 or 5.20, but it isn't limited to Drupal core. It could very well be a 'distribution' or custom Drupal core like OpenAtrium, Pressflow, OpenPublish, and so on. So it's important to recognise that a Platform is actually very simple to understand conceptually once you learn to exchange the term for a 'Drupal core' or thereabouts, and I suspect it's often expected to be more complicated than it really is. </p>
+<p>So just per a standard multisite system in Drupal, sites are installed into the sites/ subdirectory of that Platform. </p>
+<div align="center"><img src="../../files/create_platform/index.png" /></div>
+<p>So a Platform and a Site are two examples of what are simply node types in the database, just like any regular Drupal site. This is what makes Ægir so easy, because to create a new Site, you can literally node/add/site or Create Content > Site and fill out the required fields, submit the form, and Ægir does the rest.</p>
+<p>So you start to form a picture in your mind of a pyramid structure: In Drupal multisite, a Core or a Platform manages many sites. Ægir is a level above that, in that it can manage many Platforms. So Ægir becomes very powerful, because through inheritance of managing many Cores or Platforms, it exponentially can manage many sites, be they Drupal 5, Drupal 6, Pressflow, or Openatrium sites. And so on.</p>
+<p><strong><a name="tasks">The task queue</a></strong></p>
+<div align="center"><img src="../../files/queue_block/index.png" style="float: right; padding: 2px" /></div>
+<p>When you add a new Platform or site, you can see that these items are immediately dropped into the task queue which you can see in this block in the sidebar. As the cron comes around once per minute, it'll pick these tasks up and dispatch them to the backend to be executed. </p>
+<p>Depending on the return from Drush and Provision as they execute these tasks, the status of this task in the queue will change from Queued to either Failed or Success. In both cases, the full drush log output is given in the task node. </p>
+<p>On a failed task, you can review the problems and if you feel you've fixed the issue, re-schedule the task to re-enter the queue and be executed again.</p>
+<p><strong><a name="drush">Drush and rolling back changes</a></strong></p>
+<p>Because Drush has a rich API that provides validate_, pre_, post_ and rollback hooks, we can safely revert any changes that were made if a task fails, through a rollback, or perform other functionality before or after the fact. This means that although Ægir is taking a lot of the heavy lifting out of your hands with this stuff, it's also very careful with your data. It doesn't want to destroy your sites, it wants to nurture them, and it'll undo or refuse to perform any actions it thinks might be unsafe.</p>
+<p><strong><a name="install">Installing Sites</a></strong></p>
+<p>In the case of installing a site, support is written for Drupal 5 and Drupal 6 platforms. There is Drupal 7 support in there that once worked, but the nature of Drupal 7's shifting meant that support for d7 fell out of Drush, and thus it currently doesn't work in Ægir, though I think a Drupal 7 platform *will* verify ok.</p>
+<p>Installing sites works because Provision basically knows how to create a mySQL database and credentials automatically for the site and apply these settings, along with locale, timezone etc, and any other settings you normally enter manually during a Drupal install, automatically into the installer. It doesn't matter what installer it is: it can be either the standard Drupal default installer, or a custom install profile you've written, or other install profiles such as the atrium_installer profile that makes OpenAtrium what it is.</p>
+<div align="center"><img src="../../files/create_site/index.png" /></div>
+<p>Install also goes through and generates the Apache vhost configuration file for the site and restarts Apache, so you don't need to do any of this.</p>
+<p>On successful installation of a site, the onetime login reset link will be e-mailed to the 'Client' (we'll go through Clients later), and the login url will also be logged to the task output for quick reference. It's normally the task output that I'll go to to retrieve the login url. So immediately you can login to your brand new drupal site, and you only clicked a couple of buttons.</p>
+<p><strong><a name="aliases">Site Aliases</a></strong></p>
+<p>Ægir supports site 'aliases', which translate directly to the ServerAlias parameter in Apache vhost files. One can add URL aliases that will serve a site called by another name. A classic case is installing a site with a URL of 'www.example.com' with an alias of 'example.com' so that example.com also serves the site (providing a RR is set in DNS of course).</p>
+<p>Redirection is also supported as an optional feature to Aliases, allowing permanent redirects of the aliases to the main site URL by way of mod_rewrite. All this is configurable in the site node form, though Site Aliasing is an optional feature that must be turned on first.</p>
+<p><strong><a name="import">Importing sites</a></strong></p>
+<p>It is possible to import existing sites that you're hosting on a server, into your new Ægir system. </p>
+<p>Since most people seem to be using one core per site and not using multisite, it's just a matter of moving the copy of core into /var/aegir/ , renaming sites/greenbeedigital.com.au to sites/$yoursite, and then adding a Platform in the Ægir frontend. Upon a successful Verify of the new Platform, any detected sites living in the sites/ folder will have an Import task spawned for them, and Ægir will hence 'learn' of these sites and their packages.</p>
+<div align="center"><img src="../../files/import/index.png" /></div>
+<p>Obviously it is not ideal to have one platform per site, and the whole point of Ægir is to support multiple sites on one Platform. So once this site is imported, you will likely want to Migrate the site to another platform, which we'll cover in a moment.</p>
+<p><strong><a name="verify">Verify, and Packages</a></strong><br />
+Along with Install, other tasks exist in Ægir. One that is often run is Verify, which just checks that the filesystem of the site or platform looks sane, permissions all correctly set, confirms the aegir superuser can create new databases, and so on. it also refreshes the database with knowledge of what modules, themes or profiles (altogether referred to as Packages in Ægir) exist on a platform of site. It keeps a running state of what packages are installed, so that if you try to Migrate a site, it knows whether the target platform can support these modules or not.</p>
+<div align="center"><img src="../../files/packages/index.png" /></div>
+<p>If you edit a site or platform's node - for instance if you are adding a URL alias for an existing site - on node_save, the item will be re-added to the task queue as a Verify task. Such functions serve to handle such cases like an alias addition, where the site's vhost needs to be edited and Apache restarted for the change to take effect.</p>
+<p><strong><a name="disable">Site Disable / Enable</a></strong></p>
+<p>If a site is installed and enabled, one can Disable the site, which effectively puts a redirect on the apache vhost for that site to redirect to a page saying the site's been disabled. It also goes and backs up the site.</p>
+<p>If a site is Disabled, it can then also be re-enabled, which essentially unsets the redirection in the vhost so that the site starts working again.</p>
+<p><strong><a name="delete">Site Delete</a></strong></p>
+<p>After a site is in a Disabled state, you can Delete a site, which will go through and (again) take a backup first, then goes and removes the actual site data from the server, removes the knowledge of the site from the aegir database, drops the site's own database, and removes the vhost config. As mentioned earlier, if any of these steps go downhill, the procedure will be reversed as best as it can.</p>
+<p><strong><a name="migrate">Site Migrate</a></strong></p>
+<p>I mentioned Migrate earlier, and this is really in my opinion, the biggest feature of Ægir and what makes it so worth using. Migrate essentially is another task that tells Provision to *move* the site from one platform to another. The most obvious case of where you'd want to do this is when a new Drupal core release comes out, like recently with 6.14. </p>
+<p>All I had to do is download Drupal 6.14 to the server, add it as a platform in Ægir, and then use Migrate to move my Drupal 6.13 sites to Drupal 6.14.</p>
+<div align="center"><img src="../../files/migrate1/index.png" /></div>
+<p>In the process of this, it runs the Drupal updates and hence performs the hook_updates, schema changes etc that one would normally do by hand in an upgrade.</p>
+<p>What makes quite significant is that it's by design that you can take a Drupal 5 site, and use Migrate to upgrade it to Drupal 6. It's built right into Ægir to handle that upgrade automatically for you.</p>
+<p>Migrate basically takes a backup of the site, and then it uses a special 'deploy' command to 'deploy' this instance of the site to the target platform. It then removes the site from the existing platform.</p>
+<p>I mentioned earlier the concept of a 'Package' in Ægir, which is any module or theme or install profile that Ægir finds on a platform or a site. With its knowledge of the package, its schema version and what 'instance' in which this package is being used, it can analyse a site that you want to migrate, compare the packages in use with what can be used on the target platform, and present a report on whether the site can be migrated or not.</p>
+<p>In other words, it will intelligently calculate that you cannot migrate a Drupal 6 site to a Drupal 5 site, because the schema versions of Drupal 5 packages are incompatible with those installed on the Drupal 6 site. However obviously, the reverse ought to work.</p>
+<div align="center"><img src="../../files/migrate2/index.png" /></div>
+<p>And yes, it backs up and will rollback if unsuccessful. :)</p>
+<p><strong><a name="backup">Site Backup</a></strong></p>
+<p>So I've mentioned Backup a few times, so I should cover it: essentially the Backup task can be executed against a Site. It does a mysqldump of the site into a file in the site's directory, and then it tars up the whole site's directory and drops the tarball into a backups directory that lives outside the document root of any platform with a timestamp.</p>
+<div align="center"><img src="../../files/backup/index.png" /></div>
+<p><strong><a name="restore">Site Restore</a></strong></p>
+<p>Using the Restore task, you can take any of these backups, and with a single click, restore your entire site, codebase and database all together, to a previous state from one of the tarballs.</p>
+<div align="center"><img src="../../files/restore/index.png" /></div>
+<p><strong><a name="deploy">Deploy</a></strong></p>
+<p>The 'Deploy' task I mentioned earlier isn't shown in the frontend. It's a backend command that is used in Migrate and Clone tasks. Clone is a new feature in our early 0.4 alpha releases that does what you probably are already thinking it does: it generates a snapshot of a site (actually using the Backup task above, we reuse as much code as possible) and uses Deploy to deploy that copy of a site with a new URL to any platform, be it the current platform or a separate platform. </p>
+<p><strong><a name="clone">Site Clone</a></strong></p>
+<p>So you can use Clone to clone entire copies of your site to a new URL, which could be useful for testing, or if you have a sort of 'template' site with common modules and themes, structures or common nodes etc. You could consider it a poor man's install profile.</p>
+<div align="center"><img src="../../files/clone/index.png" /></div>
+<p><strong><a name="batch">Batch Migrate</a></strong></p>
+<p>To date, you could only Migrate a site on a per-site basis. We've recently introduced Batch migrate, which means you can migrate *every* site that currently exists on a platform, and move them all to a new platform in one hit. Again, especially useful when you have a lot of sites on a Drupal core that has suddenly become vulnerable with a new security release, and you need to move them all across to the new core as soon as you can. </p>
+<div align="center"><img src="../../files/batch_migrate_0/index.png" /></div>
+<p>We know of Ægir being used to deploy and manage more than 2100 sites on one system, actually by another Australian, Dave Hall, who's up in Bendigo, and goes by the alias skwashd on Drupal.org and IRC. So features like Batch Migrate are especially significant.</p>
+<div align="center"><img src="../../files/batch_migrate_progress/index.png" /></div>
+<p><strong><a name="cron">Cron Queue</a></strong></p>
+<p>Since Ægir already has a task queue scheduler, it makes sense that it should be able to queue up enabled sites and run cron regularly on the sites themselves. So a Feature exists to do exactly that. Both the regularity of the Cron and the Task queues are configurable.</p>
+<p><strong><a name="clients">Clients, roles, permissions</a></strong></p>
+<div align="center"><img src="../../files/roles/index.png" style="float: right; padding:1px" /></div>
+<p>Another Feature and node type is that of the Client. A Client in Ægir is not a specific user in the typical Drupal sense, but more so a conceptual wrapper node that also translates directly to a role type. One then can create users and assign them to a 'Client' just like a role. Such users have the ability to login to the Ægir site and manage their own sites. In this way you can expose Aegir functionality to your clients and let them create their own sites or manage them (to a point).</p>
+<p>Another role that Ægir sets up is the Ægir Account Manager: this is design as a non-technical role, likely a member of your own staff, who has the ability to set up and manage Clients in Ægir, but cannot perform any technical tasks or install sites etc.</p>
+<p><strong><a name="ports">Ports and SSL</a></strong></p>
+<p>A lot of work has been done in recent releases to implement multiple webserver Port support, along with SSL support which is not quite complete.</p>
+<p>Currently one can create only one site URL on one port, but cannot create the same site URL on another port. There are cases where this will be required (such as port 80 and 443 for sites that need SSL as well), which is something I'm working at the moment in my development.</p>
+<h2><a name="whatitisnt">What Aegir doesn't do</a></h2>
+<ul>
+<li>Aegir knows about your modules and their release schema etc, in order to handle migrations and that sort of thing. But it isn't a plugin manager, and you can't disable/enable modules of sites within Ægir.</li>
+<li>To the dismay of at least 50% of users who install it, Ægir is not in fact a build management tool, it's a site management tool. But one can build Platforms using drush_make, which can pull from drupal.org repos as well as your own git/svn/cvs repository, and migrate your sites onto new 'release' builds. I'll spend some time on this after the talk for those who are interested.</li>
+<li>It doesn't provision non-Drupal sites. But it may support static sites, Joomla? in the future..</li>
+</ul>
+<h2><a name="roadmap">Roadmap - where are we going?</a></h2>
+<ul>
+<li>Lots of UI refactoring will be done before 1.0 - modal dialog, more UI feedback to the user</li>
+<li>Refactoring 'Servers' from being separate node types i.e webserver, dbserver etc, to a single 'Server' type that acts as a container for pluggable Services (http, mysql, postgresql, dns)</li>
+<li>Develop a File service, one reason is for dealing with moving backups around.. 'spoke' model or 'mesh' model (see roadmap)</li>
+<li>Just in this week gone, in the alpha2 release, we leverage 'Drush make', allowing Hostmaster to provision itself and migrate itself to new platforms (0.4 alpha2 and onwards likely)
+</li><li>Third-party application hook-ins, i.e DNS, LDAP, Mail, Jabber.. with the idea of a control panel done right</li>
+<li>Stronger quota management and the potential for e-commerce hook-ins, selling sites as a product</li>
+<li>Move to PDO to support PostgreSQL, SQLite etc</li>
+<li>The 1.0 release will see a 'frozen' Hostmaster API</li>
+</ul>
+<p>What else?</p>
+<h2><a name="questions">Questions?</a></h2>
+<h2><a name="links">Links</a></h2>
+<ul>
+<li><a href="http://groups.drupal.org/aegir">http://groups.drupal.org/aegir</a></li>
+<li><a href="http://drupal.org/project/hostmaster">http://drupal.org/project/hostmaster</a></li>
+<li><a href="http://drupal.org/project/hosting">http://drupal.org/project/hosting</a></li>
+<li><a href="http://drupal.org/project/provision">http://drupal.org/project/provision</a></li>
+<li><a href="http://drupal.org/project/eldir">http://drupal.org/project/eldir</a></li>
+<li><a href="http://drupal.org/project/drush">http://drupal.org/project/drush</a></li>
+<li><a href="http://drupal.org/project/drush_make">http://drupal.org/project/drush_make</a></li>
+<li><a href="http://drupal.org/project/issues?projects=hosting%2Cprovision%2Chostmaster%2Celdir&amp;status=Open&amp;priorities=All&amp;categories=All">Aegir issue queues</a></li>
+<li><a href="http://www.mig5.net/content/migrate-your-drupal-sites-new-drupal-core-security-release-ægir">Migrate your Drupal sites to a new Drupal core security release with Ægir</a></li>
+<li><a href="http://www.archive.org/details/AutomateyoursitemaintenancetroublesawaywiththeAegirhostingsystem">Automate your site maintenance troubles away with the Aegir hosting system</a> - presentation by Adrian and Antoine at DrupalCon Paris</li>
+<li><a href="http://groups.drupal.org/node/29218">0.4 Roadmap</a></li>
+</ul>
+<div class="itu-attachments"><table class="itu-attachment-list withoutstats sticky-enabled" id="attachments">
+ <thead><tr><th class="preview">Preview</th><th class="file">Attachment</th><th class="size">Size</th> </tr></thead>
+<tbody>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/aegir/index.png" title="aegir.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/aegir/index.png" alt="aegir.png" title="aegir.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/aegir/index.png">aegir.png</a></td><td class="size">8.9 KB</td> </tr>
+ <tr class="even"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/backup_0/index.png" title="backup.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/backup_0/index.png" alt="backup.png" title="backup.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/backup_0/index.png">backup.png</a></td><td class="size">33.57 KB</td> </tr>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/batch_migrate_0/index.png" title="batch_migrate_0.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/batch_migrate_0/index.png" alt="batch_migrate_0.png" title="batch_migrate_0.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/batch_migrate_0/index.png">batch_migrate_0.png</a></td><td class="size">22.25 KB</td> </tr>
+ <tr class="even"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/batch_migrate_progress/index.png" title="batch_migrate_progress.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/batch_migrate_progress/index.png" alt="batch_migrate_progress.png" title="batch_migrate_progress.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/batch_migrate_progress/index.png">batch_migrate_progress.png</a></td><td class="size">16.87 KB</td> </tr>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/clone_0/index.png" title="clone.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/clone_0/index.png" alt="clone.png" title="clone.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/clone_0/index.png">clone.png</a></td><td class="size">51.99 KB</td> </tr>
+ <tr class="even"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/create_content/index.png" title="create_content.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/create_content/index.png" alt="create_content.png" title="create_content.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/create_content/index.png">create_content.png</a></td><td class="size">11.24 KB</td> </tr>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/create_platform/index.png" title="create_platform.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/create_platform/index.png" alt="create_platform.png" title="create_platform.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/create_platform/index.png">create_platform.png</a></td><td class="size">56.16 KB</td> </tr>
+ <tr class="even"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/create_site/index.png" title="create_site.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/create_site/index.png" alt="create_site.png" title="create_site.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/create_site/index.png">create_site.png</a></td><td class="size">58.9 KB</td> </tr>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/crontab/index.png" title="crontab.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/crontab/index.png" alt="crontab.png" title="crontab.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/crontab/index.png">crontab.png</a></td><td class="size">16.02 KB</td> </tr>
+ <tr class="even"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/features/index.png" title="features.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/features/index.png" alt="features.png" title="features.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/features/index.png">features.png</a></td><td class="size">42.51 KB</td> </tr>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/front/index.png" title="front.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/front/index.png" alt="front.png" title="front.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/front/index.png">front.png</a></td><td class="size">77.44 KB</td> </tr>
+ <tr class="even"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/fs1/index.png" title="fs1.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/fs1/index.png" alt="fs1.png" title="fs1.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/fs1/index.png">fs1.png</a></td><td class="size">24.32 KB</td> </tr>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/fs3/index.png" title="fs3.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/fs3/index.png" alt="fs3.png" title="fs3.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/fs3/index.png">fs3.png</a></td><td class="size">110.06 KB</td> </tr>
+ <tr class="even"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/fs4/index.png" title="fs4.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/fs4/index.png" alt="fs4.png" title="fs4.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/fs4/index.png">fs4.png</a></td><td class="size">31.6 KB</td> </tr>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/import/index.png" title="import.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/import/index.png" alt="import.png" title="import.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/import/index.png">import.png</a></td><td class="size">8.17 KB</td> </tr>
+ <tr class="even"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/migrate1/index.png" title="migrate1.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/migrate1/index.png" alt="migrate1.png" title="migrate1.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/migrate1/index.png">migrate1.png</a></td><td class="size">51.76 KB</td> </tr>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/migrate2/index.png" title="migrate2.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/migrate2/index.png" alt="migrate2.png" title="migrate2.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/migrate2/index.png">migrate2.png</a></td><td class="size">51.3 KB</td> </tr>
+ <tr class="even"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/packages/index.png" title="packages.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/packages/index.png" alt="packages.png" title="packages.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/packages/index.png">packages.png</a></td><td class="size">52.02 KB</td> </tr>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/queue_block/index.png" title="queue_block.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/queue_block/index.png" alt="queue_block.png" title="queue_block.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/queue_block/index.png">queue_block.png</a></td><td class="size">9.01 KB</td> </tr>
+ <tr class="even"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/restore_0/index.png" title="restore.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/restore_0/index.png" alt="restore.png" title="restore.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/restore_0/index.png">restore.png</a></td><td class="size">43.78 KB</td> </tr>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/roles/index.png" title="roles.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/roles/index.png" alt="roles.png" title="roles.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/roles/index.png">roles.png</a></td><td class="size">11.76 KB</td> </tr>
+</tbody>
+</table>
+</div></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-249.html?destination=node%2F729%23comment-form">Login</a> or <a href="../../user/register/index-249.html?destination=node%2F729%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/article-archive/introduction-aegir-hosting-system?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:48:00 GMT -->
+</html>

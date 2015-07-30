@@ -1,0 +1,315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/400/revisions/2479/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:58:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/installing/system-requirements/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../content/installing/debian/automatic-installation-ubuntu-1104-quickstart/index.html" />
+<link rel="prev" href="../../../../../content/installing/system-requirements/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../content/installing/debian/automatic-installation-ubuntu-1104-quickstart/index.html" />
+<link rel="prev" href="../../../../../content/installing/system-requirements/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../content/installing/debian/automatic-installation-ubuntu-1104-quickstart/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Automatic install on Debian from Sat, 10/29/2011 - 01:05 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-400" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../installing/debian/index.html">Automatic install on Debian</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-400'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 10/29/2011 - 01:05</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>These are the installation instructions that are recommended on Debian. Aegir dependencies (Apache, MySQL, PHP...) are also automatically installed. If you are managing the installation from a remote Windows computer, well-known open source tools for this task are for example PuTTY (a SSH client for command line), and WinSCP (a SFTP client with easy text file editing).</p>
+
+<p>If you wish to install Debian packages over an existing manual install, it's possible. See <a href="../../../../../upgrading/debian/index.html">the Debian upgrade procedures</a>.</p>
+
+<p>Debian packages are uploaded to <a href="http://debian.aegirproject.org/" title="http://debian.aegirproject.org/">http://debian.aegirproject.org/</a> shortly after a release. We eventually want to upload those packages to the official archives, but this will take some adaptation and time to sponsor the packages in.</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Adding_the_project_repositories"><span class="toc-number">1.<span class='diff-deleted'> </span><span class='diff-deleted'></span></span><span class='diff-deleted'>Special</span><span class='diff-deleted'> </span><span class='diff-deleted'>notice</span></a><span class='diff-deleted'></span></li><span class='diff-deleted'>
+	</span><li class="toc-level-1"><span class='diff-deleted'></span><a href="#Adding_the_project_repositories"><span class='diff-deleted'></span><span class="toc-number"><span class='diff-deleted'>2.</span> </span>Adding the project repositories</a></li>
+	<li class="toc-level-1"><a href="#Adding_the_archive_key_to_your_keyring"><span class="toc-number"><span class='diff-changed'>2.</span> </span>Adding the archive key to your keyring</a></li>
+	<li class="toc-level-1"><a href="#Adding_backports_for_or_manually_installing_Drush"><span class="toc-number"><span class='diff-changed'>3.</span> </span>Adding backports for or manually installing Drush</a></li>
+	<li class="toc-level-1"><a href="#DNS_configuration"><span class="toc-number"><span class='diff-changed'>4.</span> </span>DNS configuration</a></li>
+	<li class="toc-level-1"><a href="#Manual_sudo_configuration"><span class="toc-number"><span class='diff-changed'>5.</span> </span>Manual sudo configuration</a></li>
+	<li class="toc-level-1"><a href="#Installing_Aegir"><span class="toc-number"><span class='diff-changed'>6.</span> </span>Installing Aegir</a></li>
+	<li class="toc-level-1"><a href="#Custom_distributions"><span class="toc-number"><span class='diff-changed'>7.</span> </span>Custom distributions</a></li>
+	<li class="toc-level-1"><a href="#Troubleshooting_the_install"><span class="toc-number"><span class='diff-changed'>8.</span> </span>Troubleshooting the install</a></li>
+</ol>
+</div>
+</div>
+
+<h2 id="Adding_the_project_repositories">1.<span class='diff-deleted'> </span><span class='diff-deleted'>Special</span><span class='diff-deleted'> </span><span class='diff-deleted'>notice</span></h2><span class='diff-deleted'>
+
+</span><p><span class='diff-deleted'>Due</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>a</span><span class='diff-deleted'> </span><span class='diff-deleted'>resource</span><span class='diff-deleted'> </span><span class='diff-deleted'>issue,</span><span class='diff-deleted'> </span><span class='diff-deleted'>we</span><span class='diff-deleted'> </span><span class='diff-deleted'>have</span><span class='diff-deleted'> </span><span class='diff-deleted'>not</span><span class='diff-deleted'> </span><span class='diff-deleted'>yet</span><span class='diff-deleted'> </span><span class='diff-deleted'>been</span><span class='diff-deleted'> </span><span class='diff-deleted'>able</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>update</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>packages</span><span class='diff-deleted'> </span><span class='diff-deleted'>in</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>Debian</span><span class='diff-deleted'> </span><span class='diff-deleted'>repository,</span><span class='diff-deleted'> </span><span class='diff-deleted'>which</span><span class='diff-deleted'> </span><span class='diff-deleted'>means</span><span class='diff-deleted'> </span><span class='diff-deleted'>that</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>last</span><span class='diff-deleted'> </span><span class='diff-deleted'>version</span><span class='diff-deleted'> </span><span class='diff-deleted'>available</span><span class='diff-deleted'> </span><span class='diff-deleted'>in</span><span class='diff-deleted'> </span><span class='diff-deleted'>them</span><span class='diff-deleted'> </span><span class='diff-deleted'>is</span><span class='diff-deleted'> </span><span class='diff-deleted'>Aegir</span><span class='diff-deleted'> </span><span class='diff-deleted'>1.3.</span><span class='diff-deleted'> </span><span class='diff-deleted'>This</span><span class='diff-deleted'> </span><span class='diff-deleted'>means</span><span class='diff-deleted'> </span><span class='diff-deleted'>that</span><span class='diff-deleted'> </span><span class='diff-deleted'>it</span><span class='diff-deleted'> </span><span class='diff-deleted'>doesn't</span><span class='diff-deleted'> </span><span class='diff-deleted'>contain</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>security</span><span class='diff-deleted'> </span><span class='diff-deleted'>fix</span><span class='diff-deleted'> </span><span class='diff-deleted'>in</span><span class='diff-deleted'> </span><span class='diff-deleted'>Aegir</span><span class='diff-deleted'> </span><span class='diff-deleted'>1.4.</span><span class='diff-deleted'> </span><span class='diff-deleted'>If</span><span class='diff-deleted'> </span><span class='diff-deleted'>you</span><span class='diff-deleted'> </span><span class='diff-deleted'>follow</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>install</span><span class='diff-deleted'> </span><span class='diff-deleted'>instructions</span><span class='diff-deleted'> </span><span class='diff-deleted'>here,</span><span class='diff-deleted'> </span><span class='diff-deleted'>you</span><span class='diff-deleted'> </span><span class='diff-deleted'></span><strong><span class='diff-deleted'>must</span></strong><span class='diff-deleted'></span><span class='diff-deleted'> </span><span class='diff-deleted'>then</span><span class='diff-deleted'> </span><span class='diff-deleted'>follow</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'>special</span><span class='diff-deleted'> </span><span class='diff-deleted'>Debian</span><span class='diff-deleted'> </span><span class='diff-deleted'>instructions</span><span class='diff-deleted'> </span><span class='diff-deleted'>in</span><span class='diff-deleted'> </span><span class='diff-deleted'>the</span><span class='diff-deleted'> </span><span class='diff-deleted'></span><a href="../../../../../1/index-8.html"><span class='diff-deleted'>Aegir</span><span class='diff-deleted'> </span><span class='diff-deleted'>1.4</span><span class='diff-deleted'> </span><span class='diff-deleted'>Release</span><span class='diff-deleted'> </span><span class='diff-deleted'>notes</span></a><span class='diff-deleted'></span></p><span class='diff-deleted'>
+
+</span><div class="toc-back-to-top"><span class='diff-deleted'></span><a href="#toc"><span class='diff-deleted'>Back</span><span class='diff-deleted'> </span><span class='diff-deleted'>to</span><span class='diff-deleted'> </span><span class='diff-deleted'>top</span></a><span class='diff-deleted'></span></div><span class='diff-deleted'></span><h2 id="Adding_the_project_repositories"><span class='diff-deleted'>2.</span> Adding the project repositories</h2>
+
+<p>Add the following line to /etc/apt/sources.list.d/aegir-stable.list:</p>
+
+<p><div class="codeblock"><code>deb <a href="http://debian.aegirproject.org/" title="http://debian.aegirproject.org">http://debian.aegirproject.org</a> stable main</code></div></p>
+
+<p>To install other versions, see the <a href="../../../../../debian/index.html">developer instructions for the debian package</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Adding_the_archive_key_to_your_keyring"><span class='diff-changed'>2.</span> Adding the archive key to your keyring</h2>
+
+<p>This archive self-signs packages uploaded to it (and packages uploaded are verified against a whitelist of trusted uploaders) using OpenPGP (GnuPG, to be more precise).</p>
+
+<p>The key of the archive is in the key.asc file. You should add the key using something like this:</p>
+
+<p><div class="codeblock"><code>wget <a href="http://debian.aegirproject.org/key.asc<br />apt-key" title="http://debian.aegirproject.org/key.asc<br />apt-key">http://debian.aegirproject.org/key.asc<br />apt-key</a> add key.asc<br />apt-get update</code></div></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Adding_backports_for_or_manually_installing_Drush"><span class='diff-changed'>3.</span> Adding backports for or manually installing Drush</h2>
+
+<p>You should also configure <a href="http://backports.debian.org/">backports</a> repositories for Drush. Version 4.4 of Drush is now in Debian <a href="http://packages.debian.org/sid/drush">unstable</a>, <a href="http://packages.debian.org/wheezy/drush">wheezy</a>, <a href="http://packages.debian.org/squeeze-backports/drush">squeeze-backports</a> and <a href="http://packages.ubuntu.com/natty/drush">Ubuntu Natty</a>.</p>
+
+<p>So if you are running <strong>Debian wheezy</strong> or later, or <strong>Ubuntu Natty 11.04</strong> or later, you don't need to do anything here. The Drush package you need is available from your distribution's repositories.</p>
+
+<p>If you are running <strong>Debian Squeeze 6.0</strong>, add the following line to /etc/apt/sources.list :</p>
+
+<p><div class="codeblock"><code>deb <a href="http://backports.debian.org/debian-backports" title="http://backports.debian.org/debian-backports">http://backports.debian.org/debian-backports</a> squeeze-backports main</code></div></p>
+
+<p>You might also have to add a proper Pin-Priority before this works. Create a file called <strong>drush</strong> containing the following and drop it into /etc/apt/preferences.d:
+<div class="codeblock"><code>Package: drush<br />Pin: release a=squeeze-backports<br />Pin-Priority: 1001</code></div></p>
+
+<p>Then run:
+<div class="codeblock"><code>apt-get update &amp;&amp; apt-get install drush</code></div></p>
+
+<p>If you are running <strong>Debian lenny 5.0</strong> or <strong>Ubuntu Maverick 10.10</strong> or Karmic Koala or earlier, we recommend downloading and installing the Drush package <a href="http://packages.debian.org/wheezy/all/drush/download">manually</a>.  The version of Drush in the Ubuntu Universe repository for these versions of Ubuntu is outdated.  If you are using <strong>Ubuntu Lucid LTS 10.04</strong>, you can install the Drush package manually or instead use <a href="https://launchpad.net/~brianmercer/+archive/drush">Brian Mercer's PPA</a> (Personal Package Archive) using the following command:</p>
+
+<p><div class="codeblock"><code>sudo add-apt-repository ppa:brianmercer/drush</code></div></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="DNS_configuration"><span class='diff-changed'>4.</span> DNS configuration</h2>
+
+<p>Aegir requires a properly configured "FQDN" (Fully Qualified Domain Name) be assigned to the machine. In practice, this means that the hostname returned by the <code>hostname -f</code> and <code>uname -n</code> shell commands should resolve to the IP address for this server, and vice versa, with the <code>resolveip</code> command (included with the mysql-server package).</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Manual_sudo_configuration"><span class='diff-changed'>5.</span> Manual sudo configuration</h2>
+
+<p>If you are running sudo versions previous to <code>1.7.2p1-1</code> (in Debian squeeze and Ubuntu Lucid), you will need to manually modify your /etc/sudoers file to add the following line:</p>
+
+<p><div class="codeblock"><code>aegir ALL=NOPASSWD: /usr/sbin/apache2ctl</code></div></p>
+
+<p>The line above assumes that you have created a user aegir as specified in the installation instructions.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Installing_Aegir"><span class='diff-changed'>6.</span> Installing Aegir</h2>
+
+<p>To install aegir, frontend and backend, use the following command:
+<div class="codeblock"><code>apt-get install aegir</code></div></p>
+
+<p>If apt-get reports that the aegir packages have unmet dependencies, then make sure that you have installed Drush (as explained above).  On a debian system, you can force the install of Drush from the squeeze-backports repository:</p>
+
+<p><div class="codeblock"><code>apt-get -t squeeze-backports install drush</code></div></p>
+
+<p>Then install aegir using the apt-get command above.</p>
+
+<p>This will prompt you for the required information (MySQL password, Postfix configuration...) and go ahead with the install.</p>
+
+<p>During the Postfix configuration, the following options appear: "No configuration, Internet site, Internet with smarthost, Satellite system, Local only". That first text screen only allows to use the tab key to select "OK", and then the enter key to display a second screen where you can select one of the choices. The default is "Internet site", useful in most cases to enable the server to send email messages, for example to the admin.</p>
+
+<p>At the end of the installation, you will receive an email message or, if the user "aegir" has been assigned with a local email account during the installation, the file /var/mail/aegir will contain the message. It will include a one-time login to your new Aegir control panel, that is a URL to copy into your browser so that you can set the password for the "admin" user.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Custom_distributions"><span class='diff-changed'>7.</span> Custom distributions</h2>
+
+<p>If you have your own makefile, you can go ahead with the above process, but change the makefile to the one you want:</p>
+
+<pre><code>echo debconf aegir/makefile string /var/aegir/makefiles/aegir/aegir-koumbit.make | debconf-set-selections
+apt-get install aegir
+</code></pre>
+
+<p>This allows you to specify the makefile path for your custom distribution of Aegir. To maintain these customizations, you'll need to ensure you do the same when upgrading.</p>
+
+<p>An example aegir-koumbit.make file could look like:</p>
+
+<p><div class="codeblock"><code>core = 6.x<br />api = 2<br /><br />includes[aegir] = &quot;/usr/share/drush/commands/provision/aegir.make&quot;<br /><br />projects[] = module_filter</code></div></p>
+
+<p>Note that for this to work, you may need the patch from <a href="http://drupal.org/node/1118616">this issue</a>, allowing drush_make to reference absolute system paths.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Troubleshooting_the_install"><span class='diff-changed'>8.</span> Troubleshooting the install</h2>
+
+<p>To make the install smoother, the install command is run without much debugging information, which can make diagnostics pretty hard. For this, there's a special environment variable you can set that will trigger debugging output. Install aegir with this:</p>
+
+<p><div class="codeblock"><code>env DEBUG=yes apt-get install aegir</code></div></p>
+
+<p>You can build your own Debian packages from our repositories using <a href="../../../../543/index.html">those instructions</a>.</p>
+
+<p><em>Note: the DEBUG flag is deprecated. In 1.x releases, it is accepted, but in 2.x it won't. You should use DPKG_DEBUG instead, it is usable starting from 1.1-4.</em></p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-296.html?destination=node%2F400%23comment-form">Login</a> or <a href="../../../../../user/register/index-296.html?destination=node%2F400%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-1857"></a>
+
+
+<div  id="comment-1857" class="comment comment-published clear-block decay-10 decay-10">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/mccrodp/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="mccrodp&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/mccrodp/index.html" class="username" title="View user profile.">mccrodp</a></div><div class='date'>4:26pm Feb 21, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1857">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>On Squeeze, I tried to install aegir2, but have some dependency errors, firstly stating I need hostmaster2 and provision2, then stating I need drush5.5 or greater. I have installed drush5.8 using php-pear package, but apt-get mustn't know about this.</p>
+
+<ul>
+<li>What is the 2.x procedure for the automatic installation? </li>
+<li>Is there a method to add a higher version of drush than 4.5 to squeeze-backports so that apt-get knows the correct drush version? </li>
+</ul>
+
+<p>I thought that running 'apt-get install aegir2' would have picked up the correct hostmaster and provision (aegir-provision2 and aegir-hostmaster2), as I think it does for 'apt-get install aegir'.</p>
+
+<p><div class="codeblock"><code>root@aegir2:~# apt-get install aegir2<br />Reading package lists... Done<br />Building dependency tree&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />Reading state information... Done<br />Some packages could not be installed. This may mean that you have<br />requested an impossible situation or if you are using the unstable<br />distribution that some required packages have not yet been created<br />or been moved out of Incoming.<br />The following information may help to resolve the situation:<br /><br />The following packages have unmet dependencies:<br /> aegir2 : Depends: aegir-provision2 (&gt;= 2.0~alpha1) but it is not going to be installed<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Depends: aegir-hostmaster2 (&gt;= 2.0~alpha1) but it is not going to be installed<br />E: Broken packages<br />root@aegir2:~# apt-get install aegir-provision2 aegir-hostmaster2<br />Reading package lists... Done<br />Building dependency tree&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />Reading state information... Done<br />Some packages could not be installed. This may mean that you have<br />requested an impossible situation or if you are using the unstable<br />distribution that some required packages have not yet been created<br />or been moved out of Incoming.<br />The following information may help to resolve the situation:<br /><br />The following packages have unmet dependencies:<br /> aegir-hostmaster2 : Depends: drush (&gt;= 5.5) but 4.5-2~bpo60+1 is to be installed<br /> aegir-provision2 : Depends: drush (&gt;= 5.5) but 4.5-2~bpo60+1 is to be installed<br />E: Broken packages</code></div></p>
+
+<p>Thanks in advance for any help with this.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-296.html?destination=node%2F400%23comment-form">Login</a> or <a href="../../../../../user/register/index-296.html?destination=node%2F400%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-1859"></a>
+
+
+<div  id="comment-1859" class="comment comment-published clear-block decay-9 decay-9">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/helmo/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="helmo&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/helmo/index.html" class="username" title="View user profile.">helmo</a></div><div class='date'>8:50am Feb 22, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1859">#2</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>@mccrodp: I had a similar experiance, and opend this issue: <a href="http://drupal.org/node/1920152" title="http://drupal.org/node/1920152">http://drupal.org/node/1920152</a></p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-296.html?destination=node%2F400%23comment-form">Login</a> or <a href="../../../../../user/register/index-296.html?destination=node%2F400%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-1936"></a>
+
+
+<div  id="comment-1936" class="comment comment-published clear-block decay-7 decay-7">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/jonpugh/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="jonpugh&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/jonpugh/index.html" class="username" title="View user profile.">jonpugh</a></div><div class='date'>12:03am May 16, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1936">#3</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Would it be possible to add "profile" as an option, just like "makefile"?</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-296.html?destination=node%2F400%23comment-form">Login</a> or <a href="../../../../../user/register/index-296.html?destination=node%2F400%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<div class="indented"><a id="comment-1939"></a>
+
+
+<div  id="comment-1939" class="comment comment-published clear-block decay-7 decay-7">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/helmo/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="helmo&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/helmo/index.html" class="username" title="View user profile.">helmo</a></div><div class='date'>7:21am May 17, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1939">#4</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Sure. It would have to be added to the drush hostmaster-install and possibly hostmaster-migrate commands. Feel free to open an issue. Patches welcome ;)</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-296.html?destination=node%2F400%23comment-form">Login</a> or <a href="../../../../../user/register/index-296.html?destination=node%2F400%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div><a id="comment-1947"></a>
+
+
+<div  id="comment-1947" class="comment comment-published clear-block decay-7 decay-7">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/willmoy/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="willmoy&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/willmoy/index.html" class="username" title="View user profile.">willmoy</a></div><div class='date'>10:28pm May 21, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1947">#5</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Thanks to jonpugh @ #32 and #33 for helping me get aegir 1.9 going with a fresh install of Debian Wheezy. The default wheezy version of drush is now too new (v5.x) for aegir 1.x. You need version 4.x, available in squeeze-backports. If you've already tried to install and run into "The drush command '@hostmaster status' could not be found." you must purge aegir and drush before attempting to reinstall with the correct drush version pinned.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-296.html?destination=node%2F400%23comment-form">Login</a> or <a href="../../../../../user/register/index-296.html?destination=node%2F400%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-2229"></a>
+
+
+<div  id="comment-2229" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/ygerasimov/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="ygerasimov&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/ygerasimov/index.html" class="username" title="View user profile.">ygerasimov</a></div><div class='date'>7:39am Jan 21, 2014</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-2229">#6</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>I had problem installing aegir2 on debian 7. Warning was</p>
+
+<p>ERROR: Module ssl does not exist!</p>
+
+<p>This can be solved with enabling mod_ssl on your apache2. For my case I needed to create /etc/apache2/mods-available/ssl.load with content</p>
+
+<p>LoadModule ssl_module /usr/lib/apache2/modules/mod_ssl.so</p>
+
+<p>After creating that file and restarting apache enable module sudo a2enmod ssl.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-296.html?destination=node%2F400%23comment-form">Login</a> or <a href="../../../../../user/register/index-296.html?destination=node%2F400%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/400/revisions/2479/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:58:05 GMT -->
+</html>

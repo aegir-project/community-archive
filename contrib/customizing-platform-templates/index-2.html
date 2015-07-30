@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/contrib/customizing-platform-templates?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:46:27 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../content/contrib/class-auto-loading/index.html" />
+<link rel="up" href="../index.html" />
+<link rel="next" href="../../content/contrib/passing-values-site-drushrcphp-file-during-migrations/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Customizing Platform Templates | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-879" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Customizing Platform Templates</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-879'><p>Non-standard Aegir installs may require adjustments to the default configurations for a platform that are defined by Aegir during the creation of a platform. These templates can be found in /home/aegir/.drush/provision.</p>
+
+<p>Editing the actual templates prevents Aegir from overwriting your customizations when the verify task is run on an live platform.</p>
+
+<p>Below are examples of customizations made to non-standard Aegir installs</p>
+
+<h2>Running an Aegir platform on a unix socket for php-fpm on Nginx</h2>
+
+<p>First let's find out where provision has the default config templates for our platfom.
+<div class="codeblock"><code>[root@host]cd /home/aegir/.drush; grep -nir &quot;fastcgi_pass&quot; --exclude=&#42;.svn&#42; *<br />provision/http/nginx/nginx_advanced_include.conf:227:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fastcgi_pass&nbsp;&nbsp; 127.0.0.1:9000; ### php-fpm listening on port 9000<br />provision/http/nginx/nginx_advanced_include.conf:360:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fastcgi_pass&nbsp;&nbsp; 127.0.0.1:9000; ### php-fpm listening on port 9000<br />provision/http/nginx/nginx_simple_include.conf:213:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fastcgi_pass&nbsp;&nbsp; 127.0.0.1:9000; ### php-fpm listening on port 9000<br />provision/http/nginx/nginx_simple_include.conf:346:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fastcgi_pass&nbsp;&nbsp; 127.0.0.1:9000; ### php-fpm listening on port 9000</code></div>
+We can see that the config templates for Nginx direct all php requests to port 9000 on the localhost I.P. Let's change that to a unix socket (which avoids the slight delay associated with tcp connections).
+After commenting out those lines and adding our custom lines which will use a unix socket instead of a tcp port, we get..
+<div class="codeblock"><code>provision/http/nginx/nginx_advanced_include.conf:227:&nbsp;&nbsp;&nbsp; #&nbsp;&nbsp;&nbsp; fastcgi_pass&nbsp;&nbsp; 127.0.0.1:9000; ### php-fpm listening on port 9000<br />provision/http/nginx/nginx_advanced_include.conf:228:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;<br />provision/http/nginx/nginx_advanced_include.conf:361:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #fastcgi_pass&nbsp;&nbsp; 127.0.0.1:9000; ### php-fpm listening on port 9000<br />provision/http/nginx/nginx_advanced_include.conf:362:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;<br />provision/http/nginx/nginx_simple_include.conf:213:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #fastcgi_pass&nbsp;&nbsp; 127.0.0.1:9000; ### php-fpm listening on port 9000<br />provision/http/nginx/nginx_simple_include.conf:214: fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;<br />provision/http/nginx/nginx_simple_include.conf:347:#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fastcgi_pass&nbsp;&nbsp; 127.0.0.1:9000; ### php-fpm lis#tening on port 9000<br />provision/http/nginx/nginx_simple_include.conf:348:&nbsp;&nbsp;&nbsp;&nbsp; fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;</code></div></p>
+
+<p>Remember to do the same to your platform config files in /home/aegir/config/includes. Next time you verify your platform your customizations will remain after verification.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-212.html?destination=node%2F879%23comment-form">Login</a> or <a href="../../user/register/index-212.html?destination=node%2F879%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/contrib/customizing-platform-templates?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:46:27 GMT -->
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/2738/revisions/5164/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:14:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../2/index-8.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-10.html" />
+<link rel="prev" href="../../../../../2/index-8.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-10.html" />
+<link rel="prev" href="../../../../../2/index-8.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-10.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of 2.0-rc2 release notes from Fri, 08/02/2013 - 16:08 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2738" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../2/index-9.html">2.0-rc2 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_4 first"><a href="../../../../../taxonomy/term/4/index.html" rel="tag" title="This level is for users who have access to only their sites and not able to manage all Aegir features, accounts or the server/system.">Client</a></li>
+<li class="taxonomy_term_27"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_3"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-2738'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 08/02/2013 - 16:08</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>The Aegir team is pleased to announce the second release candidate for the upcoming Aegir 2.0 release.</p>
+
+<p>This release mainly fixes our project makefile that, due to an error in our build process, did not pull in the latest code. As a result, installing 2.0-rc1 actually installed a 2.0-beta2 codebase. While changes between 2.0-rc1 and 2.0-rc2 have otherwise been minimal, we invite you to explore all the new features and bugfixes in <a href="../../../../../2/index-10.html">2.0-rc1</a>.</p>
+
+<p>Note that we have taken this opportunity to update our external dependencies, as well.</p>
+
+<h1>Known issues</h1>
+
+<p>Our release process is still done by hand instead of automated because we can't use our aegir distribution as core (<a href="https://drupal.org/node/1991764">issue #1991764</a>).</p>
+
+<p><a href="https://drupal.org/node/1931000">Issue #1931000: Missing drush backend output in frontend log</a> has been fixed, but may require a <a href="https://drupal.org/node/2025527#comment-7566747">patch to Drush</a> for the use of hosting-queued.</p>
+
+<p>Subdirectory support is still very preliminary and needs those issues to be fixed before completion, see <a href="https://drupal.org/node/2046167">#2046167</a> for details.</p>
+
+<p><a href="https://drupal.org/node/2046783">Issue #2046783: Task dialogs won't open after clearing the cache</a> was the result of updating our dependencies. Refreshing the page is usually sufficient to make modal dialogs work again.</p>
+
+<p>A<span class='diff-deleted'> </span><span class='diff-deleted'>new</span> critical bug was discovered: <a href="https://drupal.org/node/2055949">Issue #2055949: <span class='diff-changed'>Migrate drops wrong database when domain name changes</span></a>. <span class='diff-changed'>It has been fixed in 6.x-2.x, and</span> a <span class='diff-changed'></span><a href="https://drupal.org/node/2055949#comment-7713571"><span class='diff-changed'>patch for 2.0-rc2</span></a><span class='diff-changed'></span> is <span class='diff-changed'>available.</span></p>
+
+<h1>Detailed list of changes</h1>
+
+<h2>API CHANGES</h2>
+
+<ul>
+  <li>Update external dependencies.</li>
+</ul>
+
+<h2>NEW FEATURES</h2>
+
+<p>none</p>
+
+<h2>BUG FIXES</h2>
+
+<ul>
+  <li>Add dependency on jquery_update, so we can use the more recent version of modal_dialog.</li>
+  <li>Enable login and nav blocks explicitly.</li>
+  <li>treat symlinks as existing, fixes <a href="../../../../2046249/index.html">#2046249</a></li>
+</ul></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-164.html?destination=node%2F2738%23comment-form">Login</a> or <a href="../../../../../user/register/index-164.html?destination=node%2F2738%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-164.html?destination=node%2F2738%23comment-form">Login</a> or <a href="../../../../../user/register/index-164.html?destination=node%2F2738%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/2738/revisions/5164/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:14:26 GMT -->
+</html>

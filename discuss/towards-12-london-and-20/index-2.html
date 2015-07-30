@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/towards-12-london-and-20?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 16:53:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Towards 1.2, London and 2.0! | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-714" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/anarcat/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-78/index.jpg" alt="anarcat&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a></div><div class='date'>4:45am Jun 17, 2011</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Towards 1.2, London and 2.0!</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class="field field-type-nodereference field-field-referenced-book-page">
+    <div class="field-items">
+            <div class="field-item odd">
+                      <div class="field-label-inline-first">
+              Referenced Page:&nbsp;</div>
+                    <a href="../../roadmap/2/index.html">2.0 roadmap</a>        </div>
+        </div>
+</div>
+<p>So it's been a while since we have done a release, and while we have <em>still</em> not managed to find a critical issues (apart from a <a href="https://drupal.org/node/1183500">pesky bug in Nginx support</a>), we have fixed a good lot of major issues that probably warrant a release.</p>
+
+<h2>Please test!</h2>
+
+<p>So this is a last call, if you have found critical issues in your installs of 1.1 that you think need to be fixed for the next release, please do say so! Open a critical issue in the issue queues documenting the problem clearly so that we can work on it. You can also test the 1.x branch directly by doing a <a href="../../upgrading/manual/index.html">manual upgrade</a> to the development branch (boy we need documentation here!)</p>
+
+<p>As you can see, <em>you</em> can help making this the best Aegir release ever!</p>
+
+<p>In the meantime, I'll be working on <a href="https://drupal.org/node/1183926">polishing the Debian packages on Jenkins</a> so that we have automated testing of those monsters. Since this may take a while, that will give you probably until monday or tuesday to do some final testing of 1.1 to find some faults. I'll also be in Boston for the upcoming Drush 5 sprint where I hope to improve unit testing and collaboration between the two projects.</p>
+
+<h2>Improvements since 1.1 and the road to 2.x</h2>
+
+<p>Since we published the 1.x stable branch, a <a href="../../contrib-modules/index.html">great number</a> of contrib modules appeared on the community site. This is excellent, and it's one of the reasons why we made this stable release! We know that the release has some <a href="../../1/index-12.html#Known_issues">known</a> <a href="https://drupal.org/project/issues?projects=provision%2C+hosting%2C+hostslave%2C+eldir%2C+Hostmaster+%28Aegir%29&amp;priorities=4&amp;categories=bug">major</a> issues, but we have actually been fixing a few of those, since we are all running this in production now. For example, we have improved nginx support, <a href="https://drupal.org/node/1090678">fixed "optimal" D7 cron support</a> and fixed up the <a href="http://api.aegirproject.org/">API site</a> to handle both the 1.x and 2.x branches.</p>
+
+<p>I have also worked on the <a href="https://drupal.org/project/hosting_queue_runner">new dispatcher</a> that our new core developer (Steven Jones) created in contrib and that we plan to merge in 2.x. With this new daemon, Koumbit has been able to completely resolve <a href="https://drupal.org/node/1189556">huge load problems</a> that were disrupting the service during every mass migration. Koumbit has therefore contributed <a href="http://drupalcode.org/project/hosting_queue_runner.git/shortlog/refs/heads/autorestart">significant improvements to the daemon</a> so that it behaves better and doesn't need external help to manage PHP memory leaks... This, in turn, may be <a href="https://drupal.org/node/1191164">merged back</a> in the parent project (<a href="https://drupal.org/project/waiting_queue">waiting queue</a>) which deals with standard Drupal 7 queues, which could provide a basis for the new dispatcher in 2.x.</p>
+
+<p>Again a big thumbs up to Steven for pushing out this awesome code, if you haven't tried it out, you really want to take a look again as it's a great improvement to both the latency and stability of the queue (although you may want to wait for hosting_queue_runner 1.1 if you don't know what "supervisord" means ;).</p>
+
+<p>On another front, work is slowly progressing to port the frontend to Drupal 7 with the help of our <a href="../../roadmap/2.0/d7-port-dns-editor-plan-google-summer-code-2011/index.html">summer of code student</a>, Seth Vincent. We are close to have a port of the eldir theme and work has started to port the install profile. You can review that work in Seth's <a href="http://drupal.org/sandbox/seth.vincent/1185048">Eldir</a> and <a href="http://drupal.org/sandbox/seth.vincent/1140244">Hostmaster</a> sandboxes, respectively.</p>
+
+<p>Our <a href="../../roadmap/2/index.html">roadmap for 2.0</a> is really ambitious. Looking back, it may be <em>too</em> ambitious, so don't be surprised if we release 2.0 by the end of this year without all those bells and whistles described in the roadmap. 2.0 will be what you make of it! Koumbit will work hard on scaling Aegir and the Drupal 7 port, because that is our priority.. On the other hand, other people have other priorities, and those are getting fulfilled as well. So if you have an itch to scratch, it's a good time to get involved! Go and code what you need in contrib, and there's a very good chance that 2.x will ship with it if you file a good patch. :)</p>
+
+<h2>See you in London!</h2>
+
+<p>So thanks everyone for your enthusiasm! It's nice to see people picking up on the project so much! Keep it going, and keep the patches coming, it's going to be a great summer on the way to <a href="http://london2011.drupal.org/">London</a> for our <a href="http://www.koumbit.org/en/articles/smashing-news-koumbit-and-aegir-london">Aegir training</a> and <a href="../../drupalcon-2011-london-sessions/index.html">presentations</a>!</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-315.html?destination=node%2F714%23comment-form">Login</a> or <a href="../../user/register/index-315.html?destination=node%2F714%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/towards-12-london-and-20?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 16:53:23 GMT -->
+</html>

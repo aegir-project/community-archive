@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/521?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:13:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Details of the client content type changes in 1.0-rc3 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-521" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/anarcat/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-78/index.jpg" alt="anarcat&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a></div><div class='date'>2:55am Mar 31, 2011</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Details of the client content type changes in 1.0-rc3</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>To complement the <a href="../519/index.html">release notes</a>, <a href="https://drupal.org/node/962330">issue #962330</a> and <a href="../496/index.html">freeze exception discussions</a>, here's documentation of the significant client content type changes in 1.0-rc3. The whole spirit of this change is to make the client more like a UNIX group than a separate entity, so a lot of information that was duplicated from the Drupal user is now gone from the content type. This is part of an <a href="../501/index.html">overall effort to improve security in Aegir</a>.</p>
+
+<p>Spcifically, the organisation and email fields were dropped from the form, and the "name" field was dropped in favor of the node title. An "internal name" column was added, autocalculated from the node title. We move from email being unique to the internal name being unique, which also <a href="https://drupal.org/node/962338">resolves client duplication issues</a>. The internal name is designed to be usable as the UNIX group name.</p>
+
+<p>The name, email and organisation fields will not be explicitely removed from the DB until 2.x, but they are not created anymore on install. This is to make migrations from previous database structures easy to fix if the builtin upgrade script doesn't behave the way you like. All this work was part of <a href="https://drupal.org/node/962330">issue #962330</a>.</p>
+
+<p>Since the client doesn't have an email anymore, site creation emails get sent to the logged in user instead of the client email (<a href="https://drupal.org/node/336068">issue #336068</a>).</p>
+
+<p>From the API side, the <code>hosting_get_client_by_email()</code> function was deprecated and now yields an ugly warning.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-341.html?destination=node%2F521%23comment-form">Login</a> or <a href="../../user/register/index-341.html?destination=node%2F521%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/521?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:13:15 GMT -->
+</html>

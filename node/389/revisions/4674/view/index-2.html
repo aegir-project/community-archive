@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/389/revisions/4674/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:46:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/installing/debian/automatic-installation-ubuntu-1104-quickstart/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../417/index.html" />
+<link rel="prev" href="../../../../../content/installing/debian/automatic-installation-ubuntu-1104-quickstart/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../417/index.html" />
+<link rel="prev" href="../../../../../content/installing/debian/automatic-installation-ubuntu-1104-quickstart/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../417/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Manual Installation from Wed, 03/20/2013 - 22:01 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-389" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../installing/manual/index.html">Manual Installation</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-389'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a> on 03/20/2013 - 22:01</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>This page describes to process you need to follow if Aegir doesn't have packages for your distribution. We currently provide <a href="../../../../400/index.html">Debian packages</a> and others should be coming, if you help! This manual assumes you are fairly familiar with the UNIX commandline interface, but should be possible to follow through if you copy and paste faithfully <em>all</em> steps of the procedure.</p>
+
+<p><strong>A note on supported systems</strong></p>
+
+<p>These instructions provide example commands for a Debian-like distribution, but should be fairly easy to adapt to other environments. This document is meant as a canonical reference that should work on every supported platform. It can also be used for people porting Aegir to new platforms or installing on alien platform for which Aegir is not yet packaged.</p>
+
+<p>It currently contains special recommendations for CentOS, RHEL 6, Arch Linux and Solaris. Users of those platforms are also strongly encouraged to review the <a href="../../../../462/index.html">common installation problems</a> that occur on those platforms. Aegir is also known to be installable (and was developed partly on) Mac OS X, but that process is so obtuse that it has a <a href="../../../../417/index.html">separate page</a> for the first part of the manual (up to <a href="#Install_Aegir_components">Install Aegir components</a>).</p>
+
+<p>Installing Aegir may seem daunting at first (which is why we provide automated installs through packages), but once you get around it, it's fairly simple. It follows those steps:</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Review_System_Requirements"><span class="toc-number">1. </span>Review System Requirements</a></li>
+	<li class="toc-level-1"><a href="#Install_system_requirements"><span class="toc-number">2. </span>Install system requirements</a>
+<ol>
+	<li class="toc-level-2"><a href="#CentOS-specific_configuration"><span class="toc-number">2.1. </span>CentOS-specific configuration</a></li>
+	<li class="toc-level-2"><a href="#RHEL_6_specific_configuration"><span class="toc-number">2.2. </span>RHEL 6 specific configuration</a></li>
+	<li class="toc-level-2"><a href="#Solaris_specific_configuration"><span class="toc-number">2.3. </span>Solaris specific configuration</a></li>
+	<li class="toc-level-2"><a href="#Arch_Linux_specific_configuration"><span class="toc-number">2.4. </span>Arch Linux specific configuration</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Configure_system_requirements"><span class="toc-number">3. </span>Configure system requirements</a>
+<ol>
+	<li class="toc-level-2"><a href="#Create_the_Aegir_user"><span class="toc-number">3.1. </span>Create the Aegir user</a>
+<ol>
+	<li class="toc-level-3"><a href="#CentOS_specific_configuration"><span class="toc-number">3.1.1. </span>CentOS specific configuration</a></li>
+	<li class="toc-level-3"><a href="#Solaris_specific_configuration-1"><span class="toc-number">3.1.2. </span>Solaris specific configuration</a></li>
+	<li class="toc-level-3"><a href="#Arch_Linux_specific_configuration-2"><span class="toc-number">3.1.3. </span>Arch Linux specific configuration</a></li>
+</ol>
+</li>
+	<li class="toc-level-2"><a href="#Webserver_configuration"><span class="toc-number">3.2. </span>Webserver configuration</a>
+<ol>
+	<li class="toc-level-3"><a href="#Apache_configuration"><span class="toc-number">3.2.1. </span>Apache configuration</a></li>
+	<li class="toc-level-3"><a href="#Nginx_configuration"><span class="toc-number">3.2.2. </span>Nginx configuration</a></li>
+</ol>
+</li>
+	<li class="toc-level-2"><a href="#PHP_configuration"><span class="toc-number">3.3. </span>PHP configuration</a>
+<ol>
+	<li class="toc-level-3"><a href="#RHEL_6_specific_configuration-3"><span class="toc-number">3.3.1. </span>RHEL 6 specific configuration</a></li>
+	<li class="toc-level-3"><a href="#Arch_Linux_specific_configuration-4"><span class="toc-number">3.3.2. </span>Arch Linux specific configuration</a></li>
+</ol>
+</li>
+	<li class="toc-level-2"><a href="#Sudo_configuration"><span class="toc-number">3.4. </span>Sudo configuration</a>
+<ol>
+	<li class="toc-level-3"><a href="#CentOS_Linux_specific_sudo_configuration"><span class="toc-number">3.4.1. </span>CentOS Linux specific sudo configuration</a></li>
+	<li class="toc-level-3"><a href="#Nginx_specific_configuration"><span class="toc-number">3.4.2. </span>Nginx specific configuration</a></li>
+</ol>
+</li>
+	<li class="toc-level-2"><a href="#DNS_configuration"><span class="toc-number">3.5. </span>DNS configuration</a></li>
+	<li class="toc-level-2"><a href="#Database_configuration"><span class="toc-number">3.6. </span>Database configuration</a>
+<ol>
+	<li class="toc-level-3"><a href="#Ubuntu_RHEL_Arch_linux_specific_configurations"><span class="toc-number">3.6.1. </span>Ubuntu, RHEL, Arch linux specific configurations</a></li>
+	<li class="toc-level-3"><a href="#RHEL_6_specific_configuration-5"><span class="toc-number">3.6.2. </span>RHEL 6 specific configuration</a></li>
+</ol>
+</li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Stop_Now_become_the_Aegir_user"><span class="toc-number">4. </span>Stop! Now become the Aegir user!</a></li>
+	<li class="toc-level-1"><a href="#Install_Aegir_components"><span class="toc-number">5. </span>Install Aegir components</a>
+<ol>
+	<li class="toc-level-2"><a href="#Install_drush"><span class="toc-number">5.1. </span>Install drush</a>
+<ol>
+	<li class="toc-level-3"><a href="#Arch_Linux_specific_configuration-6"><span class="toc-number">5.1.1. </span>Arch Linux specific configuration</a></li>
+</ol>
+</li>
+	<li class="toc-level-2"><a href="#Install_provision"><span class="toc-number">5.2. </span>Install provision</a></li>
+	<li class="toc-level-2"><a href="#Running_hostmaster-install"><span class="toc-number">5.3. </span>Running hostmaster-install</a>
+<ol>
+	<li class="toc-level-3"><a href="#Arch_Linux_specific_configuration-7"><span class="toc-number">5.3.1. </span>Arch Linux specific configuration</a></li>
+</ol>
+</li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Checkpoint_Finished"><span class="toc-number">6. </span>Checkpoint / Finished!</a></li>
+</ol>
+</div>
+</div>
+
+<p>Note that these instructions setup a complete Aegir system. If you want to only setup a new remote web/db server, it should be sufficient to install the <a href="#Install_system_requirements">system requirements</a> (step 1),  <a href="#Configure_system_requirements">configure them</a> (step 2) and follow the <a href="../../../../30/index.html">Remote server how-to</a>.</p>
+
+<h1 id="Review_System_Requirements">1. Review System Requirements</h1>
+
+<dl>
+<dt><strong>A system capable of running Drupal</strong></dt>
+<dd>The Aegir system is entirely Drupal based, and has the same base requirements that Drupal does (with the exception that it won't run on Windows). See more notes on Unix and LAMP/LEMP requirements below.</dd>
+
+<dt><strong>Your own server</strong></dt>
+<dd>The low level of access required to be able to configure and run this system is very far beyond what is commonly available to users with shared hosting. A VPS from any popular provider such as Linode, Rackspace, Slicehost, Amazon EC, etc. will do fine. You will need root access to the server and the server needs to be dedicated to Aegir.</dd>
+
+<dt><strong>A Unix-based operating system</strong></dt>
+<dd>Aegir must run on some flavour of UNIX, because the majority of functionality in this system occurs in the back-end, through command line scripting. There are also several features (such as symlinks), that are not available to users on Windows. There are no plans currently to add Windows support. See the <a href="../../../../../handbook/operating-system-support/index.html">operating system support page</a> for more information.</dd>
+
+<dt><strong>Web server</strong></dt>
+<dd>You will need at least one dedicated web server, running Apache. We generally work with <strong>Apache 2</strong> but we should be compatible with the 1.x series. Aegir also supports the <strong>Nginx</strong> web server, but requires at least version 0.7.66 or newer. Since Nginx doesn't provide php-cgi or php-fpm (recommended) modules, you will need to install and run php-fpm server separately. You can find useful examples and tips in the third party Barracuda installer available at <a href="http://drupal.org/project/barracuda">the barracuda project page</a>.</dd>
+
+<dd>
+<p><strong>N.B.:</strong> This third party installer is not supported by the core Aegir developers, but you can find helpful community support at <a href="http://groups.drupal.org/boa">the boa group</a>.</p>
+</dd>
+
+<dt><strong>PHP 5.2 and 5.3</strong></dt>
+<dd>Aegir depends on <a href="http://drupal.org/project/drush">Drush</a>, which requires PHP 5.2 or higher. You also need to have the command-line version of PHP to run Drush properly, and the MySQL extensions for PHP.</dd>
+
+<dd>
+<p>Given that <a href="http://www.php.net/archive/2010.php#id2010-07-22-1">PHP 5.2 has been deprecated since July 2010</a>, we suggest using PHP 5.3 if possible. Note that while Drupal 6.x and above support PHP 5.3, some contributed third-party modules may still have problems with this version. Most often these cause warnings that can be safely ignored. Aegir and Drush themselves have no known outstanding PHP 5.3 compatibility issues, although you could have a lot of warnings in Drupal 6 due to <a href="http://drupal.org/node/883038">ereg deprecation</a>, see <a href="http://drupal.org/node/883038">this issue</a> for details. If you need to host Drupal 5.x sites, note that Drupal 5.x is not compatible with PHP 5.3 and above, and most likely never will be. See <a href="http://drupal.org/node/360605" title="http://drupal.org/node/360605">http://drupal.org/node/360605</a> (amongst other issues) for details.</p>
+</dd>
+
+<dt><strong>Database server</strong></dt>
+<dd>You will require a database server, obviously. Aegir currently only supports MySQL and MariaDB. It is preferable to use a dedicated (not shared-hosting) server since Aegir will create database users and will require the use of a MySQL <code>root</code> user.</dd>
+
+<dt><strong>Mail transfer agent</strong></dt>
+<dd>Aegir requires an MTA (Mail Transfer Agent) installed on your webserver in order to be able to install new sites to your new platform. If you don't have an MTA, the site installation will fail with message like "could not send email". Additional messages will show that site has been removed because of this problem. To remedy the situation simply install an MTA like sendmail, postfix, or exim and do the minimal configuration.</dd>
+
+<dt><strong>Other utilities: sudo, rsync, git and unzip</strong></dt>
+<dd>Aegir installs itself via a <a href="http://drupal.org/project/drush_make">Drush Make</a> makefile that downloads via git if you want the bleeding edge code, or via wget if you want the latest official release. If you want the latest development version, and don't have the <strong>git</strong> program you will need to install it on the server.</dd>
+
+<dd>
+<p>The <strong>jQueryUI</strong> library is used in the Aegir UI, <strong>unzip</strong> is required to extract it. <strong>Sudo</strong> is required to allow the aegir user the limited privilege to restart the webserver when required.  <strong>Rsync</strong> is used to sync files to remote servers.</p>
+</dd>
+
+<dt><strong>No conflicting Control Panels</strong></dt>
+<dd>Other popular control panels such as Plesk, cPanel etc, are designed to manage all aspects of Apache configuration and other areas that Aegir also is intended to be used for.</dd>
+
+<dd>
+<p>Running Aegir alongside such control panels is not supported and very likely may cause you problems or difficulties installing or running Aegir. Filing bug reports that are caused by interference by another control panel will likely be closed unless the problem can be fixed without causing problems for other Aegir users. Proceed at your own risk!</p>
+</dd>
+
+<dt><strong>System requirements of popular Drupal distributions</strong></dt>
+<dd>Some Drupal distributions, such as OpenAtrium, are specialized products that may contain unique prerequisites for optimal performance. Such examples may include raising the php-cli program's memory_limit to something higher than 64M.</dd>
+
+<dd>
+<p>Please note that this is not a requirement of Aegir but of the distribution you are trying to install a site on. Thus the Aegir documentation may not officially 'require' such performance settings, but be aware that Aegir may report errors if the system was under-resourced to complete such a task.</p>
+</dd>
+</dl>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Install_system_requirements">2. Install system requirements</h1>
+
+<p>To install the required components, run the following command as root:</p>
+
+<pre><code>apt-get install apache2 php5 php5-cli php5-gd php5-mysql php-pear postfix sudo rsync git-core unzip
+</code></pre>
+
+<p><em>Note</em>: replace <code>apache2</code> with <code>nginx php5-fpm</code> to install nginx on Ubuntu Precise or newer. Since Debian Squeeze doesn't provide php5-fpm, you will need to follow <a href="http://www.dotdeb.org/instructions/" title="http://www.dotdeb.org/instructions/">http://www.dotdeb.org/instructions/</a> before you will be able to install php5-fpm.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="CentOS-specific_configuration">2.1. CentOS-specific configuration</h2>
+
+<pre><code>yum install httpd php php-mysql php-cli php-gd php-process sudo rsync git postfix
+</code></pre>
+
+<p>For versions of CentOS previous to 6.0, you will need to upgrade to PHP 5.3 using <a href="http://wiki.centos.org/HowTos/PHP_5.1_To_5.2">those instructions</a>.</p>
+
+<p>Also for Centos minimal you should install cron (for queue and drupal cron) and unzip (for jquery.ui)</p>
+
+<pre><code>yum install cronie unzip
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="RHEL_6_specific_configuration">2.2. RHEL 6 specific configuration</h2>
+
+<p>RHEL 6 Server needs an additional PHP package to enable POSIX support. To find the package php-process you must enable the RHEL Server Optional channel. Once enabled, download and install the php-process-5.3.2-6.el6_0.1.i686.rpm.</p>
+
+<p>You will also need to install the php-xml package if you are planning to use Aegir to manage Drupal 7 sites.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Solaris_specific_configuration">2.3. Solaris specific configuration</h2>
+
+<p>Solaris has this way of dealing with third party software that is... far from ideal. You will need to find the best way to install the following packages: apache2, git, sudo, mysql, PHP 5.2 and wget. unzip and sendmail should be part of the base Solaris install. The other applications should be available on the companion CDs or on <a href="http://www.sunfreeware.com/">sunfreeware.com</a>.</p>
+
+<p>In particular, git can be compiled easily by exporting the following
+environment::</p>
+
+<pre><code>export CFLAGS="-I/usr/sfw/include -I/opt/sfw/include"
+export LD_LIBRARY_PATH="/usr/sfw/lib:/opt/sfw/lib:$LD_LIBRARY_PATH"
+</code></pre>
+
+<p>Then the compile instructions bundled with git should just be followed
+directly. I had trouble installing the binaries, as git expects ginstall to be
+available in the <code>$PATH</code>. I ended up adding the source directory in the <code>$PATH</code>, which works fine for most uses.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Arch_Linux_specific_configuration">2.4. Arch Linux specific configuration</h2>
+
+<p>To install the required components, run the following command as root:</p>
+
+<pre><code>pacman -S apache php php-apache php-gd mysql postfix sudo rsync unzip git
+</code></pre>
+
+<p>Although all of the necessary apache modules and php extensions are installed at this stage, further configuration is required to enable and tweak certain features. Critically, virtual hosts are not enabled. It is worth examining the <a href="https://wiki.archlinux.org/index.php/LAMP">Arch Linux wiki page on LAMP server set up</a> and verifying that more than one named virtual host functions properly.</p>
+
+<p>If setting up for standalone development, see this useful <a href="https://wiki.archlinux.org/index.php/Local_Mail_Delivery_with_Postfix">wiki page</a> to configuring postfix for local mail only.</p>
+
+<p>To ensure Apache and mysql start when the machine boots, enable the httpd and mysqld daemons by adding them to the <code>/etc/rc.conf</code> file:</p>
+
+<pre><code>DAEMONS=(... mysqld httpd ...)
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Configure_system_requirements">3. Configure system requirements</h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Create_the_Aegir_user">3.1. Create the Aegir user</h2>
+
+<p>The provision framework of Aegir requires that the scripts run as a non-root system account, to ensure that it can correctly set the file permissions on the hosted files.</p>
+
+<p>Also to ensure that the file permissions of the hosted sites are always as safe as can be, and especially to make sure that the web server does not have the ability to modify the code of the site, the configured system account needs to be a member of the web server group, in order to be able to correctly set the file permissions.</p>
+
+<p>While you can choose another username, most aegir documentation assumes the Aegir user is <code>aegir</code>, its home directory is <code>/var/aegir</code> and the webserver group is <code>www-data</code>.</p>
+
+<p>Shell commands as root:</p>
+
+<pre><code>adduser --system --group --home /var/aegir aegir
+adduser aegir www-data    #make aegir a user of group www-data
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="CentOS_specific_configuration">3.1.1. CentOS specific configuration</h3>
+
+<p>CentOS requires special commands to create the user, use those instead:</p>
+
+<pre>
+useradd --home-dir /var/aegir aegir
+gpasswd -a aegir apache
+chmod -R 755 /var/aegir
+</pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Solaris_specific_configuration-1">3.1.2. Solaris specific configuration</h3>
+
+<pre>
+groupadd aegir
+useradd -g aegir -G webservd -d /var/aegir -s /bin/bash -c "Aegir sandbox" aegir
+chown aegir:aegir /var/aegir
+</pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Arch_Linux_specific_configuration-2">3.1.3. Arch Linux specific configuration</h3>
+
+<pre>
+useradd --system --groups http --home /var/aegir --create-home aegir
+chmod -R 755 /var/aegir
+</pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Webserver_configuration">3.2. Webserver configuration</h2>
+
+<p>Aegir supports two popular web servers, Apache and Nginx.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Apache_configuration">3.2.1. Apache configuration</h3>
+
+<p>Aegir assumes a few Apache modules are available on the server, and generates its own configuration files. The way we enable this is by symlinking a single file which contains all the configuration necessary. In Debian-based systems, you should symlink this file inside <code>/etc/apache2/conf.d</code> that will be parsed on startup or alternatively you can place include that file in your apache.conf/httpd.conf. We prefer the former. In other systems there are similar ways to accomplish this. Consult your OS's documentation if unsure.</p>
+
+<p>If you are on a <strong>Debian-based</strong> system, you will also need to enable the mod_rewrite module manually.</p>
+
+<p>Run the following shell commands as root. First, configure Apache to enable RewriteEngine:</p>
+
+<pre><code>a2enmod rewrite
+</code></pre>
+
+<p>Finally, create a symlink from an apache configuration file to a folder within the /var/aegir/:</p>
+
+<pre><code>ln -s /var/aegir/config/apache.conf /etc/apache2/conf.d/aegir.conf
+</code></pre>
+
+<p><strong>Do not reload/restart Apache if prompted to after running these commands, it will fail.</strong></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h4 id="CentOS_specific_Apache_configuration">3.2.1.1. CentOS specific Apache configuration</h4>
+
+<p>On <strong>CentOS</strong>, mod_rewrite is enabled by default and you can create the following symlink:</p>
+
+<pre><code>ln -s /var/aegir/config/apache.conf /etc/httpd/conf.d/aegir.conf
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h4 id="Arch_Linux_specific_Apache_configuration">3.2.1.2. Arch Linux specific Apache configuration</h4>
+
+<p>On <strong>Arch Linux</strong>, mod_rewrite is also enabled by default. Add the aegir apache configuration include file to the httpd.conf file:</p>
+
+<pre><code>echo "Include /var/aegir/config/apache.conf" &gt;&gt; /etc/httpd/conf/httpd.conf
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h4 id="Other_systems-_Apache_configuration">3.2.1.3. Other systems' Apache configuration</h4>
+
+<p>In other systems that do not have a conf.d directory, this could also work:</p>
+
+<pre>
+echo "Include /var/aegir/config/apache.conf" &gt;&gt; /etc/apache2/httpd.conf
+</pre>
+
+<p><strong>N.B.:</strong></p>
+
+<ul>
+<li>A standard umask of 022 is assumed. This is the default on most systems.</li>
+<li>For more information, see the <a href="../../../../462/index.html">common installation errors</a>.</li>
+<li>For all OSes, the installer script creates the configuration file referenced by the newly created symlink/or file referenced in the Apache config file.</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Nginx_configuration">3.2.2. Nginx configuration</h3>
+
+<p>(If you just succeeded in installing Apache, please skip this section.)</p>
+
+<p>Aegir assumes standard Nginx configuration is available on the server, and generates its own configuration files. The way we enable this is by symlinking a single file which contains all the configuration necessary. In Debian-based systems, you should symlink this file inside <code>/etc/nginx/conf.d</code> that will be parsed on startup.</p>
+
+<p>Please make sure your nginx installation is up and running before continuing. On Ubuntu 12.04 Server, for instance, you must edit /etc/nginx/nginx.conf and uncomment the line "types_hash_max_size 2048;" in order for nginx to start successfully.</p>
+
+<p>Shell command as root::</p>
+
+<pre><code>ln -s /var/aegir/config/nginx.conf /etc/nginx/conf.d/aegir.conf
+</code></pre>
+
+<p><strong>Do not reload/restart Nginx after running these commands, it will fail.</strong></p>
+
+<p>The installer script creates the configuration file referenced by the newly created symlink.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="PHP_configuration">3.3. PHP configuration</h2>
+
+<p>Some complex installation profiles or distributions require a PHP memory limit that is higher than the default. To avoid common errors when installing sites on some distributions, the PHP command line tool should be configured to use 192Mb 
+of RAM.</p>
+
+<p>Change the memory_limit directive in /etc/php5/cli/php.ini to read:</p>
+
+<pre><code>memory_limit = 192M      ; Maximum amount of memory a script may consume (192MB)
+</code></pre>
+
+<p>Most modern Drupal sites require around 96M or even 128M of RAM for certain operations. This is far more than what is provided by the default PHP configuration.</p>
+
+<p>Change the memory_limit directive in /etc/php5/apache2/php.ini to read:</p>
+
+<pre><code>memory_limit = 128M      ; Maximum amount of memory a script may consume (128MB)
+</code></pre>
+
+<p>If your distributions require more memory than these limits, then use some common sense and update it as appropriate to suit your individual needs.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="RHEL_6_specific_configuration-3">3.3.1. RHEL 6 specific configuration</h3>
+
+<p>The default php.ini configuration beyond the above changes also requires that the timezone be set for your location. Otherwise, you get fun errors and warnings during the host-master install step.</p>
+
+<ol>
+<li>sudo vi /etc/php.ini</li>
+<li>enter your password</li>
+<li>/zone (this will bring you to the date specific timezone module area</li>
+<li><p>Remove the semi colon in front of date.timezone and enter your <a href="http://www.php.net/manual/en/timezones.php">specific timezone</a>.</p>
+
+<p><div class="codeblock"><code>[Date]<br />&nbsp; ; Defines the default timezone used by the date functions<br />&nbsp; ; <a href="http://www.php.net/manual/en/datetime.configuration.php#ini.date.timezone<br />" title="http://www.php.net/manual/en/datetime.configuration.php#ini.date.timezone<br />">http://www.php.net/manual/en/datetime.configuration.php#ini.date.timezone<br /></a>&nbsp; date.timezone = Your Time Zone Goes Here </code></div></p></li>
+<li><p>Restart apache to compile these changes. <code> sudo httpd -k graceful </code></p></li>
+</ol>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Arch_Linux_specific_configuration-4">3.3.2. Arch Linux specific configuration</h3>
+
+<p>Make the following changes to the php.ini file (<code>/etc/php/php.ini</code>):</p>
+
+<p>Add <code>:/var/aegir/</code> to the <code>open_basedir</code> directive:</p>
+
+<pre><code>open_basedir = /srv/http/:/home/:/tmp/:/usr/share/pear/:/var/aegir/
+</code></pre>
+
+<p>Add <code>date.timezone</code> value as per <a href="http://php.net/date.timezone">PHP's runtime configuration instructions</a> - <em>this is an example</em>:</p>
+
+<pre><code>date.timezone = Europe/London
+</code></pre>
+
+<p>Modify the <code>memory_limit</code> directive:</p>
+
+<pre><code>memory_limit = 192M
+</code></pre>
+
+<p>Uncomment</p>
+
+<pre><code>extension=posix.so
+extension=mysqli.so
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Sudo_configuration">3.4. Sudo configuration</h2>
+
+<p>Next, we need to give the aegir user permission to execute the Apache2 command to restart the web server without entering a password.</p>
+
+<p>Create a file at <code>/etc/sudoers.d/aegir</code> and add the following:</p>
+
+<pre>
+Defaults:aegir  !requiretty
+aegir ALL=NOPASSWD: /usr/sbin/apache2ctl
+</pre>
+
+<p>After saving, change the permissions on the file:</p>
+
+<pre><code>chmod 0440 /etc/sudoers.d/aegir
+</code></pre>
+
+<p><strong>Note</strong> - the path to your apache2ctl program may differ from this example. On some systems it may also be called 'apachectl' instead of apache2ctl. Adjust to suit your own requirements.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="CentOS_Linux_specific_sudo_configuration">3.4.1. CentOS Linux specific sudo configuration</h3>
+
+<p>For CentOS apache2ctl is apachectl and you should use this instead, as root::</p>
+
+<pre><code>visudo
+</code></pre>
+
+<p>This command opens an editor to allow you to edit the /etc/sudoers file.  Add the following to the end of the file (specific directions cannot be given since this depends on what editor you're using):</p>
+
+<pre><code>Defaults:aegir  !requiretty
+aegir ALL=NOPASSWD: /usr/sbin/apachectl
+</code></pre>
+
+<p><strong>Note</strong> - the <code>!requiretty</code> bit is to make aegir able to run sudo even though it's not attached to a terminal. By default CentOS enforces requiretty so this exception is necessary.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Nginx_specific_configuration">3.4.2. Nginx specific configuration</h3>
+
+<p>For those using Nginx, set the sudoers line as follows</p>
+
+<pre><code>aegir ALL=NOPASSWD: /etc/init.d/nginx
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="DNS_configuration">3.5. DNS configuration</h2>
+
+<p>Aegir requires a properly configured "FQDN" (Fully Qualified Domain Name) be assigned to the machine. In practice, this means that the hostname returned by the <code>hostname</code> and <code>uname -n</code> shell commands should resolve to the IP address for this server, and vice versa.</p>
+
+<p>If you only intend to use Aegir on a single server, it is acceptable for the resolved IP address to be the '127.0.0.1' loopback address.</p>
+
+<p>If you intend to manage multiple servers using Aegir, you will need to make sure that the IP address is the public IP of this server.</p>
+
+<p>You can add multiple entries to your /etc/hosts file for testing purposes, for example:</p>
+
+<pre><code>127.0.0.1 aegir.example.com example.com test1.example.com test2.example.com test3.example.com
+</code></pre>
+
+<p>Then you can use test1.example.com to create your first site.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Database_configuration">3.6. Database configuration</h2>
+
+<p>Aegir supports MySQL right now. It is best to install the MySQL server using your Linux distribution's package manager.</p>
+
+<p>Shell commands as root::</p>
+
+<pre><code>apt-get install mysql-server
+</code></pre>
+
+<p>To make sure that the Aegir backend, and all the possible web servers can reach your database server, you need to configure mysql to listen on all the public IP addresses available to it.</p>
+
+<p>Again, as root, edit the MySQL configuration file /etc/mysql/my.cnf configuration line to comment out by placing a # at the beginning of the line on which the following instruction appears::</p>
+
+<pre><code>bind-address    = 127.0.0.1
+</code></pre>
+
+<p>Without this line commented out, MySQL will listen only on localhost for database connection requests.</p>
+
+<p>Now you need to restart mysql, to clear any caches.</p>
+
+<p>Shell command as root:</p>
+
+<pre><code>/etc/init.d/mysql restart
+</code></pre>
+
+<p>The installer will prompt you for your MySQL root user password. The root user will be used to make administrative tasks such as creating new databases, and granting and revoking access to those databases for sites.</p>
+
+<p>Even though MySQL is now listening on all IP's, it will not allow invalid users to connect to the databases, without the correct user accounts configured.</p>
+
+<p>If you are concerned about MySQL being accessible in this way, you can also configure your firewall to only allow incoming connections from certain addresses. This is outside the scope of this document however.</p>
+
+<p>Note that Aegir will ask you for your MySQL root password. If you do not want to use your regular root password for Aegir, you will need to create another root account for Aegir using a MySQL command like:</p>
+
+<pre><code>GRANT ALL PRIVILEGES ON *.* TO 'aegir_root'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;
+</code></pre>
+
+<p>Note: If you are running your Aegir databases on a remote DB server, you will want to create this aegir_root user. The install will often fail if you're trying to use the root user on a remote database. See <a href="http://drupal.org/node/1237112">this issue</a> for details.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Ubuntu_RHEL_Arch_linux_specific_configurations">3.6.1. Ubuntu, RHEL, Arch linux specific configurations</h3>
+
+<p><strong>NOTE</strong>: If you are running either Ubuntu 12.04 LTS, RHEL 6 or Arch Linux, you should still install MySQL in the same way as above. However, once done, you must now  remove the anonymous, passwordless login that those platforms creates by default. To do this, run:</p>
+
+<pre><code>sudo mysql_secure_installation
+</code></pre>
+
+<p>Otherwise, Aegir will fail to install and work at all. See <a href="../../../../../faq/index.html#Install_fails_with_-dummy_connection_failed_to_fail-_on_Ubuntu_12.04_LTS">this FAQ entry</a>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="RHEL_6_specific_configuration-5">3.6.2. RHEL 6 specific configuration</h3>
+
+<p>In Red Hat, you may need to move a default configuration file from <code>/usr/share/mysql/</code> to <code>/etc/my.cnf</code> to view or modify any of the settings mentioned above.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Stop_Now_become_the_Aegir_user">4. Stop! Now become the Aegir user!</h1>
+
+<p>The remaining of this manual assumes you are running as the Aegir user. Things will go very wrong if you do not change your shell credentials to become that user. You can do this by running the following command as root:</p>
+
+<pre>
+su -s /bin/bash - aegir
+</pre>
+
+<p>If this fails because <code>/bin/bash</code> doesn't exist, try using <code>/bin/sh</code>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Install_Aegir_components">5. Install Aegir components</h1>
+
+<p>Next step is to install the Aegir software components themselves, that is: drush, provision and hostmaster.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Install_drush">5.1. Install drush</h2>
+
+<p>Before installing Aegir proper, you first need to install Drush. This can be done through your operating system's package manager (Drush is shipped with <a href="http://packages.debian.org/drush">Debian</a> and <a href="http://packages.ubuntu.com/drush">Ubuntu</a> currently) or by following the <a href="http://drupalcode.org/project/drush.git/blob_plain/HEAD:/README.txt">Drush README.txt file</a> which has all the information for installing and using drush.</p>
+
+<p>This should be something like:</p>
+
+<pre>
+pear channel-discover pear.drush.org
+pear install drush/drush-4.5.0
+</pre>
+
+<p><strong>Note</strong>: you should use Drush version 4. Aegir 1.x does <strong>not</strong> support Drush 5, although 2.x does. Also note there is a <a href="http://drupal.org/node/1041386">bug in Drush 4.0 and 4.1</a> so you should use a version of Drush between 4.1 and 5.</p>
+
+<p>This should install Drush system-wide, but if you follow the manual install, you may end up with Drush in a non-standard location (traditionnally <code>/var/aegir/drush/drush.php</code>), in which case you will need to add that directory to your path or use the following symlink:</p>
+
+<pre>
+ln -s /var/aegir/drush/drush /usr/local/bin/drush
+</pre>
+
+<p><strong>Note for 2.x users</strong>: you need to install Drush version 5. In this case, you may be able to install the regular release:</p>
+
+<pre>
+pear channel-discover pear.drush.org
+pear install drush/drush
+</pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Arch_Linux_specific_configuration-6">5.1.1. Arch Linux specific configuration</h3>
+
+<p>It seems that Arch's PHP environment needs to be modified for Drush:</p>
+
+<pre>
+mkdir /var/aegir/.drush
+cp /etc/php/php.ini /var/aegir/.drush/
+</pre>
+
+<p>Edit <code>/var/aegir/.drush/php.ini</code> to remove the values after <code>open_basedir =</code>, as this will any <code>open_basedir</code> values are likely to cause Drush to fail.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Install_provision">5.2. Install provision</h2>
+
+<p>Once Drush is installed you should be able to install the latest recommended Provision release using the following drush command:</p>
+
+<pre>
+drush dl --destination=/var/aegir/.drush provision-6.x
+</pre>
+
+<p>To download a different version of provision, use this:</p>
+
+<pre>
+drush dl --destination=/var/aegir/.drush provision-6.x-2.0-alpha1
+</pre>
+
+<p><strong>Note</strong>: the above will install the 2.0-alpha1 release of Aegir, which is the development release of Aegir, and is not considered production ready!</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Running_hostmaster-install">5.3. Running hostmaster-install</h2>
+
+<p>Once you have downloaded drush and provision, you can just install provision in the commands directory of Drush (either ~aegir/.drush or /usr/share/drush/commands), if that's not already done. Once provision is properly installed, you can install all other aegir components using the hostmaster-install command:</p>
+
+<pre><code>drush hostmaster-install
+</code></pre>
+
+<p>You will be prompted for the required information if not provided on the commandline. See the inline help for the available options:</p>
+
+<pre><code>drush help hostmaster-install
+</code></pre>
+
+<p>For example, to install the frontend on Nginx, use:</p>
+
+<pre><code>drush hostmaster-install --http_service_type=nginx
+</code></pre>
+
+<p><em>Note for 2.x users:</em> Drush 5 has a <em>commandfile cache</em> which you need to clear before installing Aegir:</p>
+
+<pre><code>drush cache-clear drush
+</code></pre>
+
+<p>It is imperative that you provide a valid FQDN to the installer. This is used for database GRANTs. Remote web servers depend on the FQDN being resolvable in order to connect back to your Aegir master server if it is used as your database server for managed sites.</p>
+
+<p>Upon completion of the installation, the traditional Drupal 'Welcome' e-mail will be sent to the e-mail address specified by <code>--client_email=(your e-mail)</code> or if not provided as a command line switch, the address prompted by the installer process. This e-mail address will also be used as the default e-mail address of the first user and client in Aegir, but can be changed later.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h4 id="Command_line_switches">5.3.0.1. Command line switches</h4>
+
+<p>Here are some available command line switches for <span class='diff-changed'>hostmaster-install:</span></p><span class='diff-changed'>
+
+</span><ul><span class='diff-changed'>
+</span><li>--aegir_host # FQDN of the Aegir host, defaults to <code>uname -n</code><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li>--aegir_db_host # FQDN of the database server, defaults to <code>uname -n</code><span class='diff-changed'></span></li><span class='diff-changed'>
+</span><li>--aegir_db_user # 'root' or 'aegir_root' depending on how you configured <span class='diff-changed'>earlier</span></li><span class='diff-changed'>
+</span><li>--aegir_db_pass # password for account used <span class='diff-changed'>above</span></li><span class='diff-changed'>
+</span><li><span class='diff-changed'>--db_port</span></li><span class='diff-changed'>
+</span><li>--db_service_type # mysql, <span class='diff-changed'>??</span></li><span class='diff-changed'>
+</span><li>--http_service_type # nginx, apache2, <span class='diff-changed'>??</span></li><span class='diff-changed'>
+</span><li>--client_email # email address to receive all Aegir <span class='diff-changed'>communications</span></li><span class='diff-changed'>
+</span><li>--script_user # defaults to <span class='diff-changed'>'aegir'</span></li><span class='diff-changed'>
+</span><li>--web_group # defaults to <span class='diff-changed'>'www-data'</span></li><span class='diff-changed'>
+</span><li>--profile # The profile to install. Since we are performing an initial installation, use <span class='diff-changed'>'hostmaster'</span></li><span class='diff-changed'>
+</span><li>-d or --debug # shows more information about the install <span class='diff-changed'>progress</span></li><span class='diff-changed'>
+</span><li>-v or --verbose # shows even more information about the install progress</li><span class='diff-changed'>
+</span></ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="Arch_Linux_specific_configuration-7">5.3.1. Arch Linux specific configuration</h3>
+
+<pre>
+drush hostmaster-install --web_group=http
+</pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Checkpoint_Finished">6. Checkpoint / Finished!</h1>
+
+<p>At this point, you have checked out all the code and setup your basic Drupal system (Drupal core, hosting, hostmaster and eldir) that will be the Aegir frontend and the backend system (provision and drush). Your filesystem layout should look something like this:</p>
+
+<pre>
+ /var/aegir/hostmaster-1.x/
+ /var/aegir/hostmaster-1.x/profiles/hostmaster/
+ /var/aegir/hostmaster-1.x/profiles/hostmaster/modules/admin_menu/
+ /var/aegir/hostmaster-1.x/profiles/hostmaster/modules/hosting/
+ /var/aegir/hostmaster-1.x/profiles/hostmaster/modules/install_profile_api/
+ /var/aegir/hostmaster-1.x/profiles/hostmaster/modules/jquery_ui/
+ /var/aegir/hostmaster-1.x/profiles/hostmaster/modules/modalframe/
+ /var/aegir/hostmaster-1.x/profiles/hostmaster/themes/eldir/
+ /var/aegir/hostmaster-1.x/sites/aegir.example.com/
+ /var/aegir/config/server_master/apache.conf
+ /var/aegir/config/server_master/apache/conf.d/
+ /var/aegir/config/server_master/apache/vhost.d/
+ /var/aegir/config/server_master/apache/platform.d/
+ /var/aegir/backups/
+ /var/aegir/drush/drush.php
+ /var/aegir/.drush/drush_make/
+ /var/aegir/.drush/provision/
+</pre>
+
+<p>Variations on this are acceptable (for example, the Drush Debian package works out of <code>/usr/bin/drush</code> and that's fine), but you are better to stick with the defaults if you really want to get through this.</p>
+
+<p>The installation will provide you with a one-time login URL to stdout or via an e-mail. Use this link to login to your new Aegir site for the first time.</p>
+
+<p>For troubleshooting this process and resulting install, see the <a href="../../../../462/index.html">common installation problems page</a>.</p>
+
+<p>You may also want to read on with <a href="../../../../../content/administrator/aegir-installed-now-what/index.html">what you can do with Aegir</a> now that it is installed.</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-292.html?destination=node%2F389%23comment-form">Login</a> or <a href="../../../../../user/register/index-292.html?destination=node%2F389%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-1915"></a>
+
+
+<div  id="comment-1915" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/mccrodp/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="mccrodp&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/mccrodp/index.html" class="username" title="View user profile.">mccrodp</a></div><div class='date'>1:29pm Apr 17, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1915">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>A few points just on installing drush with RedHat 6 that I seem to run in to every time.</p>
+
+<p>When I try to discover the pear channel as aegir user I get
+<code>could not create lock file: fopen(/usr/share/pear/.lock): failed to open stream: Permission denied</code></p>
+
+<p>I also get the following after I make the aegir user owner of the .lock file
+<div class="codeblock"><code>pear channel-discover pear.drush.org<br />Discovering channel pear.drush.org over http:// failed with message: channel-add: adding Channel &quot;pear.drush.org&quot; to registry failed<br />Trying to discover channel pear.drush.org over https:// instead<br />Discovery of channel &quot;pear.drush.org&quot; failed (channel-add: Cannot open &quot;https://pear.drush.org/channel.xml&quot; (Connection to `pear.drush.org:443&#039; failed: Connection refused))</code></div></p>
+
+<p>I can add it with root user but when installing drush I get <div class="codeblock"><code>pear install drush/drush-5.8.0<br />Cannot install, php_dir for channel &quot;pear.drush.org&quot; is not writeable by the current user</code></div></p>
+
+<p>I always have to install drush as root and then modify ownership/permissions to aegir user. Is the documentation wrong, or am I missing something?</p>
+
+<p>Also, for drush 5 it seems that 'http://download.pear.php.net/package/Console_Table-1.1.3.tgz' is a dependency!</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-292.html?destination=node%2F389%23comment-form">Login</a> or <a href="../../../../../user/register/index-292.html?destination=node%2F389%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/389/revisions/4674/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:46:01 GMT -->
+</html>

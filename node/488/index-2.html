@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/488?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 16:53:21 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Aegir Roadmap BoF at DrupalCon Chicago, March 2011 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-488" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/mvc/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-45/index.png" alt="mvc&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/mvc/index.html" class="username" title="View user profile.">mvc</a></div><div class='date'>5:41pm Mar 15, 2011</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Aegir Roadmap BoF at DrupalCon Chicago, March 2011</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>As usual, everyone we talked to at DrupalCon who has had to manage more then a handful of sites for more than a few months wants to use a provisioning system, and Aegir remains the only serious contender for that job. The potential demand to provide support and customization is as great as that for large scale Drupal deployment. In this spirit, there were two well-attended BoF sessions at DrupalCon Chicago about Aegir: one a presentation for people not already familiar with the project, and the other a roadmap planning session where the developers discussed their plans and asked the user community for feedback. Aegir has reached the release candidate stage for version 1.0, and so the time has come to decide what features should be added next after the last remaining bugs are finished for this release.</p>
+
+<p>At the roadmap BoF, about half the attendees were from universities, and most of the others were smaller shops who were looking to sanely manage a dev/stage/live workflow. There were also people present using Aegir in a software-as-a-service model, a user who creates personalized sites for UK members of parliament on the fly based on imports from a CSV feed, and others interested by the project out of curiosity. Antoine and others from Koumbit presented their plans for the future of Aegir , then asked what other users wanted to see in future versions.</p>
+
+<p>The most common requests were handling sites in subdirectories without their own domain name, and a GUI for DNS management. Handling Drupal's subdirectory based multidomains is a serious technical challenge which isn't likely to be solved in the version 1.x branch, but DNS management already works well from the drush command line, so will be easier to provide to the enduser. This would allow A and CNAME records to be edited directly by clients with appropriate permissions, and would allow users to easily add the special DNS records necessary to have Google handle their email with a single checkbox.</p>
+
+<p>We also talked about the need for a more mature queue system based on a third-party tool. Antoine is planning to improve the queueing system by making it pluggable, so that the existing "ghetto queue" would be provided as a default implementation with no extra dependencies, but other, more robust systems could be used instead.</p>
+
+<p>Other popular requests include:</p>
+
+<ul>
+<li>porting the existing ubercart integration to the commerce module
+</li><li>reconsidering the current multi-server model, maybe based on the queue redesign - see <a href="../284/index.html" title="http://community.aegirproject.org/node/284">http://community.aegirproject.org/node/284</a>
+</li><li>automatic upgrades - managing platforms and automatically create new ones based on feeds (e.g. from feature servers)
+</li><li>D7 port of the frontend (backend already supports d7 installs and upgrades of course)
+</li><li>improved intersite security
+</li><li>handling for remote file storage
+</li><li>hooks for post-migrate unit testing
+</li><li>allowing cross-profile migration
+</li><li>a dashboard style overview page for all sites pertaining to a given client or platform
+</li></ul>
+
+<p>The official Aegir project roadmap is here: <a href="../35/index.html" title="http://community.aegirproject.org/node/35">http://community.aegirproject.org/node/35</a> It only covers plans up to version 1.0 at the moment, but it will be updated soon.</p>
+
+<p>Some of these goals are more technically challenging than others, but each will solve common problems for the existing Aegir user base, and make managing a web cluster with Aegir attractive to ever more users. We at Koumbit are glad to see Aegir becoming an ever more useful tool for the Drupal community, and look forward to meeting other Aegir users at the next DrupalCon in London!</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-313.html?destination=node%2F488%23comment-form">Login</a> or <a href="../../user/register/index-313.html?destination=node%2F488%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/488?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 16:53:21 GMT -->
+</html>

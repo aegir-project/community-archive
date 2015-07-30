@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/537/revisions/1844/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:20:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../contrib/index.html" />
+<link rel="up" href="../../../../../contrib/index.html" />
+<link rel="next" href="../../../../75/index.html" />
+<link rel="prev" href="../../../../../contrib/index.html" />
+<link rel="up" href="../../../../../contrib/index.html" />
+<link rel="next" href="../../../../75/index.html" />
+<link rel="prev" href="../../../../../contrib/index.html" />
+<link rel="up" href="../../../../../contrib/index.html" />
+<link rel="next" href="../../../../75/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Aegir developer cheat sheet from Wed, 05/18/2011 - 15:50 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-537" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../dev-cheat-sheet/index.html">Aegir developer cheat sheet</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-537'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/527/index.html" class="username" title="View user profile.">bgm</a> on 05/18/2011 - 15:50</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Locations_and_paths"><span class="toc-number">1. </span>Locations and paths</a></li>
+	<li class="toc-level-1"><a href="#File_permissions_and_ownership"><span class="toc-number">2. </span>File permissions and ownership</a></li>
+	<li class="toc-level-1"><a href="#References"><span class="toc-number">3. </span>References</a></li>
+</ol>
+</div>
+</div>
+
+<h3 id="Locations_and_paths">1. Locations and paths</h3>
+
+<ul>
+<li>Site URI: d()-&gt;uri; // ex: $base_url = 'http://' . d()-&gt;uri;</li>
+<li>Drupal root: d()-&gt;site // returns: /var/aegir/platform/drupal-6.20/</li>
+<li>Site path: d()-&gt;site_path // returns: /var/aegir/platform/drupal-6.20/sites/example.org/</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="File_permissions_and_ownership">2. File permissions and ownership</h3>
+
+<pre>
+ $ctools_path = d()-&gt;site_path . '/files/ctools';
+
+ provision_file()-&gt;chmod($ctools_path, 0770, TRUE)
+   -&gt;succeed('Changed permissions of <code>@path</code> to @perm')
+   -&gt;fail('Could not change permissions <code>@path</code> to @perm')
+   -&gt;status();
+
+ provision_file()-&gt;chgrp($ctools_path, d('@server_master')-&gt;web_group, TRUE)
+   -&gt;succeed('Change group ownership of settings.php to @path')
+   -&gt;fail('Could not change group ownership of settings.php to @path')
+   -&gt;status();
+</pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h3 id="References">3. References</h3>
+
+<p><a href="http://api.aegirproject.org/" title="http://api.aegirproject.org/">http://api.aegirproject.org/</a></p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-209.html?destination=node%2F537%23comment-form">Login</a> or <a href="../../../../../user/register/index-209.html?destination=node%2F537%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-209.html?destination=node%2F537%23comment-form">Login</a> or <a href="../../../../../user/register/index-209.html?destination=node%2F537%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/537/revisions/1844/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:20:47 GMT -->
+</html>

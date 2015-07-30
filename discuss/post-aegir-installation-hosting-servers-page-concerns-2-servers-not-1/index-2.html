@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/post-aegir-installation-hosting-servers-page-concerns-2-servers-not-1?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 19:07:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Post Aegir installation - Hosting Servers Page Concerns (2 Servers, not 1) | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2744" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/feldmand/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="feldmand&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/feldmand/index.html" class="username" title="View user profile.">feldmand</a></div><div class='date'>5:21am Jul 25, 2013</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Post Aegir installation - Hosting Servers Page Concerns (2 Servers, not 1)</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_62 first"><a href="../../category/keywords/aegir/index.html" rel="tag" title="">Aegir</a></li>
+<li class="taxonomy_term_470"><a href="../../category/keywords/drupal/index.html" rel="tag" title="">Drupal</a></li>
+<li class="taxonomy_term_467"><a href="../../category/keywords/hosting/index.html" rel="tag" title="">Hosting</a></li>
+<li class="taxonomy_term_345"><a href="../../category/keywords/installation/index.html" rel="tag" title="">installation</a></li>
+<li class="taxonomy_term_469"><a href="../../category/keywords/platforms/index.html" rel="tag" title="">platforms</a></li>
+<li class="taxonomy_term_468 last"><a href="../../category/keywords/servers/index.html" rel="tag" title="">Servers</a></li>
+</ul></div><p>There may not be an issue here, but my intuition tells me that it could be later on.</p>
+
+<p>While watching a Drupal Friendly screencast produced by Natalie, I noticed that her ~/hosting/servers page looked quite different from mine.</p>
+
+<p>You can view her Severs page both here, and attached below.
+<a href="http://friendlydrupal.com/screencasts/install-platforms-and-sites-aegir-drupal-hosting-system" title="http://friendlydrupal.com/screencasts/install-platforms-and-sites-aegir-drupal-hosting-system">http://friendlydrupal.com/screencasts/install-platforms-and-sites-aegir-...</a></p>
+
+<p>My Servers page is attached below.
+Natalie only listed one server, which I believe was localhost.</p>
+
+<p>My Servers page lists two servers. 
+1) My FQDN (liebens), and
+2) localhost.</p>
+
+<p>What looks odd to me is that my FQDN is only associated with the Apache web server, and the localhost is only associated with mysql.  I am thinking that if I later wanted to migrate this hostmaster site to another server, then I may have a problem with the mysql database.</p>
+
+<p>Per the Aegir installation instructions, I created another MySQL root account for Aegir using the following MySQL command:</p>
+
+<h1>GRANT ALL PRIVILEGES ON <em>.</em> TO 'aegir_root'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;</h1>
+
+<p>ergonlogic confirms that '%' is a wildcard.  It appears that the wildcard defaults to localhost in this case.</p>
+
+<p>egonlogic also wonders if there might be an issue with sockets down the road.</p>
+
+<p>Am I going to run into any possible problems?
+Should I just reinstall Aegir using the FQDN (the value returned by 'hostname -f') instead of '%'?</p>
+
+<p>Any guidance or comments would be most appreciated.</p>
+
+<p>Thanks.</p><div class="itu-attachments"><table class="itu-attachment-list withoutstats sticky-enabled" id="attachments">
+ <thead><tr><th class="preview">Preview</th><th class="file">Attachment</th><th class="size">Size</th> </tr></thead>
+<tbody>
+ <tr class="odd"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/picture_19/index.png" title="HostingServersScreenshot.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/picture_19/index.png" alt="HostingServersScreenshot.png" title="HostingServersScreenshot.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/picture_19/index.png">HostingServersScreenshot.png</a></td><td class="size">98.44 KB</td> </tr>
+ <tr class="even"><td class="mime mime-png"><div  class="form-item" id="">
+    <div class="itu-attachment-thumb"><a href="../../sites/community.aegirproject.org/files/picture_20/index.png" title="FriendlyDrupalServersScreenshot.png"><img src="../../sites/community.aegirproject.org/files/imagecache/AttachmentThumbnail/picture_20/index.png" alt="FriendlyDrupalServersScreenshot.png" title="FriendlyDrupalServersScreenshot.png" width="60" height="60" class="imagecache imagecache-AttachmentThumbnail"/></a></div>  </div>
+</td><td class="file"><a href="../../sites/community.aegirproject.org/files/picture_20/index.png">FriendlyDrupalServersScreenshot.png</a></td><td class="size">361.34 KB</td> </tr>
+</tbody>
+</table>
+</div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-442.html?destination=node%2F2744%23comment-form">Login</a> or <a href="../../user/register/index-442.html?destination=node%2F2744%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-1980"></a>
+
+
+<div  id="comment-1980" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../user/54/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-54/index.png" alt="ergonlogic&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a></div><div class='date'>5:54am Jul 25, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-1980" class="active">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>From the ensuing IRC discussion in #aegir.</p>
+
+<pre>
+01:31 ergonlogic@&gt; feldmand: but aside frm that, it's normal to have 2 servers
+01:31 ergonlogic@&gt; it simplifies installation
+01:32 ergonlogic@&gt; there's really just the one real server, but Aegir is treating it as two, one running the web server and the other the db server
+01:32   feldmand &gt; ergonlogic: good to know. :)  I will see if I can caputre the view from Friendly Drupal's video and add that as well.
+01:32 ergonlogic@&gt; I don't recall what the reason was
+01:32 ergonlogic@&gt; and I think we could work around it now
+01:33   feldmand &gt; ergonlogic: I realize that currently that this will not be an issue, but couldn't this possibly be an issue in a multiple server 
+                   scenario?
+01:34 ergonlogic@&gt; how?
+01:34 &gt;&gt; OpenURL 3
+01:34    hefring &gt; community =&gt; Post Aegir installation - Hosting Servers Page Concerns (2 Servers, not 1) =&gt; 
+                   <a href="index.html" title="http://community.aegirproject.org/discuss/post-aegir-installation-hosting-servers-page-concerns-2-servers-not-1">http://community.aegirproject.org/discuss/post-aegir-installation-hostin...</a>
+01:35   feldmand &gt; ergonlogic: Let's say that I wished to migrate the hostmaster itself including DB to a new server. If the DB is currently 
+                   associated with the localhost and not the FQDN might I lose the DB during the migration?
+01:36 ergonlogic@&gt; you can't migrate the hostmaster site across servers
+01:36 ergonlogic@&gt; at least not yet
+01:36   feldmand &gt; There is hefring again. :) She is very attentive.
+01:36 ergonlogic@&gt; remote servers don't normally have provision installed
+01:36 ergonlogic@&gt; again, yet
+01:37 ergonlogic@&gt; also, the hostmaster site is barred from any such operations in the front-end
+01:37   feldmand &gt; :) So if Aegir can manage sites on other servers, where do the DB for the other servers reside?
+01:39 ergonlogic@&gt; either on other mysql servers, or you open your local mysql server to remote connections
+01:40   feldmand &gt; ergonlogic: I thought about opening the local mysql server to remote connections, but that seems somehow inefficient if the servers 
+                   are separated on opposite end of the earth.
+01:41 ergonlogic@&gt; right
+01:41   feldmand &gt; ergonlogic: I suppose other mysql servers seems like a better solution, but I cannot imagine the architecture just yet. Still a 
+                   newbie.
+01:42   feldmand &gt; ergonlogic: In the 'other mysql servers" scenario, the 'master' Aegir database would hold all backups for all servers globally?
+01:43 ergonlogic@&gt; Well, while Aegir supports remote servers, the general use-case is for a cluster of local servers
+01:43 ergonlogic@&gt; otherwise there are a number of performance issues, but mostly with sync'ing files around 
+01:43   feldmand &gt; ergonlogic: good to know.  Nice to know the inherent limitations of a system.
+01:44 ergonlogic@&gt; you can have remote servers, but you'll generally want the db server that'll be serving those sites to be fairly proximate
+01:45 ergonlogic@&gt; but it's currently a hub &amp; spoke network model, so everything happens locally, and then gets sync'ed back and forth
+01:46 ergonlogic@&gt; backups aren't just a db dump, they also tar up the site's directory
+01:46   feldmand &gt; ergonlogic: Proximate to the db server, whether the hostmaster DB or other DB's, right?
+01:47 ergonlogic@&gt; well, this isn't a limitation of Aegir's, mind you
+01:47 ergonlogic@&gt; it's just network latency
+01:47   feldmand &gt; ergonlogic: Naturally. :) a geographic latency.
+01:47 ergonlogic@&gt; right
+01:48 ergonlogic@&gt; the plan is to make the remote servers smarter though
+01:48   feldmand &gt; ergonlogic: Interesting.
+01:50 ergonlogic@&gt; there's an issue about it, iirc
+</pre>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-442.html?destination=node%2F2744%23comment-form">Login</a> or <a href="../../user/register/index-442.html?destination=node%2F2744%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/post-aegir-installation-hosting-servers-page-concerns-2-servers-not-1?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 19:07:51 GMT -->
+</html>

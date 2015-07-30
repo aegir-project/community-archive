@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/2633/revisions/4939/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:14:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../2/index-12.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-14.html" />
+<link rel="prev" href="../../../../../2/index-12.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-14.html" />
+<link rel="prev" href="../../../../../2/index-12.html" />
+<link rel="up" href="../../../../../content/content/release-notes/older-2x-releases/20-alphas-betas-release-candidates/index.html" />
+<link rel="next" href="../../../../../2/index-14.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of 2.0-alpha2 release notes from Thu, 05/23/2013 - 01:26 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2633" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../2/index-13.html">2.0-alpha2 release notes</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-2633'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a> on 05/23/2013 - 01:26</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>This release features improvements to the IP management mechanisms that were broken in the last alpha1 release. We now manage IP addresses individually, and check if an IP is in use before allowing it to be deleted.</p>
+
+<p>We also finally leave the files alone on spokes in the multi-server model, a long-standing bug in the 1.x series that led to data loss. A lot of work was done to standardize the Nginx configuration to allow for simpler, yet optional, configurations that leave the admin in charge of choosing the optimisation methods.</p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Also, we've moved Hosting and Eldir back to their own projects, and are now included via our makefiles. This simplifies building custom install profiles, though it complicates our release process somewhat. We've also added a drupal-org.make that will eventually allow proper distribution bundling of Aegir.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>Finally, we've moved to using Views and View Bulk Operations for our lists of sites, platforms and packages. While there remain some rough edges, this will allow much easier customization of our principal UIs. It has also significantly reduced the custom code we have to maintain, in favour of exported Views, which simplifies maintenance.</span></p>
+
+<h1>API changes</h1>
+
+<ul>
+<li>deprecate hosting_ip_delete_revision(), dupe of hosting_ip_delete() now that revisions are gone (8 weeks ago)</li>
+<li>allow running tasks that appear to be running with --force</li>
+<li>remove deprecated DEBUG flag in debian package</li>
+<li>#1785624: Some Drupal API changes in D7 (and D8) are not used/respected properly</li>
+<li>#1945950: Rename provision_drupal_sync_site_back()</li>
+<li>#1083366: Make the spokes authoritative for files/ and private/ directories</li>
+<li>#1812338: Refactor sync back</li>
+<li>a new control file has been introduced in /etc/nginx/basic_nginx.conf to force the nginx configuration to be the "simpler" one (see #1635596: nginx: do not decide the policy for users)</li><span class='diff-added'>
+</span><li><span class='diff-added'>#1987026: Move generated platform drushrc.php to sites/all/drush</span></li>
+</ul>
+
+<h1>New features</h1>
+
+<ul>
+<li>#1929372: Flag tasks with logged warnings</li>
+<li>#1515416: On a package page, show table listing sites and platforms using the package</li>
+<li>#1853620: Add db_name to site summary</li>
+<li>#1681904: Ability to configure a url to redirect to in site configuration.</li>
+<li>#1968226: manage each IP individually on the server level - manage IPs individually</li>
+<li>add uninstall command</li>
+<li>Nginx Security: BEAST attack protection and fix for PCI compliance.</li><span class='diff-added'>
+</span><li><span class='diff-added'>#1980136: Allow setting default profile from the front-end.</span></li><span class='diff-added'>
+</span><li><span class='diff-added'>#588728: Replace custom lists with Views and VBO for sites, platforms and packages.</span></li>
+</ul>
+
+<h1>Bugfixes</h1>
+
+<ul>
+<li>#1930670: Duplicate entry 0 for key PRIMARY in hosting_ip_addresses when installing / upgrading</li>
+<li>#1907028: user warning: Table 'XXX.hosting_ip_addresses' doesn't exist</li>
+<li>#1961920: nginx: [emerg] invalid number of arguments in "limit_conn_zone" directive in /etc/nginx/conf.d/aegir.conf</li>
+<li>#1923490: Incorrect error message in aegir-provision2.preinst</li>
+<li>#1901508: "gzip --rsyncable" is invalid on OS X</li>
+<li>#1678528: Database deleted on edge cases</li>
+<li>#1930740: provision-delete leaves a drushrc.php lying around</li>
+<li>Nginx: Do not override Nginx name with fake Apache name.</li><span class='diff-added'>
+</span><li><span class='diff-added'>#1990370: Enable Hosting feature dependencies.</span></li>
+</ul>
+
+<h1>Other</h1>
+
+<ul>
+<li>#1923552: Rename 'Queue runner settings' tab to 'Queue daemon'</li>
+<li>#1834036: Add 'hosting platform pathauto' to the .gitignore</li>
+<li>#1785624: Some Drupal API changes in D7 (and D8) are not used/respected properly</li>
+<li>#1979496: Update upgrade.sh.txt for Drush 5</li>
+<li>#1974752: Document old_uri option for provision-deploy</li>
+</ul></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-168.html?destination=node%2F2633%23comment-form">Login</a> or <a href="../../../../../user/register/index-168.html?destination=node%2F2633%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-168.html?destination=node%2F2633%23comment-form">Login</a> or <a href="../../../../../user/register/index-168.html?destination=node%2F2633%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/2633/revisions/4939/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:14:58 GMT -->
+</html>

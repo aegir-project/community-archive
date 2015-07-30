@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/788/revisions/2140/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:54:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../34/index.html" />
+<link rel="up" href="../../../../../intro/index.html" />
+<link rel="next" href="../../../../../faq/index.html" />
+<link rel="prev" href="../../../../34/index.html" />
+<link rel="up" href="../../../../../intro/index.html" />
+<link rel="next" href="../../../../../faq/index.html" />
+<link rel="prev" href="../../../../34/index.html" />
+<link rel="up" href="../../../../../intro/index.html" />
+<link rel="next" href="../../../../../faq/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Project history from Tue, 07/26/2011 - 16:40 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-788" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../project-history/index.html">Project history</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_4 first"><a href="../../../../../taxonomy/term/4/index.html" rel="tag" title="This level is for users who have access to only their sites and not able to manage all Aegir features, accounts or the server/system.">Client</a></li>
+<li class="taxonomy_term_27"><a href="../../../../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_3"><a href="../../../../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-788'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a> on 07/26/2011 - 16:40</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Aegir is a completely new iteration of the original Hostmaster project written by <a href="http://drupal.org/user/1337">Adrian Rossouw</a>. The original version has been running the hosted service provided at <a href="http://bryght.com/" title="http://bryght.com">http://bryght.com</a> for nearly 4 years, hosting literally thousands of sites, and has been implemented for several large clients.
+Originally, the system would only manage a single Drupal instance, on a single web server with a single database server, and as the requirements grew (concurrently running multiple versions of Drupal and then needing to manage several servers), it grew considerably in (unplanned) complexity.</p>
+
+<p>There were also non-ideal implementation and licensing issues, such as the choice of Python and PostgreSQL for the backend and not developing the system as an "invite-only" GPL project, which severely limited the number of developers that were attracted to the project. Because of the system requirements, it was also very difficult for new users to install, and had many unnecessary points of failure.</p>
+
+<p>The Aegir hosting system has been designed with all these issues in mind, and the lessons learned have formed the basis of many of the <a href="../../../../34/index.html">Aegir Project Goals</a>. The code was committed to Drupal.org in november 2007 and has seen multiple production-ready but still "alpha" releases there in the two following years.</p>
+
+<ul>
+<li>0.1 marked the first Drupal 5 and "multi-site" capable version.</li>
+<li>0.2 marked the first multi-platform version, which supported upgrades between different Drupal versions</li>
+<li>0.3 marked the port of the frontend to Drupal 6</li>
+</ul>
+
+<p>Then in 2009, a major overhaul of the code was performed to provide "multi-server" support, which led to numerous 0.4-alpha releases (about 20) and, around the end of 2009, <a href="http://developmentseed.org/blog/2009/nov/22/aegir-hosting-system-moves-git">required the move to git as a version control system</a> even though Drupal.org was still stuck in CVS-land, which meant <a href="http://koumbit.org/">Koumbit.org</a> started hosting the git repositories on their servers.</p>
+
+<p>All this led to, about a year and a half later (early 2011), to the <a href="../../../../../1/index-12.html">1.0 release</a> of our beloved platform and the Aegir project migrating <a href="../../../../384/index.html">back to drupal.org</a> at last</p>
+
+<p>Aegir now exceeds the capabilities of the original HostMaster system and is in use by numerous real world projects.</p>
+
+<p>Aegir is now supported by <a href="http://koumbit.org/">Koumbit.org</a>, <a href="http://computerminds.co.uk/">Computer Minds</a> and <a href="http://mig5.net/">mig5</a> and is being used to deploy sites in universities, private companies and non-profits around the world.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-20.html?destination=node%2F788%23comment-form">Login</a> or <a href="../../../../../user/register/index-20.html?destination=node%2F788%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-20.html?destination=node%2F788%23comment-form">Login</a> or <a href="../../../../../user/register/index-20.html?destination=node%2F788%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/788/revisions/2140/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:54:59 GMT -->
+</html>

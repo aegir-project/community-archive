@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/allow-clients-edit-their-site-files-directly-remote-server?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:05:19 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>allow clients to edit their site files directly on remote server | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2489" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/steeff/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="steeff&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/steeff/index.html" class="username" title="View user profile.">steeff</a></div><div class='date'>10:40am Apr 9, 2013</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">allow clients to edit their site files directly on remote server</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_405 first"><a href="../../category/keywords/client/index.html" rel="tag" title="">client</a></li>
+<li class="taxonomy_term_120 last"><a href="../../category/keywords/remote-server/index.html" rel="tag" title="">remote server</a></li>
+</ul></div><p>Hi,
+As I understand, the remote server acts as a slave from the master and the verify task syncs files form master to slave.
+Is there a way to prevent slave data to be overridden by master so the clients will be able to manage their files on the remote ? If yes I guess the remote won't be managed by aegir any more... so if no, is the best solution is to have 2 separate aegir master instances ?</p>
+
+<p>thanks</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-399.html?destination=node%2F2489%23comment-form">Login</a> or <a href="../../user/register/index-399.html?destination=node%2F2489%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-1921"></a>
+
+
+<div  id="comment-1921" class="comment comment-published clear-block decay-10 decay-10">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/jonpugh/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="jonpugh&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/jonpugh/index.html" class="username" title="View user profile.">jonpugh</a></div><div class='date'>8:23pm Apr 18, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-1921" class="active">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Allowing anyone to edit anything on the remote server is just asking for trouble.  Those remote servers are always rsynced to, not from.  Whoever is doing the editing won't know what hit them if a verify came through.</p>
+
+<p>If you want to give someone direct access to files running a website, you probably want a second Platform on server_master.  server_master is the only server that doesn't rsync its files anywhere.</p>
+
+<p>The other option would be to get your sites into Git and try out <a href="http://drupal.org/project/devshop">DevShop</a>.  It lets you set up as many separate environments for one project as you want from a single Git repo.</p>
+
+<p>But even with DevShop, if user's are editing files live, @server_master is where you want to have them.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-399.html?destination=node%2F2489%23comment-form">Login</a> or <a href="../../user/register/index-399.html?destination=node%2F2489%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+<a id="comment-1923"></a>
+
+
+<div  id="comment-1923" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/steeff/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="steeff&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/steeff/index.html" class="username" title="View user profile.">steeff</a></div><div class='date'>8:05am Apr 19, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-1923" class="active">#2</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>Thanks for you reply.
+I finally <em>solved</em> this issue by <em>promoting</em> the remote server to master but will give a try to your DevShop module.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-399.html?destination=node%2F2489%23comment-form">Login</a> or <a href="../../user/register/index-399.html?destination=node%2F2489%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/allow-clients-edit-their-site-files-directly-remote-server?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:05:19 GMT -->
+</html>

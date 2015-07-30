@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/518?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:51:21 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="next" href="../418/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="prev" href="index.html" />
+<link rel="up" href="index.html" />
+<link rel="next" href="../246/index.html" />
+<link rel="prev" href="../418/index.html" />
+<link rel="up" href="index.html" />
+<link rel="next" href="../79/index.html" />
+<link rel="prev" href="../246/index.html" />
+<link rel="up" href="index.html" />
+<link rel="next" href="../244/index.html" />
+<link rel="prev" href="../79/index.html" />
+<link rel="up" href="index.html" />
+<link rel="next" href="../416/index.html" />
+<link rel="prev" href="../244/index.html" />
+<link rel="up" href="index.html" />
+<link rel="next" href="../414/index.html" />
+<link rel="prev" href="../416/index.html" />
+<link rel="up" href="index.html" />
+<link rel="next" href="../415/index.html" />
+<link rel="prev" href="../414/index.html" />
+<link rel="up" href="index.html" />
+<link rel="next" href="../316/index.html" />
+<link rel="prev" href="../415/index.html" />
+<link rel="up" href="index.html" />
+<link rel="next" href="../../drupalcon-2011-london-sessions/index.html" />
+<link rel="prev" href="../316/index.html" />
+<link rel="up" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Archived documentation | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-518" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Archived documentation</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-518'><p>Rather than delete documentation, which we're always loathe to do, put out-of-date pages here.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-264.html?destination=node%2F518%23comment-form">Login</a> or <a href="../../user/register/index-264.html?destination=node%2F518%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+<div  id="node-418" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../418/index.html">HINTS_CentOS.txt</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><h1>Aegir -- CentOS installation instructions hints</h1>
+
+<p>This is a helper file to the canonical INSTALL.txt. It is aimed at
+helping you install Aegir on CentOS. It simply lists commands that
+diverge from the base INSTALL.txt in a concise document that will be
+easy to maintain in the long term.</p>
+
+<p>It is recommended that the INSTALL.txt document is consulted before
+going ahead with this install.</p>
+
+<p>We reuse the same process describe in that document:</p>
+
+<ol>
+<li>Install requirements</li>
+<li>Configure system requirements, which include:
+
+<ul>
+<li>create a Aegir user</li>
+<li>configure Apache, MySQL, DNS, etc</li>
+</ul></li>
+<li>Run the install script</li>
+</ol>
+
+<h1>1. Install software requirements</h1>
+
+<p>You should use the repos "utter ramblings" repos (which feature PHP
+5.2) at: <a href="http://www.jasonlitka.com/yum-repository/" title="http://www.jasonlitka.com/yum-repository/">http://www.jasonlitka.com/yum-repository/</a></p>
+
+<p>Shell commands::
+<div class="codeblock"><code> rpm --import <a href="http://www.jasonlitka.com/media/RPM-GPG-KEY-jlitka<br />" title="http://www.jasonlitka.com/media/RPM-GPG-KEY-jlitka<br />">http://www.jasonlitka.com/media/RPM-GPG-KEY-jlitka<br /></a> cat &gt;&gt; /etc/yum.repos.d/utterramblings.repo &lt;&lt;EOF<br />[utterramblings]<br />name=Jason&#039;s Utter Ramblings Repo<br />baseurl=http://www.jasonlitka.com/media/EL\$releasever/\$basearch/<br />enabled=1<br />gpgcheck=1<br />gpgkey=http://www.jasonlitka.com/media/RPM-GPG-KEY-jlitka<br />EOF<br /> yum install httpd postfix sudo unzip mysql-server php php-mysql</code></div></p>
+
+<h1>2. Configure system requirements</h1>
+
+<p>Shell commands::
+<div class="codeblock"><code> useradd --home-dir /var/aegir aegir<br /> gpasswd -a aegir apache<br /> chmod -R 755 /var/aegir<br /> # Include the Aegir configs<br /> ln -s /var/aegir/config/apache.conf /etc/httpd/conf.d/aegir.conf<br /> service mysqld start<br /> # Optional: set the mysql root password<br /> mysqladmin password $password<br /> mysql -uroot -p</code></div></p>
+
+<p>The last two lines can also be (better) accomplished using the
+mysql_secure_installation script.</p>
+
+<p>The aegir user needs to have sudo access. The wizard will explain how to
+do this, but you can already just add the relevant line to your sudoers
+file.</p>
+
+<p><div class="codeblock"><code>/etc/sudoers configuration::<br />&nbsp; aegir ALL=NOPASSWD: /usr/sbin/apachectl</code></div></p>
+
+<p>The default sudo configuration in CentOS requires sudo to run in a real
+TTY which will make verify and install tasks fail with the message:</p>
+
+<p>"Web server could not be restarted. Changes might not be available
+ until this has been done"</p>
+
+<p>For sudo to behave properly, you should also comment out the following line
+in your /etc/sudoers file:</p>
+
+<p><div class="codeblock"><code>Defaults&nbsp;&nbsp;&nbsp; requiretty</code></div></p>
+
+<h1>3. Run the install script</h1>
+
+<p>This section deals with the actual installation of Aegir.</p>
+
+<p>There is an install script that takes care of installing the right packages and
+preparing the backend and frontend install for you. That script needs to be run
+as the aegir user created above.  This file is available in Provision or can be
+downloaded through the web at:</p>
+
+<p><a href="http://git.aegirproject.org/?p=provision.git;a=blob_plain;f=install.sh.txt;hb=HEAD" title="http://git.aegirproject.org/?p=provision.git;a=blob_plain;f=install.sh.txt;hb=HEAD">http://git.aegirproject.org/?p=provision.git;a=blob_plain;f=install.sh.t...</a></p>
+
+<p>By default, the install script will install the "correct" version of Aegir
+(ie. if it was downloaded through git, it will install the version from the
+git master branch. If you downloaded an official release, it should install
+the official release.). You can modify which version to install by editing the
+AEGIR_VERSION variable in the script.</p>
+
+<p>Shell commands::</p>
+
+<p><div class="codeblock"><code> su -s /bin/sh aegir -c &quot;sh install.sh.txt aegir.example.com&quot;</code></div></p>
+
+<p>Note you must run this as root or prefix with sudo.</p>
+
+<p>Be sure to change 'aegir.example.com' to match the URI of your site.</p>
+
+<p>You can append '--client_email=you@example.com' if you wish to receive the
+traditional Drupal 'Welcome' e-mail upon completion of the installation.
+This e-mail address will also be used as the default e-mail address of the
+first user and client in Aegir, but can be changed later.</p>
+
+<h1>4. Common issues</h1>
+
+<p>There are various caveats on running Aegir on CentOS.</p>
+
+<p>You may need to adjust CentOS's firewall settings to allow HTTP
+traffic on port 80.  If you installed CentOS with a UI, enable
+"Firewall settings -- WWW (HTTP)".</p>
+
+<p>Alternatively, another solution may be to edit /etc/sysconfig/iptables 
+and add a rule accepting traffic on the relevant interface on port 80.</p>
+
+<p>Afterwards, you can restart the firewall with this command:</p>
+
+<p>Shell commands::
+<div class="codeblock"><code> service iptables restart</code></div></p>
+
+<p>Also, in some configurations, it seems necessary to restart crond for
+the user crontab changes to take effect (very bizarre). For that, use:</p>
+
+<p>Shell commands::
+<div class="codeblock"><code> service crond restart</code></div></p>
+
+<p>See <a href="http://drupal.org/node/632308" title="http://drupal.org/node/632308">http://drupal.org/node/632308</a> if you have more information about
+this issue.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="talk_comments first last"><a href="../418/talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-246" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../246/index.html">Unofficial install script for Ubuntu 10.4 LTS</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_3 first"><a href="../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_12"><a href="../../taxonomy/term/12/index.html" rel="tag" title="">Ubuntu 10.4 install script</a></li>
+<li class="taxonomy_term_14 last"><a href="../../taxonomy/term/14/index.html" rel="tag" title="">unofficial</a></li>
+</ul></div><p><strong>Warning</strong>: this script was not tested by the core dev team, and is not currently supported. We're thinking of merging it into the current install.sh... See <a href="../377/index.html">this post</a> for context and followup.</p>
+
+<p>The <a href="https://github.com/doka/install-aegir-on-ubuntu">install-aegir-on-ubuntu.sh</a> script installs Aegir 0.4 with all prerequisites on a bare Ubuntu 10.4 LTS server, on a local network, without any security hardening. It is a scripted version of the cannonical install.sh, adapted for Ubuntu.</p>
+
+<p>This script helps Aegir users to quick start with an Aegir installation on Ubuntu headless server for development and testing purposes, but is not ready for production environments. It uses PHP 5.3, not PHP 5.2 as recommened by Aegir documentation.</p>
+
+<p>It installs all the software requirements (Apache, MySQL, PHP), as well as other packages needed by Aegir, like rsync, gzip or git-core. It helps to configure the system parameters (set the Aegir user, PHP memory limits, database configs, and symlinks). And of course, downloads and runs the Aegir install script.</p>
+
+<ul>Getting started
+<li>install a bare Ubuntu 10.4 LTS server, optionally with OpenSSH</li>
+<li>login and switch to root ('sudo su')</li>
+<li>set a fix IP address to the server</li>
+<li>download this script</li>
+<li>adjust the parameters in the script, like IP of the host</li>
+<li>change access and execution rights: chmod 775 install-aegir-on-ubuntu.sh</li>
+<li>execute the script</li>
+<li>follow the instruction on the terminal, answer few questions during install</li>
+</ul>
+
+<ul>  
+Restrictions
+<li>Do not use on production environments, it has no security hardening</li>
+<li>It uses PHP 5.3. Drupal core is running smoothly on that, but some contributed modules may generate issues and warnings.</li>
+</ul>
+
+<p>Maintainers:  <a href="mailto:doka@wepoca.net">doka@wepoca.net</a>, <a href="http://www.wepoca.net/">www.wepoca.net</a></p>
+
+<p>The script is available via GitHub: <a href="https://github.com/doka/install-aegir-on-ubuntu" title="https://github.com/doka/install-aegir-on-ubuntu">https://github.com/doka/install-aegir-on-ubuntu</a></p>
+
+<p>Select the appropiate tag on GitHub for the proper Aegir version: 0.4-beta2 or 0.4-rc1.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="talk_forbidden first last"><span><a href="../../user/login/index-265.html?destination=node%2F246%23comment-form">Login</a> or <a href="../../user/register/index-265.html?destination=node%2F246%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-79" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../79/index.html">Aegir API</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><p><a href="http://api.aegirproject.org/">api.aegirproject.org</a> is now online.</p>
+
+<p>Please submit any suggestions or bug reports to the <a href="http://drupal.org/project/issues?text=&amp;projects=hosting,+provision,+eldir,+Hostmaster+%28Aegir%29&amp;status=Open&amp;priorities=All&amp;categories=All">Aegir Project issue queue of your choice</a>, under the "documentation" component.</p>
+
+<p>Tickets regarding the API and publishing it:<br />
+ * <a href="http://drupal.org/node/270261" title="http://drupal.org/node/270261">http://drupal.org/node/270261</a><br />
+ * <strike><a href="http://drupal.org/node/270263">http://drupal.org/node/270263</a></strike></p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="talk_forbidden first last"><span><a href="../../user/login/index-266.html?destination=node%2F79%23comment-form">Login</a> or <a href="../../user/register/index-266.html?destination=node%2F79%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-244" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../244/index.html">Aegir Virtual Appliance</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>A Google Code-In student has created a virtual appliance in VirtualBox which make users able to use Aegir without using Linux or conflict with current server setting.</p>
+
+<p>You can download it at
+<a href="http://tucc.triamudom.ac.th/aegir.7z" title="http://tucc.triamudom.ac.th/aegir.7z">http://tucc.triamudom.ac.th/aegir.7z</a></p>
+
+<pre>
+AEGIR VIRTUAL APPLIANCE
+----------------------------------------------------
+
+Prerequisite:
+- VirtualBox
+- DNS Server which you can modfiy records (optional)
+ 
+How to install:
+1. Virtual Machine
+1.1. Extract Aegir.7z file.
+1.2. Open VirtualBox goto File -&gt; Import Applicance
+1.3. Select .odf file which you have extract in first step.
+1.4. Choose CPU and RAM size which are suitable for your system.
+1.5. Click Finish and agree to license agreement
+1.6. Start Virtual Machine, click on network adapter icon on the bottom of window,
+ and config bridge adapter to bridge with network you wish to use with.
+1.8. Login to Virtual Machine with username "aegiradmin" and password "aegir" 
+and type "sudo ifconfig" to show your current ip address.
+
+2. DNS config
+2.1 If you can config your DNS Server, point "ageir" to virtual machine ip address.
+2.2 Else you have to add line below in /etc/hosts (Linux) or %SystemRoot%\system32\drivers\etc\hosts (Windows)
+
+ VIRTUALMACHINEIP aegir
+
+3. Guest system config
+3.1 You can login to Aegir web interface by <a href="http://aegir/" title="http://aegir/">http://aegir/</a> 
+3.2 You can login to shell using VirtualBox VM window or ssh to server ip address.
+
+Default Configuration(PLEASE CHANGE FOR PRODUCTION USAGE)
+Linux admin account:
+Username: aegiradmin
+Password: aegir
+*root user is disable for security.
+
+Aegir management account:
+User: admin
+Password: aegir
+
+Aegir Document:
+You could learn more about how to use Aegir at
+Offical Document: <a href="../../notebook/index.html" title="http://community.aegirproject.org/notebook">http://community.aegirproject.org/notebook</a>
+Community Site: <a href="../../index.html" title="http://community.aegirproject.org/">http://community.aegirproject.org/</a>
+</pre>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="talk_comments first last"><a href="../244/talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-416" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../416/index.html">Solaris installation instructions hints</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><h1>Special software requirements</h1>
+
+<p>TODO: Show how to install:</p>
+
+<ul>
+<li>Apache2</li>
+<li>git</li>
+<li>sudo</li>
+<li>mysql</li>
+<li>PHP 5.2</li>
+<li>wget</li>
+</ul>
+
+<p>unzip and sendmail should be part of the base Solaris install. Other
+applications should be available on the companion CDs or:</p>
+
+<p><a href="http://www.sunfreeware.com/" title="http://www.sunfreeware.com/">http://www.sunfreeware.com/</a></p>
+
+<p>In particular, git can be compiled easily by exporting the following
+environment::
+ export CFLAGS="-I/usr/sfw/include -I/opt/sfw/include"
+ export LD_LIBRARY_PATH="/usr/sfw/lib:/opt/sfw/lib:$LD_LIBRARY_PATH"</p>
+
+<p>Then the compile instructions bundled with git should just be followed
+plainly.</p>
+
+<p>XXX: I had trouble installing the binaries, as git expects ginstall to be
+available in the path. I ended up adding the source directory in the path,
+which works fine for most uses.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="talk_forbidden first last"><span><a href="../../user/login/index-267.html?destination=node%2F416%23comment-form">Login</a> or <a href="../../user/register/index-267.html?destination=node%2F416%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-414" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../414/index.html">UPGRADE.txt</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>==========================</p>
+
+<h1>Aegir Upgrade Instructions</h1>
+
+
+
+<h2>This document describes briefly how to upgrade an existing Aegir installation</h2>
+
+<p>The document is laid out in the following sections:</p>
+
+<ul>
+<li>Conventions and tips</li>
+<li>Upgrade script</li>
+<li>Setting environment variables</li>
+<li>Generic upgrade instructions
+
+<ul>
+<li>Upgrading the backend</li>
+<li>Upgrading the frontend</li>
+</ul></li>
+<li>Version-specific upgrade notes (read these before running anything else!)</li>
+</ul>
+
+<h1>Generic upgrade instructions</h1>
+
+<p>We aim to create a generic upgrade process that will be consistent across
+versions. This section describes this process. However, there are
+version-specific upgrade instructions that may be more relevant to your
+installation in the next section. You should check the version-specific
+instructions to ensure you have covered off the requirements necessary for
+successfully completing these version-generic steps.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="talk_forbidden first last"><span><a href="../../user/login/index-268.html?destination=node%2F414%23comment-form">Login</a> or <a href="../../user/register/index-268.html?destination=node%2F414%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-415" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../415/index.html">alien-cms-integration.txt</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><p>This should doubtless be moved to the developing for Aegir section, assuming it isn't already there. But, for the purposes of pulling in all the docs from provision/docs, it can live here for a bit.</p>
+<pre>
+<div class="codeblock"><code>Day changed to Monday March 01 2010<br />&lt;sebas891&gt; anarcat: back<br />&lt;@anarcat&gt; sebas891: hello<br />&lt;@anarcat&gt; you are or..<br />&lt;sebas891&gt; :) I&#039;m debugging ubuntu wifi here<br />&lt;@anarcat&gt; yay<br />&lt;sebas891&gt; ok, for aegir, I need to know how to install SPIPS<br />&lt;sebas891&gt; kind of specs ?<br />&lt;sebas891&gt; what does SPIP need to do to Aegir in order to have Aegir install it?<br />&lt;@anarcat&gt; alright<br />&lt;sebas891&gt; you see?<br />&lt;@anarcat&gt; !pi aegir/dev talk about spip integration<br />&lt;@anarcat&gt; yes<br />&lt;goumbot&gt; kproject: owner: punched in 20280=Koumbit/Aegir::Ongoing tasks/DÃ©veloppement<br />&lt;@anarcat&gt; I can explain to you how aegir works, now?<br />&lt;@anarcat&gt; or do you understand the setup well?<br />&lt;sebas891&gt; I&#039;ll then use these specs to make a dev (module) that will make a sort of wrapper so that it works<br />&lt;@anarcat&gt; hehe<br />&lt;@anarcat&gt; It&#039;s not obvious actually<br />&lt;sebas891&gt; anarcat: go, explain it to me a bit. Please.<br />&lt;@anarcat&gt; alright then<br />&lt;@anarcat&gt; so aegir, it&#039;s two parts<br />&lt;@anarcat&gt; the frontend and the backend<br />&lt;sebas891&gt; ok<br />&lt;@anarcat&gt; the frontend, is more or less a normal Drupal site, which runs the &#039;Hosting&#039; module<br />&lt;@anarcat&gt; The backend is mainly Drush and an extension which is called Provision<br />&lt;@anarcat&gt; That, you must be aware of :)<br />&lt;sebas891&gt; Yes :)<br />&lt;@anarcat&gt; The general idea is that the frontend is the part that handles &#039;sites&#039;, &#039;platforms&#039; etc<br />&lt;@anarcat&gt; that also, you know<br />&lt;@anarcat&gt; Each gizmo is represented by some nodes in the Drupal (system)<br />&lt;@anarcat&gt; it&#039;s all in the Hosting module&#039;s code<br />&lt;@anarcat&gt; that&#039;s Drupal again but non-standard<br />&lt;@anarcat&gt; when you want to do something with the nodes, you create &#039;tasks&#039;<br />&lt;sebas891&gt; ok<br />&lt;@anarcat&gt; that&#039;s where it starts to get a bit complicated<br />&lt;@anarcat&gt; each frontend module (sites, platforms etc) declares some tasks that apply to its context<br />&lt;@anarcat&gt; install&#039; type for &#039;site&#039;, &#039;verify&#039; for platform etc<br />::: alberto56 [~alberto56@koumbit.org] has joined #koumbit-ct<br />&lt;sebas891&gt; if I understand it right, one must register it then drush installs SPIPs before passing it to the frontend, right?<br />&lt;@anarcat&gt; I&#039;m getting there :)<br />&lt;@anarcat&gt; the tasks are registered in the MySQL DB<br />&lt;sebas891&gt; ok<br />&lt;@anarcat&gt; and after, the backend goes and reads the DB and calls the right provision command with drush<br />&lt;@anarcat&gt; eg drush provision-install site.example.com<br />&lt;@anarcat&gt; the arguments are passed via STDIN, in JSON, or via arguments (--argument=valeur)<br />&lt;sebas891&gt; ok<br />&lt;@anarcat&gt; <a href="http://www.json.org/" title="http://www.json.org/">http://www.json.org/</a><br />&lt;@anarcat&gt; a fairly standard javascript standard<br />&lt;@anarcat&gt; so, to do new things in aegir, there&#039;s two pieces<br />&lt;@anarcat&gt; one typically begins in the backend<br />&lt;sebas891&gt; ok<br />&lt;@anarcat&gt; So you code in Drush in order to do something<br />&lt;@anarcat&gt; example: the provision_boost module &#039;modifies&#039; the existing Verify tasks in order to configure the &#039;boost&#039; module in an existing Drupal site<br />&lt;@anarcat&gt; A certain provision_civicrm module is supposed to do the same thing, soon :)<br />&lt;@anarcat&gt; after that, once you have it working well, you then code the stuff in the frontend that is going to pass the right arguments to the backend so that Drush / Provision can call it as needed<br />&lt;sebas891&gt; ok<br />&lt;@anarcat&gt; that&#039;s the second piece<br />&lt;@anarcat&gt; you with me?<br />&lt;sebas891&gt; so, we want a &#039;provision_spip&#039; module :)<br />&lt;@anarcat&gt; maybe<br />&lt;@anarcat&gt; it&#039;s there that it starts to get complicated<br />&lt;@anarcat&gt; A priori, Drush is a very Drupal-specific application<br />&lt;@anarcat&gt; You might want to avoid working with Drush<br />&lt;@anarcat&gt; Presently, the frontend is hardcoded to call drush provision-$something<br />&lt;@anarcat&gt; But there&#039;s a bug open re: changing that<br />&lt;@anarcat&gt; So that one can call any command<br />&lt;@anarcat&gt; So long as the command respects the frontend protocol, it could be called<br />&lt;@anarcat&gt; no need to be in drush<br />&lt;@anarcat&gt; evidently, passing via dursh saves a lot of trouble because there are lots of functions already there<br />&lt;sebas891&gt; ok<br />&lt;@anarcat&gt; that&#039;s our first design decision to take<br />&lt;@anarcat&gt; drush or no drush?<br />&lt;@anarcat&gt; we can&#039;t decide this now, really<br />&lt;sebas891&gt; yeah...<br />&lt;@yannn&gt; !po<br />&lt;goumbot&gt; kproject: yannn: punched out, worked 1h35m1s on task DÃ©veloppement id=20081 (Gestion facturation)<br />&lt;@anarcat&gt; but I think that it will be perhaps better to try to use drush<br />&lt;goumbot&gt; kproject: yannn: worked 5h10m10s in 6 punches<br />&lt;sebas891&gt; ok<br />&lt;@anarcat&gt; the thing is that if the installer is based on drush, it can not be returned back into the SPIP community<br />&lt;@anarcat&gt; it&#039;s separate<br />::: alberto56 [~alberto56@koumbit.org] has quit [Quit: This computer has gone to sleep]<br />::: yannn [~yannn@koumbit.org] has quit [Quit: yannn]<br />&lt;@anarcat&gt; for example, drush provision-install copies all the Drupal install.php code<br />&lt;@anarcat&gt; because install.php cannot be called via the command line<br />&lt;@anarcat&gt; in that area, d7 has come a long way<br />&lt;@anarcat&gt; And we could remove a lot of Provision code which was duplicated from Drupal<br />&lt;@anarcat&gt; that makes maintenance easier<br />&lt;@anarcat&gt; if you don&#039;t do that, you&#039;re stuck synchronising your installation code with SPIP constantly<br />&lt;@anarcat&gt; you&#039;ll always forget something<br />&lt;@anarcat&gt; If you have a separate commandline installer, it can be delivered to SPIP and they can maintain it<br />&lt;@anarcat&gt; You&#039;re just responsible for the &#039;glue&#039; in aegir<br />&lt;@anarcat&gt; If you do it directly in drush, it&#039;s going to be better, but harder<br />&lt;sebas891&gt; ok<br />&lt;@anarcat&gt; so, first decision<br />&lt;@anarcat&gt; drush or no drush<br />&lt;@anarcat&gt; the second decision, I believe, is multi-spip or not<br />&lt;@anarcat&gt; presently, Drupal is multi-site<br />&lt;@anarcat&gt; and aegir utilises that to the maximum<br />&lt;@anarcat&gt; There is the concept of the platform and the site which is very present and distinct<br />&lt;@anarcat&gt; Logically, one does it similarly with SPIP<br />&lt;@anarcat&gt; in the frontend<br />&lt;@anarcat&gt; and in the backend<br />&lt;@anarcat&gt; in the frontend, it&#039;s necessary to add a &#039;type&#039; of platforms<br />&lt;@anarcat&gt; ... this brings me back to the backend<br />&lt;@anarcat&gt; In drush, there&#039;s the concept of the &#039;engine&#039;<br />&lt;@anarcat&gt; eg, Drupal is an &#039;engine&#039; of Drush<br />&lt;sebas891&gt; yeah.. not simple, all that<br />&lt;@anarcat&gt; ok, I have lost you here :)<br />&lt;@anarcat&gt; Let&#039;s back up<br />&lt;@anarcat&gt; Drush / drupal/ aegir are multisites, presently<br />&lt;sebas891&gt; I see, I see<br />&lt;sebas891&gt; yes, ok<br />&lt;@anarcat&gt; SPIP supports multisite as well, if I understand well<br />&lt;sebas891&gt; I&#039;m trying to think in SPIP mode, a bit, and SPIP by default, is not multisite<br />&lt;@anarcat&gt; yeah<br />&lt;sebas891&gt; Multisite is a hack, it&#039;s that that you have seen the other time<br />&lt;@anarcat&gt; Well let&#039;s put the idea that you will have SPIP 1.9.1 which will be a directory, which is going to contain many sites<br />&lt;@anarcat&gt; yes yes, but the most biggest hack, is the installer, not necessarily how it does it underneath<br />&lt;@anarcat&gt; as long as there&#039;s one database per site, that&#039;s not so bad<br />&lt;sebas891&gt; ok<br />&lt;@anarcat&gt; so<br />&lt;@anarcat&gt; you have your SPIP 1.9.1<br />&lt;@anarcat&gt; your code<br />&lt;@anarcat&gt; which is a &#039;platform&#039;<br />&lt;sebas891&gt; ok<br />&lt;@anarcat&gt; like how Drupal 6.15 is a platform in aegir<br />&lt;@anarcat&gt; except there, it&#039;s going to be another type of platform<br />&lt;@anarcat&gt; the concept is not very well developed in aegir<br />&lt;@anarcat&gt; it&#039;s embryonic<br />&lt;@anarcat&gt; but there is the space and the opening for that<br />&lt;@anarcat&gt; in the community I mean<br />&lt;sebas891&gt; so, SPIP will be a type of platform, 1.9 the version of the SPIP platform type<br />&lt;@anarcat&gt; yes, that&#039;s it<br />&lt;@anarcat&gt; after that, in SPIP, I don&#039;t know how it works, but a &#039;site&#039; in Drupal is a directory (sites/site.example.com/), a MySQL database, and an Apache config (more or less)<br />&lt;sebas891&gt; how one passes from the platform to the site, that&#039;s it, the passing. How one does the multi-spip<br />&lt;@anarcat&gt; I imagine that in SPIP, that&#039;s what&#039;s similar: it&#039;s going to create a config file for the database, create a database, etc<br />&lt;@anarcat&gt; that&#039;s it<br />&lt;@anarcat&gt; so, that&#039;s something that needs knowing in SPIP<br />&lt;@anarcat&gt; Dissect the installation code to see what it does exactly<br />&lt;sebas891&gt; yes, there are some repositories. Eg /IMG<br />&lt;@anarcat&gt; yeah<br />&lt;@anarcat&gt; similar in Drupal (sites/example.com/files .../files/pictures/ ... settings.php etc)<br />&lt;@anarcat&gt; A good way to see would be to start with a naked SPIP, install a site (a multisite!) and check what&#039;s changed<br />&lt;@anarcat&gt; Both the DB file (?)<br />&lt;@anarcat&gt; after that, you can retrace the PHP code which generates these gizmos<br />&lt;@anarcat&gt; and port it in Drush<br />&lt;@anarcat&gt; ok. that&#039;s a good start<br />&lt;@anarcat&gt; the part &#039;port to drush&#039; is a horrible understatement :P<br />&lt;@anarcat&gt; I think that w&#039;ell have to go with drush to start with<br />&lt;@anarcat&gt; it will be easier for aegir<br />&lt;@anarcat&gt; so let&#039;s take that route for the first decision<br />&lt;sebas891&gt; so, it means rewriting the multi-site code of spip in Drush :)<br />&lt;@anarcat&gt; for the multi-spip part, it&#039;s going to require searching, testing, trying perhaps to create a site in arms (?), without writing any PHP<br />&lt;@anarcat&gt; that&#039;s it<br />&lt;@anarcat&gt; after that the script in Drush<br />&lt;@anarcat&gt; ideally copying the code directly<br />&lt;@anarcat&gt; ideally, it will be an &#039;engine&#039; in the Provision module<br />&lt;@anarcat&gt; I can give you a bit of code<br />&lt;@anarcat&gt; <a href="http://git.aegirproject.org/?p=provision.git;a=tree;f=platform" title="http://git.aegirproject.org/?p=provision.git;a=tree;f=platform">http://git.aegirproject.org/?p=provision.git;a=tree;f=platform</a><br />&lt;sebas891&gt; ok<br />&lt;@anarcat&gt; the platform code from the backend<br />&lt;@anarcat&gt; you see there is a &#039;Drupal&#039; directory there<br />&lt;sebas891&gt; yes.<br />&lt;@anarcat&gt; In there, there&#039;s an .inc file for each Provision command (install, verify etc)<br />&lt;@anarcat&gt; which has the specific code to install Drupal<br />&lt;@anarcat&gt; I&#039;m checking where the engine is declared<br />&lt;@anarcat&gt; ./platform/provision_drupal.drush.inc:function provision_drupal_drush_engine_drupal() {<br />&lt;mvc&gt; !po<br />&lt;goumbot&gt; kproject: mvc: punched out, worked 1h59m55s on task DÃ©veloppement id=21895 (views3 test)<br />&lt;goumbot&gt; kproject: mvc: worked 10h9m20s in 5 punches<br />&lt;@anarcat&gt; <a href="http://git.aegirproject.org/?p=provision.git;a=blob;f=platform/provision_drupal.drush.inc;h=9d37cf879bd1264fad24a7375ed9b4c94194d78d;hb=HEAD#l33" title="http://git.aegirproject.org/?p=provision.git;a=blob;f=platform/provision_drupal.drush.inc;h=9d37cf879bd1264fad24a7375ed9b4c94194d78d;hb=HEAD#l33">http://git.aegirproject.org/?p=provision.git;a=blob;f=platform/provision...</a><br />&lt;@anarcat&gt; The pass will probably declare an example function (?)<br />&lt;sebas891&gt; OK, I see<br />&lt;@anarcat&gt; make a platform/provision_spip.drush.inc file<br />&lt;@anarcat&gt; actually, it won&#039;t be directly in Provision, it&#039;ll be a contrib module<br />&lt;@anarcat&gt; but it will be provision_spip.drush.inc<br />&lt;@anarcat&gt; after that, it&#039;s there where it starts to be difficult<br />&lt;@anarcat&gt; These declarations serve just to call the right engine<br />&lt;@anarcat&gt; but at the moment all that is hardcoded in provision<br />&lt;@anarcat&gt; when you do provision-install, provision won&#039;t care that you&#039;re using SPIP<br />&lt;@anarcat&gt; It assumes that you&#039;re using Drupal<br />&lt;@anarcat&gt; so it&#039;ll do things likeso<br />&lt;@anarcat&gt;&nbsp; 283&nbsp;&nbsp;&nbsp;&nbsp; drush_include_engine(&#039;drupal&#039;, &#039;clear&#039;);<br />&lt;@anarcat&gt; au lieu de drush_include_engine($engine, &#039;clear&#039;)<br />&lt;@anarcat&gt; worse than that, that&#039;s install.inc<br />&lt;@anarcat&gt; <a href="http://git.aegirproject.org/?p=provision.git;a=blob;f=platform/install.provision.inc" title="http://git.aegirproject.org/?p=provision.git;a=blob;f=platform/install.provision.inc">http://git.aegirproject.org/?p=provision.git;a=blob;f=platform/install.p...</a><br />&lt;@anarcat&gt; install.provision.inc<br />&lt;@anarcat&gt; <a href="http://git.aegirproject.org/?p=provision.git;a=blob;f=platform/install.provision.inc#l40" title="http://git.aegirproject.org/?p=provision.git;a=blob;f=platform/install.provision.inc#l40">http://git.aegirproject.org/?p=provision.git;a=blob;f=platform/install.p...</a><br />&lt;@anarcat&gt;&nbsp;&nbsp; 40 function drush_provision_drupal_provision_install($url) {<br />&lt;@anarcat&gt;&nbsp;&nbsp; 43&nbsp;&nbsp; _provision_drupal_create_settings_file($url);<br />&lt;@anarcat&gt;&nbsp;&nbsp; 44&nbsp;&nbsp; drush_bootstrap(DRUSH_BOOTSTRAP_DRUPAL_SITE);<br />&lt;@anarcat&gt;&nbsp;&nbsp; 45 <br />&lt;@anarcat&gt;&nbsp;&nbsp; 46&nbsp;&nbsp; drush_include_engine(&#039;drupal&#039;, &#039;install&#039;);<br />&lt;@anarcat&gt;&nbsp;&nbsp; 47&nbsp;&nbsp; drush_set_option(&#039;installed&#039;, TRUE, &#039;site&#039;);<br />&lt;@anarcat&gt;&nbsp;&nbsp; 48&nbsp;&nbsp; _provision_drupal_maintain_aliases($url);<br />&lt;@anarcat&gt; beurk<br />&lt;@anarcat&gt; That&#039;s got Drupal all over it :)<br />&lt;sebas891&gt; It&#039;s very Drupal<br />&lt;@anarcat&gt; It&#039;ll be necessary to refactor this code so that it is called only if the platform is &#039;Drupal&#039;<br />&lt;sebas891&gt; so, it&#039;s asking for a rewrite of the code, there<br />&lt;@anarcat&gt; completely<br />&lt;@anarcat&gt; should probably fix the platform verification code (provision-verify) to detect what the correct platform is and store it<br />&lt;sebas891&gt; that&#039;ll make the code more proper and flexible<br />&lt;@anarcat&gt; yep that&#039;s it<br />&lt;sebas891&gt; it&#039;s no small task, all that<br />&lt;@anarcat&gt; But once it&#039;s done, it opens the door towards installing any sort of platform<br />&lt;@anarcat&gt; no, indeed<br />&lt;@anarcat&gt; but it&#039;s not so far off<br />&lt;@anarcat&gt; it&#039;s a week&#039;s work, I&#039;d say<br />&lt;@anarcat&gt; especially since it&#039;s not in the 0.4 roadmap<br />&lt;sebas891&gt; in Aegir, are you able to push to make it more flexible?<br />&lt;@anarcat&gt; it may be blocked a bit<br />&lt;@anarcat&gt; I think it&#039;s not in the priorities prior to the 1.0 (release), which is still not far off<br />&lt;sebas891&gt; it&#039;s in the roadmap?<br />&lt;@anarcat&gt; well, it&#039;s the notion of &#039;API Freeze&#039;<br />&lt;@anarcat&gt; because basically, that&#039;s the way<br />&lt;@anarcat&gt; all the concepts of the engines, of commands... that&#039;s the Aegir API<br />&lt;@anarcat&gt; which is really not stable<br />&lt;@anarcat&gt; it&#039;s changed completely between two releases<br />&lt;@anarcat&gt; So someone who will do a SPIP plugin will have a job to do to follow the next release<br />&lt;@anarcat&gt; I think the (current) focus on multiserver is not (a) bad (thing)<br />&lt;@anarcat&gt; it will surely be possible to do a huge cleanup after the 0.4 (release)<br />&lt;@anarcat&gt; it will be more open<br />&lt;@anarcat&gt; it&#039;ll be a bit difficult to push<br />&lt;@anarcat&gt; but I can try, if there realy are some good patches which return<br />&lt;sebas891&gt; So, it&#039;ll happen, but not in the short term<br />&lt;@anarcat&gt; well..<br />&lt;@anarcat&gt; the problem is that it there isn&#039;t interest in the community to do it directly<br />&lt;@anarcat&gt; everyone is whole-heartedly Drupal<br />&lt;@anarcat&gt; (it&#039;s not that) everyone is not against it<br />&lt;@anarcat&gt; but it&#039;s the not the actual community who&#039;s going to do the job<br />&lt;@anarcat&gt; They&#039;ll accept the patches<br />&lt;@anarcat&gt; but they&#039;re going to be very critical :)<br />&lt;sebas891&gt; it&#039;ll take a new (?),.. with patches (?)<br />&lt;@anarcat&gt; yes<br />&lt;@anarcat&gt; He must understand very well what I&#039;ve explained above<br />&lt;@anarcat&gt; (he should log somewhere else besides) (?)<br />&lt;@anarcat&gt; in fact<br />&lt;@anarcat&gt; <a href="http://groups.drupal.org/aegir/roadmap" title="http://groups.drupal.org/aegir/roadmap">http://groups.drupal.org/aegir/roadmap</a><br />&lt;@anarcat&gt; honestly, I don&#039;t see it arriving before 0.4 is out<br />&lt;sebas891&gt; what&#039;s cool is that SPIP is super-stable from the side of the installer<br />&lt;@anarcat&gt; because we&#039;ll want to get a beta out for Drupalcon, in April<br />&lt;@anarcat&gt; and try to keep the code stable<br />&lt;@anarcat&gt; on the other hand, it&#039;s perfectly possible to have a parallel development branch in git<br />&lt;@anarcat&gt; also<br />&lt;@anarcat&gt; one thing that is possible to do immediately, is to make a command line installer in SPIP<br />&lt;@anarcat&gt; make a clean web installer<br />&lt;sebas891&gt; that&#039;s what I thought<br />&lt;@anarcat&gt; and it&#039;ll be just a couple PHP functions which take some arguments<br />&lt;@anarcat&gt; a CLI installer<br />&lt;@anarcat&gt; in any case, it&#039;s a big job<br />&lt;@anarcat&gt; and make it in drush<br />&lt;@anarcat&gt; in fact, I would do it in two passes<br />&lt;@anarcat&gt; put:<br />&lt;@anarcat&gt; 0. test multispip in order to see how it works and successfully install a site by hand, without the web installer, just create the files and load the SQL dumps<br />&lt;@anarcat&gt; 1. code the PHP funcitons which do it, very simply, but with some arguments<br />&lt;@anarcat&gt; 2. integrate that in a Drush module, to understand how Drush works<br />&lt;@anarcat&gt; after that, we&#039;ll start speaking with aegir<br />&lt;@anarcat&gt; 3. do a code cleanup of the platform verifucation (provision-verify) in order to detect the platforms, around the engines<br />&lt;@anarcat&gt; 4. Call the right functions when a task is called, simply via the engine system<br />&lt;@anarcat&gt; 5. correct the drush module to implement the engine commands<br />&lt;@anarcat&gt; after that, do the frontend<br />&lt;@anarcat&gt; 6. add the fields in the database for the platform type<br />&lt;@anarcat&gt; 7. add the fields in the interface for choosing the platform type.. etc<br />&lt;@anarcat&gt; there you go, that&#039;s not bad<br />&lt;sebas891&gt; wow<br />&lt;@anarcat&gt; I think that 3) to 7) won&#039;t get into Aegir before April<br />&lt;@anarcat&gt; But it&#039;s possible to do the development in parallel in git<br />&lt;@anarcat&gt; 0) to 5) are in the backend<br />&lt;@anarcat&gt; 3) to 5) in provision<br />&lt;@anarcat&gt; We should seek integration with drush firstly<br />&lt;@anarcat&gt; 6) and 7) are in the frontend<br />&lt;@anarcat&gt; yes<br />&lt;@anarcat&gt; it&#039;s in order, the list<br />&lt;sebas891&gt; yes yes<br />&lt;@anarcat&gt; <a href="http://groups.drupal.org/node/25841" title="http://groups.drupal.org/node/25841">http://groups.drupal.org/node/25841</a><br />&lt;@anarcat&gt; !snarf<br />&lt;goumbot&gt; groups.drupal.org: Release goals for 0.4 | groups.drupal.org<br />&lt;@anarcat&gt;note that here, we make the choice to use drush as the backend<br />&lt;@anarcat&gt;And thus, to not do evil with Provision to digest it (?), we want to work with something other than Drupal â€“ this is a good thing I think<br />&lt;@anarcat&gt;on the other hand, it will also be possible to implant a backend of something other than drush<br />&lt;@anarcat&gt;that itself is based on the JSON protocol<br />&lt;@anarcat&gt;This time the work is done more in the frontend<br />&lt;@anarcat&gt;And here I&#039;m less familiar with the patent, I&#039;m worried it&#039;s too complicated<br />&lt;sebas891&gt; with JSON?<br />&lt;@anarcat&gt;yes<br />&lt;@anarcat&gt;JSON is the giving format that passes the information between the frontend and the backend<br />&lt;@anarcat&gt;eg the DB passwords, the choice of the frontend user, all passed via that<br />&lt;sebas891&gt; the Drush people, are open to do management of other CMSs? You believe?<br />&lt;@anarcat&gt;No, I don&#039;t think so<br />&lt;@anarcat&gt;But who cares, Provision is<br />&lt;@anarcat&gt;Drush doesn&#039;t depend on Drupal<br />&lt;@anarcat&gt;That, that won&#039;t change<br />&lt;@anarcat&gt;It&#039;s very specific to Drupal<br />&lt;@anarcat&gt;But it can roll without it<br />&lt;sebas891&gt; The coolest thing, will be to copy as much as possible the method of Drupal installation/management (?)<br />&lt;sebas891&gt; So that it thinks it installs Drupal :) but it&#039;s SPIP<br />&lt;@anarcat&gt;ok, I&#039;m going home<br />&lt;sebas891&gt; ok<br />&lt;sebas891&gt; thanks for the session<br />&lt;@anarcat&gt;what&#039;ll we do with all this good info<br />&lt;@anarcat&gt;I should translate it into English to do something good with it<br />&lt;sebas891&gt; copy and paste it into the wiki?<br />&lt;@anarcat&gt;ok I&#039;ll do that for the moment</code></div>
+</pre>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="talk_forbidden first last"><span><a href="../../user/login/index-269.html?destination=node%2F415%23comment-form">Login</a> or <a href="../../user/register/index-269.html?destination=node%2F415%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-316" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../316/index.html">Migrating Aegir to Aegir</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>I wanted to migrate from Aegir 0.4-alpha8 to 0.4-beta2. I tried the upgrade a few times with no luck. I am assuming that was due to missing components on my Gentoo system. So, I just built a new Debian Box and installed 0.4-beta2.</p>
+
+<p>Attached is the documentation I used to migrate platforms and sites.
+This was written inhouse for staff to use to migrate about 40 sites.</p>
+
+<p>Perhaps it will be of some help to others.</p>
+
+<p>A big THANKS to the folks on the IRC channel.</p><div class="itu-attachments"><table class="itu-attachment-list withoutstats sticky-enabled" id="attachments">
+ <thead><tr><th class="preview">Preview</th><th class="file">Attachment</th><th class="size">Size</th> </tr></thead>
+<tbody>
+ <tr class="odd"><td class="mime mime-pdf"></td><td class="file"><a href="../../sites/community.aegirproject.org/files/aegirmigrationprocess-a8-to-b2/index.pdf">aegirmigrationprocess-a8-to-b2.pdf</a></td><td class="size">93.26 KB</td> </tr>
+</tbody>
+</table>
+</div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="talk_forbidden first last"><span><a href="../../user/login/index-270.html?destination=node%2F316%23comment-form">Login</a> or <a href="../../user/register/index-270.html?destination=node%2F316%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+
+<div  id="node-642" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../drupalcon-2011-london-sessions/index.html">DrupalCon 2011 London sessions</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_31 first"><a href="../../category/keywords/2011/index.html" rel="tag" title="">2011</a></li>
+<li class="taxonomy_term_4"><a href="../../taxonomy/term/4/index.html" rel="tag" title="This level is for users who have access to only their sites and not able to manage all Aegir features, accounts or the server/system.">Client</a></li>
+<li class="taxonomy_term_27"><a href="../../category/level/developer/index.html" rel="tag" title="This level is generally for users interested in further developing the Aegir system itself, or extending it with contributed modules.">Developer</a></li>
+<li class="taxonomy_term_30"><a href="../../category/keywords/drupalcon/index.html" rel="tag" title="">DrupalCon</a></li>
+<li class="taxonomy_term_28"><a href="../../category/keywords/drupalcon-london/index.html" rel="tag" title="">DrupalCon London</a></li>
+<li class="taxonomy_term_3"><a href="../../taxonomy/term/3/index.html" rel="tag" title="This level is for users, who are using hosted Aegir version, without access to the server root, with features limited to those allowed by their host, and often with Aegir UI changed/simplified.">Hosted</a></li>
+<li class="taxonomy_term_32"><a href="../../category/keywords/pre-conference-training/index.html" rel="tag" title="">pre-conference training</a></li>
+<li class="taxonomy_term_29"><a href="../../category/keywords/sessions/index.html" rel="tag" title="">sessions</a></li>
+<li class="taxonomy_term_2 last"><a href="../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><p>We are submitting (at least) three sessions for Drupalcon london this year. This page will serve as a placeholder for those sessions and the agenda.</p>
+
+<p><a href="http://london2011.drupal.org/conference/sessions/aegir-one-drupal-rule-them-all" title="http://london2011.drupal.org/conference/sessions/aegir-one-drupal-rule-them-all">http://london2011.drupal.org/conference/sessions/aegir-one-drupal-rule-t...</a></p>
+
+<p><a href="http://london2011.drupal.org/conference/sessions/aegir-based-business-models" title="http://london2011.drupal.org/conference/sessions/aegir-based-business-models">http://london2011.drupal.org/conference/sessions/aegir-based-business-mo...</a></p>
+
+<p><a href="http://london2011.drupal.org/conference/sessions/extending-aegir" title="http://london2011.drupal.org/conference/sessions/extending-aegir">http://london2011.drupal.org/conference/sessions/extending-aegir</a></p>
+
+<p>Slides for the Aegir introduction session are here: <a href="http://ietherpad.com/r1BWvO36ws" title="http://ietherpad.com/r1BWvO36ws">http://ietherpad.com/r1BWvO36ws</a></p>
+
+<p>Also of note, Koumbit's pre-conference training proposal was accepted: <a href="http://london2011.drupal.org/conference/training#hostingsystem">Aegir Hosting System: Deep Dive</a></p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="talk_forbidden first last"><span><a href="../../user/login/index-271.html?destination=node%2F642%23comment-form">Login</a> or <a href="../../user/register/index-271.html?destination=node%2F642%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/518?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:51:21 GMT -->
+</html>

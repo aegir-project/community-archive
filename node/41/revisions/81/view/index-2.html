@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/41/revisions/81/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:19:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../77/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../284/index.html" />
+<link rel="prev" href="../../../../77/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../284/index.html" />
+<link rel="prev" href="../../../../77/index.html" />
+<link rel="up" href="../../../../../developing/architecture/index.html" />
+<link rel="next" href="../../../../284/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Provision - the Aegir backend. from Wed, 10/27/2010 - 17:51 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-41" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../index.html">Provision - the Aegir backend.</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-41'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/4/index.html" class="username" title="View user profile.">adrian</a> on 10/27/2010 - 17:51</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Each of the major entities managed by Aegir (namely servers, platforms and sites) are represented by nodes in the front end, which in turn generate Drush 'named contexts' in the backend. Named contexts are similar to what Drush 3.0 refers to as 'site aliases', but are more structured and cover more than just sites.</p>
+
+<p>Whenever you create or edit a node on the front end, Aegir will create or update the named context on the backend, and any tasks run on the entity will be run on that named context, ie:</p>
+
+<pre><code>drush @server_master provision-verify
+</code></pre>
+
+<p>All of the actual work related to managing your system is done by the backend, and the front end primarily serves as a way
+to manage these aliases. You can very easily use the backend on it's own if you so choose.</p>
+
+<h3>Creating or updating named contexts.</h3>
+
+<p>Contexts are created and updated through the provision-save command. The format of the command is :</p>
+
+<pre><code>drush provision-save @contextname --context_type=type --property=value --other_property=value
+</code></pre>
+
+<p>Every time this command is called, it will update the named context and only modify the properties that have been specified. It is important to note that the provision-save command <strong>never</strong> has a site alias or context name before the  command, but requires you to specify which context you are modifying as the first argument.</p>
+
+<h4>Deleting named contexts.</h4>
+
+<p>To delete an existing named context, you simply need to pass the 'delete' option to the provision-save command, ie:</p>
+
+<pre><code>drush provision-save @contextname --delete
+</code></pre>
+
+<h3>Using named contexts</h3>
+
+<p>Named contexts are used in 3 ways in provision: as aliases, arguments or options.</p>
+
+<p><strong>Aliases :</strong> Aliases appear to the left of the drush command, and are making use of the Drush 'site alias' functionality.</p>
+
+<pre><code># Verify the site represented by @example.com
+drush @example.com provision-verify 
+</code></pre>
+
+<p><strong>Options :</strong> Certain options to provision-save require you to pass the alias of another named context of a specific type,
+and uses this information to build relationships between objects.</p>
+
+<pre><code> # generate a new site context in the directory represented by @platform_test
+ drush provision-save @example.com --context_type=site --uri=example.com --platform=@platform_example
+</code></pre>
+
+<p><strong>Arguments :</strong> A select few provision commands require you to pass the alias of another specific type of named context as an argument.</p>
+
+<pre><code># Migrate the site to the platform represented by @platform_newversion
+drush @example.com provision-migrate @platform_newversion
+</code></pre>
+
+<h2>Context types</h2>
+
+<p>There are (currently) 3 different entities represented as named contexts in the aegir backend. You determine which type of entity you are working with by specifying the context_type option to the provision-save command. You dont need to specify it every time, but it is best to always explicitly specify it, just in case.</p>
+
+<p>Because the namespace of all contexts is shared, they each have different naming conventions to avoid collisions.
+There are certain named contexts of each type which are always present in the system.</p>
+
+<p>Each of the context types have different semantics and properties, and certain provision commands will only operate on certain types of entities.</p>
+
+<h3>Server contexts</h3>
+
+<p><strong>Naming guideline :</strong> Server with a hostname of server.example.com becomes @server_serverexamplecom.</p>
+
+<p><strong>Special contexts :</strong> @server_master always refers to the local server where aegir is installed.</p>
+
+<p><strong>Required properties :</strong></p>
+
+<ul>
+<li><strong>remote_host :</strong> This should always be set to the FQDN of the server being managed.</li>
+</ul>
+
+<p><strong>Services :</strong> Servers are the only entities which have services associated to them. Services are things such as http, db or dns.</p>
+
+<p>Each service may select one service_type, which chooses which implementation to load for this service. Examples
+of these are the 'mysql' implementation of the 'db' service, or the 'apache' and 'apache_ssl' implementations of the http
+service.</p>
+
+<p>All services that are found by Aegir are enabled, but unless you specifically select one of the implementations,
+the 'null' service type is loaded. Each service type has additional required properties and values that can be passed
+to it, but describing them all is outside of the scope of this document.</p>
+
+<p><strong>Important commands :</strong></p>
+
+<ul>
+<li><strong>provision-verify :</strong> Verify that the configuration is correct and fix them if they aren't. </li>
+</ul>
+
+<p><strong>Example :</strong></p>
+
+<pre><code># Enable a new remote server hosting sites with apache on port 8080
+drush provision-save @server_webexamplecom --context_type=server \
+  --remote_host=web.example.com \
+  --http_service_type='apache' \
+  --http_port=8080
+
+# Verify that the settings are correct
+drush @server_webexamplecom provision-verify --debug
+</code></pre>
+
+<h3>Platform contexts</h3>
+
+<p>Platforms are how aegir refers to a specific copy of Drupal checked out on a file system. Platforms are hosted on web servers and sites are hosted on platforms.</p>
+
+<p><strong>Naming guideline :</strong> A platform in /var/aegir/codebase-6.1 becomes @platform_codebase61 , but this is not strictly enforced. We only use that naming convention when we do not have a node representing the platform available. If a node is available, we use the title of the node to generate the context name.</p>
+
+<p>Basically, you can name your platform anything but it should still be prefixed with 'platform_'.</p>
+
+<p><strong>Special contexts :</strong> There are no special contexts per se, but the hostmaster-install and hostmaster-migrate commands generate aliases for the hostmaster platform in the form of '@platform_hostmaster$version'. If the front end is present,
+one or more of these contexts are usually available too.</p>
+
+<p><strong>Required properties :</strong></p>
+
+<ul>
+<li><strong>root :</strong> The absolute path to a Drupal directory, generally in the form /var/aegir/platformdir.</li>
+</ul>
+
+<p><strong>Optional properties :</strong></p>
+
+<ul>
+<li><strong>web_server :</strong> The name of a server context that provides the http service. The default is to @server_master</li>
+<li><strong>makefile :</strong> The absolute path or url to a <a href="http://drupal.org/project/drush_make">drush make</a> makefile. If the root directory does not exist and the makefile property does, provision will call drush_make to attempt to create the directory.</li>
+</ul>
+
+<p><strong>Important commands :</strong></p>
+
+<ul>
+<li><strong>provision-verify :</strong> This will ensure that all the files are the correct permissions, and are all present on the correct remote servers. Also rebuild package database. Run this command whenever the contents of the platform changes.</li>
+</ul>
+
+<p><strong>Example :</strong></p>
+
+<pre><code># New open atrium platform in /var/aegir/atrium-head that will be built from a remotely hosted
+# makefile and published on an external web server.
+drush provision-save @platform_atriumhead --context_type=platform \
+        --root=/var/aegir/atrium-head \
+        --web_server=@server_webexamplecom \
+        --makefile='http://omega8.cc/dev/atrium_stub.make.txt'
+
+# Verify settings and generate the directory with drush make, pushing to the remote server after.
+drush provision-verify @platform_atriumhead
+</code></pre>
+
+<h3>Site contexts</h3>
+
+<p><strong>Naming guidelines :</strong> A site with the url 'site1.example.com' becomes @site1.example.com. The context name is always the url.</p>
+
+<p><strong>Special contexts :</strong> @hostmaster always refers to the site running the hostmaster front end. This helps with debugging and makes it more easily scriptable.</p>
+
+<p><strong>Required properties :</strong></p>
+
+<ul>
+<li><strong>uri :</strong> The FQDN of the site. should match the context name.</li>
+<li><strong>platform :</strong> The name of a platform context that the site will be hosted on.</li>
+</ul>
+
+<p><strong>Optional properties :</strong></p>
+
+<ul>
+<li><strong>db_server :</strong> The name of a server context which provides the db server. defaults to @server_master.</li>
+<li><strong>client_email :</strong> The email address to send the login information for the admin user.</li>
+<li><strong>profile :</strong> The installation profile the site is running. dependent on the platform supporting it.</li>
+<li><strong>language :</strong> The ISO language code of the site. dependent on the platform and profile supporting it.</li>
+</ul>
+
+<p><strong>Important commands :</strong></p>
+
+<p>Almost all of the provision commands are related to sites, so this is just the very core of them. Check drush help for more.</p>
+
+<ul>
+<li><strong>provision-install :</strong> Install the site represented by the context. Just creating the context doesn't install the site yet.</li>
+<li><strong>provision-verify :</strong> Verify the site is running correctly, and ensure the files are all published to the correct servers.</li>
+<li><strong>provision-delete :</strong> Delete the site and all it's information. The context will still be there.</li>
+</ul>
+
+<p><strong>Example :</strong></p>
+
+<pre><code># Set up a new site to be installed on the open atrium platform (hosted on a remote server),
+# using an external database server , with the openatrium profile and localize it into spanish.
+drush provision-save @atrium.example.com --context_type=site \
+        --uri=atrium.example.com \
+        --platform=@platform_atriumhead \
+        --db_server=@server_dbexamplecom \
+        --client_email=client@example.com \
+        --profile=openatrium \
+        --language=es
+
+# Install the new site to the specifications requested above.
+drush @atrium.example.com provision-install --debug
+
+# Verify the site to make sure everything is ok.
+drush @atrium.example.com provision-verify --debug
+</code></pre>
+
+<h4>Importing contexts into the front end</h4>
+
+<p>Hostmaster provides a drush command which will attempt to generate or updates front end nodes that match your defined contexts. To import a context into the front end, just run :</p>
+
+<pre><code>drush @hostmaster hosting-import @contextname
+</code></pre>
+
+<p>This will import that context, and every context it depends on into the front end. This is useful for integration with other systems such as the <a href="http://github.com/Vertice/puppet-aegir">puppet-aegir module</a> for <a href="http://puppetlabs.com/">Puppet</a>, which can add newly configured servers directly to the front end.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-359.html?destination=node%2F41%23comment-form">Login</a> or <a href="../../../../../user/register/index-359.html?destination=node%2F41%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-1864"></a>
+
+
+<div  id="comment-1864" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/jonathan-stein/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="Jonathan Stein&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/jonathan-stein/index.html" class="username" title="View user profile.">Jonathan Stein</a></div><div class='date'>7:16pm Mar 3, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="../../../talk/index.html#comment-1864">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>If you want to migrate a site to a new database server, use the property --new_db_server ! (And remember to run hosting-import afterwards to update the front end). Example:
+<div class="codeblock"><code>drush @sitexxx provision-migrate @platform_yyy --new_db_server=@server_zzz<br />drush @hostmaster hosting-import @sitexxx</code></div></p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../../../../user/login/index-359.html?destination=node%2F41%23comment-form">Login</a> or <a href="../../../../../user/register/index-359.html?destination=node%2F41%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/41/revisions/81/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:19:52 GMT -->
+</html>

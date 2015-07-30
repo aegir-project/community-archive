@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/2442/revisions/4688/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 20:59:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Services returns false from Mon, 03/25/2013 - 14:45 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2442" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../../../../users/driesverlinden/index.html" title="View user profile."><img src="../../../../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="driesverlinden&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../../../../users/driesverlinden/index.html" class="username" title="View user profile.">driesverlinden</a></div><div class='date'>2:45pm Mar 25, 2013</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="../../../../../discuss/services-returns-false/index.html">Services returns false</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_62 first"><a href="../../../../../category/keywords/aegir/index.html" rel="tag" title="">Aegir</a></li>
+<li class="taxonomy_term_331"><a href="../../../../../category/keywords/hostmaster/index.html" rel="tag" title="">hostmaster</a></li>
+<li class="taxonomy_term_169 last"><a href="../../../../../category/keywords/services/index.html" rel="tag" title="">services</a></li>
+</ul></div><p>I'm trying to make a new site in aegir via a service. 
+But when I send my request it returns a boolean false / empty array.</p>
+
+<p>I can login with the same service. No problem there.
+The resource is active and the permissions are also right.</p>
+
+<p>Anyone an idea?</p>
+
+<p>[code]
+// Server REST - node.create
+$request_url = 'http://host/service/hosting_site/';</p>
+
+<p>// node data
+$node_data = array(
+    'url'       =&gt; 'test',
+    'data'      =&gt; array(   // REQUIRED FIELDS
+                        'title'                 =&gt; 'test',
+                        'type'                  =&gt; 'site',
+                        'profile'               =&gt; 'hostmaster',
+                        'platform'              =&gt; 'hostmaster',
+                        'site_language'         =&gt; 'nl',
+                        'db_server'             =&gt; 'localhost', 
+                        'client'                =&gt; 'api',
+                    ),
+);
+$node_data = http_build_query($node_data);</p>
+
+<p>// Define cookie session
+$cookie_session = $logged_user-&gt;session_name . '=' . $logged_user-&gt;sessid;</p>
+
+<p>// cURL
+$curl = curl_init($request_url);
+curl_setopt($curl, CURLOPT_HTTPHEADER, array('Accept: application/json')); // Accept JSON response
+curl_setopt($curl, CURLOPT_POST, 1); // Do a regular HTTP POST
+curl_setopt($curl, CURLOPT_POSTFIELDS, $node_data); // Set POST data
+curl_setopt($curl, CURLOPT_HEADER, FALSE);  // Ask to not return Header
+curl_setopt($curl, CURLOPT_COOKIE, $cookie_session); // use the previously saved session
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($curl, CURLOPT_FAILONERROR, TRUE);</p>
+
+<p>$response = curl_exec($curl);
+$http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);</p>
+
+<p>if ($http_code == 200) {
+  // Convert json response as array
+  $node = json_decode($response);
+}
+else {
+  // Get error msg
+  $http_message = curl_error($curl);
+  die($http_message);
+}</p>
+
+<p>print_r('node: ');
+print_r($node);</p>
+
+<p>curl_close($curl);
+unset($curl);
+[/code]</p>
+
+<p>My return: 
+[code]
+loggedin node: Array ( [0] =&gt; )
+[/code]</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-450.html?destination=node%2F2442%23comment-form">Login</a> or <a href="../../../../../user/register/index-450.html?destination=node%2F2442%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/2442/revisions/4688/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 20:59:17 GMT -->
+</html>

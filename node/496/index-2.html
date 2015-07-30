@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/496?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:17:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Freeze exception to refactor the client node type? | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-496" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/anarcat/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-78/index.jpg" alt="anarcat&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a></div><div class='date'>6:13pm Mar 17, 2011</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Freeze exception to refactor the client node type?</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p>We have been pretty loose on the <a href="../360/index.html">announced freeze</a> so far and have merged a bunch of non-critical fixes in the release candidates. While this is against our policy, this is our first attempt at really stabilizing the code and I don't think it had ill effects. Now I need to do something that could have adverse consequences for production sites out there.</p>
+
+<p>First, a bit of context: I have done a lot of work this week to get a <a href="../494/index.html">better security model</a> working for Aegir. This could allow for better intersite security (site A not being able to touch site B files) and, more importantly, allow regular users to run drush on their sites. The problem is that to integrate properly with external authentication (like LDAP or others), we need to cleanup the Client node type. This is an <a href="https://drupal.org/node/962330">old</a> <a href="https://drupal.org/node/443258">issue</a> (2009!) in aegir that I have been annoyed with for a long time.</p>
+
+<p>The idea suggested in <a href="https://drupal.org/node/962330">#962330</a> is that we refactor the client content type to have only two fields: the node title (the client name) and an internal name (mostly hidden from the user). This would involve dropping the Organisation, Email and Name fields from the content type. From there, a bunch of things follow: <a href="https://drupal.org/node/336068">notification emails can be sent to the user operating the site instead of the client email</a>, we fix the <a href="https://drupal.org/node/962338">client duplication issue</a> we currently have, and allow for much better interoperability with other CRMs (my target is LDAP integration).</p>
+
+<p>So far, I have been able to implement a patchset (in the <a href="http://drupalcode.org/project/hostmaster.git/shortlog/refs/heads/dev-refactor-client-962330">dev-refactor-client-962330</a> branch) that allows for a somehow smooth transition: the client title is taken from the organisation, the old client name or the email, taking the first available in that order. The internal name is "bruteforced" to be unique based on a silly algorithm of adding an integer after duplicates. We keep the email, name and organisation fields in the database for patching up after the upgrade, but note that the email, organisation and name fields will be dropped from the hosting_client table in the 2.x branch.</p>
+
+<p>So while this transition could be destructive to some users (the node title is changed), I think it is really important to do it <em>now</em> while we're not that stable, at least officially. Waiting for 2.x for this change would mean a significant delay on my side and a much bigger impact, if we consider the adoption we will get once 1.x is really out there. I also think the current node data is mostly useless and unusable as it is, so it would only clean up things for us.</p>
+
+<p>The big question is: is anybody really using those email and organisation fields out there?</p>
+
+<p>Does anybody have an objection to me merging in those changes in the stable branch? They will certainly be merged in the master branch anyways (unless somebody suggests a better solution), so it's a bullet we'll all have to bite at some point, better do it now, I think.</p>
+
+<p>Let's give this a week delay for testing and feedback, then I'll merge this in.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-417.html?destination=node%2F496%23comment-form">Login</a> or <a href="../../user/register/index-417.html?destination=node%2F496%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/496?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:17:23 GMT -->
+</html>

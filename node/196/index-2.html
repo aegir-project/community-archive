@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/196?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:04 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../180/index.html" />
+<link rel="up" href="../../content/scrums/archive-2010/index.html" />
+<link rel="next" href="../210/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2010-12-09 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-196" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2010-12-09</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first"><a href="../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+<li class="taxonomy_term_6 last"><a href="../../taxonomy/term/6/index.html" rel="tag" title="">weekly scrums</a></li>
+</ul></div><div id='diff-inline-196'><pre>
+(02:57:33 PM) ergonlogic: everyone: Weekly scrum being in ~5 mins
+(02:57:57 PM) mig5: trying to wake up :)
+(03:01:49 PM) anarcat: hey hey!
+(03:01:55 PM) anarcat: good morning world!
+(03:02:01 PM) omega8cc: hey
+(03:02:10 PM) ***anarcat tries to play the gooooood moooorning vietnam cue here
+(03:02:12 PM) mig5: good morning, here at least :)
+(03:02:16 PM) anarcat: so
+(03:02:31 PM) anarcat: welcome to our weekly scrum session, we have ... 13 minutes left
+(03:02:35 PM) mig5: woot
+(03:02:41 PM) anarcat: we failed at the first directive, and i'm sorry for that (start on time, damnit!)
+(03:02:50 PM) ergonlogic: my fault
+(03:02:51 PM) anarcat: and i'll start with my stuff, i didn't do much last week
+(03:03:02 PM) anarcat: in fact, nothing i can remember
+(03:03:14 PM) anarcat: next week is likely to be similar as i'm over[load]ed with thousands of internal needles
+(03:03:20 PM) anarcat: that's all for me :)
+(03:03:22 PM) mig5: yay
+(03:03:29 PM) mig5: ok
+(03:03:47 PM) mig5: to carry on that tune, i didn't do much last week, i have been trying to catch up on some tickets
+(03:03:53 PM) mig5: my immediate aims are,
+(03:04:04 PM) mig5: to test the debian packages now that i know they're in unstable
+(03:04:07 PM) mig5: which i will do today
+(03:04:24 PM) mig5: and possibly help ergonlogic with this clients permission stuff
+(03:04:45 PM) mig5: after that i will start looking at the 'for review' patches in the queue per our beta2 plans
+(03:04:51 PM) mig5: but that may not get to happen until next week
+(03:05:01 PM) anarcat: rc2 you mean
+(03:05:02 PM) mig5: that's about it from me
+(03:05:06 PM) anarcat: ok
+(03:05:08 PM) mig5: oh really
+(03:05:10 PM) mig5: rc2?
+(03:05:12 PM) anarcat: er
+(03:05:13 PM) anarcat: no
+(03:05:15 PM) anarcat: i don't
+(03:05:16 PM) mig5: haha
+(03:05:18 PM) ***anarcat is on crack, nevermind
+(03:05:24 PM) anarcat: i was confusing us with drush, sorry
+(03:05:29 PM) mig5: i would be happy to push for rc1 :)
+(03:05:32 PM) anarcat: ergonlogic?
+(03:05:48 PM) anarcat: sfyn is offline today, but i know he tried to get back into things and will keep on doing that
+(03:05:50 PM) ergonlogic: well, I'm working on the permission issue that mig5 mentioned
+(03:06:02 PM) ergonlogic: and the udev dependency
+(03:06:11 PM) anarcat: right, about that
+(03:06:22 PM) anarcat: i'm sure that moshe_work and other drush people would love to see that land in drush 4
+(03:06:27 PM) ergonlogic: just trying to get into the swing of things, and familiarize myslef with some of aegir's inner workings
+(03:06:32 PM) anarcat: but i'm not sure we'd make it for rc3 at this rate
+(03:06:51 PM) anarcat: how do you feel about this?
+(03:07:32 PM) ergonlogic: well, I think I'm about half way there on that issue
+(03:07:40 PM) anarcat: alright
+(03:07:41 PM) ergonlogic: but I still nee to post a patch
+(03:07:47 PM) ergonlogic: s/nee/need
+(03:07:48 PM) anarcat: ok
+(03:08:11 PM) anarcat: *and* it would then need to be ported up to drush... so we can safely assume we won't make it into drush 4, those guys are in a rush :)
+(03:08:20 PM) anarcat: speaking of drush
+(03:08:28 PM) mig5: in a rush or in a drush? :)
+(03:08:33 PM) anarcat: drush is that somebody omega8cc tested aegir with drush 4-rc1, and it works
+(03:08:34 PM) anarcat: hehe
+(03:08:35 PM) ergonlogic: groan
+(03:08:40 PM) mig5: sorry..
+(03:08:44 PM) anarcat: hehe
+(03:08:49 PM) anarcat: alright
+(03:08:55 PM) mig5: yes Vertice asked me to test that too, another thing on my todo list
+(03:08:59 PM) anarcat: so
+(03:09:00 PM) mig5: glad someone else did
+(03:09:02 PM) anarcat: i guess one last thing
+(03:09:32 PM) anarcat: we heard from vertice finally and he's coming back after a small hiatus, he's going to concentrate on documentation stuff and helping us figuring [stuff] out
+(03:09:40 PM) anarcat: he's also eager (hehe) to release an rc
+(03:09:45 PM) anarcat: so maybe it's something we should consider
+(03:09:49 PM) ***anarcat looking at rc bugs
+(03:10:22 PM) mig5: we have had the benefit of not having too many new criticals. i think if we can tie off some existing patches, we could look at that perhaps
+(03:10:26 PM) anarcat: so most of those are postponed (so needs testing and closed: worksforme)
+(03:10:44 PM) mig5: do you have a link to the rc bugs
+(03:10:50 PM) anarcat: http://drupal.org/project/issues?text=&amp;projects=provision,+hosting,+hostslave,+eldir,+Hostmaster+(Aegir)&amp;status=Open&amp;priorities=1&amp;categories=All
+(03:11:05 PM) anarcat: one is the freaky multiserver thing, i'd like adrian or somebody else to look at that one as i don't have the resources or time or brain to look into this
+(03:11:11 PM) anarcat: that one is <a href="http://drupal.org/node/976300" title="http://drupal.org/node/976300">http://drupal.org/node/976300</a>
+(03:11:20 PM) anarcat: the other one is the site form optimisation: <a href="http://drupal.org/node/955854" title="http://drupal.org/node/955854">http://drupal.org/node/955854</a>
+(03:11:27 PM) anarcat: which could be postponed to post 0.4
+(03:11:33 PM) anarcat: so we need testing, basically
+(03:11:39 PM) mig5: yeah i'm still not convinced the multiserver thing is just someone trying to do something we don't support at all (i.e spoke vs mesh model)
+(03:11:42 PM) mig5: yep
+(03:11:49 PM) anarcat: alright
+(03:12:03 PM) anarcat: so i would favor more a testing + rc1 than a beta2 at this point
+(03:12:07 PM) ergonlogic: I'm into testing the multi-server stuff, if that's on the menu
+(03:12:17 PM) anarcat: ergonlogic: it is, take a look at <a href="http://drupal.org/node/976300" title="http://drupal.org/node/976300">http://drupal.org/node/976300</a>
+(03:12:20 PM) ergonlogic: and dns
+(03:12:29 PM) anarcat: dns + ssl integration needs testing too: <a href="http://drupal.org/node/934908" title="http://drupal.org/node/934908">http://drupal.org/node/934908</a>
+(03:12:44 PM) anarcat: and this should probably just be closed: <a href="http://drupal.org/node/950118" title="http://drupal.org/node/950118">http://drupal.org/node/950118</a> (new servers probably work fine)
+(03:12:52 PM) anarcat: that one is more hairy: <a href="http://drupal.org/node/884090" title="http://drupal.org/node/884090">http://drupal.org/node/884090</a>
+(03:12:57 PM) anarcat: not suer about it
+(03:13:12 PM) anarcat: but really, i believe we could just test those quickly and release next week, how about that?
+(03:13:56 PM) mig5: sounds good, perhaps late next week, allowing me my thursday/friday where i can spend like a whole day looking at some of this
+(03:13:56 PM) ergonlogic: I'll look into provisioning some new servers :)
+(03:14:02 PM) anarcat: ok
+(03:14:04 PM) anarcat: awesome
+(03:14:07 PM) anarcat: okay, anybody else has something to add here?
+(03:14:24 PM) anarcat: so thank you for attending, and have a nice day!
+(03:14:31 PM) ergonlogic: cheers!
+(03:14:34 PM) mig5: cheers
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-86.html?destination=node%2F196%23comment-form">Login</a> or <a href="../../user/register/index-86.html?destination=node%2F196%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/196?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:04 GMT -->
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/217/revisions/2143/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:55:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../content/aegir-handbook/index.html" />
+<link rel="up" href="../../../../../content/aegir-handbook/index.html" />
+<link rel="next" href="../../../../../handbook/operating-system-support/index.html" />
+<link rel="prev" href="../../../../../content/aegir-handbook/index.html" />
+<link rel="up" href="../../../../../content/aegir-handbook/index.html" />
+<link rel="next" href="../../../../../handbook/operating-system-support/index.html" />
+<link rel="prev" href="../../../../../content/aegir-handbook/index.html" />
+<link rel="up" href="../../../../../content/aegir-handbook/index.html" />
+<link rel="next" href="../../../../../handbook/operating-system-support/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Introduction to Aegir from Tue, 07/26/2011 - 16:49 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-217" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../intro/index.html">Introduction to Aegir</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_8 first"><a href="../../../../../taxonomy/term/8/index.html" rel="tag" title="">benefits</a></li>
+<li class="taxonomy_term_9"><a href="../../../../../taxonomy/term/9/index.html" rel="tag" title="">features</a></li>
+<li class="taxonomy_term_2 last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-217'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/9/index.html" class="username" title="View user profile.">eft</a> on 07/26/2011 - 16:49</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>If you are new to Aegir you may have heard great things about the project but not know about many of the <em>benefits</em> of using it.  Here are some - feel free to add to this list.</p>
+
+<h2>Introduction</h2>
+
+<p>One of the great architectural features of Drupal is that you can have multiple web sites that share a common <em>platform</em> of modules, themes and other code used to manage content and appearance.  If you make a change to the platform (e.g. update a module, change a theme etc.) all sites based on the platform are immediately updated.  At the same time, each site has its own database and file system that can be tailored to the specific needs of the site. In addition to the concept of platforms, Drupal lets you create installation <em>profiles</em>.  A platform can have one or more profiles which allows you create different sites based on your choice of platform and profile.</p>
+
+<h2>Multiple Site Installations</h2>
+
+<p>Aegir provides a web interface to <em>define a platform and then create multiple sites</em> based on that platform.  Aegir creates the site database, site-specific file folders and the web server files that point browser requests to the right place.</p>
+
+<h2>Site Management</h2>
+
+<p>Through the Aegir interface you can create backups, restore a specific backup, disable or delete individual sites.  Thus Aegir  is a very helpful way of tracking and managing lots of sites spread over several platforms.  Moreover, you can perform bulk tasks on all sites based on a particular platform.</p>
+
+<h2>Site Development</h2>
+
+<p>When you are building a platform from scratch or simply extending or upgrading an existing platform, Aegir can significantly speed up development time and minimize impacts to sites in production.</p>
+
+<p>With Aegir you can <em>clone</em> a site to the same or a different platform.  So, say you have a number of sites running on a Platform A and you decide to upgrade a platform module but you want to test your sites to make sure they are compatible with the upgrade.  Using Aegir you would create another platform, Platform B that is identical except for the module upgrade.  Then you can use clone to create a copy of one of your sites from Platform A to Platform B.  The database and all your files are copied by Aegir and you can then test your cloned site without worrying that you might impact the existing production site.</p>
+
+<p>Once you are satisfied that your cloned site is working properly you can then <em>migrate</em> one or all of your sites from Platform A to Platform B.</p>
+
+<p>This process can be very useful for building out new platforms, troubleshooting issues etc.</p>
+
+<h2>Site Aliasing</h2>
+
+<p>Through the Aegir interface you can define <em>aliases</em> for your web sites so that, for example, traffic to <a href="http://www.example.com/" title="http://www.example.com">http://www.example.com</a> and <a href="http://example.com/" title="http://example.com">http://example.com</a> is directed to the same site.</p>
+
+<h2>Multiple Servers</h2>
+
+<p>The Aegir interface can also be used to manage platforms and web sites on different web servers, which gives you latitude to tailor a hosting architecture to your own needs.</p>
+
+<h2>Scheduled Tasks (Cron)</h2>
+
+<p>Most Drupal sites rely on recurring scheduled tasks also known as cron jobs to perform operations like checking for updates, cleaning up log files etc.  Aegir can be configured to run cron jobs for hosted sites on regular intervals without having to utilitize other tools or configure cron jobs manually on a site-by-site basis.</p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-21.html?destination=node%2F217%23comment-form">Login</a> or <a href="../../../../../user/register/index-21.html?destination=node%2F217%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../../../../user/login/index-21.html?destination=node%2F217%23comment-form">Login</a> or <a href="../../../../../user/register/index-21.html?destination=node%2F217%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/217/revisions/2143/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 17:55:09 GMT -->
+</html>

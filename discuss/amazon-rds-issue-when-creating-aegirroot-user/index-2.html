@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/discuss/amazon-rds-issue-when-creating-aegirroot-user?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 20:58:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Amazon RDS issue when creating aegir_root user | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-2743" class="node node-discussion clear-block node-page">
+      <div class='node-submitted clear-block'>
+      <div class="picture">
+  <a href="../../users/liam-mcdermott/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/profiles/openatrium/themes/ginkgo/images/user/index.png" alt="Liam McDermott&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../users/liam-mcdermott/index.html" class="username" title="View user profile.">Liam McDermott</a></div><div class='date'>2:41am Jul 25, 2013</div>    </div>
+  
+      <h2 class='node-title'>
+            <a href="index.html">Amazon RDS issue when creating aegir_root user</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_466 first"><a href="../../category/keywords/amazon-rds/index.html" rel="tag" title="">amazon rds</a></li>
+<li class="taxonomy_term_77"><a href="../../category/keywords/mysql/index.html" rel="tag" title="">mysql</a></li>
+<li class="taxonomy_term_139 last"><a href="../../category/keywords/permission-errors/index.html" rel="tag" title="">permission errors</a></li>
+</ul></div><p>When going through the <a href="../../installing/manual/index.html#Database_configuration">Database configuration</a> section of the install, I tried executing this command:</p>
+
+<pre><code>GRANT ALL PRIVILEGES ON *.* TO 'aegir_root'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;
+</code></pre>
+
+<p>on an Amazon RDS server, only to have it return:</p>
+
+<pre><code>ERROR 1045 (28000): Access denied for user 'root'@'%' (using password: YES)
+</code></pre>
+
+<p>After a bit of Googling, I found that <a href="http://www.fidian.com/problems-only-tyler-has/using-grant-all-with-amazons-mysql-rds">Amazon RDS appears to disallow users from having certain permissions on the <code>mysql</code> database</a>, the problem can be overcome by using:</p>
+
+<pre><code>GRANT ALL PRIVILEGES ON `%`.* TO 'aegir_root'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;
+</code></pre>
+
+<p>instead of the GRANT statement that fails. The install I'm doing appears to have worked with these changed permissions.</p>
+
+<p>So the question is, should we:</p>
+
+<ol>
+<li>add a note to the documentation for people using Amazon RDS, or;</li>
+<li>just change the documentation to use the GRANT ... <code>%</code>.* style, since it's a pretty good idea to not give Aegir permission to mess with mysql.* anyway?</li>
+</ol>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../user/login/index-470.html?destination=node%2F2743%23comment-form">Login</a> or <a href="../../user/register/index-470.html?destination=node%2F2743%23comment-form">register</a> to post comments</span></li>
+<li class="print last active"><a href="index-2.html?print" class="active">Print</a></li>
+</ul></div>
+  </div>
+
+
+<div id="comments">
+  <a id="comment-1979"></a>
+
+
+<div  id="comment-1979" class="comment comment-published clear-block decay-0 decay-0">
+      <div class='comment-submitted clear-block'>
+      <div class="picture">
+  <a href="../../user/54/index.html" title="View user profile."><img src="../../sites/community.aegirproject.org/files/imagecache/user-s/pictures/picture-54/index.png" alt="ergonlogic&#039;s picture" title="View user profile." width="30" height="30" class="imagecache imagecache-user-s"/></a></div>
+      <div class='byline'><a href="../../user/54/index.html" class="username" title="View user profile.">ergonlogic</a></div><div class='date'>5:03am Jul 25, 2013</div>    </div>
+  
+      <h2 class='comment-title'>
+            <a href="index.html#comment-1979" class="active">#1</a>    </h2>
+  
+      <div class='comment-content clear-block prose'>
+      <p>This deserves a feature request on d.o, since we'd need to change the way the .deb and install scripts run if we change this, I believe.</p>    </div>
+  
+      <div class='comment-links clear-block'><ul class="links"><li class="comment_forbidden first last"><span><a href="../../user/login/index-470.html?destination=node%2F2743%23comment-form">Login</a> or <a href="../../user/register/index-470.html?destination=node%2F2743%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+</div>
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/discuss/amazon-rds-issue-when-creating-aegirroot-user?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 20:58:37 GMT -->
+</html>

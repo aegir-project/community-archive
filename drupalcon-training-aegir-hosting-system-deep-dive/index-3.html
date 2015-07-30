@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/drupalcon-training-aegir-hosting-system-deep-dive?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:48:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../node/474/index.html" />
+<link rel="up" href="../node/474/index.html" />
+<link rel="next" href="../handbook/strategy/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>DrupalCon Training - Aegir Hosting System: Deep Dive | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-797" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">DrupalCon Training - Aegir Hosting System: Deep Dive</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-797'><script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Intro_to_Aegir"><span class="toc-number">1. </span>Intro to Aegir</a>
+<ol>
+	<li class="toc-level-2"><a href="#Community"><span class="toc-number">1.1. </span>Community</a></li>
+	<li class="toc-level-2"><a href="#Terminology"><span class="toc-number">1.2. </span>Terminology</a></li>
+	<li class="toc-level-2"><a href="#Architecture"><span class="toc-number">1.3. </span>Architecture</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Installation"><span class="toc-number">2. </span>Installation</a>
+<ol>
+	<li class="toc-level-2"><a href="#The_easy_way"><span class="toc-number">2.1. </span>The easy way</a></li>
+	<li class="toc-level-2"><a href="#The_hard_way"><span class="toc-number">2.2. </span>The hard way</a></li>
+	<li class="toc-level-2"><a href="#Other_operating_systems"><span class="toc-number">2.3. </span>Other operating systems</a></li>
+	<li class="toc-level-2"><a href="#Remote_database_servers_and_clusters"><span class="toc-number">2.4. </span>Remote database servers and clusters</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Debugging"><span class="toc-number">3. </span>Debugging</a>
+<ol>
+	<li class="toc-level-2"><a href="#Checking_your_install"><span class="toc-number">3.1. </span>Checking your install</a></li>
+	<li class="toc-level-2"><a href="#Manipulating_the_task_queue_and_reading_the_task_log"><span class="toc-number">3.2. </span>Manipulating the task queue and reading the task log</a></li>
+	<li class="toc-level-2"><a href="#Checking_crontab"><span class="toc-number">3.3. </span>Checking crontab</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#The_Aegir_interface"><span class="toc-number">4. </span>The Aegir interface</a>
+<ol>
+	<li class="toc-level-2"><a href="#Platforms_and_sites"><span class="toc-number">4.1. </span>Platforms &amp; sites</a></li>
+	<li class="toc-level-2"><a href="#Servers_and_services"><span class="toc-number">4.2. </span>Servers &amp; services</a></li>
+	<li class="toc-level-2"><a href="#Tasks_and_queues"><span class="toc-number">4.3. </span>Tasks &amp; queues</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Creating_Platforms"><span class="toc-number">5. </span>Creating Platforms</a>
+<ol>
+	<li class="toc-level-2"><a href="#Creating_a_Drupal_x_platform_from_scratch"><span class="toc-number">5.1. </span>Creating a Drupal x platform from scratch</a></li>
+	<li class="toc-level-2"><a href="#Some_handy_drush_commands_and_an_explanation_of_nodeaddplatform"><span class="toc-number">5.2. </span>Some handy drush commands and an explanation of node/add/platform</a></li>
+	<li class="toc-level-2"><a href="#Creating_a_platform_using_a_drush_makefile"><span class="toc-number">5.3. </span>Creating a platform using a drush makefile</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Sites"><span class="toc-number">6. </span>Sites</a>
+<ol>
+	<li class="toc-level-2"><a href="#Creating_a_site_on_our_new_platform"><span class="toc-number">6.1. </span>Creating a site on our new platform</a></li>
+	<li class="toc-level-2"><a href="#Common_Site_tasks"><span class="toc-number">6.2. </span>Common Site tasks</a></li>
+	<li class="toc-level-2"><a href="#Cron_configuration_via_Aegir"><span class="toc-number">6.3. </span>Cron configuration via Aegir</a></li>
+	<li class="toc-level-2"><a href="#Site_aliases"><span class="toc-number">6.4. </span>Site aliases</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Aegir_vs._the_Drupal_7_Upgrade_Path"><span class="toc-number">7. </span>Aegir vs. the Drupal 7 Upgrade Path</a>
+<ol>
+	<li class="toc-level-2"><a href="#Create_a_7.x_platform_from_scratch"><span class="toc-number">7.1. </span>Create a 7.x platform from scratch</a></li>
+	<li class="toc-level-2"><a href="#Migrate_our_site_from_6.x_to_7.x"><span class="toc-number">7.2. </span>Migrate our site from 6.x to 7.x</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Importing_sites"><span class="toc-number">8. </span>Importing sites</a>
+<ol>
+	<li class="toc-level-2"><a href="#Single_sites"><span class="toc-number">8.1. </span>Single sites</a></li>
+	<li class="toc-level-2"><a href="#Complete_platforms"><span class="toc-number">8.2. </span>Complete platforms</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Drush_Make_Advanced"><span class="toc-number">9. </span>Drush Make Advanced</a>
+<ol>
+	<li class="toc-level-2"><a href="#Patching_and_branching_with_git"><span class="toc-number">9.1. </span>Patching and branching with git</a></li>
+	<li class="toc-level-2"><a href="#Creating_cascading_makefiles"><span class="toc-number">9.2. </span>Creating cascading makefiles</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Client_management"><span class="toc-number">10. </span>Client management</a>
+<ol>
+	<li class="toc-level-2"><a href="#Clients_and_the_quota_api"><span class="toc-number">10.1. </span>Clients &amp; the quota api</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Extending_Aegir"><span class="toc-number">11. </span>Extending Aegir</a>
+<ol>
+	<li class="toc-level-2"><a href="#Overview_of_Aegir_contib_modules"><span class="toc-number">11.1. </span>Overview of Aegir contib modules</a></li>
+	<li class="toc-level-2"><a href="#Scheduled_backups_and_garbage_collection"><span class="toc-number">11.2. </span>Scheduled backups &amp; garbage collection</a></li>
+	<li class="toc-level-2"><a href="#E-commerce_integration"><span class="toc-number">11.3. </span>E-commerce integration</a></li>
+	<li class="toc-level-2"><a href="#ACLs_and_SFTP"><span class="toc-number">11.4. </span>ACLs &amp; SFTP</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Whiteboxing_Aegir"><span class="toc-number">12. </span>Whiteboxing Aegir</a>
+<ol>
+	<li class="toc-level-2"><a href="#Theming_with_Eldir"><span class="toc-number">12.1. </span>Theming with Eldir</a></li>
+	<li class="toc-level-2"><a href="#Overriding_the_Aegir_makefile"><span class="toc-number">12.2. </span>Overriding the Aegir makefile</a></li>
+	<li class="toc-level-2"><a href="#Overriding_other_files"><span class="toc-number">12.3. </span>Overriding other files</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Advanced_Topics_Manual_Uprades_and_other_Black_Magic"><span class="toc-number">13. </span>Advanced Topics, Manual Uprades, and other Black Magic</a>
+<ol>
+	<li class="toc-level-2"><a href="#Advanced_Debugging"><span class="toc-number">13.1. </span>Advanced Debugging</a></li>
+	<li class="toc-level-2"><a href="#Manual_upgrades"><span class="toc-number">13.2. </span>Manual upgrades</a></li>
+	<li class="toc-level-2"><a href="#Aliases_and_contexts"><span class="toc-number">13.3. </span>Aliases &amp; contexts</a></li>
+	<li class="toc-level-2"><a href="#Performance_and_security"><span class="toc-number">13.4. </span>Performance &amp; security</a></li>
+	<li class="toc-level-2"><a href="#Extending_Provision_and_Hostmaster"><span class="toc-number">13.5. </span>Extending Provision &amp; Hostmaster</a></li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+
+<h1 id="Intro_to_Aegir">1. Intro to Aegir</h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Community">1.1. Community</h2>
+
+<ul>
+<li>aegirproject.org</li>
+<li>#aegir</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Terminology">1.2. Terminology</h2>
+
+<ul>
+<li>site</li>
+<li>platform</li>
+<li>task</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Architecture">1.3. Architecture</h2>
+
+<ul>
+<li>Provision</li>
+<li>Hostmaster</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Installation">2. Installation</h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="The_easy_way">2.1. The easy way</h2>
+
+<ul>
+<li>using Debian packages</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="The_hard_way">2.2. The hard way</h2>
+
+<ul>
+<li>manual installs</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Other_operating_systems">2.3. Other operating systems</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Remote_database_servers_and_clusters">2.4. Remote database servers and clusters</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Debugging">3. Debugging</h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Checking_your_install">3.1. Checking your install</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Manipulating_the_task_queue_and_reading_the_task_log">3.2. Manipulating the task queue and reading the task log</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Checking_crontab">3.3. Checking crontab</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="The_Aegir_interface">4. The Aegir interface</h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Platforms_and_sites">4.1. Platforms &amp; sites</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Servers_and_services">4.2. Servers &amp; services</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Tasks_and_queues">4.3. Tasks &amp; queues</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Creating_Platforms">5. Creating Platforms</h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Creating_a_Drupal_x_platform_from_scratch">5.1. Creating a Drupal x platform from scratch</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Some_handy_drush_commands_and_an_explanation_of_nodeaddplatform">5.2. Some handy drush commands and an explanation of node/add/platform</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Creating_a_platform_using_a_drush_makefile">5.3. Creating a platform using a drush makefile</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Sites">6. Sites</h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Creating_a_site_on_our_new_platform">6.1. Creating a site on our new platform</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Common_Site_tasks">6.2. Common Site tasks</h2>
+
+<ul>
+<li>install</li>
+<li>clone</li>
+<li>backup</li>
+<li>restore</li>
+<li>migrate</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Cron_configuration_via_Aegir">6.3. Cron configuration via Aegir</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Site_aliases">6.4. Site aliases</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Aegir_vs._the_Drupal_7_Upgrade_Path">7. Aegir vs. the Drupal 7 Upgrade Path</h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Create_a_7.x_platform_from_scratch">7.1. Create a 7.x platform from scratch</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Migrate_our_site_from_6.x_to_7.x">7.2. Migrate our site from 6.x to 7.x</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Importing_sites">8. Importing sites</h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Single_sites">8.1. Single sites</h2>
+
+<ul>
+<li>provision-deploy</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Complete_platforms">8.2. Complete platforms</h2>
+
+<ul>
+<li>provision-verify</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Drush_Make_Advanced">9. Drush Make Advanced</h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Patching_and_branching_with_git">9.1. Patching and branching with git</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Creating_cascading_makefiles">9.2. Creating cascading makefiles</h2>
+
+<ul>
+<li>using includes</li>
+<li>overrides </li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Client_management">10. Client management</h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Clients_and_the_quota_api">10.1. Clients &amp; the quota api</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Extending_Aegir">11. Extending Aegir</h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Overview_of_Aegir_contib_modules">11.1. Overview of Aegir contib modules</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Scheduled_backups_and_garbage_collection">11.2. Scheduled backups &amp; garbage collection</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="E-commerce_integration">11.3. E-commerce integration</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="ACLs_and_SFTP">11.4. ACLs &amp; SFTP</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Whiteboxing_Aegir">12. Whiteboxing Aegir</h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Theming_with_Eldir">12.1. Theming with Eldir</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Overriding_the_Aegir_makefile">12.2. Overriding the Aegir makefile</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Overriding_other_files">12.3. Overriding other files</h2>
+
+<ul>
+<li>settings.php</li>
+<li>apache config files</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Advanced_Topics_Manual_Uprades_and_other_Black_Magic">13. Advanced Topics, Manual Uprades, and other Black Magic</h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Advanced_Debugging">13.1. Advanced Debugging</h2>
+
+<ul>
+<li>running tasks by hand</li>
+<li>force-deleting</li>
+<li>...</li>
+</ul>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Manual_upgrades">13.2. Manual upgrades</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Aliases_and_contexts">13.3. Aliases &amp; contexts</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Performance_and_security">13.4. Performance &amp; security</h2>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Extending_Provision_and_Hostmaster">13.5. Extending Provision &amp; Hostmaster</h2><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../user/login/index-260.html?destination=node%2F797%23comment-form">Login</a> or <a href="../user/register/index-260.html?destination=node%2F797%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/drupalcon-training-aegir-hosting-system-deep-dive?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:48:17 GMT -->
+</html>

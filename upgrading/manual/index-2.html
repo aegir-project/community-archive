@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/upgrading/manual?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:32:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../index.html" />
+<link rel="up" href="../index.html" />
+<link rel="next" href="../debian/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Manual Upgrade | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-429" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Manual Upgrade</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_21 first"><a href="../../taxonomy/term/21/index.html" rel="tag" title="">manual</a></li>
+<li class="taxonomy_term_2"><a href="../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+<li class="taxonomy_term_22 last"><a href="../../taxonomy/term/22/index.html" rel="tag" title="">upgrade</a></li>
+</ul></div><div id='diff-inline-429'><p>This section outlines the requirements for doing a manual upgrade of Aegir to a new release. Before going ahead with this, you probably want to read the <a href="../path/index.html">upgrade path and version-specific notes</a>.</p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Conventions_and_Tips"><span class="toc-number">1. </span>Conventions &amp; Tips</a></li>
+	<li class="toc-level-1"><a href="#Upgrading_Overview"><span class="toc-number">2. </span>Upgrading Overview</a>
+<ol>
+	<li class="toc-level-2"><a href="#Upgrading_drush"><span class="toc-number">2.1. </span>Upgrading drush</a></li>
+	<li class="toc-level-2"><a href="#Upgrading_the_backend"><span class="toc-number">2.2. </span>Upgrading the backend</a></li>
+	<li class="toc-level-2"><a href="#Upgrading_the_frontend"><span class="toc-number">2.3. </span>Upgrading the frontend</a></li>
+	<li class="toc-level-2"><a href="#What_hostmaster-migrate_does"><span class="toc-number">2.4. </span>What hostmaster-migrate does</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Upgrading_to_AEgir_1.x"><span class="toc-number">3. </span>Upgrading to AEgir 1.x</a>
+<ol>
+	<li class="toc-level-2"><a href="#Upgrading_drush_and_drush_make"><span class="toc-number">3.1. </span>Upgrading drush and drush make</a></li>
+	<li class="toc-level-2"><a href="#Upgrading_the_1.x_backend"><span class="toc-number">3.2. </span>Upgrading the 1.x backend</a></li>
+	<li class="toc-level-2"><a href="#Upgrading_the_1.x_frontend"><span class="toc-number">3.3. </span>Upgrading the 1.x frontend</a></li>
+	<li class="toc-level-2"><a href="#Special_configurations_and_troubleshooting"><span class="toc-number">3.4. </span>Special configurations and troubleshooting</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Upgrading_to_AEgir_2.x"><span class="toc-number">4. </span>Upgrading to AEgir 2.x</a>
+<ol>
+	<li class="toc-level-2"><a href="#Upgrading_drush-1"><span class="toc-number">4.1. </span>Upgrading drush</a></li>
+	<li class="toc-level-2"><a href="#Upgrading_the_2.x_backend"><span class="toc-number">4.2. </span>Upgrading the 2.x backend</a></li>
+	<li class="toc-level-2"><a href="#Upgrading_the_2.x_frontend"><span class="toc-number">4.3. </span>Upgrading the 2.x frontend</a></li>
+	<li class="toc-level-2"><a href="#Special_configurations_and_troubleshooting-2"><span class="toc-number">4.4. </span>Special configurations and troubleshooting</a></li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+
+<h1 id="Conventions_and_Tips">1. Conventions &amp; Tips</h1>
+
+<p>All instructions and in general all commands must be run as aegir user, so all
+permissions are always set correctly.</p>
+
+<p>To become aegir user you can issue this command:</p>
+
+<pre><code>su -s /bin/sh aegir
+</code></pre>
+
+<p>(Note you must run this as root or prefix with sudo).</p>
+
+<p>Note that /bin/sh is an example. You may wish to instead use the shell of your
+choice, i.e /bin/bash</p>
+
+<p>A standard umask of 022 is assumed. This is the default on most systems.</p>
+
+<p>We assume that drush is in your path, if it is installed in <code>/var/aegir/drush/drush.php</code>, replace all occurences of <code>drush</code> by <code>/var/aegir/drush/drush.php</code> in the following steps, or add the following alias:</p>
+
+<pre><code>alias drush=/var/aegir/drush/drush.php
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Upgrading_Overview">2. Upgrading Overview</h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Upgrading_drush">2.1. Upgrading drush</h2>
+
+<p>As part of your Aegir upgrade, you need to upgrade Drush to the latest stable version compatible with the target Aegir release. AEgir 1.x <em>only</em> works with version 4.5.  Versions 5 - 7 have been known to work with AEgir 2.x, however  the Drush developers recommend version 6 as the most stable.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Upgrading_the_backend">2.2. Upgrading the backend</h2>
+
+<p>After drush is updated, you must then proceed to upgrade the backend. The reason for upgrading the backend first before the frontend, is that the frontend upgrade process is instigated by the backend using Drush Make. Thus you need to be running the new backend first in order to successfully produce a new frontend.</p>
+
+<p>In general, we try to keep the backend and the frontend compatible with each other during release cycles. That is: provision 1.8 and hosting 1.9 will always be able to talk to each other, but hosting 2.0 will have trouble talking to the 1.9 backend, so you need to upgrade the backend first when you do a major upgrade (for example, 1.9 -&gt; 2.0).</p>
+
+<p>Bottomline: first you upgrade the backend, then the frontend.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Upgrading_the_frontend">2.3. Upgrading the frontend</h2>
+
+<p>Once your backend is upgraded, you can upgrade your frontend. Think of this as the backend fetching a new copy of Drupal core and the Hostmaster frontend application onto your server, and then moving the Aegir site's settings.php and other bits and pieces over to the new codebase.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="What_hostmaster-migrate_does">2.4. What hostmaster-migrate does</h2>
+
+<p>The command will make sure the target directory is a valid Aegir install. If the directory does not exist, provision will use drush_make to fetch and assemble the correct version of the front end for the specific release of the backend you are running.</p>
+
+<p><code>hostmaster-migrate</code> will also completely replace the crontab entry for the aegir user.</p>
+
+<p>The command above will fetch the latest stable Drupal release, so it can simply be run again when a new security release of Drupal is made available.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Upgrading_to_AEgir_1.x">3. Upgrading to AEgir 1.x</h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Upgrading_drush_and_drush_make">3.1. Upgrading drush and drush make</h2>
+
+<p>As part of your Aegir upgrade, you need to upgrade Drush to the latest stable version compatible with the target Aegir release. Aegir 1.x does <strong>not</strong> support Drush 5, although 2.x does.</p>
+
+<p>If you are using the Drush Debian packages, the package should be upgraded through:</p>
+
+<pre><code>apt-get install drush
+</code></pre>
+
+<p>Otherwise, since drush 4.x is capable of upgrading itself, you can just run:</p>
+
+<pre><code>drush dl drush-7.x-4.5
+</code></pre>
+
+<p>If you are running a version before 4.x, use the following set of commands instead:</p>
+
+<pre><code>pear channel-discover pear.drush.org
+pear install drush/drush-4.5.0
+</code></pre>
+
+<p>Provision 0.4 has added a new dependency on drush_make, which will also need to be installed to upgrade the front end if you are upgrading from a pre-0.4 release.</p>
+
+<p>If you are upgrading from an earlier 0.4 release, replace your copy of drush_make with the latest recommended release.</p>
+
+<pre><code>drush dl drush_make-6.x --destination="$HOME/.drush"
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Upgrading_the_1.x_backend">3.2. Upgrading the 1.x backend</h2>
+
+<p>Upgrading the backend is as simple as replacing your copy of Drush, Provision, and if necessary, Drush Make, with the new versions if available. Keep a copy of the old Provision and Drush in case something goes wrong in the frontend.</p>
+
+<pre><code>drush dl provision-6.x --destination=$HOME/.drush
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Upgrading_the_1.x_frontend">3.3. Upgrading the 1.x frontend</h2>
+
+<p>Before upgrading, we set a few key variables to make the process easier. You <strong>must</strong> replace the arguments those variables to match your configuration. This means replacing <code>$AEGIR_DOMAIN</code> by the URL of your Aegir install, <code>$AEGIR_VERSION</code> with the version number of the Aegir you are trying to install, and also <code>$OLD_AEGIR_DIR</code> with the path to the previous directory where Aegir was installed.</p>
+
+<p>The directory passed to <code>hostmaster-migrate</code> must be an absolute path to where you want the new release to be stored.</p>
+
+<pre><code>OLD_AEGIR_DIR=/var/aegir/hostmaster-6.x-1.8
+AEGIR_VERSION=6.x-1.11
+AEGIR_DOMAIN=aegir.example.com
+</code></pre>
+
+<p>To upgrade your frontend, run the following commands, replacing the variables as described below:</p>
+
+<pre><code>cd $OLD_AEGIR_DIR
+drush hostmaster-migrate $AEGIR_DOMAIN $HOME/hostmaster-$AEGIR_VERSION
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Special_configurations_and_troubleshooting">3.4. Special configurations and troubleshooting</h2>
+
+<p>If the upgrade fails, try running it again with the <code>--debug</code> flag:</p>
+
+<pre><code>cd $OLD_AEGIR_DIR
+drush hostmaster-migrate aegir.example.com $HOME/hostmaster-$AEGIR_VERSION --debug
+</code></pre>
+
+<p>If you have customized your Aegir installation and are maintaining your own makefile, you can use the <code>--makefile</code> flag so the platform is created with another makefile than the default. Be warned that this may create problems if the makefile doesn't include the right Aegir modules.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Upgrading_to_AEgir_2.x">4. Upgrading to AEgir 2.x</h1>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Upgrading_drush-1">4.1. Upgrading drush</h2>
+
+<p>Install Drush 6.x per the directions given at the <a href="https://github.com/drush-ops/drush">Drush repository</a>.  The maintainers have deprecated the PEAR installation procedure and are encouraging everyone to install Drush via the Composer dependency management tool.</p>
+
+<p>You should also remove your copy of <code>drush_make</code> from <code>$HOME/.drush</code>.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Upgrading_the_2.x_backend">4.2. Upgrading the 2.x backend</h2>
+
+<p>Upgrading the backend is as simple as replacing your copy of Drush &amp; Provision with the new versions if available. Keep a copy of the old Provision and Drush in case something goes wrong in the frontend.</p>
+
+<pre><code>drush dl --destination=/var/aegir/.drush provision-6.x-2.0
+</code></pre>
+
+<p>Drush 5+ has a commandfile cache which you need to clear before installing Aegir:</p>
+
+<pre><code>drush cache-clear drush
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Upgrading_the_2.x_frontend">4.3. Upgrading the 2.x frontend</h2>
+
+<p>Before upgrading, we set a few key variables to make the process easier. You <strong>must</strong> replace the arguments those variables to match your configuration. This means replacing <code>$AEGIR_DOMAIN</code> by the URL of your Aegir install, <code>$AEGIR_VERSION</code> with the version number of the Aegir you are trying to install, and also <code>$OLD_AEGIR_DIR</code> with the path to the previous directory where Aegir was installed.</p>
+
+<p>The directory passed to <code>hostmaster-migrate</code> must be an absolute path to where you want the new release to be stored.</p>
+
+<pre><code>OLD_AEGIR_DIR=/var/aegir/hostmaster-6.x-1.11
+AEGIR_VERSION=6.x-2.0
+AEGIR_DOMAIN=aegir.example.com
+</code></pre>
+
+<p>To upgrade your frontend, run the following commands, replacing the variables as described below:</p>
+
+<pre><code>cd $OLD_AEGIR_DIR
+drush hostmaster-migrate $AEGIR_DOMAIN $HOME/hostmaster-$AEGIR_VERSION
+</code></pre>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Special_configurations_and_troubleshooting-2">4.4. Special configurations and troubleshooting</h2>
+
+<p>Read the <a href="../path/index.html">upgrade path notes again</a>, you <em>will</em> have missed something.</p>
+
+<p>If the upgrade fails, try running it again with the <code>--debug</code> flag:</p>
+
+<pre><code>cd $OLD_AEGIR_DIR
+drush hostmaster-migrate aegir.example.com $HOME/hostmaster-$AEGIR_VERSION --debug
+</code></pre>
+
+<p>If you have customized your Aegir installation and are maintaining your own makefile, you can use the <code>--makefile</code> flag so the platform is created with another makefile than the default. Be warned that this may create problems if the makefile doesn't include the right Aegir modules.</p>
+
+<p>If the update fails due to a bug in module Hosting, it will ask you to run "drush hostmaster-resume help".  That command does not exist.  Try this one instead.</p>
+
+<pre><code>drush --debug @hostmaster hostmaster-resume /var/aegir/hostmaster-6.x-1.11 /var/aegir/hostmaster-6.x-2.0
+</code></pre><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-73.html?destination=node%2F429%23comment-form">Login</a> or <a href="../../user/register/index-73.html?destination=node%2F429%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/upgrading/manual?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:32:16 GMT -->
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/646/revisions/1820/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../462/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="prev" href="../../../../462/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="prev" href="../../../../462/index.html" />
+<link rel="up" href="../../../../../installing/index.html" />
+<link rel="next" href="../../../../../content/administrator/post-install-configuration/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of Ubuntu 10.04 Specific : Downgrade to php 5.2 before install from Mon, 05/16/2011 - 06:05 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-646" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../installing/ubuntu-1004-specific-how-downgrade-php-52-install/index.html">Ubuntu 10.04 Specific : Downgrade to php 5.2 before install</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first last"><a href="../../../../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+</ul></div><div id='diff-inline-646'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../user/311/index.html" class="username" title="View user profile.">jmary</a> on 05/16/2011 - 06:05</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>What is explained here is specific to Ubuntu 10.04, it hasn't been tested on further versions and you should anyway use Ubuntu 10.04 (LTS) on production servers.</p>
+
+<p>Follow this procedure :</p>
+
+<p><code>sudo apt-get install python-software-properties</code></p>
+
+<p><code>add-apt-repository ppa:txwikinger/php5.2</code></p>
+
+<p>Create the file /etc/apt/preferences.d/php and input the following code in it :</p>
+
+<pre>
+Package: libapache2-mod-php5
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: libapache2-mod-php5filter
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php-pear
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-cgi
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-cli
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-common
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-curl
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-dbg
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-dev
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-gd
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-gmp
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-ldap
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-mhash
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-mysql
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-odbc
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-pgsql
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-pspell
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-recode
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-snmp
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-sqlite
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-sybase
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-tidy
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-xmlrpc
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-xsl
+Pin: version 5.2.10*
+Pin-Priority: 991
+
+Package: php5-mcrypt
+Pin: version 5.2.6*
+Pin-Priority: 991
+
+Package: php5-imap
+Pin: version 5.2.6*
+Pin-Priority: 991
+</pre>
+
+<p>Then proceed Aegir install as explained at <a href="../../../../../installing/debian/index.html" title="http://community.aegirproject.org/installing/debian">http://community.aegirproject.org/installing/debian</a></p></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-394.html?destination=node%2F646%23comment-form">Login</a> or <a href="../../../../../user/register/index-394.html?destination=node%2F646%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/646/revisions/1820/view?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:03:53 GMT -->
+</html>

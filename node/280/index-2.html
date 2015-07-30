@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/280?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../264/index.html" />
+<link rel="up" href="../../content/scrums/archive-2011/index.html" />
+<link rel="next" href="../301/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="shortcut icon" href="../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Weekly Scrum IRC Log: 2011-01-27 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-280" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="index.html">Weekly Scrum IRC Log: 2011-01-27</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div class='field terms clear-block'><span class='field-label-inline-first'>Tagged:</span> <ul class="links inline"><li class="taxonomy_term_2 first"><a href="../../taxonomy/term/2/index.html" rel="tag" title="This level is generally for users with the root access to their server, who are responsible for installation and configuration of entire Aegir system environment.">Sysadmin</a></li>
+<li class="taxonomy_term_6 last"><a href="../../taxonomy/term/6/index.html" rel="tag" title="">weekly scrums</a></li>
+</ul></div><div id='diff-inline-280'><pre>
+07:01 &lt;@anarcat&gt; morning!
+07:01 &lt;@anarcat&gt; scrum is late omg! ;)
+07:01 &lt;@mig5&gt; hai!
+07:01 &lt;@mig5&gt; oops
+07:01 &lt;@anarcat&gt; sorry i'm late :)
+07:01 &lt;@mig5&gt; too many emails to read
+07:01 &lt;@anarcat&gt; first rule of scrums : start on time damnit! ;)
+07:01 &lt; eft_&gt; people still use email?
+07:02 &lt;@mig5&gt; only 1 minute off. i blame timezones
+07:02 &lt;@anarcat&gt; so anyways
+07:02 &lt;@anarcat&gt; i almost caught up on all my issues
+07:03 &lt;@anarcat&gt; i reported a few following significant upgrades
+07:03 &lt;@anarcat&gt; maybe that was last week
+07:03 &lt;@mig5&gt; I think so :)
+07:03 &lt;@anarcat&gt; i want to make rc tonight
+07:03 &lt;@mig5&gt; !
+07:03 &lt;@anarcat&gt; oh, we have deployed our first d7 platform here
+07:03 &lt;@mig5&gt; nicely done.hefring in here runs on d7
+07:04 &lt;@anarcat&gt; still waiting on actual tests for this - i think i'll just merge it in: <a href="http://drupal.org/node/1033072" title="http://drupal.org/node/1033072">http://drupal.org/node/1033072</a>
+07:04 &lt;@anarcat&gt; i agree with <a href="http://drupal.org/node/1039168" title="http://drupal.org/node/1039168">http://drupal.org/node/1039168</a> that path shouldn't be editable
+07:04 &lt;@anarcat&gt; and well, that's it!
+07:04 &lt;@mig5&gt; nice!
+07:04 &lt;@anarcat&gt; i think that koumbit will rework its own roadmap next week, so i'll keep you up to date on that
+07:04 &lt;@anarcat&gt; so how about an rc?
+07:04 &lt;@mig5&gt; yes please do merge that in, i have heard a number of people add those indexes themselves and report good results
+07:05 &lt;@mig5&gt; an rc sounds good
+07:05 &lt;@mig5&gt; i would like to fix this <a href="http://drupal.org/node/1004526" title="http://drupal.org/node/1004526">http://drupal.org/node/1004526</a>
+07:05 &lt;@mig5&gt; this functionality got ripped out for some reason in like, June
+07:05 &lt;@mig5&gt; so it's not critical, but i hate seeing good work disappear
+07:05 &lt;@anarcat&gt; ah
+07:05 &lt;@anarcat&gt; yeah, agreed
+07:06 &lt;@mig5&gt; i'll briefly run through what i've been doing in the last 48 hours
+07:06 &lt;@mig5&gt; i've mainly been trying to stabilise a bunch of shit
+07:06 &lt;@mig5&gt; You could create platforms and servers with the same names/hostnames, leading to Duplicate entries and context clashes
+07:06 &lt;@mig5&gt; <a href="http://drupal.org/node/1039010" title="http://drupal.org/node/1039010">http://drupal.org/node/1039010</a> 
+              <a href="http://git.aegirproject.org/?p=hostmaster.git;a=commitdiff;h=772cd8c2b5e864e113d3961603885e5eab31d632" title="http://git.aegirproject.org/?p=hostmaster.git;a=commitdiff;h=772cd8c2b5e864e113d3961603885e5eab31d632">http://git.aegirproject.org/?p=hostmaster.git;a=commitdiff;h=772cd8c2b5e...</a>
+07:07 &lt;@mig5&gt; Drush 4.x is broken in terms of rsyncing stuff to remote servers, so I reverted HEAD to use 3.3. see <a href="http://drupal.org/node/1041386" title="http://drupal.org/node/1041386">http://drupal.org/node/1041386</a>
+07:07 &lt;@mig5&gt; Drush Make beta10 is broken re: remote makefile referencing. So upped to beta11. <a href="http://drupal.org/node/979656" title="http://drupal.org/node/979656">http://drupal.org/node/979656</a>
+07:07 &lt;@mig5&gt; committed that fix for that Quota bug: <a href="http://drupal.org/node/1003666" title="http://drupal.org/node/1003666">http://drupal.org/node/1003666</a>
+07:07 &lt;@mig5&gt; Some deprecated ereg_replace thing in provision
+07:07 &lt;@mig5&gt; uid 1 was not mapped to client 1 in hosting_client_user which broke some client-based platform access control <a href="http://drupal.org/node/996578" title="http://drupal.org/node/996578">http://drupal.org/node/996578</a>
+07:08 &lt;@mig5&gt; unconed identified an infinite loop with provision-save and contexts: <a href="../267/index.html" title="http://community.aegirproject.org/node/267">http://community.aegirproject.org/node/267</a>
+07:08 &lt;@mig5&gt; I couldn't reproduce the infinite loop but can confirm clusters simply don't work
+07:08 &lt;@anarcat&gt; about that uid1 thing - i thought uid1 was bypassing all access checks?
+07:08 &lt;@anarcat&gt; i think ergonlogic had problems with that in the past too
+07:08 &lt;@anarcat&gt; i see
+07:08 &lt;@mig5&gt; it *was* at some point
+07:08 &lt;@anarcat&gt; it'd be nice that node/267 be reported as a real bug...
+07:08 &lt;@mig5&gt; but i decided, if we are letting people check a box granting access to that user, then maybe it should just work as expected
+07:08 &lt;@anarcat&gt; too bad ppl report issues on community.a.o
+07:08 &lt;@anarcat&gt; agreed
+07:08 &lt;@mig5&gt; if it bypasses the checks, it should probably not even be a checklist option, 
+07:08 &lt;@mig5&gt; so i just fixed it the other way
+07:08  * anarcat nods
+07:08 &lt;@anarcat&gt; ok
+07:09 &lt;@mig5&gt; yes unconed, He supplied me with a patch that seems to fix clusters! but concerned that I still couldn't reproduce the infinite loop.
+07:09 &lt;@mig5&gt; xk has similar issues, so I put the patch there for review: <a href="http://drupal.org/node/1016890" title="http://drupal.org/node/1016890">http://drupal.org/node/1016890</a>
+07:09 &lt;@anarcat&gt; cool
+07:09 &lt;@mig5&gt; and finally that Aliases thing
+07:09 &lt;@mig5&gt; (phew! yes i did take notes in preparation for this scrum :)
+07:09 &lt;@mig5&gt; that's me done
+07:09 &lt;@anarcat&gt; man you're awesome
+07:09 &lt;@anarcat&gt; do you plan to be as awesome next week? ;)
+07:10 &lt;@mig5&gt; i can try, but i might balance it out by throwing in some migressions
+07:10 &lt;@mig5&gt; :)
+07:10 &lt; eft_&gt; my efforts are barely worth mentioning
+07:10 &lt; eft_&gt; I didn't mention last week that I contributed a small wiki : using drush_make to optimize workflow <a href="../256/index.html" title="http://community.aegirproject.org/node/256">http://community.aegirproject.org/node/256</a>
+07:11 &lt;@mig5&gt; eft_: yes, nice article!
+07:11 &lt;@anarcat&gt; mig5: excellent :)
+07:11 &lt;@anarcat&gt; okay, anyone else has anything to add?
+07:11 &lt;@anarcat&gt; anybody scared of an RC?
+07:11 &lt;+omega8cc&gt; This week (well, in the last minute) I rewrote and finally submitted for review two commits: one to add Nginx related how-to in the docs/INSTALL.txt - <a href="http://drupal.org/node/1042402" title="http://drupal.org/node/1042402">http://drupal.org/node/1042402</a> and second (too big probably, sorry!) with many improvements for Nginx configuration templates: <a href="http://drupal.org/node/1042312" title="http://drupal.org/node/1042312">http://drupal.org/node/1042312</a>. I promise to submit future changes in the small incremental chunks instead of one big update. Next week I plan to submit even more Nginx related improv
+07:11 &lt;+omega8cc&gt; and will debug mysterious issue - Aegir fails to rewrite paths in the "files" table on second and next site rename tasks, it works only on the first rename and I reproduced it on more than 5 imported sites, so something for sure interesting to debug and submit a patch (I hope). Also, I plan to finally work on some multiserver deployments and hope to help to find a fix for Drush 4.1 - <a href="http://drupal.org/node/1041386" title="http://drupal.org/node/1041386">http://drupal.org/node/1041386</a>. That is it from me.
+07:12 &lt;@anarcat&gt; omega8cc: your first line was stripped
+07:12 &lt;@anarcat&gt; at Nginx related improv
+07:12 &lt;@mig5&gt; nice, yes i freaked out the other day not knowing how to set up aegir with just nginx :) so those docs would be great
+07:12 &lt;@anarcat&gt; thanks omega8cc ! :)
+07:13 &lt;@anarcat&gt; your work is really appreciated, i wonder if we shouldn't just commit the huge patch with the hope that next ones will be incremental :)
+07:13 &lt;@anarcat&gt; esp. considering you also use git, you should really "commit often" :)
+07:13 &lt;@anarcat&gt; okay, anybody else?
+07:13 &lt;@mig5&gt; anRC would be great - either way, yes definitely a new release, there are some annoying and critical bugs in beta2 (the data loss multiserver one for one)
+07:13 &lt; eft_&gt; any word from devseed on moving c.a.o. ?
+07:13 &lt;@mig5&gt; oh yes. or a.o
+07:14 &lt;@mig5&gt; does anyone want to work on a drupalised version of a.o? and maybe give it to anarcat to host (or i can host it)
+07:14 &lt;@mig5&gt; i can't theme for shit, so I'm out :)
+07:14 &lt; eft_&gt; how much is there?
+07:14 &lt;@anarcat&gt; mig5: i don't think we should drupalize a.o, actually
+07:14 &lt;@mig5&gt; ah, cool that's fine with me
+07:14 &lt;@anarcat&gt; just leave it like this, but remove the time-changing stuff
+07:14 &lt;@anarcat&gt; and yeah we can host it
+07:14 &lt;@mig5&gt; i remember adrian mentioning it
+07:15 &lt;@anarcat&gt; oh, the DNS transfer of a.o and .com is stuck
+07:15 &lt;@mig5&gt; everyone is annoyed at the g.d.o link, so if we could change that at least
+07:15 &lt;@mig5&gt; ah
+07:15 &lt;@anarcat&gt; email problems between gandi and devseed
+07:15 &lt;@anarcat&gt; yeah
+07:15 &lt;@anarcat&gt; but they wanted to transfer ownership of the domains too
+07:15 &lt;@anarcat&gt; and i started the xfer
+07:15 &lt;@mig5&gt; oh i see
+07:16 &lt;@anarcat&gt; but anyways, yeah, transfer the NS and we'll go ahead from there
+07:16 &lt;@anarcat&gt; okay, that's it for the scrum folks, thanks for attendign!
+07:16  * anarcat heading for a sandwich
+07:16 &lt;@mig5&gt; cheers
+07:16 &lt; eft_&gt; later
+</pre></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="print first active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_forbidden last"><span><a href="../../user/login/index-93.html?destination=node%2F280%23comment-form">Login</a> or <a href="../../user/register/index-93.html?destination=node%2F280%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+  </div>
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/280?print by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 15:35:23 GMT -->
+</html>

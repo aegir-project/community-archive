@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from community.aegirproject.org/node/523/revisions/1304/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:09:27 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="prev" href="../../../../../roadmap/1/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../roadmap/2.0/d7-port-dns-editor-plan-google-summer-code-2011/index.html" />
+<link rel="prev" href="../../../../../roadmap/1/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../roadmap/2.0/d7-port-dns-editor-plan-google-summer-code-2011/index.html" />
+<link rel="prev" href="../../../../../roadmap/1/index.html" />
+<link rel="up" href="../../../../546/index.html" />
+<link rel="next" href="../../../../../roadmap/2.0/d7-port-dns-editor-plan-google-summer-code-2011/index.html" />
+<link rel="canonical" href="index.html" />
+<link rel="prev" href="../../../../../roadmap/2/index.html" />
+<link rel="up" href="../../../../../roadmap/2/index.html" />
+<link rel="next" href="../../../../../scrums/index.html" />
+<link rel="shortcut icon" href="../../../../../sites/community.aegirproject.org/themes/up/favicon/index.ico" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="print" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../../../../../sites/community.aegirproject.org/files/css/css_5fa73dc3677977c016a597acd186e4e7/index.css" />
+
+  <title>Revision of 2.0 roadmap from Thu, 03/31/2011 - 04:25 | community.aegirproject.org</title>
+</head>
+
+<body  class="print rubik admin-static page">
+  <div class='limiter clear-block'>
+    <div id='content' class='clear-block'>
+      <div class='print-header'>
+      <h1 class='site-name'>community.aegirproject.org</h1>
+  </div>
+      
+
+<div  id="node-523" class="node node-book clear-block node-page">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../roadmap/2/index.html">2.0 roadmap</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <div id='diff-inline-523'><div class='diff-inline-metadata clear-block'><div class='diff-inline-byline'>Updated by <a href="../../../../../users/anarcat/index.html" class="username" title="View user profile.">anarcat</a> on 03/31/2011 - 04:25</div><div class='diff-inline-legend clear-block'><label>Legend</label><span class='diff-added'>Added</span><span class='diff-changed'>Changed</span><span class='diff-deleted'>Deleted</span></div></div><p>Following the <a href="../../../../488/index.html">Drupalcon Chicago 2011 BOFs discussion</a>, the community came up with a series of ideas and wishlist items for the upcoming 2.0 release. This roadmap may be updated or trimmed down as development goes ahead.</p><span class='diff-added'>
+
+</span><p><span class='diff-added'>We do not commit to doing </span><em><span class='diff-added'>all</span></em><span class='diff-added'> of this for 2.0, this is mostly a wishlist of what people expressed were priorities for them during the brainstorm. If people want things to move forward, they will need to submit patches or create feature branches, basically lead development on the feature you want. This page can be used to coordinate overall leadership of those issues, while pointing to the Drupal.org issue queues for the specifics.</span></p><span class='diff-added'>
+
+</span><p><span class='diff-added'>This roadmap supersedes the previous </span><a href="../../../../../roadmap/1/index.html"><span class='diff-added'>1.0 roadmap</span></a><span class='diff-added'>.</span></p>
+
+<script type="text/javascript">toc_collapse=0;</script><div class="toc" id="toc1">
+<div class="toc-title">Table of Contents<span class="toc-toggle-message">&nbsp;</span></div>
+<div class="toc-list">
+<ol>
+	<li class="toc-level-1"><a href="#Port_frontend_to_Drupal_7"><span class="toc-number">1. </span>Port frontend to Drupal 7</a></li>
+	<li class="toc-level-1"><a href="#Multi-server_improvements"><span class="toc-number">2. </span>Multi-server improvements</a>
+<ol>
+	<li class="toc-level-2"><a href="#From_a_hub-spoke_to_a_mesh_model"><span class="toc-number">2.1. </span>From a hub-spoke to a mesh model</a></li>
+	<li class="toc-level-2"><a href="#Improve_cluster_support"><span class="toc-number">2.2. </span>Improve cluster support</a></li>
+	<li class="toc-level-2"><a href="#Optimizing_clones_and_migrates"><span class="toc-number">2.3. </span>Optimizing clones and migrates</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Modularization_of_more_systems"><span class="toc-number">3. </span>Modularization of more systems</a>
+<ol>
+	<li class="toc-level-2"><a href="#Modular_backup_system"><span class="toc-number">3.1. </span>Modular backup system</a></li>
+	<li class="toc-level-2"><a href="#Modular_platform_support"><span class="toc-number">3.2. </span>Modular platform support</a></li>
+	<li class="toc-level-2"><a href="#Modular_queuing_system"><span class="toc-number">3.3. </span>Modular queuing system</a></li>
+</ol>
+</li>
+	<li class="toc-level-1"><a href="#Unsorted_items"><span class="toc-number">4. </span>Unsorted items</a></li>
+</ol>
+</div>
+</div>
+
+<h1 id="Port_frontend_to_Drupal_7">1. Port frontend to Drupal 7</h1>
+
+<p>We were originally planning to release 1.0 with Drupal 7 support to make sure it was a "long term support" release, but this has changed - we hope to keep the release cycle short and therefore Drupal 7 was pushed back to 2.0. But it is still a target to make sure we a reliable release that will be supported for a long time.</p>
+
+<p>Drupal 7 also introduces the concept of entities which could be very useful to lighten our many content types in the frontend. It could also be useful for DNS support as zonefiles could be modeled directly as entities.</p>
+
+<p>This concerns of course only the port of the frontend (hostmaster.profile, eldir.theme and hosting.module), the backend already supports d7 installs and upgrades.<span class='diff-added'> The issue to followup is </span><a href="https://drupal.org/node/1060902"><span class='diff-added'>#1060902</span></a><span class='diff-added'>.</span></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Multi-server_improvements">2. Multi-server improvements</h1>
+
+<p>While Aegir 1.0 has multi-server support, it is far from ideal or complete, and we wish to harden that design in 2.0.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="From_a_hub-spoke_to_a_mesh_model">2.1. From a hub-spoke to a mesh model</h2>
+
+<p>The current model where there is one main server (the "hub") where all platforms and sites are created and then synced to remote servers (the "spokes") seems to be showing scalability issues and concerns about where the authoritative data should be.</p>
+
+<p>For example, it's currently not recommended to allow developpers to access sites on remote servers, as the authoritative data resides on the hostmaster site. Another issue is that aliases are maintained only on the master server, and therefore are not accessible on remote servers. Finally, the fact that drush and provision are not installed on remote servers make some operations unnecessarily slow as we need to make the operation locally and then sync the result.</p>
+
+<p>The alternative has yet to be discussed. We especially want to chime in with the Drush community here to see how the best practices should be. The conversation has started, and with the migration of Drupal.org to git, a lot of possibilities just opened up, with a lot of people being all of a sudden more familiar with this excellent too.</p>
+
+<p>In general, it should be possible to expect remote servers to have drush and provision installed and be relatively independent from the "master" server. A design like this could eventually mean that Aegir could manage other Aegir sites and upgrade them. It is the "mesh" design, of which the "hub and spoke" model is only a subset.</p>
+
+<p>This follows the practice of "tools not policy" we are heading towards: we leave the mesh vs hub/spoke decision to the site administrators and provide the tools to support both approaches the best we can.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Improve_cluster_support">2.2. Improve cluster support</h2>
+
+<p>The current multi-server model doesn't support clusters and shared filesystems very well. Aegir 2.0 should allow scaling your web hosts horizontally by spreading a single site amongst multiple servers. While 1.0 can setup sites on remote servers, it follows more the concept of "sharding", spreading different sites amongst different servers than load balancing all sites amongst all servers.</p>
+
+<p>This involves supporting load balancers (e.g. IPVs, Pound, Varnish), maybe through the existing "cluster" service, but also shared filesystems (e.g. NFS, OCFS, GFS, GlusterFS), maybe through a new "fileserver" service.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Optimizing_clones_and_migrates">2.3. Optimizing clones and migrates</h2>
+
+<p>We quickly mentionned git support above, but this could lead to significant improvements, for example by using <code>git clone --shared</code> instead of the traditional "backup and deploy" approach to clone/migrate sites.</p>
+
+<p>There is certainly the possibility of rewriting clone to optimize away "backup and deploy" and merge them in a single operation that could use copy on write mechanisms like hardlinks (<code>cp -al</code>), git tricks (<code>git clone --shared</code>) or filesystem snapshots (e.g. <a href="https://btrfs.wiki.kernel.org/index.php/FAQ#What_is_a_snapshot.3F">BTRFS snapshot directory/file support</a>).</p>
+
+<p>This would need to integrate with and support the multi-server model elegantly too, especially the hypothetical fileserver service.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Modularization_of_more_systems">3. Modularization of more systems</h1>
+
+<p>Aegir 1.0 is already pretty modular: "services" are an abstract concept that can be implemented and inherited. For example, the "HTTP service" has four implementations: Apache, Apache-SSL, Nginx and Nginx-SSL. The database and DNS layers are also abstracted that way.</p>
+
+<p>But more can be done here.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Modular_backup_system">3.1. Modular backup system</h2>
+
+<p>Right now backups can be pretty heavy and use the venerable (<a href="http://www.freebsd.org/cgi/man.cgi?query=tar&amp;sektion=1#HISTORY">1979!</a>) tar backup format and utilities, which made Aegir portable to almost any UNIX operating system. It's a good start, but it's highly inefficient. As mentionned above for the clone and migrate optimization, we could also use modern filesystem features like snapshots or use git support. Another suggestion was to use <a href="http://aws.amazon.com/s3">S3</a> or similar services for offsite backups.</p>
+
+<p>The basic idea here is that backups should be extendable - if you want to backup in your shoebox, Aegir should allow you to write a plugin for it.</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Modular_platform_support">3.2. Modular platform support</h2>
+
+<p>This is also known as the <a href="https://drupal.org/node/1044678">alien platform support</a>, that is - being able to install other "things" than Drupal in the backend, for example (oh the heresy!) <a href="https://drupal.org/node/1044692">Wordpress</a>. This involves ripping apart the "platform" code in the frontend and the backend to make it more CMS-agnostic, so that Drupal is just <em>one</em> of the implementations.</p>
+
+<p>This would make sense of course if at least another implementation would be supported. This could also involve merging the site and platform creation forms for those platforms that do not support multi-site like Drupal does (so that creating a site effectively create a platform).</p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h2 id="Modular_queuing_system">3.3. Modular queuing system</h2>
+
+<p>The current queuing system is what we informally call the "ghetto queue". It's a cron job that pulls tasks from a MySQL database. While this scales well for a few sites, on busy servers it's a total nightmare, especially for mass migrations. Tasks stack up and concurrency is not managed at all. This needs to be completely redone.</p>
+
+<p>A possibility is to use Drupal 7's abstracted <a href="http://api.drupal.org/api/drupal/modules--system--system.queue.inc/group/queue/7">queue API</a> and let administrators implement their own queuing system according to their local APIs.</p>
+
+<p>The new queuing system could be a key part in how the multi-server "mesh" model would be implemented. It could also be how non-Drush backends could be handled by Aegir - in that scenario, Aegir would become an interface for a <a href="../../../../284/index.html">standard queuing system</a>, yet to be determined, although a lot of ideas are flying around: Jenkins/Hudson, AMPQ, Drush itself, etc. See <a href="../../../../284/index.html">this evaluation</a> for that decision.</p><span class='diff-added'>
+
+</span><p><span class='diff-added'></span><a href="http://koumbit.org/"><span class='diff-added'>Koumbit</span></a><span class='diff-added'> plans to spearhead this effort this summer.</span></p>
+
+<div class="toc-back-to-top"><a href="#toc">Back to top</a></div><h1 id="Unsorted_items">4. Unsorted items</h1>
+
+<ul>
+<li>automatic upgrades - managing platforms and automatically create new ones based on feeds (e.g. from feature servers)</li>
+<li>backend PostgreSQL support - being able to setup databases and users for site installs on PostgreSQL</li>
+<li>statistics improvements (packages, quotas, bandwidth stats) - a dashboard-style overview page for all sites pertaining to a given client or platform</li>
+<li>optionnally hook up Drupal 7 unit testing in post-migrations</li>
+<li>full DNS support</li>
+</ul>
+
+<p>porting the existing ubercart integration to the commerce module</p>
+
+<p>improved intersite security
+hooks for post-migrate unit testing
+allowing cross-profile migration</p><div class="toc-back-to-top"><a href="#toc">Back to top</a></div><script type="text/javascript">toc_scroll_back_to_top = 1;</script></div>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-410.html?destination=node%2F523%23comment-form">Login</a> or <a href="../../../../../user/register/index-410.html?destination=node%2F523%23comment-form">register</a> to post comments</span></li>
+<li class="print active"><a href="index-2.html?print" class="active">Print</a></li>
+<li class="print_recurse active"><a href="index-3.html?print&amp;book_recurse" class="active">Print entire section</a></li>
+<li class="talk_comments last"><a href="../../../talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+
+<div  id="node-616" class="node node-book clear-block">
+  
+      <h2 class='node-title'>
+            <a href="../../../../../roadmap/2.0/d7-port-dns-editor-plan-google-summer-code-2011/index.html">D7 port &amp; DNS editor plan (google summer of code 2011)</a>
+    </h2>
+  
+      <div class='node-content clear-block prose'>
+      <p><em>Plan for porting Aegir to D7 and creating a DNS editor. A project for Google Summer of Code 2011.</em></p>
+
+<p><strong>Please offer advice on how to improve the plan I've outlined below.</strong></p>
+
+<p><strong>Relevant links:</strong>
+<a href="http://drupal.org/sandbox/seth.vincent/1140244">Hostmaster sandbox for GSOC2011</a></p>
+
+<p><strong>Before May 24:</strong></p>
+
+<ul>
+<li>Review Git docs and other resources to learn more about using Git.</li>
+<li>Review issues/patches relevant to D7 port and DNS editor. </li>
+<li>Review api.aegirproject.org and community.aegirproject.org/developing.</li>
+<li>Discuss planned work with aegir maintainers.</li>
+<li>Refine plan below based on what I've learned from the handbook, api, and aegir maintainers.</li>
+</ul>
+
+<p><strong>Week one:</strong> Work on porting Aegir theme Eldir to Drupal 7. Finalize plans for porting the Aegir modules and install profile.</p>
+
+<p><strong>Week two:</strong> Finish porting Eldir to Drupal 7. Port the Aegir Hosting module to Drupal 7.</p>
+
+<p><strong>Weeks three through six:</strong> Port the Task, Client, DB Server, Package, Platform, Site, and Web Server modules to Drupal 7. Test ported modules.</p>
+
+<p><strong>Weeks six through nine:</strong> Port modules Alias, Clone, Cron, Migrate, Quota, Signup, Task, and Web Cluster to Drupal 7. Test ported modules.</p>
+
+<p><strong>Weeks ten and eleven:</strong> Work on the DNS zonefile editor.</p>
+
+<p><strong>Weeks twelve and thirteen:</strong> Continue testing ported projects and the DNS zonefile editor. Update documentation to reflect changes in the upgrade to Drupal 7.</p>    </div>
+  
+      <div class='node-links clear-block'><ul class="links inline"><li class="comment_forbidden first"><span><a href="../../../../../user/login/index-412.html?destination=node%2F616%23comment-form">Login</a> or <a href="../../../../../user/register/index-412.html?destination=node%2F616%23comment-form">register</a> to post comments</span></li>
+<li class="talk_comments last"><a href="../../../../616/talk/index.html" title="Jump to the first comment of this posting.">Talk</a></li>
+</ul></div>
+  </div>
+
+
+
+    </div>
+      </div>
+</body>
+
+
+<!-- Mirrored from community.aegirproject.org/node/523/revisions/1304/view?print&book_recurse by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 18:09:27 GMT -->
+</html>
