@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2016 by original authors @ fontello.com</metadata>
+<defs>
+<font id="aegir" horiz-adv-x="1000" >
+<font-face font-family="aegir" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="aegir" unicode="&#xe800;" d="M1423-150l-1423 0 374 1000c114 0-288-641 322-765 661-134 727-158 727-235l0 0z m-1049 699c0 0-24-263 465-285 344-16 442-24 442-24l82-212c0 0-6 13-573 89-495 66-416 432-416 432l0 0z m25 79c51-252 502-268 486 14-11 191-214 172-168 68l-77 37c33 104 332 188 472-95 141-284 133-319 133-319 0 0-119 0-509 4-390 4-337 291-337 291l0 0z m383 81c0-47-35-85-79-85-43 0-78 38-78 85 0 47 35 85 78 85 44 0 79-38 79-85l0 0z" horiz-adv-x="1423" />
+</font>
+</defs>
+</svg>
